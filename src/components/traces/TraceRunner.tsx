@@ -34,7 +34,7 @@ type Mode = "end" | "now";
 export default function TraceRunner({ code, questions, q8 }: { code: string; questions: RunnerQuestion[]; q8: RunnerQ8 | null }) {
   const dispatch = useAppDispatch();
   const p = useAppSelector((s) => s.progress.traces[code]);
-  const [mode, setMode] = useState<Mode>("end");
+  const [mode, setMode] = useState<Mode>("now");
   const [confirming, setConfirming] = useState(false);
 
   const answers = p?.answers ?? {};
