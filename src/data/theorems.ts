@@ -175,7 +175,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "",
-  "correzione": ""
+  "correzione": "Le slide della Lez. 3 danno come costo complessivo O(d<sup>f(n)</sup>), ma il prodotto di O(d<sup>f(n)</sup>) simulazioni per O(n + f(n)) passi ciascuna è O(f(n)·d<sup>f(n)</sup>). Per stare in O(c<sup>f(n)</sup>) basta prendere c > d, per esempio c = 2d."
  },
  {
   "id": "reach-nl",
@@ -348,7 +348,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "La versione con log<sup>2</sup> f(n) è citata senza prova (Problema 7.4.8 del Papadimitriou).",
-  "correzione": ""
+  "correzione": "Nella dispensa (p. 28) l'ultima riga della prova scrive TIME(f((2n + 1)<sup>3</sup>)): va letto TIME(f(2n + 1)<sup>3</sup>), come nell'enunciato."
  },
  {
   "id": "p-neq-exp",
@@ -534,7 +534,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "La dispensa omette la prova; le slide della Lez. 5 la svolgono.",
-  "correzione": ""
+  "correzione": "Nelle slide della Lez. 5, \"data l'ipotesi che il tempo utilizzato è f(n)\" va letto \"lo spazio utilizzato\": l'ipotesi del punto (c) è sullo spazio."
  },
  {
   "id": "catena-classi",
@@ -606,7 +606,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "",
-  "correzione": ""
+  "correzione": "Nella dispensa (p. 32) il corollario è scritto PSPACE = NSPACE: va letto PSPACE = NPSPACE."
  },
  {
   "id": "pspace-npspace",
@@ -746,7 +746,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "La dispensa dà anche la versione con i circuiti (ogni L ∈ NP si riduce a CIRCUIT SAT, che si riduce a SAT); il riepilogo del cap. 22 elenca anche CIRCUIT SAT come NP-completo.",
-  "correzione": ""
+  "correzione": "Nella dispensa (p. 37) la clausola che vieta le mosse fuori da Δ è scritta come congiunzione: deve essere una disgiunzione. Mancano anche la clausola che obbliga la testina a spostarsi di al più una cella per passo e la convenzione che, arrivata in \"yes\", la macchina resti ferma fino al passo T."
  },
  {
   "id": "3sat",
@@ -1035,7 +1035,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "omessa",
   "esterno": false,
   "nota_fonte": "La dispensa mostra solo la difficoltà; l'appartenenza a NP è rimandata alle note del libro.",
-  "correzione": ""
+  "correzione": "Nella dispensa (p. 47) i vettori di bit degli insiemi sono le righe della matrice A. Perché Ax ≥ 1 dica che ogni elemento di U è coperto devono essere le colonne: una riga per elemento, una colonna per insieme."
  },
  {
   "id": "knapsack",
@@ -1213,7 +1213,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "",
-  "correzione": ""
+  "correzione": "La prova della dispensa (p. 54) applica la Proposizione B, enunciata solo per NP, a una classe C qualsiasi. Il passo si ottiene direttamente dalle Proposizioni A e C, come nella dimostrazione qui sotto."
  },
  {
   "id": "p-np-conp",
@@ -1467,7 +1467,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "",
-  "correzione": ""
+  "correzione": "Nelle slide della Lez. 9 il corollario dice \"per ogni i ≤ 1\": va letto i ≥ 1."
  },
  {
   "id": "t17-9",
@@ -1545,7 +1545,7 @@ export const THEOREMS: Theorem[] = [
   "id": "t17-10",
   "nome": "Teorema 17.10 (QSAT<sub>i</sub> è Σ<sub>i</sub><sup>P</sup>-completo)",
   "tipo": "teorema",
-  "enunciato": "Decidere se è vera una QBF ∃p⃗<sub>1</sub> ∀p⃗<sub>2</sub> ∃p⃗<sub>3</sub> … Qp⃗<sub>i</sub> φ con i blocchi alternati di quantificatori (QSAT<sub>i</sub>) è Σ<sub>i</sub><sup>P</sup>-completo; il suo complemento è Π<sub>i</sub><sup>P</sup>-completo.",
+  "enunciato": "Decidere se è vera una QBF ∃X<sub>1</sub> ∀X<sub>2</sub> ∃X<sub>3</sub> … QX<sub>i</sub> φ con i blocchi alternati di quantificatori (QSAT<sub>i</sub>) è Σ<sub>i</sub><sup>P</sup>-completo; il suo complemento è Π<sub>i</sub><sup>P</sup>-completo.",
   "intuizione": "Il numero di alternanze di quantificatori coincide con il livello della gerarchia; la difficoltà si mostra come nel Teorema di Cook.",
   "uso_esame": "Dà un problema completo per ogni livello: QSAT<sub>2</sub> → QSAT<sub>4</sub> sì; QSAT<sub>4</sub> → QSAT<sub>2</sub> solo se PH collassa al 2° livello.",
   "capitolo": "17 · Gerarchia polinomiale",
@@ -1562,7 +1562,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "La dispensa lo chiama solo \"Theorem\" e omette la prova; il numero 17.10 e la prova vengono dalle slide della Lez. 9. Il riepilogo del cap. 22 elenca anche il complemento di QSAT<sub>i</sub> come Π<sub>i</sub><sup>P</sup>-completo (la barra del complemento si perde nell'estrazione del testo).",
-  "correzione": ""
+  "correzione": "Nelle slide della Lez. 9, \"espressione booleana φ in tempo O(log n)\" va letto spazio O(log n): la riduzione è in spazio logaritmico."
  },
  {
   "id": "strategic-companies",
@@ -1677,7 +1677,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "La dispensa omette la prova; le slide della Lez. 9 la svolgono.",
-  "correzione": ""
+  "correzione": "Nelle slide della Lez. 9, \"O(log m) = O(log n<sup>c</sup>) = O(n)\" va letto O(log n<sup>c</sup>) = O(log n)."
  },
  {
   "id": "co-hamilton-pi2",
@@ -1699,7 +1699,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "omessa",
   "esterno": false,
   "nota_fonte": "",
-  "correzione": "Non è dimostrato nel corso e contrasta con il resto della dispensa: il complemento di HAMILTON PATH è coNP-completo (Proposizione B, cap. 14, e riepilogo del cap. 22), quindi sta in coNP = Π<sub>1</sub><sup>P</sup>. Se fosse anche Π<sub>2</sub><sup>P</sup>-completo si avrebbe Π<sub>2</sub><sup>P</sup> = coNP, cioè un collasso di PH."
+  "correzione": "Non è dimostrato nel corso e contrasta con il resto della dispensa: il complemento di HAMILTON PATH è coNP-completo (Proposizione B, cap. 14, e riepilogo del cap. 22), quindi sta in coNP = Π<sub>1</sub><sup>P</sup>. Se fosse anche Π<sub>2</sub><sup>P</sup>-completo si avrebbe Π<sub>2</sub><sup>P</sup> = coNP, cioè un collasso di PH. Per lo stesso motivo, nell'esercizio 3 del cap. 17 (p. 74) una riduzione da QSAT al complemento di HAMILTON PATH farebbe collassare PH al primo livello, non al secondo."
  },
  {
   "id": "db-queries",
@@ -1745,7 +1745,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "omessa",
   "esterno": false,
   "nota_fonte": "Il numero 19.3 viene dalle slide; la dispensa lo chiama solo \"Theorem\".",
-  "correzione": ""
+  "correzione": "La definizione della dispensa (p. 76) non dice che una città non si può ripetere. La regola serve: senza di essa la partita potrebbe non finire."
  },
  {
   "id": "go",
@@ -1860,7 +1860,7 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "",
-  "correzione": ""
+  "correzione": "Nella dispensa (p. 83) il tempo della seconda fase è scritto O(2<sup>|x|<sup>k</sup> + l</sup>): il conto giusto è (2<sup>|x|<sup>k</sup></sup>)<sup>l</sup> = 2<sup>l·|x|<sup>k</sup></sup>. Resta esponenziale, quindi la conclusione non cambia."
  },
  {
   "id": "nexp-completi",
@@ -2080,6 +2080,6 @@ export const THEOREMS: Theorem[] = [
   "prova": "nel corso",
   "esterno": false,
   "nota_fonte": "Solo nelle slide della Lez. 6 (prova accennata per KNAPSACK), non nella dispensa.",
-  "correzione": ""
+  "correzione": "Le slide della Lez. 6 concludono O(4<sup>n/2</sup>) per KNAPSACK. È vero, ma O(4<sup>n/2</sup>) = O(2<sup>n</sup>) è il costo della forza bruta: il conto preciso è O(n·2<sup>n/2</sup>)."
  }
 ];

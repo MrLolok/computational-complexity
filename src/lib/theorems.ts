@@ -2,6 +2,7 @@
 import type { ClassId } from "@/data/classes";
 import { PROBLEMS, PROBLEM_BY } from "@/data/problems";
 import { THEOREMS, type Theorem } from "@/data/theorems";
+import { PRIORITY_ORDER, PROOF } from "@/data/theoremProofs";
 
 export const thPlain = (h: string | null | undefined) => String(h || "").replace(/<[^>]+>/g, "");
 export const thNorm = (s: string) =>
@@ -57,6 +58,16 @@ export function groupByChapter(list: Theorem[]) {
     g.items.push(t);
   });
   return groups.sort((a, b) => chapNum(a.k) - chapNum(b.k));
+}
+
+/** teoremi raggruppati per quanto servono nelle tracce, i più chiesti per primi */
+export function groupByPriority(list: Theorem[]) {
+  return PRIORITY_ORDER.map((k) => ({
+    k: k as string,
+    items: list
+      .filter((t) => (PROOF[t.id]?.priorita ?? "fuori") === k)
+      .sort((a, b) => (PROOF[b.id]?.frequenza ?? 0) - (PROOF[a.id]?.frequenza ?? 0)),
+  })).filter((g) => g.items.length);
 }
 
 export const chapterTitle = (k: string) => (/^\d/.test(k) ? "Capitolo " + k : k);
