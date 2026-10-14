@@ -54,6 +54,11 @@
   --color-c-R: #c2c4ce;
   --color-c-RE: #d4b89a;
   --color-c-coRE: #93c0d6;
+  /* classi della Lezione 6 (probabilistiche e quantistiche) */
+  --color-c-BPP: #8fd0c4;
+  --color-c-PP: #e8b48e;
+  --color-c-BQP: #c7a8f4;
+  --color-c-EXP2: #f2a593;
 }
 
 code, pre { font-family: inherit; }
