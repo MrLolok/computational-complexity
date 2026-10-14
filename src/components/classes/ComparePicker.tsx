@@ -16,7 +16,7 @@ export default function ComparePicker({ a, b, children }: { a?: ClassId; b?: Cla
   return (
     <section className="flex flex-col gap-6">
       <header><p className={`${ui.eyebrow} mb-2`}>Collega i concetti</p><h1 className={ui.h2}>Confronta due classi</h1><p className={`${ui.lede} mt-3`}>Una classe contiene l&apos;altra? Sono diverse? Scegli una coppia per vedere che cosa sappiamo e che cosa resta aperto.</p></header>
-      <form className="rounded-xl border border-line bg-surface p-5" onSubmit={e => { e.preventDefault(); if (valid) startTransition(() => router.push(`/confronta/${pa}/${pb}`, { scroll: false })); }}>
+      <form className={ui.card} onSubmit={e => { e.preventDefault(); if (valid) startTransition(() => router.push(`/confronta/${pa}/${pb}`, { scroll: false })); }}>
         <div className="flex flex-wrap items-end gap-3">
           <label className="flex min-w-0 flex-1 basis-48 flex-col gap-2 text-sm font-medium" htmlFor="cmpA">1. Prima classe
             <select id="cmpA" required className={ui.select} value={pa} onChange={e => setPa(e.target.value)}><option value="" disabled>Scegli una classe…</option>{IDS.map(id => <option key={id} value={id}>{PLAIN[id]}</option>)}</select>
@@ -32,7 +32,7 @@ export default function ComparePicker({ a, b, children }: { a?: ClassId; b?: Cla
       </form>
       {!changed && children}
       {changed && children && <p className={ui.hint}>Premi “Confronta” per leggere il risultato della nuova coppia.</p>}
-      {!children && <p className="max-w-[65ch] text-sm text-muted">Il risultato distingue ⊆ (inclusione), ⊊ (inclusione stretta) e rapporto non noto. Troverai anche la motivazione da usare all&apos;esame.</p>}
+      {!children && <p className="max-w-prose text-sm text-muted">Il risultato distingue ⊆ (inclusione), ⊊ (inclusione stretta) e rapporto non noto. Troverai anche la motivazione da usare all&apos;esame.</p>}
     </section>
   );
 }

@@ -50,7 +50,7 @@ export default function ExercisesView() {
         <div
           role="tablist"
           aria-label="Tipo di esercizio"
-          className="inline-flex max-w-full gap-0.5 overflow-x-auto rounded-[10px] bg-sunk p-[3px] [scrollbar-width:none]"
+          className="inline-flex max-w-full gap-0.5 overflow-x-auto rounded-lg bg-sunk p-1 [scrollbar-width:none]"
         >
           {SUBS.map(([s, label]) => (
             <button
@@ -59,7 +59,7 @@ export default function ExercisesView() {
               type="button"
               aria-selected={sub === s}
               onClick={() => show(s)}
-              className={`flex-none cursor-pointer whitespace-nowrap rounded-lg px-3 py-1.5 font-ui text-[0.88rem] ${sub === s ? "bg-surface font-semibold text-ink ring-1 ring-line" : "font-medium text-muted"}`}
+              className={`min-h-11 flex-none cursor-pointer whitespace-nowrap rounded-lg px-3 py-2 font-ui text-sm ${sub === s ? "bg-surface font-semibold text-ink ring-1 ring-line" : "font-medium text-muted"}`}
             >
               {label}
             </button>

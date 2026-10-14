@@ -37,7 +37,7 @@ export default function ClassExplorer({ selected, children }: { selected: boolea
       <div id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-tab-${active}`}>
         {active === 0 && <>
           <p className={`${ui.hint} mb-4`}>Parti dall&apos;intuizione. Apri una classe per definizione, esempio e domande d&apos;esame.</p>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{BASICS.map(c => <Link key={c.id} href={`/classi/${c.id}`} className="flex flex-col gap-3 rounded-xl border border-line bg-surface p-5 hover:border-accent"><span className="font-mono text-lg font-semibold text-accent">{c.id}<span className="float-right text-sm" aria-hidden="true">↗</span></span><p className="text-sm leading-relaxed text-muted">{c.text}</p></Link>)}</div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{BASICS.map(c => <Link key={c.id} href={`/classi/${c.id}`} className={`${ui.card} hover:border-accent`}><span className="font-mono text-lg font-semibold text-accent">{c.id}<span className="float-right text-sm" aria-hidden="true">↗</span></span><p className="text-sm leading-relaxed text-muted">{c.text}</p></Link>)}</div>
           <details className="mt-5 border-t border-line pt-4"><summary className="cursor-pointer text-sm text-muted">Altre classi: spazio logaritmico, tempo esponenziale e calcolabilità</summary><div className="mt-4 grid gap-2 sm:grid-cols-2">{IDS.filter(c => !BASICS.some(b => b.id === c)).map(c => <Link key={c} href={`/classi/${c}`} className="rounded-lg border border-line p-3 text-sm hover:border-accent"><span className="mr-3 font-mono text-accent" dangerouslySetInnerHTML={{ __html: NAME[c] }} />{C[c].full}</Link>)}</div></details>
         </>}
         {active === 1 && children}

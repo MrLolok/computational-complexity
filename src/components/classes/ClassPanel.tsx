@@ -26,11 +26,11 @@ const TOWER_OF: Partial<Record<ClassId, string>> = {
   PSPACE: "PSPACE",
 };
 
-const h4 = "mb-1.5 font-ui text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-muted";
+const h4 = "mb-1.5 font-ui text-xs font-semibold uppercase tracking-widest text-muted";
 const link = "text-accent underline underline-offset-2 decoration-1";
 const relList = "flex flex-wrap gap-1.5";
 const relItem = "inline-flex items-center gap-1";
-const mk = "font-mono text-[0.8rem] font-bold";
+const mk = "font-mono text-sm font-bold";
 
 const Html = ({ html, className }: { html: string; className?: string }) => (
   <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
@@ -52,11 +52,11 @@ export function PanelIntro() {
 
 function QA({ t }: { t: ExamQuestion }) {
   return (
-    <details className="border-b border-line py-[0.55rem]">
-      <summary className="cursor-pointer text-[0.95rem] marker:text-muted">
+    <details className="border-b border-line py-2">
+      <summary className="cursor-pointer text-base marker:text-muted">
         <Rich as="span" html={t.q} />
       </summary>
-      <div className="mt-[0.4rem] flex flex-col gap-[0.2rem] text-[0.93rem]">
+      <div className="mt-2 flex flex-col gap-1 text-base">
         <Rich html={t.a} />
         <Rich html={t.e} />
       </div>
@@ -74,7 +74,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
   const tower = TOWER_OF[id];
   const alias = ALIAS[id];
   const cmpB: ClassId = id === "NPcapcoNP" ? "NP" : "NPcapcoNP";
-  const stepBody = "flex flex-col gap-[0.7rem]";
+  const stepBody = "flex flex-col gap-3";
 
   const bodies = [
     <Rich key="intu" as="p" html={c.intu} />,
@@ -94,9 +94,9 @@ export default function ClassPanel({ id }: { id: ClassId }) {
     <div style={classColor(id)}>
       <div className="flex flex-wrap items-start justify-between gap-3.5">
         <div>
-          <Html html={NAME[id]} className="block font-mono text-[1.9rem] font-semibold leading-[1.1] text-(--c)" />
-          <div className="mt-[0.2rem] font-ui text-[0.95rem] font-medium text-muted">{c.full}</div>
-          <div className="mt-[0.55rem] flex flex-wrap gap-1.5">
+          <Html html={NAME[id]} className="block font-mono text-3xl font-semibold leading-tight text-(--c)" />
+          <div className="mt-1 font-ui text-base font-medium text-muted">{c.full}</div>
+          <div className="mt-2 flex flex-wrap gap-1.5">
             {alias?.startsWith("=") && <span className={ui.pillOk}>{alias}</span>}
             <span className={`${ui.pill} whitespace-normal!`}>chiusa per complemento: {c.closed}</span>
           </div>
@@ -109,7 +109,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
       <StepTabs bodies={bodies} />
 
       {tower && (
-        <p className="mt-[0.7rem]">
+        <p className="mt-3">
           <Link className={`${ui.btn} inline-block`} href={`/piani#${tower}`}>
             Vedi {PLAIN[id]} nei piani di PH →
           </Link>
@@ -120,7 +120,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
 
       <details className={ui.sec}>
         <summary className="cursor-pointer font-semibold">Dove sta: inclusioni e questioni aperte</summary>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           <div>
             <h4 className={h4}>È contenuta in</h4>
             <div className={relList}>
@@ -184,7 +184,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
         )}
         {c.extra && <Rich className="flex flex-col gap-2" html={c.extra} />}
         {probs && (
-          <p className="mt-[0.6rem] text-[0.92rem] leading-[1.8]">
+          <p className="mt-2.5 text-base leading-relaxed">
             <b className="font-ui font-semibold">Problemi:</b>{" "}
             {probs.map(([k, t], i) => (
               <span key={k}>
@@ -199,7 +199,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
       {ths.length > 0 && (
         <div className={ui.sec}>
           <h3 className={ui.h3}>Teoremi su {PLAIN[id]}</h3>
-          <p className="text-[0.92rem] leading-[1.8]">
+          <p className="text-base leading-relaxed">
             {ths.map((t, i) => (
               <span key={t.id}>
                 {i > 0 && " · "}
@@ -228,7 +228,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
         </div>
       )}
 
-      <p className="mt-4 text-[0.82rem] text-muted">
+      <p className="mt-4 text-sm text-muted">
         <b className="font-ui font-semibold">Fonti:</b> <Rich as="span" html={c.src} />
       </p>
     </div>

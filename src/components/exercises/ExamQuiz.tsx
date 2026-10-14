@@ -22,7 +22,7 @@ const ansKey = (t: ExamQuestion): Choice => {
 const ALL = EXAM_QUESTIONS.map((q, i) => ({ q, i }));
 const FILTERS = IDS.filter((id) => EXAM_QUESTIONS.some((t) => t.c.includes(id)));
 
-const optBase = "cursor-pointer rounded-[10px] border px-5 py-2 font-ui text-[0.98rem] font-semibold disabled:cursor-default";
+const optBase = "min-h-11 cursor-pointer rounded-lg border px-3 py-2 font-ui text-sm font-semibold disabled:cursor-default";
 const optIdle = "border-line-strong bg-transparent text-ink enabled:hover:border-accent";
 const optRight = "border-ok bg-ok-soft text-ok";
 const optWrong = "border-proved bg-proved-soft text-proved";
@@ -64,7 +64,7 @@ export default function ExamQuiz() {
             Tutte le tracce d&apos;esame, una per una
           </Link>
         </div>
-        <label className="flex flex-col gap-1 font-ui text-[0.95rem] text-muted" htmlFor="quizFilter">
+        <label className="flex flex-col gap-1 font-ui text-base text-muted" htmlFor="quizFilter">
           Classe
           <select
             id="quizFilter"
@@ -84,15 +84,15 @@ export default function ExamQuiz() {
           </select>
         </label>
       </div>
-      <div className="flex max-w-[820px] flex-col gap-3.5 rounded-xl border border-line bg-surface p-[22px]">
+      <div className={`${ui.card} max-w-4xl`}>
         {!cur ? (
           <p>Nessuna domanda per questa classe.</p>
         ) : (
           <>
-            <div className="font-mono text-[0.84rem] tabular-nums text-muted">
+            <div className="font-mono text-sm tabular-nums text-muted">
               Domanda {qi + 1} di {list.length} · giuste {ok} su {answered.length}
             </div>
-            <Rich className="font-head text-[1.4rem] font-medium leading-[1.3]" html={cur.q.q} />
+            <Rich className="font-head text-2xl font-medium leading-snug" html={cur.q.q} />
             <div className="flex flex-wrap gap-2">
               {OPTS.map(([kk, l]) => {
                 const cls = !rec ? optIdle : kk === k ? optRight : kk === rec.choice ? optWrong : optIdle;
@@ -106,7 +106,7 @@ export default function ExamQuiz() {
             {rec && (
               <div className="flex flex-col items-start gap-4 border-t border-line pt-4">
                 <Rich className="w-fit max-w-full rounded-lg bg-accent-soft/50 px-3 py-2 text-sm font-semibold text-accent" html={`<span>Risposta:</span> ${cur.q.a}`} />
-                <Rich as="p" className="max-w-[72ch] leading-relaxed" html={cur.q.e} />
+                <Rich as="p" className="max-w-prose leading-relaxed" html={cur.q.e} />
                 {cur.q.c.length > 0 && (
                   <p className={`${ui.hint} mt-2`}>
                     Classi coinvolte:{" "}

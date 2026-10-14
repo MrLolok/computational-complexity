@@ -30,7 +30,7 @@ export function qform(first: "E" | "A", i: number) {
 }
 
 /** testo secondario delle schede */
-export const readit = "text-[0.92rem] text-muted";
+export const readit = "text-base text-muted";
 
 /* ---------- torre ---------- */
 /** classi della torre che contengono id (tutte quelle sopra) */

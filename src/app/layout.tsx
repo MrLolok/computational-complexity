@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import localFont from "next/font/local";
 import "katex/dist/katex.min.css";
@@ -38,6 +38,8 @@ export const metadata: Metadata = {
     "Ripasso interattivo di Computational Complexity: la gerarchia delle classi, i problemi del corso, i teoremi e le tracce d'esame da svolgere.",
 };
 
+export const viewport: Viewport = { viewportFit: "cover" };
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -47,10 +49,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       {/* browser extensions (e.g. ColorZilla's cz-shortcut-listen) inject attributes on <body> before hydration */}
       <body
         suppressHydrationWarning
-        className="min-h-full bg-bg text-ink font-body text-[1rem] leading-relaxed tracking-[-0.01em] [font-variant-numeric:lining-nums]"
+        className="min-h-full bg-bg text-ink font-body text-base leading-relaxed tracking-normal wrap-anywhere lining-nums pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]"
       >
         <StoreProvider>
-          <div className="mx-auto flex min-h-screen w-full max-w-[1240px] flex-col gap-6 px-[max(16px,env(safe-area-inset-left,0px))] pb-10 pt-8 sm:px-6">
+          <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-6 px-4 pb-10 pt-8 sm:px-6">
             <a href="#contenuto" className="skip-link">Vai al contenuto</a>
             <Suspense fallback={<NavFallback />}>
               <SiteNav />

@@ -45,7 +45,7 @@ export default function QbfEval() {
         ))}
       </div>
       <div className="overflow-x-auto">
-        <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Albero di valutazione della formula" className="block h-auto w-full min-w-[420px] font-ui">
+        <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Albero di valutazione della formula" className="block h-auto w-full min-w-104 font-ui">
           {edges.map(({ from, to, i, v }) => {
             const key = reveal && to.key;
             return (
@@ -55,13 +55,13 @@ export default function QbfEval() {
                   y1={from.y + 16}
                   x2={to.x}
                   y2={to.y - 16}
-                  className={key ? `${stroke(to.val)} stroke-3` : "stroke-line stroke-[1.5]"}
+                  className={key ? `${stroke(to.val)} stroke-3` : "stroke-line stroke-1.5"}
                 />
                 <text
                   x={(from.x + to.x) / 2 + (i ? 8 : -8)}
                   y={(from.y + to.y) / 2 + 4}
                   textAnchor={i ? "start" : "end"}
-                  className="fill-muted font-mono text-[11px]"
+                  className="fill-muted font-mono text-xs"
                 >
                   {v} = {i ? "F" : "V"}
                 </text>
@@ -79,17 +79,17 @@ export default function QbfEval() {
                   rx={7}
                   className={`${reveal ? fill(nd.val) : "fill-sunk"} ${stroke(nd.val)}`}
                 />
-                <text x={nd.x} y={nd.y + 5} textAnchor="middle" className="fill-ink font-mono text-[12px]">
+                <text x={nd.x} y={nd.y + 5} textAnchor="middle" className="fill-ink font-mono text-xs">
                   {reveal ? "φ = " + (nd.val ? "V" : "F") : "φ = ?"}
                 </text>
               </g>
             ) : (
               <g key={`n${nd.x}-${nd.y}`}>
                 <circle cx={nd.x} cy={nd.y} r={17} className={`${reveal ? fill(nd.val) : "fill-surface"} ${stroke(nd.val)} stroke-2`} />
-                <text x={nd.x} y={nd.y + 5} textAnchor="middle" className="fill-ink font-mono text-[14px] font-bold">
+                <text x={nd.x} y={nd.y + 5} textAnchor="middle" className="fill-ink font-mono text-sm font-bold">
                   {nd.q + nd.v}
                 </text>
-                <text x={nd.x + 22} y={nd.y - 10} className="fill-muted font-mono text-[11px]">
+                <text x={nd.x + 22} y={nd.y - 10} className="fill-muted font-mono text-xs">
                   {nd.q === "∃" ? "OR" : "AND"}
                 </text>
               </g>
@@ -117,7 +117,7 @@ export default function QbfEval() {
         ) : (
           <>
             <p>Prova a prevederlo: la formula è vera o falsa?</p>
-            <div className="mt-[0.4rem] flex flex-wrap gap-2">
+            <div className="mt-2 flex flex-wrap gap-2">
               <button type="button" className={ui.btn} onClick={() => setGuess("1")}>
                 Vera
               </button>
@@ -134,7 +134,7 @@ export default function QbfEval() {
       <p className={readit}>
         Prefisso con {k} blocc{k === 1 ? "o" : "hi"}, il primo {isS ? "∃" : "∀"}: è un&apos;istanza di {isS ? "QSAT" : "co-QSAT"}
         {SUBD(k)}, che sta in <span dangerouslySetInnerHTML={{ __html: isS ? hS(k) : hPi(k) }} />.{" "}
-        <span className="text-[0.82rem]">Formula da: {F.src}.</span>
+        <span className="text-sm">Formula da: {F.src}.</span>
       </p>
     </>
   );

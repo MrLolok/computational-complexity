@@ -8,7 +8,7 @@ import { GLOSSARY } from "@/lib/glossary";
 /** Un solo popup per tutti i termini: hover, focus, tocco; Escape e clic esterno lo chiudono. */
 export default function ContextHelp({ children }: { children: ReactNode }) {
   const id = useId();
-  const [tip, setTip] = useState<{ key: string; left: number; top?: number; bottom?: number } | null>(null);
+  const [tip, setTip] = useState<{ key: string; left: number; top?: number; bottom?: number; maxWidth: number; maxHeight: number } | null>(null);
   const anchor = useRef<HTMLElement | null>(null);
   const popup = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -30,8 +30,21 @@ export default function ContextHelp({ children }: { children: ReactNode }) {
     anchor.current = el;
     el.setAttribute("aria-describedby", id);
     const r = el.getBoundingClientRect();
-    const width = Math.min(336, window.innerWidth - 24);
-    setTip({ key, left: Math.max(12, Math.min(r.left, window.innerWidth - width - 12)), ...(r.bottom + 270 < window.innerHeight ? { top: r.bottom + 8 } : { bottom: Math.max(12, window.innerHeight - r.top + 8) }) });
+    const safe = getComputedStyle(document.body);
+    const left = parseFloat(safe.paddingLeft) + 12;
+    const right = window.innerWidth - parseFloat(safe.paddingRight) - 12;
+    const top = Math.max(parseFloat(safe.paddingTop) + 12, r.bottom + 8);
+    const bottom = Math.max(parseFloat(safe.paddingBottom) + 12, window.innerHeight - r.top + 8);
+    const below = window.innerHeight - parseFloat(safe.paddingBottom) - top - 12;
+    const above = window.innerHeight - parseFloat(safe.paddingTop) - bottom - 12;
+    const width = Math.min(21 * parseFloat(getComputedStyle(document.documentElement).fontSize), right - left);
+    setTip({
+      key,
+      left: Math.max(left, Math.min(r.left, right - width)),
+      maxWidth: width,
+      maxHeight: Math.min(320, Math.max(below, above)),
+      ...(below >= above ? { top } : { bottom }),
+    });
   };
   useEffect(() => {
     if (!tip) return;
@@ -68,8 +81,8 @@ export default function ContextHelp({ children }: { children: ReactNode }) {
       {children}
       {tip && createPortal(
         <div ref={popup} id={id} role="dialog" aria-label={`Ripasso: ${GLOSSARY[tip.key].name}`} onPointerEnter={keep} onPointerLeave={later} onFocusCapture={keep} onBlurCapture={e => { if (!popup.current?.contains(e.relatedTarget as Node)) later(); }}
-          className="fixed z-50 w-[336px] max-w-[calc(100vw-24px)] max-h-[min(320px,80vh)] overflow-auto rounded-xl border border-line-strong bg-surface p-4 text-sm leading-relaxed shadow-xl"
-          style={{ left: tip.left, top: tip.top, bottom: tip.bottom }}>
+          className="fixed z-50 w-84 overflow-auto overscroll-contain rounded-xl border border-line-strong bg-surface p-4 text-sm leading-relaxed shadow-xl"
+          style={{ left: tip.left, top: tip.top, bottom: tip.bottom, maxWidth: tip.maxWidth, maxHeight: tip.maxHeight }}>
           <div className="mb-2 flex items-start justify-between gap-3">
             <strong className="text-base text-ink">{GLOSSARY[tip.key].name}</strong>
             <button type="button" aria-label="Chiudi spiegazione" className="min-h-8 min-w-8 cursor-pointer px-2 text-muted" onClick={close}>×</button>

@@ -55,7 +55,7 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="sticky top-[calc(env(safe-area-inset-top,0px)+2.9rem)] z-10 -mx-1 flex flex-wrap items-center gap-x-4 gap-y-2 bg-bg/95 px-1 py-2 backdrop-blur">
+      <div className="sticky top-[calc(env(safe-area-inset-top,0px)+var(--spacing)*12)] z-10 -mx-1 flex flex-wrap items-center gap-x-4 gap-y-2 bg-bg/95 px-1 py-2 backdrop-blur">
         <div className="flex min-w-40 flex-1 items-center gap-3">
           <div
             className="h-1.5 flex-1 overflow-hidden rounded-full bg-sunk"
@@ -84,7 +84,7 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
                 type="button"
                 aria-pressed={mode === m}
                 onClick={() => setMode(m)}
-                className={`rounded-md px-2.5 py-1 cursor-pointer ${mode === m ? "bg-accent-soft text-accent" : "text-muted hover:text-ink"}`}
+                className={`min-h-11 rounded-md px-3 py-2 cursor-pointer ${mode === m ? "bg-accent-soft text-accent" : "text-muted hover:text-ink"}`}
               >
                 {label}
               </button>
@@ -112,10 +112,10 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
           const a = answers[q.n];
           const reveal = done || (mode === "now" && Boolean(a));
           return (
-            <li key={q.n} id={`d${q.n}`} className={`${ui.card} scroll-mt-28`}>
+            <li key={q.n} id={`d${q.n}`} className={`${ui.card} scroll-mt-44 sm:scroll-mt-32`}>
               <div className="flex items-baseline gap-3">
                 <span className="font-head text-2xl font-semibold text-accent">{q.label ?? q.n}</span>
-                <div className="min-w-0 flex-1 text-[1.08rem]">{q.text}</div>
+                <div className="min-w-0 flex-1 text-lg">{q.text}</div>
               </div>
               <div role="group" aria-label={`Risposta alla domanda ${q.label ?? q.n}`} className="flex flex-wrap gap-2 sm:pl-8">
                 {CHOICES.map(([c, label]) => {
@@ -129,7 +129,7 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
                       aria-pressed={picked}
                       disabled={done || (mode === "now" && Boolean(a))}
                       onClick={() => choose(q, c)}
-                      className={`min-w-20 rounded-lg border px-4 py-1.5 font-ui text-sm font-semibold transition-colors disabled:cursor-default ${
+                      className={`min-h-11 min-w-16 rounded-lg border px-3 py-2 font-ui text-sm font-semibold transition-colors disabled:cursor-default ${
                         right
                           ? "border-ok bg-ok-soft text-ok"
                           : wrong
@@ -155,7 +155,7 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
                   <div className="inline-flex w-fit max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg bg-accent-soft/50 px-3 py-2 font-ui text-sm font-semibold text-accent">
                     <span>Risposta:</span><div className="min-w-0 [&>div]:inline [&_p]:inline">{q.answerNode}</div>
                   </div>
-                  <div className="max-w-[72ch] text-[1rem] leading-relaxed">{q.explanation}</div>
+                  <div className="max-w-prose text-base leading-relaxed">{q.explanation}</div>
                   {(q.seeAlso.length > 0 || q.repeatOf) && (
                     <p className="border-t border-line pt-3 font-ui text-sm text-muted">
                       Vedi anche:{" "}
@@ -179,7 +179,7 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
 
       {!done && (
         <div className="flex flex-wrap items-center gap-3">
-          <button type="button" className={ui.btnPrimary + " px-5 py-2"} onClick={deliver}>
+          <button type="button" className={ui.btnPrimary} onClick={deliver}>
             {confirming ? `Consegna comunque (${missing} senza risposta)` : "Consegna"}
           </button>
           {confirming ? (
@@ -201,12 +201,12 @@ function Q8({ code, q8, done, num }: { code: string; q8: RunnerQ8; done: boolean
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   return (
-    <section id="d8" className={`${ui.card} scroll-mt-28`}>
+    <section id="d8" className={`${ui.card} scroll-mt-44 sm:scroll-mt-32`}>
       <div className="flex items-baseline gap-3">
         <span className="font-head text-2xl font-semibold text-accent">{num}</span>
         <div className="min-w-0 flex-1">
           <span className={ui.eyebrow}>Macchina di Turing</span>
-          <div className="text-[1.08rem]">{q8.title}</div>
+          <div className="text-lg">{q8.title}</div>
         </div>
       </div>
       <div className="flex flex-wrap items-center gap-4 sm:pl-8">

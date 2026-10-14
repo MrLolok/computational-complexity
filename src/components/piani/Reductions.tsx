@@ -6,7 +6,7 @@ import { readit, rSub, shortName } from "@/lib/piani";
 import { ui } from "@/lib/ui";
 
 const byId = (id: string) => RP.find((r) => r.id === id) ?? RP[0];
-const label = "flex min-w-0 max-w-full flex-col gap-1 font-ui text-[0.78rem] font-semibold text-muted";
+const label = "flex min-w-0 max-w-full flex-col gap-1 font-ui text-xs font-semibold text-muted";
 
 /** riduzioni tra problemi completi dei piani: esiste A → B? */
 export default function Reductions() {
@@ -21,7 +21,7 @@ export default function Reductions() {
       <div className="flex flex-wrap items-end gap-3 border-b border-line p-3">
         <label className={label}>
           Da (problema A)
-          <select className={`${ui.select} min-w-0 text-[0.9rem]`} value={a} onChange={(e) => setA(e.target.value)}>
+          <select className={ui.select} value={a} onChange={(e) => setA(e.target.value)}>
             {RP.map((x) => (
               <option key={x.id} value={x.id}>
                 {x.label}
@@ -29,10 +29,10 @@ export default function Reductions() {
             ))}
           </select>
         </label>
-        <span className={`${ui.mono} pb-[0.6rem]`}>→</span>
+        <span className={`${ui.mono} pb-2.5`}>→</span>
         <label className={label}>
           A (problema B)
-          <select className={`${ui.select} min-w-0 text-[0.9rem]`} value={b} onChange={(e) => setB(e.target.value)}>
+          <select className={ui.select} value={b} onChange={(e) => setB(e.target.value)}>
             {RP.map((x) => (
               <option key={x.id} value={x.id}>
                 {x.label}
@@ -47,7 +47,7 @@ export default function Reductions() {
           <button
             key={x + y}
             type="button"
-            className="cursor-pointer rounded-full border border-line px-[0.7rem] py-[0.22rem] font-mono text-[0.8rem] text-ink hover:border-accent hover:text-accent"
+            className="min-h-11 cursor-pointer rounded-full border border-line px-3 py-2 font-mono text-sm text-ink hover:border-accent hover:text-accent"
             onClick={() => {
               setA(x);
               setB(y);
@@ -58,13 +58,13 @@ export default function Reductions() {
         ))}
       </div>
       <div className="mt-3 flex flex-col gap-4" aria-live="polite">
-        <div className="flex flex-wrap items-center gap-2.5 font-head text-[1.6rem] font-semibold">
+        <div className="flex flex-wrap items-center gap-2.5 font-head text-2xl font-semibold">
           <span>
             {shortName(A.label)} → {shortName(B.label)}
           </span>
           <span className={r === "si" ? "text-ok" : "text-open"}>{r === "si" ? "SÌ" : "altro"}</span>
         </div>
-        <p className="[&_sub]:text-[0.7em] [&_sup]:text-[0.7em]">
+        <p>
           {r === "si" ? "Esiste: " : "Non si sa; esisterebbe "}
           <span dangerouslySetInnerHTML={{ __html: why }} />
         </p>

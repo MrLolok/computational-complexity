@@ -114,7 +114,7 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
               type="button"
               aria-pressed={filter === k}
               onClick={() => setFilter(k)}
-              className={`font-ui text-sm rounded-full border px-3 py-1 cursor-pointer transition-colors ${
+              className={`min-h-11 font-ui text-sm rounded-full border px-3 py-2 cursor-pointer transition-colors ${
                 filter === k ? "border-accent bg-accent text-accent-ink" : "border-line-strong text-muted hover:text-ink"
               }`}
             >
@@ -129,7 +129,7 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
       {groups.map((g) => (
         <section key={g.name} className="flex flex-col gap-3">
           <h2 className={ui.h3}>{g.name}</h2>
-          <ul className="grid gap-3 grid-cols-[repeat(auto-fill,minmax(min(100%,17rem),1fr))]">
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {g.items.map((t) => (
               <li key={t.code} className="min-w-0">
                 <TraceCard t={t} p={progress[t.code]} />
@@ -148,7 +148,7 @@ function TraceCard({ t, p }: { t: TraceSummary; p: TraceProgress | undefined }) 
   return (
     <Link
       href={`/tracce/${t.code}`}
-      className="group flex h-full flex-col gap-2 rounded-xl border border-line bg-surface p-4 transition-colors hover:border-accent"
+      className={`${ui.card} group h-full transition-colors hover:border-accent`}
     >
       <div className="flex items-baseline justify-between gap-2">
         <span className="font-mono text-sm font-semibold text-accent">{t.code}</span>

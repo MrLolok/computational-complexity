@@ -57,12 +57,12 @@ export default function ProblemSlideshow({ id, name }: { id: keyof typeof walkth
                         aria-hidden={i !== step}
                         className="w-full min-w-0 flex-none snap-start snap-always"
                     >
-                        <div className="bg-surface h-[clamp(180px,38svh,340px)]">
+                        <div className="bg-surface h-56 min-h-44 max-h-[40svh] sm:h-80">
                             <Image
                                 src={slide.src}
                                 width={960}
                                 height={640}
-                                sizes="(max-width: 900px) 90vw, 640px"
+                                sizes="(width < 64rem) 90vw, 640px"
                                 alt={slide.alt}
                                 className="h-full w-full object-contain"
                             />

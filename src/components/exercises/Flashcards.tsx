@@ -12,8 +12,8 @@ import { classColor, ui } from "@/lib/ui";
 
 const DECKS = BANDS.filter((b) => PROBLEMS.some((p) => p.b === b));
 const face =
-  "absolute inset-0 flex flex-col gap-3 overflow-auto rounded-xl border border-t-[3px] border-line border-t-(--c) bg-surface p-[22px] backface-hidden transition-transform duration-[450ms] ease-in-out motion-reduce:transition-none";
-const big = "block font-head text-[2.2rem] font-semibold leading-tight text-(--c)";
+  `${ui.card} absolute inset-0 overflow-auto border-t-2 border-t-(--c) backface-hidden transition-transform duration-500 ease-in-out motion-reduce:transition-none`;
+const big = "block font-head text-4xl font-semibold leading-tight text-(--c)";
 
 export default function Flashcards() {
   const router = useRouter();
@@ -53,9 +53,9 @@ export default function Flashcards() {
   const cp = cur ? (cur.cpl ? `${PROBLEM_BY[cur.cpl].name}: ${PROBLEM_BY[cur.cpl].lab}` : cur.complLab || "nessuno con un nome proprio") : "";
 
   return (
-    <div className="flex max-w-[780px] flex-col gap-4">
+    <div className="flex max-w-4xl flex-col gap-4">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <label htmlFor="fdeck" className="font-ui text-[0.95rem] text-muted">
+        <label htmlFor="fdeck" className="font-ui text-base text-muted">
           Mazzo
         </label>
         <select
@@ -74,7 +74,7 @@ export default function Flashcards() {
             </option>
           ))}
         </select>
-        <label className="inline-flex cursor-pointer select-none items-center gap-2 font-ui text-[0.88rem] text-muted" htmlFor="fonly">
+        <label className="inline-flex cursor-pointer select-none items-center gap-2 font-ui text-sm text-muted" htmlFor="fonly">
           <input
             id="fonly"
             type="checkbox"
@@ -90,7 +90,7 @@ export default function Flashcards() {
         <button className={ui.btn} type="button" onClick={() => make(deckName, only)}>
           Mescola
         </button>
-        <span className="ml-auto font-mono text-[0.84rem] tabular-nums text-muted">
+        <span className="ml-auto font-mono text-sm tabular-nums text-muted">
           {k} / {n} sapute
         </span>
       </div>
@@ -102,7 +102,7 @@ export default function Flashcards() {
         aria-label="Gira la carta"
         onClick={() => setFlip(!flip)}
         style={cur ? classColor(colorId(cur)) : undefined}
-        className={`relative min-h-[300px] w-full cursor-pointer text-left text-ink perspective-[1200px] max-[560px]:min-h-[360px] ${cur ? "" : deck ? "[--c:var(--color-ok)]" : "[--c:var(--color-accent)]"}`}
+        className={`relative min-h-80 w-full cursor-pointer text-left text-ink perspective-distant max-sm:min-h-96 ${cur ? "" : deck ? "[--c:var(--color-ok)]" : "[--c:var(--color-accent)]"}`}
       >
         {!cur || !deck ? (
           <span className={`${face} rotate-y-0`}>
@@ -127,7 +127,7 @@ export default function Flashcards() {
             </span>
             <span className={`${face} ${flip ? "rotate-y-0" : "rotate-y-180"}`}>
               <span className="flex flex-wrap items-center gap-2">
-                <span className={`${big} text-[1.3rem]!`}>{cur.name}</span>
+                <span className={`${big} text-2xl!`}>{cur.name}</span>
                 <LabPill html={cur.lab} />
                 {cur.ext && <SourceBadge kind="x">✱ esterno</SourceBadge>}
               </span>
@@ -136,7 +136,7 @@ export default function Flashcards() {
                 <strong className="font-semibold">Complemento:</strong> <Html html={cp} />
               </span>
               {trap && (
-                <span className="block text-[0.92rem]">
+                <span className="block text-base">
                   <strong className="font-semibold">Trappola{trap.c ? ` (${trap.c})` : ""}:</strong>{" "}
                   {trap.q ? (
                     <>

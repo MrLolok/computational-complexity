@@ -43,7 +43,7 @@ export default function SatUnsat() {
         <div className={ui.hint}>φ′ (deve essere insoddisfacibile)</div>
         <Picker sel={f2} onPick={setF2} />
       </div>
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-x-2.5 gap-y-1.5 text-[0.93rem]">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-x-2.5 gap-y-1.5 text-base">
         <CheckRow tag="NP" ok={s1}>
           φ = {F[f1][0]} è soddisfacibile?{s1 && <span className={ui.hint}> (certificato: {WIT[f1]})</span>}
         </CheckRow>

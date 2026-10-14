@@ -32,9 +32,9 @@ export default function Page() {
         </p>
       </header>
       {TRACE_LEGEND && (
-        <details className="rounded-xl border border-line bg-surface px-4 py-3">
+        <details className={ui.card}>
           <summary className="cursor-pointer font-ui text-sm text-muted">Legenda dei simboli</summary>
-          <Markdown className="mt-2 text-[0.97rem]">{TRACE_LEGEND}</Markdown>
+          <Markdown className="mt-2 text-base">{TRACE_LEGEND}</Markdown>
         </details>
       )}
       <TraceLibrary traces={summaries} />

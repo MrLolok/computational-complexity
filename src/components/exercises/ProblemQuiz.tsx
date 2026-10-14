@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { recordProblemQuiz, resetProblemQuiz } from "@/store/progressSlice";
 import { classColor, ui } from "@/lib/ui";
 
-const opt = "cursor-pointer rounded-[9px] border px-3 py-2.5 text-left font-ui font-semibold disabled:cursor-default";
+const opt = "min-h-11 cursor-pointer rounded-lg border px-3 py-2 text-left font-ui text-sm font-semibold disabled:cursor-default";
 
 function QuestionText({ q }: { q: QuizQuestion }) {
   const p = PROBLEM_BY[q.pid];
@@ -29,7 +29,7 @@ function QuestionText({ q }: { q: QuizQuestion }) {
   return (
     <>
       <strong className="font-bold">{p.name}</strong>: in quale classe sta, ed è completo?
-      <Rich as="span" className="mt-1.5 block font-body text-[0.95rem] font-normal text-muted" html={p.def} />
+      <Rich as="span" className="mt-1.5 block font-body text-base font-normal text-muted" html={p.def} />
     </>
   );
 }
@@ -86,9 +86,9 @@ export default function ProblemQuiz() {
   const ok = q && pick !== null ? q.opts[pick] === q.right : false;
 
   return (
-    <div className="flex max-w-[780px] flex-col gap-4">
+    <div className="flex max-w-4xl flex-col gap-4">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <span className="font-ui text-[0.95rem] text-muted">Tipo di domanda</span>
+        <span className="font-ui text-base text-muted">Tipo di domanda</span>
         <div className="flex flex-wrap gap-1.5">
           {QMODES.map(([k, t]) => (
             <button
@@ -99,7 +99,7 @@ export default function ProblemQuiz() {
                 setMode(k);
                 ask(k);
               }}
-              className={`inline-flex cursor-pointer items-center rounded-full border px-2.5 py-[3px] font-ui text-[0.84rem] text-ink ${k === mode ? "border-accent bg-accent/14 font-semibold" : "border-line"}`}
+              className={`inline-flex min-h-11 cursor-pointer items-center rounded-full border px-3 py-2 font-ui text-sm text-ink ${k === mode ? "border-accent bg-accent/14 font-semibold" : "border-line"}`}
             >
               {t}
             </button>
@@ -108,14 +108,14 @@ export default function ProblemQuiz() {
       </div>
       <div
         style={q ? classColor(colorId(PROBLEM_BY[q.pid])) : undefined}
-        className={`flex flex-col gap-4 rounded-xl border border-t-[3px] border-line bg-surface p-[22px] ${q ? "border-t-(--c)" : "border-t-accent"}`}
+        className={`${ui.card} border-t-2 ${q ? "border-t-(--c)" : "border-t-accent"}`}
       >
         {q && (
           <>
-            <div className="font-head text-[1.4rem] font-medium leading-[1.3]">
+            <div className="font-head text-2xl font-medium leading-snug">
               <QuestionText q={q} />
             </div>
-            <div className="grid grid-cols-1 gap-2 min-[561px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {q.opts.map((o, i) => {
                 const state = pick === null ? "" : o === q.right ? "border-ok bg-ok-soft text-ok" : i === pick ? "border-proved bg-proved-soft text-proved" : "";
                 return (
@@ -132,7 +132,7 @@ export default function ProblemQuiz() {
               })}
             </div>
             {pick !== null && (
-              <div className="flex flex-col gap-1.5 text-[0.95rem]">
+              <div className="flex flex-col gap-1.5 text-base">
                 <span className={`font-ui font-bold ${ok ? "text-ok" : "text-proved"}`}>{ok ? "Giusto." : "Non è così."}</span>
                 <Explanation q={q} />
               </div>
@@ -146,7 +146,7 @@ export default function ProblemQuiz() {
           <button className={ui.linkBtn} type="button" disabled={!q} onClick={() => q && router.push(`/problemi/${q.pid}`)}>
             Apri la scheda
           </button>
-          <span className="ml-auto font-mono text-[0.84rem] tabular-nums text-muted">
+          <span className="ml-auto font-mono text-sm tabular-nums text-muted">
             {score.ok} / {score.tot} giuste
           </span>
           <button className={ui.linkBtn} type="button" disabled={!score.tot} onClick={() => dispatch(resetProblemQuiz())}>

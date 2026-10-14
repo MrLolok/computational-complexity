@@ -34,7 +34,7 @@ export default function PrefixBuilder() {
           azzera
         </button>
       </div>
-      <div className="flex flex-col gap-[0.6rem]" aria-live="polite">
+      <div className="flex flex-col gap-2.5" aria-live="polite">
         <div className={ui.formula}>
           {P.raw ? P.raw + " " : ""}R(x{P.args})
         </div>
@@ -48,7 +48,7 @@ export default function PrefixBuilder() {
             </p>
           </>
         )}
-        <p className="[&_sub]:text-[0.7em] [&_sup]:text-[0.7em]" dangerouslySetInnerHTML={{ __html: P.expl }} />
+        <p dangerouslySetInnerHTML={{ __html: P.expl }} />
         <p className={readit}>{P.comp}</p>
         {P.tid ? (
           <p>

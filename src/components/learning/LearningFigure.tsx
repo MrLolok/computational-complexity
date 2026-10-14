@@ -6,5 +6,5 @@ const FIGURES = {
 };
 export default function LearningFigure({ kind }: { kind: keyof typeof FIGURES }) {
   const f = FIGURES[kind];
-  return <figure className="overflow-hidden rounded-lg border border-line"><Image src={f.src} width={768} height={512} sizes="(max-width: 900px) 90vw, 480px" alt={f.alt} className="h-auto w-full" /><figcaption className="border-t border-line p-4 text-sm leading-relaxed text-muted">{f.caption}</figcaption></figure>;
+  return <figure className="overflow-hidden rounded-lg border border-line"><Image src={f.src} width={768} height={512} sizes="(width < 64rem) 90vw, 480px" alt={f.alt} className="h-auto w-full" /><figcaption className="border-t border-line p-4 text-sm leading-relaxed text-muted">{f.caption}</figcaption></figure>;
 }

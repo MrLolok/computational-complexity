@@ -13,8 +13,8 @@ export default function PhLevels() {
   const l = LEVELS[level];
   return <section className={ui.card}>
     <div className="flex flex-wrap items-center justify-between gap-3"><h2 className={ui.h3}>1. Aggiungi un’alternanza</h2><div role="group" aria-label="Livello di PH" className="flex gap-2">{LEVELS.map((x, i) => <button key={x.n} type="button" aria-pressed={i === level} className={i === level ? ui.btnPrimary : ui.btn} onClick={() => setLevel(i)}>Piano {x.n}</button>)}</div></div>
-    <div aria-live="polite" className="grid gap-6 py-4 md:grid-cols-[1fr_1.4fr]">
-      <div className="flex flex-col justify-center gap-3 rounded-lg bg-sunk p-5"><span className={ui.eyebrow}>Parte da «esiste»</span><span className="font-mono text-4xl text-accent">{l.quantifiers}</span><p className="font-mono text-lg">{l.sigma}</p><p className="text-sm text-muted">Partendo da ∀: {l.pi}</p></div>
+    <div aria-live="polite" className="grid grid-cols-1 gap-6 py-4 md:grid-cols-2">
+      <div className="flex flex-col justify-center gap-3 rounded-lg bg-sunk p-4 sm:p-5"><span className={ui.eyebrow}>Parte da «esiste»</span><span className="font-mono text-4xl text-accent">{l.quantifiers}</span><p className="font-mono text-lg">{l.sigma}</p><p className="text-sm text-muted">Partendo da ∀: {l.pi}</p></div>
       <div className="flex flex-col justify-center gap-3"><h3 className={ui.h3}>{l.example}</h3><p className="text-muted">{l.text}</p><Link href={`/problemi/${l.id}`} data-term={`problem:${l.id}`} className="self-start text-sm text-accent underline underline-offset-4">Esempio: {l.problem} →</Link></div>
     </div>
     <p className="border-t border-line pt-3 text-sm text-muted">Conta i <b className="text-ink">blocchi alternati</b>, non le variabili. ∃x ∃y è un solo blocco. PH raccoglie tutti i livelli finiti; PH ⊆ PSPACE.</p>

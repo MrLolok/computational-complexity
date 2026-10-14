@@ -92,7 +92,7 @@ export default function ProblemDetail({
             </div>
             <header className="flex flex-col gap-3">
                 <h2
-                    className="font-head text-[clamp(1.45rem,3vw,2rem)] leading-tight font-semibold"
+                    className="font-head text-2xl sm:text-3xl leading-tight font-semibold"
                     dangerouslySetInnerHTML={{ __html: p.name }}
                 />
                 <Rich as="p" html={p.def} />

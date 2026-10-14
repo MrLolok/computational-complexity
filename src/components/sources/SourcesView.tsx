@@ -4,8 +4,8 @@ import { THEOREMS } from "@/data/theorems";
 import { Html, SourceBadge } from "@/components/problems/bits";
 import { ui } from "@/lib/ui";
 
-const prose = "flex max-w-[74ch] flex-col gap-3 [&_ul]:m-0 [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-[7px] [&_ul]:pl-5";
-const h3 = "mt-2.5 font-head text-[1.28rem] font-semibold leading-tight";
+const prose = "flex max-w-prose flex-col gap-3 [&_ul]:m-0 [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-2 [&_ul]:pl-5";
+const h3 = "mt-2.5 font-head text-xl font-semibold leading-tight";
 
 /** riquadri "Correzione" dei teoremi */
 function TheoremFixes() {
@@ -30,8 +30,8 @@ export default function SourcesView() {
   return (
     <section className="flex flex-col">
       <header className="mb-5"><h1 className={ui.h2}>Fonti e verifiche</h1><p className={`${ui.lede} mt-3`}>I riferimenti del corso e le integrazioni, raccolti qui per consultazione.</p></header>
-      <div className="flex max-w-[82ch] flex-col gap-4">
-        <details open className={`${prose} rounded-xl border border-line p-5`}>
+      <div className="flex max-w-prose flex-col gap-4">
+        <details open className={`${prose} rounded-xl border border-line p-4 sm:p-5`}>
           <summary className="cursor-pointer font-semibold">Fonti del corso</summary>
           <p>
             Dispensa <i>Computational Complexity</i> (M. Mignogna, 2025): cap. 1 (R, RE), 2.6 (L), 5–11 (classi, gerarchie, Savitch), 12–13
@@ -50,7 +50,7 @@ export default function SourcesView() {
             <b>Correzione</b>.
           </p>
         </details>
-        <details className={`${prose} rounded-xl border border-line p-5`}>
+        <details className={`${prose} rounded-xl border border-line p-4 sm:p-5`}>
           <summary className="cursor-pointer font-semibold">Aggiunte esterne e conseguenze ricavate</summary>
           <ul>
             <li>
@@ -81,7 +81,7 @@ export default function SourcesView() {
             </li>
           </ul>
         </details>
-        <details className={`${prose} rounded-xl border border-line p-5`}>
+        <details className={`${prose} rounded-xl border border-line p-4 sm:p-5`}>
           <summary className="cursor-pointer font-semibold">Precisazioni sui materiali del corso</summary>
           <ul>
             <li>
@@ -113,18 +113,18 @@ export default function SourcesView() {
         </details>
       </div>
 
-      <details className={`${prose} mt-4 max-w-none rounded-xl border border-line p-5`}>
+      <details className={`${prose} mt-4 max-w-none rounded-xl border border-line p-4 sm:p-5`}>
         <summary className="cursor-pointer font-semibold">Verifica della tabella dei problemi</summary>
         <p className={ui.hint}>
           Ogni riga della tabella di partenza della mappa dei problemi, controllata su dispensa, slide delle Lezioni 1–9 e pagine delle tracce
           risolte.
         </p>
         <div className="overflow-x-auto border-t border-line">
-          <table className="w-full min-w-[640px] border-collapse text-[0.92rem]">
+          <table className="w-full min-w-160 border-collapse text-base">
             <thead>
               <tr>
                 {["Riga della tabella", "Esito", "Cosa dicono le fonti"].map((h) => (
-                  <th key={h} className="border-b border-line p-2 text-left align-bottom font-ui text-[0.72rem] font-medium uppercase tracking-wider text-muted">
+                  <th key={h} className="border-b border-line p-2 text-left align-bottom font-ui text-xs font-medium uppercase tracking-wider text-muted">
                     {h}
                   </th>
                 ))}
@@ -134,7 +134,7 @@ export default function SourcesView() {
               {VER.map(([r, v, t]) => (
                 <tr key={r}>
                   <td className="border-b border-line p-2 align-top">{r}</td>
-                  <td className={`whitespace-nowrap border-b border-line p-2 align-top font-mono text-[0.84rem] font-semibold ${v === "ok" ? "text-ok" : "text-open"}`}>
+                  <td className={`whitespace-nowrap border-b border-line p-2 align-top font-mono text-sm font-semibold ${v === "ok" ? "text-ok" : "text-open"}`}>
                     {v === "ok" ? "✔ confermata" : "◐ in parte"}
                   </td>
                   <td className="border-b border-line p-2 align-top">{t}</td>

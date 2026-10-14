@@ -13,7 +13,7 @@ export default function StepTabs({ bodies }: { bodies: ReactNode[] }) {
   const last = STEPS.length - 1;
   return (
     <>
-      <div className="mb-4 mt-[1.2rem] flex flex-wrap border-b border-line" role="tablist" aria-label="Spiegazione per gradi">
+      <div className="mb-4 mt-5 grid grid-cols-2 border-b border-line sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4" role="tablist" aria-label="Spiegazione per gradi">
         {STEPS.map((l, i) => {
           const on = i === step;
           return (
@@ -23,12 +23,12 @@ export default function StepTabs({ bodies }: { bodies: ReactNode[] }) {
               type="button"
               aria-selected={on}
               onClick={() => setStep(i)}
-              className={`-mb-px flex min-w-24 flex-[1_1_0] cursor-pointer items-center gap-[7px] border-b-2 px-1 py-2 text-left font-ui text-[0.84rem] ${
+              className={`-mb-px flex min-h-11 min-w-0 cursor-pointer items-center gap-2 border-b-2 px-3 py-2 text-left font-ui text-sm ${
                 on ? "border-(--c) font-semibold text-ink" : "border-transparent font-medium text-muted"
               }`}
             >
               <span
-                className={`inline-grid size-[19px] flex-none place-items-center rounded-full border font-mono text-[0.7rem] ${
+                className={`inline-grid size-5 flex-none place-items-center rounded-full border font-mono text-xs ${
                   on ? "border-(--c) bg-(--c) text-surface" : "border-line-strong text-muted"
                 }`}
               >
@@ -39,10 +39,10 @@ export default function StepTabs({ bodies }: { bodies: ReactNode[] }) {
           );
         })}
       </div>
-      <div role="tabpanel" className="flex min-h-36 flex-col gap-[0.7rem] [&_p]:max-w-[66ch]">
+      <div role="tabpanel" className="flex min-h-36 flex-col gap-3 [&_p]:max-w-prose">
         {bodies[step]}
       </div>
-      <div className="mt-[0.9rem] flex justify-between gap-2">
+      <div className="mt-4 flex justify-between gap-2">
         <button className={ui.btn} type="button" disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>
           ← Indietro
         </button>

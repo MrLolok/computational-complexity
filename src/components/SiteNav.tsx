@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 export const NAV = [
   { href: "/", label: "Home" },
@@ -16,7 +17,7 @@ export const NAV = [
 ] as const;
 
 const base =
-  "font-ui text-[0.95rem] whitespace-nowrap px-3 py-2 -mb-px border-b-2 transition-colors";
+  "min-h-11 font-ui text-base whitespace-nowrap px-3 py-2 -mb-px border-b-2 transition-colors";
 
 function isActive(path: string, item: (typeof NAV)[number]) {
   const roots = "match" in item ? item.match : [item.href];
@@ -24,8 +25,19 @@ function isActive(path: string, item: (typeof NAV)[number]) {
 }
 
 function Bar({ path }: { path: string | null }) {
+  const nav = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const reveal = () => {
+      const el = nav.current;
+      const active = el?.querySelector<HTMLElement>('[aria-current="page"]');
+      if (el && active) el.scrollLeft = active.offsetLeft - (el.clientWidth - active.offsetWidth) / 2;
+    };
+    reveal();
+    window.addEventListener("resize", reveal);
+    return () => window.removeEventListener("resize", reveal);
+  }, [path]);
   return (
-    <nav aria-label="Sezioni" className="sticky top-[env(safe-area-inset-top,0px)] z-20 -mx-1 overflow-x-auto bg-bg/95 backdrop-blur">
+    <nav ref={nav} aria-label="Sezioni" className="sticky top-[env(safe-area-inset-top,0px)] z-20 -mx-1 overflow-x-auto overscroll-x-contain bg-bg/95 backdrop-blur">
       <ul className="flex gap-1 border-b border-line px-1">
         {NAV.map((item) => {
           const on = path !== null && isActive(path, item);

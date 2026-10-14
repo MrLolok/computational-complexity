@@ -23,13 +23,13 @@ export default function ExactTsp() {
         {TOURS.map((t) => (
           <span
             key={t}
-            className={`rounded-lg border bg-sunk px-[0.6rem] py-[0.3rem] font-mono ${t < B ? "border-proved text-proved" : t <= B ? "border-ok text-ok" : "border-line"}`}
+            className={`rounded-lg border bg-sunk px-2.5 py-1 font-mono ${t < B ? "border-proved text-proved" : t <= B ? "border-ok text-ok" : "border-line"}`}
           >
             giro da {t}
           </span>
         ))}
       </div>
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-x-2.5 gap-y-1.5 text-[0.93rem]">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-x-2.5 gap-y-1.5 text-base">
         <CheckRow tag="NP" ok={l1}>
           esiste un giro di costo ≤ {B}?
         </CheckRow>

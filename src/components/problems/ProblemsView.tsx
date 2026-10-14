@@ -55,7 +55,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
     useEffect(() => {
         const list = catalog.current;
         const row = list?.querySelector<HTMLElement>('[aria-pressed="true"]');
-        if (!list || !row || !window.matchMedia("(min-width: 901px)").matches) return;
+        if (!list || !row || !window.matchMedia("(min-width: 64rem)").matches) return;
         const bounds = list.getBoundingClientRect();
         const selected = row.getBoundingClientRect();
         if (selected.top < bounds.top) list.scrollTop += selected.top - bounds.top;
@@ -150,7 +150,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
             {shown && (
                 <button
                     type="button"
-                    className={`${ui.btn} min-[901px]:hidden`}
+                    className={`${ui.btn} lg:hidden`}
                     aria-expanded={showCatalog}
                     aria-controls="problem-list"
                     onClick={() => setShowCatalog(!showCatalog)}
@@ -158,14 +158,14 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                     {showCatalog ? "Nascondi elenco" : "Mostra elenco dei problemi"}
                 </button>
             )}
-            <div className="grid items-start gap-6 min-[901px]:grid-cols-[minmax(250px,0.65fr)_minmax(0,1.35fr)]">
+            <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
                 <div
                     ref={catalog}
                     id="problem-list"
                     role="region"
                     aria-label="Elenco dei problemi"
                     tabIndex={0}
-                    className={`${shown && !showCatalog ? "hidden" : "flex"} min-w-0 [scrollbar-gutter:stable] flex-col gap-2 min-[901px]:sticky min-[901px]:top-16 min-[901px]:flex min-[901px]:max-h-[calc(100svh-96px)] min-[901px]:overflow-y-auto min-[901px]:overscroll-y-contain min-[901px]:pr-2`}
+                    className={`${shown && !showCatalog ? "hidden" : "flex"} min-w-0 [scrollbar-gutter:stable] flex-col gap-2 lg:sticky lg:top-[calc(env(safe-area-inset-top)+var(--spacing)*16)] lg:flex lg:max-h-[calc(100svh-env(safe-area-inset-top)-env(safe-area-inset-bottom)-var(--spacing)*24)] lg:overflow-y-auto lg:overscroll-y-contain lg:pr-2`}
                 >
                     {items.length === 0 && (
                         <p className={ui.hint}>Nessun problema trovato. Prova un altro nome o azzera i filtri.</p>
@@ -212,7 +212,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                     ref={detail}
                     id="problem-detail"
                     tabIndex={-1}
-                    className="border-line bg-surface min-w-0 scroll-mt-16 rounded-xl border p-4 sm:p-5"
+                    className={`${ui.card} scroll-mt-16 lg:col-span-2`}
                 >
                     {shown ? (
                         <div className="flex flex-col gap-4">

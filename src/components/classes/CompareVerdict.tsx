@@ -8,14 +8,14 @@ import { ui } from "@/lib/ui";
 const Html = ({ html, className }: { html: string; className?: string }) => (
   <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
 );
-const readit = "text-[0.92rem] text-muted";
+const readit = "text-base text-muted";
 const tone = { si: "text-ok", no: "text-proved", altro: "text-open" } as const;
 const pillOf = { ok: ui.pillOk, proved: ui.pillProved, open: ui.pillOpen } as const;
 
 /** catena di inclusioni con i gettoni delle classi */
 function Chain({ steps, start }: { steps: Edge[]; start: ClassId }) {
   return (
-    <div className="font-mono text-[0.86rem] leading-[1.9] [overflow-wrap:anywhere]">
+    <div className="font-mono text-sm leading-loose [overflow-wrap:anywhere]">
       {!steps.length ? (
         <ClassChip id={start} />
       ) : (
@@ -26,7 +26,7 @@ function Chain({ steps, start }: { steps: Edge[]; start: ClassId }) {
             const strict = !hyp && isStrictStep(e.a, e.b);
             return (
               <Fragment key={e.a + ">" + e.b}>
-                <span className={`px-[0.15em] ${hyp ? "font-bold text-open" : strict ? "font-bold text-proved" : "text-muted"}`}>
+                <span className={`px-0.5 ${hyp ? "font-bold text-open" : strict ? "font-bold text-proved" : "text-muted"}`}>
                   {hyp ? "⊆?" : strict ? "⊊" : "⊆"}
                 </span>
                 <ClassChip id={e.b} />
@@ -44,12 +44,12 @@ function WhyList({ steps }: { steps: Edge[] }) {
   if (!steps.length) return null;
   return (
     <details>
-      <summary className="cursor-pointer font-ui text-[0.82rem] font-semibold text-accent">Perché ogni passo</summary>
-      <ol className="mt-[0.4rem] flex list-decimal flex-col gap-1 pl-5 text-[0.88rem]">
+      <summary className="cursor-pointer font-ui text-sm font-semibold text-accent">Perché ogni passo</summary>
+      <ol className="mt-2 flex list-decimal flex-col gap-1 pl-5 text-sm">
         {steps.map((e) => (
           <li key={e.a + ">" + e.b}>
             <Html className={ui.mono} html={`${NAME[e.a]} ⊆ ${NAME[e.b]}`} />: {e.why}
-            {e.src && <span className="text-[0.82rem] text-muted"> ({e.src})</span>}
+            {e.src && <span className="text-sm text-muted"> ({e.src})</span>}
           </li>
         ))}
       </ol>
@@ -100,9 +100,9 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
         {r.groups.length > 0 && (
           <>
             <p className={readit}>Ne seguirebbe:</p>
-            <ul className="m-0 flex list-disc flex-col gap-[0.35rem] pl-[1.1rem]">
+            <ul className="m-0 flex list-disc flex-col gap-1.5 pl-4">
               {r.groups.map((g) => (
-                <li key={g.join()} className="font-mono text-[0.86em]">
+                <li key={g.join()} className="font-mono text-sm">
                   <Html html={g.map((x) => NAME[x]).join(" = ")} />
                 </li>
               ))}
@@ -118,9 +118,9 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
     );
   }
   return (
-    <div className="flex min-w-0 flex-col gap-[0.35rem] rounded-[10px] border border-line bg-surface px-[0.9rem] py-3">
+    <div className={ui.card}>
       <Html className="font-mono font-semibold" html={q} />
-      <div className={`font-ui text-[1.05rem] font-bold ${tone[r.ans]}`}>{answerLabel(r, a, b)}</div>
+      <div className={`font-ui text-base font-bold ${tone[r.ans]}`}>{answerLabel(r, a, b)}</div>
       {body}
     </div>
   );
@@ -139,27 +139,27 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
   const v = compare(a, b);
   const [l, op, r] = v.head;
   const note = PAIRNOTES[[a, b].sort().join("|")];
-  const th = "border-b border-line px-[0.6rem] py-[0.55rem] text-left align-top";
+  const th = "border-b border-line p-2 text-left align-top";
   return (
     <div className="mt-5 flex flex-col gap-4">
-      <div className="flex flex-wrap items-center gap-2.5 font-head text-[1.6rem] font-semibold">
+      <div className="flex flex-wrap items-center gap-2.5 font-head text-2xl font-semibold">
         <span className="font-mono font-semibold">
           <Html html={NAME[l]} /> {op} <Html html={NAME[r]} />
         </span>
         <span className={pillOf[v.pill.tone]}>{v.pill.text}</span>
       </div>
-      <p className="max-w-[65ch] text-muted">{op === "⊆" ? `${PLAIN[l]} è contenuta in ${PLAIN[r]}. Non sappiamo se le due classi siano uguali.` : op === "⊊" ? `${PLAIN[l]} è contenuta in ${PLAIN[r]}, e le due classi sono diverse.` : op === "=" ? "Le due classi coincidono." : op === "≠" ? "Le due classi sono diverse e nessuna contiene l’altra." : "Non conosciamo un’inclusione tra queste due classi. Questo non dimostra che siano diverse."}</p>
+      <p className="max-w-prose text-muted">{op === "⊆" ? `${PLAIN[l]} è contenuta in ${PLAIN[r]}. Non sappiamo se le due classi siano uguali.` : op === "⊊" ? `${PLAIN[l]} è contenuta in ${PLAIN[r]}, e le due classi sono diverse.` : op === "=" ? "Le due classi coincidono." : op === "≠" ? "Le due classi sono diverse e nessuna contiene l’altra." : "Non conosciamo un’inclusione tra queste due classi. Questo non dimostra che siano diverse."}</p>
       {note && <details className="border-b border-line pb-3"><summary className="cursor-pointer text-sm text-accent">Una precisazione su questa coppia</summary><Rich className={`${ui.noteInfo} mt-3`} html={note} /></details>}
 
       <details>
         <summary className="cursor-pointer font-semibold">Perché: le risposte da dare all&apos;esame</summary>
         <div className="mt-3">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(250px,100%),1fr))] gap-2.5">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
           <AnswerCard q={`${NAME[a]} ⊆ ${NAME[b]}?`} r={v.ab} a={a} b={b} />
           <AnswerCard q={`${NAME[b]} ⊆ ${NAME[a]}?`} r={v.ba} a={b} b={a} />
-          <div className="flex min-w-0 flex-col gap-[0.35rem] rounded-[10px] border border-line bg-surface px-[0.9rem] py-3">
+          <div className={ui.card}>
             <Html className="font-mono font-semibold" html={`${NAME[a]} = ${NAME[b]}?`} />
-            <div className={`font-ui text-[1.05rem] font-bold ${tone[v.eq.ans]}`}>{v.eq.text}</div>
+            <div className={`font-ui text-base font-bold ${tone[v.eq.ans]}`}>{v.eq.text}</div>
             <p className={readit}>{v.eq.why}.</p>
           </div>
         </div>
@@ -174,9 +174,9 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
       <details>
         <summary className="cursor-pointer font-semibold">Definizioni e problemi delle due classi</summary>
         <div className="mt-3 overflow-x-auto">
-          <table className="w-full min-w-[560px] border-collapse text-[0.92rem]">
+          <table className="w-full min-w-140 border-collapse text-base">
             <thead>
-              <tr className="font-ui text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-muted">
+              <tr className="font-ui text-xs font-semibold uppercase tracking-wide text-muted">
                 <th className={th} scope="col">Aspetto</th>
                 <th className={th}>
                   <span className="normal-case tracking-normal">
@@ -193,7 +193,7 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
             <tbody>
               {ROWS.map(([label, k]) => (
                 <tr key={k}>
-                  <td className={`${th} w-[22%] font-ui text-[0.85rem] font-medium text-muted`}>{label}</td>
+                  <td className={`${th} w-1/4 font-ui text-sm font-medium text-muted`}>{label}</td>
                   <Rich as="td" className={th} html={C[a][k]} />
                   <Rich as="td" className={th} html={C[b][k]} />
                 </tr>

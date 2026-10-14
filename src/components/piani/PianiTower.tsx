@@ -10,12 +10,12 @@ import { classColor, ui } from "@/lib/ui";
 import { selectTower, useTowerSel } from "./towerSelection";
 
 const NODE_RECT: Record<NodeState, string> = {
-  sel: "fill-[color-mix(in_srgb,var(--c)_22%,var(--color-surface))] stroke-[2.6]",
-  sub: "fill-[color-mix(in_srgb,var(--c)_11%,var(--color-surface))] stroke-[1.3] group-hover:stroke-[2.2]",
-  sup: "fill-surface stroke-[2.2]",
-  far: "fill-surface stroke-[1.3] group-hover:stroke-[2.2]",
+  sel: "fill-[color-mix(in_srgb,var(--c)_22%,var(--color-surface))] stroke-3",
+  sub: "fill-[color-mix(in_srgb,var(--c)_11%,var(--color-surface))] stroke-1.5 group-hover:stroke-2",
+  sup: "fill-surface stroke-2",
+  far: "fill-surface stroke-1.5 group-hover:stroke-2",
 };
-const h4 = "font-ui text-[0.72rem] uppercase tracking-[0.1em] text-muted font-semibold mb-[0.35rem]";
+const h4 = "font-ui text-xs uppercase tracking-widest text-muted font-semibold mb-1.5";
 
 /** etichetta di un nodo: Σ₂ᴾ diventa Σ con pedice e apice veri */
 function NodeLabel({ lab }: { lab: string }) {
@@ -67,7 +67,7 @@ export default function PianiTower() {
 
   const go = (id: TowerId) => {
     selectTower(id);
-    if (window.innerWidth < 900) infoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!window.matchMedia("(min-width: 64rem)").matches) infoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   const onKey = (id: TowerId) => (e: KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -81,9 +81,9 @@ export default function PianiTower() {
   const probs = n.map ? CLASS_PROBLEMS[n.map] : undefined;
 
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-7 min-[900px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
-      <div id="towercard" className="min-w-0 scroll-mt-20 rounded-xl border border-line bg-surface p-2.5">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-1.5 pt-1 pb-2.5 font-ui text-[0.84rem] text-muted">
+    <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+      <div id="towercard" className={`${ui.card} scroll-mt-20`}>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-1.5 pt-1 pb-2.5 font-ui text-sm text-muted">
           <label htmlFor="hyp">Ipotesi</label>
           <select id="hyp" className={`${ui.select} min-w-0`} value={hyp} onChange={(e) => setHyp(e.target.value)}>
             {HYP.map((x) => (
@@ -105,18 +105,18 @@ export default function PianiTower() {
             </p>
           )}
         </div>
-        <p className={`${ui.hint} hidden px-1.5 pb-1.5 max-[560px]:block`}>Scorri il disegno di lato per vederlo tutto.</p>
+        <p className={`${ui.hint} hidden px-1.5 pb-1.5 max-sm:block`}>Scorri il disegno di lato per vederlo tutto.</p>
         <div ref={boxRef} className="overflow-x-auto">
           <svg
             viewBox="0 0 520 830"
             role="group"
             aria-label="Torre dei piani di PH"
-            className="block h-auto w-full min-w-[480px] font-ui"
+            className="block h-auto w-full min-w-120 font-ui"
           >
             {BANDS.map(([lv, a, b], k) => (
               <g key={lv}>
                 <rect x={0} y={a} width={520} height={b - a} rx={8} className={k % 2 ? "fill-band-a" : "fill-band-b"} />
-                <text x={8} y={(a + b) / 2 + 4} className="fill-muted text-[10px] font-semibold uppercase tracking-[0.09em]">
+                <text x={8} y={(a + b) / 2 + 4} className="fill-muted text-xs font-semibold uppercase tracking-wide">
                   piano {lv}
                 </text>
               </g>
@@ -129,9 +129,9 @@ export default function PianiTower() {
                   width={box.width}
                   height={box.height}
                   rx={14}
-                  className="fill-accent-soft/60 stroke-accent stroke-[1.5] [stroke-dasharray:6_4]"
+                  className="fill-accent-soft/60 stroke-accent stroke-1.5 [stroke-dasharray:6_4]"
                 />
-                <text x={box.lx} y={box.ly} className="fill-accent font-ui text-[12px] font-semibold">
+                <text x={box.lx} y={box.ly} className="fill-accent font-ui text-xs font-semibold">
                   {h.tag}
                 </text>
               </g>
@@ -149,24 +149,24 @@ export default function PianiTower() {
                   x2={B.x}
                   y2={B.y + 22}
                   strokeDasharray={dashed ? "4 4" : undefined}
-                  className={hot ? "stroke-ink stroke-2" : "stroke-line-strong stroke-[1.4]"}
+                  className={hot ? "stroke-ink stroke-2" : "stroke-line-strong stroke-1.5"}
                 />
               );
             })}
             {[130, 390].map((x) => (
-              <text key={x} x={x} y={160} textAnchor="middle" className="fill-muted text-[22px]">
+              <text key={x} x={x} y={160} textAnchor="middle" className="fill-muted text-2xl">
                 ⋮
               </text>
             ))}
             <g>
               <circle cx={260} cy={73} r={9} className="fill-surface stroke-open stroke-1" />
-              <text x={260} y={73} textAnchor="middle" dominantBaseline="central" className="fill-open text-[10px] font-bold">
+              <text x={260} y={73} textAnchor="middle" dominantBaseline="central" className="fill-open text-xs font-bold">
                 ?
               </text>
             </g>
             {[1, 2, 3, 4].map((i) => (
               <g key={i} className={M.has(`S${i}` as TowerId) ? "opacity-12" : undefined}>
-                <text x={260} y={TW[`S${i}` as TowerId].y + 4} textAnchor="middle" className="fill-open font-mono text-[13px] font-bold">
+                <text x={260} y={TW[`S${i}` as TowerId].y + 4} textAnchor="middle" className="fill-open font-mono text-sm font-bold">
                   =?
                 </text>
               </g>
@@ -195,10 +195,10 @@ export default function PianiTower() {
                     rx={9}
                     className={`stroke-(--c) transition-[opacity,stroke-width] duration-200 ${NODE_RECT[st]} ${M.has(id) ? "[stroke-dasharray:5_3]" : ""}`}
                   />
-                  <text x={t.x} y={t.y - 3} textAnchor="middle" className="fill-(--c) font-mono text-[16px] font-semibold">
+                  <text x={t.x} y={t.y - 3} textAnchor="middle" className="fill-(--c) font-mono text-base font-semibold">
                     <NodeLabel lab={t.lab} />
                   </text>
-                  <text x={t.x} y={t.y + 14} textAnchor="middle" className="fill-muted text-[11px]">
+                  <text x={t.x} y={t.y + 14} textAnchor="middle" className="fill-muted text-xs">
                     <SvgSup str={t.sub} />
                   </text>
                 </g>
@@ -206,10 +206,10 @@ export default function PianiTower() {
             })}
           </svg>
         </div>
-        <div className="mt-1.5 grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-x-4 gap-y-2 border-t border-line px-1.5 pt-2.5 pb-0.5 font-ui text-[0.82rem] text-muted">
+        <div className="mt-1.5 grid grid-cols-1 gap-x-4 gap-y-2 border-t border-line pt-3 font-ui text-sm text-muted">
           <div className="flex items-center gap-2">
             <svg width="34" height="14" className="flex-none" aria-hidden="true">
-              <line x1="2" y1="7" x2="32" y2="7" className="stroke-muted stroke-[1.6]" />
+              <line x1="2" y1="7" x2="32" y2="7" className="stroke-muted stroke-1.5" />
             </svg>
             inclusione dimostrata (dal basso verso l&apos;alto), non si sa se stretta
           </div>
@@ -224,15 +224,15 @@ export default function PianiTower() {
         id="tinfo"
         aria-live="polite"
         style={classColor(n.c)}
-        className="scroll-mt-20 border-t border-line pt-5 min-[900px]:sticky min-[900px]:top-16 min-[900px]:max-h-[calc(100vh-80px)] min-[900px]:overflow-auto min-[900px]:border-t-0 min-[900px]:border-l min-[900px]:py-1 min-[900px]:pr-0.5 min-[900px]:pl-6"
+        className={`${ui.card} scroll-mt-20 lg:sticky lg:top-[calc(env(safe-area-inset-top)+var(--spacing)*16)] lg:max-h-[calc(100svh-env(safe-area-inset-top)-env(safe-area-inset-bottom)-var(--spacing)*20)] lg:overflow-auto`}
       >
         <div className="flex flex-wrap items-start justify-between gap-3.5">
           <div>
             <div
-              className="font-mono text-[1.9rem] font-semibold leading-[1.1] text-(--c) [&_sub]:text-[0.7em] [&_sup]:text-[0.7em]"
+              className="font-mono text-3xl font-semibold leading-tight text-(--c)"
               dangerouslySetInnerHTML={{ __html: I.title }}
             />
-            <div className="mt-[0.2rem] font-ui text-[0.95rem] font-medium text-muted">{I.sub}</div>
+            <div className="mt-1 font-ui text-base font-medium text-muted">{I.sub}</div>
           </div>
           {n.map && (
             <Link href={`/classi/${n.map}`} className={`${ui.btn} no-underline`}>
@@ -241,17 +241,17 @@ export default function PianiTower() {
           )}
         </div>
         {I.blocks.map(([title, body]) => (
-          <div key={title} className="mt-4 flex flex-col gap-[0.4rem]">
+          <div key={title} className="mt-4 flex flex-col gap-2">
             <h4 className={h4} dangerouslySetInnerHTML={{ __html: title }} />
             <Rich
               html={body.startsWith("<") ? body : `<p>${body}</p>`}
-              className="flex flex-col gap-[0.4rem] [&_p]:max-w-[66ch] [&_.font-mono_sub]:text-[0.7em] [&_.font-mono_sup]:text-[0.7em]"
+              className="flex flex-col gap-2 [&_p]:max-w-prose"
             />
           </div>
         ))}
-        <div className="mt-4 flex flex-col gap-[0.4rem]">
+        <div className="mt-4 flex flex-col gap-2">
           <h4 className={h4}>Dove sta nella torre</h4>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             <div>
               <h4 className={h4}>Contiene</h4>
               <div className={ui.hint}>{I.contains.length ? I.contains.join(", ") : "nessuna classe della torre"}</div>
@@ -263,7 +263,7 @@ export default function PianiTower() {
           </div>
         </div>
         {probs && (
-          <p className="mt-[0.6rem] text-[0.92rem] leading-[1.8]">
+          <p className="mt-2.5 text-base leading-relaxed">
             <b className="font-ui font-semibold">Problemi:</b>{" "}
             {probs.map(([k, t], i) => (
               <span key={k + i}>
@@ -273,7 +273,7 @@ export default function PianiTower() {
             ))}
           </p>
         )}
-        <p className="mt-4 text-[0.82rem] text-muted">
+        <p className="mt-4 text-sm text-muted">
           <b className="font-ui font-semibold">Fonti:</b> dispensa cap. 16–17; slide Lez. 9; appunti Lez. 9 §2–§6.
         </p>
       </aside>

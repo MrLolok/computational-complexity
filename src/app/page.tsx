@@ -30,9 +30,9 @@ const PATHS = [
 export default function Page() {
   return (
     <>
-      <section className="grid items-center gap-10 py-5 sm:py-10 min-[900px]:grid-cols-[1.3fr_1fr]">
+      <section className="grid grid-cols-1 items-center gap-10 py-5 sm:py-10 lg:grid-cols-2">
         <div className="flex flex-col items-start gap-5">
-          <h1 className="max-w-[17ch] font-head text-[clamp(2.6rem,5.5vw,4.4rem)] font-bold leading-[1.08] tracking-[-0.045em] text-balance">
+          <h1 className="max-w-md font-head text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-balance">
             La complessità,
             <br />
             <span className="text-accent">un concetto alla volta.</span>
@@ -50,7 +50,7 @@ export default function Page() {
             </Link>
           </div>
         </div>
-        <div className="rounded-2xl border border-line bg-surface px-6 py-7 sm:px-8">
+        <div className={ui.card}>
           <p className={ui.eyebrow}>Una prima bussola</p>
           <div className="my-6 flex flex-col items-start gap-3">
             {[
@@ -101,7 +101,7 @@ export default function Page() {
             <Link
               key={p.n}
               href={p.href}
-              className="group flex flex-col gap-3 rounded-xl border border-line bg-surface p-6 transition-colors hover:border-accent"
+              className={`${ui.card} group transition-colors hover:border-accent`}
             >
               <span className="font-mono text-sm text-accent">
                 {p.n}
@@ -132,7 +132,7 @@ export default function Page() {
       <section className="grid gap-4 border-t border-line pt-7 sm:grid-cols-2">
         <Link
           href="/confronta"
-          className="flex flex-col gap-2 rounded-xl bg-surface p-5"
+          className={ui.card}
         >
           <h2 className={ui.h3}>Come si collegano due classi? →</h2>
           <p className="text-sm text-muted">
@@ -142,7 +142,7 @@ export default function Page() {
         </Link>
         <Link
           href="/quantistico"
-          className="flex flex-col gap-2 rounded-xl bg-surface p-5"
+          className={ui.card}
         >
           <h2 className={ui.h3}>Quantistico, senza perdersi →</h2>
           <p className="text-sm text-muted">

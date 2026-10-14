@@ -25,12 +25,12 @@ const OPTS: [Key, string][] = [
   ["no", "Falso"],
   ["altro", "Non si sa"],
 ];
-const base = "cursor-pointer rounded-lg border px-[0.75rem] py-[0.3rem] font-ui text-[0.82rem] font-semibold";
+const base = "min-h-11 cursor-pointer rounded-lg border px-3 py-2 font-ui text-sm font-semibold";
 
 function Item({ t }: { t: [string, Key, string] }) {
   const [picked, setPicked] = useState<Key | null>(null);
   return (
-    <div className="flex flex-col gap-[0.45rem] rounded-[10px] border border-line px-[0.85rem] py-[0.7rem]">
+    <div className="flex flex-col gap-2 rounded-lg border border-line px-3 py-3">
       <div>{t[0]}</div>
       <div className="flex flex-wrap gap-1.5">
         {OPTS.map(([k, l]) => {
@@ -48,7 +48,7 @@ function Item({ t }: { t: [string, Key, string] }) {
           );
         })}
       </div>
-      {picked !== null && <div className="text-[0.92rem]">{t[2]}</div>}
+      {picked !== null && <div className="text-base">{t[2]}</div>}
     </div>
   );
 }

@@ -13,10 +13,10 @@ import LearningFigure from "@/components/learning/LearningFigure";
 
 const PREFIX = "#teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
-const h4 = "mb-0.5 font-ui text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-muted";
+const h4 = "mb-0.5 font-ui text-xs font-semibold uppercase tracking-widest text-muted";
 /* evidenziazione del teorema aperto da un indirizzo: si accende e poi sfuma */
 const HL_ON = ["bg-accent-soft/70"];
-const HL_FADE = ["transition-colors", "duration-[1600ms]", "ease-out"];
+const HL_FADE = ["transition-colors", "duration-1500", "ease-out"];
 
 const subscribeHash = (cb: () => void) => {
   window.addEventListener("hashchange", cb);
@@ -39,20 +39,20 @@ function TheoremRow({ t }: { t: Theorem }) {
   const cls = (t.classi || []).filter((c) => NAME[c]);
   const pr = thProblems(t);
   return (
-    <details id={`teorema-${t.id}`} className="group mt-3 scroll-mt-[70px] rounded-xl border border-line bg-surface px-5 open:border-line-strong">
-      <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 py-5 min-[561px]:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
+    <details id={`teorema-${t.id}`} className={`${ui.card} group mt-3 scroll-mt-20 open:border-line-strong`}>
+      <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
         <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-          <span className="font-ui text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-muted">{t.tipo || "teorema"}</span>
-          <h3 className="font-head text-[1.15rem] font-semibold" dangerouslySetInnerHTML={{ __html: t.nome }} />
+          <span className="font-ui text-xs font-semibold uppercase tracking-widest text-muted">{t.tipo || "teorema"}</span>
+          <h3 className="font-head text-lg font-semibold" dangerouslySetInnerHTML={{ __html: t.nome }} />
         </div>
-        <div className="flex flex-wrap items-center justify-start gap-1.5 min-[561px]:justify-end">
+        <div className="flex flex-wrap items-center justify-start gap-1.5 sm:justify-end">
           {t.correzione && <span className={ui.pillOpen}>correzione</span>}
           {t.prova === "nel corso" && <span className={ui.pill}>dimostrato nel corso</span>}
         </div>
-        <p className="col-span-full max-w-[78ch]" dangerouslySetInnerHTML={{ __html: t.enunciato }} />
+        <p className="col-span-full max-w-prose" dangerouslySetInnerHTML={{ __html: t.enunciato }} />
         <span className="col-span-full font-ui text-sm text-accent"><span className="group-open:hidden">Capisci l&apos;idea e il suo uso all&apos;esame +</span><span className="hidden group-open:inline">Chiudi approfondimento −</span></span>
       </summary>
-      <div className="flex max-w-[78ch] flex-col gap-3 pb-4">
+      <div className="flex max-w-prose flex-col gap-3 pb-4">
         {t.id === "savitch" && <LearningFigure kind="savitch" />}
         {t.intuizione && (
           <div>
@@ -80,7 +80,7 @@ function TheoremRow({ t }: { t: Theorem }) {
         {pr.length > 0 && (
           <div>
             <h4 className={h4}>Problemi</h4>
-            <p className="text-[0.92rem] leading-[1.8]">
+            <p className="text-base leading-relaxed">
               {pr.map((id, i) => (
                 <span key={id}>
                   {i > 0 && " · "}
@@ -92,7 +92,7 @@ function TheoremRow({ t }: { t: Theorem }) {
             </p>
           </div>
         )}
-        <p className="text-[0.82rem] text-muted">
+        <p className="text-sm text-muted">
           <b className="font-ui font-semibold">Dove:</b> {whereText(t)}
           {t.nota_fonte && <Rich as="span" html={`. ${t.nota_fonte}`} />}
         </p>
@@ -157,7 +157,7 @@ export default function TheoremsView() {
             onChange={(e) => setQ(e.target.value)}
           />
         </label>
-        <label htmlFor="thcls" className="inline-flex cursor-pointer items-center gap-2 font-ui text-[0.88rem] text-muted">
+        <label htmlFor="thcls" className="inline-flex cursor-pointer items-center gap-2 font-ui text-sm text-muted">
           Classe
           <select id="thcls" className={ui.select} value={cls} onChange={(e) => setCls(e.target.value)}>
             <option value="all">Tutte</option>
@@ -169,7 +169,7 @@ export default function TheoremsView() {
           </select>
         </label>
         <label className="flex min-h-11 cursor-pointer items-center gap-2 text-sm text-muted"><input type="checkbox" className="size-4 accent-accent" checked={provedOnly} onChange={e => setProvedOnly(e.target.checked)} />Solo dimostrati nel corso</label>
-        <span role="status" className="font-ui text-[0.84rem] text-muted">
+        <span role="status" className="font-ui text-sm text-muted">
           {list.length === THEOREMS.length ? `${THEOREMS.length} risultati` : `${list.length} di ${THEOREMS.length}`}
         </span>
       </div>
@@ -177,7 +177,7 @@ export default function TheoremsView() {
         {groups.length ? (
           groups.map((g) => (
             <section key={g.k} className="mt-6">
-              <h2 className="border-b border-line pb-2 font-ui text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-muted">
+              <h2 className="border-b border-line pb-2 font-ui text-xs font-semibold uppercase tracking-widest text-muted">
                 {chapterTitle(g.k)}
               </h2>
               {g.items.map((t) => (
