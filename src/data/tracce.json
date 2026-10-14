@@ -1,0 +1,2941 @@
+{
+ "source": "Notion, tracce d'esame, export 2026-10-14",
+ "legend": "Tutte le tracce d'esame caricate (2016–2026), una pagina per traccia, con le 7 domande SÌ / NO / altro risolte e la domanda 8 (MdT). Una domanda che ricompare in più tracce è spiegata per intero una volta sola: nelle altre pagine trovi la risposta in una riga e il link alla spiegazione. Il metodo, le mosse M1–M6 citate nelle spiegazioni e le 10 MdT già pronte sono nel ripasso: Lezione 11.\n\nLegenda dei codici: **F01–F14** = facsimile e prove numerate 2016–2017 (**G16** = prova 11 del 7 giugno 2016), **G17** = 23 giugno 2017, **L18** = 12 luglio 2018, **G20v1–v5** = 23 giugno 2020, **MZ22 / LU22** = marzo e luglio 2022, **GE23 / FE23 / MA23 / SE23** = gennaio, febbraio, marzo, settembre 2023, **LU24** = luglio 2024, **E26** = esame 2026, **ND** = traccia fotografata senza data, **SP** = domande sparse. ✔️ = risposta confermata dal correttore ufficiale. 🔁 = la soluzione nel file sbaglia. Mx = mossa del §3 della Lezione 11. ♻️ COD accanto al numero di una domanda = la domanda è già uscita in una traccia precedente, e COD è la prima in cui compare (le tracce senza data, ND e SP, contano come le più recenti).\n\n## Domanda 8: dove sono le MdT\n\n| MdT | Soluzione completa | Tracce in cui compare |\n|---|---|---|\n| Incremento di 1 | Lezione 11 §5.1 | F14 |\n| Moltiplicazione per 2 | Lezione 11 §5.2 | F13 |\n| Divisione per 2 | Lezione 11 §5.3 | F07, F05 |\n| Resto della divisione per 2 | Lezione 11 §5.4 | F02, F06, F04, G20v1 |\n| Calcolare $-x$ (complemento a due) | Lezione 11 §5.5 | L18 |\n| Interi positivi dispari in complemento a due | Lezione 11 §5.6 | F01 |\n| Non palindrome, nondeterministica, in tempo $2n$ | Lezione 11 §5.7 | FE23, MA23, G20v4 |\n| $x;y$ della stessa lunghezza con $x \\le y$ | Lezione 11 §5.8 | GE23, G20v3, MZ22 |\n| key diversa da tutti gli $\\mathit{el}_i$ | Lezione 11 §5.9 | SE23, LU24 |\n| Oracolo SAT che decide SAT-UNSAT | Lezione 11 §5.10 | G16, F08, E26, ND |\n| Palindrome, nondeterministica | Traccia F03 | F03 |\n| Palindrome, deterministica a 2 nastri | Traccia F12 | F12, G17 |\n| Moltiplicazione per 4 | Traccia G20v2 | G20v2 |\n| Divisione per 4 | Traccia G20v5 | G20v5 |\n| Somma binaria $x;y$ | Traccia LU22 | LU22 |\n| Oracolo CLIQUE per INDEPENDENT SET | Traccia SP | SP |\n\n> 📖 **Fonti:** esame.pdf (2026), facsimile-esame-01/02/06/07/13/14, 2016_06_07.pdf, 2018_07_12.pdf, 2023.pdf e la cartella cc-prove (tracce 2016–2024 con e senza soluzione, Raccolta prove, foto).",
+ "traces": [
+  {
+   "code": "F01",
+   "title": "Traccia F01 · 30 maggio 2016, prova 01",
+   "date": "2016-05-30",
+   "dateLabel": "30 maggio 2016, prova 01",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781239e38efa007bc08bb",
+   "intro": "Facsimile del 30 maggio 2016, prova 01. File: facsimile-esame-01-nc.pdf e cc-prove/con soluzione/2016.05.30 (01).pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "È falso che $\\mathrm{PSPACE} \\subseteq \\mathrm{NEXP}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subseteq \\mathrm{NEXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Supponiamo $\\Pi_2^{\\mathrm{P}} \\subset \\mathrm{EXP}$. È vero che PRIMES non è EXP-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "l'ipotesi non serve. $\\mathrm{PRIMES} \\in \\mathrm{P}$: se fosse EXP-hard, ogni problema di EXP si ridurrebbe a un problema di P, e siccome P è chiusa per riduzioni avremmo $\\mathrm{EXP} \\subseteq \\mathrm{P}$, contro $\\mathrm{P} \\subsetneq \\mathrm{EXP}$ (gerarchia di tempo)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Se $\\mathrm{P} \\neq \\mathrm{NP}$ sapremmo se esistono funzioni one-way?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{P} \\neq \\mathrm{NP}$ è necessario ma non noto come sufficiente (esistono $\\iff \\mathrm{P} \\neq \\mathrm{UP}$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "$4\\text{-}\\mathrm{EXP} \\neq \\mathrm{L}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{L} \\subseteq \\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq 4\\text{-}\\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "SCHÖNFINKEL-BERNAYS SAT decidibile in tempo polinomiale con errore limitato da una MdT quantistica?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{BQP} = \\mathrm{NEXP}$",
+     "explanation": "SB-SAT è NEXP-completo e $\\mathrm{BQP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{NEXP}$: servirebbe $\\mathrm{NEXP} \\subseteq \\mathrm{BQP}$, cioè $\\mathrm{BQP} = \\mathrm{PSPACE} = \\mathrm{EXP} = \\mathrm{NEXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Le riduzioni per i function problems hanno qualcosa in più?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "sono una coppia $(R, S)$: $R$ traduce l'istanza, $S$ traduce la soluzione all'indietro",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "È vero che 2-SAT non appartiene a DP?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL} \\subseteq \\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{DP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che accetta gli interi positivi dispari (codificati in complemento a due)",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.6 (interi positivi dispari in complemento a due).",
+    "lessonRef": "Lezione 11 §5.6",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "F02",
+   "title": "Traccia F02 · 30 maggio 2016, prova 02",
+   "date": "2016-05-30",
+   "dateLabel": "30 maggio 2016, prova 02",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067812a940bcbd519837c67",
+   "intro": "Facsimile del 30 maggio 2016, prova 02. File: facsimile-esame-02-nc.pdf e cc-prove/con soluzione/2016.05.30 (02).pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "È vero che MAX FLOW non è EXP-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{MAX\\ FLOW} \\in \\mathrm{P}$; se fosse EXP-hard $\\mathrm{EXP} \\subseteq \\mathrm{P}$, contro $\\mathrm{P} \\subsetneq \\mathrm{EXP}$ (M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Anche se $L_1 \\le L_2$ e $L_2 \\le L_3$, non è detto che $L_1 \\le L_3$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "le riduzioni si compongono: se $R$ riduce $L_1$ a $L_2$ e $R'$ riduce $L_2$ a $L_3$, allora $R'(R(x))$ riduce $L_1$ a $L_3$, e la composizione di due riduzioni in spazio logaritmico è ancora in spazio logaritmico (transitività, Lezione 7 §4)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "È vero che CLIQUE non appartiene a NEXP?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{CLIQUE} \\in \\mathrm{NP} \\subseteq \\mathrm{NEXP}$ (M1)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "coNP non è strettamente contenuto in L?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{L} \\subseteq \\mathrm{P} \\subseteq \\mathrm{coNP}$: coNP non può stare strettamente dentro L (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "$\\mathrm{EXP} = \\Pi_1^{\\mathrm{P}}$?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{EXP} = \\mathrm{coNP}$",
+     "explanation": "$\\mathrm{coNP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$; nessuna separazione nota tra coNP ed EXP (sappiamo solo $\\mathrm{P} \\subsetneq \\mathrm{EXP}$). Se fosse vero: $\\mathrm{NP} = \\mathrm{coNP} = \\mathrm{PSPACE} = \\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Esistono problemi in nondet. spazio $f(n)$ non in det. tempo $k^{\\log n + f(n)}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Teorema 7.4(c): $\\mathrm{NSPACE}(f) \\subseteq \\mathrm{TIME}(k^{\\log n + f(n)})$, quindi un problema così non esiste. Stessa domanda con polarità opposta: Traccia F06, domanda 7",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 7
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "Supponete che $\\mathrm{co\\text{-}QSAT}_2$ non sia PH-hard. $\\mathrm{PSPACE} = \\Pi_2^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "se $\\mathrm{PSPACE} = \\Pi_2^{\\mathrm{P}}$ allora $\\mathrm{PH} = \\Pi_2^{\\mathrm{P}}$ e il $\\Pi_2^{\\mathrm{P}}$-completo $\\mathrm{co\\text{-}QSAT}_2$ sarebbe PH-hard, contro l'ipotesi",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che calcola il resto della divisione per 2 di una cifra binaria",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.4 (resto della divisione per 2).",
+    "lessonRef": "Lezione 11 §5.4",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "F03",
+   "title": "Traccia F03 · 31 maggio 2016, prova 03",
+   "date": "2016-05-31",
+   "dateLabel": "31 maggio 2016, prova 03",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781a1900cf3513445c157",
+   "intro": "Prova del 31 maggio 2016, n. 03. File: cc-prove/con soluzione/2016.05.31 (03).pdf, con una soluzione tipografata in fondo (autore non indicato, non ufficiale); un'altra soluzione di uno studente è in Raccolta prove.pdf, p. 38. Testo controllato sulle immagini delle pagine (le barre di complemento). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "$\\mathrm{co\\text{-}QSAT}_4$ è riducibile a HAMILTON PATH?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NP} = \\mathrm{coNP}$",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_4$ è $\\Pi_4^{\\mathrm{P}}$-completo, HAMILTON PATH è NP-completo. La riduzione darebbe $\\Pi_4^{\\mathrm{P}} \\subseteq \\mathrm{NP}$ (M2), quindi $\\mathrm{coNP} \\subseteq \\Pi_4^{\\mathrm{P}} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$: PH collassa al piano 1 (M5). Viceversa, se $\\mathrm{NP} = \\mathrm{coNP}$ allora $\\Pi_4^{\\mathrm{P}} = \\mathrm{NP}$ e la riduzione esiste (M4)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "PRIMES è riducibile a TSP(D)?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{PRIMES} \\in \\mathrm{P} \\subseteq \\mathrm{NP}$ e TSP(D) è NP-completo: ogni problema di NP si riduce a TSP(D) (M4)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "$3\\text{-}\\mathrm{SAT} \\in \\Pi_2^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$3\\text{-}\\mathrm{SAT} \\in \\mathrm{NP} = \\Sigma_1^{\\mathrm{P}} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}}$ (M1)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Le risposte ai test di soddisfacibilità di knowledge base SHOIQ (OWL-2) ammettono disqualifiers succinti?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Hanno disqualifiers succinti (prove brevi delle risposte \"no\") i problemi in coNP (Lezione 8). Il ragionamento su OWL2 è 2-EXP-completo (Lezione 6): se stesse in coNP avremmo $2\\text{-}\\mathrm{EXP} \\subseteq \\mathrm{coNP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$, contro $\\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$. Nella letteratura SHOIQ è NEXP-completo: la risposta non cambia, perché $\\mathrm{NEXP} \\subseteq \\mathrm{coNP}$ darebbe $\\mathrm{NP} = \\mathrm{coNP}$ e quindi $\\mathrm{NEXP} \\subseteq \\mathrm{NP}$, contro $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "CIRC SAT è riducibile a $\\mathrm{co\\text{-}QSAT}_3$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "CIRC SAT (il SAT della circoscrizione, Lezione 9) è $\\Sigma_2^{\\mathrm{P}}$-completo, $\\mathrm{co\\text{-}QSAT}_3$ è $\\Pi_3^{\\mathrm{P}}$-completo e $\\Sigma_2^{\\mathrm{P}} \\subseteq \\Delta_3^{\\mathrm{P}} \\subseteq \\Pi_3^{\\mathrm{P}}$ (M4). Non confonderlo con CIRCUIT SAT, che è NP-completo: anche con quello la risposta sarebbe SÌ",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Per ripristinare in ambito quantistico la complessità classica degli attacchi a forza bruta alla crittografia simmetrica, basta raddoppiare la lunghezza delle chiavi?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Con chiavi di $n$ bit la forza bruta classica prova $2^n$ chiavi; Grover cerca in un insieme $S$ con circa $\\sqrt{|S|}$ tentativi, cioè $2^{n/2}$. Con chiavi di $2n$ bit Grover ne fa $2^{2n/2} = 2^n$, quanti ne faceva l'attacco classico prima (Lezione 6 §10). 🔁 Risposta giusta, spiegazione del file imprecisa: \"FNP ⊆ NP\" mescola problemi di funzione e di decisione, e l'argomento è solo lo speedup quadratico di Grover",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Supponiamo $\\mathrm{EXP} \\subset \\mathrm{NEXP}$. È vero che HAMILTON PATH non è $\\Pi_2^{\\mathrm{P}}$-completo?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NP} \\neq \\mathrm{coNP}$",
+     "explanation": "In positivo: \"HAMILTON PATH è $\\Pi_2^{\\mathrm{P}}$-completo?\". È NP-completo e $\\mathrm{NP} \\subseteq \\Pi_2^{\\mathrm{P}}$: sarebbe $\\Pi_2^{\\mathrm{P}}$-completo se e solo se $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{NP}$, che equivale a $\\mathrm{NP} = \\mathrm{coNP}$ (collasso al piano 1, M5). L'ipotesi dà solo $\\mathrm{P} \\neq \\mathrm{NP}$ (con $\\mathrm{P} = \\mathrm{NP}$ avremmo $\\mathrm{EXP} = \\mathrm{NEXP}$, Lezione 10) e non decide NP contro coNP. Invertendo: HAMILTON PATH non è $\\Pi_2^{\\mathrm{P}}$-completo esattamente quando $\\mathrm{NP} \\neq \\mathrm{coNP}$, questione aperta. 🔁 Il file scrive \"solo se NP = coNP\": è la condizione della domanda in positivo, senza il \"non\"",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT nondeterministica che controlla se una stringa è palindroma",
+    "body": "**Idea (2 nastri).** Una stringa è palindroma se la seconda metà è la prima letta al contrario. La macchina copia la prima metà sul 2° nastro e **indovina** dove finisce (nondeterminismo, Lezione 3); poi confronta il resto dell'input con il 2° nastro letto all'indietro.\n\n1. Scorre l'input e copia ogni cifra sul 2° nastro. Su ogni cifra può invece scegliere \"la prima metà finisce qui\": se la lunghezza è dispari salta quella cifra, che è il centro; se è pari non la salta.\n2. Riporta la testina 2 sull'ultima cifra copiata e confronta: testina 1 verso destra, testina 2 verso sinistra.\n3. Accetta se le cifre sono sempre uguali e le testine arrivano in fondo insieme ($\\sqcup$ sul 1° nastro, $\\triangleright$ sul 2°).\n\n| Stato | letto$_1$ | letto$_2$ | nuovo stato | scritto$_1$, mossa$_1$ | scritto$_2$, mossa$_2$ | note |\n|---|---|---|---|---|---|---|\n| $s$ | $\\triangleright$ | $\\triangleright$ | $s$ | $\\triangleright, \\rightarrow$ | $\\triangleright, \\rightarrow$ |   |\n| $s$ | $b$ | $\\sqcup$ | $s$ | $b, \\rightarrow$ | $b, \\rightarrow$ | **scelta 1**: copia $b$, la prima metà continua |\n| $s$ | $b$ | $\\sqcup$ | $m$ | $b, \\rightarrow$ | $\\sqcup, \\leftarrow$ | **scelta 2**: $b$ è il centro (lunghezza dispari), lo salta |\n| $s$ | $b$ | $\\sqcup$ | $m$ | $b, -$ | $\\sqcup, \\leftarrow$ | **scelta 3**: la prima metà finisce prima di $b$ (lunghezza pari) |\n| $s$ | $\\sqcup$ | $\\sqcup$ | $m$ | $\\sqcup, -$ | $\\sqcup, \\leftarrow$ | fine dell'input senza scelte: accetta solo la stringa vuota |\n| $m$ | $b$ | $b$ | $m$ | $b, \\rightarrow$ | $b, \\leftarrow$ | cifre simmetriche uguali |\n| $m$ | $\\sqcup$ | $\\triangleright$ | $\\text{yes}$ | $\\sqcup, -$ | $\\triangleright, \\rightarrow$ | finite insieme: palindroma |\n\nIn tutti gli altri casi rigetta: due cifre diverse, oppure un nastro finisce prima dell'altro (il punto scelto non era la metà). $b$ è un bit qualsiasi, riscritto uguale.\n\nLa macchina accetta se **almeno un ramo** accetta. Se $x$ è palindroma accetta il ramo che sceglie la metà giusta; se non lo è, ogni ramo trova due cifre diverse o finisce i nastri in momenti diversi, e rigetta. Ogni ramo si ferma entro $n + 3$ passi; la macchina deterministica del file (sotto) ne fa $3n + 4$. Verificata con un simulatore su tutte le stringhe fino a 10 bit.\n\n**🔎 Traccia passo passo: il ramo che accetta su x = 101 e su x = 0110**\n\n```text\nstato  nastro 1             nastro 2\ns      [▷] 1  0  1  ⊔      [▷] ⊔  ⊔\ns       ▷ [1] 0  1  ⊔       ▷ [⊔] ⊔      scelta 1: copio 1\ns       ▷  1 [0] 1  ⊔       ▷  1 [⊔]     scelta 2: 0 è il centro, lo salto\nm       ▷  1  0 [1] ⊔       ▷ [1] ⊔      1 = 1\nm       ▷  1  0  1 [⊔]     [▷] 1  ⊔      finiti insieme\nyes\n\ns      [▷] 0  1  1  0  ⊔   [▷] ⊔  ⊔\ns       ▷ [0] 1  1  0  ⊔    ▷ [⊔] ⊔      scelta 1: copio 0\ns       ▷  0 [1] 1  0  ⊔    ▷  0 [⊔]     scelta 1: copio 1\ns       ▷  0  1 [1] 0  ⊔    ▷  0  1 [⊔]  scelta 3: la metà finisce qui\nm       ▷  0  1 [1] 0  ⊔    ▷  0 [1] ⊔   1 = 1\nm       ▷  0  1  1 [0] ⊔    ▷ [0] 1  ⊔   0 = 0\nm       ▷  0  1  1  0 [⊔]  [▷] 0  1  ⊔   finiti insieme\nyes\n```\n\nGli altri rami rigettano. Su 101, per esempio, il ramo che sceglie la scelta 3 davanti allo 0 confronta 0 con 1; quello che copia tutte e tre le cifre arriva a $\\sqcup$ e trova sul 2° nastro una cifra invece di $\\triangleright$.\n\n**La soluzione del file** è una MdT deterministica a 2 nastri (copia l'input, riavvolge il 1° nastro, confronta). Va bene anche quella, perché una MdT deterministica è un caso particolare di nondeterministica (ogni configurazione ha una sola mossa): è risolta nella Traccia F12, domanda 8.",
+    "lessonRef": null,
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "F04",
+   "title": "Traccia F04 · 31 maggio 2016, prova 04",
+   "date": "2016-05-31",
+   "dateLabel": "31 maggio 2016, prova 04",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067814b9a4dc485ba1c949d",
+   "intro": "Prova del 31 maggio 2016, n. 04. File: cc-prove/con soluzione/2016.05.31 (04).pdf, con una soluzione tipografata in fondo (autore non indicato, non ufficiale; stesso testo in Raccolta prove.pdf, p. 7-8). Testo controllato sulle immagini delle pagine (barre di complemento, esponenti). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Supponiamo che $\\mathrm{co\\text{-}QSAT}_2$ sia riducibile a $\\mathrm{QSAT}_1$. CLIQUE è EXP-completo?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NP} = \\mathrm{EXP}$ (cioè $\\mathrm{PH} = \\mathrm{PSPACE} = \\mathrm{EXP}$)",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_2$ è $\\Pi_2^{\\mathrm{P}}$-completo e $\\mathrm{QSAT}_1 \\in \\mathrm{NP}$: l'ipotesi dà $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{NP}$, quindi $\\mathrm{coNP} \\subseteq \\mathrm{NP}$ e PH collassa al piano 1: $\\mathrm{PH} = \\mathrm{NP}$ (M5). $\\mathrm{CLIQUE} \\in \\mathrm{NP}$: sarebbe EXP-completo se e solo se $\\mathrm{EXP} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{PH} = \\mathrm{PSPACE} = \\mathrm{EXP}$. Nessuna separazione nota lo esclude (sappiamo solo $\\mathrm{P} \\subsetneq \\mathrm{EXP}$): questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "$\\mathrm{CLIQUE} \\in \\Sigma_1^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "stessa domanda della Traccia F07, domanda 6: CLIQUE è NP-completo e $\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "F07",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "È vero che 3-COL non appartiene a $\\Sigma_1^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$3\\text{-}\\mathrm{COL}$ è NP-completo, quindi $3\\text{-}\\mathrm{COL} \\in \\mathrm{NP} = \\Sigma_1^{\\mathrm{P}}$ (M6: \"è vero che non…\" si inverte)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Un problema risolubile in spazio $f(n)$ può essere risolto in spazio $\\frac{1}{150} f(n) + 2$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "compressione lineare dello spazio con $\\varepsilon = 1/150$; stessa domanda, con la polarità opposta, della Traccia G16, domanda 7",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "G16",
+       "n": 7
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "text": "Se un problema si risolve nondeterministicamente in tempo $2^n$, si risolve con un algoritmo deterministico in spazio $2^n$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Teorema 7.4(b) con $f = 2^n$: $\\mathrm{NTIME}(2^n) \\subseteq \\mathrm{SPACE}(2^n)$; vedi Traccia SE23, domanda 7. 🔁 Il file cita $\\mathrm{NTIME}(f) \\subseteq \\mathrm{NSPACE}(f)$, che dà solo spazio nondeterministico: serve la (b)",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "SE23",
+       "n": 7
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "$\\mathrm{PH} = 4\\text{-}\\mathrm{EXP}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 4\\text{-}\\mathrm{EXP}$; come la Traccia E26, domanda 4",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "E26",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "$\\Pi_4^{\\mathrm{P}} \\subseteq \\Pi_1^{\\mathrm{P}}$?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\Pi_4^{\\mathrm{P}} = \\Pi_1^{\\mathrm{P}}$",
+     "explanation": "È già noto $\\Pi_1^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$, quindi l'inclusione chiesta equivale all'uguaglianza. Questa farebbe collassare PH al piano 1 ($\\mathrm{PH} = \\mathrm{NP} = \\mathrm{coNP}$, M5): questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che calcola il resto della divisione per 2 di una cifra binaria",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.4 (resto della divisione per 2).",
+    "lessonRef": "Lezione 11 §5.4",
+    "repeatOf": "F02"
+   }
+  },
+  {
+   "code": "F05",
+   "title": "Traccia F05 · 31 maggio 2016, prova 05",
+   "date": "2016-05-31",
+   "dateLabel": "31 maggio 2016, prova 05",
+   "notionUrl": "https://app.notion.com/p/3f89883b30678176a7d8faf4e2ac5e60",
+   "intro": "Prova del 31 maggio 2016, n. 05. File: cc-prove/con soluzione/2016.05.31 (05).pdf, con una soluzione tipografata in fondo (autore non indicato, non ufficiale; stesso testo in Raccolta prove.pdf, p. 9-10). Testo controllato sulle immagini delle pagine. Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "È falso che $4\\text{-}\\mathrm{EXP} \\subseteq \\Sigma_3^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ (è falso)",
+     "explanation": "$\\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 4\\text{-}\\mathrm{EXP}$, quindi l'inclusione è falsa; stesso ragionamento della Traccia F07, domanda 1",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "F07",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "text": "Assumiamo che $\\Sigma_1^{\\mathrm{P}}$ e $\\Pi_1^{\\mathrm{P}}$ coincidano. È falso che $\\mathrm{coNP} \\subseteq \\mathrm{PP}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Con l'ipotesi $\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}} = \\Sigma_1^{\\mathrm{P}} = \\mathrm{NP}$, e $\\mathrm{NP} \\subseteq \\mathrm{PP}$ (Lezione 6): quindi $\\mathrm{coNP} \\subseteq \\mathrm{PP}$ è vero, non falso (M6, doppia negazione). L'inclusione vale anche senza ipotesi, perché PP è chiusa per complemento (basta scambiare \"yes\" e \"no\"), ma qui l'ipotesi basta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Un problema risolubile in spazio $f(n)$ non può essere risolto in spazio $\\frac{1}{722} f(n) + 2$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "compressione lineare dello spazio con $\\varepsilon = 1/722$: stessa domanda della Traccia G16, domanda 7",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": [
+      {
+       "code": "G16",
+       "n": 7
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "text": "Esistono linguaggi accettati da MdT nondeterministiche che non sono in RE?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Una MdT deterministica simula una nondeterministica visitando l'albero delle computazioni in ampiezza (prima tutti i rami di 1 passo, poi di 2, …) e accetta appena un ramo accetta (Lezione 3). Quindi ogni linguaggio accettato da una MdT nondeterministica è accettato anche da una deterministica, cioè sta in RE",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "GEOGRAPHY appartiene a PP?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{PP} = \\mathrm{PSPACE}$",
+     "explanation": "GEOGRAPHY è PSPACE-completo e $\\mathrm{PP} \\subseteq \\mathrm{PSPACE}$: starebbe in PP se e solo se $\\mathrm{PSPACE} \\subseteq \\mathrm{PP}$, cioè $\\mathrm{PP} = \\mathrm{PSPACE}$ (M2), questione aperta (si congettura $\\mathrm{PP} \\subsetneq \\mathrm{PSPACE}$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "È vero che $\\mathrm{QSAT}_1$ non è L-hard?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{QSAT}_1$ è NP-completo e $\\mathrm{L} \\subseteq \\mathrm{P} \\subseteq \\mathrm{NP}$: ogni problema di L si riduce a $\\mathrm{QSAT}_1$, che quindi è L-hard (M3: un problema $\\mathcal{C}$-completo è hard per ogni classe dentro $\\mathcal{C}$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "QSAT è P-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "QSAT è PSPACE-completo e $\\mathrm{P} \\subseteq \\mathrm{PSPACE}$ (M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che divide una cifra binaria per 2",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.3 (divisione intera per 2).",
+    "lessonRef": "Lezione 11 §5.3",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "F06",
+   "title": "Traccia F06 · 31 maggio 2016, prova 06",
+   "date": "2016-05-31",
+   "dateLabel": "31 maggio 2016, prova 06",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781e2b5afde8d0943b706",
+   "intro": "Facsimile del 31 maggio 2016, prova 06. File: facsimile-esame-06-nc.pdf e cc-prove/con soluzione/2016.05.31 (06).pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "$\\Sigma_4^{\\mathrm{P}}$ non è strettamente contenuto in 3-EXP?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Sigma_4^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$: è strettamente contenuto",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Riduzione da $\\mathrm{co\\text{-}QSAT}_2$ a 2-SAT?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\Pi_2^{\\mathrm{P}} = \\mathrm{P}$",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_2$ è $\\Pi_2^{\\mathrm{P}}$-completo e $2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL} \\subseteq \\mathrm{P}$; implicherebbe $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{P}$ e il collasso $\\mathrm{PH} = \\mathrm{P}$ (a rigore $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{NL}$, quindi anche $\\mathrm{P} = \\mathrm{NL}$: vedi M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Supponiamo $\\Sigma_4^{\\mathrm{P}} = \\Pi_4^{\\mathrm{P}}$. $\\Sigma_4^{\\mathrm{P}}$ non è strettamente contenuto in $\\Pi_4^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "sono uguali, quindi nessun contenimento stretto (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "È falso che $\\mathrm{PSPACE} \\subseteq 3\\text{-}\\mathrm{EXP}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "$\\mathrm{P} \\neq 4\\text{-}\\mathrm{EXP}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq 4\\text{-}\\mathrm{EXP}$ (gerarchia di tempo)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "La validità di una formula del primo ordine è in RE?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{RE} \\setminus \\mathrm{R}$: semidecidibile (si enumerano le dimostrazioni) ma non decidibile",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Nondet. spazio $f(n)$ $\\Rightarrow$ det. tempo $k^{\\log n + f(n)}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Teorema 7.4(c), Lezione 5 §9: $\\mathrm{NSPACE}(f) \\subseteq \\mathrm{TIME}(k^{\\log n + f(n)})$. Le configurazioni sono al più $k^{\\log n + f(n)}$, e si cerca un cammino verso una configurazione che accetta (reachability method)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F02",
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che calcola il resto della divisione per 2 di una cifra binaria",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.4 (resto della divisione per 2).",
+    "lessonRef": "Lezione 11 §5.4",
+    "repeatOf": "F02"
+   }
+  },
+  {
+   "code": "F07",
+   "title": "Traccia F07 · 31 maggio 2016, prova 07",
+   "date": "2016-05-31",
+   "dateLabel": "31 maggio 2016, prova 07",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067813fa06acca7b66919ba",
+   "intro": "Facsimile del 31 maggio 2016, prova 07. File: facsimile-esame-07-nc.pdf e cc-prove/con soluzione/2016.05.31 (07).pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "$2\\text{-}\\mathrm{EXP} \\subseteq \\Sigma_2^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F05",
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Riduzione da SAT-UNSAT a $\\mathrm{co\\text{-}QSAT}_3$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{SAT\\text{-}UNSAT} \\in \\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Pi_3^{\\mathrm{P}}$ e $\\mathrm{co\\text{-}QSAT}_3$ è $\\Pi_3^{\\mathrm{P}}$-completo (M4)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "$L \\in \\mathrm{BPP}$: l'errore si riduce sotto una soglia prefissata in tempo polinomiale?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "ripetizioni indipendenti + maggioranza: l'errore cala esponenzialmente col numero di ripetizioni",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Supponiamo $\\Pi_1^{\\mathrm{P}} = \\Pi_4^{\\mathrm{P}}$. $\\mathrm{NEXP} \\subseteq \\Pi_1^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "l'ipotesi fa collassare $\\mathrm{PH} = \\mathrm{coNP} = \\mathrm{NP}$, quindi servirebbe $\\mathrm{NEXP} \\subseteq \\mathrm{NP}$, contro $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ (gerarchia nondeterministica). La soluzione a mano (\"solo se $\\mathrm{NEXP} = \\Pi_1^{\\mathrm{P}}$\") dimentica questa separazione. L'ipotesi non serve nemmeno: $\\mathrm{NP} \\subseteq \\mathrm{NEXP} \\subseteq \\mathrm{coNP}$ darebbe comunque $\\mathrm{NP} = \\mathrm{coNP}$ e di nuovo $\\mathrm{NEXP} \\subseteq \\mathrm{NP}$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Problemi non risolubili in spazio $n^2$ ma in spazio $n^2 \\cdot 2 \\log n$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "teorema di gerarchia dello spazio (Lezione 5): per $f$ propria $\\mathrm{SPACE}(f) \\subsetneq \\mathrm{SPACE}(f \\log f)$. Con $f = n^2$: $f \\log f = n^2 \\cdot \\log n^2 = n^2 \\cdot 2 \\log n$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "$\\mathrm{CLIQUE} \\in \\Sigma_1^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP}$ e CLIQUE è NP-completo",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "$\\mathrm{QSAT} \\in \\Pi_2^{\\mathrm{P}}$?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{PSPACE} = \\Pi_2^{\\mathrm{P}}$",
+     "explanation": "QSAT PSPACE-completo (M2); collasso di PH al livello 2",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che divide una cifra binaria per 2",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.3 (divisione intera per 2).",
+    "lessonRef": "Lezione 11 §5.3",
+    "repeatOf": "F05"
+   }
+  },
+  {
+   "code": "F08",
+   "title": "Traccia F08 · 31 maggio 2016, prova 08",
+   "date": "2016-05-31",
+   "dateLabel": "31 maggio 2016, prova 08",
+   "notionUrl": "https://app.notion.com/p/3f89883b30678161be39ff105ab4b5b5",
+   "intro": "Prova del 31 maggio 2016, n. 08. File: cc-prove/con soluzione/2016.05.31 (08).pdf, con una soluzione tipografata in fondo (autore non indicato, non ufficiale; stesso testo in Raccolta prove.pdf, p. 11-12). Testo controllato sulle immagini delle pagine (barre di complemento, simboli). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "$\\mathrm{PSPACE} \\neq 4\\text{-}\\mathrm{EXP}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 4\\text{-}\\mathrm{EXP}$ (gerarchia di tempo): le due classi sono diverse",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Esistono problemi risolubili nondeterministicamente in spazio $2 \\log n$ ma non deterministicamente in spazio $(2 \\log n)^2$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Savitch con $f = 2 \\log n$: $\\mathrm{NSPACE}(2 \\log n) \\subseteq \\mathrm{SPACE}((2 \\log n)^2)$. Spiegazione completa, con $f = \\log n$: Traccia E26, domanda 1",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "E26",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "Supponiamo che esista una riduzione da SCHÖNFINKEL-BERNAYS SAT a $\\mathrm{QSAT}_3$. $\\mathrm{coNP} \\subseteq \\mathrm{L}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "SB-SAT è NEXP-completo e $\\mathrm{QSAT}_3 \\in \\Sigma_3^{\\mathrm{P}}$: l'ipotesi dà $\\mathrm{NEXP} \\subseteq \\Sigma_3^{\\mathrm{P}}$, quindi $\\Sigma_3^{\\mathrm{P}} = \\mathrm{PH} = \\mathrm{PSPACE} = \\mathrm{EXP} = \\mathrm{NEXP}$. Se poi fosse $\\mathrm{coNP} \\subseteq \\mathrm{L}$, anche $\\mathrm{NP} \\subseteq \\mathrm{L}$ (L è deterministica, quindi chiusa per complemento): $\\mathrm{NP} = \\mathrm{coNP} = \\mathrm{L}$ e PH collassa su L (M5). Insieme all'ipotesi: $\\mathrm{L} = \\mathrm{PH} = \\mathrm{PSPACE}$, contro $\\mathrm{L} \\subsetneq \\mathrm{PSPACE}$. Senza l'ipotesi la risposta sarebbe \"altro\" (solo se $\\mathrm{L} = \\mathrm{NP}$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "PSPACE non è strettamente contenuto in $\\Pi_2^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE}$: PSPACE contiene $\\Pi_2^{\\mathrm{P}}$, quindi non può starci strettamente dentro (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "$\\mathrm{co\\text{-}QSAT}_3 \\in \\Pi_3^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_3$ è $\\Pi_3^{\\mathrm{P}}$-completo, quindi sta in $\\Pi_3^{\\mathrm{P}}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "$L \\in \\mathrm{PP}$: è noto un metodo per ridurre la probabilità di errore sotto una soglia prefissata in tempo polinomiale?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "il vantaggio sopra $1/2$ può essere esponenzialmente piccolo; stessa domanda della Traccia F14, domanda 5",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "F14",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "TSP(D) è NL-completo?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NL} = \\mathrm{NP}$",
+     "explanation": "TSP(D) è NP-completo e $\\mathrm{NL} \\subseteq \\mathrm{NP}$, quindi è già NL-hard (M3). Per essere NL-completo dovrebbe anche stare in NL, e allora $\\mathrm{NP} \\subseteq \\mathrm{NL}$ (M2), cioè $\\mathrm{NL} = \\mathrm{P} = \\mathrm{NP}$: questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT con oracolo SAT che decide SAT-UNSAT",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.10 (MdT con oracolo SAT che decide SAT-UNSAT).",
+    "lessonRef": "Lezione 11 §5.10",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "G16",
+   "title": "Traccia G16 · 7 giugno 2016, prova 11",
+   "date": "2016-06-07",
+   "dateLabel": "7 giugno 2016, prova 11",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067817d92f1c4a6aadf0add",
+   "intro": "Prova del 7 giugno 2016 (prova 11). File: 2016_06_07.pdf e cc-prove/con soluzione/2016.06.07 (11).pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Supponiamo $\\mathrm{PH} = \\mathrm{EXP}$. MAX FLOW è PH-completo?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{MAX\\ FLOW} \\in \\mathrm{P}$; PH-completo darebbe $\\mathrm{P} = \\mathrm{PH} = \\mathrm{EXP}$, contro $\\mathrm{P} \\subsetneq \\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "$\\Sigma_4^{\\mathrm{P}} \\subset \\Sigma_3^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Sigma_3^{\\mathrm{P}} \\subseteq \\Sigma_4^{\\mathrm{P}}$, il contenimento stretto opposto è impossibile",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "È falso che $\\Sigma_3^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Sigma_3^{\\mathrm{P}} \\subseteq \\Delta_4^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "È vero che $\\mathrm{QSAT}_3$ non è coNP-hard?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{QSAT}_3$ è $\\Sigma_3^{\\mathrm{P}}$-completo e $\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$ (M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Risolubile con 5 nastri in tempo $f(n)$ $\\Rightarrow$ non risolubile con 1 nastro in tempo $f(n)^2$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "una MdT a $k$ nastri che lavora in tempo $f(n)$ si simula con un solo nastro in tempo $O(f(n)^2)$ (Lezione 2 §8), quindi il problema si risolve con 1 nastro in tempo $f(n)^2$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Riduzione da QSAT a $\\mathrm{co\\text{-}QSAT}_3$?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{PSPACE} = \\Pi_3^{\\mathrm{P}}$",
+     "explanation": "QSAT PSPACE-completo: si ridurrebbe tutto PSPACE a un problema di $\\Pi_3^{\\mathrm{P}}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Risolubile in spazio $f(n)$ $\\Rightarrow$ non risolubile in spazio $(1/345) \\cdot f(n) + 2$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "compressione lineare dello spazio: $\\mathrm{SPACE}(f) = \\mathrm{SPACE}(\\varepsilon f + 2)$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT con oracolo SAT che decide SAT-UNSAT",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.10 (MdT con oracolo SAT per SAT-UNSAT).",
+    "lessonRef": "Lezione 11 §5.10",
+    "repeatOf": "F08"
+   }
+  },
+  {
+   "code": "F12",
+   "title": "Traccia F12 · 7 giugno 2016, prova 12",
+   "date": "2016-06-07",
+   "dateLabel": "7 giugno 2016, prova 12",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781e2a3a2e71b19c05c65",
+   "intro": "Prova del 7 giugno 2016, n. 12. File: cc-prove/con soluzione/2016.06.07 (12).pdf, con una soluzione tipografata in fondo (autore non indicato, non ufficiale; stesso testo in Raccolta prove.pdf, p. 5-6). Testo controllato sulle immagini delle pagine (barre di complemento, esponenti). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Esistono problemi risolubili nondeterministicamente in spazio $n$ ma non deterministicamente in tempo $k^{2n}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Teorema 7.4(c) con $f = n$: $\\mathrm{NSPACE}(n) \\subseteq \\mathrm{TIME}(k^{\\log n + n}) \\subseteq \\mathrm{TIME}(k^{2n})$, perché $\\log n \\le n$. Il teorema con $f$ qualsiasi: Traccia F06, domanda 7",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F02",
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 7
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "text": "Esiste una riduzione da $\\mathrm{co\\text{-}QSAT}_1$ a 3-COL?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NP} = \\mathrm{coNP}$",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_1$ è coNP-completo ($\\Pi_1^{\\mathrm{P}}$), 3-COL è NP-completo: la riduzione darebbe $\\mathrm{coNP} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$, e PH collasserebbe al piano 1 (M4, M5). Questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "I problemi risolubili in tempo polinomiale con un algoritmo quantistico a errore limitato richiedono, su un calcolatore tradizionale, spazio $O(n^k)$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$; stessa domanda della Traccia GE23, domanda 2",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "GE23",
+       "n": 2
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "text": "PH non è strettamente contenuto in BPP?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{BPP} \\subseteq \\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{PH}$ (Sipser–Gács–Lautemann, nella catena della Lezione 11 §2.1): PH contiene BPP, quindi non può starci strettamente dentro (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Supponiamo che $\\mathrm{co\\text{-}QSAT}_2$ sia riducibile a $\\mathrm{co\\text{-}QSAT}_1$. NP non è strettamente contenuto in DP?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_2$ è $\\Pi_2^{\\mathrm{P}}$-completo e $\\mathrm{co\\text{-}QSAT}_1 \\in \\mathrm{coNP}$: l'ipotesi dà $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{coNP}$, quindi $\\mathrm{NP} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{coNP}$, $\\mathrm{NP} = \\mathrm{coNP}$ e $\\mathrm{PH} = \\mathrm{NP}$ (M5). Allora $\\mathrm{NP} \\subseteq \\mathrm{DP} \\subseteq \\mathrm{PH} = \\mathrm{NP}$, cioè $\\mathrm{DP} = \\mathrm{NP}$: due classi uguali, nessun contenimento stretto (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "$\\Pi_1^{\\mathrm{P}} \\subseteq \\mathrm{coNP}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\Pi_1^{\\mathrm{P}} = \\mathrm{coNP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "3-EXP non è strettamente contenuto in BPP?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{BPP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$: 3-EXP contiene BPP, quindi non può starci strettamente dentro (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT deterministica a 2 nastri che controlla se una stringa è palindroma",
+    "body": "**Idea.** Una stringa è palindroma se letta da sinistra e da destra dà le stesse cifre. Con due nastri basta averne una copia: si legge l'originale da sinistra e la copia da destra.\n\n1. Copia l'input sul 2° nastro (stato $s$).\n2. Riporta la testina 1 all'inizio, lasciando la testina 2 in fondo alla copia (stato $r$).\n3. Confronta: testina 1 verso destra, testina 2 verso sinistra (stato $c$). Alla prima coppia di cifre diverse rigetta; se le testine arrivano in fondo insieme ($\\sqcup$ sul 1° nastro, $\\triangleright$ sul 2°) accetta.\n\n| Stato | letto$_1$ | letto$_2$ | nuovo stato | scritto$_1$, mossa$_1$ | scritto$_2$, mossa$_2$ | note |\n|---|---|---|---|---|---|---|\n| $s$ | $\\triangleright$ | $\\triangleright$ | $s$ | $\\triangleright, \\rightarrow$ | $\\triangleright, \\rightarrow$ |   |\n| $s$ | $b$ | $\\sqcup$ | $s$ | $b, \\rightarrow$ | $b, \\rightarrow$ | copia l'input |\n| $s$ | $\\sqcup$ | $\\sqcup$ | $r$ | $\\sqcup, \\leftarrow$ | $\\sqcup, -$ | fine dell'input: la testina 2 resta dopo la copia |\n| $r$ | $b$ | $\\sqcup$ | $r$ | $b, \\leftarrow$ | $\\sqcup, -$ | riavvolge il 1° nastro |\n| $r$ | $\\triangleright$ | $\\sqcup$ | $c$ | $\\triangleright, \\rightarrow$ | $\\sqcup, \\leftarrow$ | testina 1 sulla prima cifra, testina 2 sull'ultima |\n| $c$ | $b$ | $b$ | $c$ | $b, \\rightarrow$ | $b, \\leftarrow$ | cifre simmetriche uguali |\n| $c$ | $b$ | $\\bar b$ | $\\text{no}$ | $b, -$ | $\\bar b, -$ | cifre simmetriche diverse |\n| $c$ | $\\sqcup$ | $\\triangleright$ | $\\text{yes}$ | $\\sqcup, -$ | $\\triangleright, \\rightarrow$ | finite insieme: palindroma |\n\nIn tutti gli altri casi rigetta. $b$ è un bit qualsiasi, riscritto uguale, e $\\bar b$ il bit opposto. È la macchina della soluzione del file, ricontrollata: fa $3n + 4$ passi (copia, riavvolgimento, confronto) e accetta anche la stringa vuota. Verificata con un simulatore su tutte le stringhe fino a 10 bit.\n\n**🔎 Traccia passo passo su x = 010 (accetta) e su x = 011 (rigetta)**\n\n```text\nstato  nastro 1             nastro 2\ns      [▷] 0  1  0  ⊔      [▷] ⊔  ⊔  ⊔  ⊔\ns       ▷ [0] 1  0  ⊔       ▷ [⊔] ⊔  ⊔  ⊔    copio 0\ns       ▷  0 [1] 0  ⊔       ▷  0 [⊔] ⊔  ⊔    copio 1\ns       ▷  0  1 [0] ⊔       ▷  0  1 [⊔] ⊔    copio 0\ns       ▷  0  1  0 [⊔]      ▷  0  1  0 [⊔]   fine dell'input\nr       ▷  0  1 [0] ⊔       ▷  0  1  0 [⊔]   riavvolgo il nastro 1\nr       ▷  0 [1] 0  ⊔       ▷  0  1  0 [⊔]\nr       ▷ [0] 1  0  ⊔       ▷  0  1  0 [⊔]\nr      [▷] 0  1  0  ⊔       ▷  0  1  0 [⊔]   inizio del nastro 1\nc       ▷ [0] 1  0  ⊔       ▷  0  1 [0] ⊔    0 = 0\nc       ▷  0 [1] 0  ⊔       ▷  0 [1] 0  ⊔    1 = 1\nc       ▷  0  1 [0] ⊔       ▷ [0] 1  0  ⊔    0 = 0\nc       ▷  0  1  0 [⊔]     [▷] 0  1  0  ⊔    finiti insieme\nyes\n```\n\nSu 011 i primi nove passi sono uguali; al primo confronto la testina 1 legge 0 e la testina 2 legge l'ultima cifra, 1: diverse, quindi no.\n\n**🔎 Con il nondeterminismo si fa in tempo n**\n\nLa macchina nondeterministica della Traccia F03, domanda 8, indovina dove finisce la prima metà e non deve riavvolgere: ogni ramo si ferma entro $n + 3$ passi invece di $3n + 4$.",
+    "lessonRef": null,
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "F13",
+   "title": "Traccia F13 · 15 giugno 2017, prova 13",
+   "date": "2017-06-15",
+   "dateLabel": "15 giugno 2017, prova 13",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067811b833dc0ff2a0a3a6a",
+   "intro": "Facsimile del 15 giugno 2017, prova 13, con correttore. File: facsimile-esame-13.pdf e cc-prove/con soluzione/2017.06.15 (13).pdf. Le risposte con ✔️ sono confermate dal correttore ufficiale. Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Supponiamo $\\Pi_2^{\\mathrm{P}} = \\mathrm{PH}$. È vero che non esistono riduzioni da $\\mathrm{QSAT}_4$ a $\\mathrm{co\\text{-}QSAT}_4$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "collasso al livello 2: $\\Sigma_4^{\\mathrm{P}} = \\Pi_4^{\\mathrm{P}}$, quindi $\\mathrm{QSAT}_4 \\in \\Pi_4^{\\mathrm{P}}$ si riduce al $\\Pi_4^{\\mathrm{P}}$-completo $\\mathrm{co\\text{-}QSAT}_4$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Le riduzioni per i function problems sono come quelle per i problemi di decisione?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "sono una coppia $(R, S)$: oltre a $R$, che traduce l'istanza, serve $S$, che traduce la soluzione all'indietro (come nella Traccia F01, domanda 6)",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": "F01",
+     "seeAlso": [
+      {
+       "code": "F01",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "È vero che $\\mathrm{QSAT}_1$ non è NP-completo?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{QSAT}_1$ è $\\Sigma_1^{\\mathrm{P}}$-completo e $\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP}$ ($\\mathrm{QSAT}_1 = \\mathrm{SAT}$)",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "$\\mathrm{NEXP} \\subseteq \\mathrm{PSPACE}$?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NEXP} = \\mathrm{PSPACE}$",
+     "explanation": "$\\mathrm{PSPACE} \\subseteq \\mathrm{NEXP}$; il contrario darebbe l'uguaglianza, questione aperta",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Nondet. spazio $2n$ $\\Rightarrow$ det. spazio $(2n)^2$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Savitch con $f = 2n$: $\\mathrm{NSPACE}(2n) \\subseteq \\mathrm{SPACE}((2n)^2)$. Spiegazione completa, con $f = \\log n$: Traccia E26, domanda 1",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": "F08",
+     "seeAlso": [
+      {
+       "code": "E26",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "QSAT è 2-EXP-completo?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{QSAT} \\in \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$; se fosse 2-EXP-completo $2\\text{-}\\mathrm{EXP} \\subseteq \\mathrm{PSPACE}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "$\\mathrm{PSPACE} \\subset \\mathrm{NPSPACE}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{PSPACE} = \\mathrm{NPSPACE}$ (Savitch)",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che moltiplica una cifra binaria per 2",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.2 (moltiplicazione per 2).",
+    "lessonRef": "Lezione 11 §5.2",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "F14",
+   "title": "Traccia F14 · 15 giugno 2017, prova 14",
+   "date": "2017-06-15",
+   "dateLabel": "15 giugno 2017, prova 14",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067812f8195f498b6457837",
+   "intro": "Facsimile del 15 giugno 2017, prova 14, con correttore. File: facsimile-esame-14.pdf e cc-prove/con soluzione/2017.06.15 (14).pdf. Le risposte con ✔️ sono confermate dal correttore ufficiale. Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "È vero che 3-COL non è 3-EXP-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$3\\text{-}\\mathrm{COL} \\in \\mathrm{NP} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$; se fosse 3-EXP-hard $3\\text{-}\\mathrm{EXP} \\subseteq \\mathrm{NP}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Supponiamo VALIDITY riducibile a TSP(D). È vero che EXACT TSP non è $\\Sigma_2^{\\mathrm{P}}$-completo?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "VALIDITY coNP-completo $\\le$ $\\mathrm{TSP(D)} \\in \\mathrm{NP} \\Rightarrow \\mathrm{NP} = \\mathrm{coNP} \\Rightarrow \\mathrm{PH} = \\mathrm{NP}$; allora $\\mathrm{DP} = \\mathrm{NP} = \\Sigma_2^{\\mathrm{P}}$ e il DP-completo EXACT TSP è $\\Sigma_2^{\\mathrm{P}}$-completo",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "$\\mathrm{NPSPACE} \\subset \\Pi_1^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Pi_1^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Le risposte a TSP(D) ammettono certificati succinti?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{TSP(D)} \\in \\mathrm{NP}$: il tour (di costo $\\le B$) è un certificato polinomiale verificabile in tempo polinomiale",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "$L \\in \\mathrm{PP}$: è noto un metodo per ridurre l'errore in tempo polinomiale?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "in PP il vantaggio sopra $1/2$ può essere esponenzialmente piccolo: servirebbe un numero esponenziale di ripetizioni. La soluzione a mano (\"solo se PP = BPP\") è smentita dal correttore",
+     "confirmed": true,
+     "fileWrong": true,
+     "repeatOf": "F08",
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "È vero che $\\mathrm{QSAT}_1$ non appartiene a $\\Sigma_4^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{QSAT}_1 \\in \\Sigma_1^{\\mathrm{P}} \\subseteq \\Sigma_4^{\\mathrm{P}}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "TSP(D) è $\\Pi_1^{\\mathrm{P}}$-hard?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NP} = \\mathrm{coNP}$ ($\\mathrm{PH} = \\mathrm{NP}$)",
+     "explanation": "TSP(D) NP-completo; se fosse coNP-hard $\\mathrm{coNP} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che incrementa di 1 una cifra binaria",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.1 (incremento di 1).",
+    "lessonRef": "Lezione 11 §5.1",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "G17",
+   "title": "Traccia G17 · 23 giugno 2017",
+   "date": "2017-06-23",
+   "dateLabel": "23 giugno 2017",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067812a91f6ea71f52a43c1",
+   "intro": "Prova del 23 giugno 2017. File: cc-prove/con soluzione/2017.06.23.pdf, traccia con la soluzione tipografata sotto ogni domanda (autore non indicato, non ufficiale; stesso testo in Raccolta prove.pdf, p. 1-2). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Se scoprissimo che $\\mathrm{P} \\neq \\mathrm{NP}$, sapremmo dire se esistono funzioni one-way?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{P} \\neq \\mathrm{NP}$ è necessario ma non noto come sufficiente: esistono se e solo se $\\mathrm{P} \\neq \\mathrm{UP}$; stessa domanda della Traccia F01, domanda 3",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F01",
+     "seeAlso": [
+      {
+       "code": "F01",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "text": "Supponiamo $\\mathrm{P} \\subset \\Sigma_3^{\\mathrm{P}}$. È vero che 2-SAT non è $\\Sigma_3^{\\mathrm{P}}$-completo?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL} \\subseteq \\mathrm{P}$. Se fosse $\\Sigma_3^{\\mathrm{P}}$-completo, ogni problema di $\\Sigma_3^{\\mathrm{P}}$ si ridurrebbe a un problema di P, quindi $\\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{P}$ (M3), contro l'ipotesi $\\mathrm{P} \\subsetneq \\Sigma_3^{\\mathrm{P}}$. Senza ipotesi la risposta sarebbe \"altro\" (solo se $\\mathrm{P} \\neq \\mathrm{NP}$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "È falso che $\\Sigma_1^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Sigma_1^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$: l'inclusione è vera, quindi non è falsa (M6, doppia negazione)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "È falso che $\\mathrm{coNP} \\subseteq \\Pi_3^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\Pi_3^{\\mathrm{P}}$ (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "$\\mathrm{PP} \\subset \\Pi_3^{\\mathrm{P}}$?",
+     "answer": "ALTRO",
+     "answerText": "altro: non si sa",
+     "explanation": "PP e $\\Pi_3^{\\mathrm{P}}$ stanno entrambe in PSPACE, ma tra loro non si conosce nessuna inclusione: sappiamo solo che entrambe contengono NP",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "DP non è strettamente contenuto in $\\Pi_1^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\Pi_1^{\\mathrm{P}} = \\mathrm{coNP} \\subseteq \\mathrm{DP}$ (ogni $B \\in \\mathrm{coNP}$ è $\\Sigma^* \\cap B$): DP contiene $\\Pi_1^{\\mathrm{P}}$, quindi non può starci strettamente dentro (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Un problema risolubile in spazio $f(n)$ non può essere risolto in spazio $\\frac{1}{601} f(n) + 2$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "compressione lineare dello spazio con $\\varepsilon = 1/601$: stessa domanda della Traccia G16, domanda 7",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": [
+      {
+       "code": "G16",
+       "n": 7
+      }
+     ]
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT deterministica a 2 nastri che controlla se una stringa è palindroma",
+    "body": "È la stessa domanda della Traccia F12, domanda 8, dove la macchina è risolta con tabella e traccia passo passo. La soluzione di questo file aggiunge all'inizio un controllo per la stringa vuota: non serve, perché la macchina della F12 accetta già la stringa vuota.",
+    "lessonRef": null,
+    "repeatOf": "F12"
+   }
+  },
+  {
+   "code": "L18",
+   "title": "Traccia L18 · 12 luglio 2018",
+   "date": "2018-07-12",
+   "dateLabel": "12 luglio 2018",
+   "notionUrl": "https://app.notion.com/p/3f89883b30678193a6e5fd6654e9ddc0",
+   "intro": "Prova del 12 luglio 2018. File: 2018_07_12.pdf e cc-prove/con soluzione/2018.07.12.pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Se $\\mathrm{PH} = \\mathrm{EXP}$, PH collassa a un livello finito?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} = \\mathrm{PH}$, quindi $\\mathrm{PH} = \\mathrm{PSPACE}$; $\\mathrm{QSAT} \\in \\mathrm{PH}$ sta in qualche $\\Sigma_i^{\\mathrm{P}}$, quindi $\\mathrm{PH} = \\Sigma_i^{\\mathrm{P}}$ (M5)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "$\\mathrm{TIME}(n^3) \\subseteq \\mathrm{TIME}((2n+1)^9)$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "anzi $\\subsetneq$: gerarchia di tempo con $f = n^3$, perché $f(2n+1)^3 = (2n+1)^9$. 🔁 La giustificazione a mano \"$(2n+1)^9 = O(n^3)$\" è falsa: $(2n+1)^9$ cresce come $n^9$. L'inclusione vale perché $n^3 \\le (2n+1)^9$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "È falso che $\\mathrm{P} \\subseteq \\mathrm{PH}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{P} = \\Sigma_0^{\\mathrm{P}} \\subseteq \\mathrm{PH}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "$\\mathrm{QSAT} \\in \\mathrm{EXP}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{QSAT} \\in \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "È vero che $\\mathrm{QSAT}_1 \\notin 2\\text{-}\\mathrm{EXP}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{QSAT}_1 \\in \\mathrm{NP} \\subseteq 2\\text{-}\\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "CLIQUE si può risolvere in $O(2^{n/2})$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "con $m$ nodi la matrice di adiacenza è lunga $n \\ge m^2$, quindi $m \\le \\sqrt{n}$; provare tutti i $2^m$ sottoinsiemi costa $2^{\\sqrt{n}} \\cdot \\mathrm{poly}(n) = O(2^{n/2})$. 🔁 La giustificazione a mano, \"tutti i problemi NP si risolvono in $O(2^{n/2})$\", non è dimostrata: sappiamo solo $\\mathrm{NP} \\subseteq \\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "$\\Pi_4^{\\mathrm{P}} \\subseteq \\mathrm{L}$?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\Pi_4^{\\mathrm{P}} = \\mathrm{L}$",
+     "explanation": "$\\mathrm{L} \\subseteq \\mathrm{P} \\subseteq \\Pi_4^{\\mathrm{P}}$; il contrario farebbe collassare $\\mathrm{L} = \\mathrm{NL} = \\mathrm{P} = \\mathrm{PH}$, questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT deterministica che, dato un valore $x$ binario, restituisca $-x$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.5 (calcolare $-x$ in complemento a due).",
+    "lessonRef": "Lezione 11 §5.5",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "G20v1",
+   "title": "Traccia G20v1 · 23 giugno 2020, versione 1",
+   "date": "2020-06-23",
+   "dateLabel": "23 giugno 2020, versione 1",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067810d9624e672cd031774",
+   "intro": "Esame del 23 giugno 2020, versione 1. File: cc-prove/senza soluzione/2020.06.23 (01).pdf, senza soluzione. In Raccolta prove.pdf (p. 34-36) ci sono le risposte di uno studente agli esercizi 1, 3 e 4, non ufficiali: qui sono ricontrollate (🔁 = la risposta dello studente è sbagliata). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Assumiamo che $\\Sigma_3^{\\mathrm{P}}$ e $\\Pi_3^{\\mathrm{P}}$ coincidano. Dire se $\\mathrm{co\\text{-}QSAT}_3$ è $\\Sigma_3^{\\mathrm{P}}$-completo",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Nel testo QSAT ha la barra: è il complemento $\\mathrm{co\\text{-}QSAT}_3$, che è $\\Pi_3^{\\mathrm{P}}$-completo. Con l'ipotesi $\\Pi_3^{\\mathrm{P}} = \\Sigma_3^{\\mathrm{P}}$ sta in $\\Sigma_3^{\\mathrm{P}}$ e ogni problema di $\\Sigma_3^{\\mathrm{P}}$ vi si riduce, quindi è $\\Sigma_3^{\\mathrm{P}}$-completo (M5)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Dire se $\\mathrm{P} = 4\\text{-}\\mathrm{EXP}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq 4\\text{-}\\mathrm{EXP}$ (gerarchia di tempo). Stessa domanda in forma $\\neq$: Traccia F06, domanda 5",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F06",
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "Dire se $\\Pi_4^{\\mathrm{P}} \\subset \\mathrm{DP}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$: DP sta già dentro $\\Pi_4^{\\mathrm{P}}$, quindi il contenimento stretto nel verso opposto è impossibile (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Dire se 3-COL è $\\Pi_2^{\\mathrm{P}}$-completo",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NP} = \\mathrm{coNP}$",
+     "explanation": "3-COL è NP-completo. Se fosse $\\Pi_2^{\\mathrm{P}}$-completo avremmo $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{NP}$ (M2), quindi $\\mathrm{coNP} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$. Viceversa, se $\\mathrm{NP} = \\mathrm{coNP}$ allora $\\mathrm{PH} = \\mathrm{NP}$ (M5) e 3-COL è completo per $\\Pi_2^{\\mathrm{P}} = \\mathrm{NP}$. Questione aperta (la forma dello studente, \"solo se $\\Sigma_1^{\\mathrm{P}} = \\Pi_2^{\\mathrm{P}}$\", è equivalente)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Esistono linguaggi che sono accettati da MdT nondeterministiche ma non sono in RE",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "ogni MdT nondeterministica si simula con una deterministica, quindi accettano gli stessi linguaggi. Soluzione completa: Traccia F05, domanda 4",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F05",
+     "seeAlso": [
+      {
+       "code": "F05",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "Esistono problemi risolubili nondeterministicamente in tempo $f(n)$ ma non risolubili deterministicamente in spazio $f(n)$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{NTIME}(f) \\subseteq \\mathrm{SPACE}(f)$ (Teorema 7.4(b)). Stessa domanda con polarità opposta: Traccia SE23, domanda 7",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": [
+      {
+       "code": "SE23",
+       "n": 7
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "Dire se NEXP e L sono diverse",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{L} \\subseteq \\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq \\mathrm{NEXP}$ (gerarchia di tempo); oppure $\\mathrm{L} \\subsetneq \\mathrm{PSPACE} \\subseteq \\mathrm{NEXP}$ (gerarchia di spazio)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che calcola il resto della divisione per 2 di una cifra binaria",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.4 (resto della divisione per 2).",
+    "lessonRef": "Lezione 11 §5.4",
+    "repeatOf": "F02"
+   }
+  },
+  {
+   "code": "G20v2",
+   "title": "Traccia G20v2 · 23 giugno 2020, versione 2",
+   "date": "2020-06-23",
+   "dateLabel": "23 giugno 2020, versione 2",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781558c0bfc41b3edbe94",
+   "intro": "Esame del 23 giugno 2020, versione 2. File: cc-prove/senza soluzione/2020.06.23 (02).pdf, senza soluzione. In Raccolta prove.pdf (p. 34-36) ci sono le risposte di uno studente agli esercizi 1, 3 e 4, non ufficiali: qui sono ricontrollate (🔁 = la risposta dello studente è sbagliata). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Assumiamo che $\\Sigma_2^{\\mathrm{P}}$ e $\\Pi_2^{\\mathrm{P}}$ coincidano. Dire se $\\Pi_2^{\\mathrm{P}}$ non è strettamente contenuto in $\\Sigma_2^{\\mathrm{P}}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "due classi uguali non sono una strettamente dentro l'altra (M6). Stessa domanda al piano 4: Traccia F06, domanda 3",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F06",
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "text": "Dire se 3-EXP e DP sono diverse",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$ (gerarchia di tempo): DP sta strettamente dentro 3-EXP",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Dire se VALIDITY è P-hard",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "VALIDITY è coNP-completo e $\\mathrm{P} \\subseteq \\mathrm{coNP}$: ogni problema di P sta in coNP e quindi si riduce a VALIDITY. Un problema $\\mathcal{C}$-completo è hard per ogni classe contenuta in $\\mathcal{C}$ (M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Dire se $\\Sigma_1^{\\mathrm{P}} \\subset \\mathrm{PP}$",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{NP} \\neq \\mathrm{PP}$",
+     "explanation": "è noto $\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subseteq \\mathrm{PP}$ (Lezione 6); che l'inclusione sia stretta è una questione aperta. 🔁 Lo studente risponde NO perché \"vale solo $\\subseteq$\": ma un'inclusione stretta non dimostrata non è falsa, e NO sarebbe giusto solo se sapessimo $\\mathrm{NP} = \\mathrm{PP}$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Tutti i linguaggi che sono accettati da MdT nondeterministiche sono anche accettati da MdT deterministiche",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "una MdT deterministica simula quella nondeterministica visitando in ampiezza l'albero delle computazioni, quindi accettano gli stessi linguaggi. Stessa domanda con polarità opposta: Traccia F05, domanda 4",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F05",
+     "seeAlso": [
+      {
+       "code": "F05",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "Per ripristinare in ambito quantistico la complessità classica degli attacchi a forza bruta alla crittografia simmetrica, bisogna allungare esponenzialmente le chiavi",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Grover dimezza l'esponente ($2^n$ diventa $2^{n/2}$), quindi basta raddoppiare la lunghezza delle chiavi: un allungamento lineare, non esponenziale. Soluzione completa: Traccia F03, domanda 6",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F03",
+     "seeAlso": [
+      {
+       "code": "F03",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "Dire se $\\mathrm{co\\text{-}QSAT}_3$ è P-hard",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Nel testo QSAT ha la barra. $\\mathrm{co\\text{-}QSAT}_3$ è $\\Pi_3^{\\mathrm{P}}$-completo e $\\mathrm{P} \\subseteq \\Pi_3^{\\mathrm{P}}$: ogni problema di P vi si riduce (M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che moltiplica una cifra binaria per 4",
+    "body": "**Idea.** In binario moltiplicare per 2 vuol dire aggiungere uno 0 in coda (come moltiplicare per 10 in decimale, Lezione 11 §5.2). Moltiplicare per 4 è moltiplicare due volte per 2, quindi si aggiungono **due** 0 in coda: $101 \\cdot 4 = 10100$, cioè $5 \\cdot 4 = 20$. La macchina va in fondo all'input e scrive i due 0.\n\n**Convenzioni** (Lezione 11 §5). Il nastro contiene $\\triangleright$ seguito dall'input e la testina parte su $\\triangleright$. È una funzione: la macchina termina in $h$ e l'output è il contenuto del nastro. Una riga $\\delta(p, \\sigma) = (q, \\rho, D)$ vuol dire: nello stato $p$, letto $\\sigma$, va nello stato $q$, scrive $\\rho$ e si sposta in direzione $D$ ($\\rightarrow$ destra, $-$ ferma). $b$ indica un bit qualsiasi, riscritto uguale; $\\sqcup$ è la cella vuota.\n\n| $p$ | $\\sigma$ | $\\delta(p, \\sigma)$ | commento |\n|---|---|---|---|\n| $s$ | $\\triangleright$ | $(s, \\triangleright, \\rightarrow)$ | supera l'inizio del nastro |\n| $s$ | $b$ | $(s, b, \\rightarrow)$ | scorre l'input fino in fondo |\n| $s$ | $\\sqcup$ | $(q, 0, \\rightarrow)$ | fine input: scrive il primo 0 |\n| $q$ | $\\sqcup$ | $(h, 0, -)$ | scrive il secondo 0 e si ferma |\n\n**Traccia** su input 101 (= 5). Una riga per istante: tra parentesi quadre la cella sotto la testina, a destra lo stato e cosa fa la macchina.\n\n```text\n▷  1   0   1  [⊔]  ⊔     s : fine input (dopo \"vai in fondo\"): scrivo 0 e vado a destra\n▷  1   0   1   0  [⊔]    q : scrivo il secondo 0 e mi fermo\n▷  1   0   1   0   0     h : risultato 10100 = 20 = 4 · 5 ✔\n```\n\n**Caso limite.** Con input 0 l'output è 000, che vale ancora 0 ✔: gli zeri a sinistra non cambiano il valore. La macchina è verificata con un simulatore su tutti gli input fino a 8 bit.",
+    "lessonRef": null,
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "G20v3",
+   "title": "Traccia G20v3 · 23 giugno 2020, versione 3",
+   "date": "2020-06-23",
+   "dateLabel": "23 giugno 2020, versione 3",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781d8959bca458ed54c33",
+   "intro": "Esame del 23 giugno 2020, versione 3. File: cc-prove/senza soluzione/2020.06.23 (03).pdf, senza soluzione. In Raccolta prove.pdf (p. 34-36) ci sono le risposte di uno studente agli esercizi 1, 3 e 4, non ufficiali: qui sono ricontrollate (🔁 = la risposta dello studente è sbagliata). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Assumiamo che DP e PH coincidano. Dire se CIRC SAT è $\\Pi_3^{\\mathrm{P}}$-hard",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Con l'ipotesi $\\mathrm{PH} = \\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}}$, quindi PH collassa al piano 2 e $\\Pi_3^{\\mathrm{P}} = \\mathrm{PH} = \\mathrm{DP}$ (M5). In particolare $\\Pi_3^{\\mathrm{P}} = \\Sigma_2^{\\mathrm{P}}$. CIRC SAT (soddisfacibilità nella circoscrizione) è $\\Sigma_2^{\\mathrm{P}}$-completo (dispensa, cap. 17), quindi è hard per $\\Sigma_2^{\\mathrm{P}} = \\Pi_3^{\\mathrm{P}}$. Attenzione al nome: CIRC SAT non è CIRCUIT SAT, che è NP-completo e darebbe \"solo se $\\mathrm{NP} = \\mathrm{coNP}$\"",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Dire se $\\Sigma_2^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "ogni piano di PH contiene quelli sotto: $\\Sigma_2^{\\mathrm{P}} \\subseteq \\Delta_3^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$ (un blocco di quantificatori in più si può lasciare inutilizzato). Stessa domanda con $\\Sigma_1^{\\mathrm{P}}$ e polarità opposta: Traccia G17, domanda 3",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "G17",
+     "seeAlso": [
+      {
+       "code": "G17",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "È vero che SCHÖNFINKEL-BERNAYS SAT non è $\\Sigma_1^{\\mathrm{P}}$-hard?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "SB-SAT è NEXP-completo e $\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subseteq \\mathrm{NEXP}$: ogni problema di NP si riduce a SB-SAT, che quindi è NP-hard (M3). Invertendo, la risposta è NO",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Dire se L e NL coincidono",
+     "answer": "ALTRO",
+     "answerText": "altro: non si sa",
+     "explanation": "$\\mathrm{L} \\subseteq \\mathrm{NL}$; l'uguaglianza è una questione aperta (Savitch dà solo $\\mathrm{NL} \\subseteq \\mathrm{SPACE}(\\log^2 n)$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Per ripristinare in ambito quantistico la complessità classica degli attacchi a forza bruta alla crittografia simmetrica, basta raddoppiare la lunghezza delle chiavi",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Grover riduce i tentativi da $2^n$ a $2^{n/2}$: con chiavi lunghe il doppio si torna a $2^n$. Soluzione completa: Traccia F03, domanda 6",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F03",
+     "seeAlso": [
+      {
+       "code": "F03",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "I problemi risolubili in tempo polinomiale con un algoritmo quantistico a errore limitato richiedono, su di un calcolatore tradizionale, spazio $O(2^n)$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "sono i problemi di BQP, e $\\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$: basta spazio polinomiale $O(n^k)$, che è anche $O(2^n)$. Stessa inclusione con spazio $O(n^k)$: Traccia GE23, domanda 2",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F12",
+     "seeAlso": [
+      {
+       "code": "GE23",
+       "n": 2
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "È falso che $\\mathrm{NL} \\subseteq \\mathrm{NP}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{NL} \\subseteq \\mathrm{P} \\subseteq \\mathrm{NP}$ (una MdT in spazio logaritmico ha un numero polinomiale di configurazioni, che si esplorano in tempo polinomiale): l'inclusione vale, quindi non è falso (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che accetta le stringhe $x;y$ tali che $x$ e $y$ sono interi in binario della stessa lunghezza e $x \\le y$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.8 ($x;y$ della stessa lunghezza con $x \\le y$).",
+    "lessonRef": "Lezione 11 §5.8",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "G20v4",
+   "title": "Traccia G20v4 · 23 giugno 2020, versione 4",
+   "date": "2020-06-23",
+   "dateLabel": "23 giugno 2020, versione 4",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781fcbe34f46b36eb1219",
+   "intro": "Esame del 23 giugno 2020, versione 4. File: cc-prove/senza soluzione/2020.06.23 (04).pdf, senza soluzione. In Raccolta prove.pdf (p. 34-36) ci sono le risposte di uno studente agli esercizi 1, 3 e 4, non ufficiali: qui sono ricontrollate (🔁 = la risposta dello studente è sbagliata). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Supponiamo che $\\mathrm{L} \\subset \\Sigma_2^{\\mathrm{P}}$. Dire se $\\mathrm{QSAT}_2$ è L-completo",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{QSAT}_2$ (senza barra) è $\\Sigma_2^{\\mathrm{P}}$-completo. Se stesse in L avremmo $\\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{L}$ (M2), cioè $\\mathrm{L} = \\Sigma_2^{\\mathrm{P}}$, contro l'ipotesi che L sia strettamente contenuto in $\\Sigma_2^{\\mathrm{P}}$. È L-hard, ma non sta in L",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "È vero che CIRC SAT non è 4-EXP-completo?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "CIRC SAT (circoscrizione) è $\\Sigma_2^{\\mathrm{P}}$-completo e $\\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 4\\text{-}\\mathrm{EXP}$; se fosse 4-EXP-completo avremmo $4\\text{-}\\mathrm{EXP} \\subseteq \\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{EXP}$, contro la gerarchia di tempo (M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Dire se $\\mathrm{EXP} \\subseteq 4\\text{-}\\mathrm{EXP}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{EXP} \\subseteq 2\\text{-}\\mathrm{EXP} \\subseteq 3\\text{-}\\mathrm{EXP} \\subseteq 4\\text{-}\\mathrm{EXP}$, e anzi l'inclusione è stretta. 🔁 Lo studente risponde NO perché l'inclusione è stretta: ma $\\subseteq$ vuol dire \"contenuto o uguale\", e un contenimento stretto lo soddisfa",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Dire se SCHÖNFINKEL-BERNAYS SAT è $\\Sigma_3^{\\mathrm{P}}$-completo",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\Sigma_3^{\\mathrm{P}} = \\mathrm{NEXP}$",
+     "explanation": "SB-SAT è NEXP-completo, quindi è già $\\Sigma_3^{\\mathrm{P}}$-hard ($\\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{NEXP}$). Manca l'appartenenza: $\\mathrm{SB\\text{-}SAT} \\in \\Sigma_3^{\\mathrm{P}}$ darebbe $\\mathrm{NEXP} \\subseteq \\Sigma_3^{\\mathrm{P}}$ (M2), cioè $\\Sigma_3^{\\mathrm{P}} = \\mathrm{PH} = \\mathrm{PSPACE} = \\mathrm{EXP} = \\mathrm{NEXP}$. Questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Dire se un problema risolubile in tempo $f(n)$ da una MdT nondeterministica può essere risolto in tempo $c^{2f(n)}$ da una MdT deterministica con 1 nastro",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Due passi. (1) Una MdT deterministica a più nastri simula quella nondeterministica provando tutte le sequenze di scelte, in tempo $c^{f(n)}$: $\\mathrm{NTIME}(f) \\subseteq \\mathrm{TIME}(c^{f(n)})$ (Lezione 3). (2) Passare da $k$ nastri a 1 eleva il tempo al quadrato (Lezione 2): $(c^{f(n)})^2 = c^{2f(n)}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Il controllo di soddisfacibilità di una formula logica del primo ordine è in coRE",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\varphi$ è soddisfacibile se e solo se $\\neg\\varphi$ non è valida. La validità è in RE (si enumerano le dimostrazioni: Traccia F06, domanda 6), quindi la non validità, e con essa la soddisfacibilità, è in coRE. Non è anche in RE: starebbe in RE e coRE, quindi sarebbe decidibile, e la soddisfacibilità del primo ordine non lo è",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "È vero che CLIQUE non appartiene a $\\Pi_4^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{CLIQUE} \\in \\mathrm{NP} = \\Sigma_1^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$ (M1). Invertendo, la risposta è NO",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT nondeterministica che controlla se una stringa non è palindroma in tempo $2n$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.7 (non palindrome, nondeterministica, in tempo $2n$).",
+    "lessonRef": "Lezione 11 §5.7",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "G20v5",
+   "title": "Traccia G20v5 · 23 giugno 2020, versione 5",
+   "date": "2020-06-23",
+   "dateLabel": "23 giugno 2020, versione 5",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781d9a06efd9ab055fa12",
+   "intro": "Esame del 23 giugno 2020, versione 5. File: cc-prove/senza soluzione/2020.06.23 (05).pdf, senza soluzione. In Raccolta prove.pdf (p. 34-36) ci sono le risposte di uno studente agli esercizi 1, 3 e 4, non ufficiali: qui sono ricontrollate (🔁 = la risposta dello studente è sbagliata). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Supponiamo che $\\mathrm{DP} = \\mathrm{NEXP}$. Dire se $\\Pi_3^{\\mathrm{P}} \\neq \\mathrm{PH}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{DP} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{NEXP} = \\mathrm{DP}$, quindi $\\mathrm{PH} = \\mathrm{DP}$. Ma $\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}}$: PH collassa al piano 2 e $\\Pi_3^{\\mathrm{P}} = \\mathrm{PH}$ (M5)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Dire se $\\mathrm{QSAT}_2$ è riducibile a STRATEGIC COMPANIES",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{QSAT}_2$ (senza barra) sta in $\\Sigma_2^{\\mathrm{P}}$, e STRATEGIC COMPANIES è $\\Sigma_2^{\\mathrm{P}}$-completo (dispensa, cap. 17): ogni problema di $\\Sigma_2^{\\mathrm{P}}$ vi si riduce (M4). Vale anche il verso opposto, perché sono entrambi $\\Sigma_2^{\\mathrm{P}}$-completi",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "È falso che $\\mathrm{DP} \\subseteq \\Sigma_3^{\\mathrm{P}}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$: l'inclusione vale, quindi non è falso (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Dire se $\\mathrm{UP} \\subseteq \\mathrm{DP}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{UP} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{DP}$. UP è NP ristretto alle MdT nondeterministiche con al più un ramo che accetta; ogni linguaggio di NP sta in DP, perché è l'intersezione di sé stesso con il linguaggio di tutte le stringhe, che è in coNP",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Tutti i linguaggi che sono accettati da MdT nondeterministiche sono anche accettati da MdT deterministiche",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "una MdT deterministica simula quella nondeterministica visitando in ampiezza l'albero delle computazioni. Stessa domanda con polarità opposta: Traccia F05, domanda 4",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F05",
+     "seeAlso": [
+      {
+       "code": "F05",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "Sia $L$ un problema in BPP. Dire se la probabilità di errore può essere ridotta sotto una soglia prefissata in tempo polinomiale",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "ripetizioni indipendenti e voto di maggioranza: l'errore cala esponenzialmente con il numero di ripetizioni. Stessa domanda: Traccia F07, domanda 3",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F07",
+     "seeAlso": [
+      {
+       "code": "F07",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "È vero che EXACT TSP non è $\\Sigma_1^{\\mathrm{P}}$-hard?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "EXACT TSP è DP-completo e $\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subseteq \\mathrm{DP}$: ogni problema di NP vi si riduce, quindi è NP-hard (M3). Invertendo, la risposta è NO",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che divide una cifra binaria per 4",
+    "body": "**Idea.** Dividere per 2 scartando il resto vuol dire cancellare l'ultima cifra (Lezione 11 §5.3). Dividere per 4 è dividere due volte per 2, quindi si cancellano le **ultime due** cifre: $10110 : 4 = 101$, cioè $22 : 4 = 5$ con resto 2 (il resto sono proprio le due cifre cancellate, 10). Caso limite: se l'input ha una o due cifre non resta niente, e il risultato 0 va scritto.\n\n**Convenzioni** (Lezione 11 §5). Il nastro contiene $\\triangleright$ seguito dall'input e la testina parte su $\\triangleright$. È una funzione: la macchina termina in $h$ e l'output è il contenuto del nastro. Una riga $\\delta(p, \\sigma) = (q, \\rho, D)$ vuol dire: nello stato $p$, letto $\\sigma$, va nello stato $q$, scrive $\\rho$ e si sposta in direzione $D$ ($\\leftarrow$ sinistra, $\\rightarrow$ destra, $-$ ferma). $b$ indica un bit qualsiasi, riscritto uguale; $\\sqcup$ è la cella vuota.\n\n| $p$ | $\\sigma$ | $\\delta(p, \\sigma)$ | commento |\n|---|---|---|---|\n| $s$ | $\\triangleright$ | $(s, \\triangleright, \\rightarrow)$ | supera l'inizio del nastro |\n| $s$ | $b$ | $(s, b, \\rightarrow)$ | scorre l'input fino in fondo |\n| $s$ | $\\sqcup$ | $(q, \\sqcup, \\leftarrow)$ | fine input, torna sull'ultima cifra |\n| $q$ | $b$ | $(r, \\sqcup, \\leftarrow)$ | cancella l'ultima cifra |\n| $r$ | $b$ | $(t, \\sqcup, \\leftarrow)$ | cancella la penultima cifra |\n| $r$ | $\\triangleright$ | $(z, \\triangleright, \\rightarrow)$ | l'input aveva una sola cifra |\n| $t$ | $b$ | $(h, b, -)$ | è rimasta almeno una cifra: fine |\n| $t$ | $\\triangleright$ | $(z, \\triangleright, \\rightarrow)$ | non è rimasto niente… |\n| $z$ | $\\sqcup$ | $(h, 0, -)$ | …quindi scrive 0 |\n\n**Traccia** su input 10110 (= 22) e sul caso limite 11 (= 3). Una riga per istante: tra parentesi quadre la cella sotto la testina, a destra lo stato e cosa fa la macchina.\n\n```text\n▷  1   0   1   1   0  [⊔]    s : fine input (dopo \"vai in fondo\"), torno indietro\n▷  1   0   1   1  [0]  ⊔     q : cancello l'ultima cifra\n▷  1   0   1  [1]  ⊔   ⊔     r : cancello la penultima cifra\n▷  1   0  [1]  ⊔   ⊔   ⊔     t : è rimasta almeno una cifra: mi fermo (h)\n                               risultato 101 = 5 = 22 : 4 (resto scartato) ✔\n\n▷  1   1  [⊔]                s : fine input, torno indietro\n▷  1  [1]  ⊔                 q : cancello l'ultima cifra\n▷ [1]  ⊔   ⊔                 r : cancello la penultima cifra\n[▷] ⊔   ⊔   ⊔                 t : non è rimasto niente\n▷ [⊔]  ⊔   ⊔                 z : scrivo 0 e mi fermo (h)\n                               risultato 0 = 3 : 4 ✔\n```\n\nCon input di una sola cifra (0 oppure 1) la macchina arriva su $\\triangleright$ già nello stato $r$ e scrive 0 allo stesso modo. La macchina è verificata con un simulatore su tutti gli input fino a 8 bit.",
+    "lessonRef": null,
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "MZ22",
+   "title": "Traccia MZ22 · 20 marzo 2022",
+   "date": "2022-03-20",
+   "dateLabel": "20 marzo 2022",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781018514e8ad10dfc0f5",
+   "intro": "Prova n.1 del 20 marzo 2022. File: cc-prove/senza soluzione/2022.03.20.pdf (scansione). Nel file non c'è nessuna soluzione: le risposte sono scritte qui da zero. Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Dire se $\\mathrm{UP} \\subset \\mathrm{coNP}$",
+     "answer": "ALTRO",
+     "answerText": "altro: non si sa",
+     "explanation": "Di UP sappiamo solo $\\mathrm{P} \\subseteq \\mathrm{UP} \\subseteq \\mathrm{NP}$ (Lezione 10). Tra UP e coNP non si conosce nessuna inclusione: servirebbe almeno $\\mathrm{UP} \\subseteq \\mathrm{coNP}$, che è aperto (sarebbe vero, per esempio, se $\\mathrm{P} = \\mathrm{UP}$ oppure se $\\mathrm{NP} = \\mathrm{coNP}$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Supponiamo che GEOGRAPHY appartenga a DP. Dire se $\\Pi_2^{\\mathrm{P}} \\subset \\Sigma_3^{\\mathrm{P}}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "GEOGRAPHY è PSPACE-completo, quindi l'ipotesi dà $\\mathrm{PSPACE} \\subseteq \\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}}$ (M2). Allora PH collassa: $\\Delta_2^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE} \\subseteq \\Delta_2^{\\mathrm{P}}$, quindi sono tutte uguali (M5). Due classi uguali non sono una strettamente dentro l'altra (M6). Senza l'ipotesi la risposta sarebbe altro: l'inclusione è nota, se sia stretta no",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Dire se $\\Pi_3^{\\mathrm{P}} \\subset \\Pi_2^{\\mathrm{P}}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Pi_2^{\\mathrm{P}} \\subseteq \\Pi_3^{\\mathrm{P}}$ (il piano 2 sta sotto il 3): il contenimento stretto nel verso opposto è impossibile (M6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Dire se $\\mathrm{NEXP} \\subset \\Sigma_1^{\\mathrm{P}}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ (gerarchia nondeterministica): NEXP non può stare dentro NP",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Se scoprissimo che $\\mathrm{P} = \\mathrm{NP}$, sapremmo dire se esistono o meno funzioni one-way?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "non esisterebbero, perché $\\mathrm{P} \\subseteq \\mathrm{UP} \\subseteq \\mathrm{NP} = \\mathrm{P}$. Soluzione completa: Traccia E26, domanda 3",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "E26",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "Se A è riducibile a B e B è riducibile a C, allora A è riducibile anche a C",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "le riduzioni si compongono (transitività). È la domanda 2 di F02 in forma affermativa: Traccia F02, domanda 2",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F02",
+     "seeAlso": [
+      {
+       "code": "F02",
+       "n": 2
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "È vero che MAX FLOW non può essere deciso da una MdT deterministica in spazio polinomiale?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{MAX\\ FLOW} \\in \\mathrm{P} \\subseteq \\mathrm{PSPACE}$: in tempo polinomiale si scrivono al più polinomialmente molte celle ($\\mathrm{TIME}(f) \\subseteq \\mathrm{SPACE}(f)$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che accetta le stringhe $x;y$, con $x$ e $y$ interi in binario della stessa lunghezza e $x \\le y$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.8 ($x;y$ della stessa lunghezza con $x \\le y$).",
+    "lessonRef": "Lezione 11 §5.8",
+    "repeatOf": "G20v3"
+   }
+  },
+  {
+   "code": "LU22",
+   "title": "Traccia LU22 · 22 luglio 2022",
+   "date": "2022-07-22",
+   "dateLabel": "22 luglio 2022",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781bf9334e9032c9a769c",
+   "intro": "Traccia del 22 luglio 2022. File: cc-prove/con soluzione/2022.07.22.pdf, con una \"Soluzione della traccia\" di autore ignoto, non ufficiale: qui è ricontrollata (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Dire se VALIDITY è riducibile a $\\mathrm{co\\text{-}QSAT}_4$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "VALIDITY è coNP-completo e $\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$; $\\mathrm{co\\text{-}QSAT}_4$ è $\\Pi_4^{\\mathrm{P}}$-completo, quindi ogni problema di $\\Pi_4^{\\mathrm{P}}$ si riduce a lui (M4). Nel PDF c'è la barra sopra QSAT, che il testo estratto perde",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Se scoprissimo che $\\mathrm{P} \\neq \\mathrm{NP}$, sapremmo dire se esistono funzioni one-way?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "potrebbe comunque essere $\\mathrm{P} = \\mathrm{UP}$. Soluzione completa: Traccia F01, domanda 3",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F01",
+     "seeAlso": [
+      {
+       "code": "F01",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "Se $L_1$ è riducibile a $L_2$ e $L_2$ è riducibile a $L_3$, allora $L_1$ è riducibile a $L_3$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "le riduzioni si compongono (transitività). È la domanda 2 di F02 in forma affermativa: Traccia F02, domanda 2",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F02",
+     "seeAlso": [
+      {
+       "code": "F02",
+       "n": 2
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "text": "È falso che $\\mathrm{NPSPACE} \\subseteq 4\\text{-}\\mathrm{EXP}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{NPSPACE} = \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 4\\text{-}\\mathrm{EXP}$: l'inclusione vale, quindi non è falsa. Come la domanda 4 di F06 (con 3-EXP): Traccia F06, domanda 4. 🔁 Il file risponde SÌ con questa stessa catena, che dimostra l'inclusione: ha dimenticato il \"è falso che\"",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": "F06",
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "text": "Supponiamo che $\\mathrm{L} \\subset \\Pi_4^{\\mathrm{P}}$. Dire se $\\mathrm{PSPACE} \\subseteq \\mathrm{L}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{L} \\subsetneq \\mathrm{PSPACE}$ (gerarchia di spazio): PSPACE non può stare dentro L. L'ipotesi non serve e non cambia nulla: è compatibile con ciò che sappiamo, $\\mathrm{L} \\subseteq \\mathrm{P} \\subseteq \\Pi_4^{\\mathrm{P}}$. 🔁 Il file risponde SÌ con $\\Pi_4^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE}$: la catena è vera, ma non dice nulla su $\\mathrm{PSPACE} \\subseteq \\mathrm{L}$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Dire se $\\mathrm{P} \\subseteq \\mathrm{BQP}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP}$: un algoritmo deterministico è un algoritmo probabilistico che non sbaglia mai, e un computer quantistico simula quelli probabilistici (Lezione 6)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Dire se $\\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{coNP}$",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\Sigma_2^{\\mathrm{P}} = \\mathrm{coNP}$",
+     "explanation": "$\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}}$ è noto, quindi il verso chiesto darebbe l'uguaglianza. Allora $\\mathrm{NP} = \\Sigma_1^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} = \\mathrm{coNP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$, e PH collasserebbe al piano 1 ($\\mathrm{PH} = \\mathrm{NP}$, M5): questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che, data la stringa binaria $x;y$, effettua la somma binaria tra $x$ e $y$ e rigetta nel caso di stringhe di lunghezza diversa o di overflow",
+    "body": "**Come leggere la traccia.** $x$ e $y$ devono avere la **stessa lunghezza**, e la somma deve stare nello **stesso numero di cifre**: con 2 cifre $01 + 10 = 11$ va bene, $11 + 01 = 100$ no (overflow). È una macchina che calcola una funzione ma che può anche rifiutare: se tutto va bene termina in $h$ con la somma sul nastro, altrimenti termina in no.\n\n**Idea (2 nastri).** Come nel §5.8 della Lezione 11, si copia $x$ sul 2° nastro. Poi la testina 1 scorre $y$ fino in fondo, mentre la testina 2 aspetta subito dopo $x$. Da lì le due testine tornano indietro insieme, una cifra alla volta, e sommano in colonna come si fa a mano, dalla cifra meno significativa: la cifra della somma si scrive sul 2° nastro al posto di quella di $x$. Due stati ricordano il riporto: $c_0$ = \"nessun riporto\", $c_1$ = \"riporto 1\".\n\nAlla fine le due testine devono arrivare **insieme** all'inizio dei numeri, cioè su \";\" nel 1° nastro e su $\\triangleright$ nel 2°: se una arriva prima, le lunghezze sono diverse e si rigetta. Se ci arrivano con riporto 1 c'è overflow, e si rigetta. Altrimenti si termina in $h$: con più nastri l'output è il contenuto dell'ultimo nastro, qui il 2°, che ora contiene $x + y$.\n\n**La regola della somma.** Nello stato $c_r$ (riporto $r$), lette la cifra $a$ di $y$ e la cifra $b$ di $x$, si scrive $(a + b + r) \\bmod 2$ sul 2° nastro e si passa a $c_1$ se $a + b + r \\ge 2$, a $c_0$ altrimenti. Per esempio $1 + 1 + 0 = 2$, in binario 10: si scrive 0 e si porta 1. Le otto righe centrali della tabella sono questa regola scritta per esteso.\n\n| Stato | letto$_1$ | letto$_2$ | nuovo stato | scritto$_1$, mossa$_1$ | scritto$_2$, mossa$_2$ | note |\n|---|---|---|---|---|---|---|\n| $s$ | $\\triangleright$ | $\\triangleright$ | $s$ | $\\triangleright, \\rightarrow$ | $\\triangleright, \\rightarrow$ |   |\n| $s$ | $b$ | $\\sqcup$ | $s$ | $b, \\rightarrow$ | $b, \\rightarrow$ | copia $x$ |\n| $s$ | $;$ | $\\sqcup$ | $m$ | $;, \\rightarrow$ | $\\sqcup, -$ | $x$ copiato: la testina 2 aspetta qui |\n| $m$ | $b$ | $\\sqcup$ | $m$ | $b, \\rightarrow$ | $\\sqcup, -$ | scorre $y$ |\n| $m$ | $\\sqcup$ | $\\sqcup$ | $c_0$ | $\\sqcup, \\leftarrow$ | $\\sqcup, \\leftarrow$ | fine di $y$: entrambe sull'ultima cifra |\n| $c_0$ | $0$ | $0$ | $c_0$ | $0, \\leftarrow$ | $0, \\leftarrow$ | $0 + 0 = 0$ |\n| $c_0$ | $0$ | $1$ | $c_0$ | $0, \\leftarrow$ | $1, \\leftarrow$ | $0 + 1 = 1$ |\n| $c_0$ | $1$ | $0$ | $c_0$ | $1, \\leftarrow$ | $1, \\leftarrow$ | $1 + 0 = 1$ |\n| $c_0$ | $1$ | $1$ | $c_1$ | $1, \\leftarrow$ | $0, \\leftarrow$ | $1 + 1 = 10$: scrive 0, riporto 1 |\n| $c_1$ | $0$ | $0$ | $c_0$ | $0, \\leftarrow$ | $1, \\leftarrow$ | $0 + 0 + 1 = 1$: il riporto si esaurisce |\n| $c_1$ | $0$ | $1$ | $c_1$ | $0, \\leftarrow$ | $0, \\leftarrow$ | $0 + 1 + 1 = 10$ |\n| $c_1$ | $1$ | $0$ | $c_1$ | $1, \\leftarrow$ | $0, \\leftarrow$ | $1 + 0 + 1 = 10$ |\n| $c_1$ | $1$ | $1$ | $c_1$ | $1, \\leftarrow$ | $1, \\leftarrow$ | $1 + 1 + 1 = 11$: scrive 1, riporto 1 |\n| $c_0$ | $;$ | $\\triangleright$ | $h$ | $;, -$ | $\\triangleright, \\rightarrow$ | stessa lunghezza, nessun riporto: $x + y$ è sul 2° nastro |\n| $c_1$ | $;$ | $\\triangleright$ | $\\text{no}$ | — | — | overflow |\n| $c_0$ o $c_1$ | $;$ | $b$ | $\\text{no}$ | — | — | $x$ più lungo |\n| $c_0$ o $c_1$ | $b$ | $\\triangleright$ | $\\text{no}$ | — | — | $y$ più lungo |\n\nIn tutti gli altri casi (per esempio se manca \";\" o compare un simbolo diverso da 0 e 1) rigetta. La macchina è verificata con un simulatore su tutte le coppie $x;y$ fino a 5 bit ciascuno.\n\n**🔎 Traccia passo passo su 01;10 (1 + 2 = 3)**\n\n```text\nstato  nastro 1 (x;y)          nastro 2\ns      [▷] 0  1  ;  1  0       [▷]\ns       ▷ [0] 1  ;  1  0        ▷ [⊔]          copio x\ns       ▷  0 [1] ;  1  0        ▷  0 [⊔]       copio x\ns       ▷  0  1 [;] 1  0        ▷  0  1 [⊔]    fine di x\nm       ▷  0  1  ; [1] 0        ▷  0  1 [⊔]    scorro y, la testina 2 aspetta\nm       ▷  0  1  ;  1 [0]       ▷  0  1 [⊔]\nm       ▷  0  1  ;  1  0 [⊔]    ▷  0  1 [⊔]    fine di y\nc0      ▷  0  1  ;  1 [0]       ▷  0 [1] ⊔     0 + 1 = 1: scrivo 1\nc0      ▷  0  1  ; [1] 0        ▷ [0] 1  ⊔     1 + 0 = 1: scrivo 1\nc0      ▷  0  1 [;] 1  0       [▷] 1  1  ⊔     arrivano insieme, nessun riporto\nh       sul nastro 2 resta 11\n```\n\n**🔎 Traccia con overflow su 11;01 (3 + 1 = 4, che non sta in 2 cifre)**\n\n```text\nstato  nastro 1 (x;y)          nastro 2\n...    (copia di x e scorrimento di y come sopra)\nc0      ▷  1  1  ;  0 [1]       ▷  1 [1] ⊔     1 + 1 = 10: scrivo 0, riporto 1\nc1      ▷  1  1  ; [0] 1        ▷ [1] 0  ⊔     0 + 1 + 1 = 10: scrivo 0, riporto 1\nc1      ▷  1  1 [;] 0  1       [▷] 0  0  ⊔     arrivano insieme, ma con riporto\nno      overflow\n```\n\n**🔁 La tabella nel file della soluzione non funziona.** Ha tre errori: la prima riga, $\\delta(s, \\triangleright, \\triangleright)$, porta subito nello stato del riporto invece di restare in $s$, quindi la macchina rigetta tutto; con il riporto, $0 + 0 + 1$ dovrebbe togliere il riporto (tornare allo stato senza riporto) e $1 + 1 + 1$ dovrebbe scrivere 1, non 0; alla fine la testina 1 legge \";\", non $\\triangleright$, quindi le righe finali con $(\\triangleright, \\triangleright)$ non scattano mai. Inoltre una macchina che calcola una funzione termina in $h$, non in yes.",
+    "lessonRef": null,
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "GE23",
+   "title": "Traccia GE23 · 20 gennaio 2023",
+   "date": "2023-01-20",
+   "dateLabel": "20 gennaio 2023",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067816ca69dc8136bb57b17",
+   "intro": "Prova del 20 gennaio 2023. File: 2023.pdf (4 prove del 2023 con soluzioni a mano). Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "$\\mathrm{QSAT}_2$ è $\\Sigma_2^{\\mathrm{P}}$-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "è $\\Sigma_2^{\\mathrm{P}}$-completo",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "I problemi in BQP richiedono, su un calcolatore tradizionale, spazio $O(n^k)$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F12",
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Supponiamo SCHÖNFINKEL-BERNAYS SAT $\\in \\mathrm{BPP}$. È vero che GEOGRAPHY non è riducibile a 2-SAT?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "L'ipotesi non serve: GEOGRAPHY è PSPACE-completo e $2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL}$; con riduzioni in spazio logaritmico avremmo $\\mathrm{PSPACE} \\subseteq \\mathrm{NL}$, contro $\\mathrm{NL} \\subsetneq \\mathrm{PSPACE}$. La soluzione a mano risponde \"solo se\": sbagliato, perché la condizione contraddice una separazione",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "È vero che PRIMES non è 4-EXP-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{PRIMES} \\in \\mathrm{P} \\subsetneq 4\\text{-}\\mathrm{EXP}$: se fosse 4-EXP-hard avremmo $4\\text{-}\\mathrm{EXP} \\subseteq \\mathrm{P}$. Come la domanda 2 di F01, con EXP: Traccia F01, domanda 2",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F01",
+     "seeAlso": [
+      {
+       "code": "F01",
+       "n": 2
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "text": "Riduzione da $\\mathrm{QSAT}_1$ a SAT-UNSAT?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{QSAT}_1 \\in \\mathrm{NP} \\subseteq \\mathrm{DP}$, SAT-UNSAT è DP-completo",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Problemi non risolubili in tempo $n^2$ ma in tempo $(2n+1)^6$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "teorema di gerarchia del tempo (Lezione 5): per $f$ propria $\\mathrm{TIME}(f(n)) \\subsetneq \\mathrm{TIME}(f(2n+1)^3)$. Con $f = n^2$: $f(2n+1)^3 = ((2n+1)^2)^3 = (2n+1)^6$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "EXACT TSP è $\\Sigma_2^{\\mathrm{P}}$-hard?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{DP} = \\Sigma_2^{\\mathrm{P}}$",
+     "explanation": "EXACT TSP è DP-completo e $\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}}$; $\\Sigma_2^{\\mathrm{P}}$-hard darebbe $\\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{DP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che accetta le stringhe $x;y$ tali che $x$ e $y$ sono interi in binario della stessa lunghezza e $x \\le y$ (se non hanno la stessa lunghezza, rigetta)",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.8 ($x;y$ della stessa lunghezza con $x \\le y$).",
+    "lessonRef": "Lezione 11 §5.8",
+    "repeatOf": "G20v3"
+   }
+  },
+  {
+   "code": "FE23",
+   "title": "Traccia FE23 · 14 febbraio 2023",
+   "date": "2023-02-14",
+   "dateLabel": "14 febbraio 2023",
+   "notionUrl": "https://app.notion.com/p/3f89883b30678105b87dc3b9fabd14cb",
+   "intro": "Prova del 14 febbraio 2023. File: 2023.pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "SCHÖNFINKEL-BERNAYS SAT è PSPACE-completo?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{PSPACE} = \\mathrm{NEXP}$",
+     "explanation": "è NEXP-completo; se fosse in PSPACE allora $\\mathrm{NEXP} \\subseteq \\mathrm{PSPACE}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "È vero che SAT non appartiene a PP?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{SAT} \\in \\mathrm{NP} \\subseteq \\mathrm{PP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Riduzione da $\\mathrm{co\\text{-}QSAT}_2$ a QSAT?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_2 \\in \\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE}$, QSAT è PSPACE-completo",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Spazio $n^e$, esistono problemi non in tempo $k^{n^e}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{SPACE}(f) \\subseteq \\mathrm{TIME}(k^f)$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "È falso che $\\mathrm{P} \\subseteq \\mathrm{NPSPACE}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Esistono problemi in nondet. spazio $\\log n$ non in det. spazio $(\\log n)^2$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Savitch: $\\mathrm{NSPACE}(\\log n) \\subseteq \\mathrm{SPACE}((\\log n)^2)$, quindi un problema così non esiste. Stessa domanda con polarità opposta: Traccia E26, domanda 1",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F08",
+     "seeAlso": [
+      {
+       "code": "E26",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "Supponiamo $\\mathrm{co\\text{-}QSAT}_4 \\in \\Sigma_3^{\\mathrm{P}}$. $\\Sigma_3^{\\mathrm{P}} \\neq \\Sigma_4^{\\mathrm{P}}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\Pi_4^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$ $\\Rightarrow$ collasso al livello 3 $\\Rightarrow \\Sigma_3^{\\mathrm{P}} = \\Sigma_4^{\\mathrm{P}}$ (M5)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT nondeterministica che controlla se una stringa non è palindroma in tempo $2n$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.7 (non palindrome, nondeterministica, in tempo $2n$).",
+    "lessonRef": "Lezione 11 §5.7",
+    "repeatOf": "G20v4"
+   }
+  },
+  {
+   "code": "MA23",
+   "title": "Traccia MA23 · 14 marzo 2023",
+   "date": "2023-03-14",
+   "dateLabel": "14 marzo 2023",
+   "notionUrl": "https://app.notion.com/p/3f89883b3067816f9438e8fa7e9415d9",
+   "intro": "Prova del 14 marzo 2023. File: 2023.pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "È vero che 2-SAT non può essere deciso da una MdT nondeterministica in spazio polinomiale?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$2\\text{-}\\mathrm{SAT} \\in \\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "2-COL è PH-hard?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{PH} = \\mathrm{P}$",
+     "explanation": "$2\\text{-}\\mathrm{COL} \\in \\mathrm{P}$; PH-hard implicherebbe $\\mathrm{PH} \\subseteq \\mathrm{P}$ (collasso al piano 0, $\\mathrm{P} = \\mathrm{NP}$; a rigore anche $= \\mathrm{L}$, vedi M3)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "GEOGRAPHY è NL-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "PSPACE-completo e $\\mathrm{NL} \\subseteq \\mathrm{PSPACE}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "Con 2 nastri in tempo $f(n)$ $\\Rightarrow$ 1 nastro in tempo $f(n)^2$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "simulazione di $k$ nastri con 1 nastro: costa $O(f(n)^2)$ (come nella Traccia G16, domanda 5)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "G16",
+     "seeAlso": [
+      {
+       "code": "G16",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "text": "Spazio $n^3$ $\\Rightarrow$ spazio $n^3 \\cdot 3 \\log n$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "più spazio non toglie problemi, e per la gerarchia di spazio l'inclusione è anche stretta. Stessa domanda con $n^2$: Traccia F07, domanda 5",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F07",
+     "seeAlso": [
+      {
+       "code": "F07",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "$\\mathrm{EXP} \\subset \\mathrm{DP}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Supponiamo $\\mathrm{BPP} = \\Sigma_2^{\\mathrm{P}}$. 3-COL si risolve in tempo polinomiale con errore limitato?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$3\\text{-}\\mathrm{COL} \\in \\mathrm{NP} \\subseteq \\Sigma_2^{\\mathrm{P}} = \\mathrm{BPP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT nondeterministica che controlla se una stringa non è palindroma in tempo $2n$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.7 (non palindrome, nondeterministica, in tempo $2n$).",
+    "lessonRef": "Lezione 11 §5.7",
+    "repeatOf": "G20v4"
+   }
+  },
+  {
+   "code": "SE23",
+   "title": "Traccia SE23 · 15 settembre 2023",
+   "date": "2023-09-15",
+   "dateLabel": "15 settembre 2023",
+   "notionUrl": "https://app.notion.com/p/3f89883b30678183ab15ca7e6882d9f0",
+   "intro": "Prova del 15 settembre 2023. File: 2023.pdf. Soluzioni scritte a mano o da studenti, non ufficiali: qui sono tutte ricontrollate (🔁 = la soluzione nel file sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "$\\mathrm{co\\text{-}QSAT}_1 \\in \\Sigma_3^{\\mathrm{P}}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_1 \\in \\Pi_1^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "La validità di una formula del primo ordine è in RE?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Stessa domanda della Traccia F06, domanda 6: lì la spiegazione completa.",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F06",
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "Supponiamo $\\mathrm{PH} = \\mathrm{EXP}$. $\\mathrm{QSAT} \\in \\mathrm{PH}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{QSAT} \\in \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} = \\mathrm{PH}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "$\\mathrm{PH} \\subseteq \\mathrm{BQP}$?",
+     "answer": "ALTRO",
+     "answerText": "altro: non si sa",
+     "explanation": "PH e BQP stanno entrambe in PSPACE, ma tra loro non si conosce nessuna inclusione. Servirebbe almeno $\\mathrm{NP} \\subseteq \\mathrm{BQP}$, aperto (vero, per esempio, se $\\mathrm{BQP} = \\mathrm{PSPACE}$)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "$\\mathrm{PSPACE} \\subseteq 2\\text{-}\\mathrm{EXP}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subseteq 2\\text{-}\\mathrm{EXP}$. Stessa inclusione, con 3-EXP e polarità opposta: Traccia F06, domanda 4",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F06",
+     "seeAlso": [
+      {
+       "code": "F06",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "3-COL è riducibile a $\\mathrm{QSAT}_4$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$3\\text{-}\\mathrm{COL} \\in \\mathrm{NP} \\subseteq \\Sigma_4^{\\mathrm{P}}$, $\\mathrm{QSAT}_4$ $\\Sigma_4^{\\mathrm{P}}$-completo",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Nondet. tempo $f(n)$ $\\Rightarrow$ det. spazio $f(n)$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Teorema 7.4(b), Lezione 5 §9: $\\mathrm{NTIME}(f) \\subseteq \\mathrm{SPACE}(f)$. Si provano le sequenze di scelte una alla volta, riusando lo stesso spazio",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che accetta le stringhe nel formato $\\mathit{key}, \\mathit{el}_1, \\dots, \\mathit{el}_n,$ (l'ultima virgola è parte dell'input) con key e gli $\\mathit{el}_i$ stringhe di bit e key diversa da tutti gli $\\mathit{el}_i$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.9 (key diversa da tutti gli $\\mathit{el}_i$).",
+    "lessonRef": "Lezione 11 §5.9",
+    "repeatOf": null
+   }
+  },
+  {
+   "code": "LU24",
+   "title": "Traccia LU24 · 15 luglio 2024, prova 4",
+   "date": "2024-07-15",
+   "dateLabel": "15 luglio 2024, prova 4",
+   "notionUrl": "https://app.notion.com/p/3f89883b30678110a4b7d93e6cb176da",
+   "intro": "Prova n.4 del 15 luglio 2024. File: cc-prove/CC_19072024_1..3.jpg, foto di un compito svolto da uno studente, non ufficiale: qui è ricontrollato (🔁 = lo studente sbaglia). Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Dire se $\\mathrm{EXP} \\subset \\mathrm{PP}$",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{PP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$: il contenimento stretto nel verso opposto è impossibile (M6). Anche la sola inclusione $\\mathrm{EXP} \\subseteq \\mathrm{PP}$ sarebbe aperta: darebbe $\\mathrm{PP} = \\mathrm{PSPACE} = \\mathrm{EXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "Dire se 3-COL è riducibile a GEOGRAPHY",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "3-COL è NP-completo e $\\mathrm{NP} \\subseteq \\mathrm{PSPACE}$; GEOGRAPHY è PSPACE-completo, quindi ogni problema di PSPACE si riduce a lui (M4)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Un problema risolubile in tempo $f(n)$ da una MdT nondeterministica può essere risolto in tempo $c^{2f(n)}$ da una MdT deterministica con 1 nastro?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{NTIME}(f) \\subseteq \\mathrm{TIME}(c^{f})$ con più nastri, e passare a un nastro eleva il tempo al quadrato: $(c^{f})^2 = c^{2f}$. Soluzione completa: Traccia G20v4, domanda 5. 🔁 Lo studente scrive che un nastro non basta: dimentica la simulazione da $k$ nastri a 1 in tempo $f^2$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": "G20v4",
+     "seeAlso": [
+      {
+       "code": "G20v4",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "text": "Dire se le risposte a test di soddisfacibilità di knowledge base SROIQ (OWL-2) ammettono disqualifiers succinti",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "prove brevi delle risposte \"no\" ci sono solo per i problemi in coNP, e il ragionamento su OWL2 (logica SROIQ) è almeno difficile quanto ogni problema di 2-EXP, quindi non sta in coNP. Soluzione completa, con SHOIQ: Traccia F03, domanda 4",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F03",
+     "seeAlso": [
+      {
+       "code": "F03",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "text": "Assumiamo che NL e PH coincidano. Dire se $\\mathrm{coNP} \\subset \\mathrm{NEXP}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "Con l'ipotesi $\\mathrm{coNP} \\subseteq \\mathrm{PH} = \\mathrm{NL} \\subsetneq \\mathrm{PSPACE} \\subseteq \\mathrm{NEXP}$: l'inclusione è stretta. Vale anche senza ipotesi: se fosse $\\mathrm{coNP} = \\mathrm{NEXP}$, da $\\mathrm{NP} \\subseteq \\mathrm{NEXP} = \\mathrm{coNP}$ seguirebbe $\\mathrm{NP} = \\mathrm{coNP} = \\mathrm{NEXP}$, contro $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "Dire se $\\Sigma_1^{\\mathrm{P}} \\subseteq \\mathrm{EXP}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$. Come la domanda 6 di E26 (con 2-EXP): Traccia E26, domanda 6",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": [
+      {
+       "code": "E26",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "text": "Dire se $f_{\\mathrm{EXP}}$ è una one-way function",
+     "answer": "ALTRO",
+     "answerText": "altro: non si sa",
+     "explanation": "$f_{\\mathrm{EXP}}$ è l'esponenziazione modulare $x \\mapsto g^x \\bmod p$: invertirla vuol dire calcolare il logaritmo discreto. È solo una **candidata**: nessuna funzione è dimostrata one-way, perché ne seguirebbe $\\mathrm{P} \\neq \\mathrm{UP}$, e quindi $\\mathrm{P} \\neq \\mathrm{NP}$, che è aperto (Lezione 10)",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT che accetta le stringhe nel formato $\\mathit{key}, \\mathit{el}_1, \\dots, \\mathit{el}_n,$ (l'ultima virgola è parte dell'input) con key diversa da tutti gli $\\mathit{el}_i$",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.9 ($\\mathit{key}, \\mathit{el}_1, \\dots, \\mathit{el}_n$, con key diversa da tutti gli $\\mathit{el}_i$). La macchina dello studente, sul foglio integrativo, non è ricontrollata qui: usa quella della Lezione 11, verificata con un simulatore.",
+    "lessonRef": "Lezione 11 §5.9",
+    "repeatOf": "SE23"
+   }
+  },
+  {
+   "code": "E26",
+   "title": "Traccia E26 · 26 maggio 2026",
+   "date": "2026-05-26",
+   "dateLabel": "26 maggio 2026",
+   "notionUrl": "https://app.notion.com/p/3f89883b30678113bdcbcc80c72396b0",
+   "intro": "Esame del 26 maggio 2026, con correttore. File: esame.pdf. Le risposte con ✔️ sono confermate dal correttore ufficiale. Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "Nondet. spazio $\\log n$ $\\Rightarrow$ det. spazio $(\\log n)^2$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "teorema di Savitch (Lezione 5 §10): per ogni $f(n) \\ge \\log n$ vale $\\mathrm{NSPACE}(f) \\subseteq \\mathrm{SPACE}(f^2)$, perché la macchina deterministica cerca ricorsivamente un cammino tra le configurazioni riusando lo stesso spazio. Con $f = \\log n$: $\\mathrm{NL} \\subseteq \\mathrm{SPACE}((\\log n)^2)$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": "F08",
+     "seeAlso": []
+    },
+    {
+     "n": 2,
+     "text": "È vero che SCHÖNFINKEL-BERNAYS SAT non è NEXP-completo?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "è NEXP-completo (Lezione 10)",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 3,
+     "text": "Se $\\mathrm{P} = \\mathrm{NP}$ sapremmo se esistono funzioni one-way?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "non esisterebbero: invertire una funzione calcolabile in tempo polinomiale è in $\\mathrm{FNP} = \\mathrm{FP}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": "MZ22",
+     "seeAlso": []
+    },
+    {
+     "n": 4,
+     "text": "$3\\text{-}\\mathrm{EXP} = \\mathrm{PH}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": []
+    },
+    {
+     "n": 5,
+     "text": "Riduzione da $\\mathrm{co\\text{-}QSAT}_3$ a MAX FLOW?",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{PH} = \\mathrm{P}$",
+     "explanation": "$\\Pi_3^{\\mathrm{P}} \\subseteq \\mathrm{P}$ darebbe il collasso $\\mathrm{PH} = \\mathrm{P}$ (il correttore elenca anche le conseguenze $\\mathrm{FP} = \\mathrm{FNP}$, $\\mathrm{EXP} = \\mathrm{NEXP}$)",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 6,
+     "text": "$\\Sigma_1^{\\mathrm{P}} \\subseteq 2\\text{-}\\mathrm{EXP}$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subseteq 2\\text{-}\\mathrm{EXP}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": "LU24",
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Assumiamo $\\mathrm{PH} = \\mathrm{NEXP}$. È vero che PRIMES non è NPSPACE-hard?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{NEXP} = \\mathrm{PH}$, quindi $\\mathrm{PSPACE} = \\mathrm{NEXP}$. $\\mathrm{PRIMES} \\in \\mathrm{P}$: se fosse NPSPACE-hard $\\mathrm{P} = \\mathrm{PSPACE} = \\mathrm{NEXP} \\supseteq \\mathrm{EXP}$, contro $\\mathrm{P} \\subsetneq \\mathrm{EXP}$",
+     "confirmed": true,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT con oracolo SAT che decide SAT-UNSAT",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.10 (MdT con oracolo SAT per SAT-UNSAT).",
+    "lessonRef": "Lezione 11 §5.10",
+    "repeatOf": "F08"
+   }
+  },
+  {
+   "code": "ND",
+   "title": "Traccia ND · senza data (foto nella Raccolta)",
+   "date": null,
+   "dateLabel": "senza data (foto nella Raccolta)",
+   "notionUrl": "https://app.notion.com/p/3f89883b306781178c6aeec34c39533a",
+   "intro": "Traccia senza data. File: cc-prove/Raccolta prove.pdf, p. 27-28, foto di un compito svolto da uno studente, non ufficiale: qui è ricontrollato (🔁 = lo studente sbaglia). Lo studente non ha svolto la domanda 8. Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "text": "È vero che 2-COL non può essere deciso da una MdT nondeterministica in spazio polinomiale?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "$2\\text{-}\\mathrm{COL} \\in \\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$ (Savitch). Stesso ragionamento della domanda 1 di MA23, con 2-SAT: Traccia MA23, domanda 1. 🔁 La risposta dello studente è giusta, la spiegazione no: 2-COL non è noto come P-completo (sta in L); basta $2\\text{-}\\mathrm{COL} \\in \\mathrm{P}$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": "MA23",
+     "seeAlso": [
+      {
+       "code": "MA23",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "text": "I problemi risolubili in tempo polinomiale con un algoritmo quantistico a errore limitato richiedono, su un calcolatore tradizionale, spazio $O(2^n)$?",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{BQP} \\subseteq \\mathrm{PSPACE}$, e uno spazio polinomiale è anche $O(2^n)$. Soluzione completa: Traccia G20v3, domanda 6",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F12",
+     "seeAlso": [
+      {
+       "code": "G20v3",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "text": "Esistono problemi non risolubili in tempo $n^3$ ma risolubili in tempo $(2n+1)^9$? (con MdT deterministiche)",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "gerarchia di tempo con $f(n) = n^3$, perché $f(2n+1)^3 = (2n+1)^9$. Come la domanda 6 di GE23 (con $n^2$): Traccia GE23, domanda 6",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "GE23",
+     "seeAlso": [
+      {
+       "code": "GE23",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "text": "Dire se 3-COL appartiene a $\\Sigma_2^{\\mathrm{P}}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$3\\text{-}\\mathrm{COL} \\in \\mathrm{NP} = \\Sigma_1^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}}$ (M1). Stessa domanda con $\\Sigma_1^{\\mathrm{P}}$ e polarità opposta: Traccia F04, domanda 3",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F04",
+     "seeAlso": [
+      {
+       "code": "F04",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "text": "Dire se $\\Sigma_1^{\\mathrm{P}} \\subset 3\\text{-}\\mathrm{EXP}$",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$, quindi l'inclusione è anche stretta. Come la domanda 6 di E26 (con 2-EXP): Traccia E26, domanda 6",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "LU24",
+     "seeAlso": [
+      {
+       "code": "E26",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "text": "Dire se CLIQUE è PH-hard",
+     "answer": "ALTRO",
+     "answerText": "altro: solo se $\\mathrm{PH} = \\mathrm{NP}$",
+     "explanation": "CLIQUE è NP-completo: se fosse PH-hard avremmo $\\mathrm{PH} \\subseteq \\mathrm{NP}$, cioè il collasso al piano 1, $\\mathrm{NP} = \\mathrm{coNP} = \\mathrm{PH}$ (M3 e M5): questione aperta",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    },
+    {
+     "n": 7,
+     "text": "Assumiamo che NL e BPP coincidano. Dire se $\\mathrm{co\\text{-}QSAT}_1$ è BPP-hard",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$\\mathrm{co\\text{-}QSAT}_1$ è coNP-completo. Con l'ipotesi $\\mathrm{BPP} = \\mathrm{NL} \\subseteq \\mathrm{P} \\subseteq \\mathrm{coNP}$, e un problema coNP-completo è hard per ogni classe contenuta in coNP (M3). Senza l'ipotesi non si saprebbe: $\\mathrm{BPP} \\subseteq \\mathrm{coNP}$ è aperto",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": null,
+     "seeAlso": []
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT con oracolo SAT che decide SAT-UNSAT",
+    "body": "È risolta, con la tabella delle transizioni e la spiegazione, nella Lezione 11, §5.10 (MdT con oracolo SAT che decide SAT-UNSAT).",
+    "lessonRef": "Lezione 11 §5.10",
+    "repeatOf": "F08"
+   }
+  },
+  {
+   "code": "SP",
+   "title": "Domande sparse e MdT senza traccia (SP)",
+   "date": null,
+   "dateLabel": null,
+   "notionUrl": "https://app.notion.com/p/3f89883b306781bfb6c1e969db7b71dc",
+   "intro": "Domande senza traccia. Le domande a–e vengono da cc-prove/Raccolta prove.pdf, p. 29: risposte di uno studente scritte al computer, non ufficiali, qui ricontrollate (🔁 = lo studente sbaglia). La MdT con oracolo CLIQUE viene da una foto della sola domanda 8 (cc-prove/5958704109278316028.jpg), di una traccia ignota. Mx = mossa del §3 della Lezione 11.",
+   "questions": [
+    {
+     "n": 1,
+     "label": "a",
+     "text": "Sia L un problema in PP. È noto un metodo per ridurre la probabilità di errore sotto una soglia prefissata in tempo polinomiale?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "il vantaggio sopra $1/2$ può essere esponenzialmente piccolo. Soluzione completa: Traccia F14, domanda 5",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F08",
+     "seeAlso": [
+      {
+       "code": "F14",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "label": "b",
+     "text": "Un problema risolubile con 1 nastro in tempo $f(n)$ non può essere risolto in tempo $f(n)^2$ con 1 nastro solo?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "con più tempo si risolvono almeno gli stessi problemi, e anche partendo da $k$ nastri un nastro solo basta in tempo $O(f(n)^2)$. Soluzione completa: Traccia G16, domanda 5",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "G16",
+     "seeAlso": [
+      {
+       "code": "G16",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "label": "c",
+     "text": "Esistono linguaggi che sono accettati da MdT nondeterministiche ma non sono in RE?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "una MdT deterministica simula quella nondeterministica esplorando i suoi run in ampiezza, un passo alla volta per ciascuno, e accetta appena uno accetta. Soluzione completa: Traccia F05, domanda 4",
+     "confirmed": false,
+     "fileWrong": false,
+     "repeatOf": "F05",
+     "seeAlso": [
+      {
+       "code": "F05",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "label": "d",
+     "text": "Dire se HAMILTON PATH può essere risolto in tempo $O(2^{n/2})$ con un algoritmo quantistico",
+     "answer": "SI",
+     "answerText": "SÌ",
+     "explanation": "$n$ è la lunghezza dell'input. Con $m$ nodi la matrice di adiacenza ha $m^2$ celle, quindi $m \\le \\sqrt{n}$. Provare tutti gli ordini dei nodi costa al più $m! \\le m^m = 2^{m \\log m}$ tentativi, ognuno controllato in tempo polinomiale: in tutto $2^{\\sqrt{n} \\log \\sqrt{n}} \\cdot \\mathrm{poly}(n) = O(2^{n/2})$. Basta già un algoritmo classico, e un computer quantistico può eseguirlo ($\\mathrm{P} \\subseteq \\mathrm{BQP}$). Stesso ragionamento della domanda 6 di L18, con CLIQUE: Traccia L18, domanda 6. 🔁 Lo studente dice che ogni problema NP si risolve in $O(2^{n/2})$: non è dimostrato. Grover dimezza l'esponente della forza bruta, da $2^{n^k}$ a $2^{n^k/2}$ con certificati lunghi $n^k$ (Lezione 6), e questo non dà $2^{n/2}$ per ogni problema",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": "L18",
+     "seeAlso": [
+      {
+       "code": "L18",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "label": "e",
+     "text": "Esistono problemi risolubili nondeterministicamente in spazio $n$ che non sono risolubili deterministicamente in tempo $k^{2n}$?",
+     "answer": "NO",
+     "answerText": "NO",
+     "explanation": "Teorema 7.4(c): $\\mathrm{NSPACE}(n) \\subseteq \\mathrm{TIME}(k^{\\log n + n}) \\subseteq \\mathrm{TIME}(k^{2n})$, perché $\\log n \\le n$. Soluzione completa: Traccia F12, domanda 1. 🔁 Lo studente risponde SÌ pensando che serva $\\log n = n$: basta $\\log n \\le n$",
+     "confirmed": false,
+     "fileWrong": true,
+     "repeatOf": "F02",
+     "seeAlso": [
+      {
+       "code": "F12",
+       "n": 1
+      }
+     ]
+    }
+   ],
+   "q8": {
+    "title": "Programmare una MdT con oracolo che decide se un grafo ha un independent set di almeno K nodi, usando un oracolo per CLIQUE",
+    "body": "**Il testo.** L'input è un grafo, dato con la matrice di adiacenza (elementi separati da \",\" e colonne separate da \";\"), seguito da \":\" e da una soglia $K$ in binario. La macchina deve decidere in tempo polinomiale se il grafo ha un independent set di almeno $K$ nodi, usando un oracolo per CLIQUE.\n\n**Ripasso.** Un **independent set** è un insieme di nodi senza archi tra loro; una **cricca** (clique) è un insieme di nodi tutti collegati tra loro (Lezione 8). L'oracolo funziona come nel §5.10 della Lezione 11: la macchina scrive la domanda sul nastro di query (qui il 2°), entra nello stato $q_?$ e al passo dopo si trova in $q_{\\text{YES}}$ o in $q_{\\text{NO}}$, secondo la risposta.\n\n**Idea.** Un insieme di nodi è indipendente nel grafo $G$ se e solo se è una cricca nel **grafo complemento** $\\bar G$, quello che ha un arco esattamente dove $G$ non lo ha. Quindi \"$G$ ha un independent set di almeno $K$ nodi?\" è la stessa domanda di \"$\\bar G$ ha una cricca di almeno $K$ nodi?\", che si fa all'oracolo. La matrice di $\\bar G$ si ottiene scambiando 0 e 1 in ogni cella. La macchina copia l'input sul nastro di query invertendo i bit della matrice, copia $K$ così com'è e fa **una sola** domanda all'oracolo. Una passata sull'input e una domanda: tempo lineare, quindi polinomiale.\n\n**Esempio.** Il cammino 1 – 2 – 3 ha la matrice 0,1,0;1,0,1;0,1,0. Con $K = 2$ (in binario 10) l'input è 0,1,0;1,0,1;0,1,0:10. Sul nastro di query la macchina scrive 1,0,1;0,1,0;1,0,1:10: nel complemento l'unico arco è tra 1 e 3, quindi $\\{1, 3\\}$ è una cricca di 2 nodi, l'oracolo risponde sì e la macchina accetta. Infatti $\\{1, 3\\}$ è un independent set del cammino.\n\n| Stato | letto$_1$ | letto$_2$ | nuovo stato | scritto$_1$, mossa$_1$ | scritto$_2$, mossa$_2$ | note |\n|---|---|---|---|---|---|---|\n| $s$ | $\\triangleright$ | $\\triangleright$ | $s$ | $\\triangleright, \\rightarrow$ | $\\triangleright, \\rightarrow$ |   |\n| $s$ | $0$ | $\\sqcup$ | $s$ | $0, \\rightarrow$ | $1, \\rightarrow$ | inverte il bit: c'è un arco in $\\bar G$ |\n| $s$ | $1$ | $\\sqcup$ | $s$ | $1, \\rightarrow$ | $0, \\rightarrow$ | inverte il bit: niente arco in $\\bar G$ |\n| $s$ | $,$ | $\\sqcup$ | $s$ | $,, \\rightarrow$ | $,, \\rightarrow$ | copia il separatore |\n| $s$ | $;$ | $\\sqcup$ | $s$ | $;, \\rightarrow$ | $;, \\rightarrow$ | copia il separatore |\n| $s$ | $:$ | $\\sqcup$ | $k$ | $:, \\rightarrow$ | $:, \\rightarrow$ | fine della matrice |\n| $k$ | $b$ | $\\sqcup$ | $k$ | $b, \\rightarrow$ | $b, \\rightarrow$ | copia $K$ senza cambiarlo |\n| $k$ | $\\sqcup$ | $\\sqcup$ | $q_?$ | $\\sqcup, -$ | $\\sqcup, -$ | \"$\\bar G$ ha una cricca di almeno $K$ nodi?\" |\n| $q_{\\text{YES}}$ | $\\sqcup$ | $\\sqcup$ | $\\text{yes}$ | $\\sqcup, -$ | $\\sqcup, -$ | c'è un independent set di almeno $K$ nodi |\n| $q_{\\text{NO}}$ | $\\sqcup$ | $\\sqcup$ | $\\text{no}$ | $\\sqcup, -$ | $\\sqcup, -$ | non c'è |\n\nIn tutti gli altri casi (per esempio se manca \":\") rigetta. La macchina è verificata con un simulatore, con un oracolo simulato, su tutti i grafi fino a 4 nodi e tutte le soglie da 0 a 5.\n\n**Traccia per fasi** sull'esempio:\n\n```text\nfase                 nastro 1 (input)                   nastro 2 (query)                    stato\ninverte la matrice   ▷ 0,1,0;1,0,1;0,1,0 [:] 10         ▷ 1,0,1;0,1,0;1,0,1 [⊔]             s → k\ncopia K              ▷ 0,1,0;1,0,1;0,1,0:10 [⊔]         ▷ 1,0,1;0,1,0;1,0,1:10 [⊔]          k → q?\ndomanda              \"il complemento ha una cricca di 2 nodi?\" sì, {1, 3}                     q? → qYES\nfine                                                                                           yes\n```\n\n**🔎 E la diagonale della matrice?**\n\nInvertendo tutte le celle, anche la diagonale passa da 0 a 1, come se ogni nodo fosse collegato a sé stesso. Non cambia la risposta: una cricca chiede archi tra nodi **distinti**, quindi l'oracolo non guarda la diagonale (lo assumiamo, come è naturale). Lasciarla a 0 richiederebbe di contare riga e colonna con due contatori in binario: più stati, nessuna idea nuova.\n\n**Perché è polinomiale e cosa mostra.** La macchina fa una passata sull'input e una sola domanda all'oracolo, quindi INDEPENDENT SET sta in $\\mathrm{P}^{\\mathrm{CLIQUE}}$. Non sorprende: la traduzione \"prendi il complemento del grafo\" è la riduzione da INDEPENDENT SET a CLIQUE della Lezione 8, e qui la macchina la calcola e passa il risultato all'oracolo.",
+    "lessonRef": null,
+    "repeatOf": null
+   }
+  }
+ ]
+}

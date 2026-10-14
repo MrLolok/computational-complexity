@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* Solo configurazione di Tailwind: i colori della palette e i caratteri diventano classi (bg-bg, text-accent, font-head, …). Nessuno stile scritto a mano. */
+@theme inline {
+  --font-head: var(--font-cormorant), "Cormorant Garamond", Garamond, serif;
+  --font-body: var(--font-crimson), "Crimson Pro", Georgia, serif;
+  --font-ui: var(--font-jost), "Jost", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* static: emette sempre tutte le variabili, anche i colori delle classi usati solo tramite var(--color-c-<ID>) */
+@theme static {
+  --color-jet-black: #30343f;
+  --color-ghost-white: #fafaff;
+  --color-periwinkle: #e4d9ff;
+  --color-twilight-indigo: #273469;
+  --color-space-indigo: #1e2749;
+
+  --color-bg: #30343f;
+  --color-surface: #383c48;
+  --color-sunk: #3e4250;
+  --color-ink: #fafaff;
+  --color-muted: #b8bac6;
+  --color-line: #4a4e5c;
+  --color-line-strong: #5e6272;
+  --color-accent: #e4d9ff;
+  --color-accent-soft: #4a4868;
+  --color-accent-ink: #30343f;
+  --color-proved: #f0a3b0;
+  --color-proved-soft: #4f3a42;
+  --color-open: #efc678;
+  --color-open-soft: #4c4436;
+  --color-ok: #8fd6b3;
+  --color-ok-soft: #2f4a44;
+  --color-band-a: #353945;
+  --color-band-b: #383c48;
+
+  --color-c-L: #7cc4cf;
+  --color-c-NL: #83cdb5;
+  --color-c-P: #9fcf8a;
+  --color-c-NPcapcoNP: #9fbadb;
+  --color-c-NP: #9fb1f0;
+  --color-c-coNP: #ee9fb0;
+  --color-c-DP: #c2abf2;
+  --color-c-DELTA2: #b2b5ea;
+  --color-c-SIGMA2: #a3b6f2;
+  --color-c-PI2: #eeaab9;
+  --color-c-SIGMAi: #aab7e8;
+  --color-c-PIi: #dfb0bb;
+  --color-c-PH: #b9bdd6;
+  --color-c-PSPACE: #e2c27f;
+  --color-c-EXP: #dba6d0;
+  --color-c-NEXP: #f0a0c0;
+  --color-c-R: #c2c4ce;
+  --color-c-RE: #d4b89a;
+  --color-c-coRE: #93c0d6;
+}
