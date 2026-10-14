@@ -162,6 +162,10 @@ export function infoOf(id: TowerId): TowerInfo {
           `<div class="${F}">${hD(lv)} = P<sup>${hS(lv - 1)}</sup>${lv === 2 ? " = P<sup>NP</sup>" : ` = P<sup>${npT(lv - 1)}</sup>`}</div><p>Non ha una forma a quantificatori sua: sta <b>tra due piani</b>, perché ${hS(lv - 1)} ∪ ${hPi(lv - 1)} ⊆ ${hD(lv)} ⊆ ${hS(lv)} ∩ ${hPi(lv)}. È chiusa per complemento: una macchina deterministica può scambiare yes e no.</p>`,
         ],
         [
+          "Perché sta tra due piani",
+          `<p><b>${hS(lv - 1)} ⊆ ${hD(lv)}</b>: si fa una sola domanda all'oracolo e si copia la risposta.</p><p><b>${hPi(lv - 1)} ⊆ ${hD(lv)}</b>: si chiede all'oracolo il complemento e si inverte la risposta.</p><p><b>${hD(lv)} ⊆ ${hS(lv)}</b>: ${hS(lv)} = NP<sup>${hS(lv - 1)}</sup> ha lo stesso oracolo, e una macchina deterministica è una nondeterministica che non usa le scelte.</p><p><b>${hD(lv)} ⊆ ${hPi(lv)}</b>: se L ∈ ${hD(lv)}, anche co-L ∈ ${hD(lv)} ⊆ ${hS(lv)}, quindi L ∈ ${hPi(lv)}.</p>`,
+        ],
+        [
           "Esempio",
           lv === 2
             ? `<p>«Il giro ottimo costa un numero pari?» Si trova il costo ottimo per bisezione, chiedendo a TSP(D) «c'è un giro di costo ≤ B?» con B dimezzato a ogni passo; le domande sono logaritmiche nel costo massimo, quindi polinomiali. Poi si guarda se è pari (appunti Lez. 9 §2).</p><p>Anche DP sta qui: per SAT-UNSAT bastano due domande a SAT (dispensa cap. 16).</p>`
@@ -169,7 +173,7 @@ export function infoOf(id: TowerId): TowerInfo {
         ],
         [
           "All'esame",
-          `<p>Serve come gradino nelle catene: per esempio ${lv === 2 ? "DP ⊆ Δ₂ᴾ ⊆ Π₃ᴾ dà la riduzione da SAT-UNSAT a co-QSAT₃ (dispensa, es. 17.2.1)" : `${uS(lv - 1)} ⊆ ${uD(lv)} ⊆ ${uPi(lv)} dice che QSAT${SUBD(lv - 1)} si riduce a co-QSAT${SUBD(lv)}`}.</p>`,
+          `<p>Serve come gradino: grazie a Δ, una classe di un piano sta in tutte le classi dei piani sopra, sia Σ sia Π.</p><p>${lv === 2 ? "«SAT-UNSAT si riduce a co-QSAT₃?» SÌ: SAT-UNSAT ∈ DP ⊆ Δ₂ᴾ ⊆ Π₂ᴾ ⊆ Δ₃ᴾ ⊆ Π₃ᴾ, e co-QSAT₃ è Π₃ᴾ-completo, quindi ogni problema di Π₃ᴾ si riduce a lui (dispensa, es. 17.2.1)" : `«QSAT${SUBD(lv - 1)} si riduce a co-QSAT${SUBD(lv)}?» SÌ: QSAT${SUBD(lv - 1)} ∈ ${uS(lv - 1)} ⊆ ${uD(lv)} ⊆ ${uPi(lv)}, e co-QSAT${SUBD(lv)} è ${uPi(lv)}-completo`}.</p>`,
         ],
       ],
     };

@@ -619,7 +619,7 @@
      "text": "Riduzione da SAT-UNSAT a $\\mathrm{co\\text{-}QSAT}_3$?",
      "answer": "SI",
      "answerText": "SÌ",
-     "explanation": "$\\mathrm{SAT\\text{-}UNSAT} \\in \\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Pi_3^{\\mathrm{P}}$ e $\\mathrm{co\\text{-}QSAT}_3$ è $\\Pi_3^{\\mathrm{P}}$-completo",
+     "explanation": "$\\mathrm{SAT\\text{-}UNSAT} \\in \\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\Pi_3^{\\mathrm{P}}$. $\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}}$: bastano due domande a SAT. $\\Delta_2^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}}$: $\\Delta_2^{\\mathrm{P}}$ sta in $\\Sigma_2^{\\mathrm{P}}$ ed è chiusa per complemento. $\\Pi_2^{\\mathrm{P}} \\subseteq \\Pi_3^{\\mathrm{P}}$: i piani sono annidati. Infine $\\mathrm{co\\text{-}QSAT}_3$ è $\\Pi_3^{\\mathrm{P}}$-completo, quindi ogni problema di $\\Pi_3^{\\mathrm{P}}$ si riduce a lui. [Perché Δ₂ᴾ sta tra i piani 1 e 2](/classi/DELTA2)",
      "confirmed": false,
      "fileWrong": false,
      "repeatOf": null,

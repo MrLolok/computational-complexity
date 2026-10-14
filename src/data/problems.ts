@@ -1008,7 +1008,7 @@ export const PROBLEMS: Problem[] = [
     "c": "F07#2",
     "q": "SAT-UNSAT è riducibile a co-QSAT<sub>3</sub>?",
     "a": "SÌ",
-    "e": "DP ⊆ Δ<sub>2</sub><sup>P</sup> ⊆ Π<sub>3</sub><sup>P</sup> e co-QSAT<sub>3</sub> è Π<sub>3</sub><sup>P</sup>-completo."
+    "e": "SAT-UNSAT ∈ DP ⊆ Δ<sub>2</sub><sup>P</sup> ⊆ Π<sub>2</sub><sup>P</sup> ⊆ Π<sub>3</sub><sup>P</sup>. DP ⊆ Δ<sub>2</sub><sup>P</sup>: bastano due domande a SAT. Δ<sub>2</sub><sup>P</sup> ⊆ Π<sub>2</sub><sup>P</sup>: Δ<sub>2</sub><sup>P</sup> sta in Σ<sub>2</sub><sup>P</sup> ed è chiusa per complemento. Π<sub>2</sub><sup>P</sup> ⊆ Π<sub>3</sub><sup>P</sup>: i piani sono annidati. Infine co-QSAT<sub>3</sub> è Π<sub>3</sub><sup>P</sup>-completo, quindi ogni problema di Π<sub>3</sub><sup>P</sup> si riduce a lui. <a href=\"/classi/DELTA2\">Perché Δ<sub>2</sub><sup>P</sup> sta tra i piani 1 e 2</a>."
    },
    {
     "c": "Domanda 8",

@@ -1291,7 +1291,7 @@ export const THEOREMS: Theorem[] = [
   "tipo": "teorema",
   "enunciato": "Date due formule φ e φ′ in CNF con 3 letterali per clausola, decidere se φ è soddisfacibile e φ′ no è DP-completo.",
   "intuizione": "Sta in DP perché è l'intersezione di un problema NP (φ soddisfacibile) e di uno coNP (φ′ insoddisfacibile); per la difficoltà, se L = L<sub>1</sub> ∩ L<sub>2</sub> si usa R(x) = (R<sub>1</sub>(x), R<sub>2</sub>(x)) con le riduzioni a SAT.",
-  "uso_esame": "È il DP-completo di riferimento: per esempio SAT-UNSAT si riduce a QSAT<sub>3</sub> perché DP ⊆ Δ<sub>2</sub><sup>P</sup> ⊆ Σ<sub>3</sub><sup>P</sup>.",
+  "uso_esame": "È il DP-completo di riferimento: per esempio SAT-UNSAT si riduce a QSAT<sub>3</sub> perché DP ⊆ Δ<sub>2</sub><sup>P</sup> ⊆ Σ<sub>2</sub><sup>P</sup> ⊆ Σ<sub>3</sub><sup>P</sup>.",
   "capitolo": "15 · Problemi di ottimizzazione (DP)",
   "pagina": 59,
   "lezione": 9,
