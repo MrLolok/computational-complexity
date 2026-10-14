@@ -9,6 +9,7 @@ import ClassChip from "@/components/ClassChip";
 import Rich from "@/components/Rich";
 import { chapterTitle, filterTheorems, groupByChapter, thProblems, whereText } from "@/lib/theorems";
 import { ui } from "@/lib/ui";
+import LearningFigure from "@/components/learning/LearningFigure";
 
 const PREFIX = "#teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
@@ -38,20 +39,21 @@ function TheoremRow({ t }: { t: Theorem }) {
   const cls = (t.classi || []).filter((c) => NAME[c]);
   const pr = thProblems(t);
   return (
-    <details id={`teorema-${t.id}`} className="group scroll-mt-[70px] border-b border-line">
-      <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-1 py-3.5 min-[561px]:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
+    <details id={`teorema-${t.id}`} className="group mt-3 scroll-mt-[70px] rounded-xl border border-line bg-surface px-5 open:border-line-strong">
+      <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 py-5 min-[561px]:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
         <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
           <span className="font-ui text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-muted">{t.tipo || "teorema"}</span>
-          <span className="font-head text-[1.3rem] font-semibold" dangerouslySetInnerHTML={{ __html: t.nome }} />
+          <h3 className="font-head text-[1.15rem] font-semibold" dangerouslySetInnerHTML={{ __html: t.nome }} />
         </div>
         <div className="flex flex-wrap items-center justify-start gap-1.5 min-[561px]:justify-end">
           {t.correzione && <span className={ui.pillOpen}>correzione</span>}
           {t.prova === "nel corso" && <span className={ui.pill}>dimostrato nel corso</span>}
         </div>
         <p className="col-span-full max-w-[78ch]" dangerouslySetInnerHTML={{ __html: t.enunciato }} />
-        <span className="col-span-full font-ui text-[0.8rem] text-accent group-open:hidden">Intuizione, esame e fonti</span>
+        <span className="col-span-full font-ui text-sm text-accent"><span className="group-open:hidden">Capisci l&apos;idea e il suo uso all&apos;esame +</span><span className="hidden group-open:inline">Chiudi approfondimento −</span></span>
       </summary>
       <div className="flex max-w-[78ch] flex-col gap-3 pb-4">
+        {t.id === "savitch" && <LearningFigure kind="savitch" />}
         {t.intuizione && (
           <div>
             <h4 className={h4}>Intuizione</h4>
@@ -82,7 +84,7 @@ function TheoremRow({ t }: { t: Theorem }) {
               {pr.map((id, i) => (
                 <span key={id}>
                   {i > 0 && " · "}
-                  <Link href={`/problemi/${id}`} className="whitespace-nowrap text-accent underline decoration-1 underline-offset-2">
+                  <Link href={`/problemi/${id}`} data-term={`problem:${id}`} className="whitespace-nowrap text-accent underline decoration-1 underline-offset-2">
                     {PROBLEM_BY[id].name}
                   </Link>
                 </span>
@@ -102,10 +104,11 @@ function TheoremRow({ t }: { t: Theorem }) {
 export default function TheoremsView() {
   const [q, setQ] = useState("");
   const [cls, setCls] = useState("all");
+  const [provedOnly, setProvedOnly] = useState(false);
   const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
   const target = hash.startsWith(PREFIX) ? hash.slice(PREFIX.length) : "";
 
-  const list = filterTheorems(q, cls);
+  const list = filterTheorems(q, cls, provedOnly);
   const groups = groupByChapter(list);
 
   /* #teorema-<id> nell'indirizzo: se i filtri lo nascondono si azzerano, poi lo si apre e ci si scorre */
@@ -116,6 +119,7 @@ export default function TheoremsView() {
       const r = requestAnimationFrame(() => {
         setQ("");
         setCls("all");
+        setProvedOnly(false);
       });
       return () => cancelAnimationFrame(r);
     }
@@ -135,9 +139,9 @@ export default function TheoremsView() {
 
   return (
     <section className="flex flex-col">
+      <header className="mb-3"><p className={`${ui.eyebrow} mb-2`}>I risultati che collegano le classi</p><h1 className={ui.h2}>Teoremi del corso</h1></header>
       <p className={`${ui.lede} mb-4`}>
-        I teoremi, le proposizioni e i lemmi del corso, in ordine di capitolo. Ogni riga mostra l&apos;enunciato; aprila per l&apos;intuizione, a
-        cosa serve all&apos;esame e dove trovarlo.
+        Leggi l&apos;enunciato, poi apri la scheda per capire l&apos;idea e quando usarla all&apos;esame.
       </p>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 pb-1.5">
         <label className={ui.search} htmlFor="thq">
@@ -146,7 +150,8 @@ export default function TheoremsView() {
             id="thq"
             type="search"
             className={ui.input}
-            placeholder="Cerca un teorema (es. savitch, collasso, cook)"
+            placeholder="Cerca Savitch, collasso, Cook…"
+            aria-label="Cerca un teorema"
             autoComplete="off"
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -163,7 +168,8 @@ export default function TheoremsView() {
             ))}
           </select>
         </label>
-        <span className="font-ui text-[0.84rem] text-muted">
+        <label className="flex min-h-11 cursor-pointer items-center gap-2 text-sm text-muted"><input type="checkbox" className="size-4 accent-accent" checked={provedOnly} onChange={e => setProvedOnly(e.target.checked)} />Solo dimostrati nel corso</label>
+        <span role="status" className="font-ui text-[0.84rem] text-muted">
           {list.length === THEOREMS.length ? `${THEOREMS.length} risultati` : `${list.length} di ${THEOREMS.length}`}
         </span>
       </div>

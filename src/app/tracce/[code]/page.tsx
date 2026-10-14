@@ -49,8 +49,8 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
       </nav>
       <header className="flex flex-col gap-2">
         <span className={ui.eyebrow}>Traccia {t.code}</span>
-        <h2 className={ui.h2}>{t.dateLabel || t.title}</h2>
-        {t.intro && <Markdown className="text-muted text-[1rem]">{t.intro}</Markdown>}
+        <h1 className={ui.h2}>{t.dateLabel || t.title}</h1>
+        <p className={ui.hint}>Rispondi prima di leggere la spiegazione. I termini sottolineati offrono un aiuto rapido.</p>
       </header>
 
       <TraceRunner

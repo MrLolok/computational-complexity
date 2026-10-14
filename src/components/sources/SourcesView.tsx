@@ -5,7 +5,6 @@ import { Html, SourceBadge } from "@/components/problems/bits";
 import { ui } from "@/lib/ui";
 
 const prose = "flex max-w-[74ch] flex-col gap-3 [&_ul]:m-0 [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-[7px] [&_ul]:pl-5";
-const h2 = "mb-2.5 font-head text-[1.05rem] font-semibold leading-tight";
 const h3 = "mt-2.5 font-head text-[1.28rem] font-semibold leading-tight";
 
 /** riquadri "Correzione" dei teoremi */
@@ -30,9 +29,10 @@ function TheoremFixes() {
 export default function SourcesView() {
   return (
     <section className="flex flex-col">
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-x-9 gap-y-7">
-        <div className={prose}>
-          <h2 className={h2}>Fonti del corso</h2>
+      <header className="mb-5"><h1 className={ui.h2}>Fonti e verifiche</h1><p className={`${ui.lede} mt-3`}>I riferimenti del corso e le integrazioni, raccolti qui per consultazione.</p></header>
+      <div className="flex max-w-[82ch] flex-col gap-4">
+        <details open className={`${prose} rounded-xl border border-line p-5`}>
+          <summary className="cursor-pointer font-semibold">Fonti del corso</summary>
           <p>
             Dispensa <i>Computational Complexity</i> (M. Mignogna, 2025): cap. 1 (R, RE), 2.6 (L), 5–11 (classi, gerarchie, Savitch), 12–13
             (NP-completezza), 14 (coNP), 15 (DP), 16 (oracoli), 17 (PH), 19 (giochi), 21–22 (NEXP, riepilogo). Slide di P. A. Bonatti, Lezioni 1–9.
@@ -49,9 +49,9 @@ export default function SourcesView() {
             l&apos;etichetta <span className={ui.pillExt}>esterno</span>; le affermazioni delle fonti sbagliate o non dimostrate stanno nei riquadri{" "}
             <b>Correzione</b>.
           </p>
-        </div>
-        <div className={prose}>
-          <h2 className={h2}>Aggiunte esterne e conseguenze ricavate</h2>
+        </details>
+        <details className={`${prose} rounded-xl border border-line p-5`}>
+          <summary className="cursor-pointer font-semibold">Aggiunte esterne e conseguenze ricavate</summary>
           <ul>
             <li>
               <span className={ui.pillExt}>esterno</span> Il significato della D di DP (&quot;differenza&quot;) viene dal libro di Papadimitriou, non
@@ -80,9 +80,9 @@ export default function SourcesView() {
               (Lez. 10 §4 e §7), con il ragionamento mostrato nella scheda.
             </li>
           </ul>
-        </div>
-        <div className={prose}>
-          <h2 className={h2}>Affermazioni delle fonti da non ripetere all&apos;esame</h2>
+        </details>
+        <details className={`${prose} rounded-xl border border-line p-5`}>
+          <summary className="cursor-pointer font-semibold">Precisazioni sui materiali del corso</summary>
           <ul>
             <li>
               <b>&quot;2-SAT is P-complete&quot;</b> (dispensa, cap. 14 e 22) non è dimostrato. La dispensa stessa dice &quot;2-SAT is in P&quot;
@@ -110,11 +110,11 @@ export default function SourcesView() {
             </li>
           </ul>
           <TheoremFixes />
-        </div>
+        </details>
       </div>
 
-      <div className={`${prose} mt-8 max-w-none`}>
-        <h2 className={h2}>Verifica della tabella dei problemi</h2>
+      <details className={`${prose} mt-4 max-w-none rounded-xl border border-line p-5`}>
+        <summary className="cursor-pointer font-semibold">Verifica della tabella dei problemi</summary>
         <p className={ui.hint}>
           Ogni riga della tabella di partenza della mappa dei problemi, controllata su dispensa, slide delle Lezioni 1–9 e pagine delle tracce
           risolte.
@@ -143,7 +143,7 @@ export default function SourcesView() {
             </tbody>
           </table>
         </div>
-      </div>
+      </details>
     </section>
   );
 }

@@ -1,162 +1,179 @@
 "use client";
 
+import type { Problem, Trap } from "@/data/problems";
+import type { TraceRef } from "@/data/traces";
+
 import Link from "next/link";
-import { LADDER, PROBLEM_BY, type Problem, type Trap } from "@/data/problems";
+
 import Rich from "@/components/Rich";
-import { PI, REL, S, SOURCE_LABEL, ansKey, colorId, trapAnswer } from "@/lib/problems";
+import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems";
+import walkthroughs from "@/data/problemWalkthroughs.json";
+import { ansKey, colorId, PI, REL, S, trapAnswer } from "@/lib/problems";
 import { theoremsForProblem } from "@/lib/theorems";
-import { classColor } from "@/lib/ui";
-import { Html, LabPill, SourceBadge, YesNo, codeCls } from "./bits";
+import { classColor, ui } from "@/lib/ui";
+import { codeCls, YesNo } from "./bits";
+import ProblemSlideshow from "./ProblemSlideshow";
 
-const dsec = "flex flex-col gap-[5px] border-t border-line pt-3 [&>p]:max-w-[65ch]";
-const h3 = "font-ui text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-muted";
-const box = "flex flex-col gap-1 rounded-lg px-3 py-2.5 text-[0.92rem]";
-const bt = "font-ui text-[0.7rem] font-semibold uppercase tracking-[0.1em]";
-
-function RelBtn({ id, onGo }: { id: string; onGo: (id: string) => void }) {
-  const q = PROBLEM_BY[id];
-  return (
-    <button
-      type="button"
-      onClick={() => onGo(id)}
-      style={classColor(colorId(q))}
-      className="cursor-pointer rounded-md border border-(--c)/60 bg-(--c)/8 px-[7px] font-ui text-[0.84rem] font-semibold text-ink hover:border-(--c)"
-    >
-      {q.name}
-    </button>
-  );
-}
-
-function TrapItem({ t }: { t: Trap }) {
-  const li = "flex flex-col gap-[3px] border-l-2 border-line pl-2.5 text-[0.9rem]";
-  if (t.n)
+function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void }) {
     return (
-      <li className={li}>
-        {t.c && <span className={codeCls}>{t.c}</span>}
-        <Rich as="span" html={t.n} />
-      </li>
+        <button
+            type="button"
+            onClick={() => onGo(id)}
+            data-term={`problem:${id}`}
+            className="text-accent cursor-pointer underline underline-offset-4"
+        >
+            {PROBLEM_BY[id].name}
+        </button>
     );
-  return (
-    <li className={li}>
-      <span className={codeCls}>{t.c}</span>
-      <Rich as="span" html={t.q || ""} />
-      <span>
-        <YesNo k={ansKey(t.a)}>{trapAnswer(t)}</YesNo>
-        <Rich as="span" html={t.e || ""} />
-      </span>
-    </li>
-  );
 }
-
-export default function ProblemDetail({ p, onGo }: { p: Problem; onGo: (id: string) => void }) {
-  const band = LADDER[p.b];
-  const cp = p.cpl ? PROBLEM_BY[p.cpl] : null;
-  const rels = (REL[p.id] || []).filter((r) => r[0] !== p.cpl);
-  const ths = theoremsForProblem(p.id);
-  const clsId = p.c || p.b;
-  const clsName = p.c ? (p.c === "SIGMA2" ? S(2) : PI(2)) : band.n;
-
-  return (
-    <>
-      <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5 font-ui text-[0.84rem] text-muted">
-        <Link
-          href={`/classi/${clsId}`}
-          title={`Apri ${clsName.replace(/<[^>]+>/g, "")} nella mappa delle classi`}
-          className="border-b border-dotted border-current font-mono text-base font-semibold text-(--c) no-underline hover:border-solid"
-          dangerouslySetInnerHTML={{ __html: clsName }}
-        />
-        <span>tocca la classe per aprirne la scheda</span>
-      </div>
-      <div className="flex flex-col gap-2">
-        <h2 className="font-head text-[2rem] font-semibold leading-tight text-(--c)">{p.name}</h2>
-        <div className="flex flex-wrap items-center gap-2">
-          <LabPill html={p.lab} />
-          {p.ext && <SourceBadge kind="x">✱ completezza fuori dalle fonti</SourceBadge>}
-        </div>
-      </div>
-      <div className={dsec}>
-        <h3 className={h3}>Il problema</h3>
-        <Rich as="p" html={p.def} />
-      </div>
-      <div className={dsec}>
-        <h3 className={h3}>Perché sta qui</h3>
-        <Rich as="p" html={p.why} />
-      </div>
-      <div className={dsec}>
-        <h3 className={h3}>Completezza</h3>
-        <Rich as="p" html={p.comp} />
-      </div>
-      <div className={dsec}>
-        <h3 className={h3}>Complemento</h3>
-        {cp ? (
-          <p>
-            <RelBtn id={cp.id} onGo={onGo} /> <Html className="text-[0.86rem] text-muted" html={cp.lab} />
-          </p>
-        ) : (
-          <Rich as="p" html={p.compl || "Nessun complemento con un nome proprio nel corso."} />
-        )}
-      </div>
-      {p.ext_t && (
-        <div className={`${box} border border-dashed border-accent bg-accent-soft/45`}>
-          <span className={`${bt} text-accent`}>✱ Fuori dalle fonti del corso</span>
-          <Rich as="span" html={p.ext_t} />
-        </div>
-      )}
-      {p.fix && (
-        <div className={`${box} border border-open/35 bg-open-soft`}>
-          <span className={`${bt} text-open`}>Correzione</span>
-          <Rich as="span" html={p.fix} />
-        </div>
-      )}
-      {rels.length > 0 && (
-        <div className={dsec}>
-          <h3 className={h3}>Problemi collegati</h3>
-          <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
-            {rels.map(([id, t]) => (
-              <li key={id} className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[0.9rem]">
-                <RelBtn id={id} onGo={onGo} />
-                <span className="text-muted">{t}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {ths.length > 0 && (
-        <div className={dsec}>
-          <h3 className={h3}>Teoremi che lo usano</h3>
-          <p className="text-[0.92rem] leading-[1.8]">
-            {ths.map((t, i) => (
-              <span key={t.id}>
-                {i > 0 && " · "}
-                <Link
-                  href={`/teoremi#teorema-${t.id}`}
-                  className="text-accent underline decoration-1 underline-offset-2 sm:whitespace-nowrap"
-                  dangerouslySetInnerHTML={{ __html: t.nome }}
+function TrapItem({ t }: { t: Trap }) {
+    return (
+        <li className="border-line flex flex-col gap-2 border-l-2 pl-3 text-sm">
+            {t.c && <span className={codeCls}>{t.c}</span>}
+            {t.n ? (
+                <Rich html={t.n} />
+            ) : (
+                <>
+                    <Rich html={t.q || ""} />
+                    <p>
+                        <YesNo k={ansKey(t.a)}>{trapAnswer(t)}</YesNo>
+                        <Rich as="span" html={t.e || ""} />
+                    </p>
+                </>
+            )}
+        </li>
+    );
+}
+export default function ProblemDetail({
+    p,
+    onGo,
+    traceRefs,
+    previousId,
+    nextId,
+}: {
+    p: Problem;
+    onGo: (id: string) => void;
+    traceRefs: TraceRef[];
+    previousId?: string;
+    nextId?: string;
+}) {
+    const index = PROBLEMS.findIndex((item) => item.id === p.id);
+    const previous = previousId ? PROBLEM_BY[previousId] : undefined;
+    const next = nextId ? PROBLEM_BY[nextId] : undefined;
+    const clsName = p.c ? (p.c === "SIGMA2" ? S(2) : PI(2)) : LADDER[p.b].n;
+    const related = (REL[p.id] || []).filter(([id]) => id !== p.cpl);
+    const theorems = theoremsForProblem(p.id);
+    const disclosure =
+        "rounded-lg border border-line px-4 py-3 text-sm [&>summary]:cursor-pointer [&>summary]:font-semibold";
+    return (
+        <div style={classColor(colorId(p))} className="flex min-w-0 flex-col gap-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className={ui.eyebrow}>
+                    Problema {index + 1} di {PROBLEMS.length}
+                </p>
+                <nav aria-label="Navigazione tra problemi" className="flex gap-2">
+                    <button
+                        type="button"
+                        className={ui.btn}
+                        disabled={!previous}
+                        onClick={() => previous && onGo(previous.id)}
+                    >
+                        ← Precedente
+                    </button>
+                    <button
+                        type="button"
+                        className={ui.btnPrimary}
+                        disabled={!next}
+                        onClick={() => next && onGo(next.id)}
+                    >
+                        Prossimo →
+                    </button>
+                </nav>
+            </div>
+            <header className="flex flex-col gap-3">
+                <h2
+                    className="font-head text-[clamp(1.45rem,3vw,2rem)] leading-tight font-semibold"
+                    dangerouslySetInnerHTML={{ __html: p.name }}
                 />
-              </span>
-            ))}
-          </p>
+                <Rich as="p" html={p.def} />
+                <div className="flex flex-wrap gap-2">
+                    <Link
+                        href={`/classi/${p.c || p.b}`}
+                        className={ui.pill}
+                        dangerouslySetInnerHTML={{ __html: clsName }}
+                    />
+                    {p.full && (
+                        <span className={ui.pillOk} dangerouslySetInnerHTML={{ __html: `${clsName}-completo` }} />
+                    )}
+                </div>
+            </header>
+            {traceRefs.length > 0 && (
+                <details className={disclosure}>
+                    <summary className="text-accent">Nelle tracce · {traceRefs.length} domande</summary>
+                    <p className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                        {traceRefs.map((r) => (
+                            <Link
+                                key={`${r.code}-${r.n}`}
+                                href={`/tracce/${r.code}#d${r.n}`}
+                                className="text-accent underline underline-offset-4"
+                            >
+                                {r.code}, domanda {r.n}
+                            </Link>
+                        ))}
+                    </p>
+                </details>
+            )}
+            <ProblemSlideshow key={p.id} id={p.id as keyof typeof walkthroughs} name={p.name.replace(/<[^>]+>/g, "")} />
+            <Rich className="text-muted flex flex-col gap-3 leading-relaxed" html={p.why} />
+            <details className={disclosure}>
+                <summary>Complemento e collegamenti</summary>
+                <div className="mt-3 flex flex-col gap-3">
+                    {p.cpl ? (
+                        <p>
+                            Complemento: <ProblemButton id={p.cpl} onGo={onGo} />
+                        </p>
+                    ) : (
+                        <Rich html={p.compl || "Nessun complemento associato."} />
+                    )}
+                    {related.length > 0 && (
+                        <ul className="flex flex-col gap-2">
+                            {related.map(([id, text]) => (
+                                <li key={id}>
+                                    <ProblemButton id={id} onGo={onGo} />
+                                    <span className="text-muted ml-2">{text}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                    {theorems.length > 0 && (
+                        <p className="flex flex-wrap gap-x-4 gap-y-2">
+                            {theorems.map((t) => (
+                                <Link
+                                    key={t.id}
+                                    href={`/teoremi#teorema-${t.id}`}
+                                    className="text-accent underline underline-offset-4"
+                                    dangerouslySetInnerHTML={{ __html: t.nome }}
+                                />
+                            ))}
+                        </p>
+                    )}
+                </div>
+            </details>
+            {p.traps.length > 0 && (
+                <details className={disclosure}>
+                    <summary>Domande e trappole d&apos;esame</summary>
+                    <ul className="mt-3 flex flex-col gap-4">
+                        {p.traps.map((t, i) => (
+                            <TrapItem key={i} t={t} />
+                        ))}
+                    </ul>
+                </details>
+            )}
+            {next && (
+                <button type="button" className={`${ui.btn} w-full`} onClick={() => onGo(next.id)}>
+                    Prossimo: <span className="ml-1" dangerouslySetInnerHTML={{ __html: next.name }} /> →
+                </button>
+            )}
         </div>
-      )}
-      <div className={dsec}>
-        <h3 className={h3}>Trappole d&apos;esame</h3>
-        <ul className="m-0 flex list-none flex-col gap-[9px] p-0">
-          {p.traps.map((t, i) => (
-            <TrapItem key={i} t={t} />
-          ))}
-        </ul>
-      </div>
-      <div className={dsec}>
-        <h3 className={h3}>Fonti</h3>
-        <ul className="m-0 flex list-none flex-col gap-1 p-0 text-[0.86rem]">
-          {p.src.map(([k, t], i) => (
-            <li key={i} className="flex items-baseline gap-2">
-              <SourceBadge kind={k}>{SOURCE_LABEL[k]}</SourceBadge>
-              <Html html={t} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
-  );
+    );
 }

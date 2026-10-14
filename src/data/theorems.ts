@@ -1568,7 +1568,7 @@ export const THEOREMS: Theorem[] = [
   "id": "strategic-companies",
   "nome": "STRATEGIC COMPANIES è Σ<sub>2</sub><sup>P</sup>-completo",
   "tipo": "teorema",
-  "enunciato": "Decidere se una società è strategica (appartiene a un insieme minimo di società che produce tutte le merci e rispetta i vincoli di controllo) è Σ<sub>2</sub><sup>P</sup>-completo; il suo complemento è Π<sub>2</sub><sup>P</sup>-completo.",
+  "enunciato": "Una società è strategica se appartiene ad almeno un gruppo che produce tutte le merci, include le società controllate dalle società scelte e non può essere ridotto mantenendo queste condizioni. Decidere se una società è strategica è Σ<sub>2</sub><sup>P</sup>-completo; il suo complemento è Π<sub>2</sub><sup>P</sup>-completo.",
   "intuizione": "\"Esiste un insieme C′ che contiene la società e tale che nessun suo sottoinsieme proprio va bene\": un ∃ seguito da un ∀, come QSAT<sub>2</sub>.",
   "uso_esame": "Altro problema completo al 2° livello negli esercizi di riduzione (per esempio CLIQUE si riduce al complemento di STRATEGIC COMPANIES perché Σ<sub>1</sub><sup>P</sup> ⊆ Π<sub>2</sub><sup>P</sup>).",
   "capitolo": "17 · Gerarchia polinomiale",

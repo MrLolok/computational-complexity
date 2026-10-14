@@ -4,15 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const NAV = [
-  { href: "/", label: "Classi", match: ["/", "/classi"] },
+  { href: "/", label: "Home" },
+  { href: "/classi", label: "Classi", match: ["/classi", "/dp"] },
   { href: "/problemi", label: "Problemi" },
   { href: "/teoremi", label: "Teoremi" },
   { href: "/confronta", label: "Confronta" },
-  { href: "/dp", label: "DP" },
-  { href: "/piani", label: "Piani di PH" },
+  { href: "/piani", label: "Gerarchia PH" },
+  { href: "/quantistico", label: "Quantistico" },
   { href: "/esercizi", label: "Esercitati" },
   { href: "/tracce", label: "Tracce" },
-  { href: "/fonti", label: "Fonti" },
 ] as const;
 
 const base =

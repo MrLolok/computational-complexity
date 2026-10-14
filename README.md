@@ -31,5 +31,5 @@ npm run build   # build di produzione (tutte le pagine sono prerenderizzate)
 - `src/store/`: Redux Toolkit. Lo slice `progress` tiene le risposte date nelle tracce e negli esercizi e viene salvato
   in `localStorage` (chiave `cc-progress:v1`), quindi resta solo nel browser di chi studia.
 - Stile: solo Tailwind CSS v4. `src/app/globals.css` contiene unicamente l'import di Tailwind e i token del tema
-  (palette jet-black, ghost-white, periwinkle, twilight-indigo, space-indigo); le classi ricorrenti stanno in `src/lib/ui.ts`.
+  (palette shadow-grey, ghost-white, periwinkle, twilight-indigo, space-indigo); le classi ricorrenti stanno in `src/lib/ui.ts`.
   L'unico CSS importato è quello della libreria KaTeX per le formule.

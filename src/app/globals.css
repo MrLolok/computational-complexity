@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
-/* Solo configurazione di Tailwind: i colori della palette e i caratteri diventano classi (bg-bg, text-accent, font-head, …). Nessuno stile scritto a mano. */
+/* Palette e caratteri condivisi con tutte le sezioni. */
 @theme inline {
-  --font-head: var(--font-cormorant), "Cormorant Garamond", Garamond, serif;
-  --font-body: var(--font-crimson), "Crimson Pro", Georgia, serif;
-  --font-ui: var(--font-jost), "Jost", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  --font-head: var(--font-cereal), system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-cereal), system-ui, -apple-system, sans-serif;
+  --font-ui: var(--font-cereal), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-cereal), system-ui, -apple-system, sans-serif;
 }
 
 /* static: emette sempre tutte le variabili, anche i colori delle classi usati solo tramite var(--color-c-<ID>) */
 @theme static {
-  --color-jet-black: #30343f;
+  --color-shadow-grey: #212529;
   --color-ghost-white: #fafaff;
   --color-periwinkle: #e4d9ff;
   --color-twilight-indigo: #273469;
   --color-space-indigo: #1e2749;
 
-  --color-bg: #30343f;
-  --color-surface: #383c48;
-  --color-sunk: #3e4250;
+  --color-bg: var(--color-shadow-grey);
+  --color-surface: #292d36;
+  --color-sunk: #323641;
   --color-ink: #fafaff;
   --color-muted: #b8bac6;
-  --color-line: #4a4e5c;
+  --color-line: #424652;
   --color-line-strong: #5e6272;
   --color-accent: #e4d9ff;
   --color-accent-soft: #4a4868;
-  --color-accent-ink: #30343f;
+  --color-accent-ink: #212529;
   --color-proved: #f0a3b0;
   --color-proved-soft: #4f3a42;
   --color-open: #efc678;
@@ -54,4 +54,15 @@
   --color-c-R: #c2c4ce;
   --color-c-RE: #d4b89a;
   --color-c-coRE: #93c0d6;
+}
+
+code, pre { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+::selection { background: var(--color-accent); color: var(--color-bg); }
+.skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; transform: translateY(-180%); background: var(--color-accent); color: var(--color-bg); padding: 10px 16px; border-radius: 8px; }
+.skip-link:focus { transform: translateY(0); }
+[data-term] { text-decoration: underline dotted var(--color-muted); text-underline-offset: 4px; cursor: help; }
+.study-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23e4d9ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-position: right 12px center; background-repeat: no-repeat; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }

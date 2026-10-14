@@ -1,9 +1,8 @@
-import { IDS, type ClassId } from "@/data/classes";
-import { EXAM_QUESTIONS } from "@/data/examQuestions";
-import { PROBLEMS } from "@/data/problems";
-import { THEOREMS } from "@/data/theorems";
+import { type ClassId } from "@/data/classes";
 import ClassMap from "./ClassMap";
 import ClassPanel, { PanelIntro } from "./ClassPanel";
+import ClassExplorer from "./ClassExplorer";
+import { ui } from "@/lib/ui";
 
 const badgeText = "text-[9px] font-bold [text-anchor:middle] [dominant-baseline:central]";
 
@@ -49,24 +48,13 @@ function Legend() {
   );
 }
 
-/** scheda Classi: contatori, mappa delle inclusioni e scheda della classe scelta */
-export default function ClassesView({ sel }: { sel: ClassId | null }) {
+/** scheda Classi: mappa delle inclusioni e scheda della classe scelta */
+export default function ClassesView({ sel, embedded = false }: { sel: ClassId | null; embedded?: boolean }) {
+  const Heading = embedded ? "h2" : "h1";
   return (
     <section className="flex flex-col gap-5">
-      <div className="flex flex-wrap gap-x-4 gap-y-1.5 font-ui text-[0.84rem] text-muted [&_b]:font-semibold [&_b]:tabular-nums [&_b]:text-ink">
-        <span>
-          <b>{IDS.length}</b> classi
-        </span>
-        <span>
-          <b>{PROBLEMS.length}</b> problemi
-        </span>
-        <span>
-          <b>{THEOREMS.length}</b> teoremi
-        </span>
-        <span>
-          <b>{EXAM_QUESTIONS.length}</b> domande dalle tracce
-        </span>
-      </div>
+      <header><p className={`${ui.eyebrow} mb-2`}>Le risorse del calcolo</p><Heading className={ui.h2}>Classi di complessità</Heading></header>
+      <ClassExplorer key={sel ?? "overview"} selected={!!sel}>
       <div className="grid grid-cols-1 items-start gap-7 min-[900px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
         <div className="min-w-0 rounded-xl border border-line bg-surface p-2.5">
           <ClassMap sel={sel} />
@@ -80,6 +68,7 @@ export default function ClassesView({ sel }: { sel: ClassId | null }) {
           {sel ? <ClassPanel id={sel} /> : <PanelIntro />}
         </aside>
       </div>
+      </ClassExplorer>
     </section>
   );
 }

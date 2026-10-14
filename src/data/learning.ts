@@ -1,0 +1,22 @@
+/** Sintesi mirate alle Lezioni 6 e 10–11 e alle domande delle tracce. */
+export const RANDOM_CLASSES = [
+  { id: "RP", name: "RP", brief: "Errore da un solo lato", definition: "Tempo polinomiale probabilistico: su un’istanza no non accetta mai; su un’istanza sì accetta con probabilità almeno 1/2." },
+  { id: "coRP", name: "coRP", brief: "L’altro lato dell’errore", definition: "Complemento di RP: sulle istanze sì risponde sempre correttamente; sulle istanze no può sbagliare con probabilità al più 1/2." },
+  { id: "ZPP", name: "ZPP", brief: "Nessun errore, tempo atteso polinomiale", definition: "Algoritmi probabilistici che non sbagliano mai e hanno tempo atteso polinomiale. ZPP = RP ∩ coRP." },
+  { id: "BPP", name: "BPP", brief: "Errore limitato e riducibile", definition: "Tempo polinomiale probabilistico, con errore al più 1/3 su ogni input. Ripetizioni indipendenti e voto di maggioranza riducono l’errore." },
+  { id: "PP", name: "PP", brief: "Una maggioranza, anche piccolissima", definition: "Tempo polinomiale probabilistico: accetta con probabilità > 1/2 esattamente le istanze sì. Il margine può essere esponenzialmente piccolo: la stessa amplificazione di BPP non garantisce tempo polinomiale." },
+] as const;
+export const QUANTUM_CLASSES = [
+  { id: "BQP", name: "BQP", brief: "Tempo quantistico polinomiale, errore limitato", definition: "Problemi di decisione risolvibili da una macchina quantistica in tempo polinomiale con errore al più 1/3 su ogni input. BPP ⊆ BQP ⊆ PP ⊆ PSPACE; il rapporto con NP e PH è aperto." },
+] as const;
+export const SPECIAL_TERMS = [
+  { id: "qtm", name: "Macchina di Turing quantistica", aliases: ["MdT quantistica", "macchina di Turing quantistica", "algoritmo quantistico", "calcolatore quantistico"], definition: "Evolve una sovrapposizione di configurazioni con trasformazioni unitarie; la misura produce un risultato probabilistico. Non permette di leggere tutti i rami contemporaneamente.", href: "/quantistico#macchine" },
+  { id: "grover", name: "Algoritmo di Grover", aliases: ["Grover"], definition: "Ricerca non strutturata tra N candidati con O(√N) interrogazioni, invece di O(N). È un vantaggio quadratico: non rende polinomiale una ricerca esponenziale.", href: "/quantistico#grover" },
+  { id: "symmetric", name: "Crittografia simmetrica e quantistico", aliases: ["crittografia simmetrica", "attacchi a forza bruta"], definition: "Nel modello ideale di ricerca della chiave, Grover passa da circa 2ⁿ a 2ⁿ⁄² tentativi. Raddoppiare i bit della chiave ripristina l’esponente classico; è il modello teorico della domanda d’esame.", href: "/quantistico#grover" },
+  { id: "owf", name: "One-way functions", aliases: ["one-way functions", "one-way function", "funzioni one-way", "funzione one-way", "one-way", "esponenziazione modulare"], definition: "Facili da calcolare, difficili da invertire. P = NP ne escluderebbe l’esistenza; P ≠ NP da solo non basta. Distingui la nozione worst-case del corso da quella crittografica, difficile da invertire su input casuali.", href: "/quantistico#one-way" },
+  { id: "oracle", name: "Oracolo", aliases: ["oracolo", "oracoli"], definition: "Una subroutine ideale che risponde in un passo a una domanda di decisione. P con oracolo NP può fare un numero polinomiale di domande, anche adattive.", href: "/classi/DELTA2" },
+  { id: "hard", name: "Hard e completo", aliases: ["hard", "completo", "completezza"], definition: "Un problema è C-hard se ogni problema di C si riduce a esso. È C-completo se inoltre appartiene a C. Specifica sempre il tipo di riduzione.", href: "/problemi" },
+  { id: "amplification", name: "Amplificazione dell’affidabilità", aliases: ["probabilità di errore", "errore limitato", "voto di maggioranza"], definition: "Con un margine costante sopra 1/2, ripetizioni indipendenti riducono l’errore a ε con O(log(1/ε)) ripetizioni. Il margine minuscolo consentito in PP cambia il costo.", href: "/classi#probabilistiche" },
+  { id: "disqualifier", name: "Disqualifier", aliases: ["disqualifiers", "disqualifier"], definition: "Un certificato breve che dimostra una risposta no, verificabile in tempo polinomiale. È la caratterizzazione di coNP.", href: "/classi/coNP" },
+  { id: "collapse", name: "Collasso della gerarchia", aliases: ["collasso", "collassa"], definition: "Se Σᵢᴾ = Πᵢᴾ a un livello finito, tutti i livelli superiori coincidono con quel livello. PH = Σᵢᴾ.", href: "/piani" },
+] as const;

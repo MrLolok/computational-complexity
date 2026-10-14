@@ -148,10 +148,12 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
         </span>
         <span className={pillOf[v.pill.tone]}>{v.pill.text}</span>
       </div>
-      {note && <Rich className={ui.noteInfo} html={note} />}
+      <p className="max-w-[65ch] text-muted">{op === "⊆" ? `${PLAIN[l]} è contenuta in ${PLAIN[r]}. Non sappiamo se le due classi siano uguali.` : op === "⊊" ? `${PLAIN[l]} è contenuta in ${PLAIN[r]}, e le due classi sono diverse.` : op === "=" ? "Le due classi coincidono." : op === "≠" ? "Le due classi sono diverse e nessuna contiene l’altra." : "Non conosciamo un’inclusione tra queste due classi. Questo non dimostra che siano diverse."}</p>
+      {note && <details className="border-b border-line pb-3"><summary className="cursor-pointer text-sm text-accent">Una precisazione su questa coppia</summary><Rich className={`${ui.noteInfo} mt-3`} html={note} /></details>}
 
-      <div>
-        <h3 className={`${ui.h3} mb-2`}>Come risponderesti all&apos;esame</h3>
+      <details>
+        <summary className="cursor-pointer font-semibold">Perché: le risposte da dare all&apos;esame</summary>
+        <div className="mt-3">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(250px,100%),1fr))] gap-2.5">
           <AnswerCard q={`${NAME[a]} ⊆ ${NAME[b]}?`} r={v.ab} a={a} b={b} />
           <AnswerCard q={`${NAME[b]} ⊆ ${NAME[a]}?`} r={v.ba} a={b} b={a} />
@@ -166,15 +168,16 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
           complementi, R = RE ∩ coRE, collasso di PH (Teorema 17.9), padding (Teorema 20.1). &quot;Solo se&quot; vuol dire che la
           risposta dipende da una questione aperta.
         </p>
-      </div>
+        </div>
+      </details>
 
-      <div>
-        <h3 className={`${ui.h3} mb-2`}>Le due classi a confronto</h3>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-[0.92rem]">
+      <details>
+        <summary className="cursor-pointer font-semibold">Definizioni e problemi delle due classi</summary>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-[0.92rem]">
             <thead>
               <tr className="font-ui text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-muted">
-                <th className={th} />
+                <th className={th} scope="col">Aspetto</th>
                 <th className={th}>
                   <span className="normal-case tracking-normal">
                     <ClassChip id={a} />
@@ -198,7 +201,7 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
             </tbody>
           </table>
         </div>
-      </div>
+      </details>
     </div>
   );
 }

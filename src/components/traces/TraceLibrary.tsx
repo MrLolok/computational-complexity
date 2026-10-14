@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { useAppSelector } from "@/store/hooks";
-import type { TraceProgress } from "@/store/progressSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { resetTraces, type TraceProgress } from "@/store/progressSlice";
 import { ui } from "@/lib/ui";
 
 export type TraceSummary = {
@@ -35,6 +35,7 @@ function statusOf(p: TraceProgress | undefined): Status {
 const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
 export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
+  const dispatch = useAppDispatch();
   const progress = useAppSelector((s) => s.progress.traces);
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState<Status | "all">("all");
@@ -83,6 +84,14 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
         <span>
           <b className="font-head text-2xl text-ink">{stats.answered ? Math.round((100 * stats.ok) / stats.answered) : 0}%</b> giuste
         </span>
+        <button
+          type="button"
+          className={`${ui.linkBtn} ml-auto self-center disabled:cursor-default disabled:opacity-35`}
+          disabled={!Object.keys(progress).length}
+          onClick={() => confirm("Azzerare risposte e risultati di tutte le tracce?") && dispatch(resetTraces())}
+        >
+          Azzera statistiche
+        </button>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
@@ -90,6 +99,7 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
           <span aria-hidden="true">⌕</span>
           <input
             type="search"
+            aria-label="Cerca nelle tracce"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Cerca nelle domande (es. qsat, one-way, 2016)"

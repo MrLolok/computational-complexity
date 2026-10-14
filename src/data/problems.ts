@@ -151,9 +151,9 @@ export const PROBLEMS: Problem[] = [
   "ext": true,
   "def": "Dato un grafo orientato con n nodi e due nodi x e y: esiste un cammino da x a y?",
   "brief": "Una MdT nondeterministica ricorda solo il nodo corrente e il prossimo: spazio O(log n).",
-  "why": "Una MdT nondeterministica tiene sul nastro di lavoro solo il nodo corrente e il successivo, scelto a caso tra 1 e n: due numeri da log n bit. Quindi REACHABILITY ∈ NL. Una visita del grafo lo risolve anche in tempo polinomiale, e il teorema di Savitch lo risolve deterministicamente in spazio O(log² n).",
+  "why": "Una macchina nondeterministica indovina un cammino mantenendo il nodo corrente e un contatore di O(log n) bit. Questo dà un algoritmo in spazio logaritmico nondeterministico. Una visita del grafo risolve il problema in tempo polinomiale; la simulazione di Savitch usa spazio deterministico O(log² n). Ogni problema di NL si riduce alla raggiungibilità nel grafo delle configurazioni.",
   "comp": "NL-completo: decidere un qualsiasi problema di NL equivale a cercare un cammino nel grafo delle configurazioni della macchina, quindi ogni problema di NL si riduce a REACHABILITY in spazio logaritmico.",
-  "compl": "Il complemento (y non raggiungibile da x) è un esempio delle slide della Lezione 4. Sta in coNL = NL.",
+  "compl": "Il complemento chiede se y non è raggiungibile da x. Appartiene a coNL = NL.",
   "complLab": "NL-completo",
   "ext_t": "La NL-completezza non compare né nella dispensa né nelle slide: viene dal libro di riferimento del corso (Papadimitriou) ed è riportata negli appunti (Lezione 8 §9). Dalle fonti risulta solo REACHABILITY ∈ NL e ∈ SPACE(log² n).",
   "traps": [
@@ -161,7 +161,7 @@ export const PROBLEMS: Problem[] = [
     "n": "Il teorema di Savitch, NSPACE(f) ⊆ SPACE(f²), si dimostra proprio risolvendo REACHABILITY sul grafo delle configurazioni. È la domanda di E26#1 e FE23#6 (NSPACE(log n) contro SPACE((log n)²))."
    },
    {
-    "n": "La dispensa (cap. 12) avverte che con riduzioni di costo illimitato si potrebbe \"ridurre\" TSP(D) a REACHABILITY: per questo le riduzioni del corso devono stare in spazio logaritmico."
+    "n": "Il costo della riduzione conta: una trasformazione che risolve già il problema iniziale non dimostra la sua appartenenza alla classe del problema di arrivo."
    }
   ],
   "src": [
@@ -193,7 +193,7 @@ export const PROBLEMS: Problem[] = [
   "ext": true,
   "def": "Formula in forma normale congiuntiva (CNF) in cui ogni clausola ha al più 2 letterali: è soddisfacibile?",
   "brief": "Ogni clausola diventa due implicazioni; basta cercare cammini x → ¬x → x nel grafo delle implicazioni.",
-  "why": "Ogni clausola (a ∨ b) equivale a due implicazioni, ¬a ⇒ b e ¬b ⇒ a. La formula è insoddisfacibile se e solo se, per qualche variabile x, il grafo delle implicazioni ha un cammino da x a ¬x e uno da ¬x a x. Basta quindi cercare cammini: 2-SAT sta in NL e quindi in P. La dispensa lo dice così: si riduce \"alla ricerca di cicli in un grafo di dimensione lineare\".",
+  "why": "Ogni clausola a ∨ b equivale alle implicazioni ¬a ⇒ b e ¬b ⇒ a. La formula è insoddisfacibile esattamente quando una variabile e la sua negazione appartengono alla stessa componente fortemente connessa del grafo delle implicazioni. Il problema si risolve in tempo polinomiale ed è decidibile in spazio logaritmico nondeterministico.",
   "comp": "NL-completo, come REACHABILITY. Per questo, anche se sta in P, non lo si usa come problema \"più difficile di P\".",
   "compl": "Il complemento (2-CNF insoddisfacibili) sta in coNL = NL, quindi è anch'esso NL-completo.",
   "complLab": "NL-completo",
@@ -226,7 +226,7 @@ export const PROBLEMS: Problem[] = [
     "e": "Se lo fosse, Σ<sub>3</sub><sup>P</sup> ⊆ P, contro l'ipotesi."
    },
    {
-    "n": "PRIMES → 2-SAT: la dispensa risponde sì perché crede 2-SAT P-completo. La risposta corretta è \"altro: solo se PRIMES ∈ NL\"."
+    "n": "PRIMES si riduce a 2-SAT in spazio logaritmico se e solo se PRIMES ∈ NL, perché 2-SAT è NL-completo."
    }
   ],
   "src": [
@@ -257,7 +257,7 @@ export const PROBLEMS: Problem[] = [
   "full": false,
   "def": "Si possono colorare i nodi di un grafo con 2 colori in modo che due nodi collegati abbiano sempre colori diversi?",
   "brief": "Colorato un nodo, i vicini sono obbligati: una visita trova il conflitto (ciclo dispari) in tempo polinomiale.",
-  "why": "Appena si colora un nodo, il colore di tutti i suoi vicini è obbligato. Una visita del grafo propaga i colori e trova un conflitto se c'è; il conflitto c'è esattamente quando il grafo ha un ciclo di lunghezza dispari. Tempo polinomiale. La dispensa lo dice nella prova di 3-COLORING: \"The 2-COLORING problem is in P\".",
+  "why": "Una visita propaga due colori alternati ai vertici adiacenti. Un conflitto si verifica esattamente in presenza di un ciclo dispari. Il grafo è quindi 2-colorabile se e solo se è bipartito; questa proprietà è decidibile anche in spazio logaritmico.",
   "comp": "Non è noto completo per nessuna classe del corso.",
   "ext_t": "\"Anzi in L\" non sta nelle fonti del corso. È un risultato della letteratura (la raggiungibilità su grafi non orientati sta in L, Reingold 2005), riportato negli appunti (Lezione 8 §9). All'esame basta 2-COL ∈ P.",
   "traps": [
@@ -299,7 +299,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Data una rete con capacità intere sugli archi, una sorgente s, un pozzo t e un intero K: esiste un flusso da s a t di valore almeno K?",
   "brief": "Si migliora il flusso con cammini nella rete residua; la versione furba costa O(n⁵).",
-  "why": "Il flusso si migliora lungo cammini dalla sorgente al pozzo nella rete residua (una ricerca alla REACHABILITY). La versione base costa O(n³C), con C la capacità massima: non è polinomiale, perché C è esponenziale rispetto alla lunghezza della sua codifica in binario. Una versione più furba costa O(n⁵), che è polinomiale.",
+  "why": "Si aumenta il flusso lungo cammini dalla sorgente al pozzo nella rete residua, rispettando capacità e conservazione. Scegliere cammini aumentanti minimi per numero di archi dà un numero polinomiale di aumenti, anche quando le capacità sono codificate in binario. Il valore massimo coincide con la capacità di un taglio minimo.",
   "comp": "P-completo: ogni problema di P si riduce a MAX FLOW in spazio logaritmico. Il corso lo enuncia senza prova (riepilogo della dispensa).",
   "traps": [
    {
@@ -349,7 +349,7 @@ export const PROBLEMS: Problem[] = [
   "ext": true,
   "def": "Dato un sistema di disequazioni lineari, con soluzioni reali (non per forza intere): esiste una soluzione?",
   "brief": "Come INTEGER PROGRAMMING ma con soluzioni reali: si risolve in tempo polinomiale.",
-  "why": "La dispensa lo contrappone a INTEGER PROGRAMMING: \"LINEAR PROGRAMMING, the same problem without the requirement that the solutions be integers, is in P\". Le slide della Lezione 1 citano l'algoritmo dell'ellissoide, polinomiale (il simplesso è esponenziale nel caso peggiore ma veloce in pratica).",
+  "why": "<p><b>L’idea:</b> trovare numeri che rispettino tutti i vincoli contemporaneamente. Con x ≥ 1, y ≥ 0 e x + y ≤ 3, la coppia x = 2, y = 1 funziona: verifica una disequazione alla volta.</p><p>Ogni vincolo delimita una regione; una soluzione è un punto nella loro intersezione. Sono ammessi anche valori frazionari: x = 1,5 e y = 0,5 è un’altra soluzione. In INTEGER PROGRAMMING, invece, le variabili devono essere intere.</p><p>Con coefficienti razionali codificati in binario, decidere se esiste una soluzione richiede tempo polinomiale nella lunghezza dell’input. Algoritmi come il metodo dell’ellissoide garantiscono questo limite; il simplesso può richiedere tempo esponenziale nel caso peggiore.</p>",
   "comp": "P-completo.",
   "ext_t": "La P-completezza non sta nelle fonti del corso, che dicono solo \"in P\". È un risultato della letteratura (Dobkin, Lipton, Reiss, 1979) riportato negli appunti (Lezione 8 §9).",
   "traps": [
@@ -381,7 +381,7 @@ export const PROBLEMS: Problem[] = [
   "full": false,
   "def": "Dato un intero N scritto in binario: N è primo?",
   "brief": "In P, ma non è noto P-completo. L'input è lungo log N cifre: provare i divisori è esponenziale.",
-  "why": "Il riepilogo della dispensa dice \"PRIMES ∈ P\". Attenzione alla misura: l'input è lungo circa log N cifre, quindi provare tutti i divisori fino a √N richiede tempo esponenziale nella lunghezza dell'input. Serve un algoritmo polinomiale in log N.",
+  "why": "La lunghezza dell’input è O(log N), perché N è scritto in binario. Provare i divisori fino a √N non è polinomiale rispetto a questa lunghezza. Esistono invece test deterministici di primalità polinomiali, come AKS. Non è nota la P-completezza di PRIMES.",
   "comp": "Non è noto P-completo. La dispensa, negli esercizi: \"would be true if PRIMES were P-complete, but we don't know that\".",
   "ext_t": "Il nome dell'algoritmo (AKS, Agrawal, Kayal e Saxena, 2002) non compare nelle fonti del corso.",
   "traps": [
@@ -432,7 +432,7 @@ export const PROBLEMS: Problem[] = [
   "ext": true,
   "def": "Formula CNF in cui ogni clausola ha al più un letterale positivo (clausole di Horn): è soddisfacibile?",
   "brief": "Si parte da tutto falso e si rende vero solo ciò che è obbligatorio: tempo lineare.",
-  "why": "Si parte con tutte le variabili false e si rende vero solo ciò che una clausola obbliga a rendere vero; se a un certo punto una clausola resta falsa, la formula è insoddisfacibile. La dispensa: una formula di Horn, se soddisfacibile, ha un assegnamento calcolabile in tempo lineare.",
+  "why": "Si parte con gli atomi falsi e si rendono veri solo quelli imposti dai fatti e dalle implicazioni. Si continua fino a un punto fisso. Se una clausola negativa risulta violata, la formula è insoddisfacibile; altrimenti l’assegnamento ottenuto la soddisfa. La propagazione può essere implementata in tempo lineare.",
   "comp": "P-completo.",
   "ext_t": "La P-completezza non sta nelle fonti del corso: viene dal libro di riferimento ed è negli appunti (Lezione 8 §9).",
   "traps": [
@@ -460,7 +460,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Data una formula booleana in CNF: esiste un assegnamento delle variabili che la rende vera?",
   "brief": "Certificato: l'assegnamento. Cook-Levin: ogni problema di NP si riduce a SAT. SAT = QSAT₁.",
-  "why": "Il certificato è l'assegnamento, che si controlla in tempo polinomiale. Il teorema di Cook-Levin mostra che ogni problema di NP si riduce a SAT: si scrive una formula che descrive il funzionamento della MdT nondeterministica.",
+  "why": "Un assegnamento è un certificato: controllare che ogni clausola sia vera richiede tempo polinomiale. Il teorema di Cook–Levin traduce la computazione di una macchina nondeterministica in una formula soddisfacibile esattamente quando esiste un ramo accettante. Con un solo blocco esistenziale, QSAT₁ coincide con SAT.",
   "comp": "NP-completo (Cook-Levin). Coincide con QSAT<sub>1</sub>: una QBF con il solo blocco ∃ chiede proprio se esiste un assegnamento che la rende vera.",
   "cpl": "COSAT",
   "traps": [
@@ -483,7 +483,7 @@ export const PROBLEMS: Problem[] = [
     "e": "Un problema NP-completo è hard per ogni classe contenuta in NP, quindi anche per L."
    },
    {
-    "n": "SAT → VALIDITY e VALIDITY → SAT: entrambe \"altro: solo se NP = coNP\" (dispensa, esercizi cap. 14)."
+    "n": "SAT e VALIDITY si riducono l’uno all’altro in tempo polinomiale se e solo se NP = coNP."
    }
   ],
   "src": [
@@ -506,7 +506,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "SAT in cui ogni clausola ha al più 3 letterali.",
   "brief": "SAT si riduce a 3-SAT spezzando le clausole lunghe con variabili nuove.",
-  "why": "Sta in NP come SAT. È NP-completo per riduzione da SAT: una clausola lunga si spezza in clausole di 3 letterali collegate da variabili nuove, senza cambiare la soddisfacibilità.",
+  "why": "Un assegnamento si verifica come per SAT. Una clausola lunga si può trasformare in clausole con al più tre letterali introducendo variabili ausiliarie e preservando la soddisfacibilità. La restrizione a tre letterali mantiene quindi la difficoltà di SAT.",
   "comp": "NP-completo.",
   "traps": [
    {
@@ -535,7 +535,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Formula CNF con clausole di 2 letterali e un intero K: si possono rendere vere almeno K clausole?",
   "brief": "Clausole da 2 letterali, ma chiedere \"almeno K vere\" basta a renderlo NP-completo.",
-  "why": "Il certificato è l'assegnamento. È NP-completo per riduzione da 3-SAT: ogni clausola di 3 letterali diventa un gruppo di 10 clausole di 2 letterali, con una soglia K scelta apposta.",
+  "why": "Il certificato è un assegnamento. Si valuta ogni clausola e si conta quante sono vere, confrontando il risultato con K. Chiedere che tutte le clausole di due letterali siano vere dà 2-SAT; chiedere che ne siano vere almeno K cambia il problema e consente riduzioni da 3-SAT.",
   "comp": "NP-completo.",
   "traps": [
    {
@@ -558,7 +558,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Dato un circuito booleano con porte AND, OR e NOT: esiste un input che dà uscita 1?",
   "brief": "La versione a circuito di SAT. Da non confondere con CIRC SAT.",
-  "why": "Il certificato è l'input; si valuta il circuito porta per porta in tempo polinomiale. È NP-completo come SAT, di cui è la versione a circuito.",
+  "why": "Il certificato è un assegnamento agli ingressi. Si valuta il circuito in ordine topologico, una porta alla volta, e si controlla l’uscita. Una formula SAT può essere rappresentata da un circuito di dimensione polinomiale.",
   "comp": "NP-completo.",
   "traps": [
    {
@@ -581,7 +581,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Dato un grafo e un intero K: esistono K nodi tutti collegati tra loro?",
   "brief": "Certificato: i K nodi. Una clique in G è un insieme indipendente nel grafo complementare.",
-  "why": "Il certificato sono i K nodi: si controlla in tempo polinomiale che ogni coppia sia collegata. Per la difficoltà: S è una clique in G se e solo se S è un insieme indipendente nel grafo complementare (stessi nodi, archi scambiati), quindi INDEPENDENT SET si riduce a CLIQUE.",
+  "why": "<p>Una clique è un gruppo di vertici in cui <b>ogni coppia è collegata</b>. Il certificato sono i K vertici scelti: si controllano al più K(K−1)/2 coppie.</p><p><b>Grafo complementare:</b> si mantengono tutti i vertici e si invertono gli archi fra vertici distinti. Se A e B erano collegati, nel complementare non lo sono; se non erano collegati, lo diventano. Non si aggiungono cappi.</p><p>Per esempio, il complementare di un triangolo completo su A, B, C ha gli stessi tre vertici e nessun arco. Quindi una clique in G diventa un insieme indipendente nel complementare di G: gli archi cambiano, i vertici scelti restano gli stessi.</p>",
   "comp": "NP-completo.",
   "traps": [
    {
@@ -600,7 +600,7 @@ export const PROBLEMS: Problem[] = [
     "c": "L18#6",
     "q": "CLIQUE si può risolvere in O(2^(n/2))?",
     "a": "SÌ",
-    "e": "Con m nodi la matrice di adiacenza è lunga n ≥ m², quindi m ≤ √n: provare tutti i 2^m sottoinsiemi costa 2^√n · poly(n). Non vale perché \"ogni problema NP sta in O(2^(n/2))\": non è dimostrato."
+    "e": "<b>m è il numero di nodi; n è la lunghezza dell’intero input in bit.</b> Il limite richiesto usa n, non m.<br><br><b>1. Quanto è grande l’input?</b> Con la codifica tramite matrice di adiacenza, un grafo di m nodi richiede m righe e m colonne: almeno m² bit, uno per ogni cella. Quindi n ≥ m² e m ≤ √n.<br><br><b>2. Che algoritmo usiamo?</b> Proviamo tutti i 2<sup>m</sup> gruppi di nodi. Per ogni gruppo controlliamo che contenga almeno K nodi e che ogni coppia sia collegata. Il controllo richiede tempo polinomiale, quindi il totale è al più 2<sup>√n</sup> · poly(n).<br><br><b>3. Perché basta?</b> Per n abbastanza grande, √n cresce molto più lentamente di n/2. Anche includendo il costo polinomiale dei controlli, il tempo rimane entro O(2<sup>n/2</sup>): infatti √n + k log₂ n ≤ n/2 per ogni k fissato, da un certo n in poi.<br><br><b>Esempio:</b> con 10 nodi, la sola matrice ha 100 celle. I gruppi da provare sono 2<sup>10</sup> = 1.024, mentre 2<sup>n/2</sup> è almeno 2<sup>50</sup>. La differenza nasce dal fatto che n conta i bit della descrizione."
    },
    {
     "c": "ND#6",
@@ -630,14 +630,14 @@ export const PROBLEMS: Problem[] = [
   "b": "NP",
   "lab": "NP-completo",
   "full": true,
-  "def": "Dato un grafo e un intero K: esistono K nodi senza archi tra loro?",
-  "brief": "Riduzione da 3-SAT: un triangolo per clausola, archi tra letterali opposti.",
-  "why": "Il certificato sono i K nodi. È NP-completo per riduzione da 3-SAT: un triangolo per ogni clausola, un arco tra ogni coppia di letterali opposti, e K uguale al numero di clausole. La dispensa nota che sui grafi bipartiti torna in P.",
+  "def": "Dato un grafo e un intero K: possiamo scegliere almeno K vertici senza che un arco colleghi due vertici scelti?",
+  "brief": "Scegli K vertici: nessuna coppia scelta deve essere collegata da un arco. Gli archi verso vertici non scelti sono ammessi.",
+  "why": "<p><b>L’idea:</b> scegli alcuni vertici e controlla soltanto i collegamenti fra quelli scelti. Se anche una sola coppia è collegata da un arco, il gruppo non è indipendente.</p><p><b>Esempio A—B—C—D, con K = 2:</b> {A, C} va bene, perché non c’è un arco diretto A—C. {A, B} non va bene, perché l’arco A—B collega due vertici scelti. Anche {A, D} e {B, D} vanno bene. Con K = 3 la risposta è no: ogni terna contiene almeno una coppia collegata.</p><p><b>Indipendente non significa isolato:</b> A può essere collegato a B, purché B resti fuori dal gruppo. A e C possono anche essere connessi dal percorso A—B—C: quello che è vietato è un arco diretto fra due vertici scelti.</p><p><b>Perché appartiene a NP:</b> il certificato è l’elenco dei K vertici. Si controlla che siano distinti e che nessuna delle loro coppie formi un arco. Verificare un gruppo già proposto è polinomiale; trovare un gruppo adatto può essere molto più difficile.</p><p><b>Perché è NP-hard:</b> si può tradurre 3-SAT in questo problema. Per ogni clausola si crea un triangolo con un vertice per ogni occorrenza di letterale; così puoi sceglierne al massimo uno per clausola. Si collegano inoltre le occorrenze opposte, come x e ¬x, per impedirti di sceglierle insieme. Chiedere tanti vertici indipendenti quante sono le clausole equivale a scegliere un letterale vero per ciascuna, senza contraddizioni: esiste quel gruppo se e solo se la formula è soddisfacibile.</p>",
   "comp": "NP-completo.",
   "traps": [
    {
     "c": "SP",
-    "n": "Domanda 8 senza traccia: MdT con oracolo CLIQUE che decide INDEPENDENT SET ≥ K. Si passa all'oracolo il grafo complementare con lo stesso K."
+    "n": "Una macchina con oracolo CLIQUE decide INDEPENDENT SET passando all’oracolo il grafo complementare e lo stesso K: fra i vertici scelti, ogni arco assente nel grafo iniziale diventa presente nel complementare."
    }
   ],
   "src": [
@@ -656,11 +656,11 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Dato un grafo e un intero K: esistono K nodi che toccano tutti gli archi?",
   "brief": "S è indipendente se e solo se i nodi fuori da S coprono tutti gli archi.",
-  "why": "Il certificato sono i K nodi. Un insieme S è indipendente se e solo se i nodi fuori da S toccano tutti gli archi: INDEPENDENT SET con soglia K diventa NODE COVER con soglia n − K.",
+  "why": "<p>Una copertura è un insieme di vertici che <b>tocca almeno un estremo di ogni arco</b>. Per verificarla, basta scorrere tutti gli archi.</p><p>Qui «complemento di S» significa <b>i vertici che non hai scelto</b>: T = V ∖ S. Il grafo e i suoi archi restano invariati. Sul cammino A—B—C—D, S = {A, C} è indipendente e T = {B, D} copre tutti e tre gli archi.</p><p>Perché funziona? Se S è indipendente, nessun arco ha entrambi gli estremi in S: almeno uno sta in T, dunque T lo copre. Viceversa, se T copre tutti gli archi, non può esserci un arco con entrambi gli estremi in S. Su n vertici, scegliere K vertici indipendenti equivale a una copertura di n − K vertici.</p>",
   "comp": "NP-completo.",
   "traps": [
    {
-    "n": "NODE COVER → 2-SAT: la dispensa risponde \"no\" ragionando con NP ≠ coNP. Senza ipotesi la risposta d'esame è \"altro: solo se P = NP\"."
+    "n": "Una riduzione polinomiale da NODE COVER a 2-SAT esiste se e solo se P = NP: risolverebbe in tempo polinomiale un problema NP-completo."
    }
   ],
   "src": [
@@ -679,7 +679,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Dato un grafo: esiste un cammino che passa per ogni nodo esattamente una volta?",
   "brief": "Certificato: l'ordine dei nodi. Il complemento è coNP-completo, non Π₂ᴾ-completo.",
-  "why": "Il certificato è l'ordine in cui visitare i nodi; si controlla in tempo polinomiale. È NP-completo per riduzione da 3-SAT.",
+  "why": "Il certificato è un ordine di tutti i vertici. Si controlla che nessuno compaia due volte e che ogni coppia consecutiva sia un arco. Non si richiede di tornare al vertice iniziale. Una riduzione da 3-SAT mostra la difficoltà del problema.",
   "comp": "NP-completo.",
   "cpl": "COHP",
   "traps": [
@@ -688,7 +688,7 @@ export const PROBLEMS: Problem[] = [
     "q": "Supponiamo EXP ⊂ NEXP. È vero che HAMILTON PATH non è Π<sub>2</sub><sup>P</sup>-completo?",
     "a": "altro",
     "ac": "solo se NP ≠ coNP",
-    "e": "Sarebbe Π<sub>2</sub><sup>P</sup>-completo se e solo se Π<sub>2</sub><sup>P</sup> ⊆ NP, cioè NP = coNP. L'ipotesi dà solo P ≠ NP. Il file della traccia scrive \"solo se NP = coNP\": è sbagliato."
+    "e": "Sarebbe Π<sub>2</sub><sup>P</sup>-completo se e solo se Π<sub>2</sub><sup>P</sup> ⊆ NP, cioè NP = coNP. L’ipotesi EXP ⊊ NEXP implica P ≠ NP, ma non decide se NP = coNP."
    },
    {
     "c": "F03#1",
@@ -714,7 +714,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Date le distanze intere tra n città e un budget B: esiste un giro che visita tutte le città con lunghezza totale ≤ B?",
   "brief": "Certificato: il giro. Il complemento è coNP-completo; \"= B\" invece di \"≤ B\" dà EXACT TSP.",
-  "why": "Il certificato è il giro, di cui si somma la lunghezza in tempo polinomiale. È NP-completo per riduzione da HAMILTON PATH: distanza 1 tra nodi collegati, 2 tra gli altri.",
+  "why": "Il certificato è un giro chiuso che visita tutte le città. Si sommano i pesi degli archi e si confronta il totale con B. La riduzione da HAMILTON CYCLE assegna costo 1 agli archi del grafo e 2 alle altre coppie, usando budget B = n.",
   "comp": "NP-completo.",
   "cpl": "COTSP",
   "traps": [
@@ -755,7 +755,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Si possono colorare i nodi di un grafo con 3 colori in modo che due nodi collegati abbiano sempre colori diversi?",
   "brief": "Certificato: la colorazione. Con 2 colori il problema è in P.",
-  "why": "Il certificato è la colorazione, controllabile arco per arco. È NP-completo per riduzione da 3-SAT con due gadget (dispensa cap. 13).",
+  "why": "Il certificato assegna uno dei tre colori a ciascun vertice. Si verifica ogni arco per escludere estremi dello stesso colore. Riduzioni da 3-SAT costruiscono gadget che impongono i vincoli delle clausole.",
   "comp": "NP-completo.",
   "traps": [
    {
@@ -807,7 +807,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Dato un sistema di disequazioni lineari: esiste una soluzione intera?",
   "brief": "Con soluzioni intere è NP-completo; con soluzioni reali (LINEAR PROGRAMMING) è in P.",
-  "why": "Generalizza SET COVER e molti altri problemi: ogni scelta sì/no diventa una variabile 0/1. La parte difficile della prova è mostrare che sta in NP, cioè che basta cercare soluzioni con numeri non troppo grandi.",
+  "why": "Le variabili devono assumere valori interi, quindi una soluzione reale del rilassamento non basta. Il certificato è una soluzione intera con codifica di lunghezza polinomiale; si controllano i vincoli con aritmetica binaria. Scelte sì/no possono essere rappresentate da variabili vincolate a 0 o 1.",
   "comp": "NP-completo.",
   "traps": [
    {
@@ -830,7 +830,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Oggetti con peso e valore, una capacità W e un obiettivo K: si può scegliere un sottoinsieme con peso ≤ W e valore ≥ K?",
   "brief": "NP-completo ma non in senso forte: c'è un algoritmo pseudopolinomiale.",
-  "why": "Il certificato è il sottoinsieme. È NP-completo, ma solo perché i numeri possono essere esponenzialmente grandi: esiste un algoritmo pseudopolinomiale, polinomiale nel valore dei numeri. Per questo non è NP-completo in senso forte. Argomento non chiesto all'esame negli appunti.",
+  "why": "Il certificato è il sottoinsieme di oggetti. Si sommano pesi e valori, controllando peso ≤ W e valore ≥ K. La programmazione dinamica dà algoritmi pseudopolinomiali: sono polinomiali nei valori numerici, che possono essere esponenziali rispetto alla loro codifica binaria.",
   "comp": "NP-completo, ma non in senso forte.",
   "traps": [
    {
@@ -853,7 +853,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Data una formula booleana: è vera per ogni assegnamento delle variabili (è una tautologia)?",
   "brief": "Il no ha un certificato corto (un assegnamento che la rende falsa). φ valida ⇔ ¬φ insoddisfacibile.",
-  "why": "A non avere un certificato corto è il sì; ce l'ha il no: un assegnamento che rende falsa la formula. φ è valida se e solo se ¬φ è insoddisfacibile, quindi VALIDITY è co-SAT applicato alla formula negata.",
+  "why": "Un assegnamento che rende falsa la formula certifica una risposta no. La formula φ è valida esattamente quando ¬φ è insoddisfacibile. Per provare la validità, trovare un solo assegnamento che la rende vera non è sufficiente.",
   "comp": "coNP-completo: se L sta in coNP, il suo complemento sta in NP e si riduce a SAT con una riduzione R; allora R′(x) = ¬R(x) riduce L a VALIDITY (dispensa cap. 14).",
   "compl": "Il complemento (esiste un assegnamento che rende falsa φ) è SAT applicato a ¬φ: NP-completo.",
   "complLab": "NP-completo",
@@ -897,7 +897,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Data una formula booleana in CNF: è insoddisfacibile?",
   "brief": "Complemento di SAT; coincide con co-QSAT₁.",
-  "why": "È il complemento di SAT. Il complemento di un problema NP-completo è coNP-completo, perché le riduzioni rispettano i complementi. Coincide con co-QSAT<sub>1</sub>, dato che QSAT<sub>1</sub> = SAT; e Π<sub>1</sub><sup>P</sup> = coNP.",
+  "why": "È il complemento di SAT. Un assegnamento soddisfacente certifica una risposta no alla domanda di insoddisfacibilità. Negare le risposte di un problema di NP dà un problema di coNP; per il primo livello co-QSAT₁ coincide con co-SAT.",
   "comp": "coNP-completo (cioè Π<sub>1</sub><sup>P</sup>-completo).",
   "cpl": "SAT",
   "fix": "Nella tabella di partenza co-SAT e co-QSAT<sub>1</sub> sono in due voci diverse: sono lo stesso problema.",
@@ -935,7 +935,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Dato un grafo: è vero che non esiste nessun cammino hamiltoniano?",
   "brief": "Complemento di un NP-completo: coNP-completo. Non è noto Π₂ᴾ-completo.",
-  "why": "È il complemento di HAMILTON PATH. Per il no c'è un certificato corto (il cammino); per il sì non se ne conosce uno.",
+  "why": "È il complemento di HAMILTON PATH. Un ordine hamiltoniano certifica una risposta no. Per rispondere sì si deve escludere l’esistenza di ogni cammino che visita tutti i vertici una sola volta.",
   "comp": "coNP-completo.",
   "cpl": "HP",
   "fix": "La dispensa (cap. 17) scrive che co-HAMILTON PATH è Π<sub>2</sub><sup>P</sup>-completo: non è dimostrato. È coNP-completo, cioè Π<sub>1</sub><sup>P</sup>-completo, e sarebbe Π<sub>2</sub><sup>P</sup>-completo solo se NP = coNP. Nel riepilogo (cap. 22) \"HAMILTON PATH is coNP-complete\" è invece giusto: la barra di complemento sul nome si perde solo copiando il testo.",
@@ -964,7 +964,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Date le distanze e un budget B: è vero che nessun giro ha lunghezza ≤ B?",
   "brief": "Complemento di TSP(D). Serve a costruire EXACT TSP.",
-  "why": "È il complemento di TSP(D), che è NP-completo. Il no ha un certificato corto: un giro con lunghezza ≤ B.",
+  "why": "È il complemento di TSP(D). Un giro di costo ≤ B certifica una risposta no. Una risposta sì afferma invece che nessun giro rientra nel budget.",
   "comp": "coNP-completo.",
   "cpl": "TSPD",
   "traps": [
@@ -992,11 +992,11 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Data una coppia di formule (φ, ψ): φ è soddisfacibile e ψ è insoddisfacibile?",
   "brief": "Metà domanda NP (φ soddisfacibile), metà coNP (ψ insoddisfacibile): sta in DP.",
-  "why": "SAT-UNSAT = L₁ ∩ L₂, con L₁ = {(φ, ψ) : φ soddisfacibile}, che sta in NP, e L₂ = {(φ, ψ) : ψ insoddisfacibile}, che sta in coNP. Quindi sta in DP = {A ∩ B : A ∈ NP, B ∈ coNP}.",
+  "why": "La coppia (φ,ψ) deve superare due controlli: φ è soddisfacibile e ψ è insoddisfacibile. Sono condizioni di tipo NP e coNP sulla stessa istanza, quindi la loro intersezione appartiene a DP. Ogni intersezione A ∩ B, con A in NP e B in coNP, si traduce in una coppia di questo tipo.",
   "comp": "DP-completo: se L = A ∩ B è in DP, si riduce A a SAT con R₁ e B a co-SAT con R₂; allora x ∈ L se e solo se (R₁(x), R₂(x)) ∈ SAT-UNSAT.",
   "traps": [
    {
-    "n": "DP non è NP ∩ coNP: le slide della Lezione 9 lo scrivono in rosso. NP ∩ coNP contiene problemi che stanno in entrambe; DP contiene intersezioni di due problemi diversi. <a href=\"/confronta/DP/NPcapcoNP\">Confronto DP e NP ∩ coNP</a>."
+    "n": "NP ∩ coNP contiene problemi che appartengono a entrambe le classi; DP contiene intersezioni A ∩ B di due linguaggi, con A ∈ NP e B ∈ coNP. Sono definizioni diverse; non è noto se le due classi coincidano. <a href=\"/confronta/DP/NPcapcoNP\">Confronto DP e NP ∩ coNP</a>."
    },
    {
     "c": "GE23#5",
@@ -1012,7 +1012,7 @@ export const PROBLEMS: Problem[] = [
    },
    {
     "c": "Domanda 8",
-    "n": "MdT con oracolo SAT che decide SAT-UNSAT: due domande all'oracolo, una su φ e una su ψ (Lezione 11 §5.10). Uscita in G16, F08 ed E26."
+    "n": "Una macchina con oracolo SAT decide SAT-UNSAT con due domande: φ è soddisfacibile? ψ è soddisfacibile? Accetta se la prima risposta è sì e la seconda è no."
    }
   ],
   "src": [
@@ -1035,7 +1035,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Date le distanze tra le città e un intero B: il giro più corto ha lunghezza esattamente B?",
   "brief": "\"Ottimo = B\" = \"esiste un giro ≤ B\" (NP) e \"nessun giro ≤ B − 1\" (coNP).",
-  "why": "Dire che l'ottimo vale esattamente B vuol dire due cose: esiste un giro di lunghezza ≤ B (domanda NP) e nessun giro ha lunghezza ≤ B − 1 (domanda coNP). È l'intersezione di un problema NP e di uno coNP, quindi sta in DP. Per il sì non si conosce un certificato corto: bisognerebbe provare anche che nessun giro è più corto.",
+  "why": "L’ottimo è B se e solo se esiste un giro di costo ≤ B e non esiste un giro di costo < B. Il primo controllo è di tipo NP, il secondo di tipo coNP. Trovare un giro da B non certifica da solo che sia ottimo: occorre escludere giri più economici.",
   "comp": "DP-completo: riduzione da SAT-UNSAT (slide Lezione 9).",
   "fix": "La dispensa (cap. 15) mostra che EXACT TSP è NP-hard riducendo HAMILTON PATH con B = n + 1: la riduzione non regge, perché se il grafo ha un ciclo hamiltoniano l'ottimo vale n. Quella giusta parte da HAMILTON CYCLE con B = n (appunti, Lezione 9).",
   "traps": [
@@ -1078,7 +1078,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Formula booleana quantificata ∃X₁ ∀X₂ ∃X₃ … φ con i blocchi di quantificatori alternati, il primo esistenziale: è vera?",
   "brief": "i blocchi alternati che iniziano con ∃: Σᵢᴾ-completo. QSAT₁ = SAT.",
-  "why": "Si indovina il primo blocco (∃) e per il resto si chiede a un oracolo di livello i − 1, quindi sta in Σ<sub>i</sub><sup>P</sup> = NP con oracolo Σ<sub>i-1</sub><sup>P</sup>. Ogni problema di Σ<sub>i</sub><sup>P</sup> si riscrive come una QBF di questa forma.",
+  "why": "<p><b>QSAT₁:</b> ∃x φ è SAT: basta un assegnamento. <b>QSAT₂:</b> ∃x ∀y φ richiede una scelta di x che funzioni per entrambi i valori di y. Esempio: ∃x ∀y (x ∨ y) è vera scegliendo x = 1; scegliendo x = 0 fallisce per y = 0.</p><p>Al secondo livello la formula è ∃X ∀Y φ(X,Y). La macchina sceglie i valori di X e li sostituisce in φ. Deve poi stabilire se φ è vera per ogni possibile Y.</p><p>All’oracolo SAT chiede la domanda opposta: <b>«Esiste un Y che rende falsa φ con questi valori di X?»</b>, cioè se ¬φ(X,Y) è soddisfacibile. <b>Se l’oracolo risponde no</b>, non ci sono controesempi e la scelta di X funziona. <b>Se risponde sì</b>, quella scelta viene scartata.</p><p>Con i blocchi, dopo aver fissato il primo ne restano i − 1. Si nega la formula residua: i quantificatori si scambiano e il primo diventa ∃, quindi la domanda appartiene a Σᵢ₋₁ᴾ. L’oracolo decide questa domanda; la macchina ne inverte la risposta. Per i = 1, senza blocchi residui, basta valutare direttamente la formula.</p>",
   "comp": "Σ<sub>i</sub><sup>P</sup>-completo per ogni i. Casi da ricordare: QSAT<sub>1</sub> = SAT (NP-completo), QSAT<sub>2</sub> è Σ<sub>2</sub><sup>P</sup>-completo.",
   "cpl": "COQSATi",
   "traps": [
@@ -1107,7 +1107,7 @@ export const PROBLEMS: Problem[] = [
     "e": "Starebbe in L, quindi Σ<sub>2</sub><sup>P</sup> ⊆ L, contro l'ipotesi. È L-hard, ma non sta in L."
    },
    {
-    "n": "Attenzione al testo dei PDF: QSAT con la barra sopra è il complemento. La barra si perde copiando il testo, quindi controlla sempre l'immagine della traccia."
+    "n": "La barra sopra il nome di un problema ne indica il complemento: per QSATᵢ equivale a chiedere se la formula quantificata è falsa."
    }
   ],
   "src": [
@@ -1131,7 +1131,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Complemento di QSAT<sub>i</sub>: la QBF ∃X₁ ∀X₂ … φ è falsa? Equivale a chiedere se ∀X₁ ∃X₂ … ¬φ è vera.",
   "brief": "Complemento di QSATᵢ: Πᵢᴾ-completo. co-QSAT₁ = co-SAT.",
-  "why": "È il complemento di un problema Σ<sub>i</sub><sup>P</sup>-completo, e Π<sub>i</sub><sup>P</sup> è proprio la classe dei complementi dei problemi di Σ<sub>i</sub><sup>P</sup>.",
+  "why": "<p>È la domanda opposta a QSATᵢ: <b>la formula quantificata è falsa?</b> Non significa semplicemente mettere ∀ davanti alla stessa formula.</p><p>Per negare una formula si scambiano ∃ e ∀ e si nega la parte finale: ¬(∃x ∀y φ) equivale a ∀x ∃y ¬φ. Esempio: ∃x ∀y (x ∧ y) è falsa, perché y = 0 la rende falsa qualunque x si scelga. Il complemento risponde quindi sì.</p><p>QSATᵢ è completo per Σᵢᴾ; il suo complemento è completo per Πᵢᴾ. Con i = 1 si ottiene co-SAT, cioè l’insoddisfacibilità.</p>",
   "comp": "Π<sub>i</sub><sup>P</sup>-completo. Per i = 1: co-QSAT<sub>1</sub> = co-SAT, coNP-completo.",
   "cpl": "QSATi",
   "traps": [
@@ -1193,9 +1193,9 @@ export const PROBLEMS: Problem[] = [
   "lv": "Σ₂",
   "lab": "Σ<sub>2</sub><sup>P</sup>-completo",
   "full": true,
-  "def": "Una holding possiede società che producono merci, e alcune società sono controllate da gruppi di altre società. Una società data è strategica, cioè appartiene a un insieme minimo di società che produce tutte le merci e che include ogni società i cui controllori sono tutti nell'insieme?",
-  "brief": "∃ un insieme che va bene, ∀ insieme più piccolo non va: forma ∃∀, livello 2.",
-  "why": "Si indovina un insieme che produce tutto e contiene la società (∃), poi si verifica che nessun insieme più piccolo funzioni (∀). È la forma ∃∀ del secondo livello. La difficoltà si mostra per riduzione da QSAT₂ (prova omessa nella dispensa).",
+  "def": "Scegli un gruppo di società che produca tutte le merci. Se le società scelte controllano un’altra società, includi anche quella. Il gruppo è minimale se non puoi togliere una o più società e continuare a rispettare queste regole. La domanda è: esiste un gruppo minimale che contiene la società indicata?",
+  "brief": "Una società è strategica se compare in almeno un gruppo che produce tutto, rispetta i controlli e non può essere ridotto mantenendo queste condizioni.",
+  "why": "<p><b>Quali società sono davvero indispensabili in almeno una scelta minimale?</b> Un insieme è ammissibile se produce tutte le merci e rispetta i controlli. Se A e B insieme controllano C e scegli entrambe, devi includere anche C.</p><p>Esempio senza controlli: A e B producono la merce 1, C produce la merce 2. {A, C} e {B, C} sono due scelte minimali: togliendo una qualsiasi società si perde una merce. {A, B, C} non è minimale, perché puoi togliere A oppure B. A è strategica perché appartiene almeno alla scelta minimale {A, C}.</p><p><b>Minimale per inclusione</b> significa che nessun sottoinsieme proprio funziona; non richiede il minor numero di società tra tutte le soluzioni. Si cerca ∃ un insieme ammissibile contenente la società richiesta e si controlla ∀ sottoinsiemi propri che nessuno sia ammissibile. Questo porta al secondo livello della PH.</p>",
   "comp": "Σ<sub>2</sub><sup>P</sup>-completo.",
   "cpl": "COSC",
   "traps": [
@@ -1228,12 +1228,12 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "La società data non è strategica?",
   "brief": "Complemento di un Σ₂ᴾ-completo: Π₂ᴾ-completo.",
-  "why": "È il complemento di STRATEGIC COMPANIES, che è Σ<sub>2</sub><sup>P</sup>-completo.",
+  "why": "È il complemento di STRATEGIC COMPANIES. La risposta sì richiede che la società non appartenga ad alcun insieme strategico. Scambiare i quantificatori della caratterizzazione esistenziale-universale porta alla famiglia complementare Π₂ᴾ.",
   "comp": "Π<sub>2</sub><sup>P</sup>-completo.",
   "cpl": "SC",
   "traps": [
    {
-    "n": "Nel riepilogo della dispensa \"STRATEGIC COMPANIES is Π<sub>2</sub><sup>P</sup>-complete\" ha la barra sul nome: parla di questo complemento ed è giusto."
+    "n": "co-STRATEGIC COMPANIES è il complemento di STRATEGIC COMPANIES: la società indicata non appartiene ad alcun insieme ammissibile minimale."
    }
   ],
   "src": [
@@ -1252,9 +1252,9 @@ export const PROBLEMS: Problem[] = [
   "lv": "Σ₂",
   "lab": "Σ<sub>2</sub><sup>P</sup>-completo",
   "full": true,
-  "def": "Data una base di conoscenza KB e una formula φ: φ è vera in almeno un modello minimale di KB? (Circoscrizione: i modelli minimali sono quelli con il minor numero possibile di anomalie.)",
+  "def": "Data una base di conoscenza KB e una formula φ: φ è vera in almeno un modello di KB minimale rispetto all’inclusione degli atomi da minimizzare?",
   "brief": "∃ un modello di KB che soddisfa φ, ∀ modello più piccolo non lo è: Σ₂ᴾ-completo.",
-  "why": "Si indovina un modello di KB in cui φ è vera (∃) e si controlla che nessun modello con meno anomalie lo batta (∀): di nuovo la forma ∃∀ del secondo livello. La versione \"φ vera in tutti i modelli minimali\" (CIRC VALIDITY) è il caso Π₂ᴾ.",
+  "why": "<p>Un modello proposizionale indica quali atomi sono veri. Nella circoscrizione si minimizzano alcuni atomi: <b>si scarta un modello se ne esiste uno ammissibile con un insieme strettamente più piccolo di atomi minimizzati veri</b>, rispettando gli eventuali atomi fissati.</p><p>Esempio: KB = p ∨ q e minimizziamo entrambi gli atomi. I modelli sono {p}, {q} e {p, q}. I primi due sono minimali; l’ultimo non lo è, perché contiene un modello più piccolo. La domanda «p è vera in almeno un modello minimale?» ha risposta sì grazie a {p}. «p è vera in tutti?» ha invece risposta no, per {q}.</p><p>CIRC SAT usa la prima domanda: ∃ un modello che soddisfa KB e φ, e ∀ candidati strettamente minori nessuno soddisfa i vincoli. La minimalità riguarda l’inclusione degli atomi minimizzati, non semplicemente il loro numero.</p>",
   "comp": "Σ<sub>2</sub><sup>P</sup>-completo.",
   "traps": [
    {
@@ -1299,7 +1299,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Formula booleana quantificata con un numero qualsiasi di alternanze di quantificatori: è vera?",
   "brief": "Valutazione ricorsiva che riusa lo spazio. Hard per ogni classe dentro PSPACE.",
-  "why": "Si valuta ricorsivamente, un quantificatore alla volta, riusando sempre lo stesso spazio: spazio polinomiale. Ogni problema di PSPACE si scrive come una QBF, con la stessa idea del predicato PATH(a, b, i) del teorema di Savitch.",
+  "why": "<p><b>SAT cerca un assegnamento; QSAT valuta scelte e condizioni universali nell’ordine indicato.</b> ∃ significa che basta una scelta; ∀ significa che devono funzionare entrambe, 0 e 1.</p><p>In ∃x ∀y ∃z (z ↔ (x ⊕ y)), scegli prima x. Poi, per ciascun valore di y, puoi scegliere uno z diverso: con x = 0, scegli z = 0 quando y = 0 e z = 1 quando y = 1. La formula è vera. Una scelta esistenziale può dipendere dai valori universali che la precedono.</p><p>Si esplora l’albero: per ∃ basta un ramo vero, per ∀ devono essere veri entrambi. Una visita in profondità riusa lo spazio tra i rami e usa spazio polinomiale. Qui il numero di blocchi può crescere con l’input; QSATᵢ, invece, fissa i in anticipo.</p>",
   "comp": "PSPACE-completo. Quindi è hard per ogni classe contenuta in PSPACE: P, NP, coNP, DP, ogni Σ<sub>i</sub><sup>P</sup> e Π<sub>i</sub><sup>P</sup>.",
   "traps": [
    {
@@ -1354,7 +1354,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Gioco su un grafo orientato con un nodo di partenza: due giocatori scelgono a turno un successore dell'ultimo nodo, senza ripetere nodi; chi non può muovere perde. Il primo giocatore ha una strategia vincente?",
   "brief": "\"Esiste una mia mossa tale che per ogni tua mossa…\": l'alternanza ∃∀ di QSAT.",
-  "why": "Si esplora l'albero delle partite in profondità; una partita dura al più n mosse, quindi basta spazio polinomiale. Per la difficoltà, QSAT si riduce a GEOGRAPHY: \"esiste una mia mossa tale che per ogni tua risposta…\" è proprio l'alternanza ∃∀.",
+  "why": "Si esplora l’albero delle partite in profondità. Poiché i vertici non possono essere ripetuti, ogni partita dura al più n mosse e richiede spazio polinomiale. Una strategia vincente deve prevedere una propria mossa per ogni risposta possibile dell’avversario.",
   "comp": "PSPACE-completo.",
   "traps": [
    {
@@ -1401,16 +1401,16 @@ export const PROBLEMS: Problem[] = [
   "b": "NEXP",
   "lab": "NEXP-completo",
   "full": true,
-  "def": "Data una formula del primo ordine senza simboli di funzione, della forma ∃x₁…∃xₖ ∀y₁…∀yₕ φ: è soddisfacibile?",
-  "brief": "Bastano modelli con k elementi: si indovina il modello (esponenziale) e si controllano tutte le scelte delle y.",
-  "why": "Se la formula ha un modello, ne ha uno con al più k elementi (più le costanti): non ci sono funzioni per costruirne altri. Si indovina quel modello, che può essere esponenziale, e si controllano tutte le kʰ scelte delle y: tempo esponenziale nondeterministico.",
+  "def": "Possiamo costruire una situazione in cui una regola come «esiste una persona che conosce tutti» sia vera? Le regole ammesse scelgono prima alcuni oggetti («esiste», ∃), poi controllano una condizione per ogni oggetto («per tutti», ∀). Si usano proprietà e relazioni, senza funzioni come «il padre di x».",
+  "brief": "Scegli oggetti e relazioni per rendere vera una regola: prima «esiste», poi «per tutti», senza funzioni. Esempio: esiste una persona che conosce tutti.",
+  "why": "<p><b>Di che cosa parliamo?</b> Di oggetti e relazioni: per esempio persone e la relazione «conosce». Qui x e y rappresentano persone, non bit 0 o 1. «Soddisfacibile» significa che possiamo costruire almeno una situazione in cui la regola è vera.</p><p><b>Esempio:</b> la regola è «esiste una persona che conosce tutti». Immagina un mondo con una sola persona, Ada, e stabilisci che Ada conosce se stessa. La regola è vera: scegli Ada e verifica che conosca ogni persona di quel mondo. Abbiamo costruito un <b>modello</b>: un insieme di oggetti e una descrizione delle relazioni fra loro.</p><p><b>Come si legge la notazione:</b> ∃x ∀y Conosce(x, y) significa «esiste una persona x tale che, per ogni persona y, x conosce y». Nella forma generale ∃X ∀Y φ, X e Y sono gruppi di variabili; φ è la condizione da verificare, composta da proprietà e relazioni, senza altri quantificatori. Tutte le scelte «esiste» vengono prima dei controlli «per tutti».</p><p><b>Che cosa escludiamo?</b> Una funzione come Padre(x) restituisce un oggetto, il padre di x; una relazione come Conosce(x, y) dice invece se un collegamento è vero o falso. Questo problema ammette relazioni e nomi di oggetti, ma non funzioni che producono oggetti a partire da altri.</p><p>Queste restrizioni garantiscono che, se la regola è soddisfacibile, basta un modello finito con al più tanti elementi quanti le variabili esistenziali e i nomi di oggetti presenti, e almeno un elemento. Si scelgono le relazioni e si controllano tutte le combinazioni dei valori di Y. Le tabelle delle relazioni e i controlli possono richiedere tempo esponenziale.</p>",
   "comp": "NEXP-completo. Quindi non sta in NP, perché NP ⊊ NEXP ✱ (appunti).",
   "traps": [
    {
     "c": "E26#2",
     "q": "È vero che SCHÖNFINKEL-BERNAYS SAT non è NEXP-completo?",
     "a": "NO",
-    "e": "È NEXP-completo (Lezione 10)."
+    "e": "È NEXP-completo."
    },
    {
     "c": "FE23#1",
@@ -1433,7 +1433,7 @@ export const PROBLEMS: Problem[] = [
     "e": "È già Σ<sub>3</sub><sup>P</sup>-hard; starci darebbe NEXP ⊆ Σ<sub>3</sub><sup>P</sup>."
    },
    {
-    "n": "SB-SAT → 2-SAT: NO, perché darebbe NEXP ⊆ P, mentre P ⊊ EXP ⊆ NEXP (dispensa, esercizi cap. 13)."
+    "n": "SB-SAT non si riduce a 2-SAT in tempo polinomiale: altrimenti NEXP ⊆ P, in contrasto con P ⊊ EXP ⊆ NEXP."
    }
   ],
   "src": [
@@ -1460,7 +1460,7 @@ export const PROBLEMS: Problem[] = [
   "full": true,
   "def": "Un circuito piccolo descrive un circuito enorme: dato il numero di una porta, ne restituisce il tipo e gli ingressi. Il circuito enorme è soddisfacibile?",
   "brief": "CIRCUIT SAT in forma succinta: l'input è esponenzialmente più corto del circuito, e si sale da NP a NEXP.",
-  "why": "Si indovina un assegnamento delle variabili, che può essere esponenziale, e si valuta il circuito enorme porta per porta, chiedendo al circuito piccolo com'è fatta ogni porta: tempo esponenziale nondeterministico.",
+  "why": "Un circuito piccolo descrive porte e collegamenti di un circuito molto più grande, attraverso i loro indici. L’assegnamento e il circuito descritto possono avere dimensione esponenziale rispetto all’input. Indovinare l’assegnamento e valutare tutte le porte richiede tempo esponenziale nondeterministico.",
   "comp": "NEXP-completo. Negli appunti è fuori esame: basta sapere la classe.",
   "traps": [
    {
@@ -1487,7 +1487,7 @@ export const PROBLEMS: Problem[] = [
   "full": false,
   "def": "Una formula del primo ordine è valida, cioè vera in tutti i modelli?",
   "brief": "Si enumerano le dimostrazioni (Gödel): il sì arriva. Non decidibile (Church-Turing).",
-  "why": "Per il teorema di completezza di Gödel ogni formula valida ha una dimostrazione: si elencano tutte le dimostrazioni, dalla più corta in su, e se la formula è valida prima o poi si trova la sua. Se non lo è, la ricerca non finisce mai. Il teorema di Church-Turing dice che non si può fare di meglio: non è decidibile.",
+  "why": "Ogni formula valida del primo ordine ha una dimostrazione formale. Enumerare le dimostrazioni permette di trovare prima o poi una prova delle istanze sì. Sulle istanze no la ricerca può non terminare: la validità è semidecidibile, ma non decidibile.",
   "comp": "Sta in RE ma non in R (è semidecidibile, non decidibile).",
   "cpl": "FOS",
   "traps": [
@@ -1518,7 +1518,7 @@ export const PROBLEMS: Problem[] = [
   "full": false,
   "def": "Una formula del primo ordine è soddisfacibile, cioè vera in almeno un modello?",
   "brief": "φ soddisfacibile ⇔ ¬φ non valida: il complemento della validità.",
-  "why": "φ è soddisfacibile se e solo se ¬φ non è valida. È quindi il complemento della validità: sta in coRE, e non in R, perché R è chiusa per complemento e allora anche la validità sarebbe decidibile.",
+  "why": "<p>Chiediamo se esistono <b>un dominio e un’interpretazione dei predicati</b> che rendono vera la formula. Per ∃x R(x) basta il dominio {a} con R(a) vera: abbiamo un modello e quindi una risposta sì.</p><p>Soddisfacibilità significa «vera in almeno un modello»; validità significa «vera in ogni modello». Per esempio, ∃x R(x) è soddisfacibile ma non valida: nel dominio {a} con R sempre falsa non vale.</p><p>Senza le restrizioni di Schönfinkel–Bernays, non esiste un algoritmo che termini sempre e risponda correttamente per ogni formula. Alcune formule hanno soltanto modelli infiniti, quindi cercare solo domini finiti non basta. φ è soddisfacibile se e solo se ¬φ non è valida: per questo il problema appartiene a coRE ed è indecidibile.</p>",
   "comp": "Sta in coRE ma non in R.",
   "cpl": "FOV",
   "traps": [

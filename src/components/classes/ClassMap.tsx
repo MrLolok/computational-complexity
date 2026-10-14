@@ -8,7 +8,7 @@ import { classColor, ui } from "@/lib/ui";
 
 /* Opzioni della mappa (Separazioni dimostrate / Questioni aperte): restano tra una classe e l'altra. */
 type Opts = { sep: boolean; open: boolean };
-const DEFAULT_OPTS: Opts = { sep: true, open: true };
+const DEFAULT_OPTS: Opts = { sep: false, open: false };
 let opts = DEFAULT_OPTS;
 const subs = new Set<() => void>();
 const setOpts = (p: Partial<Opts>) => {
@@ -88,7 +88,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
     const next = id && id !== sel ? id : null;
     if (next) requestPanelScroll();
     setHover(null);
-    router.push(next ? `/classi/${next}` : "/", { scroll: false });
+    router.push(next ? `/classi/${next}` : "/classi", { scroll: false });
   };
   const onKey = (id: ClassId) => (e: KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -117,7 +117,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
         <svg
           className="block h-auto w-full min-w-[480px] font-ui"
           viewBox="0 0 760 1250"
-          role="img"
+          role="group"
           aria-label="Diagramma delle inclusioni tra le classi di complessità"
         >
           {BANDS.map(([t, y1, y2], i) => (

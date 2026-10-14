@@ -1,0 +1,51 @@
+{
+    "mode": "built-in GPT-Image",
+    "purpose": "Correzioni finali dei diagrammi verificati visivamente",
+    "refinements": [
+        {
+            "file": "coqsati-2.webp",
+            "ref": "coqsati-1.webp",
+            "prompt": "Preserve this exact ∃x / ∀y decision tree, all nodes, positions and labels. To show counterexamples to x AND y: highlight BOTH y0 branches coral and put numeral 0 in the two leaves directly below y0. Both y1 branches remain dim gray and their leaves MUST stay empty with no digits. Put a small coral cross beside each ∀y node because its y0 branch fails. Root and x0 x1 stay visible. No numeral 1 anywhere, no extra nodes, no logical AND gate additions."
+        },
+        {
+            "file": "coqsati-3.webp",
+            "ref": "coqsati-1.webp",
+            "prompt": "Edit this exact tree to represent the complement ∀x ∃y NOT(x AND y). Preserve positions, nodes and x0 x1 y0 y1 labels. Change root label ∃x to ∀x. Change BOTH internal ∀y labels to ∃y. Select the y0 branch in BOTH halves mint and put numeral 1 only in the two selected y0 leaves. Unselected y1 branches are dim gray and BOTH y1 leaves MUST remain blank, no digit 0 or 1. Add one mint check next to root. No other changes."
+        },
+        {
+            "file": "sc-2.webp",
+            "ref": "sc-1.webp",
+            "prompt": "Preserve this exact company-goods diagram and ALL THREE connections: A→1, B→1, C→2, and absolutely NO others. Highlight A and C mint, B gray. Highlight edges A→1 and C→2 mint; edge B→1 stays gray. Show small separate mint selection outlines around A and C only, never enclose B in a selection frame. Do not add edges A→2, B→2 or C→1. Keep labels A B C 1 2 and exact geometry."
+        },
+        {
+            "file": "sc-3.webp",
+            "ref": "sc-1.webp",
+            "prompt": "Create two mini panels based on this exact company-goods diagram with ONLY connections A→1, B→1, C→2. In BOTH panels B is gray and unselected. LEFT: remove selected company A by dimming A and its edge to1; keep C→2 mint; goods1 has a coral cross because no selected company supplies it. RIGHT: keep A→1 mint, dim C and its edge to2; goods2 has a coral cross. No edges A→2, B→2 or C→1 in either panel. The same set {A,C} is being tested by removing one member. Keep minimal labels A B C 1 2 only."
+        },
+        {
+            "file": "circ-2.webp",
+            "ref": "circ-1.webp",
+            "prompt": "Edit this exact set of candidate model cards for circumscription. Keep first p-only card with p mint and q gray, second q-only card with p gray q mint. Put mint outlines around these TWO singleton cards. Third card p-plus-q has BOTH p and q mint but coral outline and a coral cross to show nonminimality. Remove the fourth empty invalid model card. Draw containment arrows from third card to first and second. Add NO logic gates at all: no AND or OR symbols or shapes, just the same labeled atom tokens p and q. Preserve which atoms are true."
+        },
+        {
+            "file": "qsat-2.webp",
+            "ref": "qsat-1.webp",
+            "prompt": "Preserve this exact three-level quantifier tree and EVERY quantifier and edge label. Highlight only the x0 edge from root ∃x to LEFT ∀y mint. Under that left ∀y keep BOTH y0 and y1 branches active to their ∃z nodes. Under y0 select z0 mint ending at a mint circle with numeral1. Under y1 select z1 mint ending at a mint circle with numeral1. All other branches, including whole x1 half, stay subdued GRAY with no red markers and no output digits. Do not change the root to x0 or rename any ∀y to y0. Keep root ∃x, second level ∀y, third level ∃z."
+        },
+        {
+            "file": "qsat-3.webp",
+            "ref": "qsat-1.webp",
+            "prompt": "Final successful quantified formula evaluation. Keep exact quantifier tree and every existing label and node location. Root remains ∃x, two second-level nodes remain ∀y, four third-level nodes remain ∃z. Highlight x0 branch and its left ∀y mint. BOTH of its y0 and y1 branches are mint. Under y0 select z0 with terminal1 mint; under y1 select z1 with terminal1 mint. The unchosen z edges and entire x1 half stay dim gray with NO output digits. Add mint checks next to left ∀y and root ∃x to show universal and existential success. Do not add extra quantifier levels or replace quantifiers with OR glyphs."
+        },
+        {
+            "file": "sc-3.webp",
+            "prompt": "Use case: scientific-educational. Edit this exact diagram. Change ONLY company B in both panels to a dim gray outline, dim gray letter B, and make BOTH edges B→1 dim gray, because B is unselected in both cases. Keep EVERYTHING ELSE: left removed A gray, selected C mint edge to2, missing goods1 coral cross; right selected A mint edge to1, removed C gray, missing goods2 coral cross. Preserve exact connections A→1, B→1, C→2. Keep existing two-panel composition and wide aspect ratio, no cropping, no added symbols or connections.",
+            "ref": "sc-3.webp"
+        },
+        {
+            "file": "fos-3.webp",
+            "prompt": "Use case: scientific-educational. Edit this exact image for formula ∃x R(x) in the singleton domain U={a}. Remove ONLY the two blue boxes x=b and x=c and their two branching arrows: b and c are not members of this domain. Keep root ∃x, ONLY arrow to x=a mint with check, and the right model box U with one a plus R containing one a. Preserve all other geometry, dark background, colors and 3:2 canvas. No new labels or nodes.",
+            "ref": "fos-3.webp"
+        }
+    ]
+}

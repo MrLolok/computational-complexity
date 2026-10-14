@@ -79,6 +79,15 @@ const progressSlice = createSlice({
       if (action.payload.known) state.flashKnown[action.payload.id] = true;
       else delete state.flashKnown[action.payload.id];
     },
+    resetTraces(state) {
+      state.traces = {};
+    },
+    /** azzera tutto Esercitati: quiz delle tracce, quiz sui problemi, flashcard */
+    resetExercises(state) {
+      state.examQuiz = {};
+      state.problemQuiz = { ok: 0, tot: 0 };
+      state.flashKnown = {};
+    },
     resetAll() {
       return initialProgress;
     },
@@ -87,6 +96,7 @@ const progressSlice = createSlice({
 
 export const {
   hydrate, answerTraceQuestion, setTraceQ8Done, completeTrace, restartTrace,
-  answerExamQuestion, resetExamQuiz, recordProblemQuiz, resetProblemQuiz, setFlashKnown, resetAll,
+  answerExamQuestion, resetExamQuiz, recordProblemQuiz, resetProblemQuiz, setFlashKnown,
+  resetTraces, resetExercises, resetAll,
 } = progressSlice.actions;
 export default progressSlice.reducer;

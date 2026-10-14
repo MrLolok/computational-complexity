@@ -16,7 +16,7 @@ function subscribe(cb: () => void) {
     window.removeEventListener(EVT, cb);
   };
 }
-const getSnapshot = () => decodeURIComponent(window.location.hash.replace(/^#/, ""));
+const getSnapshot = () => window.location.hash.replace(/^#/, "");
 const getServerSnapshot = () => "";
 
 /** nodo selezionato: quello dell'#hash se valido, altrimenti S2 */

@@ -69,10 +69,11 @@ export const whereText = (t: Theorem) =>
         .filter(Boolean)
         .join(" · ");
 
-export function filterTheorems(q: string, cls: string) {
+export function filterTheorems(q: string, cls: string, provedOnly = false) {
   const nq = thNorm(q).trim();
   return THEOREMS.filter(
     (t) =>
+      (!provedOnly || t.prova === "nel corso") &&
       (cls === "all" || (t.classi || []).includes(cls as ClassId)) &&
       (!nq || thNorm(t.nome + " " + t.enunciato + " " + (t.intuizione || "") + " " + (t.capitolo || "")).includes(nq)),
   );

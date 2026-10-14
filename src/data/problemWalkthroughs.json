@@ -1,0 +1,866 @@
+{
+    "REACH": {
+        "outcome": "Sì: D è raggiungibile da A.",
+        "note": "Il cammino trovato è un certificato; la visita del grafo è un algoritmo risolutivo.",
+        "slides": [
+            {
+                "title": "Individua partenza e arrivo",
+                "caption": "Grafo orientato con archi A → B, B → C, A → C e C → D. Cerchiamo un cammino da A a D.",
+                "alt": "Individua partenza e arrivo. Grafo orientato con archi A → B, B → C, A → C e C → D. Cerchiamo un cammino da A a D.",
+                "src": "/illustrations/problems/reach-1.webp"
+            },
+            {
+                "title": "Esplora i successori",
+                "caption": "Da A raggiungi B e C; da C raggiungi D. Tieni traccia dei nodi già visitati.",
+                "alt": "Esplora i successori. Da A raggiungi B e C; da C raggiungi D. Tieni traccia dei nodi già visitati.",
+                "src": "/illustrations/problems/reach-2.webp"
+            },
+            {
+                "title": "Leggi il cammino",
+                "caption": "A → C → D usa solo archi del grafo: la risposta è sì.",
+                "alt": "Leggi il cammino. A → C → D usa solo archi del grafo: la risposta è sì.",
+                "src": "/illustrations/problems/reach-3.webp"
+            }
+        ]
+    },
+    "SAT2": {
+        "outcome": "Sì: x = 1 e y = 1 soddisfano la formula.",
+        "note": "Per 2-SAT il metodo generale usa le componenti fortemente connesse del grafo delle implicazioni.",
+        "slides": [
+            {
+                "title": "Leggi le clausole",
+                "caption": "Considera (x ∨ y) ∧ (¬x ∨ y) ∧ (x ∨ ¬y). Ogni clausola ha due letterali.",
+                "alt": "Leggi le clausole. Considera (x ∨ y) ∧ (¬x ∨ y) ∧ (x ∨ ¬y). Ogni clausola ha due letterali.",
+                "src": "/illustrations/problems/sat2-1.webp"
+            },
+            {
+                "title": "Trova i valori coerenti",
+                "caption": "La seconda clausola impone x ⇒ y e la terza y ⇒ x. La prima esclude x = y = 0.",
+                "alt": "Trova i valori coerenti. La seconda clausola impone x ⇒ y e la terza y ⇒ x. La prima esclude x = y = 0.",
+                "src": "/illustrations/problems/sat2-2.webp"
+            },
+            {
+                "title": "Verifica tutte le clausole",
+                "caption": "Con x = y = 1, le tre clausole sono vere. Nessuna variabile deve coincidere con la propria negazione in una componente del grafo delle implicazioni.",
+                "alt": "Verifica tutte le clausole. Con x = y = 1, le tre clausole sono vere. Nessuna variabile deve coincidere con la propria negazione in una componente del grafo delle implicazioni.",
+                "src": "/illustrations/problems/sat2-3.webp"
+            }
+        ]
+    },
+    "COL2": {
+        "outcome": "Sì: il ciclo di quattro vertici è bipartito.",
+        "note": "Una visita assegna colori alternati; un conflitto rivela un ciclo dispari.",
+        "slides": [
+            {
+                "title": "Osserva il grafo",
+                "caption": "Il grafo è il ciclo A–B–C–D–A, senza diagonali.",
+                "alt": "Osserva il grafo. Il grafo è il ciclo A–B–C–D–A, senza diagonali.",
+                "src": "/illustrations/problems/col2-1.webp"
+            },
+            {
+                "title": "Alterna i due colori",
+                "caption": "Colora A e C in blu; B e D in corallo. Ogni vicino riceve il colore opposto.",
+                "alt": "Alterna i due colori. Colora A e C in blu; B e D in corallo. Ogni vicino riceve il colore opposto.",
+                "src": "/illustrations/problems/col2-2.webp"
+            },
+            {
+                "title": "Controlla gli archi",
+                "caption": "Tutti e quattro gli archi collegano colori diversi: la colorazione è valida.",
+                "alt": "Controlla gli archi. Tutti e quattro gli archi collegano colori diversi: la colorazione è valida.",
+                "src": "/illustrations/problems/col2-3.webp"
+            }
+        ]
+    },
+    "MAXFLOW": {
+        "outcome": "Sì per K = 4; il flusso massimo vale 4.",
+        "note": "Il flusso deve rispettare capacità e conservazione nei nodi intermedi.",
+        "slides": [
+            {
+                "title": "Leggi le capacità",
+                "caption": "Rete: s → a con capacità 3, a → t con 2, s → b con 2, b → t con 3. Obiettivo K = 4.",
+                "alt": "Leggi le capacità. Rete: s → a con capacità 3, a → t con 2, s → b con 2, b → t con 3. Obiettivo K = 4.",
+                "src": "/illustrations/problems/maxflow-1.webp"
+            },
+            {
+                "title": "Invia il flusso",
+                "caption": "Manda 2 unità lungo s → a → t e 2 lungo s → b → t. Nei nodi a e b entra quanto esce.",
+                "alt": "Invia il flusso. Manda 2 unità lungo s → a → t e 2 lungo s → b → t. Nei nodi a e b entra quanto esce.",
+                "src": "/illustrations/problems/maxflow-2.webp"
+            },
+            {
+                "title": "Certifica il massimo",
+                "caption": "Il flusso vale 4. Il taglio {s,a} / {b,t} ha capacità 2 + 2 = 4, quindi non si può fare meglio.",
+                "alt": "Certifica il massimo. Il flusso vale 4. Il taglio {s,a} / {b,t} ha capacità 2 + 2 = 4, quindi non si può fare meglio.",
+                "src": "/illustrations/problems/maxflow-3.webp"
+            }
+        ]
+    },
+    "LP": {
+        "outcome": "Sì: (2, 1) è una soluzione reale ammissibile.",
+        "note": "L’insieme delle soluzioni reali forma una regione convessa; non si impone che i valori siano interi.",
+        "slides": [
+            {
+                "title": "Traduci i vincoli",
+                "caption": "Considera x ≥ 1, y ≥ 0 e x + y ≤ 3. Il dominio è reale.",
+                "alt": "Traduci i vincoli. Considera x ≥ 1, y ≥ 0 e x + y ≤ 3. Il dominio è reale.",
+                "src": "/illustrations/problems/lp-1.webp"
+            },
+            {
+                "title": "Interseca le regioni",
+                "caption": "I vincoli lasciano il triangolo con vertici (1,0), (3,0) e (1,2).",
+                "alt": "Interseca le regioni. I vincoli lasciano il triangolo con vertici (1,0), (3,0) e (1,2).",
+                "src": "/illustrations/problems/lp-2.webp"
+            },
+            {
+                "title": "Scegli e verifica",
+                "caption": "Il punto (2,1) soddisfa 2 ≥ 1, 1 ≥ 0 e 2 + 1 = 3.",
+                "alt": "Scegli e verifica. Il punto (2,1) soddisfa 2 ≥ 1, 1 ≥ 0 e 2 + 1 = 3.",
+                "src": "/illustrations/problems/lp-3.webp"
+            }
+        ]
+    },
+    "PRIMES": {
+        "outcome": "Sì: 7 è primo.",
+        "note": "Provare i divisori basta per questo esempio piccolo, ma non è polinomiale nella lunghezza binaria in generale. PRIMES è in P grazie ad algoritmi come AKS.",
+        "slides": [
+            {
+                "title": "Leggi l’intero",
+                "caption": "L’input 111₂ rappresenta N = 7. Chiediamo se ha divisori diversi da 1 e da sé stesso.",
+                "alt": "Leggi l’intero. L’input 111₂ rappresenta N = 7. Chiediamo se ha divisori diversi da 1 e da sé stesso.",
+                "src": "/illustrations/problems/primes-1.webp"
+            },
+            {
+                "title": "Prova il divisore necessario",
+                "caption": "Per 7 basta provare 2, l’unico intero da 2 a ⌊√7⌋. La divisione lascia resto 1.",
+                "alt": "Prova il divisore necessario. Per 7 basta provare 2, l’unico intero da 2 a ⌊√7⌋. La divisione lascia resto 1.",
+                "src": "/illustrations/problems/primes-2.webp"
+            },
+            {
+                "title": "Concludi",
+                "caption": "Nessun divisore tra 2 e ⌊√7⌋: 7 è primo.",
+                "alt": "Concludi. Nessun divisore tra 2 e ⌊√7⌋: 7 è primo.",
+                "src": "/illustrations/problems/primes-3.webp"
+            }
+        ]
+    },
+    "HORN": {
+        "outcome": "Sì: x = y = z = 1 soddisfa la formula.",
+        "note": "La propagazione rende veri solo gli atomi obbligati. Una clausola negativa violata segnalerebbe insoddisfacibilità.",
+        "slides": [
+            {
+                "title": "Parti dai fatti",
+                "caption": "Clausole: x, ¬x ∨ y, ¬y ∨ z. Inizialmente tutti gli atomi sono falsi.",
+                "alt": "Parti dai fatti. Clausole: x, ¬x ∨ y, ¬y ∨ z. Inizialmente tutti gli atomi sono falsi.",
+                "src": "/illustrations/problems/horn-1.webp"
+            },
+            {
+                "title": "Propaga gli obblighi",
+                "caption": "Il fatto x impone x = 1; x ⇒ y impone y = 1; y ⇒ z impone z = 1.",
+                "alt": "Propaga gli obblighi. Il fatto x impone x = 1; x ⇒ y impone y = 1; y ⇒ z impone z = 1.",
+                "src": "/illustrations/problems/horn-2.webp"
+            },
+            {
+                "title": "Controlla il punto fisso",
+                "caption": "Non resta nessun obbligo insoddisfatto: tutte le clausole sono vere.",
+                "alt": "Controlla il punto fisso. Non resta nessun obbligo insoddisfatto: tutte le clausole sono vere.",
+                "src": "/illustrations/problems/horn-3.webp"
+            }
+        ]
+    },
+    "SAT": {
+        "outcome": "Sì: x = 1, y = 0, z = 1 è un certificato.",
+        "note": "Verificare un assegnamento è polinomiale. Trovarlo con ricerca esaustiva può richiedere tempo esponenziale.",
+        "slides": [
+            {
+                "title": "Leggi l’istanza",
+                "caption": "Formula: (x ∨ y) ∧ (¬x ∨ z) ∧ (¬y ∨ ¬z). Tutte le clausole devono essere vere.",
+                "alt": "Leggi l’istanza. Formula: (x ∨ y) ∧ (¬x ∨ z) ∧ (¬y ∨ ¬z). Tutte le clausole devono essere vere.",
+                "src": "/illustrations/problems/sat-1.webp"
+            },
+            {
+                "title": "Scegli un assegnamento",
+                "caption": "Prova x = 1, y = 0, z = 1: ogni clausola contiene almeno un letterale vero.",
+                "alt": "Scegli un assegnamento. Prova x = 1, y = 0, z = 1: ogni clausola contiene almeno un letterale vero.",
+                "src": "/illustrations/problems/sat-2.webp"
+            },
+            {
+                "title": "Verifica il certificato",
+                "caption": "La formula vale 1. Per risolvere in generale, se un candidato fallisce bisogna cercarne un altro.",
+                "alt": "Verifica il certificato. La formula vale 1. Per risolvere in generale, se un candidato fallisce bisogna cercarne un altro.",
+                "src": "/illustrations/problems/sat-3.webp"
+            }
+        ]
+    },
+    "SAT3": {
+        "outcome": "Sì: x = 0, y = 1, z = 0 soddisfa entrambe le clausole.",
+        "note": "La restrizione a tre letterali non elimina la difficoltà di SAT.",
+        "slides": [
+            {
+                "title": "Conta i letterali",
+                "caption": "Considera (x ∨ y ∨ z) ∧ (¬x ∨ y ∨ ¬z): ogni clausola ha tre letterali.",
+                "alt": "Conta i letterali. Considera (x ∨ y ∨ z) ∧ (¬x ∨ y ∨ ¬z): ogni clausola ha tre letterali.",
+                "src": "/illustrations/problems/sat3-1.webp"
+            },
+            {
+                "title": "Scegli il certificato",
+                "caption": "Imposta y = 1, x = z = 0. Il letterale y rende vere entrambe le clausole.",
+                "alt": "Scegli il certificato. Imposta y = 1, x = z = 0. Il letterale y rende vere entrambe le clausole.",
+                "src": "/illustrations/problems/sat3-2.webp"
+            },
+            {
+                "title": "Controlla tutte le clausole",
+                "caption": "Entrambe valgono 1, quindi la congiunzione è soddisfatta.",
+                "alt": "Controlla tutte le clausole. Entrambe valgono 1, quindi la congiunzione è soddisfatta.",
+                "src": "/illustrations/problems/sat3-3.webp"
+            }
+        ]
+    },
+    "MAX2SAT": {
+        "outcome": "Sì per K = 3; nessun assegnamento soddisfa tutte e quattro le clausole.",
+        "note": "Conta le clausole vere: qui non chiediamo che lo siano tutte.",
+        "slides": [
+            {
+                "title": "Leggi soglia e clausole",
+                "caption": "Clausole: x∨y, x∨¬y, ¬x∨y, ¬x∨¬y. Obiettivo K = 3.",
+                "alt": "Leggi soglia e clausole. Clausole: x∨y, x∨¬y, ¬x∨y, ¬x∨¬y. Obiettivo K = 3.",
+                "src": "/illustrations/problems/max2sat-1.webp"
+            },
+            {
+                "title": "Conta quelle vere",
+                "caption": "Con x = y = 1, le prime tre clausole sono vere; l’ultima è falsa.",
+                "alt": "Conta quelle vere. Con x = y = 1, le prime tre clausole sono vere; l’ultima è falsa.",
+                "src": "/illustrations/problems/max2sat-2.webp"
+            },
+            {
+                "title": "Confronta con K",
+                "caption": "Il conteggio è 3 ≥ K. Provando i quattro assegnamenti si vede che ciascuno rende vera esattamente una quantità di tre clausole.",
+                "alt": "Confronta con K. Il conteggio è 3 ≥ K. Provando i quattro assegnamenti si vede che ciascuno rende vera esattamente una quantità di tre clausole.",
+                "src": "/illustrations/problems/max2sat-3.webp"
+            }
+        ]
+    },
+    "CIRCUITSAT": {
+        "outcome": "Sì: x = 1 e y = 0 producono uscita 1.",
+        "note": "Gli ingressi sono il certificato; si valuta il circuito in ordine topologico.",
+        "slides": [
+            {
+                "title": "Segui le porte",
+                "caption": "Circuito: (x ∨ y) ∧ ¬y. Due ingressi, una porta OR, una NOT e una AND finale.",
+                "alt": "Segui le porte. Circuito: (x ∨ y) ∧ ¬y. Due ingressi, una porta OR, una NOT e una AND finale.",
+                "src": "/illustrations/problems/circuitsat-1.webp"
+            },
+            {
+                "title": "Propaga i bit",
+                "caption": "Con x = 1, y = 0: OR dà 1, NOT(y) dà 1.",
+                "alt": "Propaga i bit. Con x = 1, y = 0: OR dà 1, NOT(y) dà 1.",
+                "src": "/illustrations/problems/circuitsat-2.webp"
+            },
+            {
+                "title": "Leggi l’uscita",
+                "caption": "AND(1,1) = 1: il circuito è soddisfacibile.",
+                "alt": "Leggi l’uscita. AND(1,1) = 1: il circuito è soddisfacibile.",
+                "src": "/illustrations/problems/circuitsat-3.webp"
+            }
+        ]
+    },
+    "CLIQUE": {
+        "outcome": "Sì per K = 3: {A, B, C} è una clique.",
+        "note": "Si verificano tutte le coppie del candidato, non soltanto la connessione del sottografo.",
+        "slides": [
+            {
+                "title": "Leggi grafo e dimensione",
+                "caption": "Archi AB, AC, BC, CD. Cerchiamo K = 3 vertici collegati a coppie.",
+                "alt": "Leggi grafo e dimensione. Archi AB, AC, BC, CD. Cerchiamo K = 3 vertici collegati a coppie.",
+                "src": "/illustrations/problems/clique-1.webp"
+            },
+            {
+                "title": "Scegli i vertici",
+                "caption": "Candidato {A,B,C}: sono tre vertici. D non serve alla soluzione.",
+                "alt": "Scegli i vertici. Candidato {A,B,C}: sono tre vertici. D non serve alla soluzione.",
+                "src": "/illustrations/problems/clique-2.webp"
+            },
+            {
+                "title": "Verifica ogni coppia",
+                "caption": "AB, AC e BC esistono: tutte le tre coppie sono adiacenti.",
+                "alt": "Verifica ogni coppia. AB, AC e BC esistono: tutte le tre coppie sono adiacenti.",
+                "src": "/illustrations/problems/clique-3.webp"
+            }
+        ]
+    },
+    "IS": {
+        "outcome": "Sì per K = 2: {A, C} è un insieme indipendente.",
+        "note": "Il certificato è il sottoinsieme; tra i vertici scelti non deve esserci alcun arco.",
+        "slides": [
+            {
+                "title": "Leggi il grafo",
+                "caption": "Gli archi sono A–B, B–C e C–D. Con K = 2 dobbiamo scegliere due vertici che non siano uniti da un arco.",
+                "alt": "Leggi il grafo. Gli archi sono A–B, B–C e C–D. Con K = 2 dobbiamo scegliere due vertici che non siano uniti da un arco.",
+                "src": "/illustrations/problems/is-1.webp"
+            },
+            {
+                "title": "Scegli senza adiacenze",
+                "caption": "Scegli A e C; lascia fuori B e D. Gli archi verso B e D sono ammessi, perché quei vertici non sono scelti.",
+                "alt": "Scegli senza adiacenze. Scegli A e C; lascia fuori B e D. Gli archi verso B e D sono ammessi, perché quei vertici non sono scelti.",
+                "src": "/illustrations/problems/is-2.webp"
+            },
+            {
+                "title": "Controlla il sottoinsieme",
+                "caption": "L’unica coppia scelta è A, C: non esiste un arco diretto A–C, quindi va bene. Il percorso A–B–C non viola la condizione, perché B non è scelto.",
+                "alt": "Controlla il sottoinsieme. L’unica coppia scelta è A, C: non esiste un arco diretto A–C, quindi va bene. Il percorso A–B–C non viola la condizione, perché B non è scelto.",
+                "src": "/illustrations/problems/is-3.webp"
+            }
+        ]
+    },
+    "NC": {
+        "outcome": "Sì per K = 1: {B} copre tutti gli archi.",
+        "note": "NODE COVER riguarda gli archi coperti, non tutti i vertici visitati.",
+        "slides": [
+            {
+                "title": "Osserva gli archi",
+                "caption": "Il grafo è A–B–C. Abbiamo un budget di un vertice.",
+                "alt": "Osserva gli archi. Il grafo è A–B–C. Abbiamo un budget di un vertice.",
+                "src": "/illustrations/problems/nc-1.webp"
+            },
+            {
+                "title": "Scegli il centro",
+                "caption": "Il vertice B tocca entrambi gli archi.",
+                "alt": "Scegli il centro. Il vertice B tocca entrambi gli archi.",
+                "src": "/illustrations/problems/nc-2.webp"
+            },
+            {
+                "title": "Verifica la copertura",
+                "caption": "Ogni arco ha almeno un estremo in {B}, e |{B}| = 1 ≤ K.",
+                "alt": "Verifica la copertura. Ogni arco ha almeno un estremo in {B}, e |{B}| = 1 ≤ K.",
+                "src": "/illustrations/problems/nc-3.webp"
+            }
+        ]
+    },
+    "HP": {
+        "outcome": "Sì: A → B → C → D visita ogni vertice una sola volta.",
+        "note": "Un cammino hamiltoniano visita tutti i vertici; non deve tornare al punto iniziale.",
+        "slides": [
+            {
+                "title": "Leggi il grafo",
+                "caption": "Archi AB, BC, CD e AC. Ci sono quattro vertici da visitare.",
+                "alt": "Leggi il grafo. Archi AB, BC, CD e AC. Ci sono quattro vertici da visitare.",
+                "src": "/illustrations/problems/hp-1.webp"
+            },
+            {
+                "title": "Proponi un ordine",
+                "caption": "Prova l’ordine A, B, C, D. Ogni vertice compare una volta.",
+                "alt": "Proponi un ordine. Prova l’ordine A, B, C, D. Ogni vertice compare una volta.",
+                "src": "/illustrations/problems/hp-2.webp"
+            },
+            {
+                "title": "Verifica i passi",
+                "caption": "AB, BC e CD sono archi; l’ordine usa tutti i vertici senza ripetizioni.",
+                "alt": "Verifica i passi. AB, BC e CD sono archi; l’ordine usa tutti i vertici senza ripetizioni.",
+                "src": "/illustrations/problems/hp-3.webp"
+            }
+        ]
+    },
+    "TSPD": {
+        "outcome": "Sì per B = 10: il giro ha costo 9.",
+        "note": "Un giro TSP torna alla città iniziale. Il confronto è ≤ B.",
+        "slides": [
+            {
+                "title": "Leggi distanze e budget",
+                "caption": "Tre città: AB = 2, BC = 3, CA = 4. Budget B = 10.",
+                "alt": "Leggi distanze e budget. Tre città: AB = 2, BC = 3, CA = 4. Budget B = 10.",
+                "src": "/illustrations/problems/tspd-1.webp"
+            },
+            {
+                "title": "Costruisci un giro",
+                "caption": "Visita A → B → C → A e somma le distanze: 2 + 3 + 4 = 9.",
+                "alt": "Costruisci un giro. Visita A → B → C → A e somma le distanze: 2 + 3 + 4 = 9.",
+                "src": "/illustrations/problems/tspd-2.webp"
+            },
+            {
+                "title": "Confronta il costo",
+                "caption": "Il giro visita tutte le città e 9 ≤ 10: è un certificato valido.",
+                "alt": "Confronta il costo. Il giro visita tutte le città e 9 ≤ 10: è un certificato valido.",
+                "src": "/illustrations/problems/tspd-3.webp"
+            }
+        ]
+    },
+    "COL3": {
+        "outcome": "Sì: i tre vertici del triangolo ricevono tre colori diversi.",
+        "note": "La colorazione è il certificato. Si controllano gli estremi di ogni arco.",
+        "slides": [
+            {
+                "title": "Osserva il triangolo",
+                "caption": "Archi AB, BC e CA. Due colori non bastano; ne abbiamo tre.",
+                "alt": "Osserva il triangolo. Archi AB, BC e CA. Due colori non bastano; ne abbiamo tre.",
+                "src": "/illustrations/problems/col3-1.webp"
+            },
+            {
+                "title": "Assegna i colori",
+                "caption": "A blu, B corallo, C verde: ogni vertice ha un colore.",
+                "alt": "Assegna i colori. A blu, B corallo, C verde: ogni vertice ha un colore.",
+                "src": "/illustrations/problems/col3-2.webp"
+            },
+            {
+                "title": "Verifica gli archi",
+                "caption": "AB, BC e CA collegano sempre colori diversi.",
+                "alt": "Verifica gli archi. AB, BC e CA collegano sempre colori diversi.",
+                "src": "/illustrations/problems/col3-3.webp"
+            }
+        ]
+    },
+    "IP": {
+        "outcome": "Sì: (2, 1) è una soluzione intera.",
+        "note": "Con i vincoli integrali conta un punto della griglia, non un qualsiasi punto reale della regione.",
+        "slides": [
+            {
+                "title": "Leggi i vincoli",
+                "caption": "x ≥ 1, y ≥ 0, x + y ≤ 3; in più x e y devono essere interi.",
+                "alt": "Leggi i vincoli. x ≥ 1, y ≥ 0, x + y ≤ 3; in più x e y devono essere interi.",
+                "src": "/illustrations/problems/ip-1.webp"
+            },
+            {
+                "title": "Cerca sulla griglia",
+                "caption": "Tra i punti interi della regione scegli (2,1).",
+                "alt": "Cerca sulla griglia. Tra i punti interi della regione scegli (2,1).",
+                "src": "/illustrations/problems/ip-2.webp"
+            },
+            {
+                "title": "Verifica anche l’integralità",
+                "caption": "2 e 1 sono interi e soddisfano i tre vincoli: il candidato è valido.",
+                "alt": "Verifica anche l’integralità. 2 e 1 sono interi e soddisfano i tre vincoli: il candidato è valido.",
+                "src": "/illustrations/problems/ip-3.webp"
+            }
+        ]
+    },
+    "KNAP": {
+        "outcome": "Sì: scegli A e B, peso 5 e valore 7.",
+        "note": "La verifica somma peso e valore dei soli oggetti scelti.",
+        "slides": [
+            {
+                "title": "Leggi gli oggetti",
+                "caption": "A: peso 2, valore 3; B: peso 3, valore 4; C: peso 4, valore 5. Capacità W = 5, obiettivo K = 7.",
+                "alt": "Leggi gli oggetti. A: peso 2, valore 3; B: peso 3, valore 4; C: peso 4, valore 5. Capacità W = 5, obiettivo K = 7.",
+                "src": "/illustrations/problems/knap-1.webp"
+            },
+            {
+                "title": "Scegli un sottoinsieme",
+                "caption": "Inserisci A e B nello zaino e lascia fuori C.",
+                "alt": "Scegli un sottoinsieme. Inserisci A e B nello zaino e lascia fuori C.",
+                "src": "/illustrations/problems/knap-2.webp"
+            },
+            {
+                "title": "Verifica i due limiti",
+                "caption": "Peso 2 + 3 = 5 ≤ W; valore 3 + 4 = 7 ≥ K. Entrambi i controlli riescono.",
+                "alt": "Verifica i due limiti. Peso 2 + 3 = 5 ≤ W; valore 3 + 4 = 7 ≥ K. Entrambi i controlli riescono.",
+                "src": "/illustrations/problems/knap-3.webp"
+            }
+        ]
+    },
+    "VALIDITY": {
+        "outcome": "Sì: x ∨ ¬x è una tautologia.",
+        "note": "Un solo assegnamento vero non basta: servono tutti gli assegnamenti.",
+        "slides": [
+            {
+                "title": "Leggi la formula",
+                "caption": "Considera x ∨ ¬x e chiedi se vale per ogni valore di x.",
+                "alt": "Leggi la formula. Considera x ∨ ¬x e chiedi se vale per ogni valore di x.",
+                "src": "/illustrations/problems/validity-1.webp"
+            },
+            {
+                "title": "Esamina entrambi i casi",
+                "caption": "Se x = 0, è vero ¬x; se x = 1, è vero x.",
+                "alt": "Esamina entrambi i casi. Se x = 0, è vero ¬x; se x = 1, è vero x.",
+                "src": "/illustrations/problems/validity-2.webp"
+            },
+            {
+                "title": "Concludi per tutti i valori",
+                "caption": "Entrambi gli assegnamenti danno 1: la formula è valida.",
+                "alt": "Concludi per tutti i valori. Entrambi gli assegnamenti danno 1: la formula è valida.",
+                "src": "/illustrations/problems/validity-3.webp"
+            }
+        ]
+    },
+    "COSAT": {
+        "outcome": "Sì: x ∧ ¬x è insoddisfacibile.",
+        "note": "Per rispondere sì a co-SAT bisogna escludere ogni assegnamento soddisfacente.",
+        "slides": [
+            {
+                "title": "Osserva il conflitto",
+                "caption": "La formula è la congiunzione delle clausole x e ¬x.",
+                "alt": "Osserva il conflitto. La formula è la congiunzione delle clausole x e ¬x.",
+                "src": "/illustrations/problems/cosat-1.webp"
+            },
+            {
+                "title": "Controlla i due assegnamenti",
+                "caption": "Con x = 0 fallisce x; con x = 1 fallisce ¬x.",
+                "alt": "Controlla i due assegnamenti. Con x = 0 fallisce x; con x = 1 fallisce ¬x.",
+                "src": "/illustrations/problems/cosat-2.webp"
+            },
+            {
+                "title": "Escludi la soddisfacibilità",
+                "caption": "In ogni riga c’è una clausola falsa: nessun assegnamento soddisfa la congiunzione.",
+                "alt": "Escludi la soddisfacibilità. In ogni riga c’è una clausola falsa: nessun assegnamento soddisfa la congiunzione.",
+                "src": "/illustrations/problems/cosat-3.webp"
+            }
+        ]
+    },
+    "COHP": {
+        "outcome": "Sì: il grafo disconnesso non ha cammini hamiltoniani.",
+        "note": "Un ostacolo strutturale basta per questo esempio; non è un algoritmo generale per co-HAMILTON PATH.",
+        "slides": [
+            {
+                "title": "Leggi le componenti",
+                "caption": "Quattro vertici, con soli archi AB e CD. Nessun arco collega le due coppie.",
+                "alt": "Leggi le componenti. Quattro vertici, con soli archi AB e CD. Nessun arco collega le due coppie.",
+                "src": "/illustrations/problems/cohp-1.webp"
+            },
+            {
+                "title": "Prova a passare da una componente all’altra",
+                "caption": "Un cammino che parte nella prima coppia non può raggiungere la seconda.",
+                "alt": "Prova a passare da una componente all’altra. Un cammino che parte nella prima coppia non può raggiungere la seconda.",
+                "src": "/illustrations/problems/cohp-2.webp"
+            },
+            {
+                "title": "Concludi l’assenza",
+                "caption": "Ogni cammino resta nella sua componente: non può visitare tutti e quattro i vertici.",
+                "alt": "Concludi l’assenza. Ogni cammino resta nella sua componente: non può visitare tutti e quattro i vertici.",
+                "src": "/illustrations/problems/cohp-3.webp"
+            }
+        ]
+    },
+    "COTSP": {
+        "outcome": "Sì per B = 8: nessun giro costa al più 8.",
+        "note": "È la domanda complementare di TSP(D): bisogna escludere tutti i giri entro budget.",
+        "slides": [
+            {
+                "title": "Leggi il budget",
+                "caption": "Tre città con AB = 2, BC = 3, CA = 4. Questa volta B = 8.",
+                "alt": "Leggi il budget. Tre città con AB = 2, BC = 3, CA = 4. Questa volta B = 8.",
+                "src": "/illustrations/problems/cotsp-1.webp"
+            },
+            {
+                "title": "Esamina i giri",
+                "caption": "Fissando A come partenza, i due ordini A–B–C–A e A–C–B–A hanno entrambi costo 9.",
+                "alt": "Esamina i giri. Fissando A come partenza, i due ordini A–B–C–A e A–C–B–A hanno entrambi costo 9.",
+                "src": "/illustrations/problems/cotsp-2.webp"
+            },
+            {
+                "title": "Escludi il budget",
+                "caption": "Entrambi i giri costano 9 > 8. Nessun ordine diverso resta da esaminare.",
+                "alt": "Escludi il budget. Entrambi i giri costano 9 > 8. Nessun ordine diverso resta da esaminare.",
+                "src": "/illustrations/problems/cotsp-3.webp"
+            }
+        ]
+    },
+    "SATUNSAT": {
+        "outcome": "Sì: la prima formula è soddisfacibile, la seconda no.",
+        "note": "DP combina due condizioni diverse, entrambe necessarie.",
+        "slides": [
+            {
+                "title": "Separa le due formule",
+                "caption": "φ = x ∨ y; ψ = z ∧ ¬z. La domanda richiede SAT(φ) e UNSAT(ψ).",
+                "alt": "Separa le due formule. φ = x ∨ y; ψ = z ∧ ¬z. La domanda richiede SAT(φ) e UNSAT(ψ).",
+                "src": "/illustrations/problems/satunsat-1.webp"
+            },
+            {
+                "title": "Controlla il lato SAT",
+                "caption": "Per φ scegli x = 1, y = 0: l’OR vale 1.",
+                "alt": "Controlla il lato SAT. Per φ scegli x = 1, y = 0: l’OR vale 1.",
+                "src": "/illustrations/problems/satunsat-2.webp"
+            },
+            {
+                "title": "Controlla il lato UNSAT",
+                "caption": "Per ψ, z = 0 e z = 1 danno entrambi 0. I due controlli riescono insieme.",
+                "alt": "Controlla il lato UNSAT. Per ψ, z = 0 e z = 1 danno entrambi 0. I due controlli riescono insieme.",
+                "src": "/illustrations/problems/satunsat-3.webp"
+            }
+        ]
+    },
+    "EXACT": {
+        "outcome": "Sì per B = 9: l’ottimo è esattamente 9.",
+        "note": "Trovare un giro da 9 non basta: bisogna anche escluderne uno più economico.",
+        "slides": [
+            {
+                "title": "Leggi il valore richiesto",
+                "caption": "Tre città: AB = 2, BC = 3, CA = 4. Chiediamo se l’ottimo è B = 9.",
+                "alt": "Leggi il valore richiesto. Tre città: AB = 2, BC = 3, CA = 4. Chiediamo se l’ottimo è B = 9.",
+                "src": "/illustrations/problems/exact-1.webp"
+            },
+            {
+                "title": "Trova un giro entro B",
+                "caption": "Il giro A–B–C–A costa 9: il controllo di tipo NP riesce.",
+                "alt": "Trova un giro entro B. Il giro A–B–C–A costa 9: il controllo di tipo NP riesce.",
+                "src": "/illustrations/problems/exact-2.webp"
+            },
+            {
+                "title": "Escludi giri sotto B",
+                "caption": "I due ordini possibili costano entrambi 9: nessun giro ha costo < 9. Anche il controllo coNP riesce.",
+                "alt": "Escludi giri sotto B. I due ordini possibili costano entrambi 9: nessun giro ha costo < 9. Anche il controllo coNP riesce.",
+                "src": "/illustrations/problems/exact-3.webp"
+            }
+        ]
+    },
+    "QSATi": {
+        "outcome": "Sì: al livello 2 basta scegliere x = 1.",
+        "note": "Il numero di blocchi alternati individua il livello; una scelta ∃ deve funzionare per tutti i rami ∀ successivi.",
+        "slides": [
+            {
+                "title": "Leggi il prefisso",
+                "caption": "Esempio i = 2: ∃x ∀y (x ∨ y). Prima scegli x, poi considera ogni y.",
+                "alt": "Leggi il prefisso. Esempio i = 2: ∃x ∀y (x ∨ y). Prima scegli x, poi considera ogni y.",
+                "src": "/illustrations/problems/qsati-1.webp"
+            },
+            {
+                "title": "Fissa la scelta esistenziale",
+                "caption": "Scegli x = 1. Ora esamina y = 0 e y = 1.",
+                "alt": "Fissa la scelta esistenziale. Scegli x = 1. Ora esamina y = 0 e y = 1.",
+                "src": "/illustrations/problems/qsati-2.webp"
+            },
+            {
+                "title": "Combina i rami universali",
+                "caption": "Con x = 1, x ∨ y vale 1 per entrambi i valori di y: il ramo ∀ riesce.",
+                "alt": "Combina i rami universali. Con x = 1, x ∨ y vale 1 per entrambi i valori di y: il ramo ∀ riesce.",
+                "src": "/illustrations/problems/qsati-3.webp"
+            }
+        ]
+    },
+    "COQSATi": {
+        "outcome": "Sì: la QBF originale è falsa, quindi il complemento è vero.",
+        "note": "Negare una QBF scambia ∃ e ∀ e nega la formula finale.",
+        "slides": [
+            {
+                "title": "Leggi la formula originale",
+                "caption": "Esempio: ∃x ∀y (x ∧ y). Chiediamo se è falsa.",
+                "alt": "Leggi la formula originale. Esempio: ∃x ∀y (x ∧ y). Chiediamo se è falsa.",
+                "src": "/illustrations/problems/coqsati-1.webp"
+            },
+            {
+                "title": "Cerca il valore universale che la smentisce",
+                "caption": "Per entrambe le scelte di x, y = 0 rende x ∧ y falso. Nessuna x funziona per tutte le y.",
+                "alt": "Cerca il valore universale che la smentisce. Per entrambe le scelte di x, y = 0 rende x ∧ y falso. Nessuna x funziona per tutte le y.",
+                "src": "/illustrations/problems/coqsati-2.webp"
+            },
+            {
+                "title": "Leggi il complemento",
+                "caption": "∀x ∃y ¬(x ∧ y) è vera: per ogni x scegli y = 0.",
+                "alt": "Leggi il complemento. ∀x ∃y ¬(x ∧ y) è vera: per ogni x scegli y = 0.",
+                "src": "/illustrations/problems/coqsati-3.webp"
+            }
+        ]
+    },
+    "SC": {
+        "outcome": "Sì: A appartiene all’insieme minimale {A, C}.",
+        "note": "Minimale significa che non puoi togliere una società mantenendo tutti i requisiti; non è sinonimo di cardinalità minima.",
+        "slides": [
+            {
+                "title": "Leggi merci e società",
+                "caption": "A e B producono la merce 1; C produce la merce 2. Nell’esempio non ci sono relazioni di controllo.",
+                "alt": "Leggi merci e società. A e B producono la merce 1; C produce la merce 2. Nell’esempio non ci sono relazioni di controllo.",
+                "src": "/illustrations/problems/sc-1.webp"
+            },
+            {
+                "title": "Scegli un insieme ammissibile",
+                "caption": "{A,C} produce entrambe le merci. La società richiesta A ne fa parte.",
+                "alt": "Scegli un insieme ammissibile. {A,C} produce entrambe le merci. La società richiesta A ne fa parte.",
+                "src": "/illustrations/problems/sc-2.webp"
+            },
+            {
+                "title": "Verifica la minimalità",
+                "caption": "Togliendo A manca la merce 1; togliendo C manca la merce 2. {A,C} è minimale, quindi A è strategica.",
+                "alt": "Verifica la minimalità. Togliendo A manca la merce 1; togliendo C manca la merce 2. {A,C} è minimale, quindi A è strategica.",
+                "src": "/illustrations/problems/sc-3.webp"
+            }
+        ]
+    },
+    "COSC": {
+        "outcome": "Sì: C non appartiene a nessun insieme minimale.",
+        "note": "Il complemento chiede l’assenza della società da tutti gli insiemi strategici, non da un solo candidato.",
+        "slides": [
+            {
+                "title": "Leggi l’istanza",
+                "caption": "A produce la merce 1; B la merce 2; C non produce merci. Non ci sono relazioni di controllo.",
+                "alt": "Leggi l’istanza. A produce la merce 1; B la merce 2; C non produce merci. Non ci sono relazioni di controllo.",
+                "src": "/illustrations/problems/cosc-1.webp"
+            },
+            {
+                "title": "Esamina gli insiemi ammissibili",
+                "caption": "Per produrre entrambe le merci servono A e B. Aggiungere C non aggiunge alcuna merce.",
+                "alt": "Esamina gli insiemi ammissibili. Per produrre entrambe le merci servono A e B. Aggiungere C non aggiunge alcuna merce.",
+                "src": "/illustrations/problems/cosc-2.webp"
+            },
+            {
+                "title": "Togli la società superflua",
+                "caption": "{A,B} è l’unico insieme minimale. C può sempre essere rimossa, quindi non è strategica.",
+                "alt": "Togli la società superflua. {A,B} è l’unico insieme minimale. C può sempre essere rimossa, quindi non è strategica.",
+                "src": "/illustrations/problems/cosc-3.webp"
+            }
+        ]
+    },
+    "CIRC": {
+        "outcome": "Sì: il modello minimale {p} soddisfa la query p.",
+        "note": "La circoscrizione minimizza gli atomi designati rispetto all’inclusione, non soltanto il loro numero.",
+        "slides": [
+            {
+                "title": "Leggi conoscenza e query",
+                "caption": "KB = p ∨ q. Minimizza p e q; chiedi se p è vera in almeno un modello minimale.",
+                "alt": "Leggi conoscenza e query. KB = p ∨ q. Minimizza p e q; chiedi se p è vera in almeno un modello minimale.",
+                "src": "/illustrations/problems/circ-1.webp"
+            },
+            {
+                "title": "Elimina il modello non minimale",
+                "caption": "{p,q} contiene i modelli più piccoli {p} e {q}, entrambi compatibili con KB.",
+                "alt": "Elimina il modello non minimale. {p,q} contiene i modelli più piccoli {p} e {q}, entrambi compatibili con KB.",
+                "src": "/illustrations/problems/circ-2.webp"
+            },
+            {
+                "title": "Controlla la query",
+                "caption": "Restano {p} e {q}. Nel primo p è vera: esiste un modello minimale che soddisfa la query.",
+                "alt": "Controlla la query. Restano {p} e {q}. Nel primo p è vera: esiste un modello minimale che soddisfa la query.",
+                "src": "/illustrations/problems/circ-3.webp"
+            }
+        ]
+    },
+    "QSAT": {
+        "outcome": "Sì: scegli x = 0 e, dopo y, scegli z = y.",
+        "note": "∃ combina con OR, ∀ con AND. La valutazione visita i rami riusando lo spazio.",
+        "slides": [
+            {
+                "title": "Leggi l’alternanza",
+                "caption": "Esempio ∃x ∀y ∃z [z ↔ (x ⊕ y)]. L’ultima scelta può dipendere da y.",
+                "alt": "Leggi l’alternanza. Esempio ∃x ∀y ∃z [z ↔ (x ⊕ y)]. L’ultima scelta può dipendere da y.",
+                "src": "/illustrations/problems/qsat-1.webp"
+            },
+            {
+                "title": "Segui una strategia",
+                "caption": "Fissa x = 0. Se y = 0 scegli z = 0; se y = 1 scegli z = 1.",
+                "alt": "Segui una strategia. Fissa x = 0. Se y = 0 scegli z = 0; se y = 1 scegli z = 1.",
+                "src": "/illustrations/problems/qsat-2.webp"
+            },
+            {
+                "title": "Valuta dal basso",
+                "caption": "Entrambe le scelte di y hanno un ramo z che funziona. Il nodo ∀ è vero, quindi la QBF è vera.",
+                "alt": "Valuta dal basso. Entrambe le scelte di y hanno un ramo z che funziona. Il nodo ∀ è vero, quindi la QBF è vera.",
+                "src": "/illustrations/problems/qsat-3.webp"
+            }
+        ]
+    },
+    "GEO": {
+        "outcome": "Sì: il primo giocatore sceglie B e vince.",
+        "note": "Una strategia deve considerare la risposta dell’avversario, non soltanto un cammino lungo.",
+        "slides": [
+            {
+                "title": "Leggi le mosse",
+                "caption": "Archi S → A, S → B, A → C. La pedina parte da S; B e C non hanno uscite.",
+                "alt": "Leggi le mosse. Archi S → A, S → B, A → C. La pedina parte da S; B e C non hanno uscite.",
+                "src": "/illustrations/problems/geo-1.webp"
+            },
+            {
+                "title": "Scegli la mossa vincente",
+                "caption": "S → B lascia subito il secondo giocatore senza mosse.",
+                "alt": "Scegli la mossa vincente. S → B lascia subito il secondo giocatore senza mosse.",
+                "src": "/illustrations/problems/geo-2.webp"
+            },
+            {
+                "title": "Confronta l’alternativa",
+                "caption": "S → A permetterebbe all’avversario A → C, lasciando te senza mosse. La scelta di B evita quel ramo.",
+                "alt": "Confronta l’alternativa. S → A permetterebbe all’avversario A → C, lasciando te senza mosse. La scelta di B evita quel ramo.",
+                "src": "/illustrations/problems/geo-3.webp"
+            }
+        ]
+    },
+    "SB": {
+        "outcome": "Sì: un dominio di un elemento soddisfa la formula.",
+        "note": "L’assenza di simboli di funzione permette la proprietà del modello finito per questa forma; la ricerca generale può essere esponenziale.",
+        "slides": [
+            {
+                "title": "Leggi la forma",
+                "caption": "Formula senza funzioni: ∃x ∀y R(x,y). Serve un elemento x che sia in relazione con ogni y.",
+                "alt": "Leggi la forma. Formula senza funzioni: ∃x ∀y R(x,y). Serve un elemento x che sia in relazione con ogni y.",
+                "src": "/illustrations/problems/sb-1.webp"
+            },
+            {
+                "title": "Costruisci un modello",
+                "caption": "Scegli dominio {a}, x = a e relazione R = {(a,a)}.",
+                "alt": "Costruisci un modello. Scegli dominio {a}, x = a e relazione R = {(a,a)}.",
+                "src": "/illustrations/problems/sb-2.webp"
+            },
+            {
+                "title": "Verifica il quantificatore universale",
+                "caption": "L’unico y possibile è a, e R(a,a) è vera. La formula è soddisfatta.",
+                "alt": "Verifica il quantificatore universale. L’unico y possibile è a, e R(a,a) è vera. La formula è soddisfatta.",
+                "src": "/illustrations/problems/sb-3.webp"
+            }
+        ]
+    },
+    "SUCC": {
+        "outcome": "Sì: il circuito descritto produce sempre 1.",
+        "note": "Nell’esempio il circuito espanso è piccolo. In generale può essere esponenziale rispetto alla descrizione succinta.",
+        "slides": [
+            {
+                "title": "Leggi la descrizione compatta",
+                "caption": "Una descrizione indicizzata specifica tre porte: input x, NOT(x), OR(x,NOT(x)).",
+                "alt": "Leggi la descrizione compatta. Una descrizione indicizzata specifica tre porte: input x, NOT(x), OR(x,NOT(x)).",
+                "src": "/illustrations/problems/succ-1.webp"
+            },
+            {
+                "title": "Ricostruisci le porte dell’esempio",
+                "caption": "Interroga la descrizione sulle porte 0, 1 e 2: ottieni i collegamenti del circuito.",
+                "alt": "Ricostruisci le porte dell’esempio. Interroga la descrizione sulle porte 0, 1 e 2: ottieni i collegamenti del circuito.",
+                "src": "/illustrations/problems/succ-2.webp"
+            },
+            {
+                "title": "Valuta un input",
+                "caption": "Con x = 0, NOT(x) = 1 e l’OR dà 1. Il circuito è soddisfacibile.",
+                "alt": "Valuta un input. Con x = 0, NOT(x) = 1 e l’OR dà 1. Il circuito è soddisfacibile.",
+                "src": "/illustrations/problems/succ-3.webp"
+            }
+        ]
+    },
+    "FOV": {
+        "outcome": "Sì: ∀x [R(x) ∨ ¬R(x)] è valida.",
+        "note": "Una dimostrazione certifica questo sì. In generale enumerare le prove semidecide la validità, ma sui no può non terminare.",
+        "slides": [
+            {
+                "title": "Leggi la formula",
+                "caption": "Per ogni x, R(x) oppure la sua negazione. La domanda riguarda tutti i modelli.",
+                "alt": "Leggi la formula. Per ogni x, R(x) oppure la sua negazione. La domanda riguarda tutti i modelli.",
+                "src": "/illustrations/problems/fov-1.webp"
+            },
+            {
+                "title": "Usa una legge logica",
+                "caption": "Per qualunque elemento e interpretazione, uno tra R(x) e ¬R(x) è vero.",
+                "alt": "Usa una legge logica. Per qualunque elemento e interpretazione, uno tra R(x) e ¬R(x) è vero.",
+                "src": "/illustrations/problems/fov-2.webp"
+            },
+            {
+                "title": "Concludi la validità",
+                "caption": "La legge del terzo escluso vale per ogni x in ogni modello: la formula è valida.",
+                "alt": "Concludi la validità. La legge del terzo escluso vale per ogni x in ogni modello: la formula è valida.",
+                "src": "/illustrations/problems/fov-3.webp"
+            }
+        ]
+    },
+    "FOS": {
+        "outcome": "Sì: un modello con un elemento e R(a) vera basta.",
+        "note": "Questo esempio ha un modello finito. Per formule arbitrarie del primo ordine non esiste un algoritmo generale che decida sempre sì o no.",
+        "slides": [
+            {
+                "title": "Leggi la domanda",
+                "caption": "Formula ∃x R(x): cerchiamo almeno un modello e un elemento che la rendano vera.",
+                "alt": "Leggi la domanda. Formula ∃x R(x): cerchiamo almeno un modello e un elemento che la rendano vera.",
+                "src": "/illustrations/problems/fos-1.webp"
+            },
+            {
+                "title": "Costruisci un modello concreto",
+                "caption": "Dominio {a}; interpreta R come {a}. Scegli x = a.",
+                "alt": "Costruisci un modello concreto. Dominio {a}; interpreta R come {a}. Scegli x = a.",
+                "src": "/illustrations/problems/fos-2.webp"
+            },
+            {
+                "title": "Verifica il testimone",
+                "caption": "R(a) è vera nel modello scelto: la formula è soddisfacibile.",
+                "alt": "Verifica il testimone. R(a) è vera nel modello scelto: la formula è soddisfacibile.",
+                "src": "/illustrations/problems/fos-3.webp"
+            }
+        ]
+    }
+}

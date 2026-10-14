@@ -7,6 +7,9 @@ import { THEOREMS } from "@/data/theorems";
 import { relGroups } from "@/lib/engine";
 import { classColor, ui } from "@/lib/ui";
 import StepTabs from "./StepTabs";
+import ExactTsp from "@/components/dp/ExactTsp";
+import SatUnsat from "@/components/dp/SatUnsat";
+import TrueFalse from "@/components/dp/TrueFalse";
 
 /** nodo dei piani di PH che corrisponde alla classe (/piani#<nodo>) */
 const TOWER_OF: Partial<Record<ClassId, string>> = {
@@ -37,26 +40,11 @@ const Html = ({ html, className }: { html: string; className?: string }) => (
 export function PanelIntro() {
   return (
     <>
-      <span className={ui.eyebrow}>Come si usa</span>
-      <h2 className={`${ui.h2} mt-[0.3rem]`}>Tocca una classe nella mappa</h2>
-      <div className="mt-[0.8rem] flex min-h-36 flex-col gap-[0.7rem] [&_p]:max-w-[66ch]">
-        <p>
-          Per ogni classe la scheda va per gradi: <b>intuizione</b>, <b>definizione</b>, un <b>esempio</b> svolto e il{" "}
-          <b>collegamento con l&apos;esame</b>, con le domande vere delle tracce.
-        </p>
-        <p>
-          Nella mappa la classe scelta si accende: in pieno quelle che contiene, con il bordo spesso quelle che la contengono; sbiadite
-          quelle con cui il rapporto non è noto.
-        </p>
-        <p>La catena da sapere a memoria:</p>
-        <div className={ui.formula}>L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXP ⊆ NEXP</div>
-        <p className="text-[0.92rem] text-muted">
-          con, dimostrate strette, solo <b>P ⊊ EXP</b>, <b>L ⊊ PSPACE</b>, <b>NL ⊊ PSPACE</b> e <b>NP ⊊ NEXP</b>. Tutto il resto, se
-          non segue da queste quattro, è &quot;altro: solo se…&quot;.
-        </p>
-        <p>
-          Per cominciare: <ClassChip id="DP" /> <ClassChip id="NP" /> <ClassChip id="PH" /> <ClassChip id="PSPACE" />
-        </p>
+      <h2 className={ui.h3}>Scegli una classe nella mappa</h2>
+      <div className="mt-3 flex flex-col gap-3 text-sm text-muted">
+        <p>Leggi le inclusioni dal basso verso l&apos;alto. Apri una classe per intuizione, definizione ed esempio.</p>
+        <p>⊆ = contenuta; ⊊ = contenuta e diversa. Attiva le opzioni per separazioni e questioni aperte.</p>
+        <p>Un buon punto di partenza: <ClassChip id="P" /> <ClassChip id="NP" /> <ClassChip id="coNP" /></p>
       </div>
     </>
   );
@@ -128,8 +116,10 @@ export default function ClassPanel({ id }: { id: ClassId }) {
         </p>
       )}
 
-      <div className={ui.sec}>
-        <h3 className={ui.h3}>Dove sta</h3>
+      {id === "DP" && <details className={ui.sec}><summary className="cursor-pointer font-semibold text-accent">Prova i due controlli di DP</summary><div className="mt-3 flex flex-col gap-5"><section><h3 className={`${ui.h3} mb-2`}>EXACT TSP: l&apos;ottimo è B?</h3><ExactTsp /></section><section><h3 className={`${ui.h3} mb-2`}>SAT-UNSAT: una sì, l&apos;altra no</h3><SatUnsat /></section><section><h3 className={`${ui.h3} mb-2`}>Verifica quello che sai</h3><TrueFalse /></section></div></details>}
+
+      <details className={ui.sec}>
+        <summary className="cursor-pointer font-semibold">Dove sta: inclusioni e questioni aperte</summary>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-3">
           <div>
             <h4 className={h4}>È contenuta in</h4>
@@ -182,7 +172,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
           colore: dimostrata, non si sa se stretta. ? : non si sa nemmeno se una contenga l&apos;altra. ≠ : diverse, ma nessuna contiene
           l&apos;altra.
         </p>
-      </div>
+      </details>
 
       <div className={ui.sec}>
         <h3 className={ui.h3}>Problemi completi</h3>
@@ -199,7 +189,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
             {probs.map(([k, t], i) => (
               <span key={k}>
                 {i > 0 && " · "}
-                <Link href={`/problemi/${k}`} className={`${link} whitespace-nowrap`} dangerouslySetInnerHTML={{ __html: t }} />
+                <Link href={`/problemi/${k}`} data-term={`problem:${k}`} className={`${link} whitespace-nowrap`} dangerouslySetInnerHTML={{ __html: t }} />
               </span>
             ))}
           </p>

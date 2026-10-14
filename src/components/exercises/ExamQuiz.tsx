@@ -104,9 +104,9 @@ export default function ExamQuiz() {
               })}
             </div>
             {rec && (
-              <div>
-                <Rich className={ui.noteInfo} html={`<b class="font-ui font-semibold">Risposta:</b> ${cur.q.a}`} />
-                <Rich as="p" className="mt-2" html={cur.q.e} />
+              <div className="flex flex-col items-start gap-4 border-t border-line pt-4">
+                <Rich className="w-fit max-w-full rounded-lg bg-accent-soft/50 px-3 py-2 text-sm font-semibold text-accent" html={`<span>Risposta:</span> ${cur.q.a}`} />
+                <Rich as="p" className="max-w-[72ch] leading-relaxed" html={cur.q.e} />
                 {cur.q.c.length > 0 && (
                   <p className={`${ui.hint} mt-2`}>
                     Classi coinvolte:{" "}
@@ -128,10 +128,6 @@ export default function ExamQuiz() {
                 {last ? "Ricomincia" : "Prossima →"}
               </button>
             </div>
-            <p className={ui.hint}>
-              Le mosse M1–M6 citate nelle spiegazioni sono nella Lezione 11 §3. ✔️ = risposta confermata dal correttore ufficiale; 🔁 = la soluzione
-              scritta a mano sulla traccia era sbagliata.
-            </p>
           </>
         )}
       </div>

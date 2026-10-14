@@ -145,26 +145,19 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
                 })}
                 {reveal && a && (
                   <span className={`self-center font-ui text-sm ${a.correct ? "text-ok" : "text-proved"}`}>
-                    {a.correct ? "Giusto" : "Sbagliato"}
+                    {a.correct ? "✓ Corretta" : "Da rivedere"}
                   </span>
                 )}
                 {done && !a && <span className="self-center font-ui text-sm text-muted">Senza risposta</span>}
               </div>
               {reveal && (
-                <div className="flex flex-col gap-2 border-t border-line pt-3 sm:pl-8">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-md bg-accent-soft px-2 py-0.5 font-ui text-sm font-semibold text-accent">Risposta: {q.answerNode}</span>
-                    {q.confirmed && <span className={ui.pillOk}>✔ confermata dal correttore</span>}
-                    {q.fileWrong && <span className={ui.pillProved}>🔁 la soluzione nel file è sbagliata</span>}
-                    {q.repeatOf && (
-                      <Link href={`/tracce/${q.repeatOf}`} className={ui.pill + " hover:text-accent"}>
-                        ♻ anche in {q.repeatOf}
-                      </Link>
-                    )}
+                <div className="flex flex-col gap-4 border-t border-line pt-4 sm:pl-8">
+                  <div className="inline-flex w-fit max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg bg-accent-soft/50 px-3 py-2 font-ui text-sm font-semibold text-accent">
+                    <span>Risposta:</span><div className="min-w-0 [&>div]:inline [&_p]:inline">{q.answerNode}</div>
                   </div>
-                  <div className="text-[1.02rem]">{q.explanation}</div>
-                  {q.seeAlso.length > 0 && (
-                    <p className="font-ui text-sm text-muted">
+                  <div className="max-w-[72ch] text-[1rem] leading-relaxed">{q.explanation}</div>
+                  {(q.seeAlso.length > 0 || q.repeatOf) && (
+                    <p className="border-t border-line pt-3 font-ui text-sm text-muted">
                       Vedi anche:{" "}
                       {q.seeAlso.map((r, i) => (
                         <span key={`${r.code}-${r.n}`}>
@@ -174,6 +167,7 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
                           </Link>
                         </span>
                       ))}
+                      {q.repeatOf && !q.seeAlso.some(r => r.code === q.repeatOf) && <><span>{q.seeAlso.length > 0 ? " · " : ""}</span><Link className="text-accent underline underline-offset-2" href={`/tracce/${q.repeatOf}`}>{q.repeatOf}</Link></>}
                     </p>
                   )}
                 </div>

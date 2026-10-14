@@ -25,7 +25,7 @@ export default function Page() {
     <div className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
         <span className={ui.eyebrow}>Libreria</span>
-        <h2 className={ui.h2}>Tracce d&apos;esame</h2>
+        <h1 className={ui.h2}>Tracce d&apos;esame</h1>
         <p className={ui.lede}>
           {TRACES.length} tracce, {total} domande a risposta SÌ / NO / altro più la domanda 8 sulla macchina di Turing. Apri
           una traccia, rispondi e consegna: le risposte restano salvate in questo browser.
