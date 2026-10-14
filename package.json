@@ -39,5 +39,10 @@
         "tailwindcss": "^4",
         "typescript": "^5",
         "wrangler": "^4.151.0"
+    },
+    "pnpm": {
+        "patchedDependencies": {
+            "@opennextjs/cloudflare": "patches/@opennextjs__cloudflare.patch"
+        }
     }
 }
