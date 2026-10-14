@@ -21,7 +21,7 @@ export type RunnerQuestion = {
   explanation: ReactNode;
   answerNode: ReactNode;
 };
-export type RunnerQ8 = { title: ReactNode; body: ReactNode; lessonRef: string | null; repeatOf: string | null };
+export type RunnerQ8 = { title: ReactNode; body: ReactNode; practice: ReactNode; repeatOf: string | null };
 
 const CHOICES: [Choice, string][] = [
   ["SI", "SÌ"],
@@ -199,7 +199,8 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
 
 function Q8({ code, q8, done, num }: { code: string; q8: RunnerQ8; done: boolean; num: string }) {
   const dispatch = useAppDispatch();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<"prova" | "soluzione" | null>(null);
+  const toggle = (v: "prova" | "soluzione") => setOpen((o) => (o === v ? null : v));
   return (
     <section id="d8" className={`${ui.card} scroll-mt-44 sm:scroll-mt-32`}>
       <div className="flex items-baseline gap-3">
@@ -209,9 +210,12 @@ function Q8({ code, q8, done, num }: { code: string; q8: RunnerQ8; done: boolean
           <div className="text-lg">{q8.title}</div>
         </div>
       </div>
-      <div className="flex flex-wrap items-center gap-4 sm:pl-8">
-        <button type="button" className={ui.btn} aria-expanded={open} onClick={() => setOpen((v) => !v)}>
-          {open ? "Nascondi la soluzione" : "Mostra la soluzione"}
+      <div className="flex flex-wrap items-center gap-3 sm:pl-8">
+        <button type="button" className={open === "prova" ? ui.btnPrimary : ui.btn} aria-expanded={open === "prova"} onClick={() => toggle("prova")}>
+          Provala tu
+        </button>
+        <button type="button" className={open === "soluzione" ? ui.btnPrimary : ui.btn} aria-expanded={open === "soluzione"} onClick={() => toggle("soluzione")}>
+          {open === "soluzione" ? "Nascondi la soluzione" : "Mostra la soluzione"}
         </button>
         <label className="flex cursor-pointer items-center gap-2 font-ui text-sm">
           <input
@@ -222,9 +226,12 @@ function Q8({ code, q8, done, num }: { code: string; q8: RunnerQ8; done: boolean
           />
           L&apos;ho svolta
         </label>
-        {q8.lessonRef && <span className={ui.hint}>Risolta in {q8.lessonRef}</span>}
+        <Link href="/mdt" className={ui.linkBtn}>
+          Il metodo, passo per passo
+        </Link>
       </div>
-      {open && <div className="min-w-0 border-t border-line pt-3 sm:pl-8">{q8.body}</div>}
+      {open === "prova" && <div className="min-w-0 border-t border-line pt-3 sm:pl-8">{q8.practice}</div>}
+      {open === "soluzione" && <div className="min-w-0 border-t border-line pt-3 sm:pl-8">{q8.body}</div>}
     </section>
   );
 }
