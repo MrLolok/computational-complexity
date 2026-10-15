@@ -16,6 +16,8 @@ export type RunnerQuestion = {
   fileWrong: boolean;
   repeatOf: string | null;
   seeAlso: TraceRef[];
+  /** teoremi della pagina /teoremi usati nella risposta (vuoto se nessuno) */
+  theorems: { id: string; nome: string }[];
   /** testo e spiegazione già resi dal server (Markdown + KaTeX) */
   text: ReactNode;
   explanation: ReactNode;
@@ -156,19 +158,34 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
                     <span>Risposta:</span><div className="min-w-0 [&>div]:inline [&_p]:inline">{q.answerNode}</div>
                   </div>
                   <div className="max-w-prose text-base leading-relaxed">{q.explanation}</div>
-                  {(q.seeAlso.length > 0 || q.repeatOf) && (
-                    <p className="border-t border-line pt-3 font-ui text-sm text-muted">
-                      Vedi anche:{" "}
-                      {q.seeAlso.map((r, i) => (
-                        <span key={`${r.code}-${r.n}`}>
-                          {i > 0 && " · "}
-                          <Link className="text-accent underline underline-offset-2" href={`/tracce/${r.code}#d${r.n}`}>
-                            {r.code}, domanda {r.n}
-                          </Link>
-                        </span>
-                      ))}
-                      {q.repeatOf && !q.seeAlso.some(r => r.code === q.repeatOf) && <><span>{q.seeAlso.length > 0 ? " · " : ""}</span><Link className="text-accent underline underline-offset-2" href={`/tracce/${q.repeatOf}`}>{q.repeatOf}</Link></>}
-                    </p>
+                  {(q.seeAlso.length > 0 || q.repeatOf || q.theorems.length > 0) && (
+                    <div className="flex flex-col gap-1 border-t border-line pt-3 font-ui text-sm text-muted">
+                      {(q.seeAlso.length > 0 || q.repeatOf) && (
+                        <p>
+                          Vedi anche:{" "}
+                          {q.seeAlso.map((r, i) => (
+                            <span key={`${r.code}-${r.n}`}>
+                              {i > 0 && " · "}
+                              <Link className="text-accent underline underline-offset-2" href={`/tracce/${r.code}#d${r.n}`}>
+                                {r.code}, domanda {r.n}
+                              </Link>
+                            </span>
+                          ))}
+                          {q.repeatOf && !q.seeAlso.some(r => r.code === q.repeatOf) && <><span>{q.seeAlso.length > 0 ? " · " : ""}</span><Link className="text-accent underline underline-offset-2" href={`/tracce/${q.repeatOf}`}>{q.repeatOf}</Link></>}
+                        </p>
+                      )}
+                      {q.theorems.length > 0 && (
+                        <p>
+                          Riferimenti:{" "}
+                          {q.theorems.map((t, i) => (
+                            <span key={t.id}>
+                              {i > 0 && " · "}
+                              <Link className="text-accent underline underline-offset-2" href={`/teoremi#teorema-${t.id}`} dangerouslySetInnerHTML={{ __html: t.nome }} />
+                            </span>
+                          ))}
+                        </p>
+                      )}
+                    </div>
                   )}
                 </div>
               )}

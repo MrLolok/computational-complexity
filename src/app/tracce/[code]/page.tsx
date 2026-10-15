@@ -6,6 +6,8 @@ import { PracticeLab, SolutionLab } from "@/components/mdt/MachineLab";
 import { goRightNote, MDT_BODY, TRACE_MACHINE, TRACE_NOTE } from "@/data/mdt";
 import TraceRunner, { type RunnerQuestion } from "@/components/traces/TraceRunner";
 import { TRACES, TRACE_BY, plainText } from "@/data/traces";
+import { THEOREMS } from "@/data/theorems";
+import { PROOF } from "@/data/theoremProofs";
 import { ui } from "@/lib/ui";
 
 export function generateStaticParams() {
@@ -26,6 +28,10 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
   const prev = TRACES[i - 1];
   const next = TRACES[i + 1];
 
+  /** teoremi la cui scheda in /teoremi elenca questa domanda tra quelle che lo usano */
+  const theoremsFor = (n: number) =>
+    THEOREMS.filter((th) => PROOF[th.id]?.domande.some((d) => d.traccia === t.code && d.n === n)).map((th) => ({ id: th.id, nome: th.nome }));
+
   const questions: RunnerQuestion[] = t.questions.map((q) => ({
     n: q.n,
     label: q.label,
@@ -35,6 +41,7 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
     fileWrong: q.fileWrong,
     repeatOf: q.repeatOf,
     seeAlso: q.seeAlso,
+    theorems: theoremsFor(q.n),
     text: <Markdown>{q.text}</Markdown>,
     explanation: <Markdown>{q.explanation}</Markdown>,
     answerNode: <Markdown className="[&_p]:inline">{q.answerText}</Markdown>,
