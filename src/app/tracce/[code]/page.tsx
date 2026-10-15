@@ -10,6 +10,15 @@ import { THEOREMS } from "@/data/theorems";
 import { PROOF } from "@/data/theoremProofs";
 import { ui } from "@/lib/ui";
 
+/** schede di /teoremi che dicono dove sta un problema (es. PRIMES ∈ P, SAT NP-completo): non vanno nei Riferimenti */
+const PROBLEM_RESULTS = new Set([
+  "reach-nl", "cook-levin", "3sat", "2sat-p", "horn-sat", "max2sat", "independent-set", "clique-nodecover", "hamilton-path",
+  "tsp-d", "3-coloring", "tripartite-matching", "set-problems", "integer-programming", "knapsack", "knapsack-pseudopoly",
+  "validity-conp", "exact-tsp-np-hard", "sat-unsat-dp", "altri-dp-completi", "circ", "t17-10", "strategic-companies",
+  "qsat-pspace", "co-hamilton-pi2", "db-queries", "geography", "go", "fsat-fnp", "fsat-sat", "nexp-completi",
+  "fo-indecidibile", "2sat-p-completo", "riepilogo-p",
+]);
+
 export function generateStaticParams() {
   return TRACES.map((t) => ({ code: t.code }));
 }
@@ -28,9 +37,9 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
   const prev = TRACES[i - 1];
   const next = TRACES[i + 1];
 
-  /** teoremi la cui scheda in /teoremi elenca questa domanda tra quelle che lo usano */
+  /** teoremi la cui scheda in /teoremi elenca questa domanda tra quelle che lo usano, senza i risultati sui singoli problemi */
   const theoremsFor = (n: number) =>
-    THEOREMS.filter((th) => PROOF[th.id]?.domande.some((d) => d.traccia === t.code && d.n === n)).map((th) => ({ id: th.id, nome: th.nome }));
+    THEOREMS.filter((th) => !PROBLEM_RESULTS.has(th.id) && PROOF[th.id]?.domande.some((d) => d.traccia === t.code && d.n === n)).map((th) => ({ id: th.id, nome: th.nome }));
 
   const questions: RunnerQuestion[] = t.questions.map((q) => ({
     n: q.n,
