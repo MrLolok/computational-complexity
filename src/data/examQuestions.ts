@@ -3,18 +3,18 @@ import type { ClassId } from "./classes";
 export type ExamQuestion = { q: string; a: string; e: string; c: ClassId[] };
 export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
-  "q": "È falso che <span class=\"font-mono text-sm\">PSPACE ⊆ NEXP</span>? (F01)",
+  "q": "È falso che $\\mathrm{PSPACE} \\subseteq \\mathrm{NEXP}$? (F01)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">PSPACE ⊆ EXP ⊆ NEXP</span>",
+  "e": "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subseteq \\mathrm{NEXP}$",
   "c": [
    "NEXP",
    "PSPACE"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">4-EXP ≠ L</span>? (F01)",
+  "q": "$4\\text{-}\\mathrm{EXP} \\neq \\mathrm{L}$? (F01)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">L ⊆ P ⊊ EXP ⊆ 4-EXP</span>",
+  "e": "$\\mathrm{L} \\subseteq \\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq 4\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "L"
@@ -23,158 +23,158 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "coNP non è strettamente contenuto in L? (F02)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">L ⊆ P ⊆ coNP</span>: coNP non può stare strettamente dentro L",
+  "e": "$\\mathrm{L} \\subseteq \\mathrm{P} \\subseteq \\mathrm{coNP}$: coNP non può stare strettamente dentro L",
   "c": [
    "L",
    "coNP"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">EXP = Π<sub>1</sub><sup>P</sup></span>? (F02)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">EXP = coNP</span>",
-  "e": "<span class=\"font-mono text-sm\">coNP ⊆ PSPACE ⊆ EXP</span>; nessuna separazione nota tra coNP ed EXP (sappiamo solo <span class=\"font-mono text-sm\">P ⊊ EXP</span>). Se fosse vero: <span class=\"font-mono text-sm\">NP = coNP = PSPACE = EXP</span>",
+  "q": "$\\mathrm{EXP} = \\Pi_1^{\\mathrm{P}}$? (F02)",
+  "a": "<b>altro</b>: solo se $\\mathrm{EXP} = \\mathrm{coNP}$",
+  "e": "$\\mathrm{coNP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$; nessuna separazione nota tra coNP ed EXP (sappiamo solo $\\mathrm{P} \\subsetneq \\mathrm{EXP}$). Se fosse vero: $\\mathrm{NP} = \\mathrm{coNP} = \\mathrm{PSPACE} = \\mathrm{EXP}$",
   "c": [
    "EXP",
    "coNP"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">Σ<sub>4</sub><sup>P</sup></span> non è strettamente contenuto in 3-EXP? (F06)",
+  "q": "$\\Sigma_4^{\\mathrm{P}}$ non è strettamente contenuto in 3-EXP? (F06)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">Σ<sub>4</sub><sup>P</sup> ⊆ PH ⊆ PSPACE ⊆ EXP ⊊ 2-EXP ⊊ 3-EXP</span>: è strettamente contenuto",
+  "e": "$\\Sigma_4^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$: è strettamente contenuto",
   "c": [
    "EXP",
    "SIGMAi"
   ]
  },
  {
-  "q": "È falso che <span class=\"font-mono text-sm\">PSPACE ⊆ 3-EXP</span>? (F06)",
+  "q": "È falso che $\\mathrm{PSPACE} \\subseteq 3\\text{-}\\mathrm{EXP}$? (F06)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">PSPACE ⊆ EXP ⊊ 3-EXP</span>",
+  "e": "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "PSPACE"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">P ≠ 4-EXP</span>? (F06)",
+  "q": "$\\mathrm{P} \\neq 4\\text{-}\\mathrm{EXP}$? (F06)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">P ⊊ EXP ⊆ 4-EXP</span> (gerarchia di tempo)",
+  "e": "$\\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq 4\\text{-}\\mathrm{EXP}$ (gerarchia di tempo)",
   "c": [
    "EXP",
    "P"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">2-EXP ⊆ Σ<sub>2</sub><sup>P</sup></span>? (F07)",
+  "q": "$2\\text{-}\\mathrm{EXP} \\subseteq \\Sigma_2^{\\mathrm{P}}$? (F07)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup> ⊆ PSPACE ⊆ EXP ⊊ 2-EXP</span>",
+  "e": "$\\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "SIGMA2"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">NEXP ⊆ PSPACE</span>? (F13)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">NEXP = PSPACE</span>",
-  "e": "<span class=\"font-mono text-sm\">PSPACE ⊆ NEXP</span>; il contrario darebbe l'uguaglianza, questione aperta",
+  "q": "$\\mathrm{NEXP} \\subseteq \\mathrm{PSPACE}$? (F13)",
+  "a": "<b>altro</b>: solo se $\\mathrm{NEXP} = \\mathrm{PSPACE}$",
+  "e": "$\\mathrm{PSPACE} \\subseteq \\mathrm{NEXP}$; il contrario darebbe l'uguaglianza, questione aperta",
   "c": [
    "NEXP",
    "PSPACE"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">PSPACE ⊂ NPSPACE</span>? (F13)",
+  "q": "$\\mathrm{PSPACE} \\subset \\mathrm{NPSPACE}$? (F13)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">PSPACE = NPSPACE</span> (Savitch)",
+  "e": "$\\mathrm{PSPACE} = \\mathrm{NPSPACE}$ (Savitch)",
   "c": [
    "PSPACE"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">NPSPACE ⊂ Π<sub>1</sub><sup>P</sup></span>? (F14)",
+  "q": "$\\mathrm{NPSPACE} \\subset \\Pi_1^{\\mathrm{P}}$? (F14)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">Π<sub>1</sub><sup>P</sup> ⊆ PH ⊆ PSPACE = NPSPACE</span>",
+  "e": "$\\Pi_1^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$",
   "c": [
    "PSPACE",
    "coNP"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">3-EXP = PH</span>? (E26)",
+  "q": "$3\\text{-}\\mathrm{EXP} = \\mathrm{PH}$? (E26)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">PH ⊆ PSPACE ⊆ EXP ⊊ 3-EXP</span>",
+  "e": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "PH"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">Σ<sub>1</sub><sup>P</sup> ⊆ 2-EXP</span>? (E26)",
+  "q": "$\\Sigma_1^{\\mathrm{P}} \\subseteq 2\\text{-}\\mathrm{EXP}$? (E26)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">Σ<sub>1</sub><sup>P</sup> = NP ⊆ PSPACE ⊆ EXP ⊆ 2-EXP</span>",
+  "e": "$\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subseteq 2\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "NP"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">Σ<sub>4</sub><sup>P</sup> ⊂ Σ<sub>3</sub><sup>P</sup></span>? (G16)",
+  "q": "$\\Sigma_4^{\\mathrm{P}} \\subset \\Sigma_3^{\\mathrm{P}}$? (G16)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">Σ<sub>3</sub><sup>P</sup> ⊆ Σ<sub>4</sub><sup>P</sup></span>, il contenimento stretto opposto è impossibile",
+  "e": "$\\Sigma_3^{\\mathrm{P}} \\subseteq \\Sigma_4^{\\mathrm{P}}$, il contenimento stretto opposto è impossibile",
   "c": [
    "SIGMAi"
   ]
  },
  {
-  "q": "È falso che <span class=\"font-mono text-sm\">Σ<sub>3</sub><sup>P</sup> ⊆ Π<sub>4</sub><sup>P</sup></span>? (G16)",
+  "q": "È falso che $\\Sigma_3^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$? (G16)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">Σ<sub>3</sub><sup>P</sup> ⊆ Δ<sub>4</sub><sup>P</sup> ⊆ Π<sub>4</sub><sup>P</sup></span>",
+  "e": "$\\Sigma_3^{\\mathrm{P}} \\subseteq \\Delta_4^{\\mathrm{P}} \\subseteq \\Pi_4^{\\mathrm{P}}$",
   "c": [
    "PIi",
    "SIGMAi"
   ]
  },
  {
-  "q": "È falso che <span class=\"font-mono text-sm\">P ⊆ PH</span>? (L18)",
+  "q": "È falso che $\\mathrm{P} \\subseteq \\mathrm{PH}$? (L18)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">P = Σ<sub>0</sub><sup>P</sup> ⊆ PH</span>",
+  "e": "$\\mathrm{P} = \\Sigma_0^{\\mathrm{P}} \\subseteq \\mathrm{PH}$",
   "c": [
    "P",
    "PH"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">Π<sub>4</sub><sup>P</sup> ⊆ L</span>? (L18)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">Π<sub>4</sub><sup>P</sup> = L</span>",
-  "e": "<span class=\"font-mono text-sm\">L ⊆ P ⊆ Π<sub>4</sub><sup>P</sup></span>; il contrario farebbe collassare <span class=\"font-mono text-sm\">L = NL = P = PH</span>, questione aperta",
+  "q": "$\\Pi_4^{\\mathrm{P}} \\subseteq \\mathrm{L}$? (L18)",
+  "a": "<b>altro</b>: solo se $\\Pi_4^{\\mathrm{P}} = \\mathrm{L}$",
+  "e": "$\\mathrm{L} \\subseteq \\mathrm{P} \\subseteq \\Pi_4^{\\mathrm{P}}$; il contrario farebbe collassare $\\mathrm{L} = \\mathrm{NL} = \\mathrm{P} = \\mathrm{PH}$, questione aperta",
   "c": [
    "L",
    "PIi"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">EXP ⊂ DP</span>? (MA23)",
+  "q": "$\\mathrm{EXP} \\subset \\mathrm{DP}$? (MA23)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">DP ⊆ Δ<sub>2</sub><sup>P</sup> ⊆ PH ⊆ PSPACE ⊆ EXP</span>",
+  "e": "$\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$",
   "c": [
    "DP",
    "EXP"
   ]
  },
  {
-  "q": "È falso che <span class=\"font-mono text-sm\">P ⊆ NPSPACE</span>? (FE23)",
+  "q": "È falso che $\\mathrm{P} \\subseteq \\mathrm{NPSPACE}$? (FE23)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">P ⊆ PSPACE = NPSPACE</span>",
+  "e": "$\\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$",
   "c": [
    "P",
    "PSPACE"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">PSPACE ⊆ 2-EXP</span>? (SE23)",
+  "q": "$\\mathrm{PSPACE} \\subseteq 2\\text{-}\\mathrm{EXP}$? (SE23)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">PSPACE ⊆ EXP ⊆ 2-EXP</span>",
+  "e": "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subseteq 2\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "PSPACE"
@@ -183,7 +183,7 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "È vero che CLIQUE non appartiene a NEXP? (F02)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">CLIQUE ∈ NP ⊆ NEXP</span>",
+  "e": "$\\mathrm{CLIQUE} \\in \\mathrm{NP} \\subseteq \\mathrm{NEXP}$",
   "c": [
    "NEXP",
    "NP"
@@ -192,23 +192,23 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "È vero che 2-SAT non appartiene a DP? (F01)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">2-SAT ∈ NL ⊆ P ⊆ NP ⊆ DP</span>",
+  "e": "$2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL} \\subseteq \\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{DP}$",
   "c": [
    "DP",
    "NL"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">CLIQUE ∈ Σ<sub>1</sub><sup>P</sup></span>? (F07)",
+  "q": "$\\mathrm{CLIQUE} \\in \\Sigma_1^{\\mathrm{P}}$? (F07)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">Σ<sub>1</sub><sup>P</sup> = NP</span> e CLIQUE è NP-completo",
+  "e": "$\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP}$ e CLIQUE è NP-completo",
   "c": [
    "NP"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">QSAT ∈ Π<sub>2</sub><sup>P</sup></span>? (F07)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">PSPACE = Π<sub>2</sub><sup>P</sup></span>",
+  "q": "$\\mathrm{QSAT} \\in \\Pi_2^{\\mathrm{P}}$? (F07)",
+  "a": "<b>altro</b>: solo se $\\mathrm{PSPACE} = \\Pi_2^{\\mathrm{P}}$",
   "e": "QSAT PSPACE-completo; collasso di PH al livello 2",
   "c": [
    "PI2",
@@ -216,36 +216,36 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "È vero che <span class=\"font-mono text-sm\">QSAT<sub>1</sub></span> non appartiene a <span class=\"font-mono text-sm\">Σ<sub>4</sub><sup>P</sup></span>? (F14)",
+  "q": "È vero che $\\mathrm{QSAT}_1$ non appartiene a $\\Sigma_4^{\\mathrm{P}}$? (F14)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">QSAT<sub>1</sub> ∈ Σ<sub>1</sub><sup>P</sup> ⊆ Σ<sub>4</sub><sup>P</sup></span>",
+  "e": "$\\mathrm{QSAT}_1 \\in \\Sigma_1^{\\mathrm{P}} \\subseteq \\Sigma_4^{\\mathrm{P}}$",
   "c": [
    "NP",
    "SIGMAi"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">QSAT ∈ EXP</span>? (L18)",
+  "q": "$\\mathrm{QSAT} \\in \\mathrm{EXP}$? (L18)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">QSAT ∈ PSPACE ⊆ EXP</span>",
+  "e": "$\\mathrm{QSAT} \\in \\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$",
   "c": [
    "EXP",
    "PSPACE"
   ]
  },
  {
-  "q": "È vero che <span class=\"font-mono text-sm\">QSAT<sub>1</sub> ∉ 2-EXP</span>? (L18)",
+  "q": "È vero che $\\mathrm{QSAT}_1 \\notin 2\\text{-}\\mathrm{EXP}$? (L18)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">QSAT<sub>1</sub> ∈ NP ⊆ 2-EXP</span>",
+  "e": "$\\mathrm{QSAT}_1 \\in \\mathrm{NP} \\subseteq 2\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "NP"
   ]
  },
  {
-  "q": "CLIQUE si può risolvere in <span class=\"font-mono text-sm\">O(2<sup>n/2</sup>)</span>? (L18)",
+  "q": "CLIQUE si può risolvere in $O(2^{n/2})$? (L18)",
   "a": "<b>SÌ</b>",
-  "e": "<b>m è il numero di nodi; n è la lunghezza dell’intero input in bit.</b> Il limite richiesto usa n, non m.<br><br><b>1. Quanto è grande l’input?</b> Con la codifica tramite matrice di adiacenza, un grafo di m nodi richiede m righe e m colonne: almeno m² bit, uno per ogni cella. Quindi n ≥ m² e m ≤ √n.<br><br><b>2. Che algoritmo usiamo?</b> Proviamo tutti i 2<sup>m</sup> gruppi di nodi. Per ogni gruppo controlliamo che contenga almeno K nodi e che ogni coppia sia collegata. Il controllo richiede tempo polinomiale, quindi il totale è al più 2<sup>√n</sup> · poly(n).<br><br><b>3. Perché basta?</b> Per n abbastanza grande, √n cresce molto più lentamente di n/2. Anche includendo il costo polinomiale dei controlli, il tempo rimane entro O(2<sup>n/2</sup>): infatti √n + k log₂ n ≤ n/2 per ogni k fissato, da un certo n in poi.<br><br><b>Esempio:</b> con 10 nodi, la sola matrice ha 100 celle. I gruppi da provare sono 2<sup>10</sup> = 1.024, mentre 2<sup>n/2</sup> è almeno 2<sup>50</sup>. La differenza nasce dal fatto che n conta i bit della descrizione.",
+  "e": "<b>$m$ è il numero di nodi; $n$ è la lunghezza dell’intero input in bit.</b> Il limite richiesto usa $n$, non $m$.<br><br><b>1. Quanto è grande l’input?</b> Con la codifica tramite matrice di adiacenza, un grafo di $m$ nodi richiede $m$ righe e $m$ colonne: almeno $m^2$ bit, uno per ogni cella. Quindi $n \\ge m^2$ e $m \\le \\sqrt{n}$.<br><br><b>2. Che algoritmo usiamo?</b> Proviamo tutti i $2^m$ gruppi di nodi. Per ogni gruppo controlliamo che contenga almeno $K$ nodi e che ogni coppia sia collegata. Il controllo richiede tempo polinomiale, quindi il totale è al più $2^{\\sqrt{n}} \\cdot \\mathrm{poly}(n)$.<br><br><b>3. Perché basta?</b> Per $n$ abbastanza grande, $\\sqrt{n}$ cresce molto più lentamente di $n/2$. Anche includendo il costo polinomiale dei controlli, il tempo rimane entro $O(2^{n/2})$: infatti $\\sqrt{n} + k\\log_2 n \\le n/2$ per ogni $k$ fissato, da un certo $n$ in poi.<br><br><b>Esempio:</b> con 10 nodi, la sola matrice ha 100 celle. I gruppi da provare sono $2^{10} = 1.024$, mentre $2^{n/2}$ è almeno $2^{50}$. La differenza nasce dal fatto che $n$ conta i bit della descrizione.",
   "c": [
    "NP"
   ]
@@ -253,15 +253,15 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "È vero che 2-SAT non può essere deciso da una MdT nondeterministica in spazio polinomiale? (MA23)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">2-SAT ∈ P ⊆ PSPACE = NPSPACE</span>",
+  "e": "$2\\text{-}\\mathrm{SAT} \\in \\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$",
   "c": [
    "NL"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">co-QSAT<sub>1</sub> ∈ Σ<sub>3</sub><sup>P</sup></span>? (SE23)",
+  "q": "$\\mathrm{co\\text{-}QSAT}_1 \\in \\Sigma_3^{\\mathrm{P}}$? (SE23)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">co-QSAT<sub>1</sub> ∈ Π<sub>1</sub><sup>P</sup> ⊆ Π<sub>2</sub><sup>P</sup> ⊆ Σ<sub>3</sub><sup>P</sup></span>",
+  "e": "$\\mathrm{co\\text{-}QSAT}_1 \\in \\Pi_1^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$",
   "c": [
    "SIGMAi",
    "coNP"
@@ -270,16 +270,16 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "È vero che MAX FLOW non è EXP-hard? (F02)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">MAX FLOW ∈ P</span>; se fosse EXP-hard <span class=\"font-mono text-sm\">EXP ⊆ P</span>, contro <span class=\"font-mono text-sm\">P ⊊ EXP</span>",
+  "e": "$\\mathrm{MAX\\ FLOW} \\in \\mathrm{P}$; se fosse EXP-hard $\\mathrm{EXP} \\subseteq \\mathrm{P}$, contro $\\mathrm{P} \\subsetneq \\mathrm{EXP}$",
   "c": [
    "EXP",
    "P"
   ]
  },
  {
-  "q": "Supponiamo <span class=\"font-mono text-sm\">Π<sub>2</sub><sup>P</sup> ⊂ EXP</span>. È vero che PRIMES non è EXP-hard? (F01)",
+  "q": "Supponiamo $\\Pi_2^{\\mathrm{P}} \\subset \\mathrm{EXP}$. È vero che PRIMES non è EXP-hard? (F01)",
   "a": "<b>SÌ</b>",
-  "e": "ipotesi irrilevante: <span class=\"font-mono text-sm\">PRIMES ∈ P ⊊ EXP</span>",
+  "e": "ipotesi irrilevante: $\\mathrm{PRIMES} \\in \\mathrm{P} \\subsetneq \\mathrm{EXP}$",
   "c": [
    "EXP",
    "P",
@@ -289,7 +289,7 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "È vero che PRIMES non è 4-EXP-hard? (GE23)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">PRIMES ∈ P ⊊ EXP ⊊ … ⊊ 4-EXP</span>",
+  "e": "$\\mathrm{PRIMES} \\in \\mathrm{P} \\subsetneq \\mathrm{EXP} \\subsetneq \\ldots \\subsetneq 4\\text{-}\\mathrm{EXP}$",
   "c": [
    "EXP",
    "P"
@@ -298,16 +298,16 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "È vero che 3-COL non è 3-EXP-hard? (F14)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">3-COL ∈ NP ⊆ EXP ⊊ 3-EXP</span>; se fosse 3-EXP-hard <span class=\"font-mono text-sm\">3-EXP ⊆ NP</span>",
+  "e": "$3\\text{-}\\mathrm{COL} \\in \\mathrm{NP} \\subseteq \\mathrm{EXP} \\subsetneq 3\\text{-}\\mathrm{EXP}$; se fosse 3-EXP-hard $3\\text{-}\\mathrm{EXP} \\subseteq \\mathrm{NP}$",
   "c": [
    "EXP",
    "NP"
   ]
  },
  {
-  "q": "TSP(D) è <span class=\"font-mono text-sm\">Π<sub>1</sub><sup>P</sup></span>-hard? (F14)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">NP = coNP</span> (<span class=\"font-mono text-sm\">PH = NP</span>)",
-  "e": "TSP(D) NP-completo; se fosse coNP-hard <span class=\"font-mono text-sm\">coNP ⊆ NP</span>, cioè <span class=\"font-mono text-sm\">NP = coNP</span>",
+  "q": "TSP(D) è $\\Pi_1^{\\mathrm{P}}$-hard? (F14)",
+  "a": "<b>altro</b>: solo se $\\mathrm{NP} = \\mathrm{coNP}$ ($\\mathrm{PH} = \\mathrm{NP}$)",
+  "e": "TSP(D) NP-completo; se fosse coNP-hard $\\mathrm{coNP} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$",
   "c": [
    "NP",
    "PH",
@@ -315,9 +315,9 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "È vero che <span class=\"font-mono text-sm\">QSAT<sub>1</sub></span> non è NP-completo? (F13)",
+  "q": "È vero che $\\mathrm{QSAT}_1$ non è NP-completo? (F13)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">QSAT<sub>1</sub></span> è <span class=\"font-mono text-sm\">Σ<sub>1</sub><sup>P</sup></span>-completo e <span class=\"font-mono text-sm\">Σ<sub>1</sub><sup>P</sup> = NP</span> (<span class=\"font-mono text-sm\">QSAT<sub>1</sub> = SAT</span>)",
+  "e": "$\\mathrm{QSAT}_1$ è $\\Sigma_1^{\\mathrm{P}}$-completo e $\\Sigma_1^{\\mathrm{P}} = \\mathrm{NP}$ ($\\mathrm{QSAT}_1 = \\mathrm{SAT}$)",
   "c": [
    "NP"
   ]
@@ -325,7 +325,7 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "QSAT è 2-EXP-completo? (F13)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">QSAT ∈ PSPACE ⊆ EXP ⊊ 2-EXP</span>; se fosse 2-EXP-completo <span class=\"font-mono text-sm\">2-EXP ⊆ PSPACE</span>",
+  "e": "$\\mathrm{QSAT} \\in \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$; se fosse 2-EXP-completo $2\\text{-}\\mathrm{EXP} \\subseteq \\mathrm{PSPACE}$",
   "c": [
    "EXP",
    "PSPACE"
@@ -341,17 +341,17 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  },
  {
   "q": "SCHÖNFINKEL-BERNAYS SAT è PSPACE-completo? (FE23)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">PSPACE = NEXP</span>",
-  "e": "è NEXP-completo; se fosse in PSPACE allora <span class=\"font-mono text-sm\">NEXP ⊆ PSPACE</span>",
+  "a": "<b>altro</b>: solo se $\\mathrm{PSPACE} = \\mathrm{NEXP}$",
+  "e": "è NEXP-completo; se fosse in PSPACE allora $\\mathrm{NEXP} \\subseteq \\mathrm{PSPACE}$",
   "c": [
    "NEXP",
    "PSPACE"
   ]
  },
  {
-  "q": "È vero che <span class=\"font-mono text-sm\">QSAT<sub>3</sub></span> non è coNP-hard? (G16)",
+  "q": "È vero che $\\mathrm{QSAT}_3$ non è coNP-hard? (G16)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">QSAT<sub>3</sub></span> è <span class=\"font-mono text-sm\">Σ<sub>3</sub><sup>P</sup></span>-completo e <span class=\"font-mono text-sm\">coNP = Π<sub>1</sub><sup>P</sup> ⊆ Σ<sub>3</sub><sup>P</sup></span>",
+  "e": "$\\mathrm{QSAT}_3$ è $\\Sigma_3^{\\mathrm{P}}$-completo e $\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$",
   "c": [
    "SIGMAi",
    "coNP"
@@ -359,8 +359,8 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  },
  {
   "q": "2-COL è PH-hard? (MA23)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">PH = P</span>",
-  "e": "<span class=\"font-mono text-sm\">2-COL ∈ P</span>; PH-hard implicherebbe <span class=\"font-mono text-sm\">PH ⊆ P</span> (collasso al piano 0, <span class=\"font-mono text-sm\">P = NP</span>; a rigore anche <span class=\"font-mono text-sm\">= L</span>)",
+  "a": "<b>altro</b>: solo se $\\mathrm{PH} = \\mathrm{P}$",
+  "e": "$2\\text{-}\\mathrm{COL} \\in \\mathrm{P}$; PH-hard implicherebbe $\\mathrm{PH} \\subseteq \\mathrm{P}$ (collasso al piano 0, $\\mathrm{P} = \\mathrm{NP}$; a rigore anche $= \\mathrm{L}$)",
   "c": [
    "P",
    "PH"
@@ -369,33 +369,33 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "GEOGRAPHY è NL-hard? (MA23)",
   "a": "<b>SÌ</b>",
-  "e": "PSPACE-completo e <span class=\"font-mono text-sm\">NL ⊆ PSPACE</span>",
+  "e": "PSPACE-completo e $\\mathrm{NL} \\subseteq \\mathrm{PSPACE}$",
   "c": [
    "NL",
    "PSPACE"
   ]
  },
  {
-  "q": "<span class=\"font-mono text-sm\">QSAT<sub>2</sub></span> è <span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup></span>-hard? (GE23)",
+  "q": "$\\mathrm{QSAT}_2$ è $\\Sigma_2^{\\mathrm{P}}$-hard? (GE23)",
   "a": "<b>SÌ</b>",
-  "e": "è <span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup></span>-completo",
+  "e": "è $\\Sigma_2^{\\mathrm{P}}$-completo",
   "c": [
    "SIGMA2"
   ]
  },
  {
-  "q": "EXACT TSP è <span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup></span>-hard? (GE23)",
-  "a": "<b>altro</b>: solo se <span class=\"font-mono text-sm\">DP = Σ<sub>2</sub><sup>P</sup></span>",
-  "e": "EXACT TSP è DP-completo e <span class=\"font-mono text-sm\">DP ⊆ Δ<sub>2</sub><sup>P</sup> ⊆ Σ<sub>2</sub><sup>P</sup></span>; <span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup></span>-hard darebbe <span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup> ⊆ DP</span>",
+  "q": "EXACT TSP è $\\Sigma_2^{\\mathrm{P}}$-hard? (GE23)",
+  "a": "<b>altro</b>: solo se $\\mathrm{DP} = \\Sigma_2^{\\mathrm{P}}$",
+  "e": "EXACT TSP è DP-completo e $\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}}$; $\\Sigma_2^{\\mathrm{P}}$-hard darebbe $\\Sigma_2^{\\mathrm{P}} \\subseteq \\mathrm{DP}$",
   "c": [
    "DP",
    "SIGMA2"
   ]
  },
  {
-  "q": "Supponiamo <span class=\"font-mono text-sm\">PH = EXP</span>. MAX FLOW è PH-completo? (G16)",
+  "q": "Supponiamo $\\mathrm{PH} = \\mathrm{EXP}$. MAX FLOW è PH-completo? (G16)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">MAX FLOW ∈ P</span>; PH-completo darebbe <span class=\"font-mono text-sm\">P = PH = EXP</span>, contro <span class=\"font-mono text-sm\">P ⊊ EXP</span>",
+  "e": "$\\mathrm{MAX\\ FLOW} \\in \\mathrm{P}$; PH-completo darebbe $\\mathrm{P} = \\mathrm{PH} = \\mathrm{EXP}$, contro $\\mathrm{P} \\subsetneq \\mathrm{EXP}$",
   "c": [
    "EXP",
    "P",
@@ -403,18 +403,18 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Se <span class=\"font-mono text-sm\">PH = EXP</span>, PH collassa a un livello finito? (L18)",
+  "q": "Se $\\mathrm{PH} = \\mathrm{EXP}$, PH collassa a un livello finito? (L18)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">PH ⊆ PSPACE ⊆ EXP = PH</span>, quindi <span class=\"font-mono text-sm\">PH = PSPACE</span>; <span class=\"font-mono text-sm\">QSAT ∈ PH</span> sta in qualche <span class=\"font-mono text-sm\">Σ<sub>i</sub><sup>P</sup></span>, quindi <span class=\"font-mono text-sm\">PH = Σ<sub>i</sub><sup>P</sup></span>",
+  "e": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} = \\mathrm{PH}$, quindi $\\mathrm{PH} = \\mathrm{PSPACE}$; $\\mathrm{QSAT} \\in \\mathrm{PH}$ sta in qualche $\\Sigma_i^{\\mathrm{P}}$, quindi $\\mathrm{PH} = \\Sigma_i^{\\mathrm{P}}$",
   "c": [
    "EXP",
    "PH"
   ]
  },
  {
-  "q": "Supponiamo <span class=\"font-mono text-sm\">PH = EXP</span>. <span class=\"font-mono text-sm\">QSAT ∈ PH</span>? (SE23)",
+  "q": "Supponiamo $\\mathrm{PH} = \\mathrm{EXP}$. $\\mathrm{QSAT} \\in \\mathrm{PH}$? (SE23)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">QSAT ∈ PSPACE ⊆ EXP = PH</span>",
+  "e": "$\\mathrm{QSAT} \\in \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} = \\mathrm{PH}$",
   "c": [
    "EXP",
    "PH",
@@ -422,7 +422,7 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Supponiamo <span class=\"font-mono text-sm\">Σ<sub>4</sub><sup>P</sup> = Π<sub>4</sub><sup>P</sup></span>. <span class=\"font-mono text-sm\">Σ<sub>4</sub><sup>P</sup></span> non è strettamente contenuto in <span class=\"font-mono text-sm\">Π<sub>4</sub><sup>P</sup></span>? (F06)",
+  "q": "Supponiamo $\\Sigma_4^{\\mathrm{P}} = \\Pi_4^{\\mathrm{P}}$. $\\Sigma_4^{\\mathrm{P}}$ non è strettamente contenuto in $\\Pi_4^{\\mathrm{P}}$? (F06)",
   "a": "<b>SÌ</b>",
   "e": "sono uguali, quindi nessun contenimento stretto",
   "c": [
@@ -431,9 +431,9 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Supponiamo <span class=\"font-mono text-sm\">Π<sub>1</sub><sup>P</sup> = Π<sub>4</sub><sup>P</sup></span>. <span class=\"font-mono text-sm\">NEXP ⊆ Π<sub>1</sub><sup>P</sup></span>? (F07)",
+  "q": "Supponiamo $\\Pi_1^{\\mathrm{P}} = \\Pi_4^{\\mathrm{P}}$. $\\mathrm{NEXP} \\subseteq \\Pi_1^{\\mathrm{P}}$? (F07)",
   "a": "<b>NO</b>",
-  "e": "l'ipotesi fa collassare <span class=\"font-mono text-sm\">PH = coNP = NP</span>, quindi servirebbe <span class=\"font-mono text-sm\">NEXP ⊆ NP</span>, contro <span class=\"font-mono text-sm\">NP ⊊ NEXP</span> (gerarchia nondeterministica). L'ipotesi non serve nemmeno: <span class=\"font-mono text-sm\">NP ⊆ NEXP ⊆ coNP</span> darebbe comunque <span class=\"font-mono text-sm\">NP = coNP</span> e di nuovo <span class=\"font-mono text-sm\">NEXP ⊆ NP</span>",
+  "e": "l'ipotesi fa collassare $\\mathrm{PH} = \\mathrm{coNP} = \\mathrm{NP}$, quindi servirebbe $\\mathrm{NEXP} \\subseteq \\mathrm{NP}$, contro $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ (gerarchia nondeterministica). L'ipotesi non serve nemmeno: $\\mathrm{NP} \\subseteq \\mathrm{NEXP} \\subseteq \\mathrm{coNP}$ darebbe comunque $\\mathrm{NP} = \\mathrm{coNP}$ e di nuovo $\\mathrm{NEXP} \\subseteq \\mathrm{NP}$",
   "c": [
    "NEXP",
    "PIi",
@@ -441,9 +441,9 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Supponete che <span class=\"font-mono text-sm\">co-QSAT<sub>2</sub></span> non sia PH-hard. <span class=\"font-mono text-sm\">PSPACE = Π<sub>2</sub><sup>P</sup></span>? (F02)",
+  "q": "Supponete che $\\mathrm{co\\text{-}QSAT}_2$ non sia PH-hard. $\\mathrm{PSPACE} = \\Pi_2^{\\mathrm{P}}$? (F02)",
   "a": "<b>NO</b>",
-  "e": "se <span class=\"font-mono text-sm\">PSPACE = Π<sub>2</sub><sup>P</sup></span> allora <span class=\"font-mono text-sm\">PH = Π<sub>2</sub><sup>P</sup></span> e il <span class=\"font-mono text-sm\">Π<sub>2</sub><sup>P</sup></span>-completo <span class=\"font-mono text-sm\">co-QSAT<sub>2</sub></span> sarebbe PH-hard, contro l'ipotesi",
+  "e": "se $\\mathrm{PSPACE} = \\Pi_2^{\\mathrm{P}}$ allora $\\mathrm{PH} = \\Pi_2^{\\mathrm{P}}$ e il $\\Pi_2^{\\mathrm{P}}$-completo $\\mathrm{co\\text{-}QSAT}_2$ sarebbe PH-hard, contro l'ipotesi",
   "c": [
    "PH",
    "PI2",
@@ -451,9 +451,9 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Supponiamo <span class=\"font-mono text-sm\">Π<sub>2</sub><sup>P</sup> = PH</span>. È vero che non esistono riduzioni da <span class=\"font-mono text-sm\">QSAT<sub>4</sub></span> a <span class=\"font-mono text-sm\">co-QSAT<sub>4</sub></span>? (F13)",
+  "q": "Supponiamo $\\Pi_2^{\\mathrm{P}} = \\mathrm{PH}$. È vero che non esistono riduzioni da $\\mathrm{QSAT}_4$ a $\\mathrm{co\\text{-}QSAT}_4$? (F13)",
   "a": "<b>NO</b>",
-  "e": "collasso al livello 2: <span class=\"font-mono text-sm\">Σ<sub>4</sub><sup>P</sup> = Π<sub>4</sub><sup>P</sup></span>, quindi <span class=\"font-mono text-sm\">QSAT<sub>4</sub> ∈ Π<sub>4</sub><sup>P</sup></span> si riduce al <span class=\"font-mono text-sm\">Π<sub>4</sub><sup>P</sup></span>-completo <span class=\"font-mono text-sm\">co-QSAT<sub>4</sub></span>",
+  "e": "collasso al livello 2: $\\Sigma_4^{\\mathrm{P}} = \\Pi_4^{\\mathrm{P}}$, quindi $\\mathrm{QSAT}_4 \\in \\Pi_4^{\\mathrm{P}}$ si riduce al $\\Pi_4^{\\mathrm{P}}$-completo $\\mathrm{co\\text{-}QSAT}_4$",
   "c": [
    "PH",
    "PI2",
@@ -462,9 +462,9 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Supponiamo VALIDITY riducibile a TSP(D). È vero che EXACT TSP non è <span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup></span>-completo? (F14)",
+  "q": "Supponiamo VALIDITY riducibile a TSP(D). È vero che EXACT TSP non è $\\Sigma_2^{\\mathrm{P}}$-completo? (F14)",
   "a": "<b>NO</b>",
-  "e": "VALIDITY coNP-completo <span class=\"font-mono text-sm\">≤</span> <span class=\"font-mono text-sm\">TSP(D) ∈ NP ⇒ NP = coNP ⇒ PH = NP</span>; allora <span class=\"font-mono text-sm\">DP = NP = Σ<sub>2</sub><sup>P</sup></span> e il DP-completo EXACT TSP è <span class=\"font-mono text-sm\">Σ<sub>2</sub><sup>P</sup></span>-completo",
+  "e": "VALIDITY coNP-completo $\\le \\mathrm{TSP(D)} \\in \\mathrm{NP} \\Rightarrow \\mathrm{NP} = \\mathrm{coNP} \\Rightarrow \\mathrm{PH} = \\mathrm{NP}$; allora $\\mathrm{DP} = \\mathrm{NP} = \\Sigma_2^{\\mathrm{P}}$ e il DP-completo EXACT TSP è $\\Sigma_2^{\\mathrm{P}}$-completo",
   "c": [
    "DP",
    "NP",
@@ -473,9 +473,9 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Assumiamo <span class=\"font-mono text-sm\">PH = NEXP</span>. È vero che PRIMES non è NPSPACE-hard? (E26)",
+  "q": "Assumiamo $\\mathrm{PH} = \\mathrm{NEXP}$. È vero che PRIMES non è NPSPACE-hard? (E26)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">PH ⊆ PSPACE ⊆ NEXP = PH</span>, quindi <span class=\"font-mono text-sm\">PSPACE = NEXP</span>. <span class=\"font-mono text-sm\">PRIMES ∈ P</span>: se fosse NPSPACE-hard <span class=\"font-mono text-sm\">P = PSPACE = NEXP ⊇ EXP</span>, contro <span class=\"font-mono text-sm\">P ⊊ EXP</span>",
+  "e": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{NEXP} = \\mathrm{PH}$, quindi $\\mathrm{PSPACE} = \\mathrm{NEXP}$. $\\mathrm{PRIMES} \\in \\mathrm{P}$: se fosse NPSPACE-hard $\\mathrm{P} = \\mathrm{PSPACE} = \\mathrm{NEXP} \\supseteq \\mathrm{EXP}$, contro $\\mathrm{P} \\subsetneq \\mathrm{EXP}$",
   "c": [
    "NEXP",
    "P",
@@ -484,18 +484,18 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
   ]
  },
  {
-  "q": "Supponiamo <span class=\"font-mono text-sm\">co-QSAT<sub>4</sub> ∈ Σ<sub>3</sub><sup>P</sup></span>. <span class=\"font-mono text-sm\">Σ<sub>3</sub><sup>P</sup> ≠ Σ<sub>4</sub><sup>P</sup></span>? (FE23)",
+  "q": "Supponiamo $\\mathrm{co\\text{-}QSAT}_4 \\in \\Sigma_3^{\\mathrm{P}}$. $\\Sigma_3^{\\mathrm{P}} \\neq \\Sigma_4^{\\mathrm{P}}$? (FE23)",
   "a": "<b>NO</b>",
-  "e": "<span class=\"font-mono text-sm\">Π<sub>4</sub><sup>P</sup> ⊆ Σ<sub>3</sub><sup>P</sup></span> <span class=\"font-mono text-sm\">⇒</span> collasso al livello 3 <span class=\"font-mono text-sm\">⇒ Σ<sub>3</sub><sup>P</sup> = Σ<sub>4</sub><sup>P</sup></span>",
+  "e": "$\\Pi_4^{\\mathrm{P}} \\subseteq \\Sigma_3^{\\mathrm{P}}$ $\\Rightarrow$ collasso al livello 3 $\\Rightarrow \\Sigma_3^{\\mathrm{P}} = \\Sigma_4^{\\mathrm{P}}$",
   "c": [
    "PIi",
    "SIGMAi"
   ]
  },
  {
-  "q": "Supponiamo SCHÖNFINKEL-BERNAYS SAT <span class=\"font-mono text-sm\">∈ BPP</span>. È vero che GEOGRAPHY non è riducibile a 2-SAT? (GE23)",
+  "q": "Supponiamo SCHÖNFINKEL-BERNAYS SAT $\\in \\mathrm{BPP}$. È vero che GEOGRAPHY non è riducibile a 2-SAT? (GE23)",
   "a": "<b>SÌ</b>",
-  "e": "L'ipotesi non serve: GEOGRAPHY è PSPACE-completo e <span class=\"font-mono text-sm\">2-SAT ∈ NL</span>; con riduzioni in spazio logaritmico avremmo <span class=\"font-mono text-sm\">PSPACE ⊆ NL</span>, contro <span class=\"font-mono text-sm\">NL ⊊ PSPACE</span>.",
+  "e": "L'ipotesi non serve: GEOGRAPHY è PSPACE-completo e $2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL}$; con riduzioni in spazio logaritmico avremmo $\\mathrm{PSPACE} \\subseteq \\mathrm{NL}$, contro $\\mathrm{NL} \\subsetneq \\mathrm{PSPACE}$.",
   "c": [
    "NEXP",
    "NL",
@@ -505,7 +505,7 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
  {
   "q": "La validità di una formula del primo ordine è in RE? (F06, SE23)",
   "a": "<b>SÌ</b>",
-  "e": "<span class=\"font-mono text-sm\">RE ∖ R</span>: semidecidibile (si enumerano le dimostrazioni) ma non decidibile",
+  "e": "$\\mathrm{RE} \\setminus \\mathrm{R}$: semidecidibile (si enumerano le dimostrazioni) ma non decidibile",
   "c": [
    "R",
    "RE"

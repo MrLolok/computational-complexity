@@ -1,6 +1,9 @@
 /* Motore delle inclusioni tra le classi (puro, senza DOM): chiusura transitiva con le regole del corso,
    separazioni dimostrate e risposte "A ⊆ B?" come all'esame. Portato dalla pagina "Gerarchia delle classi" (v9). */
-import { CO, HASSE_STRICT, IDS, INC, PLAIN, STRICT, type ClassId } from "@/data/classes";
+import { CO, HASSE_STRICT, IDS, INC, PLAIN, STRICT, TEX, type ClassId } from "@/data/classes";
+
+/** nome di una classe in una frase: testo semplice, o formula se ha pedici o operatori (Σ₂ᴾ, NP ∩ coNP) */
+const nm = (x: ClassId) => (/[_^]|\\cap/.test(TEX[x]) ? `$${TEX[x]}$` : PLAIN[x]);
 
 export type EdgeKind = "base" | "hyp" | "der";
 /** un passo A ⊆ B, con il motivo e la fonte */
@@ -79,10 +82,10 @@ export function closure(extra: [ClassId, ClassId, string][] = []): Closure {
     }
     return steps;
   };
+  /** catena A ⊆ … ⊆ B come formula $…$ */
   const ptxt = (a: ClassId, b: ClassId) => {
     const st = path(a, b);
-    if (!st) return PLAIN[a] + " ⊆ " + PLAIN[b];
-    return [PLAIN[a], ...st.map((e) => PLAIN[e.b])].join(" ⊆ ");
+    return "$" + (st ? [TEX[a], ...st.map((e) => TEX[e.b])] : [TEX[a], TEX[b]]).join(" \\subseteq ") + "$";
   };
 
   for (let it = 0; it < 20; it++) {
@@ -95,28 +98,28 @@ export function closure(extra: [ClassId, ClassId, string][] = []): Closure {
           cb = CO[b];
         if (ca && cb && !R(ca, cb))
           ch =
-            add(ca, cb, `vale ${ptxt(a, b)}; passando ai complementi, ${PLAIN[ca]} ⊆ ${PLAIN[cb]}`, "der", "dispensa cap. 14, Prop. A") ||
+            add(ca, cb, `vale ${ptxt(a, b)}; passando ai complementi, $${TEX[ca]} \\subseteq ${TEX[cb]}$`, "der", "dispensa cap. 14, Prop. A") ||
             ch;
       }
     for (const x of IDS) {
-      if (R(x, "NP") && R(x, "coNP") && !R(x, "NPcapcoNP")) ch = add(x, "NPcapcoNP", `${PLAIN[x]} sta sia in NP sia in coNP`, "der", "") || ch;
+      if (R(x, "NP") && R(x, "coNP") && !R(x, "NPcapcoNP")) ch = add(x, "NPcapcoNP", `${nm(x)} sta sia in NP sia in coNP`, "der", "") || ch;
       if (R(x, "RE") && R(x, "coRE") && !R(x, "R"))
-        ch = add(x, "R", `${PLAIN[x]} sta sia in RE sia in coRE, e R = RE ∩ coRE`, "der", "Lez. 10 §7") || ch;
+        ch = add(x, "R", `${nm(x)} sta sia in RE sia in coRE, e $\\mathrm{R} = \\mathrm{RE} \\cap \\mathrm{coRE}$`, "der", "Lez. 10 §7") || ch;
     }
     if (R("NP", "coNP"))
       ch =
-        add("PH", "NP", `vale ${ptxt("NP", "coNP")}, cioè NP = coNP, e questo fa collassare PH al primo livello (Teorema 17.9)`, "der", "dispensa cap. 17") ||
+        add("PH", "NP", `vale ${ptxt("NP", "coNP")}, cioè $\\mathrm{NP} = \\mathrm{coNP}$, e questo fa collassare PH al primo livello (Teorema 17.9)`, "der", "dispensa cap. 17") ||
         ch;
     if (R("SIGMA2", "PI2"))
       ch =
-        add("PH", "SIGMA2", `vale ${ptxt("SIGMA2", "PI2")}, cioè Σ₂ᴾ = Π₂ᴾ, e PH collassa al secondo livello (Teorema 17.9)`, "der", "dispensa cap. 17") ||
+        add("PH", "SIGMA2", `vale ${ptxt("SIGMA2", "PI2")}, cioè $\\Sigma_2^{\\mathrm{P}} = \\Pi_2^{\\mathrm{P}}$, e PH collassa al secondo livello (Teorema 17.9)`, "der", "dispensa cap. 17") ||
         ch;
     if (R("SIGMAi", "PIi"))
       ch =
-        add("PH", "SIGMAi", `vale ${ptxt("SIGMAi", "PIi")}, cioè Σᵢᴾ = Πᵢᴾ, e PH collassa al livello i (Teorema 17.9)`, "der", "dispensa cap. 17") ||
+        add("PH", "SIGMAi", `vale ${ptxt("SIGMAi", "PIi")}, cioè $\\Sigma_i^{\\mathrm{P}} = \\Pi_i^{\\mathrm{P}}$, e PH collassa al livello $i$ (Teorema 17.9)`, "der", "dispensa cap. 17") ||
         ch;
     if (R("NP", "P"))
-      ch = add("NEXP", "EXP", `vale ${ptxt("NP", "P")}, cioè P = NP, e per il padding EXP = NEXP (Teorema 20.1)`, "der", "Lez. 10 §5") || ch;
+      ch = add("NEXP", "EXP", `vale ${ptxt("NP", "P")}, cioè $\\mathrm{P} = \\mathrm{NP}$, e per il padding $\\mathrm{EXP} = \\mathrm{NEXP}$ (Teorema 20.1)`, "der", "Lez. 10 §5") || ch;
     if (!ch) break;
   }
   compute();
@@ -187,7 +190,7 @@ function computeSubset(a: ClassId, b: ClassId): Answer {
       text: st || revNo ? "Inclusione dimostrata, ed è stretta." : "Inclusione dimostrata.",
     };
   }
-  const hyp = closure([[a, b, `ipotesi: ${PLAIN[a]} ⊆ ${PLAIN[b]}`]]);
+  const hyp = closure([[a, b, `ipotesi: $${TEX[a]} \\subseteq ${TEX[b]}$`]]);
   let best: { s: StrictRow; p: Edge[] } | null = null;
   for (const s of STRICT) {
     const [x, y] = s;
@@ -201,21 +204,21 @@ function computeSubset(a: ClassId, b: ClassId): Answer {
   const after = eqGroups(hyp).filter((g) => !before.includes(g.join()));
   const reverse = BASE.R(b, a);
   const flags: string[] = [];
-  if (hyp.R("PSPACE", "PH") && !BASE.R("PSPACE", "PH")) flags.push("PH = PSPACE: per il Teorema 17.11 PH collasserebbe a un livello finito.");
+  if (hyp.R("PSPACE", "PH") && !BASE.R("PSPACE", "PH")) flags.push("$\\mathrm{PH} = \\mathrm{PSPACE}$: per il Teorema 17.11 PH collasserebbe a un livello finito.");
   if (hyp.R("NP", "coNP") && !BASE.R("NP", "coNP"))
     flags.push(
       hyp.R("NP", "P")
-        ? "P = NP: PH collasserebbe al piano 0 (PH = P) ed EXP = NEXP per il padding."
-        : "NP = coNP: PH collasserebbe al primo livello (PH = NP).",
+        ? "$\\mathrm{P} = \\mathrm{NP}$: PH collasserebbe al piano 0 ($\\mathrm{PH} = \\mathrm{P}$) ed $\\mathrm{EXP} = \\mathrm{NEXP}$ per il padding."
+        : "$\\mathrm{NP} = \\mathrm{coNP}$: PH collasserebbe al primo livello ($\\mathrm{PH} = \\mathrm{NP}$).",
     );
-  else if (hyp.R("SIGMA2", "PI2") && !BASE.R("SIGMA2", "PI2")) flags.push("Σ₂ᴾ = Π₂ᴾ: PH collasserebbe al secondo livello.");
+  else if (hyp.R("SIGMA2", "PI2") && !BASE.R("SIGMA2", "PI2")) flags.push("$\\Sigma_2^{\\mathrm{P}} = \\Pi_2^{\\mathrm{P}}$: PH collasserebbe al secondo livello.");
   return {
     ans: "altro",
     reverse,
     groups: after,
     flags,
     text: reverse
-      ? `Si sa che ${PLAIN[b]} ⊆ ${PLAIN[a]}: l'inclusione richiesta varrebbe solo se le due classi fossero uguali, e non si sa.`
+      ? `Si sa che $${TEX[b]} \\subseteq ${TEX[a]}$: l'inclusione richiesta varrebbe solo se le due classi fossero uguali, e non si sa.`
       : "Né dimostrata né esclusa: è una questione aperta.",
   };
 }
@@ -291,15 +294,15 @@ export function compare(a: ClassId, b: ClassId): Verdict {
   return { ab, ba, head, pill, eq };
 }
 
-/** etichetta della risposta a "A ⊆ B?" */
+/** etichetta della risposta a "A ⊆ B?" (HTML con formule $…$) */
 export const answerLabel = (r: Answer, a: ClassId, b: ClassId) =>
   r.ans === "si"
     ? "SÌ"
     : r.ans === "no"
       ? "NO"
       : r.reverse
-        ? `altro: solo se ${PLAIN[a]} = ${PLAIN[b]}`
-        : `altro: solo se ${PLAIN[a]} ⊆ ${PLAIN[b]}`;
+        ? `altro: solo se $${TEX[a]} = ${TEX[b]}$`
+        : `altro: solo se $${TEX[a]} \\subseteq ${TEX[b]}$`;
 
 /** l'indirizzo nomina una classe della mappa */
 export const isClassId = (s: string): s is ClassId => (IDS as readonly string[]).includes(s);

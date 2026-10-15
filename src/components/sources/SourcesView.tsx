@@ -3,6 +3,8 @@ import { VER } from "@/data/problems";
 import { THEOREMS } from "@/data/theorems";
 import { Html, SourceBadge } from "@/components/problems/bits";
 import { ui } from "@/lib/ui";
+import { texHtml } from "@/lib/tex";
+import Tex from "@/components/Tex";
 
 const prose = "flex max-w-prose flex-col gap-3 [&_ul]:m-0 [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-2 [&_ul]:pl-5";
 const h3 = "mt-2.5 font-head text-xl font-semibold leading-tight";
@@ -17,7 +19,7 @@ function TheoremFixes() {
       <ul>
         {fix.map((t) => (
           <li key={t.id}>
-            <Link href={`/teoremi#teorema-${t.id}`} className="text-accent underline decoration-1 underline-offset-2" dangerouslySetInnerHTML={{ __html: t.nome }} />
+            <Link href={`/teoremi#teorema-${t.id}`} className="text-accent underline decoration-1 underline-offset-2" dangerouslySetInnerHTML={{ __html: texHtml(t.nome, false) }} />
             : <Html html={t.correzione} />
           </li>
         ))}
@@ -58,12 +60,13 @@ export default function SourcesView() {
               da dispensa o slide.
             </li>
             <li>
-              <span className={ui.pillExt}>esterno</span> Il promemoria «Σ = somma = OR = ∃, Π = prodotto = AND = ∀» e l&apos;origine della
-              notazione dalla gerarchia aritmetica (scheda Piani di PH): dispensa e slide non spiegano le lettere. Che ∃ si valuti come OR e ∀ come
-              AND invece è nelle slide (algoritmo Truth).
+              <span className={ui.pillExt}>esterno</span> Il promemoria «<Tex>{String.raw`\Sigma = \text{somma} = \text{OR} = \exists`}</Tex>,{" "}
+              <Tex>{String.raw`\Pi = \text{prodotto} = \text{AND} = \forall`}</Tex>» e l&apos;origine della notazione dalla gerarchia aritmetica
+              (scheda Piani di PH): dispensa e slide non spiegano le lettere. Che <Tex>{String.raw`\exists`}</Tex> si valuti come OR e{" "}
+              <Tex>{String.raw`\forall`}</Tex> come AND invece è nelle slide (algoritmo Truth).
             </li>
             <li>
-              <span className={ui.pillExt}>esterno</span> Il nome Immerman–Szelepcsényi per NL = coNL: le slide della Lez. 4 dicono solo che per lo
+              <span className={ui.pillExt}>esterno</span> Il nome Immerman–Szelepcsényi per <Tex>{String.raw`\mathrm{NL} = \mathrm{coNL}`}</Tex>: le slide della Lez. 4 dicono solo che per lo
               spazio nondeterministico la chiusura per complemento si dimostra.
             </li>
             <li>
@@ -71,12 +74,15 @@ export default function SourcesView() {
               LINEAR PROGRAMMING, 2-COL in L, il nome AKS: sono negli appunti o nella letteratura, non in dispensa o nelle slide disponibili.
             </li>
             <li>
-              <span className={ui.pillExt}>✱ solo appunti</span> NP ⊊ NEXP: dispensa (cap. 8) e slide danno la gerarchia di tempo
-              nondeterministico solo tra polinomi, NTIME(n<sup>c</sup>) ⊊ NTIME(n<sup>d</sup>). La separazione NP ⊊ NEXP, usata nelle risposte
-              NO, viene dagli appunti (Lez. 5 §7, dal Papadimitriou).
+              <span className={ui.pillExt}>✱ solo appunti</span> <Tex>{String.raw`\mathrm{NP} \subsetneq \mathrm{NEXP}`}</Tex>: dispensa (cap. 8)
+              e slide danno la gerarchia di tempo nondeterministico solo tra polinomi,{" "}
+              <Tex>{String.raw`\mathrm{NTIME}(n^c) \subsetneq \mathrm{NTIME}(n^d)`}</Tex>. La separazione{" "}
+              <Tex>{String.raw`\mathrm{NP} \subsetneq \mathrm{NEXP}`}</Tex>, usata nelle risposte NO, viene dagli appunti (Lez. 5 §7, dal
+              Papadimitriou).
             </li>
             <li>
-              <span className={ui.pillOk}>ricavata</span> NEXP ⊊ R e RE ≠ coRE non sono scritte così nelle fonti: seguono da risultati del corso
+              <span className={ui.pillOk}>ricavata</span> <Tex>{String.raw`\mathrm{NEXP} \subsetneq \mathrm{R}`}</Tex> e{" "}
+              <Tex>{String.raw`\mathrm{RE} \neq \mathrm{coRE}`}</Tex> non sono scritte così nelle fonti: seguono da risultati del corso
               (Lez. 10 §4 e §7), con il ragionamento mostrato nella scheda.
             </li>
           </ul>
@@ -86,26 +92,28 @@ export default function SourcesView() {
           <ul>
             <li>
               <b>&quot;2-SAT is P-complete&quot;</b> (dispensa, cap. 14 e 22) non è dimostrato. La dispensa stessa dice &quot;2-SAT is in P&quot;
-              (cap. 12); che sia NL-completo viene dagli appunti ✱. Con le riduzioni in spazio logaritmico sarebbe P-completo solo se P = NL. Per lo
-              stesso motivo la risposta della dispensa a &quot;PRIMES si riduce a 2-SAT?&quot; (sì) va letta come &quot;solo se PRIMES ∈ NL&quot;.
+              (cap. 12); che sia NL-completo viene dagli appunti ✱. Con le riduzioni in spazio logaritmico sarebbe P-completo solo se{" "}
+              <Tex>{String.raw`\mathrm{P} = \mathrm{NL}`}</Tex>. Per lo stesso motivo la risposta della dispensa a &quot;PRIMES si riduce a
+              2-SAT?&quot; (sì) va letta come &quot;solo se <Tex>{String.raw`\mathrm{PRIMES} \in \mathrm{NL}`}</Tex>&quot;.
             </li>
             <li>
               <b>
-                &quot;co-HAMILTON PATH è Π<sub>2</sub>
-                <sup>P</sup>-completo&quot;
+                &quot;co-HAMILTON PATH è <Tex>{String.raw`\Pi_2^{\mathrm{P}}`}</Tex>-completo&quot;
               </b>{" "}
-              (dispensa, cap. 17.2.3) non è dimostrato: è coNP-completo, e sarebbe Π<sub>2</sub>
-              <sup>P</sup>-completo solo se NP = coNP.
+              (dispensa, cap. 17.2.3) non è dimostrato: è coNP-completo, e sarebbe <Tex>{String.raw`\Pi_2^{\mathrm{P}}`}</Tex>-completo solo se{" "}
+              <Tex>{String.raw`\mathrm{NP} = \mathrm{coNP}`}</Tex>.
             </li>
             <li>
-              <b>EXACT TSP NP-hard con B = n + 1</b> (dispensa, cap. 15): la riduzione da HAMILTON PATH non regge, perché se il grafo ha un ciclo
-              hamiltoniano l&apos;ottimo vale n. Quella giusta parte da HAMILTON CYCLE con B = n (appunti Lez. 9).
+              <b>
+                EXACT TSP NP-hard con <Tex>{String.raw`B = n + 1`}</Tex>
+              </b>{" "}
+              (dispensa, cap. 15): la riduzione da HAMILTON PATH non regge, perché se il grafo ha un ciclo hamiltoniano l&apos;ottimo vale{" "}
+              <Tex>n</Tex>. Quella giusta parte da HAMILTON CYCLE con <Tex>{String.raw`B = n`}</Tex> (appunti Lez. 9).
             </li>
             <li>
               <b>Barre di complemento perse.</b> Nel riepilogo della dispensa (cap. 22) e nel cap. 17 &quot;HAMILTON PATH is coNP-complete&quot;,
-              &quot;TSP(D) is coNP-complete&quot;, &quot;QSAT<sub>i</sub> is Π<sub>i</sub>
-              <sup>P</sup>-complete&quot; e &quot;STRATEGIC COMPANIES is Π<sub>2</sub>
-              <sup>P</sup>-complete&quot; hanno una barra sopra il nome, cioè parlano del complemento. Sono giusti; la barra sparisce solo se si
+              &quot;TSP(D) is coNP-complete&quot;, &quot;<Tex>{String.raw`\mathrm{QSAT}_i`}</Tex> is <Tex>{String.raw`\Pi_i^{\mathrm{P}}`}</Tex>-complete&quot;
+              e &quot;STRATEGIC COMPANIES is <Tex>{String.raw`\Pi_2^{\mathrm{P}}`}</Tex>-complete&quot; hanno una barra sopra il nome, cioè parlano del complemento. Sono giusti; la barra sparisce solo se si
               copia il testo dal PDF.
             </li>
           </ul>
@@ -133,11 +141,15 @@ export default function SourcesView() {
             <tbody>
               {VER.map(([r, v, t]) => (
                 <tr key={r}>
-                  <td className="border-b border-line p-2 align-top">{r}</td>
+                  <td className="border-b border-line p-2 align-top">
+                    <Html html={r} />
+                  </td>
                   <td className={`whitespace-nowrap border-b border-line p-2 align-top font-mono text-sm font-semibold ${v === "ok" ? "text-ok" : "text-open"}`}>
                     {v === "ok" ? "✔ confermata" : "◐ in parte"}
                   </td>
-                  <td className="border-b border-line p-2 align-top">{t}</td>
+                  <td className="border-b border-line p-2 align-top">
+                    <Html html={t} />
+                  </td>
                 </tr>
               ))}
             </tbody>

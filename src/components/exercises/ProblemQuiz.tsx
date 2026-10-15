@@ -23,12 +23,12 @@ function QuestionText({ q }: { q: QuizQuestion }) {
   if (q.type === "cpl")
     return (
       <>
-        Com&apos;è classificato il complemento di <strong className="font-bold">{p.name}</strong>?
+        Com&apos;è classificato il complemento di <Html as="strong" className="font-bold" html={p.name} />?
       </>
     );
   return (
     <>
-      <strong className="font-bold">{p.name}</strong>: in quale classe sta, ed è completo?
+      <Html as="strong" className="font-bold" html={p.name} />: in quale classe sta, ed è completo?
       <Rich as="span" className="mt-1.5 block font-body text-base font-normal text-muted" html={p.def} />
     </>
   );

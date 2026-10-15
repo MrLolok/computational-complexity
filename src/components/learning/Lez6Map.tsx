@@ -16,6 +16,8 @@ import {
     MAP_POS,
     MAP_STRICT,
 } from "@/data/lezione6Map";
+import Tex from "@/components/Tex";
+import { texHtml } from "@/lib/tex";
 import { classColor, ui } from "@/lib/ui";
 
 const W = 104,
@@ -24,6 +26,10 @@ const badgeText = "font-bold [text-anchor:middle] [dominant-baseline:central]";
 /** a ⊆ b, chiusura transitiva delle inclusioni dimostrate */
 const below = (a: MapNode, b: MapNode): boolean => MAP_INC.some(([x, y]) => x === a && (y === b || below(y, b)));
 const width = (id: MapNode) => (id === "PSPACE" ? 116 : W);
+/** testo dei dati con formule $…$ */
+const Html = ({ html, className }: { html: string; className?: string }) => (
+    <span className={className} dangerouslySetInnerHTML={{ __html: texHtml(html) }} />
+);
 
 /** Mappa della Lezione 6: un clic su una classe mostra significato, condizione di accettazione e relazioni. */
 export default function Lez6Map({ initial }: { initial: MapNode }) {
@@ -210,7 +216,7 @@ export default function Lez6Map({ initial }: { initial: MapNode }) {
                         <svg width="30" height="10" aria-hidden="true">
                             <line x1="2" y1="5" x2="28" y2="5" className="stroke-proved [stroke-width:1.8]" />
                         </svg>
-                        stretta dimostrata (⊊)
+                        stretta dimostrata (<Tex>{String.raw`\subsetneq`}</Tex>)
                     </span>
                     <span>
                         <svg width="30" height="10" aria-hidden="true">
@@ -234,12 +240,14 @@ export default function Lez6Map({ initial }: { initial: MapNode }) {
             >
                 <p className={ui.eyebrow}>Classe scelta sulla mappa</p>
                 <h3 className="font-mono text-2xl font-semibold text-(--c)">{MAP_NAME[sel]}</h3>
-                <p className="text-muted text-sm">{info.full}</p>
-                <p className="leading-relaxed">{info.idea}</p>
+                <Html className="text-muted block text-sm" html={info.full} />
+                <Html className="block leading-relaxed" html={info.idea} />
                 {info.accept && (
                     <dl className="bg-sunk grid grid-cols-1 gap-x-4 gap-y-1 rounded-lg p-3 text-sm sm:grid-cols-[auto_minmax(0,1fr)]">
                         <dt className="text-muted">Si accetta se</dt>
-                        <dd>{info.accept}</dd>
+                        <dd>
+                            <Html html={info.accept} />
+                        </dd>
                         <dt className="text-muted">Errore riducibile in tempo pol.?</dt>
                         <dd className="font-semibold">{info.error}</dd>
                     </dl>
@@ -249,7 +257,7 @@ export default function Lez6Map({ initial }: { initial: MapNode }) {
                     <ul className="flex flex-wrap gap-2">
                         {info.proved.map((r) => (
                             <li key={r} className={ui.pillOk}>
-                                {r}
+                                <Html html={r} />
                             </li>
                         ))}
                     </ul>
@@ -259,14 +267,14 @@ export default function Lez6Map({ initial }: { initial: MapNode }) {
                             <ul className="flex flex-wrap gap-2">
                                 {info.conjectured.map((r) => (
                                     <li key={r} className={`${ui.pillOpen} whitespace-normal`}>
-                                        {r}
+                                        <Html html={r} />
                                     </li>
                                 ))}
                             </ul>
                         </>
                     )}
                 </div>
-                {info.examples && <p className="text-muted text-sm">{info.examples}</p>}
+                {info.examples && <Html className="text-muted block text-sm" html={info.examples} />}
                 {info.more.href.startsWith("#") ? (
                     /* stessa pagina: un'ancora vera fa scattare hashchange, che apre la scheda e il riquadro giusti */
                     <a href={info.more.href} className={`${ui.linkBtn} self-start`}>

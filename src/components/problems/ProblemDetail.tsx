@@ -11,8 +11,9 @@ import walkthroughs from "@/data/problemWalkthroughs.json";
 import { ansKey, colorId, PI, REL, S, trapAnswer } from "@/lib/problems";
 import { theoremsForProblem } from "@/lib/theorems";
 import { classColor, ui } from "@/lib/ui";
-import { codeCls, YesNo } from "./bits";
+import { codeCls, Html, noTerms, YesNo } from "./bits";
 import ProblemSlideshow from "./ProblemSlideshow";
+import { texHtml } from "@/lib/tex";
 
 function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void }) {
     return (
@@ -22,7 +23,7 @@ function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void })
             data-term={`problem:${id}`}
             className="text-accent cursor-pointer underline underline-offset-4"
         >
-            {PROBLEM_BY[id].name}
+            <Html html={PROBLEM_BY[id].name} />
         </button>
     );
 }
@@ -100,10 +101,10 @@ export default function ProblemDetail({
                     <Link
                         href={`/classi/${p.c || p.b}`}
                         className={ui.pill}
-                        dangerouslySetInnerHTML={{ __html: clsName }}
+                        dangerouslySetInnerHTML={{ __html: noTerms(texHtml(clsName)) }}
                     />
                     {p.full && (
-                        <span className={ui.pillOk} dangerouslySetInnerHTML={{ __html: `${clsName}-completo` }} />
+                        <span className={ui.pillOk} dangerouslySetInnerHTML={{ __html: texHtml(`${clsName}-completo`) }} />
                     )}
                 </div>
             </header>
@@ -124,7 +125,7 @@ export default function ProblemDetail({
                 </details>
             )}
             <ProblemSlideshow key={p.id} id={p.id as keyof typeof walkthroughs} name={p.name.replace(/<[^>]+>/g, "")} />
-            <Rich className="text-muted flex flex-col gap-3 leading-relaxed" html={p.why} />
+            <Rich className="text-muted flex flex-col gap-3 leading-relaxed" html={/^\s*<(p|ul|ol|div)\b/.test(p.why) ? p.why : `<p>${p.why}</p>`} />
             <details className={disclosure}>
                 <summary>Complemento e collegamenti</summary>
                 <div className="mt-3 flex flex-col gap-3">
@@ -140,7 +141,7 @@ export default function ProblemDetail({
                             {related.map(([id, text]) => (
                                 <li key={id}>
                                     <ProblemButton id={id} onGo={onGo} />
-                                    <span className="text-muted ml-2">{text}</span>
+                                    <Html className="text-muted ml-2" html={text} />
                                 </li>
                             ))}
                         </ul>
@@ -152,7 +153,7 @@ export default function ProblemDetail({
                                     key={t.id}
                                     href={`/teoremi#teorema-${t.id}`}
                                     className="text-accent underline underline-offset-4"
-                                    dangerouslySetInnerHTML={{ __html: t.nome }}
+                                    dangerouslySetInnerHTML={{ __html: noTerms(texHtml(t.nome)) }}
                                 />
                             ))}
                         </p>

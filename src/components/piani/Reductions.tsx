@@ -4,6 +4,9 @@ import { useState } from "react";
 import { RP, RP_DEFAULT, RQUICK } from "@/data/piani";
 import { readit, rSub, shortName } from "@/lib/piani";
 import { ui } from "@/lib/ui";
+import { texHtml } from "@/lib/tex";
+import { plainMath } from "@/lib/mathNotation";
+import Tex from "@/components/Tex";
 
 const byId = (id: string) => RP.find((r) => r.id === id) ?? RP[0];
 const label = "flex min-w-0 max-w-full flex-col gap-1 font-ui text-xs font-semibold text-muted";
@@ -24,7 +27,7 @@ export default function Reductions() {
           <select className={ui.select} value={a} onChange={(e) => setA(e.target.value)}>
             {RP.map((x) => (
               <option key={x.id} value={x.id}>
-                {x.label}
+                {plainMath(x.label)}
               </option>
             ))}
           </select>
@@ -35,7 +38,7 @@ export default function Reductions() {
           <select className={ui.select} value={b} onChange={(e) => setB(e.target.value)}>
             {RP.map((x) => (
               <option key={x.id} value={x.id}>
-                {x.label}
+                {plainMath(x.label)}
               </option>
             ))}
           </select>
@@ -53,23 +56,21 @@ export default function Reductions() {
               setB(y);
             }}
           >
-            {shortName(byId(x).label)} → {shortName(byId(y).label)}
+            <span dangerouslySetInnerHTML={{ __html: texHtml(`${shortName(byId(x).label)} → ${shortName(byId(y).label)}`, false) }} />
           </button>
         ))}
       </div>
       <div className="mt-3 flex flex-col gap-4" aria-live="polite">
         <div className="flex flex-wrap items-center gap-2.5 font-head text-2xl font-semibold">
-          <span>
-            {shortName(A.label)} → {shortName(B.label)}
-          </span>
+          <span dangerouslySetInnerHTML={{ __html: texHtml(`${shortName(A.label)} → ${shortName(B.label)}`) }} />
           <span className={r === "si" ? "text-ok" : "text-open"}>{r === "si" ? "SÌ" : "altro"}</span>
         </div>
         <p>
           {r === "si" ? "Esiste: " : "Non si sa; esisterebbe "}
-          <span dangerouslySetInnerHTML={{ __html: why }} />
+          <span dangerouslySetInnerHTML={{ __html: texHtml(why) }} />
         </p>
         <p className={readit}>
-          Regola usata: se A è completo per X e B per Y, A si riduce a B esattamente quando X ⊆ Y, perché le classi sono chiuse per riduzioni.
+          Regola usata: se A è completo per X e B per Y, A si riduce a B esattamente quando <Tex>{String.raw`X \subseteq Y`}</Tex>, perché le classi sono chiuse per riduzioni.
         </p>
       </div>
     </>

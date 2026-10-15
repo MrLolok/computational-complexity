@@ -2,8 +2,9 @@
 import type { ClassId } from "@/data/classes";
 import { LINKS, ORDER, PROBLEMS, PROBLEM_BY, ROWS, type LadderId, type Problem, type Trap } from "@/data/problems";
 
-export const S = (i: string | number) => `Σ<sub>${i}</sub><sup>P</sup>`;
-export const PI = (i: string | number) => `Π<sub>${i}</sub><sup>P</sup>`;
+/** livelli della gerarchia come formula LaTeX (da mostrare con texHtml) */
+export const S = (i: string | number) => `$\\Sigma_{${i}}^{\\mathrm{P}}$`;
+export const PI = (i: string | number) => `$\\Pi_{${i}}^{\\mathrm{P}}$`;
 
 /** gradini della scala nell'ordine delle righe (dal basso) */
 export const BANDS: LadderId[] = ROWS.flat();

@@ -1,12 +1,17 @@
 /* Piccoli pezzi condivisi da Problemi, Esercitati e Fonti (nessuno stato: vanno bene anche nei server component). */
 import type { Choice } from "@/store/progressSlice";
 import { ui } from "@/lib/ui";
+import { texHtml } from "@/lib/tex";
 
 type Tag = "span" | "p" | "div" | "li" | "td" | "h2" | "strong";
 
-/** testo dei dati con solo marcatura (pedici, corsivi): niente link interni */
-export function Html({ html, className, as: T = "span" }: { html: string; className?: string; as?: Tag }) {
-  return <T className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+/** toglie il popup del glossario dalle formule: per i testi dentro un pulsante o un link */
+export const noTerms = (html: string) => html.replace(/ data-term="[^"]*" role="button" tabindex="0"/g, "");
+
+/** testo dei dati con solo marcatura (pedici, corsivi, formule $…$): niente link interni; terms={false} dentro un pulsante */
+export function Html({ html, className, as: T = "span", terms = true }: { html: string; className?: string; as?: Tag; terms?: boolean }) {
+  const out = texHtml(html);
+  return <T className={className} dangerouslySetInnerHTML={{ __html: terms ? out : noTerms(out) }} />;
 }
 
 const SB = "font-ui text-xs font-semibold uppercase tracking-wide px-1.5 py-px rounded-sm box-decoration-clone border";
@@ -26,7 +31,7 @@ export function SourceBadge({ kind, children }: { kind: keyof typeof sbClass; ch
 export function YesNo({ k, children }: { k: Choice; children?: string }) {
   return (
     <span className={`mr-1.5 rounded-sm px-2 py-px font-mono text-xs font-semibold box-decoration-clone ${ui.yn[k]}`}>
-      <Html html={children ?? ""} />
+      <Html html={children ?? ""} terms={false} />
     </span>
   );
 }
@@ -36,7 +41,7 @@ export function LabPill({ html }: { html: string }) {
   return (
     <span
       className="inline-block rounded-full border border-(--c)/40 bg-(--c)/13 px-2.5 py-0.5 font-mono text-sm font-semibold text-(--c)"
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: texHtml(html) }}
     />
   );
 }

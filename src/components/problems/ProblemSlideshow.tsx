@@ -4,7 +4,9 @@ import { useId, useRef, useState } from "react";
 import Image from "next/image";
 
 import walkthroughs from "@/data/problemWalkthroughs.json";
+import { plainMath } from "@/lib/mathNotation";
 import { ui } from "@/lib/ui";
+import { Html } from "./bits";
 
 export default function ProblemSlideshow({ id, name }: { id: keyof typeof walkthroughs; name: string }) {
     const lesson = walkthroughs[id];
@@ -69,9 +71,9 @@ export default function ProblemSlideshow({ id, name }: { id: keyof typeof walkth
                         </div>
                         <figcaption className="border-line flex flex-col gap-2 border-t p-4">
                             <h4 className="font-semibold">
-                                {i + 1}. {slide.title}
+                                {i + 1}. <Html html={slide.title} />
                             </h4>
-                            <p className="text-muted text-sm leading-relaxed">{slide.caption}</p>
+                            <Html as="p" className="text-muted text-sm leading-relaxed" html={slide.caption} />
                         </figcaption>
                     </figure>
                 ))}
@@ -91,7 +93,7 @@ export default function ProblemSlideshow({ id, name }: { id: keyof typeof walkth
                         <button
                             key={slide.src}
                             type="button"
-                            aria-label={`Passo ${i + 1}: ${slide.title}`}
+                            aria-label={`Passo ${i + 1}: ${plainMath(slide.title)}`}
                             aria-pressed={step === i}
                             onClick={() => go(i)}
                             className={`flex size-9 cursor-pointer items-center justify-center rounded-full border text-xs ${step === i ? "border-accent bg-accent text-accent-ink" : "border-line text-muted hover:border-accent"}`}
@@ -112,8 +114,8 @@ export default function ProblemSlideshow({ id, name }: { id: keyof typeof walkth
             </div>
             {step === lesson.slides.length - 1 && (
                 <div className="border-line bg-ok-soft/25 flex flex-col gap-2 border-t p-4">
-                    <p className="text-ok font-semibold">{lesson.outcome}</p>
-                    <p className="text-muted text-xs leading-relaxed">{lesson.note}</p>
+                    <Html as="p" className="text-ok font-semibold" html={lesson.outcome} />
+                    <Html as="p" className="text-muted text-xs leading-relaxed" html={lesson.note} />
                 </div>
             )}
             <p className="border-line text-muted border-t px-4 py-2 text-xs sm:hidden">

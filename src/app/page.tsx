@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ClassesView from "@/components/classes/ClassesView";
 import { ui } from "@/lib/ui";
+import Tex from "@/components/Tex";
 
 export const metadata: Metadata = { title: "Inizia il ripasso" };
 const PATHS = [
@@ -68,7 +69,7 @@ export default function Page() {
                     className="mb-2 block pl-3 font-mono text-muted"
                     aria-label="è contenuta in"
                   >
-                    ↓ ⊆
+                    ↓ <Tex>{String.raw`\subseteq`}</Tex>
                   </span>
                 )}
                 <Link
@@ -84,7 +85,7 @@ export default function Page() {
             ))}
           </div>
           <p className="text-sm text-muted">
-            P ⊆ NP ⊆ PSPACE. Le inclusioni sono note; non sappiamo se sono
+            <Tex>{String.raw`\mathrm{P} \subseteq \mathrm{NP} \subseteq \mathrm{PSPACE}`}</Tex>. Le inclusioni sono note; non sappiamo se sono
             strette.
           </p>
         </div>

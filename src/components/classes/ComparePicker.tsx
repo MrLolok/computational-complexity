@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition, type ReactNode } from "react";
+import Tex from "@/components/Tex";
 import { IDS, PLAIN, QUICK, type ClassId } from "@/data/classes";
 import { ui } from "@/lib/ui";
 
@@ -32,7 +33,7 @@ export default function ComparePicker({ a, b, children }: { a?: ClassId; b?: Cla
       </form>
       {!changed && children}
       {changed && children && <p className={ui.hint}>Premi “Confronta” per leggere il risultato della nuova coppia.</p>}
-      {!children && <p className="max-w-prose text-sm text-muted">Il risultato distingue ⊆ (inclusione), ⊊ (inclusione stretta) e rapporto non noto. Troverai anche la motivazione da usare all&apos;esame.</p>}
+      {!children && <p className="max-w-prose text-sm text-muted">Il risultato distingue <Tex>{String.raw`\subseteq`}</Tex> (inclusione), <Tex>{String.raw`\subsetneq`}</Tex> (inclusione stretta) e rapporto non noto. Troverai anche la motivazione da usare all&apos;esame.</p>}
     </section>
   );
 }

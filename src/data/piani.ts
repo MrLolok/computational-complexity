@@ -56,46 +56,46 @@ export const BANDS: [number, number, number][] = [[0, 760, 820], [1, 672, 728], 
 export type Hypothesis = { id: string; label: string; merged: TowerId[]; tag: string; note: string };
 export const HYP: Hypothesis[] = [
   { id: "none", label: "Nessuna ipotesi: com'è oggi", merged: [], tag: "", note: "" },
-  { id: "PNP", label: "P = NP", merged: ["L0", "S1", "P1", "DP", "D2", "S2", "P2", "D3", "S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = P = PH", note: "P = NP implica NP = coNP, quindi PH collassa al primo piano; e il primo piano è P stesso: PH = P (corollario del Teorema 17.9)." },
-  { id: "S1", label: "NP = coNP (Σ₁ᴾ = Π₁ᴾ)", merged: ["S1", "P1", "DP", "D2", "S2", "P2", "D3", "S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = NP = PH", note: "Teorema 17.9 con i = 1: tutti i piani sopra il primo coincidono con NP. Anche DP crolla su NP, perché NP ⊆ DP ⊆ Δ₂ᴾ = NP. P resta fuori: P = NP rimane aperto." },
-  { id: "S2", label: "Σ₂ᴾ = Π₂ᴾ", merged: ["S2", "P2", "D3", "S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = Σ₂ᴾ = PH", note: "Teorema 17.9 con i = 2: per ogni j > 2, Σⱼᴾ = Πⱼᴾ = Δⱼᴾ = Σ₂ᴾ. I piani 0 e 1, DP e Δ₂ᴾ restano dove sono." },
-  { id: "S3", label: "Σ₃ᴾ = Π₃ᴾ", merged: ["S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = Σ₃ᴾ = PH", note: "Teorema 17.9 con i = 3: la torre smette di crescere al piano 3." },
-  { id: "S4", label: "Σ₄ᴾ = Π₄ᴾ", merged: ["S4", "P4", "PH"], tag: "tutto = Σ₄ᴾ = PH", note: "Teorema 17.9 con i = 4." },
-  { id: "PHC", label: "Esiste un problema PH-completo", merged: ["PH"], tag: "= Σₖᴾ per un k finito", note: "Teorema 17.11: il problema sta in qualche piano Σₖᴾ, e ogni problema di Σₖ₊₁ᴾ si riduce a lui; i piani sono chiusi per riduzioni, quindi Σₖ₊₁ᴾ = Σₖᴾ e PH collassa al piano k. Quale k sia non si sa." },
-  { id: "PHPS", label: "PH = PSPACE", merged: ["PH", "PSPACE"], tag: "PH = PSPACE = Σₖᴾ", note: "Corollario del Teorema 17.11: PSPACE ha problemi completi (QSAT), quindi anche PH ne avrebbe uno e collasserebbe a un piano finito. Per questo si pensa che PH ≠ PSPACE." },
+  { id: "PNP", label: "P = NP", merged: ["L0", "S1", "P1", "DP", "D2", "S2", "P2", "D3", "S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = P = PH", note: "$\\mathrm{P} = \\mathrm{NP}$ implica $\\mathrm{NP} = \\mathrm{coNP}$, quindi PH collassa al primo piano; e il primo piano è P stesso: $\\mathrm{PH} = \\mathrm{P}$ (corollario del Teorema 17.9)." },
+  { id: "S1", label: "NP = coNP (Σ₁ᴾ = Π₁ᴾ)", merged: ["S1", "P1", "DP", "D2", "S2", "P2", "D3", "S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = NP = PH", note: "Teorema 17.9 con $i = 1$: tutti i piani sopra il primo coincidono con NP. Anche DP crolla su NP, perché $\\mathrm{NP} \\subseteq \\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} = \\mathrm{NP}$. P resta fuori: $\\mathrm{P} = \\mathrm{NP}$ rimane aperto." },
+  { id: "S2", label: "Σ₂ᴾ = Π₂ᴾ", merged: ["S2", "P2", "D3", "S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = Σ₂ᴾ = PH", note: "Teorema 17.9 con $i = 2$: per ogni $j \\gt 2$, $\\Sigma_j^{\\mathrm{P}} = \\Pi_j^{\\mathrm{P}} = \\Delta_j^{\\mathrm{P}} = \\Sigma_2^{\\mathrm{P}}$. I piani 0 e 1, DP e $\\Delta_2^{\\mathrm{P}}$ restano dove sono." },
+  { id: "S3", label: "Σ₃ᴾ = Π₃ᴾ", merged: ["S3", "P3", "D4", "S4", "P4", "PH"], tag: "tutto = Σ₃ᴾ = PH", note: "Teorema 17.9 con $i = 3$: la torre smette di crescere al piano 3." },
+  { id: "S4", label: "Σ₄ᴾ = Π₄ᴾ", merged: ["S4", "P4", "PH"], tag: "tutto = Σ₄ᴾ = PH", note: "Teorema 17.9 con $i = 4$." },
+  { id: "PHC", label: "Esiste un problema PH-completo", merged: ["PH"], tag: "= Σₖᴾ per un k finito", note: "Teorema 17.11: il problema sta in qualche piano $\\Sigma_k^{\\mathrm{P}}$, e ogni problema di $\\Sigma_{k+1}^{\\mathrm{P}}$ si riduce a lui; i piani sono chiusi per riduzioni, quindi $\\Sigma_{k+1}^{\\mathrm{P}} = \\Sigma_k^{\\mathrm{P}}$ e PH collassa al piano $k$. Quale $k$ sia non si sa." },
+  { id: "PHPS", label: "PH = PSPACE", merged: ["PH", "PSPACE"], tag: "PH = PSPACE = Σₖᴾ", note: "Corollario del Teorema 17.11: PSPACE ha problemi completi (QSAT), quindi anche PH ne avrebbe uno e collasserebbe a un piano finito. Per questo si pensa che $\\mathrm{PH} \\neq \\mathrm{PSPACE}$." },
 ];
 
 /** esempio di QBF per ogni nodo Σ/Π della torre */
 export const QEX: Partial<Record<TowerId, { f: string; w: string }>> = {
-  S1: { f: "∃p ∃q. (p ∨ q) ∧ ¬p", w: "vera: con p falsa e q vera la formula vale vero (appunti Lez. 9 §3)." },
-  P1: { f: "∀p ∀q. ¬p ∨ p ∨ q", w: "vera: ¬p ∨ p ∨ q è valida, cioè vera con ogni valore di p e q (slide Lez. 9, QBF)." },
-  S2: { f: "∃p ∀q. p ∨ q", w: "vera: si sceglie p vera, e allora p ∨ q è vera per ogni q." },
-  P2: { f: "∀p ∃q. ¬p ∨ q", w: "vera: qualunque sia p, basta prendere q vera (slide Lez. 9)." },
-  S3: { f: "∃p ∀q ∃r. p ∧ (q ∨ r) ∧ (¬q ∨ ¬r)", w: "vera: si sceglie p vera e, per ogni q, si prende r opposta a q (appunti Lez. 9 §3)." },
-  P3: { f: "∀p ∃q ∀r. (p ∨ q ∨ r) ∧ (¬p ∨ ¬q ∨ r)", w: "vera: per ogni p si sceglie q opposta a p, e allora le due clausole sono vere per ogni r (appunti Lez. 9 §3)." },
-  S4: { f: "∃p⃗₁ ∀p⃗₂ ∃p⃗₃ ∀p⃗₄. φ", w: "un'istanza di QSAT₄: quattro blocchi di variabili, il primo con ∃." },
-  P4: { f: "∀p⃗₁ ∃p⃗₂ ∀p⃗₃ ∃p⃗₄. φ", w: "un'istanza di co-QSAT₄: quattro blocchi, il primo con ∀." },
+  S1: { f: "$\\exists p\\ \\exists q.\\ (p \\lor q) \\land \\neg p$", w: "vera: con $p$ falsa e $q$ vera la formula vale vero (appunti Lez. 9 §3)." },
+  P1: { f: "$\\forall p\\ \\forall q.\\ \\neg p \\lor p \\lor q$", w: "vera: $\\neg p \\lor p \\lor q$ è valida, cioè vera con ogni valore di $p$ e $q$ (slide Lez. 9, QBF)." },
+  S2: { f: "$\\exists p\\ \\forall q.\\ p \\lor q$", w: "vera: si sceglie $p$ vera, e allora $p \\lor q$ è vera per ogni $q$." },
+  P2: { f: "$\\forall p\\ \\exists q.\\ \\neg p \\lor q$", w: "vera: qualunque sia $p$, basta prendere $q$ vera (slide Lez. 9)." },
+  S3: { f: "$\\exists p\\ \\forall q\\ \\exists r.\\ p \\land (q \\lor r) \\land (\\neg q \\lor \\neg r)$", w: "vera: si sceglie $p$ vera e, per ogni $q$, si prende $r$ opposta a $q$ (appunti Lez. 9 §3)." },
+  P3: { f: "$\\forall p\\ \\exists q\\ \\forall r.\\ (p \\lor q \\lor r) \\land (\\neg p \\lor \\neg q \\lor r)$", w: "vera: per ogni $p$ si sceglie $q$ opposta a $p$, e allora le due clausole sono vere per ogni $r$ (appunti Lez. 9 §3)." },
+  S4: { f: "$\\exists \\vec{p}_1\\ \\forall \\vec{p}_2\\ \\exists \\vec{p}_3\\ \\forall \\vec{p}_4.\\ \\varphi$", w: "un'istanza di $\\mathrm{QSAT}_4$: quattro blocchi di variabili, il primo con $\\exists$." },
+  P4: { f: "$\\forall \\vec{p}_1\\ \\exists \\vec{p}_2\\ \\forall \\vec{p}_3\\ \\exists \\vec{p}_4.\\ \\varphi$", w: "un'istanza di $\\mathrm{co\\text{-}QSAT}_4$: quattro blocchi, il primo con $\\forall$." },
 };
 
 /** problemi completi per piano: [lato Σ, lato Π] */
 export const QCOMP: Record<number, [string, string]> = {
-  1: ["SAT = QSAT₁, CLIQUE, TSP(D), 3-COLORING e gli altri NP-completi", "VALIDITY, co-SAT = co-QSAT₁, i complementi di HAMILTON PATH e TSP(D)"],
-  2: ["QSAT₂, CIRC SAT, STRATEGIC COMPANIES", "co-QSAT₂, CIRC VALIDITY, il complemento di STRATEGIC COMPANIES"],
-  3: ["QSAT₃", "co-QSAT₃"],
-  4: ["QSAT₄", "co-QSAT₄"],
+  1: ["$\\mathrm{SAT} = \\mathrm{QSAT}_1$, CLIQUE, TSP(D), 3-COLORING e gli altri NP-completi", "VALIDITY, $\\mathrm{co\\text{-}SAT} = \\mathrm{co\\text{-}QSAT}_1$, i complementi di HAMILTON PATH e TSP(D)"],
+  2: ["$\\mathrm{QSAT}_2$, CIRC SAT, STRATEGIC COMPANIES", "$\\mathrm{co\\text{-}QSAT}_2$, CIRC VALIDITY, il complemento di STRATEGIC COMPANIES"],
+  3: ["$\\mathrm{QSAT}_3$", "$\\mathrm{co\\text{-}QSAT}_3$"],
+  4: ["$\\mathrm{QSAT}_4$", "$\\mathrm{co\\text{-}QSAT}_4$"],
 };
 
 export type Quant = "∃" | "∀";
 export type Qbf = { f: string; q: Quant[]; v: string[]; ev: (a: boolean[]) => boolean; src: string };
 /** QBF da valutare con l'albero (∃ = OR, ∀ = AND) */
 export const QBF: Qbf[] = [
-  { f: "∃p ∃q. (p ∨ q) ∧ ¬p", q: ["∃", "∃"], v: ["p", "q"], ev: (a) => (a[0] || a[1]) && !a[0], src: "appunti Lez. 9 §3" },
-  { f: "∀p ∀q. p ∨ q", q: ["∀", "∀"], v: ["p", "q"], ev: (a) => a[0] || a[1], src: "slide Lez. 9 (QBF false)" },
-  { f: "∃p ∀q. p ∨ q", q: ["∃", "∀"], v: ["p", "q"], ev: (a) => a[0] || a[1], src: "appunti Lez. 9 §3" },
-  { f: "∀p ∃q. ¬p ∨ q", q: ["∀", "∃"], v: ["p", "q"], ev: (a) => !a[0] || a[1], src: "slide Lez. 9 (QBF vere)" },
-  { f: "∀p ∃q. ¬p ∨ (q ∧ ¬q)", q: ["∀", "∃"], v: ["p", "q"], ev: (a) => !a[0] || (a[1] && !a[1]), src: "slide Lez. 9 (QBF false)" },
-  { f: "∃p ∀q ∃r. p ∧ (q ∨ r) ∧ (¬q ∨ ¬r)", q: ["∃", "∀", "∃"], v: ["p", "q", "r"], ev: (a) => a[0] && (a[1] || a[2]) && (!a[1] || !a[2]), src: "appunti Lez. 9 §3" },
-  { f: "∀p ∃q ∀r. (p ∨ q ∨ r) ∧ (¬p ∨ ¬q ∨ r)", q: ["∀", "∃", "∀"], v: ["p", "q", "r"], ev: (a) => (a[0] || a[1] || a[2]) && (!a[0] || !a[1] || a[2]), src: "appunti Lez. 9 §3" },
+  { f: "$\\exists p\\ \\exists q.\\ (p \\lor q) \\land \\neg p$", q: ["∃", "∃"], v: ["p", "q"], ev: (a) => (a[0] || a[1]) && !a[0], src: "appunti Lez. 9 §3" },
+  { f: "$\\forall p\\ \\forall q.\\ p \\lor q$", q: ["∀", "∀"], v: ["p", "q"], ev: (a) => a[0] || a[1], src: "slide Lez. 9 (QBF false)" },
+  { f: "$\\exists p\\ \\forall q.\\ p \\lor q$", q: ["∃", "∀"], v: ["p", "q"], ev: (a) => a[0] || a[1], src: "appunti Lez. 9 §3" },
+  { f: "$\\forall p\\ \\exists q.\\ \\neg p \\lor q$", q: ["∀", "∃"], v: ["p", "q"], ev: (a) => !a[0] || a[1], src: "slide Lez. 9 (QBF vere)" },
+  { f: "$\\forall p\\ \\exists q.\\ \\neg p \\lor (q \\land \\neg q)$", q: ["∀", "∃"], v: ["p", "q"], ev: (a) => !a[0] || (a[1] && !a[1]), src: "slide Lez. 9 (QBF false)" },
+  { f: "$\\exists p\\ \\forall q\\ \\exists r.\\ p \\land (q \\lor r) \\land (\\neg q \\lor \\neg r)$", q: ["∃", "∀", "∃"], v: ["p", "q", "r"], ev: (a) => a[0] && (a[1] || a[2]) && (!a[1] || !a[2]), src: "appunti Lez. 9 §3" },
+  { f: "$\\forall p\\ \\exists q\\ \\forall r.\\ (p \\lor q \\lor r) \\land (\\neg p \\lor \\neg q \\lor r)$", q: ["∀", "∃", "∀"], v: ["p", "q", "r"], ev: (a) => (a[0] || a[1] || a[2]) && (!a[0] || !a[1] || a[2]), src: "appunti Lez. 9 §3" },
 ];
 export const QBF_DEFAULT = 2;
 
@@ -104,21 +104,21 @@ export type RClass = { t: "P" | "DP" | "PSPACE" } | { t: "S" | "Pi"; l: number }
 export type RProblem = { id: string; label: string; cls: RClass };
 export const RP: RProblem[] = [
   { id: "MAXFLOW", label: "MAX FLOW (P-completo)", cls: { t: "P" } },
-  { id: "SAT", label: "SAT = QSAT₁ (NP-completo)", cls: { t: "S", l: 1 } },
+  { id: "SAT", label: "$\\mathrm{SAT} = \\mathrm{QSAT}_1$ (NP-completo)", cls: { t: "S", l: 1 } },
   { id: "CLIQUE", label: "CLIQUE (NP-completo)", cls: { t: "S", l: 1 } },
-  { id: "COSAT", label: "co-SAT = co-QSAT₁ (coNP-completo)", cls: { t: "Pi", l: 1 } },
+  { id: "COSAT", label: "$\\mathrm{co\\text{-}SAT} = \\mathrm{co\\text{-}QSAT}_1$ (coNP-completo)", cls: { t: "Pi", l: 1 } },
   { id: "VALIDITY", label: "VALIDITY (coNP-completo)", cls: { t: "Pi", l: 1 } },
   { id: "SATUNSAT", label: "SAT-UNSAT (DP-completo)", cls: { t: "DP" } },
-  { id: "QSAT2", label: "QSAT₂ (Σ₂ᴾ-completo)", cls: { t: "S", l: 2 } },
-  { id: "CIRCSAT", label: "CIRC SAT (Σ₂ᴾ-completo)", cls: { t: "S", l: 2 } },
-  { id: "COQSAT2", label: "co-QSAT₂ (Π₂ᴾ-completo)", cls: { t: "Pi", l: 2 } },
-  { id: "CIRCVAL", label: "CIRC VALIDITY (Π₂ᴾ-completo)", cls: { t: "Pi", l: 2 } },
-  { id: "QSAT3", label: "QSAT₃ (Σ₃ᴾ-completo)", cls: { t: "S", l: 3 } },
-  { id: "COQSAT3", label: "co-QSAT₃ (Π₃ᴾ-completo)", cls: { t: "Pi", l: 3 } },
-  { id: "QSAT4", label: "QSAT₄ (Σ₄ᴾ-completo)", cls: { t: "S", l: 4 } },
-  { id: "COQSAT4", label: "co-QSAT₄ (Π₄ᴾ-completo)", cls: { t: "Pi", l: 4 } },
-  { id: "QSAT5", label: "QSAT₅ (Σ₅ᴾ-completo)", cls: { t: "S", l: 5 } },
-  { id: "COQSAT5", label: "co-QSAT₅ (Π₅ᴾ-completo)", cls: { t: "Pi", l: 5 } },
+  { id: "QSAT2", label: "$\\mathrm{QSAT}_2$ ($\\Sigma_2^{\\mathrm{P}}$-completo)", cls: { t: "S", l: 2 } },
+  { id: "CIRCSAT", label: "CIRC SAT ($\\Sigma_2^{\\mathrm{P}}$-completo)", cls: { t: "S", l: 2 } },
+  { id: "COQSAT2", label: "$\\mathrm{co\\text{-}QSAT}_2$ ($\\Pi_2^{\\mathrm{P}}$-completo)", cls: { t: "Pi", l: 2 } },
+  { id: "CIRCVAL", label: "CIRC VALIDITY ($\\Pi_2^{\\mathrm{P}}$-completo)", cls: { t: "Pi", l: 2 } },
+  { id: "QSAT3", label: "$\\mathrm{QSAT}_3$ ($\\Sigma_3^{\\mathrm{P}}$-completo)", cls: { t: "S", l: 3 } },
+  { id: "COQSAT3", label: "$\\mathrm{co\\text{-}QSAT}_3$ ($\\Pi_3^{\\mathrm{P}}$-completo)", cls: { t: "Pi", l: 3 } },
+  { id: "QSAT4", label: "$\\mathrm{QSAT}_4$ ($\\Sigma_4^{\\mathrm{P}}$-completo)", cls: { t: "S", l: 4 } },
+  { id: "COQSAT4", label: "$\\mathrm{co\\text{-}QSAT}_4$ ($\\Pi_4^{\\mathrm{P}}$-completo)", cls: { t: "Pi", l: 4 } },
+  { id: "QSAT5", label: "$\\mathrm{QSAT}_5$ ($\\Sigma_5^{\\mathrm{P}}$-completo)", cls: { t: "S", l: 5 } },
+  { id: "COQSAT5", label: "$\\mathrm{co\\text{-}QSAT}_5$ ($\\Pi_5^{\\mathrm{P}}$-completo)", cls: { t: "Pi", l: 5 } },
   { id: "QSAT", label: "QSAT (PSPACE-completo)", cls: { t: "PSPACE" } },
 ];
 export const RP_DEFAULT: [string, string] = ["QSAT4", "QSAT2"];

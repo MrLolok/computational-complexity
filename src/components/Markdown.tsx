@@ -3,7 +3,6 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeGlossary from "@/lib/rehypeGlossary";
-import { readableMath } from "@/lib/mathNotation";
 
 /** Markdown con formule KaTeX ($…$, $$…$$) e tabelle, stilizzato solo con Tailwind. */
 export default function Markdown({ children, className = "" }: { children: string; className?: string }) {
@@ -20,7 +19,7 @@ export default function Markdown({ children, className = "" }: { children: strin
           ),
         }}
       >
-        {readableMath(children)}
+        {children}
       </ReactMarkdown>
     </div>
   );
