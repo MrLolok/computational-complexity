@@ -329,7 +329,7 @@
   },
   {
    "q": "Quante ripetizioni servono, con soglia $3/4$, per avere errore al massimo $1\\%$?",
-   "a": "Qui il margine è $\\varepsilon = 1/4$ e l'errore voluto è $\\delta = 0{,}01$. Con la formula della stima di Chernoff: $k = \\lceil -8 \\ln 0{,}01 \\rceil = \\lceil 8 \\cdot 4{,}605 \\rceil = 37$, quindi $2k+1 = 75$ ripetizioni. È un limite superiore e prudente: con il calcolo esatto ne bastano 19 (errore 0,89%; con 17 si è ancora a 1,24%), e la tabella della stima di Chernoff mostra che con 25 si è già a 0,34%. In entrambi i casi è una **costante**: non dipende da $n$."
+   "a": "Qui il margine è $\\varepsilon = 1/4$ e l'errore voluto è $\\delta = 0{,}01$. Con la formula della stima di Chernoff: $k = \\lceil -8 \\ln 0{,}01 \\rceil = \\lceil 8 \\cdot 4{,}605 \\rceil = 37$, quindi $2k+1 = 75$ ripetizioni. È un limite superiore e prudente (nella realtà ne bastano meno), ed è una **costante**: non dipende da $n$."
   }
  ],
  "exam": {
