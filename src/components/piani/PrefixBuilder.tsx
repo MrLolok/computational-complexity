@@ -5,6 +5,8 @@ import { analyzePrefix, readit, type QLetter } from "@/lib/piani";
 import { ui } from "@/lib/ui";
 import { formulaBtn } from "./styles";
 import { selectTower } from "./towerSelection";
+import { texHtml } from "@/lib/tex";
+import Tex from "@/components/Tex";
 
 /** costruttore di prefissi: blocchi di quantificatori davanti a R → classe della torre */
 export default function PrefixBuilder() {
@@ -36,20 +38,22 @@ export default function PrefixBuilder() {
       </div>
       <div className="flex flex-col gap-2.5" aria-live="polite">
         <div className={ui.formula}>
-          {P.raw ? P.raw + " " : ""}R(x{P.args})
+          <Tex>{`${P.raw ? P.raw + "\\ " : ""}R(x${P.args})`}</Tex>
         </div>
         {P.merged && (
           <>
-            <div className={ui.formula}>{P.merged} R(…)</div>
+            <div className={ui.formula}>
+              <Tex>{`${P.merged}\\ R(\\ldots)`}</Tex>
+            </div>
             <p className={ui.noteOk}>
-              <b className="font-ui font-semibold">Blocchi uguali vicini si fondono.</b> «∃y ∃z» vuol dire «esiste la coppia (y, z)»: un solo
+              <b className="font-ui font-semibold">Blocchi uguali vicini si fondono.</b> «<Tex>{String.raw`\exists y\ \exists z`}</Tex>» vuol dire «esiste la coppia <Tex>{"(y, z)"}</Tex>»: un solo
               certificato, ancora di lunghezza polinomiale. È il passo chiave della prova del Teorema 17.9. Conta quindi il numero di{" "}
               <b>alternanze</b>, non di quantificatori.
             </p>
           </>
         )}
-        <p dangerouslySetInnerHTML={{ __html: P.expl }} />
-        <p className={readit}>{P.comp}</p>
+        <p dangerouslySetInnerHTML={{ __html: texHtml(P.expl) }} />
+        <p className={readit} dangerouslySetInnerHTML={{ __html: texHtml(P.comp) }} />
         {P.tid ? (
           <p>
             <button type="button" className={ui.btn} onClick={show}>

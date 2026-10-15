@@ -8,6 +8,8 @@ import { BANDS, HYP, TE, TOWER_IDS, TW, type TowerId } from "@/data/piani";
 import { edgeHot, infoOf, mergeBox, nodeState, nodeWidth, tDown, tUp, type NodeState } from "@/lib/piani";
 import { classColor, ui } from "@/lib/ui";
 import { selectTower, useTowerSel } from "./towerSelection";
+import { texHtml } from "@/lib/tex";
+import Tex from "@/components/Tex";
 
 const NODE_RECT: Record<NodeState, string> = {
   sel: "fill-[color-mix(in_srgb,var(--c)_22%,var(--color-surface))] stroke-3",
@@ -96,7 +98,7 @@ export default function PianiTower() {
         <div className="px-1.5 pb-2">
           {h.note ? (
             <div className={ui.note}>
-              <b className="font-ui font-semibold">Se fosse vero.</b> {h.note}
+              <b className="font-ui font-semibold">Se fosse vero.</b> <span dangerouslySetInnerHTML={{ __html: texHtml(h.note) }} />
             </div>
           ) : (
             <p className={ui.hint}>
@@ -214,7 +216,7 @@ export default function PianiTower() {
             inclusione dimostrata (dal basso verso l&apos;alto), non si sa se stretta
           </div>
           <div className="flex items-center gap-2">
-            <span className={`${ui.mono} font-bold text-open`}>=?</span>&nbsp;non si sa se Σᵢᴾ = Πᵢᴾ
+            <span className={`${ui.mono} font-bold text-open`}>=?</span><span>non si sa se <Tex>{String.raw`\Sigma_i^{\mathrm{P}} = \Pi_i^{\mathrm{P}}`}</Tex></span>
           </div>
         </div>
       </div>
@@ -230,9 +232,9 @@ export default function PianiTower() {
           <div>
             <div
               className="font-mono text-3xl font-semibold leading-tight text-(--c)"
-              dangerouslySetInnerHTML={{ __html: I.title }}
+              dangerouslySetInnerHTML={{ __html: texHtml(I.title) }}
             />
-            <div className="mt-1 font-ui text-base font-medium text-muted">{I.sub}</div>
+            <div className="mt-1 font-ui text-base font-medium text-muted" dangerouslySetInnerHTML={{ __html: texHtml(I.sub) }} />
           </div>
           {n.map && (
             <Link href={`/classi/${n.map}`} className={`${ui.btn} no-underline`}>
@@ -242,7 +244,7 @@ export default function PianiTower() {
         </div>
         {I.blocks.map(([title, body]) => (
           <div key={title} className="mt-4 flex flex-col gap-2">
-            <h4 className={h4} dangerouslySetInnerHTML={{ __html: title }} />
+            <h4 className={h4} dangerouslySetInnerHTML={{ __html: texHtml(title) }} />
             <Rich
               html={body.startsWith("<") ? body : `<p>${body}</p>`}
               className="flex flex-col gap-2 [&_p]:max-w-prose"
@@ -254,11 +256,14 @@ export default function PianiTower() {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             <div>
               <h4 className={h4}>Contiene</h4>
-              <div className={ui.hint}>{I.contains.length ? I.contains.join(", ") : "nessuna classe della torre"}</div>
+              <div
+                className={ui.hint}
+                dangerouslySetInnerHTML={{ __html: texHtml(I.contains.length ? I.contains.join(", ") : "nessuna classe della torre") }}
+              />
             </div>
             <div>
               <h4 className={h4}>È contenuta in</h4>
-              <div className={ui.hint}>{I.inside.join(", ")}</div>
+              <div className={ui.hint} dangerouslySetInnerHTML={{ __html: texHtml(I.inside.join(", ")) }} />
             </div>
           </div>
         </div>
@@ -268,7 +273,7 @@ export default function PianiTower() {
             {probs.map(([k, t], i) => (
               <span key={k + i}>
                 {i > 0 && " · "}
-                <Link href={`/problemi/${k}`} className="whitespace-nowrap text-accent underline underline-offset-2" dangerouslySetInnerHTML={{ __html: t }} />
+                <Link href={`/problemi/${k}`} className="whitespace-nowrap text-accent underline underline-offset-2" dangerouslySetInnerHTML={{ __html: texHtml(t, false) }} />
               </span>
             ))}
           </p>

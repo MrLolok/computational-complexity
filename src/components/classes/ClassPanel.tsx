@@ -1,7 +1,8 @@
 import Link from "next/link";
 import ClassChip from "@/components/ClassChip";
 import Rich from "@/components/Rich";
-import { ALIAS, C, CLASS_PROBLEMS, NAME, PLAIN, type ClassId } from "@/data/classes";
+import Tex from "@/components/Tex";
+import { ALIAS_TEX, C, CLASS_PROBLEMS, PLAIN, TEX, type ClassId } from "@/data/classes";
 import { EXAM_QUESTIONS, type ExamQuestion } from "@/data/examQuestions";
 import { THEOREMS } from "@/data/theorems";
 import { relGroups } from "@/lib/engine";
@@ -10,6 +11,7 @@ import StepTabs from "./StepTabs";
 import ExactTsp from "@/components/dp/ExactTsp";
 import SatUnsat from "@/components/dp/SatUnsat";
 import TrueFalse from "@/components/dp/TrueFalse";
+import { texHtml } from "@/lib/tex";
 
 /** nodo dei piani di PH che corrisponde alla classe (/piani#<nodo>) */
 const TOWER_OF: Partial<Record<ClassId, string>> = {
@@ -33,8 +35,11 @@ const relItem = "inline-flex items-center gap-1";
 const mk = "font-mono text-sm font-bold";
 
 const Html = ({ html, className }: { html: string; className?: string }) => (
-  <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
+  <span className={className} dangerouslySetInnerHTML={{ __html: texHtml(html) }} />
 );
+
+/** nome di una classe nella frase: testo, o formula se ha pedici o operatori (Σ₂ᴾ, NP ∩ coNP) */
+const N = ({ id }: { id: ClassId }) => (/[_^]|\\cap/.test(TEX[id]) ? <Tex>{TEX[id]}</Tex> : <>{PLAIN[id]}</>);
 
 /** scheda iniziale, senza classe scelta */
 export function PanelIntro() {
@@ -43,7 +48,7 @@ export function PanelIntro() {
       <h2 className={ui.h3}>Scegli una classe nella mappa</h2>
       <div className="mt-3 flex flex-col gap-3 text-sm text-muted">
         <p>Leggi le inclusioni dal basso verso l&apos;alto. Apri una classe per intuizione, definizione ed esempio.</p>
-        <p>⊆ = contenuta; ⊊ = contenuta e diversa. Attiva le opzioni per separazioni e questioni aperte.</p>
+        <p><Tex>{String.raw`\subseteq`}</Tex> = contenuta; <Tex>{String.raw`\subsetneq`}</Tex> = contenuta e diversa. Attiva le opzioni per separazioni e questioni aperte.</p>
         <p>Un buon punto di partenza: <ClassChip id="P" /> <ClassChip id="NP" /> <ClassChip id="coNP" /></p>
       </div>
     </>
@@ -72,7 +77,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
   const probs = CLASS_PROBLEMS[id];
   const ths = THEOREMS.filter((t) => t.classi.includes(id));
   const tower = TOWER_OF[id];
-  const alias = ALIAS[id];
+  const alias = ALIAS_TEX[id];
   const cmpB: ClassId = id === "NPcapcoNP" ? "NP" : "NPcapcoNP";
   const stepBody = "flex flex-col gap-3";
 
@@ -84,7 +89,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
       <Rich className={stepBody} html={c.exam} />
       {tr.length > 0 && (
         <p className={ui.hint}>
-          {tr.length} domand{tr.length === 1 ? "a" : "e"} delle tracce su {PLAIN[id]}: le trovi qui sotto e in Esercitati.
+          {tr.length} domand{tr.length === 1 ? "a" : "e"} delle tracce su <N id={id} />: le trovi qui sotto e in Esercitati.
         </p>
       )}
     </div>,
@@ -94,11 +99,11 @@ export default function ClassPanel({ id }: { id: ClassId }) {
     <div style={classColor(id)}>
       <div className="flex flex-wrap items-start justify-between gap-3.5">
         <div>
-          <Html html={NAME[id]} className="block font-mono text-3xl font-semibold leading-tight text-(--c)" />
-          <div className="mt-1 font-ui text-base font-medium text-muted">{c.full}</div>
+          <Tex className="block text-3xl font-semibold leading-tight text-(--c)">{TEX[id]}</Tex>
+          <Html html={c.full} className="mt-1 block font-ui text-base font-medium text-muted" />
           <div className="mt-2 flex flex-wrap gap-1.5">
-            {alias?.startsWith("=") && <span className={ui.pillOk}>{alias}</span>}
-            <span className={`${ui.pill} whitespace-normal!`}>chiusa per complemento: {c.closed}</span>
+            {alias && <Html className={ui.pillOk} html={alias} />}
+            <Html className={`${ui.pill} whitespace-normal!`} html={`chiusa per complemento: ${c.closed}`} />
           </div>
         </div>
         <Link className={ui.btn} href={`/confronta/${id}/${cmpB}`}>
@@ -111,7 +116,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
       {tower && (
         <p className="mt-3">
           <Link className={`${ui.btn} inline-block`} href={`/piani#${tower}`}>
-            Vedi {PLAIN[id]} nei piani di PH →
+            <span>Vedi <N id={id} /> nei piani di PH →</span>
           </Link>
         </p>
       )}
@@ -127,7 +132,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
               {rg.sup.length ? (
                 rg.sup.map(([o, s]) => (
                   <span key={o} className={relItem}>
-                    <span className={`${mk} ${s ? "text-proved" : ""}`}>{s ? "⊊" : "⊆"}</span>
+                    <span className={`${mk} ${s ? "text-proved" : ""}`}><Tex>{s ? String.raw`\subsetneq` : String.raw`\subseteq`}</Tex></span>
                     <ClassChip id={o} />
                   </span>
                 ))
@@ -142,7 +147,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
               {rg.sub.length ? (
                 rg.sub.map(([o, s]) => (
                   <span key={o} className={relItem}>
-                    <span className={`${mk} ${s ? "text-proved" : ""}`}>{s ? "⊋" : "⊇"}</span>
+                    <span className={`${mk} ${s ? "text-proved" : ""}`}><Tex>{s ? String.raw`\supsetneq` : String.raw`\supseteq`}</Tex></span>
                     <ClassChip id={o} />
                   </span>
                 ))
@@ -157,7 +162,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
               {rg.open.length ? (
                 rg.open.map(([o, m]) => (
                   <span key={o} className={relItem}>
-                    <span className={`${mk} ${m === "≠" ? "text-proved" : "text-open"}`}>{m}</span>
+                    <span className={`${mk} ${m === "≠" ? "text-proved" : "text-open"}`}><Tex>{m === "≠" ? String.raw`\neq` : "?"}</Tex></span>
                     <ClassChip id={o} />
                   </span>
                 ))
@@ -168,8 +173,8 @@ export default function ClassPanel({ id }: { id: ClassId }) {
           </div>
         </div>
         <p className={ui.hint}>
-          ⊊ in rosso: inclusione stretta dimostrata (anche quando segue dal fatto che l&apos;inclusione opposta è esclusa). ⊆ senza
-          colore: dimostrata, non si sa se stretta. ? : non si sa nemmeno se una contenga l&apos;altra. ≠ : diverse, ma nessuna contiene
+          <Tex>{String.raw`\subsetneq`}</Tex> in rosso: inclusione stretta dimostrata (anche quando segue dal fatto che l&apos;inclusione opposta è esclusa). <Tex>{String.raw`\subseteq`}</Tex> senza
+          colore: dimostrata, non si sa se stretta. ? : non si sa nemmeno se una contenga l&apos;altra. <Tex>{String.raw`\neq`}</Tex> : diverse, ma nessuna contiene
           l&apos;altra.
         </p>
       </details>
@@ -189,7 +194,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
             {probs.map(([k, t], i) => (
               <span key={k}>
                 {i > 0 && " · "}
-                <Link href={`/problemi/${k}`} data-term={`problem:${k}`} className={`${link} whitespace-nowrap`} dangerouslySetInnerHTML={{ __html: t }} />
+                <Link href={`/problemi/${k}`} data-term={`problem:${k}`} className={`${link} whitespace-nowrap`} dangerouslySetInnerHTML={{ __html: texHtml(t, false) }} />
               </span>
             ))}
           </p>
@@ -198,12 +203,14 @@ export default function ClassPanel({ id }: { id: ClassId }) {
 
       {ths.length > 0 && (
         <div className={ui.sec}>
-          <h3 className={ui.h3}>Teoremi su {PLAIN[id]}</h3>
+          <h3 className={ui.h3}>
+            Teoremi su <N id={id} />
+          </h3>
           <p className="text-base leading-relaxed">
             {ths.map((t, i) => (
               <span key={t.id}>
                 {i > 0 && " · "}
-                <Link href={`/teoremi#teorema-${t.id}`} className={link} dangerouslySetInnerHTML={{ __html: t.nome }} />
+                <Link href={`/teoremi#teorema-${t.id}`} className={link} dangerouslySetInnerHTML={{ __html: texHtml(t.nome, false) }} />
               </span>
             ))}
           </p>

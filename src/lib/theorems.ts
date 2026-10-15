@@ -3,8 +3,9 @@ import type { ClassId } from "@/data/classes";
 import { PROBLEMS, PROBLEM_BY } from "@/data/problems";
 import { THEOREMS, type Theorem } from "@/data/theorems";
 import { PRIORITY_ORDER, PROOF } from "@/data/theoremProofs";
+import { plainMath } from "./mathNotation";
 
-export const thPlain = (h: string | null | undefined) => String(h || "").replace(/<[^>]+>/g, "");
+export const thPlain = (h: string | null | undefined) => plainMath(String(h || "")).replace(/<[^>]+>/g, "");
 export const thNorm = (s: string) =>
   thPlain(s)
     .toLowerCase()
@@ -25,11 +26,14 @@ const TH_SKIP: Record<string, string[]> = { "validity-conp": ["HP"], "co-hamilto
 
 const TH_PROB: Record<string, string[]> = {};
 
+/* pedici Unicode delle formule ($\mathrm{QSAT}_i$ → QSATᵢ) riportati a lettere e cifre, come nei nomi HTML (QSAT<sub>i</sub> → QSATi) */
+const flat = (h: string) => thPlain(h).replace(/[₀-₉]/g, (c) => String(c.charCodeAt(0) - 0x2080)).replace(/ᵢ/g, "i");
+
 /** id dei problemi citati da un teorema */
 export function thProblems(t: Theorem): string[] {
   if (TH_PROB[t.id]) return TH_PROB[t.id];
-  const txt = " " + thPlain(t.nome + " · " + t.enunciato + " " + (t.correzione || "")) + " ";
-  const esc = (x: string) => thPlain(x).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const txt = " " + flat(t.nome + " · " + t.enunciato + " " + (t.correzione || "")) + " ";
+  const esc = (x: string) => flat(x).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const hit = (n: string) => new RegExp(`(^|[^A-Za-z0-9-])${esc(n)}(?![A-Za-z0-9₀-₉ᵢ-])`).test(txt);
   const out = PROBLEMS.filter((p) => [p.name, ...(TH_ALIAS[p.id] || [])].some(hit))
     .map((p) => p.id)

@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState, type ReactNode, type SyntheticEvent } from "react";
 import { createPortal } from "react-dom";
 import { GLOSSARY } from "@/lib/glossary";
+import { texHtml } from "@/lib/tex";
+
+/** definizione del glossario (testo semplice, con eventuali formule $…$) come HTML con le formule rese da KaTeX */
+const definitionHtml = (text: string) => texHtml(text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
 
 /** Un solo popup per tutti i termini: hover e focus col mouse, tocco sugli schermi touch; Escape e clic esterno lo chiudono.
  *  Al tocco non c'è hover: il primo tocco apre il popup e lo lascia aperto, il secondo sullo stesso termine lo chiude
@@ -117,7 +121,7 @@ export default function ContextHelp({ children }: { children: ReactNode }) {
             <strong className="text-base text-ink">{GLOSSARY[tip.key].name}</strong>
             <button type="button" aria-label="Chiudi spiegazione" className="min-h-8 min-w-8 cursor-pointer px-2 text-muted" onClick={close}>×</button>
           </div>
-          <p className="text-muted">{GLOSSARY[tip.key].definition}</p>
+          <p className="text-muted" dangerouslySetInnerHTML={{ __html: definitionHtml(GLOSSARY[tip.key].definition) }} />
           <Link href={GLOSSARY[tip.key].href} className="mt-3 inline-block text-accent underline underline-offset-4" onClick={close}>Approfondisci →</Link>
         </div>, document.body
       )}

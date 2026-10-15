@@ -9,8 +9,10 @@ import { usePathname } from "next/navigation";
 
 import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems";
 import { stripHtml } from "@/lib/glossary";
-import { BANDS, matches } from "@/lib/problems";
+import { BANDS, matches, PI, S } from "@/lib/problems";
+import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/ui";
+import { noTerms } from "./bits";
 import ProblemDetail from "./ProblemDetail";
 
 function selectedFrom(path: string | null) {
@@ -188,12 +190,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                                     <span
                                         className={ui.pill}
                                         dangerouslySetInnerHTML={{
-                                            __html:
-                                                p.c === "SIGMA2"
-                                                    ? "Σ<sub>2</sub><sup>P</sup>"
-                                                    : p.c === "PI2"
-                                                      ? "Π<sub>2</sub><sup>P</sup>"
-                                                      : LADDER[p.b].n,
+                                            __html: noTerms(texHtml(p.c === "SIGMA2" ? S(2) : p.c === "PI2" ? PI(2) : LADDER[p.b].n)),
                                         }}
                                     />
                                     {p.full && <span className={ui.pillOk}>Completo</span>}

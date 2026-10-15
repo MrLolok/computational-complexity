@@ -1,8 +1,9 @@
 import { C, IDS, NAME, PLAIN } from "@/data/classes";
 import { PROBLEMS } from "@/data/problems";
 import { QUANTUM_CLASSES, RANDOM_CLASSES, SPECIAL_TERMS } from "@/data/learning";
+import { plainMath } from "./mathNotation";
 
-export const stripHtml = (s: string) => s.replace(/<[^>]*>/g, "").replace(/\{\{(\w+)\}\}/g, (_, id: string) => id in PLAIN ? PLAIN[id as keyof typeof PLAIN] : id).replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
+export const stripHtml = (s: string) => plainMath(s).replace(/<[^>]*>/g, "").replace(/\{\{(\w+)\}\}/g, (_, id: string) => id in PLAIN ? PLAIN[id as keyof typeof PLAIN] : id).replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
 export const shorten = (s: string, max = 260) => s.length > max ? s.slice(0, s.lastIndexOf(" ", max)) + "…" : s;
 export type GlossaryEntry = { name: string; definition: string; href: string };
 export const GLOSSARY: Record<string, GlossaryEntry> = Object.fromEntries([

@@ -221,7 +221,7 @@
                     "ref": "§8",
                     "idea": "- **BPP è contenuta in BQP:** il calcolo quantistico può simulare quello probabilistico.\n- **BQP è contenuta in PP e PSPACE:** esiste una simulazione classica in spazio polinomiale; il tempo può essere molto maggiore.\n- **BQP è strettamente sotto 2-EXP:** i problemi 2-EXP-completi non sono risolvibili in tempo quantistico polinomiale.",
                     "esempio": "Un problema 2-EXP-completo resta fuori da BQP anche con un computer quantistico ideale. È una separazione dimostrata, non una congettura.",
-                    "formale": "$$\\mathrm{P}\\subseteq\\mathrm{BPP}\\subseteq\\mathrm{BQP}\\subseteq\\mathrm{PP}\\subseteq\\mathrm{PSPACE}\\subseteq\\mathrm{EXP}\\subsetneq2\\text{-}\\mathrm{EXP}.$$ $\\subseteq$ indica un'inclusione; $\\subsetneq$ dice anche che le classi sono diverse. L'ultima separazione segue dal teorema di gerarchia del tempo. La dimostrazione di BQP ⊆ PP richiede di trattare l'interferenza: non basta confrontare le soglie di errore."
+                    "formale": "$$\\mathrm{P}\\subseteq\\mathrm{BPP}\\subseteq\\mathrm{BQP}\\subseteq\\mathrm{PP}\\subseteq\\mathrm{PSPACE}\\subseteq\\mathrm{EXP}\\subsetneq2\\text{-}\\mathrm{EXP}.$$ $\\subseteq$ indica un'inclusione; $\\subsetneq$ dice anche che le classi sono diverse. L'ultima separazione segue dal teorema di gerarchia del tempo. La dimostrazione di $\\mathrm{BQP} \\subseteq \\mathrm{PP}$ richiede di trattare l'interferenza: non basta confrontare le soglie di errore."
                 },
                 {
                     "id": "congetture",

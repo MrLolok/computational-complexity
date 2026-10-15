@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { QBF, QBF_DEFAULT } from "@/data/piani";
-import { blocksOf, hPi, hS, qbfLayout, readit, SUBD, type QbfNode } from "@/lib/piani";
+import { blocksOf, hPi, hS, qbfLayout, qsat, readit, type QbfNode } from "@/lib/piani";
+import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/ui";
+import Tex from "@/components/Tex";
 import { final, formulaBtn } from "./styles";
 
 type Guess = "1" | "0" | "x" | null;
@@ -40,7 +42,7 @@ export default function QbfEval() {
               setGuess(null);
             }}
           >
-            {f.f}
+            <span dangerouslySetInnerHTML={{ __html: texHtml(f.f) }} />
           </button>
         ))}
       </div>
@@ -109,9 +111,9 @@ export default function QbfEval() {
               La formula è {T.val ? "vera" : "falsa"}.
             </div>
             <p>
-              Le linee spesse mostrano il perché. Un ∃ è vero se basta <b>un</b> ramo vero (la scelta giusta); un ∀ è vero solo se lo sono{" "}
-              <b>entrambi</b>. Al contrario, a un ∀ falso basta <b>un</b> ramo falso (un controesempio), mentre un ∃ è falso solo se lo sono
-              entrambi.
+              Le linee spesse mostrano il perché. Un <Tex>{String.raw`\exists`}</Tex> è vero se basta <b>un</b> ramo vero (la scelta giusta); un{" "}
+              <Tex>{String.raw`\forall`}</Tex> è vero solo se lo sono <b>entrambi</b>. Al contrario, a un <Tex>{String.raw`\forall`}</Tex> falso basta{" "}
+              <b>un</b> ramo falso (un controesempio), mentre un <Tex>{String.raw`\exists`}</Tex> è falso solo se lo sono entrambi.
             </p>
           </>
         ) : (
@@ -132,8 +134,8 @@ export default function QbfEval() {
         )}
       </div>
       <p className={readit}>
-        Prefisso con {k} blocc{k === 1 ? "o" : "hi"}, il primo {isS ? "∃" : "∀"}: è un&apos;istanza di {isS ? "QSAT" : "co-QSAT"}
-        {SUBD(k)}, che sta in <span dangerouslySetInnerHTML={{ __html: isS ? hS(k) : hPi(k) }} />.{" "}
+        Prefisso con {k} blocc{k === 1 ? "o" : "hi"}, il primo <Tex>{isS ? "\\exists" : "\\forall"}</Tex>: è un&apos;istanza di{" "}
+        <Tex>{qsat(k, !isS)}</Tex>, che sta in <Tex>{isS ? hS(k) : hPi(k)}</Tex>.{" "}
         <span className="text-sm">Formula da: {F.src}.</span>
       </p>
     </>

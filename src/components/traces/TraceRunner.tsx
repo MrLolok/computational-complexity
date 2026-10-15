@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { answerTraceQuestion, completeTrace, restartTrace, setTraceQ8Done, type Choice } from "@/store/progressSlice";
 import type { TraceAnswer, TraceRef } from "@/data/traces";
 import { ui } from "@/lib/ui";
+import { texHtml } from "@/lib/tex";
 
 export type RunnerQuestion = {
   n: number;
@@ -180,7 +181,7 @@ export default function TraceRunner({ code, questions, q8 }: { code: string; que
                           {q.theorems.map((t, i) => (
                             <span key={t.id}>
                               {i > 0 && " · "}
-                              <Link className="text-accent underline underline-offset-2" href={`/teoremi#teorema-${t.id}`} dangerouslySetInnerHTML={{ __html: t.nome }} />
+                              <Link className="text-accent underline underline-offset-2" href={`/teoremi#teorema-${t.id}`} dangerouslySetInnerHTML={{ __html: texHtml(t.nome, false) }} />
                             </span>
                           ))}
                         </p>

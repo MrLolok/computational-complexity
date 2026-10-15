@@ -10,6 +10,9 @@ import { TRACE_BY } from "@/data/traces";
 import ClassChip from "@/components/ClassChip";
 import Rich from "@/components/Rich";
 import { chapterTitle, filterTheorems, groupByChapter, groupByPriority, thProblems, whereText } from "@/lib/theorems";
+import { fillChips } from "@/lib/rich";
+import { texHtml } from "@/lib/tex";
+import { plainMath } from "@/lib/mathNotation";
 import { ui } from "@/lib/ui";
 import LearningFigure from "@/components/learning/LearningFigure";
 
@@ -48,7 +51,7 @@ function TheoremRow({ t }: { t: Theorem }) {
       <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
         <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
           <span className="font-ui text-xs font-semibold uppercase tracking-widest text-muted">{t.tipo || "teorema"}</span>
-          <h3 className="font-head text-lg font-semibold" dangerouslySetInnerHTML={{ __html: t.nome }} />
+          <h3 className="font-head text-lg font-semibold" dangerouslySetInnerHTML={{ __html: texHtml(t.nome) }} />
         </div>
         <div className="flex flex-wrap items-center justify-start gap-1.5 sm:justify-end">
           {pf && pf.frequenza > 0 && (
@@ -60,7 +63,7 @@ function TheoremRow({ t }: { t: Theorem }) {
           {t.correzione && <span className={ui.pillOpen}>correzione</span>}
           {t.prova === "nel corso" && <span className={ui.pill}>dimostrato nel corso</span>}
         </div>
-        <p className="col-span-full max-w-prose" dangerouslySetInnerHTML={{ __html: t.enunciato }} />
+        <p className="col-span-full max-w-prose" dangerouslySetInnerHTML={{ __html: fillChips(t.enunciato) }} />
         <span className="col-span-full font-ui text-sm text-accent"><span className="group-open:hidden">Idea, frase per l&apos;esame e dimostrazione +</span><span className="hidden group-open:inline">Chiudi approfondimento −</span></span>
       </summary>
       <div className="flex max-w-prose flex-col gap-3 pb-4">
@@ -101,7 +104,7 @@ function TheoremRow({ t }: { t: Theorem }) {
                   {i > 0 && " · "}
                   <Link
                     href={`/tracce/${d.traccia}#d${d.n}`}
-                    title={TRACE_BY[d.traccia]?.title}
+                    title={TRACE_BY[d.traccia] && plainMath(TRACE_BY[d.traccia].title)}
                     className="whitespace-nowrap text-accent underline decoration-1 underline-offset-2"
                   >
                     {d.traccia} n. {d.n}
@@ -128,9 +131,12 @@ function TheoremRow({ t }: { t: Theorem }) {
               {pr.map((id, i) => (
                 <span key={id}>
                   {i > 0 && " · "}
-                  <Link href={`/problemi/${id}`} data-term={`problem:${id}`} className="whitespace-nowrap text-accent underline decoration-1 underline-offset-2">
-                    {PROBLEM_BY[id].name}
-                  </Link>
+                  <Link
+                    href={`/problemi/${id}`}
+                    data-term={`problem:${id}`}
+                    className="whitespace-nowrap text-accent underline decoration-1 underline-offset-2"
+                    dangerouslySetInnerHTML={{ __html: texHtml(PROBLEM_BY[id].name) }}
+                  />
                 </span>
               ))}
             </p>

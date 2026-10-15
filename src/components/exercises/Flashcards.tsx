@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LADDER, PROBLEMS, PROBLEM_BY } from "@/data/problems";
-import Rich from "@/components/Rich";
 import { Html, LabPill, SourceBadge, YesNo, codeCls } from "@/components/problems/bits";
 import { BANDS, ansKey, colorId, deckIds, plain, trapAnswer } from "@/lib/problems";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -121,29 +120,29 @@ export default function Flashcards() {
               <span className={codeCls}>
                 carta {(fi % deck.length) + 1} di {deck.length}
               </span>
-              <span className={big}>{cur.name}</span>
-              <Rich as="span" className="block" html={cur.def} />
+              <Html className={big} html={cur.name} />
+              <Html className="block" html={cur.def} terms={false} />
               <span className={`${ui.hint} mt-auto block`}>In quale classe sta? È completo? Qual è il complemento? Tocca per girare.</span>
             </span>
             <span className={`${face} ${flip ? "rotate-y-0" : "rotate-y-180"}`}>
               <span className="flex flex-wrap items-center gap-2">
-                <span className={`${big} text-2xl!`}>{cur.name}</span>
+                <Html className={`${big} text-2xl!`} html={cur.name} />
                 <LabPill html={cur.lab} />
                 {cur.ext && <SourceBadge kind="x">✱ esterno</SourceBadge>}
               </span>
-              <Rich as="span" className="block" html={cur.brief} />
+              <Html className="block" html={cur.brief} terms={false} />
               <span className="block">
-                <strong className="font-semibold">Complemento:</strong> <Html html={cp} />
+                <strong className="font-semibold">Complemento:</strong> <Html html={cp} terms={false} />
               </span>
               {trap && (
                 <span className="block text-base">
                   <strong className="font-semibold">Trappola{trap.c ? ` (${trap.c})` : ""}:</strong>{" "}
                   {trap.q ? (
                     <>
-                      <Rich as="span" html={trap.q} /> <YesNo k={ansKey(trap.a)}>{trapAnswer(trap)}</YesNo>
+                      <Html html={trap.q} terms={false} /> <YesNo k={ansKey(trap.a)}>{trapAnswer(trap)}</YesNo>
                     </>
                   ) : (
-                    <Rich as="span" html={trap.n || ""} />
+                    <Html html={trap.n || ""} terms={false} />
                   )}
                 </span>
               )}
