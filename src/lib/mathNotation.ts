@@ -2,6 +2,11 @@
 export function readableMath(markdown: string) {
   return markdown.replace(/(?<!\$)\$([^$\n]+)\$(?!\$)/g, (original, expression: string) => {
     if (!/\\(?:mathrm|Sigma|Pi|Delta)/.test(expression)) return original;
+    /* una variabile come L in $L \in \mathrm{PP}$ resta in KaTeX (corsivo), così non sembra la classe L */
+    let rest = expression;
+    for (let i = 0; i < 3; i++) rest = rest.replace(/\\(?:mathrm|text)\{[^{}]*\}/g, "");
+    rest = rest.replace(/\^\{?P\}?|_\{?[0-9i]\}?/g, "").replace(/\\[A-Za-z]+/g, "");
+    if (/[A-Za-z]/.test(rest)) return original;
     let plain = expression;
     for (let i = 0; i < 3; i++) plain = plain.replace(/\\(?:mathrm|text)\{([^{}]*)\}/g, "$1");
     plain = plain.replace(/\\Sigma/g, "Σ").replace(/\\Pi/g, "Π").replace(/\\Delta/g, "Δ")

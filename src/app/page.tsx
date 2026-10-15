@@ -144,9 +144,10 @@ export default function Page() {
           href="/quantistico"
           className={ui.card}
         >
-          <h2 className={ui.h3}>Quantistico, senza perdersi →</h2>
+          <h2 className={ui.h3}>Algoritmi quantistici →</h2>
           <p className="text-sm text-muted">
-            BQP, Grover e crittografia: i concetti che ricorrono nelle tracce.
+            Grover, Shor e quando conviene il calcolo quantistico, come nella
+            Lezione 6.
           </p>
         </Link>
       </section>

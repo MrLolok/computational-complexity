@@ -17,7 +17,8 @@ export default function rehypeGlossary() {
       if (inMath && node.type === "element" && classes?.includes("mord")) {
         const plain = textOf(node).replace(/\s/g, "");
         const greek = plain.match(/^([ΣΠΔ])([1-4])P$/);
-        const key = greek ? `${greek[1]}${greek[2]}` : termKey(textOf(node));
+        /* una lettera in corsivo matematico ($L$, $P(\text{yes})$) è una variabile, non una classe */
+        const key = greek ? `${greek[1]}${greek[2]}` : classes?.includes("mathnormal") ? undefined : termKey(textOf(node));
         if (key) { mark(node, key); return; }
       }
       if (!node.children) return;

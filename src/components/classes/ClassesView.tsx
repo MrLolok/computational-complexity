@@ -2,6 +2,7 @@ import { type ClassId } from "@/data/classes";
 import ClassMap from "./ClassMap";
 import ClassPanel, { PanelIntro } from "./ClassPanel";
 import ClassExplorer from "./ClassExplorer";
+import { LEZ6_ANCHORS, QuantumTab, RandomTab } from "@/components/learning/Lez6Tabs";
 import { ui } from "@/lib/ui";
 
 const badgeText = "text-xs font-bold [text-anchor:middle] [dominant-baseline:central]";
@@ -54,7 +55,7 @@ export default function ClassesView({ sel, embedded = false }: { sel: ClassId | 
   return (
     <section className="flex flex-col gap-5">
       <header><p className={`${ui.eyebrow} mb-2`}>Le risorse del calcolo</p><Heading className={ui.h2}>Classi di complessità</Heading></header>
-      <ClassExplorer key={sel ?? "overview"} selected={!!sel}>
+      <ClassExplorer key={sel ?? "overview"} selected={!!sel} random={<RandomTab />} quantum={<QuantumTab />} anchors={LEZ6_ANCHORS}>
       <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
         <div className={ui.card}>
           <ClassMap sel={sel} />

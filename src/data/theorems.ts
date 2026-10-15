@@ -1,4 +1,4 @@
-/* 92 teoremi del corso (dispensa e slide; senza i risultati esterni). Testo in HTML. */
+/* 93 teoremi del corso (dispensa e slide; senza i risultati esterni). Testo in HTML. */
 import type { ClassId } from "./classes";
 export type Theorem = { id: string; nome: string; tipo: string; enunciato: string; intuizione: string; uso_esame: string; capitolo: string; pagina: number | null; lezione: number | null; fonti: string[]; classi: ClassId[]; prova: string; esterno: boolean; nota_fonte: string; correzione: string };
 export const THEOREMS: Theorem[] = [
@@ -2015,7 +2015,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BPP e PP non sono tra le classi della mappa.",
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BPP e PP non sono tra le classi della mappa completa: stanno nella mappa della scheda Probabilistiche.",
   "correzione": ""
  },
  {
@@ -2058,7 +2058,29 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BQP non è tra le classi della mappa.",
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BQP non è tra le classi della mappa completa: sta nella mappa della scheda Quantistiche.",
+  "correzione": ""
+ },
+ {
+  "id": "bqp-2exp",
+  "nome": "Teorema BQP ⊊ 2-EXP",
+  "tipo": "teorema",
+  "enunciato": "BQP ⊊ 2-EXP: BQP ⊆ PSPACE ⊆ EXP, e EXP ⊊ 2-EXP per il teorema di gerarchia del tempo.",
+  "intuizione": "La catena delle inclusioni dimostrate arriva a EXP, che sta strettamente dentro 2-EXP (tempo doppiamente esponenziale).",
+  "uso_esame": "I problemi 2-EXP-completi non si risolvono in tempo polinomiale su un computer quantistico: è un risultato certo, non una congettura.",
+  "capitolo": "Extra · Algoritmi probabilistici e quantistici (Lez. 6, solo slide)",
+  "pagina": null,
+  "lezione": 6,
+  "fonti": [
+   "slide Lez. 6"
+  ],
+  "classi": [
+   "PSPACE",
+   "EXP"
+  ],
+  "prova": "nel corso",
+  "esterno": false,
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BQP e 2-EXP non sono tra le classi della mappa completa: stanno nella mappa della scheda Quantistiche.",
   "correzione": ""
  },
  {
