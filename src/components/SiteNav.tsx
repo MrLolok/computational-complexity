@@ -14,6 +14,7 @@ export const NAV = [
   { href: "/quantistico", label: "Quantistico" },
   { href: "/esercizi", label: "Esercitati" },
   { href: "/tracce", label: "Tracce" },
+  { href: "/mdt", label: "MdT" },
 ] as const;
 
 const base =

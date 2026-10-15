@@ -23,6 +23,8 @@ export type ProgressState = {
   problemQuiz: { ok: number; tot: number };
   /** flashcard dei problemi segnate come sapute */
   flashKnown: Record<string, true>;
+  /** macchine di Turing scritte dall'utente, per traccia o per il laboratorio */
+  mdtDrafts?: Record<string, string>;
 };
 
 export const initialProgress: ProgressState = { traces: {}, examQuiz: {}, problemQuiz: { ok: 0, tot: 0 }, flashKnown: {} };
@@ -75,6 +77,11 @@ const progressSlice = createSlice({
     resetProblemQuiz(state) {
       state.problemQuiz = { ok: 0, tot: 0 };
     },
+    saveMdtDraft(state, action: PayloadAction<{ key: string; source: string | null }>) {
+      const drafts = (state.mdtDrafts ??= {});
+      if (action.payload.source === null) delete drafts[action.payload.key];
+      else drafts[action.payload.key] = action.payload.source;
+    },
     setFlashKnown(state, action: PayloadAction<{ id: string; known: boolean }>) {
       if (action.payload.known) state.flashKnown[action.payload.id] = true;
       else delete state.flashKnown[action.payload.id];
@@ -96,7 +103,7 @@ const progressSlice = createSlice({
 
 export const {
   hydrate, answerTraceQuestion, setTraceQ8Done, completeTrace, restartTrace,
-  answerExamQuestion, resetExamQuiz, recordProblemQuiz, resetProblemQuiz, setFlashKnown,
+  answerExamQuestion, resetExamQuiz, recordProblemQuiz, resetProblemQuiz, setFlashKnown, saveMdtDraft,
   resetTraces, resetExercises, resetAll,
 } = progressSlice.actions;
 export default progressSlice.reducer;

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Markdown from "@/components/Markdown";
+import { PracticeLab, SolutionLab } from "@/components/mdt/MachineLab";
+import { goRightNote, MDT_BODY, TRACE_MACHINE, TRACE_NOTE } from "@/data/mdt";
 import TraceRunner, { type RunnerQuestion } from "@/components/traces/TraceRunner";
 import { TRACES, TRACE_BY, plainText } from "@/data/traces";
 import { ui } from "@/lib/ui";
@@ -59,8 +61,8 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
         q8={
           t.q8 && {
             title: <Markdown>{t.q8.title}</Markdown>,
-            body: <Markdown>{t.q8.body}</Markdown>,
-            lessonRef: t.q8.lessonRef,
+            body: <Q8Solution code={t.code} />,
+            practice: <PracticeLab id={TRACE_MACHINE[t.code]} draftKey={`traccia:${t.code}`} />,
             repeatOf: t.q8.repeatOf,
           }
         }
@@ -80,6 +82,29 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
           </Link>
         )}
       </nav>
+    </div>
+  );
+}
+
+/** Soluzione completa della domanda 8: note della traccia, idea, tabella e simulatore. */
+function Q8Solution({ code }: { code: string }) {
+  const id = TRACE_MACHINE[code];
+  const note = goRightNote(id);
+  return (
+    <div className="flex flex-col gap-4">
+      {TRACE_NOTE[code] && (
+        <div className={ui.noteInfo}>
+          <Markdown>{TRACE_NOTE[code]}</Markdown>
+        </div>
+      )}
+      <Markdown>{MDT_BODY[id]}</Markdown>
+      {note && (
+        <div className={ui.noteInfo}>
+          <Markdown>{note}</Markdown>
+        </div>
+      )}
+      <h3 className={ui.h3}>Eseguila passo per passo</h3>
+      <SolutionLab id={id} />
     </div>
   );
 }
