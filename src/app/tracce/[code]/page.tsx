@@ -45,9 +45,6 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
     n: q.n,
     label: q.label,
     answer: q.answer,
-    answerText: q.answerText,
-    confirmed: q.confirmed,
-    fileWrong: q.fileWrong,
     repeatOf: q.repeatOf,
     seeAlso: q.seeAlso,
     theorems: theoremsFor(q.n),
@@ -79,7 +76,6 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
             title: <Markdown>{t.q8.title}</Markdown>,
             body: <Q8Solution code={t.code} />,
             practice: <PracticeLab id={TRACE_MACHINE[t.code]} draftKey={`traccia:${t.code}`} />,
-            repeatOf: t.q8.repeatOf,
           }
         }
       />

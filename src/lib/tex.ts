@@ -17,11 +17,26 @@ function withTerms(expr: string) {
   );
 }
 
+/* le formule dei dati sono poche centinaia e si ripetono tra le pagine: si rendono una volta sola */
+const cache = new Map<string, string>();
+
 /** HTML KaTeX di una formula LaTeX; dentro un link terms = false toglie i popup, così il tocco apre il link. */
 export function tex(expr: string, displayMode = false, terms = true) {
-  return katex
-    .renderToString(terms ? withTerms(expr) : expr, { displayMode, throwOnError: false, trust: (c) => c.command === "\\htmlData" })
-    .replace(/<span data-term="([^"]+)"/g, '<span data-term="$1" role="button" tabindex="0"');
+  const key = `${+displayMode}${+terms}${expr}`;
+  let html = cache.get(key);
+  if (html === undefined) {
+    html = katex
+      .renderToString(terms ? withTerms(expr) : expr, {
+        displayMode,
+        throwOnError: false,
+        trust: (c) => c.command === "\\htmlData",
+        /* \htmlData è voluto (link del glossario): niente avviso a ogni formula */
+        strict: (code: string) => (code === "htmlExtension" ? "ignore" : "warn"),
+      })
+      .replace(/<span data-term="([^"]+)"/g, '<span data-term="$1" role="button" tabindex="0"');
+    cache.set(key, html);
+  }
+  return html;
 }
 
 /** Rende le formule $…$ e $$…$$ di un testo HTML dei dati. */

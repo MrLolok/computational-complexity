@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { answerTraceQuestion, completeTrace, restartTrace, setTraceQ8Done, type Choice } from "@/store/progressSlice";
+import { answerTraceQuestion, CHOICES, completeTrace, restartTrace, setTraceQ8Done, type Choice } from "@/store/progressSlice";
 import type { TraceAnswer, TraceRef } from "@/data/traces";
 import { ui } from "@/lib/ui";
 import { texHtml } from "@/lib/tex";
@@ -12,9 +12,6 @@ export type RunnerQuestion = {
   n: number;
   label?: string;
   answer: TraceAnswer;
-  answerText: string;
-  confirmed: boolean;
-  fileWrong: boolean;
   repeatOf: string | null;
   seeAlso: TraceRef[];
   /** teoremi della pagina /teoremi usati nella risposta (vuoto se nessuno) */
@@ -24,13 +21,7 @@ export type RunnerQuestion = {
   explanation: ReactNode;
   answerNode: ReactNode;
 };
-export type RunnerQ8 = { title: ReactNode; body: ReactNode; practice: ReactNode; repeatOf: string | null };
-
-const CHOICES: [Choice, string][] = [
-  ["SI", "SÌ"],
-  ["NO", "NO"],
-  ["ALTRO", "altro"],
-];
+export type RunnerQ8 = { title: ReactNode; body: ReactNode; practice: ReactNode };
 
 type Mode = "end" | "now";
 

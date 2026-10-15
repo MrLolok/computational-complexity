@@ -2,8 +2,9 @@ import Link from "next/link";
 import ClassChip from "@/components/ClassChip";
 import Rich from "@/components/Rich";
 import Tex from "@/components/Tex";
-import { ALIAS_TEX, C, CLASS_PROBLEMS, PLAIN, TEX, type ClassId } from "@/data/classes";
+import { ALIAS_TEX, C, CLASS_PROBLEMS, TEX, type ClassId } from "@/data/classes";
 import { EXAM_QUESTIONS, type ExamQuestion } from "@/data/examQuestions";
+import { TOWER_OF } from "@/data/piani";
 import { THEOREMS } from "@/data/theorems";
 import { relGroups } from "@/lib/engine";
 import { classColor, ui } from "@/lib/ui";
@@ -12,21 +13,7 @@ import ExactTsp from "@/components/dp/ExactTsp";
 import SatUnsat from "@/components/dp/SatUnsat";
 import TrueFalse from "@/components/dp/TrueFalse";
 import { texHtml } from "@/lib/tex";
-
-/** nodo dei piani di PH che corrisponde alla classe (/piani#<nodo>) */
-const TOWER_OF: Partial<Record<ClassId, string>> = {
-  P: "L0",
-  NP: "S1",
-  coNP: "P1",
-  DP: "DP",
-  DELTA2: "D2",
-  SIGMA2: "S2",
-  PI2: "P2",
-  SIGMAi: "S3",
-  PIi: "P3",
-  PH: "PH",
-  PSPACE: "PSPACE",
-};
+import { ClassName as N, Html } from "@/components/problems/bits";
 
 const h4 = "mb-1.5 font-ui text-xs font-semibold uppercase tracking-widest text-muted";
 const link = "text-accent underline underline-offset-2 decoration-1";
@@ -34,12 +21,6 @@ const relList = "flex flex-wrap gap-1.5";
 const relItem = "inline-flex items-center gap-1";
 const mk = "font-mono text-sm font-bold";
 
-const Html = ({ html, className }: { html: string; className?: string }) => (
-  <span className={className} dangerouslySetInnerHTML={{ __html: texHtml(html) }} />
-);
-
-/** nome di una classe nella frase: testo, o formula se ha pedici o operatori (Σ₂ᴾ, NP ∩ coNP) */
-const N = ({ id }: { id: ClassId }) => (/[_^]|\\cap/.test(TEX[id]) ? <Tex>{TEX[id]}</Tex> : <>{PLAIN[id]}</>);
 
 /** scheda iniziale, senza classe scelta */
 export function PanelIntro() {

@@ -2,6 +2,8 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
 import TheoremsView from "@/components/theorems/TheoremsView";
+import { TRACES } from "@/data/traces";
+import { plainMath } from "@/lib/mathNotation";
 
 export const metadata: Metadata = { title: "Teoremi" };
 
@@ -12,7 +14,9 @@ const EXPLANATIONS = Object.fromEntries(
     .filter((f) => f.endsWith(".md"))
     .map((f) => [f.slice(3, -3), readFileSync(join(DIR, f), "utf8")]),
 );
+/* solo i titoli delle tracce: così i dati delle tracce non finiscono nel bundle del browser */
+const TRACE_TITLES = Object.fromEntries(TRACES.map((t) => [t.code, plainMath(t.title)]));
 
 export default function Page() {
-  return <TheoremsView explanations={EXPLANATIONS} />;
+  return <TheoremsView explanations={EXPLANATIONS} traceTitles={TRACE_TITLES} />;
 }

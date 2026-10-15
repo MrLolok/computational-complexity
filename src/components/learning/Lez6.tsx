@@ -103,7 +103,7 @@ export function Lez6Exercises({ only }: { only: number[] }) {
 }
 
 /** Collegamenti con l'esame: i punti scelti e le domande delle tracce che li usano. */
-export function Lez6Exam({ bullets, notes = [], test }: { bullets: number[]; notes?: number[]; test: RegExp }) {
+export function Lez6Exam({ bullets, test }: { bullets: number[]; test: RegExp }) {
     const questions = TRACES.flatMap((trace) =>
         trace.questions.filter((q) => test.test(q.text)).map((q) => ({ code: trace.code, n: q.n, label: q.label })),
     );
@@ -112,11 +112,6 @@ export function Lez6Exam({ bullets, notes = [], test }: { bullets: number[]; not
             <h3 className={ui.h3}>Collegamenti con l&apos;esame</h3>
             <Markdown>{LEZ6.exam.intro}</Markdown>
             <Markdown>{bullets.map((i) => `- ${LEZ6.exam.bullets[i]}`).join("\n")}</Markdown>
-            {notes.map((i) => (
-                <div key={i} className={ui.noteInfo}>
-                    <Markdown>{LEZ6.exam.notes[i]}</Markdown>
-                </div>
-            ))}
             {questions.length > 0 && (
                 <details name="lezione-6" className="border-line rounded-lg border p-4 text-sm">
                     <summary className="text-accent cursor-pointer">

@@ -19,7 +19,6 @@ export const ui = {
   pillExt: "inline-block font-ui text-xs font-semibold rounded-full px-2.5 py-0.5 bg-accent-soft text-accent whitespace-nowrap",
   note: "border-l-2 border-open bg-open-soft px-3 py-2 rounded-r-lg text-base",
   noteTrap: "border-l-2 border-proved bg-proved-soft px-3 py-2 rounded-r-lg text-base",
-  noteExt: "border-l-2 border-accent bg-accent-soft/50 px-3 py-2 rounded-r-lg text-base",
   noteOk: "border-l-2 border-ok bg-ok-soft px-3 py-2 rounded-r-lg text-base",
   noteInfo: "border-l-2 border-line-strong bg-sunk px-3 py-2 rounded-r-lg text-base",
   formula: "font-mono bg-sunk rounded-lg px-3 py-2 text-sm overflow-x-auto whitespace-nowrap",
@@ -31,6 +30,14 @@ export const ui = {
   yn: { SI: "bg-ok-soft text-ok", NO: "bg-proved-soft text-proved", ALTRO: "bg-open-soft text-open" },
   /** gettone di una classe; il colore arriva dalla variabile --c */
   chip: "font-mono font-semibold text-sm border border-(--c)/45 text-(--c) rounded-md px-1 whitespace-nowrap no-underline hover:bg-(--c)/12 cursor-pointer",
+} as const;
+
+/** rettangolo di un nodo nelle mappe (classi e torre), rispetto al nodo scelto; il colore arriva da --c */
+export const NODE_RECT = {
+  sel: "fill-[color-mix(in_srgb,var(--c)_22%,var(--color-surface))] stroke-3",
+  sub: "fill-[color-mix(in_srgb,var(--c)_11%,var(--color-surface))] stroke-1.5 group-hover:stroke-2",
+  sup: "fill-surface stroke-2",
+  far: "fill-surface stroke-1.5 group-hover:stroke-2",
 } as const;
 
 export const classColor = (id: string) => ({ "--c": `var(--color-c-${id})` }) as React.CSSProperties;

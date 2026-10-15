@@ -89,42 +89,6 @@ export const ROWS: LadderId[][] = [
   "coRE"
  ]
 ];
-/** connettori tra un gradino e il successivo: [simbolo, testo, taglio R] */
-export const CONN: [string, string, boolean?][] = [
- [
-  "⊆",
-  "$\\mathrm{L} \\subseteq \\mathrm{NL}$. Se l'inclusione sia stretta non si sa."
- ],
- [
-  "⊆",
-  "$\\mathrm{NL} \\subseteq \\mathrm{P}$. Stretta non si sa (ma $\\mathrm{NL} \\subsetneq \\mathrm{PSPACE}$)."
- ],
- [
-  "⊆",
-  "$\\mathrm{P} \\subseteq \\mathrm{NP} \\cap \\mathrm{coNP}$. $\\mathrm{P} = \\mathrm{NP}$ e $\\mathrm{NP} = \\mathrm{coNP}$ sono domande aperte."
- ],
- [
-  "⊆",
-  "$\\mathrm{NP} \\cup \\mathrm{coNP} \\subseteq \\mathrm{DP}$: un problema NP è $A \\cap \\Sigma^*$, uno coNP è $\\Sigma^* \\cap B$."
- ],
- [
-  "⊆",
-  "$\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} \\cap \\Pi_2^{\\mathrm{P}}$. Poi $\\Sigma_i^{\\mathrm{P}} \\cup \\Pi_i^{\\mathrm{P}} \\subseteq \\Sigma_{i+1}^{\\mathrm{P}} \\cap \\Pi_{i+1}^{\\mathrm{P}}$."
- ],
- [
-  "⊆",
-  "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE}$. Se coincidono, PH collassa a un livello finito."
- ],
- [
-  "⊆",
-  "$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subseteq \\mathrm{NEXP}$. Separazioni note: $\\mathrm{P} \\subsetneq \\mathrm{EXP}$ e $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ ✱."
- ],
- [
-  "⊊",
-  "Fin qui tutto è decidibile (sta in R). Da qui in su no.",
-  true
- ]
-];
 /** classificazioni in ordine, per le risposte sbagliate del quiz */
 export const ORDER: string[] = [
  "NL-completo",

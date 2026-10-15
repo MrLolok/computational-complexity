@@ -21,13 +21,11 @@ const aliases: [string, string][] = [
   ["UNSAT", "problem:COSAT"], ["QSAT", "problem:QSAT"], ["CIRC SAT", "problem:CIRC"], ["SCHÖNFINKEL-BERNAYS SAT", "problem:SB"],
 ];
 for (let i = 1; i <= 4; i++) {
-  for (const [letter, base, first] of [["Σ", "SIGMAi", "∃"], ["Π", "PIi", "∀"], ["Δ", "DELTA2", ""]]) {
+  for (const [letter, first] of [["Σ", "∃"], ["Π", "∀"], ["Δ", ""]]) {
     const name = `${letter}${"₀₁₂₃₄"[i]}ᴾ`;
     const key = `${letter}${i}`;
-    GLOSSARY[key] = { name, definition: first ? `${i} blocch${i === 1 ? "o" : "i"} alternat${i === 1 ? "o" : "i"} di quantificatori, iniziando con ${first}, seguiti da un controllo polinomiale. ${i === 1 ? (letter === "Σ" ? "Coincide con NP." : "Coincide con coNP.") : "Un livello della gerarchia polinomiale."}` : `Tempo polinomiale deterministico con un oracolo Σ del livello ${i - 1}.`, href: `/piani#${letter === "Σ" ? "S" : letter === "Π" ? "P" : "D"}${i}` };
+    GLOSSARY[key] = { name, definition: first ? `${i} blocch${i === 1 ? "o" : "i"} alternat${i === 1 ? "o" : "i"} di quantificatori, iniziando con ${first}, seguiti da un controllo polinomiale. ${i === 1 ? (letter === "Σ" ? "Coincide con NP." : "Coincide con coNP.") : "Un livello della gerarchia polinomiale."}` : `Tempo polinomiale deterministico con un oracolo Σ del livello ${i - 1}.`, href: first ? `/piani#${letter === "Σ" ? "S" : "P"}${i}` : i === 1 ? "/classi/P" : i === 2 ? "/piani#D2" : "/classi/DELTA2" };
     aliases.push([name, key]);
-    if (i === 1 && !first) GLOSSARY[key].href = "/classi/P";
-    if (i > 2 && !first) GLOSSARY[key].href = `/classi/${base}`;
   }
 }
 const keys = new Map(aliases);

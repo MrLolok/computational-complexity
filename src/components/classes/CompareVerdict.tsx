@@ -2,19 +2,14 @@ import { Fragment } from "react";
 import ClassChip from "@/components/ClassChip";
 import Rich from "@/components/Rich";
 import Tex from "@/components/Tex";
-import { C, PAIRNOTES, PLAIN, TEX, type ClassId } from "@/data/classes";
+import { C, PAIRNOTES, TEX, type ClassId } from "@/data/classes";
 import { answerLabel, compare, isStrictStep, type Answer, type Edge } from "@/lib/engine";
 import { ui } from "@/lib/ui";
-import { texHtml } from "@/lib/tex";
+import { ClassName as N, Html } from "@/components/problems/bits";
 
-const Html = ({ html, className }: { html: string; className?: string }) => (
-  <span className={className} dangerouslySetInnerHTML={{ __html: texHtml(html) }} />
-);
-/** nome di una classe nella frase: testo, o formula se ha pedici o operatori (Σ₂ᴾ, NP ∩ coNP) */
-const N = ({ id }: { id: ClassId }) => (/[_^]|\\cap/.test(TEX[id]) ? <Tex>{TEX[id]}</Tex> : <>{PLAIN[id]}</>);
 /** simbolo della relazione in testa al confronto */
 const OP = { "=": "=", "⊊": String.raw`\subsetneq`, "⊆": String.raw`\subseteq`, "≠": String.raw`\neq`, "?": String.raw`\mathrel{?}` } as const;
-const readit = "text-base text-muted";
+const readit = ui.hint;
 const tone = { si: "text-ok", no: "text-proved", altro: "text-open" } as const;
 const pillOf = { ok: ui.pillOk, proved: ui.pillProved, open: ui.pillOpen } as const;
 

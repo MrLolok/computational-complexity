@@ -129,5 +129,3 @@ export const RQUICK: [string, string][] = [
   ["CLIQUE", "COQSAT2"], ["COQSAT2", "CLIQUE"], ["SATUNSAT", "QSAT3"], ["QSAT3", "SATUNSAT"], ["SATUNSAT", "COQSAT3"], ["COQSAT3", "SATUNSAT"],
 ];
 
-/** classi delle domande d'esame che toccano i piani */
-export const PH_CLASSES: ClassId[] = ["SIGMA2", "PI2", "SIGMAi", "PIi", "PH", "DELTA2"];

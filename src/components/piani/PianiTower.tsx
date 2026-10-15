@@ -5,18 +5,12 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import Rich from "@/components/Rich";
 import { CLASS_PROBLEMS } from "@/data/classes";
 import { BANDS, HYP, TE, TOWER_IDS, TW, type TowerId } from "@/data/piani";
-import { edgeHot, infoOf, mergeBox, nodeState, nodeWidth, tDown, tUp, type NodeState } from "@/lib/piani";
-import { classColor, ui } from "@/lib/ui";
+import { edgeHot, infoOf, mergeBox, nodeState, nodeWidth, tDown, tUp } from "@/lib/piani";
+import { classColor, NODE_RECT, ui } from "@/lib/ui";
 import { selectTower, useTowerSel } from "./towerSelection";
 import { texHtml } from "@/lib/tex";
 import Tex from "@/components/Tex";
 
-const NODE_RECT: Record<NodeState, string> = {
-  sel: "fill-[color-mix(in_srgb,var(--c)_22%,var(--color-surface))] stroke-3",
-  sub: "fill-[color-mix(in_srgb,var(--c)_11%,var(--color-surface))] stroke-1.5 group-hover:stroke-2",
-  sup: "fill-surface stroke-2",
-  far: "fill-surface stroke-1.5 group-hover:stroke-2",
-};
 const h4 = "font-ui text-xs uppercase tracking-widest text-muted font-semibold mb-1.5";
 
 /** etichetta di un nodo: Σ₂ᴾ diventa Σ con pedice e apice veri */

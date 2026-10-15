@@ -5,14 +5,14 @@ import type { TraceRef } from "@/data/traces";
 
 import Link from "next/link";
 
+import LearningSlideshow from "@/components/learning/LearningSlideshow";
 import Rich from "@/components/Rich";
-import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems";
+import { PROBLEM_BY, PROBLEMS } from "@/data/problems";
 import walkthroughs from "@/data/problemWalkthroughs.json";
-import { ansKey, colorId, PI, REL, S, trapAnswer } from "@/lib/problems";
+import { ansKey, classLabel, colorId, plain, REL, trapAnswer } from "@/lib/problems";
 import { theoremsForProblem } from "@/lib/theorems";
 import { classColor, ui } from "@/lib/ui";
-import { codeCls, Html, noTerms, YesNo } from "./bits";
-import ProblemSlideshow from "./ProblemSlideshow";
+import { codeCls, Html, YesNo } from "./bits";
 import { texHtml } from "@/lib/tex";
 
 function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void }) {
@@ -61,7 +61,7 @@ export default function ProblemDetail({
     const index = PROBLEMS.findIndex((item) => item.id === p.id);
     const previous = previousId ? PROBLEM_BY[previousId] : undefined;
     const next = nextId ? PROBLEM_BY[nextId] : undefined;
-    const clsName = p.c ? (p.c === "SIGMA2" ? S(2) : PI(2)) : LADDER[p.b].n;
+    const clsName = classLabel(p);
     const related = (REL[p.id] || []).filter(([id]) => id !== p.cpl);
     const theorems = theoremsForProblem(p.id);
     const disclosure =
@@ -101,7 +101,7 @@ export default function ProblemDetail({
                     <Link
                         href={`/classi/${p.c || p.b}`}
                         className={ui.pill}
-                        dangerouslySetInnerHTML={{ __html: noTerms(texHtml(clsName)) }}
+                        dangerouslySetInnerHTML={{ __html: texHtml(clsName, false) }}
                     />
                     {p.full && (
                         <span className={ui.pillOk} dangerouslySetInnerHTML={{ __html: texHtml(`${clsName}-completo`) }} />
@@ -124,7 +124,12 @@ export default function ProblemDetail({
                     </p>
                 </details>
             )}
-            <ProblemSlideshow key={p.id} id={p.id as keyof typeof walkthroughs} name={p.name.replace(/<[^>]+>/g, "")} />
+            <LearningSlideshow
+                key={p.id}
+                lesson={walkthroughs[p.id as keyof typeof walkthroughs]}
+                name={plain(p.name)}
+                title="Un esempio, passo dopo passo"
+            />
             <Rich className="text-muted flex flex-col gap-3 leading-relaxed" html={/^\s*<(p|ul|ol|div)\b/.test(p.why) ? p.why : `<p>${p.why}</p>`} />
             <details className={disclosure}>
                 <summary>Complemento e collegamenti</summary>
@@ -153,7 +158,7 @@ export default function ProblemDetail({
                                     key={t.id}
                                     href={`/teoremi#teorema-${t.id}`}
                                     className="text-accent underline underline-offset-4"
-                                    dangerouslySetInnerHTML={{ __html: noTerms(texHtml(t.nome)) }}
+                                    dangerouslySetInnerHTML={{ __html: texHtml(t.nome, false) }}
                                 />
                             ))}
                         </p>

@@ -7,14 +7,9 @@ import { EXAM_QUESTIONS, type ExamQuestion } from "@/data/examQuestions";
 import ClassChip from "@/components/ClassChip";
 import Rich from "@/components/Rich";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { answerExamQuestion, resetExamQuiz, type Choice } from "@/store/progressSlice";
+import { answerExamQuestion, CHOICES, resetExamQuiz, type Choice } from "@/store/progressSlice";
 import { ui } from "@/lib/ui";
 
-const OPTS: [Choice, string][] = [
-  ["SI", "SÌ"],
-  ["NO", "NO"],
-  ["ALTRO", "altro"],
-];
 const ansKey = (t: ExamQuestion): Choice => {
   const a = t.a.replace(/<[^>]+>/g, "");
   return /^SÌ/.test(a) ? "SI" : /^NO/.test(a) ? "NO" : "ALTRO";
@@ -94,7 +89,7 @@ export default function ExamQuiz() {
             </div>
             <Rich className="font-head text-2xl font-medium leading-snug" html={cur.q.q} />
             <div className="flex flex-wrap gap-2">
-              {OPTS.map(([kk, l]) => {
+              {CHOICES.map(([kk, l]) => {
                 const cls = !rec ? optIdle : kk === k ? optRight : kk === rec.choice ? optWrong : optIdle;
                 return (
                   <button key={kk} type="button" disabled={!!rec} onClick={() => choose(kk)} className={`${optBase} ${cls}`}>

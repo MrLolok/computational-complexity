@@ -27,5 +27,4 @@ export type Lez6 = {
 };
 
 export const LEZ6 = raw as Lez6;
-export const LEZ6_URL = "https://app.notion.com/p/3ec9883b3067819b9051ee22c0fd2ceb";
 export const lez6Groups = (...ids: string[]) => ids.map((id) => LEZ6.groups.find((g) => g.id === id)!).filter(Boolean);

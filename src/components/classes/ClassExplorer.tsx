@@ -1,20 +1,15 @@
 "use client";
 
-import { useEffect, useId, useState, useSyncExternalStore, type ReactNode } from "react";
+import { useId, type ReactNode } from "react";
+import { setHash, useHash } from "@/lib/hash";
 
 const TABS = ["Mappa completa", "Probabilistiche", "Quantistiche"];
-const subscribe = (cb: () => void) => { window.addEventListener("hashchange", cb); window.addEventListener("popstate", cb); return () => { window.removeEventListener("hashchange", cb); window.removeEventListener("popstate", cb); }; };
 /* #probabilistiche, #quantistiche e le #ancore delle spiegazioni (es. #def-bpp) aprono la scheda giusta */
-const tabOf = (hash: string, anchors: Record<string, number>) => ({ "#probabilistiche": 1, "#quantistiche": 2 }[hash] ?? anchors[hash.slice(1)] ?? 0);
-const serverHash = () => "";
+const tabOf = (hash: string, anchors: Record<string, number>) => ({ probabilistiche: 1, quantistiche: 2 }[hash] ?? anchors[hash] ?? 0);
 export default function ClassExplorer({ children, random, quantum, anchors }: { children: ReactNode; random: ReactNode; quantum: ReactNode; anchors: Record<string, number> }) {
-  const [tab, setTab] = useState<number | null>(null);
-  const hash = tabOf(useSyncExternalStore(subscribe, () => window.location.hash, serverHash), anchors);
-  /* un link interno a un'#ancora (es. dalla mappa) vince sulla scheda scelta a mano */
-  useEffect(() => { const reset = () => setTab(null); window.addEventListener("hashchange", reset); return () => window.removeEventListener("hashchange", reset); }, []);
-  const active = tab ?? hash;
+  const active = tabOf(useHash(), anchors);
   const id = useId();
-  const choose = (i: number) => { setTab(i); window.history.replaceState(window.history.state, "", i === 1 ? "#probabilistiche" : i === 2 ? "#quantistiche" : window.location.pathname); };
+  const choose = (i: number) => setHash(i === 1 ? "probabilistiche" : i === 2 ? "quantistiche" : "");
   return (
     <div>
       <div role="tablist" aria-label="Viste delle classi" className="mb-6 flex flex-wrap gap-1 border-b border-line">

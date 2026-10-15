@@ -1,24 +1,22 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { memo, useEffect, useState } from "react";
 import Link from "next/link";
 import { IDS, PLAIN, NAME } from "@/data/classes";
 import { PROBLEM_BY } from "@/data/problems";
 import { THEOREMS, type Theorem } from "@/data/theorems";
-import { PRIORITY, PROOF, PROOF_KIND } from "@/data/theoremProofs";
-import { TRACE_BY } from "@/data/traces";
+import { PRIORITY, PROOF, PROOF_KIND, TOP } from "@/data/theoremProofs";
 import ClassChip from "@/components/ClassChip";
 import Markdown from "@/components/Markdown";
 import Rich from "@/components/Rich";
-import { chapterTitle, filterTheorems, groupByChapter, groupByPriority, thProblems, whereText } from "@/lib/theorems";
-import { fillChips } from "@/lib/rich";
+import { chapterTitle, filterTheorems, groupByChapter, groupByPriority, thPlain, thProblems, whereText } from "@/lib/theorems";
+import { useHash } from "@/lib/hash";
 import { texHtml } from "@/lib/tex";
-import { plainMath } from "@/lib/mathNotation";
 import { ui } from "@/lib/ui";
 import LearningSlideshow from "@/components/learning/LearningSlideshow";
 import walkthroughs from "@/data/theoremWalkthroughs.json";
 
-const PREFIX = "#teorema-";
+const PREFIX = "teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
 const h4 = "mb-0.5 font-ui text-xs font-semibold uppercase tracking-widest text-muted";
 /* evidenziazione del teorema aperto da un indirizzo: si accende e poi sfuma */
@@ -51,24 +49,8 @@ function Explanation({ md }: { md: string }) {
   );
 }
 
-const subscribeHash = (cb: () => void) => {
-  window.addEventListener("hashchange", cb);
-  window.addEventListener("popstate", cb);
-  return () => {
-    window.removeEventListener("hashchange", cb);
-    window.removeEventListener("popstate", cb);
-  };
-};
-const getHash = () => {
-  try {
-    return decodeURIComponent(window.location.hash);
-  } catch {
-    return window.location.hash;
-  }
-};
-const getServerHash = () => "";
-
-function TheoremRow({ t, md }: { t: Theorem; md?: string }) {
+/* memo: a ogni tasto della ricerca si rifà solo l'elenco, non le schede già mostrate */
+const TheoremRow = memo(function TheoremRow({ t, md, traceTitles }: { t: Theorem; md?: string; traceTitles: Record<string, string> }) {
   const cls = (t.classi || []).filter((c) => NAME[c]);
   const pr = thProblems(t);
   const pf = PROOF[t.id];
@@ -91,7 +73,7 @@ function TheoremRow({ t, md }: { t: Theorem; md?: string }) {
           {pf?.priorita === "orale" && <span className={ui.pill} title={PRIORITY.orale.hint}>per l&apos;orale</span>}
           {t.prova === "nel corso" && <span className={ui.pill}>dimostrato nel corso</span>}
         </div>
-        <p className="col-span-full max-w-prose" dangerouslySetInnerHTML={{ __html: fillChips(t.enunciato) }} />
+        <Rich as="p" className="col-span-full max-w-prose" html={t.enunciato} />
         <span className="col-span-full font-ui text-sm text-accent"><span className="group-open:hidden">Idea, frase per l&apos;esame e dimostrazione +</span><span className="hidden group-open:inline">Chiudi approfondimento −</span></span>
       </summary>
       <div className="flex max-w-prose flex-col gap-3 pb-4">
@@ -113,7 +95,7 @@ function TheoremRow({ t, md }: { t: Theorem; md?: string }) {
             <Rich as="p" html={pf.frase_esame} />
           </div>
         )}
-        {lesson && <LearningSlideshow lesson={lesson} name={plainMath(t.nome.replace(/<[^>]*>/g, ""))} title={lesson.kind === "conditional" ? "Ragionamento illustrato" : lesson.kind === "outline" ? "Schema illustrato" : "Dimostrazione illustrata"} heading="h4" />}
+        {lesson && <LearningSlideshow lesson={lesson} name={thPlain(t.nome)} title={lesson.kind === "conditional" ? "Ragionamento illustrato" : lesson.kind === "outline" ? "Schema illustrato" : "Dimostrazione illustrata"} heading="h4" />}
         {pf && md && (
           <details className={box} onToggle={(e) => setMdOpen(e.currentTarget.open)}>
             <summary className={boxSummary}>{PROOF_KIND[pf.tipo_dimostrazione]}</summary>
@@ -129,7 +111,7 @@ function TheoremRow({ t, md }: { t: Theorem; md?: string }) {
                   {i > 0 && " · "}
                   <Link
                     href={`/tracce/${d.traccia}#d${d.n}`}
-                    title={TRACE_BY[d.traccia] && plainMath(TRACE_BY[d.traccia].title)}
+                    title={traceTitles[d.traccia]}
                     className="whitespace-nowrap text-accent underline decoration-1 underline-offset-2"
                   >
                     {d.traccia} n. {d.n}
@@ -174,14 +156,14 @@ function TheoremRow({ t, md }: { t: Theorem; md?: string }) {
       </div>
     </details>
   );
-}
+});
 
-export default function TheoremsView({ explanations }: { explanations: Record<string, string> }) {
+export default function TheoremsView({ explanations, traceTitles }: { explanations: Record<string, string>; traceTitles: Record<string, string> }) {
   const [q, setQ] = useState("");
   const [cls, setCls] = useState("all");
   const [provedOnly, setProvedOnly] = useState(false);
   const [byFreq, setByFreq] = useState(false);
-  const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
+  const hash = useHash();
   const target = hash.startsWith(PREFIX) ? hash.slice(PREFIX.length) : "";
 
   const list = filterTheorems(q, cls, provedOnly);
@@ -220,7 +202,7 @@ export default function TheoremsView({ explanations }: { explanations: Record<st
         Leggi l&apos;enunciato, poi apri la scheda: trovi l&apos;idea, i passaggi illustrati e la dimostrazione in testo.
       </p>
       <p className={`${ui.noteOk} mb-4 max-w-prose`}>
-        I 17 teoremi segnati con ★ servono in almeno 8 domande delle tracce ciascuno e da soli coprono circa due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per vederli per primi.
+        I {TOP} teoremi segnati con ★ servono in almeno 8 domande delle tracce ciascuno e da soli coprono circa due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per vederli per primi.
       </p>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 pb-1.5">
         <label className={ui.search} htmlFor="thq">
@@ -268,7 +250,7 @@ export default function TheoremsView({ explanations }: { explanations: Record<st
                 {byFreq && <span className="ml-2 font-normal normal-case tracking-normal">· {PRIORITY[g.k as keyof typeof PRIORITY].hint}</span>}
               </h2>
               {g.items.map((t) => (
-                <TheoremRow key={t.id} t={t} md={explanations[t.id]} />
+                <TheoremRow key={t.id} t={t} md={explanations[t.id]} traceTitles={traceTitles} />
               ))}
             </section>
           ))

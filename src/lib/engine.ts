@@ -3,7 +3,7 @@
 import { CO, HASSE_STRICT, IDS, INC, PLAIN, STRICT, TEX, type ClassId } from "@/data/classes";
 
 /** nome di una classe in una frase: testo semplice, o formula se ha pedici o operatori (Σ₂ᴾ, NP ∩ coNP) */
-const nm = (x: ClassId) => (/[_^]|\\cap/.test(TEX[x]) ? `$${TEX[x]}$` : PLAIN[x]);
+export const nm = (x: ClassId) => (/[_^]|\\cap/.test(TEX[x]) ? `$${TEX[x]}$` : PLAIN[x]);
 
 export type EdgeKind = "base" | "hyp" | "der";
 /** un passo A ⊆ B, con il motivo e la fonte */

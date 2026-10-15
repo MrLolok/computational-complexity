@@ -38,36 +38,26 @@ export const labTex = (lab: string) => {
 export const readit = "text-base text-muted";
 
 /* ---------- torre ---------- */
+/** classi della torre raggiungibili da id seguendo le inclusioni verso l'alto o verso il basso */
+function reach(id: TowerId, up: boolean): Set<TowerId> {
+  const out = new Set<TowerId>(),
+    st: TowerId[] = [id];
+  while (st.length) {
+    const a = st.pop();
+    TE.forEach(([x, y]) => {
+      const [from, to] = up ? [x, y] : [y, x];
+      if (from === a && !out.has(to)) {
+        out.add(to);
+        st.push(to);
+      }
+    });
+  }
+  return out;
+}
 /** classi della torre che contengono id (tutte quelle sopra) */
-export function tUp(id: TowerId): Set<TowerId> {
-  const out = new Set<TowerId>(),
-    st: TowerId[] = [id];
-  while (st.length) {
-    const a = st.pop();
-    TE.forEach(([x, y]) => {
-      if (x === a && !out.has(y)) {
-        out.add(y);
-        st.push(y);
-      }
-    });
-  }
-  return out;
-}
+export const tUp = (id: TowerId) => reach(id, true);
 /** classi della torre contenute in id (tutte quelle sotto) */
-export function tDown(id: TowerId): Set<TowerId> {
-  const out = new Set<TowerId>(),
-    st: TowerId[] = [id];
-  while (st.length) {
-    const a = st.pop();
-    TE.forEach(([x, y]) => {
-      if (y === a && !out.has(x)) {
-        out.add(x);
-        st.push(x);
-      }
-    });
-  }
-  return out;
-}
+export const tDown = (id: TowerId) => reach(id, false);
 export type NodeState = "sel" | "sub" | "sup" | "far";
 export function nodeState(id: TowerId, sel: TowerId, up: Set<TowerId>, dn: Set<TowerId>): NodeState {
   if (id === sel) return "sel";

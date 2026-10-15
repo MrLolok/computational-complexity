@@ -17,7 +17,7 @@ import {
     MAP_STRICT,
 } from "@/data/lezione6Map";
 import Tex from "@/components/Tex";
-import { texHtml } from "@/lib/tex";
+import { Html } from "@/components/problems/bits";
 import { classColor, ui } from "@/lib/ui";
 
 const W = 104,
@@ -26,10 +26,6 @@ const badgeText = "font-bold [text-anchor:middle] [dominant-baseline:central]";
 /** a ⊆ b, chiusura transitiva delle inclusioni dimostrate */
 const below = (a: MapNode, b: MapNode): boolean => MAP_INC.some(([x, y]) => x === a && (y === b || below(y, b)));
 const width = (id: MapNode) => (id === "PSPACE" ? 116 : W);
-/** testo dei dati con formule $…$ */
-const Html = ({ html, className }: { html: string; className?: string }) => (
-    <span className={className} dangerouslySetInnerHTML={{ __html: texHtml(html) }} />
-);
 
 /** Mappa della Lezione 6: un clic su una classe mostra significato, condizione di accettazione e relazioni. */
 export default function Lez6Map({ initial }: { initial: MapNode }) {
@@ -63,9 +59,7 @@ export default function Lez6Map({ initial }: { initial: MapNode }) {
                                     [x2, y2] = MAP_POS[b];
                                 const k = `${a}>${b}`;
                                 const strict = MAP_STRICT.has(k);
-                                const hot =
-                                    (a === cur || below(a, cur) || below(cur, a)) &&
-                                    (b === cur || below(b, cur) || below(cur, b));
+                                const hot = near(a) && near(b);
                                 return (
                                     <line
                                         key={k}

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
 import { ALIAS, HASSE_STRICT, IDS, INC, NAME, NOBADGE, NODE_H as H, NODE_W, PLAIN, POS, SEP_DRAW, type ClassId } from "@/data/classes";
 import { BASE } from "@/lib/engine";
-import { classColor, ui } from "@/lib/ui";
+import { classColor, NODE_RECT, ui } from "@/lib/ui";
 
 /* Opzioni della mappa (Separazioni dimostrate / Questioni aperte): restano tra una classe e l'altra. */
 type Opts = { sep: boolean; open: boolean };
@@ -242,14 +242,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
               const [cx, cy] = POS[id];
               const w = NODE_W[id];
               const state = !cur ? "" : id === cur ? "sel" : BASE.R(id, cur) ? "sub" : BASE.R(cur, id) ? "sup" : "far";
-              const rect =
-                state === "sel"
-                  ? "fill-[color-mix(in_srgb,var(--c)_22%,var(--color-surface))] stroke-3"
-                  : state === "sub"
-                    ? "fill-[color-mix(in_srgb,var(--c)_11%,var(--color-surface))] stroke-1.5 group-hover:stroke-2"
-                    : state === "sup"
-                      ? "fill-surface stroke-2"
-                      : "fill-surface stroke-1.5 group-hover:stroke-2";
+              const rect = NODE_RECT[state || "far"];
               return (
                 <g
                   key={id}

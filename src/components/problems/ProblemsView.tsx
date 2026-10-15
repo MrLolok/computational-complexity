@@ -9,10 +9,9 @@ import { usePathname } from "next/navigation";
 
 import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems";
 import { stripHtml } from "@/lib/glossary";
-import { BANDS, matches, PI, S } from "@/lib/problems";
+import { BANDS, classLabel, matches } from "@/lib/problems";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/ui";
-import { noTerms } from "./bits";
 import ProblemDetail from "./ProblemDetail";
 
 function selectedFrom(path: string | null) {
@@ -189,9 +188,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                                 <span className="flex flex-wrap items-center gap-1.5">
                                     <span
                                         className={ui.pill}
-                                        dangerouslySetInnerHTML={{
-                                            __html: noTerms(texHtml(p.c === "SIGMA2" ? S(2) : p.c === "PI2" ? PI(2) : LADDER[p.b].n)),
-                                        }}
+                                        dangerouslySetInnerHTML={{ __html: texHtml(classLabel(p), false) }}
                                     />
                                     {p.full && <span className={ui.pillOk}>Completo</span>}
                                     {traceRefs[p.id]?.length > 0 && (

@@ -1,8 +1,8 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { resetExercises } from "@/store/progressSlice";
+import { setHash, useHash } from "@/lib/hash";
 import { ui } from "@/lib/ui";
 import ExamQuiz from "./ExamQuiz";
 import ProblemQuiz from "./ProblemQuiz";
@@ -15,33 +15,15 @@ const SUBS: [Sub, string][] = [
   ["flash", "Flashcard"],
 ];
 /* la sottoscheda sta nell'#hash: /esercizi, /esercizi#quiz, /esercizi#flash */
-const EVENT = "esercizi:sub";
-const subscribe = (cb: () => void) => {
-  window.addEventListener("hashchange", cb);
-  window.addEventListener("popstate", cb);
-  window.addEventListener(EVENT, cb);
-  return () => {
-    window.removeEventListener("hashchange", cb);
-    window.removeEventListener("popstate", cb);
-    window.removeEventListener(EVENT, cb);
-  };
-};
-const getSub = (): Sub => {
-  const h = window.location.hash.slice(1);
-  return h === "quiz" || h === "flash" ? h : "tracce";
-};
-const getServerSub = (): Sub => "tracce";
+const subOf = (h: string): Sub => (h === "quiz" || h === "flash" ? h : "tracce");
 
 export default function ExercisesView() {
-  const sub = useSyncExternalStore(subscribe, getSub, getServerSub);
+  const sub = subOf(useHash());
   const dispatch = useAppDispatch();
   const empty = useAppSelector(
     ({ progress: p }) => !Object.keys(p.examQuiz).length && !p.problemQuiz.tot && !Object.keys(p.flashKnown).length,
   );
-  const show = (s: Sub) => {
-    window.history.replaceState(null, "", s === "tracce" ? window.location.pathname : `#${s}`);
-    window.dispatchEvent(new Event(EVENT));
-  };
+  const show = (s: Sub) => setHash(s === "tracce" ? "" : s);
 
   return (
     <section className="flex flex-col">

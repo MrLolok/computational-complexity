@@ -36,7 +36,6 @@ const data = raw as unknown as { source: string; legend?: string; traces: Trace[
 
 export const TRACES: Trace[] = data.traces;
 export const TRACE_LEGEND: string = data.legend ?? "";
-export const TRACE_SOURCE: string = data.source;
 export const TRACE_BY: Record<string, Trace> = Object.fromEntries(TRACES.map((t) => [t.code, t]));
 
 /** testo semplice per la ricerca: senza Markdown né comandi LaTeX */
@@ -48,4 +47,3 @@ export const plainText = (md: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-export const LABEL: Record<TraceAnswer, string> = { SI: "SÌ", NO: "NO", ALTRO: "altro" };

@@ -2,6 +2,12 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 /** Risposta data a una domanda SÌ / NO / altro. */
 export type Choice = "SI" | "NO" | "ALTRO";
+/** i tre bottoni di risposta, con la loro etichetta */
+export const CHOICES: [Choice, string][] = [
+  ["SI", "SÌ"],
+  ["NO", "NO"],
+  ["ALTRO", "altro"],
+];
 export type AnswerRecord = { choice: Choice; correct: boolean; at: number };
 
 export type TraceProgress = {
@@ -66,9 +72,8 @@ const progressSlice = createSlice({
       const { index, choice, correct } = action.payload;
       state.examQuiz[index] = { choice, correct, at: Date.now() };
     },
-    resetExamQuiz(state, action: PayloadAction<number[] | undefined>) {
-      if (!action.payload) state.examQuiz = {};
-      else action.payload.forEach((i) => delete state.examQuiz[i]);
+    resetExamQuiz(state, action: PayloadAction<number[]>) {
+      action.payload.forEach((i) => delete state.examQuiz[i]);
     },
     recordProblemQuiz(state, action: PayloadAction<{ correct: boolean }>) {
       state.problemQuiz.tot += 1;
@@ -95,15 +100,12 @@ const progressSlice = createSlice({
       state.problemQuiz = { ok: 0, tot: 0 };
       state.flashKnown = {};
     },
-    resetAll() {
-      return initialProgress;
-    },
   },
 });
 
 export const {
   hydrate, answerTraceQuestion, setTraceQ8Done, completeTrace, restartTrace,
   answerExamQuestion, resetExamQuiz, recordProblemQuiz, resetProblemQuiz, setFlashKnown, saveMdtDraft,
-  resetTraces, resetExercises, resetAll,
+  resetTraces, resetExercises,
 } = progressSlice.actions;
 export default progressSlice.reducer;

@@ -1,10 +1,9 @@
 /* Logica della scheda Problemi, del quiz sui problemi e delle flashcard (dal modulo PB della pagina). */
-import type { ClassId } from "@/data/classes";
-import { LINKS, ORDER, PROBLEMS, PROBLEM_BY, ROWS, type LadderId, type Problem, type Trap } from "@/data/problems";
+import { TEX, type ClassId } from "@/data/classes";
+import { LADDER, LINKS, ORDER, PROBLEMS, PROBLEM_BY, ROWS, type LadderId, type Problem, type Trap } from "@/data/problems";
 
-/** livelli della gerarchia come formula LaTeX (da mostrare con texHtml) */
-export const S = (i: string | number) => `$\\Sigma_{${i}}^{\\mathrm{P}}$`;
-export const PI = (i: string | number) => `$\\Pi_{${i}}^{\\mathrm{P}}$`;
+/** classificazione del problema da mostrare con texHtml: la classe precisa (Σ₂ᴾ, Π₂ᴾ) o il gradino */
+export const classLabel = (p: Problem) => (p.c ? `$${TEX[p.c as ClassId]}$` : LADDER[p.b].n);
 
 /** gradini della scala nell'ordine delle righe (dal basso) */
 export const BANDS: LadderId[] = ROWS.flat();
@@ -33,8 +32,6 @@ export const colorId = (p: Problem) => (p.c || p.b) as ClassId;
 /** risposta SÌ / NO / altro → chiave delle classi di colore */
 export const ansKey = (a: Trap["a"]) => (a === "SÌ" ? "SI" : a === "NO" ? "NO" : "ALTRO");
 export const trapAnswer = (t: Trap) => (t.a === "altro" ? "altro: " + t.ac : t.a);
-
-export const SOURCE_LABEL = { d: "Dispensa", s: "Slide", a: "Appunti", x: "Esterno" } as const;
 
 export function matches(p: Problem, query: string, filt: Set<string>, onlyComplete: boolean) {
   const q = norm(query);

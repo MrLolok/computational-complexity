@@ -1,18 +1,19 @@
 /* Piccoli pezzi condivisi da Problemi, Esercitati e Fonti (nessuno stato: vanno bene anche nei server component). */
+import type { ClassId } from "@/data/classes";
 import type { Choice } from "@/store/progressSlice";
+import { nm } from "@/lib/engine";
 import { ui } from "@/lib/ui";
 import { texHtml } from "@/lib/tex";
 
 type Tag = "span" | "p" | "div" | "li" | "td" | "h2" | "strong";
 
-/** toglie il popup del glossario dalle formule: per i testi dentro un pulsante o un link */
-export const noTerms = (html: string) => html.replace(/ data-term="[^"]*" role="button" tabindex="0"/g, "");
-
 /** testo dei dati con solo marcatura (pedici, corsivi, formule $…$): niente link interni; terms={false} dentro un pulsante */
 export function Html({ html, className, as: T = "span", terms = true }: { html: string; className?: string; as?: Tag; terms?: boolean }) {
-  const out = texHtml(html);
-  return <T className={className} dangerouslySetInnerHTML={{ __html: terms ? out : noTerms(out) }} />;
+  return <T className={className} dangerouslySetInnerHTML={{ __html: texHtml(html, terms) }} />;
 }
+
+/** nome di una classe nella frase: testo, o formula se ha pedici o operatori (Σ₂ᴾ, NP ∩ coNP) */
+export const ClassName = ({ id }: { id: ClassId }) => <Html html={nm(id)} />;
 
 const SB = "font-ui text-xs font-semibold uppercase tracking-wide px-1.5 py-px rounded-sm box-decoration-clone border";
 export const sbClass = {

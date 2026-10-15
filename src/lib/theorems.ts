@@ -18,7 +18,6 @@ const TH_EXTRA: Record<string, string[]> = {
   "t17-10": ["COQSATi"],
   "strategic-companies": ["COSC"],
   "fo-indecidibile": ["FOV", "FOS"],
-  "godel-completezza": ["FOV"],
   "validity-conp": ["COHP"],
   "co-hamilton-pi2": ["COHP"],
   "tsp-d": ["HP"],
@@ -48,7 +47,6 @@ export function thProblems(t: Theorem): string[] {
 }
 
 export const theoremsForProblem = (pid: string) => THEOREMS.filter((t) => thProblems(t).includes(pid));
-export const theoremsForClass = (cls: ClassId) => THEOREMS.filter((t) => (t.classi || []).includes(cls));
 
 const chapNum = (c: string) => {
   const m = String(c || "").match(/^\s*(\d+)/);
@@ -87,12 +85,15 @@ export const whereText = (t: Theorem) =>
         .filter(Boolean)
         .join(" · ");
 
+/* testo di ricerca di ogni teorema, calcolato una volta sola */
+const SEARCH = new Map(THEOREMS.map((t) => [t, thNorm(t.nome + " " + t.enunciato + " " + (t.intuizione || "") + " " + (t.capitolo || ""))]));
+
 export function filterTheorems(q: string, cls: string, provedOnly = false) {
   const nq = thNorm(q).trim();
   return THEOREMS.filter(
     (t) =>
       (!provedOnly || t.prova === "nel corso") &&
       (cls === "all" || (t.classi || []).includes(cls as ClassId)) &&
-      (!nq || thNorm(t.nome + " " + t.enunciato + " " + (t.intuizione || "") + " " + (t.capitolo || "")).includes(nq)),
+      (!nq || SEARCH.get(t)!.includes(nq)),
   );
 }
