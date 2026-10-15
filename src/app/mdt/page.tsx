@@ -89,6 +89,10 @@ const SYNTAX = `Scrivi **una transizione per riga**. Per esempio, \`q 1 -> q 0 L
 
 **Se manca una regola**, la macchina rifiuta. Se più righe sono applicabili, hanno precedenza quelle con più simboli esatti. A parità di precedenza, ogni riga è un ramo nondeterministico.`;
 
+/* Tabelle delle transizioni: la colonna delle note resta leggibile e lo stato resta visibile scorrendo. */
+const TABLE =
+    "[&_td:last-child]:min-w-48 [&_td:first-child]:sticky [&_td:first-child]:left-0 [&_td:first-child]:bg-surface [&_td:first-child]:z-10 [&_th:first-child]:sticky [&_th:first-child]:left-0 [&_th:first-child]:bg-surface [&_th:first-child]:z-10";
+
 export default function Page() {
     return (
         <section className="flex flex-col gap-8">
@@ -163,7 +167,7 @@ export default function Page() {
                             <span aria-hidden="true" className="text-muted transition-transform group-open:rotate-90">
                                 ›
                             </span>
-                            <span className="min-w-0 flex-1 font-semibold">{m.title}</span>
+                            <span className="min-w-0 flex-1 basis-52 font-semibold wrap-normal">{m.title}</span>
                             <span className={ui.pill}>
                                 {m.kind} · {m.tapes === 1 ? "1 nastro" : `${m.tapes} nastri`}
                                 {m.nondet ? " · nondeterministica" : ""}
@@ -185,7 +189,7 @@ export default function Page() {
                                     </span>
                                 ))}
                             </p>
-                            <Markdown>{MDT_BODY[m.id]}</Markdown>
+                            <Markdown className={TABLE}>{MDT_BODY[m.id]}</Markdown>
                             {goRightNote(m.id) && (
                                 <div className={ui.noteInfo}>
                                     <Markdown>{goRightNote(m.id)!}</Markdown>
