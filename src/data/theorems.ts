@@ -213,7 +213,7 @@ export const THEOREMS: Theorem[] = [
   "id": "soluzioni-precise",
   "nome": "Teorema delle soluzioni precise",
   "tipo": "teorema",
-  "enunciato": "Se $M$ decide $L$ in tempo o spazio $f(n)$, con $f$ propria, allora esiste una MdT precisa $M'$ che decide $L$ in tempo o spazio $O(f(n))$. Precisa vuol dire che ogni computazione si ferma dopo esattamente $f(|x|)$ passi e i nastri di lavoro hanno lunghezza fissata.",
+  "enunciato": "Se $M$ decide $L$ in tempo o spazio $f(n)$, con $f$ propria, allora esiste una MdT precisa $M'$ che decide $L$ in tempo o spazio $O(f(n))$. Precisa vuol dire che, su ogni input $x$, ogni computazione si ferma dopo un numero di passi che dipende solo da $|x|$ e i nastri di lavoro hanno una lunghezza che dipende solo da $|x|$.",
   "intuizione": "Prima si calcola il \"metro\" lungo $f(|x|)$ con la macchina $M_f$, poi lo si usa come sveglia (tempo) o come limite di memoria (spazio).",
   "uso_esame": "",
   "capitolo": "4 · Funzioni di complessità proprie",
