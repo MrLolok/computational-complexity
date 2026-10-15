@@ -200,7 +200,6 @@ export const PROBLEMS: Problem[] = [
   "compl": "Il complemento (2-CNF insoddisfacibili) sta in $\\mathrm{coNL} = \\mathrm{NL}$, quindi è anch'esso NL-completo.",
   "complLab": "NL-completo",
   "ext_t": "Dispensa e slide dicono solo \"2-SAT is in P\" (cap. 12). La NL-completezza viene dal libro di riferimento ed è negli appunti (Lezione 8 §3 e §9).",
-  "fix": "Il riepilogo della dispensa (cap. 22) scrive \"2-SAT is P-complete\": non è dimostrato. Con le riduzioni in spazio logaritmico varrebbe se e solo se $\\mathrm{P} = \\mathrm{NL}$, problema aperto. Anche \"2-SAT non è NP-completo\" non è un fatto dimostrato: lo sarebbe se $\\mathrm{NP} = \\mathrm{NL}$, che darebbe anche $\\mathrm{P} = \\mathrm{NP}$.",
   "traps": [
    {
     "c": "F01#7",
@@ -235,10 +234,6 @@ export const PROBLEMS: Problem[] = [
    [
     "d",
     "Cap. 12: \"2-SAT is in P\""
-   ],
-   [
-    "d",
-    "Cap. 22: \"2-SAT is P-complete\" (non dimostrato)"
    ],
    [
     "a",
@@ -940,7 +935,6 @@ export const PROBLEMS: Problem[] = [
   "why": "È il complemento di HAMILTON PATH. Un ordine hamiltoniano certifica una risposta no. Per rispondere sì si deve escludere l’esistenza di ogni cammino che visita tutti i vertici una sola volta.",
   "comp": "coNP-completo.",
   "cpl": "HP",
-  "fix": "La dispensa (cap. 17) scrive che co-HAMILTON PATH è $\\Pi_2^{\\mathrm{P}}$-completo: non è dimostrato. È coNP-completo, cioè $\\Pi_1^{\\mathrm{P}}$-completo, e sarebbe $\\Pi_2^{\\mathrm{P}}$-completo solo se $\\mathrm{NP} = \\mathrm{coNP}$. Nel riepilogo (cap. 22) \"HAMILTON PATH is coNP-complete\" è invece giusto: la barra di complemento sul nome si perde solo copiando il testo.",
   "traps": [
    {
     "n": "Distinguere: HAMILTON PATH è NP-completo, il suo complemento coNP-completo, e nessuno dei due è noto $\\Pi_2^{\\mathrm{P}}$-completo (F03#7)."
@@ -1039,7 +1033,6 @@ export const PROBLEMS: Problem[] = [
   "brief": "\"Ottimo $= B$\" = \"esiste un giro $\\le B$\" (NP) e \"nessun giro $\\le B - 1$\" (coNP).",
   "why": "L’ottimo è $B$ se e solo se esiste un giro di costo $\\le B$ e non esiste un giro di costo $\\lt B$. Il primo controllo è di tipo NP, il secondo di tipo coNP. Trovare un giro da $B$ non certifica da solo che sia ottimo: occorre escludere giri più economici.",
   "comp": "DP-completo: riduzione da SAT-UNSAT (slide Lezione 9).",
-  "fix": "La dispensa (cap. 15) mostra che EXACT TSP è NP-hard riducendo HAMILTON PATH con $B = n + 1$: la riduzione non regge, perché se il grafo ha un ciclo hamiltoniano l'ottimo vale $n$. Quella giusta parte da HAMILTON CYCLE con $B = n$ (appunti, Lezione 9).",
   "traps": [
    {
     "c": "GE23#7",
@@ -1066,7 +1059,7 @@ export const PROBLEMS: Problem[] = [
    ],
    [
     "a",
-    "Lezione 9: riduzione corretta"
+    "Lezione 9: riduzione da HAMILTON CYCLE"
    ]
   ]
  },
@@ -1756,7 +1749,7 @@ export const VER: [string, "ok" | "part", string][] = [
  [
   "2-SAT: NL-completo, quindi in P; $\\mathrm{NL} = \\mathrm{coNL}$; 2-SAT non NP-completo, 3-SAT sì",
   "part",
-  "In P: dispensa cap. 12. $\\mathrm{NL} = \\mathrm{coNL}$: dispensa cap. 6 e slide Lezione 4 dicono che le classi di spazio nondeterministico sono chiuse per complemento. 3-SAT NP-completo: cap. 12. La NL-completezza non è nelle fonti. \"2-SAT non è NP-completo\" non è dimostrato: lo sarebbe se $\\mathrm{NP} = \\mathrm{NL}$. La dispensa (cap. 22) lo dice P-completo, e anche questo non è dimostrato."
+  "In P: dispensa cap. 12. $\\mathrm{NL} = \\mathrm{coNL}$: dispensa cap. 6 e slide Lezione 4 dicono che le classi di spazio nondeterministico sono chiuse per complemento. 3-SAT NP-completo: cap. 12. La NL-completezza non è nelle fonti. \"2-SAT non è NP-completo\" non è dimostrato: lo sarebbe se $\\mathrm{NP} = \\mathrm{NL}$."
  ],
  [
   "2-COL: in P, anzi in L; 3-COL NP-completo",
@@ -1786,7 +1779,7 @@ export const VER: [string, "ok" | "part", string][] = [
  [
   "SAT-UNSAT, EXACT TSP: DP-completi; $\\mathrm{DP} = \\{A \\cap B : A \\in \\mathrm{NP},\\ B \\in \\mathrm{coNP}\\}$",
   "ok",
-  "Definizione di DP, SAT-UNSAT e EXACT TSP DP-completi: slide Lezione 9; SAT-UNSAT anche nella dispensa cap. 22. La riduzione della dispensa che rende EXACT TSP NP-hard (cap. 15) va corretta."
+  "Definizione di DP, SAT-UNSAT e EXACT TSP DP-completi: slide Lezione 9; SAT-UNSAT anche nella dispensa cap. 22."
  ],
  [
   "$\\mathrm{QSAT}_i$: $\\Sigma_i^{\\mathrm{P}}$-completo, il complemento $\\Pi_i^{\\mathrm{P}}$-completo",

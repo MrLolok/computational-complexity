@@ -1,32 +1,9 @@
-import Link from "next/link";
 import { VER } from "@/data/problems";
-import { THEOREMS } from "@/data/theorems";
 import { Html, SourceBadge } from "@/components/problems/bits";
 import { ui } from "@/lib/ui";
-import { texHtml } from "@/lib/tex";
 import Tex from "@/components/Tex";
 
 const prose = "flex max-w-prose flex-col gap-3 [&_ul]:m-0 [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-2 [&_ul]:pl-5";
-const h3 = "mt-2.5 font-head text-xl font-semibold leading-tight";
-
-/** riquadri "Correzione" dei teoremi */
-function TheoremFixes() {
-  const fix = THEOREMS.filter((t) => t.correzione);
-  if (!fix.length) return null;
-  return (
-    <div>
-      <h3 className={h3}>Nei teoremi</h3>
-      <ul>
-        {fix.map((t) => (
-          <li key={t.id}>
-            <Link href={`/teoremi#teorema-${t.id}`} className="text-accent underline decoration-1 underline-offset-2" dangerouslySetInnerHTML={{ __html: texHtml(t.nome, false) }} />
-            : <Html html={t.correzione} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export default function SourcesView() {
   return (
@@ -48,8 +25,7 @@ export default function SourcesView() {
           </p>
           <p>
             Ogni affermazione è stata controllata su queste fonti. Quando un&apos;affermazione non c&apos;è, è separata e marcata con ✱ o con
-            l&apos;etichetta <span className={ui.pillExt}>esterno</span>; le affermazioni delle fonti sbagliate o non dimostrate stanno nei riquadri{" "}
-            <b>Correzione</b>.
+            l&apos;etichetta <span className={ui.pillExt}>esterno</span>.
           </p>
         </details>
         <details className={`${prose} rounded-xl border border-line p-4 sm:p-5`}>
@@ -91,33 +67,12 @@ export default function SourcesView() {
           <summary className="cursor-pointer font-semibold">Precisazioni sui materiali del corso</summary>
           <ul>
             <li>
-              <b>&quot;2-SAT is P-complete&quot;</b> (dispensa, cap. 14 e 22) non è dimostrato. La dispensa stessa dice &quot;2-SAT is in P&quot;
-              (cap. 12); che sia NL-completo viene dagli appunti ✱. Con le riduzioni in spazio logaritmico sarebbe P-completo solo se{" "}
-              <Tex>{String.raw`\mathrm{P} = \mathrm{NL}`}</Tex>. Per lo stesso motivo la risposta della dispensa a &quot;PRIMES si riduce a
-              2-SAT?&quot; (sì) va letta come &quot;solo se <Tex>{String.raw`\mathrm{PRIMES} \in \mathrm{NL}`}</Tex>&quot;.
-            </li>
-            <li>
-              <b>
-                &quot;co-HAMILTON PATH è <Tex>{String.raw`\Pi_2^{\mathrm{P}}`}</Tex>-completo&quot;
-              </b>{" "}
-              (dispensa, cap. 17.2.3) non è dimostrato: è coNP-completo, e sarebbe <Tex>{String.raw`\Pi_2^{\mathrm{P}}`}</Tex>-completo solo se{" "}
-              <Tex>{String.raw`\mathrm{NP} = \mathrm{coNP}`}</Tex>.
-            </li>
-            <li>
-              <b>
-                EXACT TSP NP-hard con <Tex>{String.raw`B = n + 1`}</Tex>
-              </b>{" "}
-              (dispensa, cap. 15): la riduzione da HAMILTON PATH non regge, perché se il grafo ha un ciclo hamiltoniano l&apos;ottimo vale{" "}
-              <Tex>n</Tex>. Quella giusta parte da HAMILTON CYCLE con <Tex>{String.raw`B = n`}</Tex> (appunti Lez. 9).
-            </li>
-            <li>
               <b>Barre di complemento perse.</b> Nel riepilogo della dispensa (cap. 22) e nel cap. 17 &quot;HAMILTON PATH is coNP-complete&quot;,
               &quot;TSP(D) is coNP-complete&quot;, &quot;<Tex>{String.raw`\mathrm{QSAT}_i`}</Tex> is <Tex>{String.raw`\Pi_i^{\mathrm{P}}`}</Tex>-complete&quot;
               e &quot;STRATEGIC COMPANIES is <Tex>{String.raw`\Pi_2^{\mathrm{P}}`}</Tex>-complete&quot; hanno una barra sopra il nome, cioè parlano del complemento. Sono giusti; la barra sparisce solo se si
               copia il testo dal PDF.
             </li>
           </ul>
-          <TheoremFixes />
         </details>
       </div>
 

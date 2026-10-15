@@ -1,6 +1,6 @@
 /* 93 teoremi del corso (dispensa e slide; senza i risultati esterni). Testo in HTML. */
 import type { ClassId } from "./classes";
-export type Theorem = { id: string; nome: string; tipo: string; enunciato: string; intuizione: string; uso_esame: string; capitolo: string; pagina: number | null; lezione: number | null; fonti: string[]; classi: ClassId[]; prova: string; esterno: boolean; nota_fonte: string; correzione: string };
+export type Theorem = { id: string; nome: string; tipo: string; enunciato: string; intuizione: string; uso_esame: string; capitolo: string; pagina: number | null; lezione: number | null; fonti: string[]; classi: ClassId[]; prova: string; esterno: boolean; nota_fonte: string };
 export const THEOREMS: Theorem[] = [
  {
   "id": "ricorsivo-re",
@@ -22,8 +22,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Le slide della Lez. 5 richiamano anche che i ricorsivi e i ricorsivamente enumerabili sono separati per diagonalizzazione (dal corso di Elementi di Informatica Teorica): l'inclusione stretta non è dimostrata in questo corso.",
-  "correzione": ""
+  "nota_fonte": "Le slide della Lez. 5 richiamano anche che i ricorsivi e i ricorsivamente enumerabili sono separati per diagonalizzazione (dal corso di Elementi di Informatica Teorica): l'inclusione stretta non è dimostrata in questo corso."
  },
  {
   "id": "speedup-multinastro",
@@ -44,8 +43,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "ram-mdt",
@@ -65,8 +63,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 2 (Teorema 2.5 del Papadimitriou); la dispensa non lo riporta.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 2 (Teorema 2.5 del Papadimitriou); la dispensa non lo riporta."
  },
  {
   "id": "linear-speedup",
@@ -85,8 +82,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa enuncia il teorema senza prova; le slide della Lez. 2 lo dimostrano.",
-  "correzione": ""
+  "nota_fonte": "La dispensa enuncia il teorema senza prova; le slide della Lez. 2 lo dimostrano."
  },
  {
   "id": "mdt-io",
@@ -108,8 +104,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "space-compression",
@@ -128,8 +123,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Le slide dicono solo: prova simile al linear speedup (Problema 2.8.14 del Papadimitriou).",
-  "correzione": ""
+  "nota_fonte": "Le slide dicono solo: prova simile al linear speedup (Problema 2.8.14 del Papadimitriou)."
  },
  {
   "id": "p-sub-np",
@@ -151,8 +145,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "ndet-det",
@@ -174,8 +167,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "Le slide della Lez. 3 danno come costo complessivo $O(d^{f(n)})$, ma il prodotto di $O(d^{f(n)})$ simulazioni per $O(n + f(n))$ passi ciascuna è $O(f(n) \\cdot d^{f(n)})$. Per stare in $O(c^{f(n)})$ basta prendere $c \\gt d$, per esempio $c = 2d$."
+  "nota_fonte": ""
  },
  {
   "id": "reach-nl",
@@ -196,8 +188,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Presentato nelle slide della Lez. 3 (algoritmo a 3 nastri); la dispensa non lo enuncia come risultato a sé.",
-  "correzione": ""
+  "nota_fonte": "Presentato nelle slide della Lez. 3 (algoritmo a 3 nastri); la dispensa non lo enuncia come risultato a sé."
  },
  {
   "id": "gap-theorem",
@@ -216,8 +207,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 4 (Teorema 7.3 del Papadimitriou); gli appunti lo segnano come non chiesto all'esame.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 4 (Teorema 7.3 del Papadimitriou); gli appunti lo segnano come non chiesto all'esame."
  },
  {
   "id": "soluzioni-precise",
@@ -236,8 +226,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "terminazione-space",
@@ -259,8 +248,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "chiusura-det-complemento",
@@ -284,8 +272,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "hf-upper",
@@ -304,8 +291,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "hf-lower",
@@ -324,8 +310,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "time-hierarchy",
@@ -347,8 +332,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La versione con $\\log^2 f(n)$ è citata senza prova (Problema 7.4.8 del Papadimitriou).",
-  "correzione": "Nella dispensa (p. 28) l'ultima riga della prova scrive $\\mathrm{TIME}(f((2n + 1)^3))$: va letto $\\mathrm{TIME}(f(2n + 1)^3)$, come nell'enunciato."
+  "nota_fonte": "La versione con $\\log^2 f(n)$ è citata senza prova (Problema 7.4.8 del Papadimitriou)."
  },
  {
   "id": "p-neq-exp",
@@ -370,8 +354,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "space-hierarchy",
@@ -393,8 +376,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Né la dispensa né le slide danno la prova (rimandano al Teorema 7.2 e al Problema 7.4.9 del Papadimitriou). La conseguenza $\\mathrm{L} \\subsetneq \\mathrm{PSPACE}$ è ricavata negli appunti della Lez. 5.",
-  "correzione": ""
+  "nota_fonte": "Né la dispensa né le slide danno la prova (rimandano al Teorema 7.2 e al Problema 7.4.9 del Papadimitriou). La conseguenza $\\mathrm{L} \\subsetneq \\mathrm{PSPACE}$ è ricavata negli appunti della Lez. 5."
  },
  {
   "id": "ndet-hierarchy",
@@ -416,8 +398,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "time-in-space",
@@ -439,8 +420,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "$\\mathrm{TIME}(f) \\subseteq \\mathrm{SPACE}(f)$ è giustificato nelle slide; il raffinamento con $\\log f(n)$ è citato senza prova (Problema 7.4.17 del Papadimitriou).",
-  "correzione": ""
+  "nota_fonte": "$\\mathrm{TIME}(f) \\subseteq \\mathrm{SPACE}(f)$ è giustificato nelle slide; il raffinamento con $\\log f(n)$ è citato senza prova (Problema 7.4.17 del Papadimitriou)."
  },
  {
   "id": "space-in-time",
@@ -462,8 +442,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "t7-4a",
@@ -487,8 +466,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "t7-4b",
@@ -510,8 +488,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "t7-4c",
@@ -533,8 +510,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa omette la prova; le slide della Lez. 5 la svolgono.",
-  "correzione": "Nelle slide della Lez. 5, \"data l'ipotesi che il tempo utilizzato è $f(n)$\" va letto \"lo spazio utilizzato\": l'ipotesi del punto (c) è sullo spazio."
+  "nota_fonte": "La dispensa omette la prova; le slide della Lez. 5 la svolgono."
  },
  {
   "id": "catena-classi",
@@ -559,8 +535,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Nelle slide è lasciato come esercizio.",
-  "correzione": ""
+  "nota_fonte": "Nelle slide è lasciato come esercizio."
  },
  {
   "id": "savitch",
@@ -582,8 +557,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "savitch-cor",
@@ -605,8 +579,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "Nella dispensa (p. 32) il corollario è scritto $\\mathrm{PSPACE} = \\mathrm{NSPACE}$: va letto $\\mathrm{PSPACE} = \\mathrm{NPSPACE}$."
+  "nota_fonte": ""
  },
  {
   "id": "pspace-npspace",
@@ -628,8 +601,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "composizione-riduzioni",
@@ -648,8 +620,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "chiusura-riduzioni",
@@ -676,8 +647,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "completo-per-due-classi",
@@ -699,8 +669,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "completo-classe-piccola",
@@ -723,8 +692,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "cook-levin",
@@ -745,8 +713,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa dà anche la versione con i circuiti (ogni $L \\in \\mathrm{NP}$ si riduce a CIRCUIT SAT, che si riduce a SAT); il riepilogo del cap. 22 elenca anche CIRCUIT SAT come NP-completo.",
-  "correzione": "Nella dispensa (p. 37) la clausola che vieta le mosse fuori da $\\Delta$ è scritta come congiunzione: deve essere una disgiunzione. Mancano anche la clausola che obbliga la testina a spostarsi di al più una cella per passo e la convenzione che, arrivata in \"yes\", la macchina resti ferma fino al passo $T$."
+  "nota_fonte": "La dispensa dà anche la versione con i circuiti (ogni $L \\in \\mathrm{NP}$ si riduce a CIRCUIT SAT, che si riduce a SAT); il riepilogo del cap. 22 elenca anche CIRCUIT SAT come NP-completo."
  },
  {
   "id": "3sat",
@@ -767,8 +734,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "La dispensa dice solo che si riduce SAT a 3-SAT; la tecnica di spezzare le clausole è descritta negli appunti.",
-  "correzione": ""
+  "nota_fonte": "La dispensa dice solo che si riduce SAT a 3-SAT; la tecnica di spezzare le clausole è descritta negli appunti."
  },
  {
   "id": "2sat-p",
@@ -790,8 +756,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "horn-sat",
@@ -812,8 +777,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "prop-9-1",
@@ -834,8 +798,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "max2sat",
@@ -856,8 +819,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "independent-set",
@@ -878,8 +840,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "clique-nodecover",
@@ -900,8 +861,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "hamilton-path",
@@ -922,8 +882,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "La dispensa mostra solo l'appartenenza a NP; per la difficoltà dice soltanto \"si riduce 3SAT\".",
-  "correzione": "Il riquadro della dispensa definisce il problema come un cammino che visita ogni nodo una volta \"e termina nel nodo di partenza\": questa è la definizione di ciclo hamiltoniano. Il cammino hamiltoniano non deve tornare all'inizio, come nella riduzione HAMILTON PATH → SAT del cap. 12."
+  "nota_fonte": "La dispensa mostra solo l'appartenenza a NP; per la difficoltà dice soltanto \"si riduce 3SAT\"."
  },
  {
   "id": "tsp-d",
@@ -944,8 +903,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "La dispensa scrive \"we can reduce TSP(D) to HAMILTON PATH\", ma la riduzione descritta va nel verso opposto (dal problema sul grafo verso TSP(D)). Inoltre parte da HAMILTON PATH ma chiede un ciclo di lunghezza $n$: la versione corretta parte da HAMILTON CYCLE con $B = n$."
+  "nota_fonte": ""
  },
  {
   "id": "3-coloring",
@@ -967,8 +925,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Che 2-COLORING sia in P è solo affermato, senza prova.",
-  "correzione": ""
+  "nota_fonte": "Che 2-COLORING sia in P è solo affermato, senza prova."
  },
  {
   "id": "tripartite-matching",
@@ -989,8 +946,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "set-problems",
@@ -1011,8 +967,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "integer-programming",
@@ -1034,8 +989,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "La dispensa mostra solo la difficoltà; l'appartenenza a NP è rimandata alle note del libro.",
-  "correzione": "Nella dispensa (p. 47) i vettori di bit degli insiemi sono le righe della matrice $A$. Perché $Ax \\ge 1$ dica che ogni elemento di $U$ è coperto devono essere le colonne: una riga per elemento, una colonna per insieme."
+  "nota_fonte": "La dispensa mostra solo la difficoltà; l'appartenenza a NP è rimandata alle note del libro."
  },
  {
   "id": "knapsack",
@@ -1056,8 +1010,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "knapsack-pseudopoly",
@@ -1078,8 +1031,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "strong-np",
@@ -1101,8 +1053,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "validity-conp",
@@ -1123,8 +1074,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "prop-a",
@@ -1143,8 +1093,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "prop-b",
@@ -1166,8 +1115,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "prop-c",
@@ -1189,8 +1137,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "prop-d",
@@ -1212,8 +1159,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "La prova della dispensa (p. 54) applica la Proposizione B, enunciata solo per NP, a una classe $C$ qualsiasi. Il passo si ottiene direttamente dalle Proposizioni A e C, come nella dimostrazione qui sotto."
+  "nota_fonte": ""
  },
  {
   "id": "p-np-conp",
@@ -1236,8 +1182,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "p-in-np-conp",
@@ -1259,14 +1204,13 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "exact-tsp-np-hard",
   "nome": "EXACT TSP è NP-hard (varianti di TSP)",
   "tipo": "proposizione",
-  "enunciato": "Le quattro varianti TSP(D), EXACT TSP, TSP COST e TSP si riducono ciascuna alla successiva; in particolare EXACT TSP è NP-hard. La dispensa lo mostra riducendo HAMILTON PATH a EXACT TSP (il grafo ha un cammino hamiltoniano se e solo se il giro ottimo ha lunghezza esattamente $n + 1$).",
+  "enunciato": "Le quattro varianti TSP(D), EXACT TSP, TSP COST e TSP si riducono ciascuna alla successiva; in particolare EXACT TSP è NP-hard. Lo si mostra riducendo HAMILTON CYCLE a EXACT TSP (il grafo ha un ciclo hamiltoniano se e solo se il giro ottimo costa esattamente $n$).",
   "intuizione": "Chi sa trovare il giro ottimo sa anche dire quanto costa, e quindi se costa esattamente $B$ o al più $B$.",
   "uso_esame": "EXACT TSP non sembra stare né in NP né in coNP: è il problema che motiva la classe DP.",
   "capitolo": "15 · Problemi di ottimizzazione (DP)",
@@ -1282,8 +1226,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "La riduzione così come è scritta non è corretta. La versione corretta parte da HAMILTON CYCLE con $B = n$ (distanza 1 sugli archi del grafo e 2 altrove): il grafo ha un ciclo hamiltoniano se e solo se il giro ottimo costa esattamente $n$. Anche le slide della Lez. 9 scrivono \"stessa riduzione da HAMILTON PATH\" con $B = n$."
+  "nota_fonte": ""
  },
  {
   "id": "sat-unsat-dp",
@@ -1304,8 +1247,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "altri-dp-completi",
@@ -1326,8 +1268,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "pl-psat",
@@ -1348,8 +1289,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "cd-cocd",
@@ -1371,8 +1311,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "oracoli-inutili",
@@ -1396,8 +1335,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "t17-8",
@@ -1419,8 +1357,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa omette la prova; le slide della Lez. 9 la danno per induzione su $i$.",
-  "correzione": ""
+  "nota_fonte": "La dispensa omette la prova; le slide della Lez. 9 la danno per induzione su $i$."
  },
  {
   "id": "t17-8-cor1",
@@ -1442,8 +1379,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "t17-8-cor2",
@@ -1466,8 +1402,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "Nelle slide della Lez. 9 il corollario dice \"per ogni $i \\le 1$\": va letto $i \\ge 1$."
+  "nota_fonte": ""
  },
  {
   "id": "t17-9",
@@ -1490,8 +1425,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "cor-collasso-primo",
@@ -1515,8 +1449,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "circ",
@@ -1538,8 +1471,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa omette la prova (riduzione da $\\mathrm{QSAT}_2$); le slide della Lez. 9 la svolgono per CIRC SAT.",
-  "correzione": ""
+  "nota_fonte": "La dispensa omette la prova (riduzione da $\\mathrm{QSAT}_2$); le slide della Lez. 9 la svolgono per CIRC SAT."
  },
  {
   "id": "t17-10",
@@ -1561,8 +1493,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa lo chiama solo \"Theorem\" e omette la prova; il numero 17.10 e la prova vengono dalle slide della Lez. 9. Il riepilogo del cap. 22 elenca anche il complemento di $\\mathrm{QSAT}_i$ come $\\Pi_i^{\\mathrm{P}}$-completo (la barra del complemento si perde nell'estrazione del testo).",
-  "correzione": "Nelle slide della Lez. 9, \"espressione booleana $\\varphi$ in tempo $O(\\log n)$\" va letto spazio $O(\\log n)$: la riduzione è in spazio logaritmico."
+  "nota_fonte": "La dispensa lo chiama solo \"Theorem\" e omette la prova; il numero 17.10 e la prova vengono dalle slide della Lez. 9. Il riepilogo del cap. 22 elenca anche il complemento di $\\mathrm{QSAT}_i$ come $\\Pi_i^{\\mathrm{P}}$-completo (la barra del complemento si perde nell'estrazione del testo)."
  },
  {
   "id": "strategic-companies",
@@ -1585,8 +1516,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa omette la prova (riduzione da $\\mathrm{QSAT}_2$); le slide della Lez. 9 la svolgono. Nell'esercizio 3 del cap. 17 e nel riepilogo del cap. 22 la versione $\\Pi_2^{\\mathrm{P}}$-completa è il complemento (barra persa nell'estrazione del testo).",
-  "correzione": ""
+  "nota_fonte": "La dispensa omette la prova (riduzione da $\\mathrm{QSAT}_2$); le slide della Lez. 9 la svolgono. Nell'esercizio 3 del cap. 17 e nel riepilogo del cap. 22 la versione $\\Pi_2^{\\mathrm{P}}$-completa è il complemento (barra persa nell'estrazione del testo)."
  },
  {
   "id": "t17-11",
@@ -1608,8 +1538,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "ph-pspace",
@@ -1631,8 +1560,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa la enuncia senza prova; le slide della Lez. 9 danno la prova (cenni).",
-  "correzione": ""
+  "nota_fonte": "La dispensa la enuncia senza prova; le slide della Lez. 9 danno la prova (cenni)."
  },
  {
   "id": "cor-ph-pspace",
@@ -1654,8 +1582,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "qsat-pspace",
@@ -1676,16 +1603,15 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "La dispensa omette la prova; le slide della Lez. 9 la svolgono.",
-  "correzione": "Nelle slide della Lez. 9, \"$O(\\log m) = O(\\log n^c) = O(n)$\" va letto $O(\\log n^c) = O(\\log n)$."
+  "nota_fonte": "La dispensa omette la prova; le slide della Lez. 9 la svolgono."
  },
  {
   "id": "co-hamilton-pi2",
-  "nome": "Complemento di HAMILTON PATH $\\Pi_2^{\\mathrm{P}}$-completo (affermazione della dispensa)",
+  "nome": "Complemento di HAMILTON PATH: coNP-completo, $\\Pi_2^{\\mathrm{P}}$-completo solo se $\\mathrm{NP} = \\mathrm{coNP}$",
   "tipo": "proposizione",
-  "enunciato": "Nell'esercizio 3 del cap. 17 la dispensa afferma che il complemento di HAMILTON PATH è $\\Pi_2^{\\mathrm{P}}$-completo, e ne deduce che QSAT si riduce a esso solo se PH collassa al 2° livello.",
-  "intuizione": "L'esercizio usa questa affermazione come se fosse un risultato noto.",
-  "uso_esame": "Non usarla all'esame: il complemento di HAMILTON PATH va trattato come coNP-completo.",
+  "enunciato": "Il complemento di HAMILTON PATH è coNP-completo, quindi sta in $\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}}$. È anche $\\Pi_2^{\\mathrm{P}}$-completo se e solo se $\\mathrm{NP} = \\mathrm{coNP}$; QSAT si riduce a esso solo se PH collassa al primo livello.",
+  "intuizione": "Se un problema di coNP fosse completo per il secondo livello, tutto il secondo livello cadrebbe in coNP: la gerarchia si fermerebbe al primo livello.",
+  "uso_esame": "Nell'esercizio 3 del cap. 17: il complemento di HAMILTON PATH si tratta come coNP-completo, e una riduzione da QSAT a esso farebbe collassare PH al primo livello.",
   "capitolo": "17 · Gerarchia polinomiale",
   "pagina": 74,
   "lezione": 9,
@@ -1698,8 +1624,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "Non è dimostrato nel corso e contrasta con il resto della dispensa: il complemento di HAMILTON PATH è coNP-completo (Proposizione B, cap. 14, e riepilogo del cap. 22), quindi sta in $\\mathrm{coNP} = \\Pi_1^{\\mathrm{P}}$. Se fosse anche $\\Pi_2^{\\mathrm{P}}$-completo si avrebbe $\\Pi_2^{\\mathrm{P}} = \\mathrm{coNP}$, cioè un collasso di PH. Per lo stesso motivo, nell'esercizio 3 del cap. 17 (p. 74) una riduzione da QSAT al complemento di HAMILTON PATH farebbe collassare PH al primo livello, non al secondo."
+  "nota_fonte": ""
  },
  {
   "id": "db-queries",
@@ -1722,8 +1647,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Le slide precisano che questi risultati non sono nel libro di riferimento.",
-  "correzione": ""
+  "nota_fonte": "Le slide precisano che questi risultati non sono nel libro di riferimento."
  },
  {
   "id": "geography",
@@ -1744,8 +1668,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Il numero 19.3 viene dalle slide; la dispensa lo chiama solo \"Theorem\".",
-  "correzione": "La definizione della dispensa (p. 76) non dice che una città non si può ripetere. La regola serve: senza di essa la partita potrebbe non finire."
+  "nota_fonte": "Il numero 19.3 viene dalle slide; la dispensa lo chiama solo \"Theorem\"."
  },
  {
   "id": "go",
@@ -1766,8 +1689,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Il numero 19.4 viene dalle slide (che parlano del nero); la dispensa parla del primo giocatore.",
-  "correzione": ""
+  "nota_fonte": "Il numero 19.4 viene dalle slide (che parlano del nero); la dispensa parla del primo giocatore."
  },
  {
   "id": "fsat-fnp",
@@ -1788,8 +1710,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "fsat-sat",
@@ -1811,8 +1732,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "fp-fnp",
@@ -1834,8 +1754,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "t20-1",
@@ -1859,8 +1778,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "Nella dispensa (p. 83) il tempo della seconda fase è scritto $O(2^{|x|^k + l})$: il conto giusto è $(2^{|x|^k})^l = 2^{l \\cdot |x|^k}$. Resta esponenziale, quindi la conclusione non cambia."
+  "nota_fonte": ""
  },
  {
   "id": "nexp-completi",
@@ -1882,8 +1800,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Gli appunti precisano il prefisso dei quantificatori ($\\exists\\ldots\\exists\\forall\\ldots\\forall$) del frammento di Schönfinkel-Bernays, che la dispensa non indica.",
-  "correzione": ""
+  "nota_fonte": "Gli appunti precisano il prefisso dei quantificatori ($\\exists\\ldots\\exists\\forall\\ldots\\forall$) del frammento di Schönfinkel-Bernays, che la dispensa non indica."
  },
  {
   "id": "fo-indecidibile",
@@ -1906,16 +1823,15 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "La dispensa lo riporta solo nel riepilogo del cap. 22. Il collegamento con il teorema di completezza di Gödel (validità in RE) e il nome \"teorema di Church-Turing\" (validità non in R) vengono dagli appunti della Lez. 10.",
-  "correzione": ""
+  "nota_fonte": "La dispensa lo riporta solo nel riepilogo del cap. 22. Il collegamento con il teorema di completezza di Gödel (validità in RE) e il nome \"teorema di Church-Turing\" (validità non in R) vengono dagli appunti della Lez. 10."
  },
  {
   "id": "2sat-p-completo",
-  "nome": "2-SAT è P-completo (affermazione della dispensa)",
+  "nome": "2-SAT è P-completo se e solo se $\\mathrm{P} = \\mathrm{NL}$",
   "tipo": "proposizione",
-  "enunciato": "Il riepilogo del cap. 22 e l'esercizio 1 del cap. 14 affermano che 2-SAT è P-completo (per esempio per dire che PRIMES si riduce a 2-SAT).",
-  "intuizione": "La dispensa lo usa negli esercizi senza prova.",
-  "uso_esame": "Non usarla all'esame: di 2-SAT si può dire solo che sta in P.",
+  "enunciato": "2-SAT sta in NL (ed è NL-completo), quindi in P. È P-completo se e solo se $\\mathrm{P} = \\mathrm{NL}$, che è una questione aperta: per esempio PRIMES si riduce a 2-SAT in spazio logaritmico solo se $\\mathrm{PRIMES} \\in \\mathrm{NL}$.",
+  "intuizione": "Un problema di NL non può essere difficile per tutto P, a meno che P e NL coincidano.",
+  "uso_esame": "All'esame di 2-SAT si dice che sta in P (anzi in NL); le riduzioni da un problema qualsiasi di P a 2-SAT non sono garantite.",
   "capitolo": "22 · Riepilogo della complessità dei problemi",
   "pagina": 84,
   "lezione": 8,
@@ -1929,8 +1845,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": "Non è dimostrato: 2-SAT sta in NL (è NL-completo), quindi è P-completo se e solo se $\\mathrm{P} = \\mathrm{NL}$, che è una questione aperta. Una riduzione da un problema qualsiasi di P (come PRIMES) a 2-SAT non è garantita."
+  "nota_fonte": ""
  },
  {
   "id": "riepilogo-p",
@@ -1952,8 +1867,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "",
-  "correzione": ""
+  "nota_fonte": ""
  },
  {
   "id": "np-pp",
@@ -1973,8 +1887,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6 (algoritmi probabilistici), non nella dispensa. PP non è tra le classi della mappa: si indica la classe collegata.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 6 (algoritmi probabilistici), non nella dispensa. PP non è tra le classi della mappa: si indica la classe collegata."
  },
  {
   "id": "pp-pspace",
@@ -1994,8 +1907,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa."
  },
  {
   "id": "bpp-inclusioni",
@@ -2015,8 +1927,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BPP e PP non sono tra le classi della mappa completa: stanno nella mappa della scheda Probabilistiche.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BPP e PP non sono tra le classi della mappa completa: stanno nella mappa della scheda Probabilistiche."
  },
  {
   "id": "bpp-errore",
@@ -2035,8 +1946,7 @@ export const THEOREMS: Theorem[] = [
   "classi": [],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa."
  },
  {
   "id": "bqp",
@@ -2058,8 +1968,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "omessa",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BQP non è tra le classi della mappa completa: sta nella mappa della scheda Quantistiche.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BQP non è tra le classi della mappa completa: sta nella mappa della scheda Quantistiche."
  },
  {
   "id": "bqp-2exp",
@@ -2080,8 +1989,7 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BQP e 2-EXP non sono tra le classi della mappa completa: stanno nella mappa della scheda Quantistiche.",
-  "correzione": ""
+  "nota_fonte": "Solo nelle slide della Lez. 6, non nella dispensa. BQP e 2-EXP non sono tra le classi della mappa completa: stanno nella mappa della scheda Quantistiche."
  },
  {
   "id": "grover-np",
@@ -2101,7 +2009,6 @@ export const THEOREMS: Theorem[] = [
   ],
   "prova": "nel corso",
   "esterno": false,
-  "nota_fonte": "Solo nelle slide della Lez. 6 (prova accennata per KNAPSACK), non nella dispensa.",
-  "correzione": "Le slide della Lez. 6 concludono $O(4^{n/2})$ per KNAPSACK. È vero, ma $O(4^{n/2}) = O(2^n)$ è il costo della forza bruta: il conto preciso è $O(n \\cdot 2^{n/2})$."
+  "nota_fonte": "Solo nelle slide della Lez. 6 (prova accennata per KNAPSACK), non nella dispensa."
  }
 ];
