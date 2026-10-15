@@ -1,351 +1,350 @@
 {
- "intro": "Nella Lezione 3 il `choose` di una macchina nondeterministica indovinava sempre la strada giusta. Qui invece a ogni `choose` si **tira una moneta**: la macchina segue un run a caso, ed è programmata perché la risposta giusta esca **più spesso** di quella sbagliata. Ripetendo il calcolo e votando, l'errore scende. Ne nascono tre classi: **PP** (basta la maggioranza semplice), **BPP** (serve una maggioranza netta: sono gli algoritmi randomizzati usabili davvero) e **BQP** (come BPP, ma con le probabilità prodotte da un computer quantistico). Il computer quantistico **non** rende facili i problemi NP-completi (si congettura), ma l'algoritmo di Grover li accelera e quello di Shor **rompe RSA**.",
- "questions": [
-  {
-   "q": "Che vuol dire risolvere un problema \"tirando monete\"?",
-   "a": "La macchina segue un run a caso; se la risposta giusta è la più probabile, ripetendo e votando a maggioranza l'errore scende."
-  },
-  {
-   "q": "Quando l'errore si porta sotto una soglia in tempo polinomiale?",
-   "a": "In **BPP** sì: la maggioranza è netta (almeno 3/4) e bastano poche ripetizioni. In **PP** non si sa: la maggioranza può essere di un solo run."
-  },
-  {
-   "q": "Che cos'è un computer quantistico per la complessità?",
-   "a": "Una macchina probabilistica in cui ogni ramo ha un'**ampiezza**; le ampiezze si sommano e possono cancellarsi. La sua classe è **BQP**."
-  },
-  {
-   "q": "Quali problemi diventano facili con un computer quantistico?",
-   "a": "Pochi: $\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$. Gli NP-completi restano (si crede) difficili; Grover dimezza l'esponente della forza bruta, Shor fattorizza e rompe RSA."
-  }
- ],
- "howTo": "Gli stessi argomenti della parte B, nell'ordine delle slide, spiegati da capo con parole semplici: per ogni concetto prima l'idea, poi un esempio, poi la versione formale. Ogni titolo si apre con un clic.",
- "groups": [
-  {
-   "id": "probabilistici",
-   "title": "Algoritmi probabilistici",
-   "topics": [
-    {
-     "id": "monete",
-     "title": "Un algoritmo che tira monete",
-     "notAsked": false,
-     "ref": "§1",
-     "idea": "Nella Lezione 3 una macchina di Turing nondeterministica, a ogni istruzione `choose`, aveva più strade possibili. Tutte le strade insieme formano l'albero delle computazioni. Un percorso completo, dalla radice a una foglia, si chiama **run**, e ogni run finisce in \"yes\" o in \"no\". Per NP bastava che **almeno un** run dicesse \"yes\": era come se un oracolo ci guidasse sempre sulla strada giusta.\nQui lo stesso albero si usa in un altro modo. Non c'è nessun oracolo: a ogni `choose` si **tira una moneta** e si va dove dice la moneta. Così si percorre **un solo run, scelto a caso**. Il programmatore costruisce la macchina in modo che la **maggioranza** dei run dia la risposta giusta. Allora la risposta giusta è anche quella che esce più spesso. Una macchina usata così è un **algoritmo probabilistico**.",
-     "esempio": "È l'esempio delle slide. Una macchina fa 4 scelte binarie, quindi ha $2^4 = 16$ run. Su un certo input 12 run dicono \"yes\" e 4 dicono \"no\", e la risposta giusta è yes. Con monete eque ogni run ha la stessa probabilità: quattro lanci da $1/2$ danno $(1/2)^4 = 1/16$. Quindi un'esecuzione risponde \"yes\" con probabilità $12/16 = 75\\%$. Sbaglia una volta su quattro: è poco affidabile, ma la risposta giusta è in vantaggio.",
-     "formale": "Se tutti i run hanno la stessa probabilità, la probabilità di una risposta è la **frazione di run** che la danno:\n$$\nP(\\text{yes}) = \\frac{\\text{run che finiscono in yes}}{\\text{run in tutto}}\n$$\nProgrammare un algoritmo probabilistico vuol dire fare in modo che, su ogni input, la risposta giusta sia più probabile di quella sbagliata."
+    "questions": [
+        {
+            "q": "Che vuol dire risolvere un problema \"tirando monete\"?",
+            "a": "La macchina segue un run a caso; se la risposta giusta è la più probabile, ripetendo e votando a maggioranza l'errore scende."
+        },
+        {
+            "q": "Quando l'errore si porta sotto una soglia in tempo polinomiale?",
+            "a": "In **BPP** sì: la maggioranza è netta (almeno 3/4) e bastano poche ripetizioni. In **PP** non si sa: la maggioranza può essere di un solo run."
+        },
+        {
+            "q": "Che cos'è un computer quantistico per la complessità?",
+            "a": "Una macchina probabilistica in cui ogni ramo ha un'**ampiezza**; le ampiezze si sommano e possono cancellarsi. La sua classe è **BQP**."
+        },
+        {
+            "q": "Quali problemi diventano facili con un computer quantistico?",
+            "a": "Pochi: $\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$. Gli NP-completi restano (si crede) difficili; Grover dimezza l'esponente della forza bruta, Shor fattorizza e rompe RSA."
+        }
+    ],
+    "howTo": "Gli stessi argomenti della parte B, nell'ordine delle slide, spiegati da capo con parole semplici: per ogni concetto prima l'idea, poi un esempio, poi la versione formale. Ogni titolo si apre con un clic.",
+    "groups": [
+        {
+            "id": "probabilistici",
+            "title": "Algoritmi probabilistici",
+            "topics": [
+                {
+                    "id": "monete",
+                    "title": "Un algoritmo che tira monete",
+                    "notAsked": false,
+                    "ref": "§1",
+                    "idea": "Un algoritmo probabilistico sceglie a caso quale strada seguire. Una singola esecuzione si chiama **run** e termina con sì o no.\n\nIn NP basta che **esista** un run sì. Qui conta invece **quanto è probabile** ottenere la risposta giusta.",
+                    "esempio": "Con 4 lanci di moneta ci sono $2^4 = 16$ run equiprobabili. Se 12 rispondono sì e la risposta corretta è sì, un'esecuzione indovina con probabilità $12/16 = 75\\%$.",
+                    "formale": "Se i run sono equiprobabili: $$P(\\text{sì}) = \\frac{\\text{run che rispondono sì}}{\\text{run totali}}.$$ La garanzia di correttezza richiesta dalla classe deve valere **su ogni input**."
+                },
+                {
+                    "id": "voto",
+                    "title": "Ripetere e votare a maggioranza",
+                    "notAsked": false,
+                    "ref": "§1",
+                    "idea": "Esegui l'algoritmo più volte, con scelte casuali **indipendenti**, e prendi la risposta più frequente. Usa un numero dispari di tentativi per evitare pareggi.\n\nSe ogni tentativo indovina più della metà delle volte, ripetere riduce l'errore. Resta da capire **quante ripetizioni servono**.",
+                    "esempio": "Se un tentativo indovina al 75%, con 3 tentativi il voto indovina circa all'84,4%; con 5, circa all'89,6%.",
+                    "formale": "Con 3 tentativi il voto sbaglia se ne sbagliano almeno 2: $$P(\\text{errore}) = 3\\left(\\frac14\\right)^2\\frac34 + \\left(\\frac14\\right)^3 = \\frac{10}{64}. $$ Il tempo totale è il tempo di un tentativo moltiplicato per il numero di ripetizioni."
+                },
+                {
+                    "id": "pesi",
+                    "title": "Quando i run hanno probabilità diverse",
+                    "notAsked": true,
+                    "ref": "§1",
+                    "idea": "Se le scelte non sono equiprobabili, **contare i run non basta**: bisogna sommare le loro probabilità. Una risposta può avere meno run, ma essere più probabile.",
+                    "esempio": "Ci sono 12 run sì e 4 run no. Se ciascun run no pesa 5 volte un run sì, il peso totale è $12 + 4\\cdot5 = 32$. La probabilità di no è $20/32 = 62{,}5\\%$: vince no."
+                },
+                {
+                    "id": "standardizzate",
+                    "title": "Macchine standardizzate: run equiprobabili",
+                    "notAsked": false,
+                    "ref": "§2",
+                    "idea": "Una macchina standardizzata ha **due mosse possibili a ogni passo** e run tutti della **stessa durata**. Con monete eque, quindi, tutti i run hanno la stessa probabilità.\n\nQuesto modello permette di calcolare le probabilità contando i run, senza cambiare le classi di tempo da P in su.",
+                    "esempio": "Con 3 passi ci sono $2^3 = 8$ run, ciascuno con probabilità $1/8$. Se 5 rispondono sì, la probabilità di sì è $5/8$.",
+                    "formale": "Con budget $f(n)$: $$\\text{numero di run} = 2^{f(n)}, \\qquad P(\\text{un run}) = 2^{-f(n)}.$$ L'albero è binario completo e tutte le foglie hanno profondità $f(n)$."
+                }
+            ]
+        },
+        {
+            "id": "pp",
+            "title": "La classe PP",
+            "topics": [
+                {
+                    "id": "def-pp",
+                    "title": "PP: basta superare la metà",
+                    "notAsked": false,
+                    "ref": "§3",
+                    "idea": "In PP un input ha risposta sì quando **più della metà** dei run dice sì. Basta anche un solo run oltre la metà. Il pareggio vale no.\n\nOgni run termina in tempo polinomiale, ma la definizione non impone un margine minimo sopra il 50%.",
+                    "esempio": "Su 8 run, 5 sì bastano per accettare. Con 4 sì e 4 no la macchina non accetta.",
+                    "formale": "$L\\in\\mathrm{PP}$ se esiste una macchina standardizzata in tempo polinomiale tale che: $$x\\in L \\iff P(\\text{sì}\\mid x)>\\frac12.$$ Per gli input no vale quindi $P(\\text{sì}\\mid x)\\le\\frac12$."
+                },
+                {
+                    "id": "majsat",
+                    "title": "MAJSAT: la maggioranza degli assegnamenti",
+                    "notAsked": true,
+                    "ref": "§3",
+                    "idea": "MAJSAT chiede se **più della metà** degli assegnamenti rende vera una formula booleana. È PP-completo: appartiene a PP e ogni problema di PP si riduce a esso in tempo polinomiale.\n\nLa macchina sceglie un assegnamento a caso e accetta se rende vera la formula.",
+                    "esempio": "$x_1\\lor x_2$ è vera in 3 casi su 4: risposta sì per MAJSAT. $x_1\\land x_2$ è vera in 1 caso su 4: risposta no. Per SAT, invece, entrambe hanno risposta sì: basta **un** assegnamento valido."
+                },
+                {
+                    "id": "np-pp",
+                    "title": "Perché NP è contenuta in PP",
+                    "notAsked": false,
+                    "ref": "§3",
+                    "idea": "Per trasformare «esiste un run sì» in «la maggioranza dice sì», aggiungi **tanti run sempre sì quanti sono i run originali**.\n\nSenza un sì originale si arriva al pareggio. Con almeno un sì originale si supera la metà.",
+                    "esempio": "La macchina NP ha 4 run. Aggiungine 4 sempre sì: ora sono 8. Se nessun run originale accetta, hai 4 sì su 8: no. Se uno accetta, hai 5 sì su 8: sì.",
+                    "formale": "**Teorema 11.3:** $\\mathrm{NP}\\subseteq\\mathrm{PP}$. Se la macchina originale ha $T=2^{p(n)}$ run, di cui $a$ accettanti, la nuova ne ha $2T$, di cui $T+a$ accettanti. Quindi: $$T+a>T \\iff a>0.$$ Una scelta iniziale decide se simulare la macchina originale o fare $p(n)$ scelte a vuoto e accettare sempre: il tempo resta polinomiale."
+                },
+                {
+                    "id": "pp-pspace",
+                    "title": "Perché PP è contenuta in PSPACE",
+                    "notAsked": false,
+                    "ref": "§3",
+                    "idea": "Una macchina classica può provare tutti i run **uno alla volta** e contare quanti dicono sì. I run sono tanti, quindi il tempo può essere esponenziale.\n\nLo spazio resta polinomiale: si conserva un solo run alla volta e si riusa la memoria.",
+                    "esempio": "Con 3 scelte binarie provi i run da `000` a `111`. Conti i sì e i no senza conservare i run già visitati. Alla fine accetti se i sì sono più di 4.",
+                    "formale": "$\\mathrm{PP}\\subseteq\\mathrm{PSPACE}$. Per run lunghi $p(n)$ servono:\n\n- $p(n)$ bit per la sequenza di scelte;\n- $O(p(n))$ bit per contare fino a $2^{p(n)}$;\n- spazio polinomiale per simulare il run corrente.\n\nIl totale è polinomiale, anche se si esplorano esponenzialmente tanti run."
+                },
+                {
+                    "id": "difetto-pp",
+                    "title": "Il limite di PP: un vantaggio minuscolo",
+                    "notAsked": false,
+                    "ref": "§3",
+                    "idea": "In PP la probabilità di sì può superare il 50% di **pochissimo**. Riconoscere un vantaggio così piccolo può richiedere troppe ripetizioni.\n\nNon si conosce un metodo generale per ridurre l'errore sotto una soglia fissata restando in tempo polinomiale.",
+                    "esempio": "Con 1024 run, 513 sì bastano per accettare. Ma $513/1024\\approx50{,}098\\%$: una singola esecuzione è quasi un lancio di moneta.",
+                    "formale": "Con $m$ scelte binarie, il più piccolo vantaggio positivo è: $$P(\\text{sì})=\\frac{2^{m-1}+1}{2^m}=\\frac12+2^{-m}. $$ Le usuali stime per il voto a maggioranza possono richiedere un numero di ripetizioni dell'ordine di $4^m$. BPP evita questo problema imponendo un margine costante."
+                }
+            ]
+        },
+        {
+            "id": "bpp",
+            "title": "La classe BPP",
+            "topics": [
+                {
+                    "id": "def-bpp",
+                    "title": "BPP: una maggioranza netta",
+                    "notAsked": false,
+                    "ref": "§4",
+                    "idea": "In BPP l'algoritmo termina in tempo polinomiale e, **su ogni input**, dà la risposta giusta almeno 3 volte su 4. L'errore è quindi al più 1/4.\n\nIl vantaggio resta costante anche quando l'input cresce: per questo ripetere è efficace.",
+                    "esempio": "Se la risposta è sì, almeno 12 run su 16 devono dire sì. Se la risposta è no, almeno 12 su 16 devono dire no. Avere 5 risposte giuste su 8 non soddisfa questa soglia.",
+                    "formale": "$L\\in\\mathrm{BPP}$ se esiste una macchina standardizzata in tempo polinomiale tale che, per ogni $x$:\n\n- se $x\\in L$, $P(\\text{sì}\\mid x)\\ge3/4$;\n- se $x\\notin L$, $P(\\text{sì}\\mid x)\\le1/4$.\n\nLa soglia $3/4$ è convenzionale: qualunque costante tra $1/2$ e $1$ dà la stessa classe."
+                },
+                {
+                    "id": "chernoff",
+                    "title": "Chernoff: quante ripetizioni servono?",
+                    "notAsked": false,
+                    "ref": "§4",
+                    "idea": "In BPP ripetere con scelte indipendenti fa scendere rapidamente l'errore del voto. Per un errore massimo **fissato**, il numero di ripetizioni non dipende dalla lunghezza dell'input.\n\nChiamiamo **margine** il vantaggio sul 50%: con successo al 75%, il margine è 1/4.",
+                    "esempio": "Per avere errore al più 1%, la stima delle slide dà $k=\\lceil-8\\ln(0{,}01)\\rceil=37$: bastano $2k+1=75$ ripetizioni. È un limite prudente, non il minimo necessario.",
+                    "formale": "Con successo almeno $1/2+\\varepsilon$ e $2k+1$ tentativi indipendenti: $$P(\\text{errore del voto})\\le e^{-2\\varepsilon^2 k}.$$ Per BPP, $\\varepsilon=1/4$. Per ottenere errore al più $\\delta$ basta: $$k=\\lceil-8\\ln\\delta\\rceil.$$ $\\lceil\\cdot\\rceil$ arrotonda all'intero superiore. Anche scegliendo $\\delta=2^{-n}$ servono solo $O(n)$ ripetizioni: il tempo resta polinomiale."
+                },
+                {
+                    "id": "soglia",
+                    "title": "Perché la soglia 3/4 è una convenzione",
+                    "notAsked": false,
+                    "ref": "§4",
+                    "idea": "Per definire BPP va bene **qualunque soglia costante tra 1/2 e 1**. Anche un algoritmo corretto al 51% può raggiungere il 75% con un numero costante di ripetizioni.\n\nConta che il margine non si riduca quando l'input cresce. La soglia 1, cioè nessun errore, è un caso diverso.",
+                    "esempio": "Con successo al 51%, la stima delle slide dà 13.865 ripetizioni per arrivare almeno al 75%. Sono tante, ma il numero resta lo stesso per input piccoli e grandi.",
+                    "formale": "Da successo $1/2+\\varepsilon$ a successo almeno $3/4$, con $2k+1$ ripetizioni basta: $$k=\\left\\lceil\\frac{\\ln2}{\\varepsilon^2}\\right\\rceil.$$ Se $\\varepsilon$ è costante, anche $k$ è costante. Da $3/4$ a una soglia $s<1$ basta $k=\\lceil-8\\ln(1-s)\\rceil$. Con successo 1 su ogni input tutti i run sarebbero corretti: seguirne uno darebbe un algoritmo deterministico, cioè P."
+                },
+                {
+                    "id": "bpp-p-pp",
+                    "title": "Dove sta BPP: tra P e PP",
+                    "notAsked": false,
+                    "ref": "§4",
+                    "idea": "**P è contenuta in BPP:** un algoritmo deterministico non sbaglia mai, quindi soddisfa la soglia di BPP.\n\n**BPP è contenuta in PP:** se la risposta corretta ha almeno il 75% dei run, supera anche il 50% richiesto da PP.",
+                    "esempio": "Su 16 run, se la risposta è sì, BPP richiede almeno 12 sì: sono più di 8. Se la risposta è no, i sì sono al più 4: la macchina PP rifiuta.",
+                    "formale": "$$\\mathrm{P}\\subseteq\\mathrm{BPP}\\subseteq\\mathrm{PP}.$$ Le inclusioni sono dimostrate; non sappiamo se siano strette."
+                }
+            ]
+        },
+        {
+            "id": "quantistico",
+            "title": "Calcolo quantistico",
+            "topics": [
+                {
+                    "id": "qubit",
+                    "title": "Qubit: lo stato e la misura",
+                    "notAsked": true,
+                    "ref": "§5",
+                    "idea": "Un qubit può essere in una **sovrapposizione** di 0 e 1. Quando lo misuri ottieni un solo valore: 0 oppure 1.\n\nLo stato è descritto da due **ampiezze**, anche complesse. Le probabilità si ottengono facendo il quadrato del loro modulo.",
+                    "esempio": "Con ampiezze $\\sqrt3/2$ e $1/2$, misuri 0 con probabilità $3/4$ e 1 con probabilità $1/4$. Con $1/\\sqrt2$ e $-1/\\sqrt2$, i due esiti hanno entrambi probabilità $1/2$.",
+                    "formale": "$$|\\psi\\rangle=\\alpha|0\\rangle+\\beta|1\\rangle,\\qquad|\\alpha|^2+|\\beta|^2=1.$$ La misura dà 0 con probabilità $|\\alpha|^2$ e 1 con probabilità $|\\beta|^2$. Il segno delle ampiezze non cambia da solo queste probabilità, ma conta nell'interferenza."
+                },
+                {
+                    "id": "circuiti",
+                    "title": "Porte e circuiti quantistici",
+                    "notAsked": true,
+                    "ref": "§5",
+                    "idea": "Una **porta quantistica** trasforma le ampiezze dei qubit. Più porte formano un circuito; alla fine si misura per leggere il risultato.\n\nPer confrontare questi calcoli con le classi classiche si usa anche il modello della macchina di Turing quantistica.",
+                    "esempio": "La porta NOT scambia le ampiezze: $\\alpha|0\\rangle+\\beta|1\\rangle$ diventa $\\beta|0\\rangle+\\alpha|1\\rangle$. La sua matrice è $\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$."
+                },
+                {
+                    "id": "qtm",
+                    "title": "La macchina di Turing quantistica (QTM)",
+                    "notAsked": true,
+                    "ref": "§6",
+                    "idea": "Una QTM descrive il calcolo come una **sovrapposizione di configurazioni**, ciascuna con un'ampiezza. Le transizioni trasformano queste ampiezze.\n\nLa misura finale restituisce una sola configurazione: non permette di leggere tutti i rami contemporaneamente.",
+                    "esempio": "Dalla configurazione $c_0$ si ottiene $(|c_1\\rangle+|c_2\\rangle)/\\sqrt2$. Misurando in quel momento, si osserva $c_1$ oppure $c_2$, ciascuna con probabilità $1/2$.",
+                    "formale": "Come una MdT, una QTM ha stati, alfabeto, transizioni e stato iniziale. La funzione $\\delta$ assegna un'**ampiezza a ogni mossa**; ampiezza zero significa mossa impossibile. Le ampiezze sono complesse e approssimabili: il bit $k$-esimo si calcola in tempo polinomiale in $k$. Le QTM sono equivalenti alle famiglie uniformi di circuiti quantistici, costruibili da un algoritmo in tempo polinomiale."
+                },
+                {
+                    "id": "ampiezze",
+                    "title": "Interferenza: le ampiezze possono cancellarsi",
+                    "notAsked": true,
+                    "ref": "§6",
+                    "idea": "Lungo un percorso le ampiezze **si moltiplicano**. Se più percorsi arrivano nella stessa configurazione, le ampiezze **si sommano**.\n\nPossono rinforzarsi o cancellarsi: è l'**interferenza**. Prima si sommano le ampiezze, poi si calcola la probabilità.",
+                    "esempio": "Due percorsi arrivano in sì con ampiezze $+1/2$ e $+1/2$: il totale è 1. Altri due arrivano in no con $+1/2$ e $-1/2$: il totale è 0. La misura restituisce sì con certezza.",
+                    "formale": "Lo stato è $\\sum_c\\alpha_c|c\\rangle$. Se i percorsi che arrivano in $c$ contribuiscono ampiezze $a_1,a_2,\\ldots$, allora: $$P(c)=\\left|\\sum_i a_i\\right|^2.$$ Sommare prima i quadrati darebbe un risultato diverso e perderebbe l'interferenza."
+                },
+                {
+                    "id": "misura",
+                    "title": "Perché si misura alla fine",
+                    "notAsked": true,
+                    "ref": "§6",
+                    "idea": "La misura restituisce una configurazione e modifica lo stato: l'interferenza precedente può andare persa. Nel modello usato qui si misura **alla fine** del calcolo.\n\nLa QTM è **precisa**: tutti i rami durano lo stesso numero di passi, così la misura avviene in un unico momento finale.",
+                    "esempio": "Nell'esempio dell'interferenza, misurare a metà separa i due percorsi. La cancellazione non avviene più e la probabilità di sì scende dal 100% al 50%."
+                }
+            ]
+        },
+        {
+            "id": "bqp",
+            "title": "La classe BQP",
+            "topics": [
+                {
+                    "id": "def-bqp",
+                    "title": "BQP: tempo quantistico, errore limitato",
+                    "notAsked": false,
+                    "ref": "§7",
+                    "idea": "BQP contiene i problemi che una QTM risolve in **tempo polinomiale**, con risposta corretta almeno 2 volte su 3 **su ogni input**.\n\nCome in BPP, ripetizioni indipendenti e voto di maggioranza riducono l'errore. La soglia 2/3 è una convenzione.",
+                    "esempio": "Una QTM risponde sì con probabilità 0,8 sugli input sì e 0,1 sugli input no: soddisfa le soglie di BQP. Una probabilità 0,6 su un input sì non soddisfa direttamente la soglia 2/3.",
+                    "formale": "$L\\in\\mathrm{BQP}$ se esiste una QTM in tempo polinomiale tale che:\n\n- se $x\\in L$, $P(\\text{sì}\\mid x)\\ge2/3$;\n- se $x\\notin L$, $P(\\text{sì}\\mid x)\\le1/3$.\n\nLa probabilità di sì è la somma di $|\\alpha_c|^2$ sulle configurazioni finali accettanti."
+                },
+                {
+                    "id": "bqp-risultati",
+                    "title": "BQP: le inclusioni dimostrate",
+                    "notAsked": false,
+                    "ref": "§8",
+                    "idea": "- **BPP è contenuta in BQP:** il calcolo quantistico può simulare quello probabilistico.\n- **BQP è contenuta in PP e PSPACE:** esiste una simulazione classica in spazio polinomiale; il tempo può essere molto maggiore.\n- **BQP è strettamente sotto 2-EXP:** i problemi 2-EXP-completi non sono risolvibili in tempo quantistico polinomiale.",
+                    "esempio": "Un problema 2-EXP-completo resta fuori da BQP anche con un computer quantistico ideale. È una separazione dimostrata, non una congettura.",
+                    "formale": "$$\\mathrm{P}\\subseteq\\mathrm{BPP}\\subseteq\\mathrm{BQP}\\subseteq\\mathrm{PP}\\subseteq\\mathrm{PSPACE}\\subseteq\\mathrm{EXP}\\subsetneq2\\text{-}\\mathrm{EXP}.$$ $\\subseteq$ indica un'inclusione; $\\subsetneq$ dice anche che le classi sono diverse. L'ultima separazione segue dal teorema di gerarchia del tempo. La dimostrazione di BQP ⊆ PP richiede di trattare l'interferenza: non basta confrontare le soglie di errore."
+                },
+                {
+                    "id": "congetture",
+                    "title": "NP e BQP: che cosa resta aperto",
+                    "notAsked": false,
+                    "ref": "§8",
+                    "idea": "Non sappiamo se un computer quantistico risolva i problemi NP-completi in tempo polinomiale. Si congettura che **NP e BQP siano incomparabili**: ciascuna avrebbe problemi fuori dall'altra.\n\nI risultati con oracoli sostengono questa ipotesi, ma non la dimostrano per le classi senza oracolo.",
+                    "esempio": "Se SAT fosse in BQP, ogni problema di NP sarebbe in BQP: basterebbe ridurlo a SAT. Si congettura che ciò non accada. Anche per problemi PSPACE-completi, come QSAT, si congettura che non esista un algoritmo quantistico polinomiale.",
+                    "formale": "Le congetture degli appunti sono: $$\\mathrm{NP}\\not\\subseteq\\mathrm{BQP},\\qquad\\mathrm{BQP}\\not\\subseteq\\mathrm{NP},\\qquad\\mathrm{PP}\\subsetneq\\mathrm{PSPACE}.$$ La prima implica già $\\mathrm{BQP}\\subsetneq\\mathrm{PSPACE}$: se BQP fosse tutta PSPACE, conterrebbe anche NP. **Queste separazioni restano aperte.**"
+                }
+            ]
+        },
+        {
+            "id": "speedup",
+            "title": "Speedup quantistici",
+            "topics": [
+                {
+                    "id": "speedup",
+                    "title": "I tre speedup delle slide: Fourier, Shor, Grover",
+                    "notAsked": true,
+                    "ref": "§9",
+                    "idea": "Uno **speedup** è un'accelerazione rispetto al miglior algoritmo classico noto. Le slide citano tre algoritmi quantistici, che danno la risposta con errore limitato, non con certezza:\n- la **trasformata di Fourier**, che scompone un segnale nelle sue frequenze, su spazi di dimensione $n$: da $O(n \\log n)$ a $O(\\log^2 n)$. Lo speedup è esponenziale, ma su un problema già in P; è il mattone dell'algoritmo di Shor;\n- la **fattorizzazione** degli interi con l'algoritmo di **Shor**: classicamente non si conosce un algoritmo polinomiale, Shor lo è. Il problema sta in NP, probabilmente non è NP-completo, e non si sa se sta in P;\n- la **ricerca non ordinata** con l'algoritmo di **Grover**: dati un insieme $S$ e una funzione $f$ che vale 0 o 1 e costa tempo $O(m)$, trovare un $x$ con $f(x) = 1$. A forza bruta si prova un elemento dopo l'altro, in tempo $O(m \\cdot |S|)$, dove $|S|$ è il numero di elementi; Grover impiega $O(m \\cdot \\sqrt{|S|})$. Lo speedup è **quadratico**.",
+                    "esempio": "In un elenco telefonico **non ordinato** di un milione di nomi servono fino a un milione di controlli; con Grover ne bastano dell'ordine di $\\sqrt{1.000.000} = 1.000$."
+                },
+                {
+                    "id": "grover-np",
+                    "title": "Grover sui problemi NP: l'esponente si dimezza",
+                    "notAsked": false,
+                    "ref": "§9",
+                    "idea": "La ricerca di Grover ha proprio la forma di un problema di NP: $S$ è l'insieme dei possibili certificati, che sono esponenzialmente tanti; ogni certificato è corto; $f$ è la verifica, che costa tempo polinomiale. Se la forza bruta classica costa $c^{n^k}$ passi, Grover la porta a circa $\\sqrt{c^{n^k}} = c^{n^k/2}$: l'esponente si **dimezza**. Il problema resta esponenziale, ma a parità di tempo si risolvono istanze **circa due volte più grandi**. Più il problema è difficile, meno si guadagna: se il classico costa $2^{n^k}$, la taglia risolubile nello stesso tempo cresce solo di un fattore $\\sqrt[k]{2}$.",
+                    "esempio": "KNAPSACK (Lezione 8, §6): dati $n$ oggetti con pesi e valori, esiste un sottoinsieme con peso totale al più $W$ e valore totale almeno $V$? Grover cerca tra i $2^n$ sottoinsiemi, e controllarne uno costa $O(n)$. Il costo, scritto come nelle slide, è $O(4^{n/2})$: confrontato con il classico scritto nella stessa base, $O(4^n)$, è la radice quadrata. Con i tempi delle slide, in circa 3 ore e 20 minuti il classico arriva a 70 oggetti e Grover a 140. Le istanze reali, però, hanno decine di migliaia di oggetti: restano fuori portata anche con Grover.",
+                    "formale": "Proposizione: ogni problema in NP si risolve quantisticamente, con errore limitato, in tempo $O\\big(c^{n^k/2}\\big)$ per qualche $c$ e $k$."
+                },
+                {
+                    "id": "quando-conviene",
+                    "title": "Quando conviene il calcolo quantistico",
+                    "notAsked": true,
+                    "ref": "§9",
+                    "idea": "È una questione di rapporto tra costo e prestazioni. Le slide propongono quattro domande da porsi, in ordine, per ogni problema:\n1. È facile (in P)? Il calcolo classico è molto competitivo e costa decisamente meno: **classico**.\n2. È difficile, ma la taglia è gestibile con algoritmi classici? Il classico può convenire, a seconda di quanto accelera il quantistico.\n3. Altrimenti, la taglia è gestibile con un algoritmo quantistico (per gli NP-completi, circa il doppio)? Allora conviene il **quantistico**.\n4. Altrimenti serve una soluzione **approssimata**, che di solito richiede tempo polinomiale: lì il classico torna competitivo, perché per ora non ci sono risultati sull'approssimazione quantistica.",
+                    "esempio": "SORT (ordinare una lista) è in P: caso 1, si usa il classico. KNAPSACK è NP-completo: dipende dalla taglia, quindi caso 2, 3 o 4."
+                }
+            ]
+        },
+        {
+            "id": "crittografia",
+            "title": "Crittografia e Shor",
+            "topics": [
+                {
+                    "id": "crittografia",
+                    "title": "Crittografia simmetrica e asimmetrica",
+                    "notAsked": true,
+                    "ref": "§10",
+                    "idea": "La crittografia **simmetrica** usa una sola chiave, sia per cifrare sia per decifrare: i due interlocutori devono prima scambiarsela, e lo scambio è rischioso. La crittografia **asimmetrica**, o a chiave pubblica, usa due chiavi. Funziona come una cassetta delle lettere: chiunque può imbucare, cioè cifrare con la chiave **pubblica**, ma solo il proprietario può aprire, cioè decifrare con la chiave **privata**. Per la firma digitale si cifra con la chiave privata. La sicurezza dei cifrari asimmetrici è **computazionale**: non è impossibile romperli, è che nessuno conosce un algoritmo polinomiale per farlo.",
+                    "esempio": "AES è un cifrario simmetrico; RSA e Diffie-Hellman sono asimmetrici.",
+                    "formale": "Se cifrare e decifrare sono operazioni \"pratiche\" (in P), attaccare il cifrario sta al più in NP: si indovina la chiave e si verifica in tempo polinomiale se è giusta."
+                },
+                {
+                    "id": "rsa",
+                    "title": "RSA",
+                    "notAsked": true,
+                    "ref": "§10",
+                    "idea": "Moltiplicare due numeri primi grandi è facile; risalire ai due primi partendo dal prodotto è, per i computer classici, difficilissimo. RSA mette il prodotto nella chiave pubblica e tiene segreti i due primi. Chi conosce i primi fa tutte le operazioni in tempo polinomiale; chi non li conosce dovrebbe fattorizzare. Nei conti, \"$a \\bmod n$\" è il resto della divisione di $a$ per $n$.",
+                    "esempio": "Primi $p = 3$ e $q = 11$: $n = 33$ e $\\Phi(n) = (3-1)(11-1) = 20$. Si sceglie $e = 3$, che non ha fattori in comune con 20, e si trova $d = 7$, perché $3 \\cdot 7 = 21$ diviso 20 dà resto 1. Chiave pubblica $(3, 33)$, chiave privata $(7, 33)$. Il messaggio $m = 4$ si cifra in $4^3 \\bmod 33 = 64 \\bmod 33 = 31$ e si decifra con $31^7 \\bmod 33 = 4$.",
+                    "formale": "Con $n = pq$ e $\\Phi(n) = (p-1)(q-1)$ (la funzione toziente di Eulero): $d = e^{-1} \\bmod \\Phi(n)$, cifratura $c = m^e \\bmod n$, decifratura $m = c^d \\bmod n$. RSA è sicuro perché non si conoscono algoritmi **classici** polinomiali né per la fattorizzazione (dato $n$, trovare $p$ e $q$), né per il logaritmo discreto (dati $c$, $n$ e $c^d \\bmod n$, trovare $d$), né per il calcolo di $\\Phi(n)$ a partire da $n$, che è difficile quanto fattorizzare."
+                },
+                {
+                    "id": "shor",
+                    "title": "L'impatto di Shor",
+                    "notAsked": true,
+                    "ref": "§10",
+                    "idea": "Shor risolve in tempo polinomiale, su un computer quantistico, sia la fattorizzazione sia il logaritmo discreto: entrambi stanno in BQP. Quindi la crittografia **asimmetrica** (RSA, Diffie-Hellman) diventa violabile, perché non si basa su problemi NP-completi ma su problemi che Shor risolve. Sono a rischio SSL/TLS, HTTPS e le firme digitali. Le alternative sono cifrari basati su problemi NP-completi e la crittografia quantistica. La crittografia **simmetrica** invece sembra immune: Grover accelera l'attacco a forza bruta (provare tutte le chiavi), ma il costo resta esponenziale, e per tornare al livello di sicurezza di prima basta raddoppiare la lunghezza della chiave.",
+                    "esempio": "Con una chiave da 128 bit la forza bruta classica prova circa $2^{128}$ chiavi, Grover circa $2^{64}$. Con una chiave da 256 bit Grover torna a $2^{128}$, e cifrare e decifrare diventano solo un po' più lenti. Nei protocolli reali la chiave pubblica serve solo all'inizio (handshake), per scambiarsi una chiave simmetrica di sessione: è quella fase, insieme alle firme digitali, che va ripensata."
+                }
+            ]
+        },
+        {
+            "id": "conclusioni",
+            "title": "Conclusioni",
+            "topics": [
+                {
+                    "id": "conclusioni",
+                    "title": "Le conclusioni: niente bacchetta magica",
+                    "notAsked": false,
+                    "ref": "§11",
+                    "idea": "Il messaggio finale ha tre punti. Primo: il computer quantistico **non** è una bacchetta magica. I problemi difficili, dagli NP-completi in su, restano **plausibilmente** difficili (è una congettura); quelli da 2-EXP in su restano **sicuramente** difficili. Secondo: i benefici ci sono. Con Grover si risolvono istanze circa doppie dei problemi NP-completi, e qualche problema che si ritiene né NP-completo né in P, come la fattorizzazione, può diventare facile. Terzo: quando i problemi tecnologici saranno risolti, gli attuali cifrari asimmetrici potranno essere violati in fretta, e bisognerà ripensare le firme digitali e lo scambio iniziale delle chiavi.",
+                    "esempio": "Domanda tipo: \"SAT sta in PP?\". Sì: SAT sta in NP, e NP sta dentro PP. Domanda tipo: \"ciò che risolve un computer quantistico richiede solo spazio polinomiale su un computer classico?\". Sì: BQP sta dentro PSPACE.",
+                    "formale": "La catena da sapere è\n$$\n\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}, \\qquad \\mathrm{NP} \\subseteq \\mathrm{PP}\n$$\nE le tre classi della lezione a confronto:\n\n| Classe | Si accetta se | Errore sotto una soglia fissata in tempo polinomiale? |\n|---|---|---|\n| **PP** | più della metà dei run dice \"yes\" | non si sa (il vantaggio può essere esponenzialmente piccolo) |\n| **BPP** | almeno 3/4 dei run dà la risposta giusta | **sì** |\n| **BQP** | la QTM dà la risposta giusta con probabilità almeno 2/3 | **sì** |"
+                }
+            ]
+        }
+    ],
+    "exercises": [
+        {
+            "q": "Conviene risolvere SORT con un computer quantistico?",
+            "a": "**No.** SORT è in P ($O(n \\log n)$): il calcolo classico è già efficiente e costa molto meno. Non c'è margine per uno speedup esponenziale: ordinando per confronti servono almeno circa $n \\log n$ confronti anche con un algoritmo quantistico. È il caso 1 della lista \"Quando conviene il calcolo quantistico\"."
+        },
+        {
+            "q": "Conviene risolvere KNAPSACK con un computer quantistico?",
+            "a": "**Dipende dalla taglia.** KNAPSACK è NP-completo: si congettura che non stia in BQP, quindi niente soluzione polinomiale. Grover dà uno speedup quadratico ($O(c^n) \\to O(c^{n/2})$): conviene quando l'istanza è troppo grande per il classico ma rientra nella taglia circa **doppia** gestibile da Grover. Per istanze enormi (migliaia di oggetti) servono algoritmi **approssimati**, polinomiali, dove il classico torna competitivo."
+        },
+        {
+            "q": "Conviene sviluppare algoritmi quantistici di crittografia?",
+            "a": "**Sì.** Shor rende violabili in tempo polinomiale i cifrari asimmetrici (RSA, Diffie-Hellman), quindi l'handshake di TLS/HTTPS e le firme digitali. Servono alternative: crittografia **quantistica** (es. distribuzione quantistica delle chiavi) oppure cifrari classici basati su problemi ritenuti difficili anche per BQP (es. NP-completi). La crittografia simmetrica invece basta allungarla (chiavi lunghe il doppio contro Grover)."
+        },
+        {
+            "q": "Quante ripetizioni servono, con soglia $3/4$, per avere errore al massimo $1\\%$?",
+            "a": "Qui il margine è $\\varepsilon = 1/4$ e l'errore voluto è $\\delta = 0{,}01$. Con la formula della stima di Chernoff: $k = \\lceil -8 \\ln 0{,}01 \\rceil = \\lceil 8 \\cdot 4{,}605 \\rceil = 37$, quindi $2k+1 = 75$ ripetizioni. È un limite superiore e prudente (nella realtà ne bastano meno), ed è una **costante**: non dipende da $n$."
+        }
+    ],
+    "exam": {
+        "intro": "Gli argomenti di questa lezione compaiono all'esame come domande **SÌ / NO / altro**, da motivare in poche righe. Cosa saper fare:",
+        "bullets": [
+            "**Riduzione dell'errore.** Saper dire se l'errore si può portare sotto una soglia fissata in tempo polinomiale: **sì per BPP** (maggioranza netta, poche ripetizioni), **non noto per PP** (la maggioranza può essere di un solo run). È la domanda più frequente su questa lezione.",
+            "**Tradurre la domanda in una classe.** \"Algoritmo probabilistico a errore limitato, in tempo polinomiale\" significa **BPP**; \"macchina di Turing quantistica a errore limitato, in tempo polinomiale\" significa **BQP**.",
+            "**Usare la catena delle inclusioni.** Con $\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$ e $\\mathrm{NP} \\subseteq \\mathrm{PP}$ si risponde subito a domande come \"SAT sta in PP?\" (sì) o \"ciò che risolve un computer quantistico richiede solo spazio polinomiale su un computer classico?\" (sì).",
+            "**Grover.** Lo speedup è quadratico: $2^n$ diventa $2^{n/2}$. Contro la forza bruta sulle chiavi simmetriche basta quindi raddoppiarne la lunghezza.",
+            "**Distinguere il dimostrato dal congetturato.** Per i problemi NP-completi e PSPACE-completi su un computer quantistico la risposta è \"non si sa, ma si congettura di no\"; per i problemi 2-EXP-completi è un **no certo**."
+        ],
+        "notes": [
+            "🎯 Nelle tracce queste domande sono spesso combinate con classi che arrivano più avanti (Lezioni 9 e 10). Il ragionamento resta lo stesso: collocare le classi nella catena e controllare se l'inclusione richiesta è nota, impossibile o ancora aperta.",
+            "📖 **Riferimento:** slide lezione-6.pdf (Bonatti, \"Algoritmi probabilistici – Quantum Computation\"). Papadimitriou cap. 11 (Randomized computation, Teorema 11.3). La dispensa non ha un capitolo dedicato."
+        ]
     },
-    {
-     "id": "voto",
-     "title": "Ripetere e votare a maggioranza",
-     "notAsked": false,
-     "ref": "§1",
-     "idea": "Un'esecuzione sola sbaglia troppo spesso. Allora si ripete l'algoritmo da capo più volte, ogni volta con monete nuove. Ogni **tentativo** produce un run, quindi una risposta. Alla fine si prende la risposta uscita più volte: è il **voto a maggioranza**. Si usa un numero dispari di tentativi, così non ci sono pareggi. Se in ogni tentativo la risposta giusta è in vantaggio, nel voto il vantaggio si fa sentire sempre di più.\nOgni tentativo però costa tempo: il tempo totale è il tempo di un run moltiplicato per il numero di tentativi. La domanda vera della lezione è quindi questa. Per arrivare, per esempio, al 99% di risposte giuste servono **pochi** tentativi (al più un numero polinomiale nella lunghezza dell'input) oppure **moltissimi** (un numero esponenziale)?",
-     "esempio": "Con la macchina di prima, giusta al 75%, facciamo 3 tentativi. Il voto sbaglia se sbagliano almeno 2 tentativi su 3:\n- esattamente 2 sbagliati: il tentativo giusto può essere il primo, il secondo o il terzo, e ognuno di questi 3 casi ha probabilità $(1/4)^2 \\cdot (3/4) = 3/64$; in tutto $9/64$;\n- tutti e 3 sbagliati: $(1/4)^3 = 1/64$.\nIl voto sbaglia quindi con probabilità $10/64 \\approx 15{,}6\\%$ e indovina nell'84,4% dei casi. Con 5 tentativi indovina nell'89,6% dei casi. Sono i numeri delle slide: 75% con un tentativo, più dell'84% con tre, più dell'89% con cinque.",
-     "formale": "Il conto con 3 tentativi è\n$$\nP(\\text{voto sbagliato}) = 3 \\cdot \\Big(\\frac14\\Big)^2 \\cdot \\frac34 + \\Big(\\frac14\\Big)^3 = \\frac{9}{64} + \\frac{1}{64} = \\frac{10}{64}\n$$\nSi legge così: il primo termine raccoglie i casi con due tentativi sbagliati e uno giusto (il 3 conta in quale posizione sta quello giusto), il secondo il caso con tutti e tre sbagliati. Le probabilità dei singoli tentativi si moltiplicano perché i tentativi sono indipendenti. Da qui in poi \"errore\" vuol dire errore **del voto**: la maggioranza delle risposte è sbagliata."
-    },
-    {
-     "id": "pesi",
-     "title": "Quando i run non pesano uguale",
-     "notAsked": true,
-     "ref": "§1",
-     "idea": "Le monete possono anche essere truccate. Allora non conta il **numero** di run che danno una risposta, ma il loro **peso**, cioè la loro probabilità. È quello che succederà con i computer quantistici. La regola non cambia: si programma l'algoritmo perché la risposta giusta sia la più probabile, poi si ripete e si vota.",
-     "esempio": "È il secondo esempio delle slide: la stessa macchina con 12 run \"yes\" e 4 run \"no\", ma ogni run \"no\" è 5 volte più probabile di ogni run \"yes\". Diamo peso 1 a ogni run yes e peso 5 a ogni run no. Il peso totale è $12 \\cdot 1 + 4 \\cdot 5 = 32$, e $P(\\text{no}) = 20/32 = 62{,}5\\%$. Ora vince il no, anche se i run no sono solo 4 su 16."
-    },
-    {
-     "id": "standardizzate",
-     "title": "Le macchine standardizzate",
-     "notAsked": false,
-     "ref": "§2",
-     "idea": "Le probabilità si calcolano facilmente quando tutti i run hanno la stessa probabilità: allora, come con i 16 run, una probabilità è solo un conteggio di foglie. Per questo nella teoria degli algoritmi probabilistici si usano macchine nondeterministiche \"standardizzate\", che rispettano due regole:\n1. **precisa:** tutti i run durano esattamente lo stesso numero di passi, il budget $f(n)$ concesso su un input lungo $n$ (sono le macchine precise della Lezione 4, §4);\n2. **grado 2:** a ogni passo ci sono esattamente 2 mosse possibili, per ogni coppia (stato, simbolo letto), tranne negli stati finali yes e no, dove la macchina si ferma.\nCon queste regole l'albero delle computazioni è un albero binario completo: ogni nodo interno ha 2 figli e tutte le foglie stanno alla stessa profondità. Secondo le slide le due regole non cambiano né i problemi che si sanno risolvere né la loro complessità, almeno da P (i problemi risolubili in tempo polinomiale) in su.",
-     "esempio": "Con budget $f(n) = 3$ l'albero ha $2^3 = 8$ foglie, cioè 8 run. Ogni run è una sequenza di 3 lanci di moneta, quindi ha probabilità $1/2 \\cdot 1/2 \\cdot 1/2 = 1/8$. Se 5 run finiscono in \"yes\", allora $P(\\text{yes}) = 5/8$.",
-     "formale": "Una macchina standardizzata con budget $f(n)$ ha\n$$\n2^{f(n)} \\text{ run}, \\qquad P(\\text{un run}) = \\Big(\\frac12\\Big)^{f(n)} = 2^{-f(n)}\n$$\nSi legge così: ogni passo raddoppia i rami, e ogni passo moltiplica la probabilità di un ramo per $1/2$. In breve: **probabilità = frazione di foglie**."
-    }
-   ]
-  },
-  {
-   "id": "pp",
-   "title": "La classe PP",
-   "topics": [
-    {
-     "id": "def-pp",
-     "title": "La classe PP: basta la maggioranza semplice",
-     "notAsked": false,
-     "ref": "§3",
-     "idea": "PP (Probabilistic Polynomial time) è la prima classe probabilistica. Contiene i problemi che un algoritmo probabilistico veloce risolve dando la risposta giusta con probabilità **maggiore di** $1/2$, anche di pochissimo. È come un'elezione decisa a **maggioranza semplice**: la risposta è sì se i run yes sono più della metà, anche solo di uno.",
-     "esempio": "Una macchina ha 8 run. Se 5 dicono \"yes\" e 3 \"no\", l'input è accettato, perché 5 è più della metà di 8. Se 4 dicono \"yes\" e 4 \"no\" c'è un pareggio, e l'input **non** è accettato: serve **più** della metà.",
-     "formale": "$L \\in \\mathrm{PP}$ se e solo se esiste una MdT nondeterministica standardizzata $N$ che termina in tempo polinomiale e tale che, per ogni input $x$, $x \\in L$ se e solo se **più della metà** dei run di $N$ su $x$ termina in \"yes\". Pezzo per pezzo:\n- $N$ è l'algoritmo probabilistico, con run equiprobabili;\n- \"tempo polinomiale\" vuol dire che ogni run fa $p(n)$ passi, per un polinomio $p$: **un** tentativo è veloce;\n- se la risposta giusta è sì, $P(\\text{yes}) > 1/2$; se è no, $P(\\text{yes}) \\le 1/2$ (il pareggio conta come no).\nLa definizione **non** dice di quanto si deve superare la metà. È il punto debole di PP, che vedremo tra poco."
-    },
-    {
-     "id": "majsat",
-     "title": "MAJSAT, un problema completo per PP",
-     "notAsked": true,
-     "ref": "§3",
-     "idea": "Le slide danno un problema **completo** per PP, cioè uno dei più difficili della classe: ogni problema di PP si traduce velocemente in lui (con le riduzioni della Lezione 7). È MAJSAT: data una formula booleana $\\varphi$, è vero che **più della metà** dei suoi assegnamenti di verità la rende vera? L'algoritmo PP è naturale: tira una moneta per ogni variabile, così ottieni un assegnamento a caso, valuta la formula e rispondi \"yes\" se è vera. La frazione di run yes è proprio la frazione di assegnamenti che rendono vera la formula.",
-     "esempio": "La formula $x_1 \\lor x_2$ ha 4 assegnamenti, e 3 la rendono vera (tutti tranne falso-falso): $3/4 > 1/2$, quindi sta in MAJSAT. La formula $x_1 \\land x_2$ è vera solo con vero-vero: $1/4$, quindi non sta in MAJSAT, anche se è soddisfacibile. È la differenza con SAT: SAT chiede che **almeno un** assegnamento renda vera la formula, MAJSAT che lo faccia **più della metà**."
-    },
-    {
-     "id": "np-pp",
-     "title": "NP sta dentro PP",
-     "notAsked": false,
-     "ref": "§3",
-     "idea": "NP chiede: \"esiste **almeno un** run che dice sì?\". PP chiede: \"i run che dicono sì sono **più della metà**?\". Per trasformare la prima domanda nella seconda si aggiungono tanti run \"yes\" finti quanti sono i run veri. Se la macchina originale non ha nessun run yes, si arriva esattamente al pareggio, che in PP vale no. Se ne ha anche uno solo, il pareggio è superato e si accetta.",
-     "esempio": "È la figura delle slide. La macchina $N$ di un problema di NP ha 4 run. La nuova macchina $N'$ ha 8 run: i 4 di $N$ più 4 run finti, tutti yes. Se $N$ ha un run yes, i yes sono $4 + 1 = 5$ su 8: maggioranza, $N'$ accetta. Se $N$ non ne ha, i yes sono 4 su 8: pareggio, $N'$ non accetta. In entrambi i casi $N'$ risponde come $N$.",
-     "formale": "Teorema 11.3: $\\mathrm{NP} \\subseteq \\mathrm{PP}$. Sia $L$ in NP, deciso da una macchina standardizzata $N$ in tempo $p(n)$. L'idea della prova:\n1. $N'$ ha un nuovo stato iniziale con 2 scelte: eseguire $N$, oppure fare $p(n)$ scelte binarie \"a vuoto\" e finire sempre in yes. Le scelte a vuoto tengono tutti i run della stessa lunghezza.\n2. Ciascuna delle due scelte porta a $2^{p(n)}$ run, quindi metà dei run di $N'$ sono yes finti.\n3. $N'$ accetta a maggioranza se e solo se almeno $2^{p(n)} + 1$ run accettano, cioè se e solo se almeno un run di $N$ accetta. Il tempo è $p(n) + 1$, ancora polinomiale.\nIl contrario si pensa che sia falso. Per convincere qualcuno che un input sta in un problema di NP basta mostrargli **un** run yes, che si controlla in fretta: è un certificato corto (Lezione 3, §5). Per PP bisognerebbe convincerlo che i run yes sono più della metà, cioè in pratica **contarli**, e sono esponenzialmente tanti."
-    },
-    {
-     "id": "pp-pspace",
-     "title": "PP sta dentro PSPACE",
-     "notAsked": false,
-     "ref": "§3",
-     "idea": "PSPACE è la classe dei problemi risolubili in spazio polinomiale. Una macchina deterministica può risolvere un problema di PP senza tirare monete: prova **tutti** i run, uno dopo l'altro, e li conta. Ci vuole un tempo enorme, perché i run sono esponenzialmente tanti. Lo spazio però resta piccolo: finito un run lo si cancella, e lo stesso spazio serve per il successivo. Bastano due contatori e lo spazio per un run alla volta.",
-     "esempio": "È la figura delle slide, con 8 run. Ogni run si individua con la sequenza delle sue 3 scelte binarie, da `000` a `111`. Dopo aver provato `000` (yes), `001` (no) e `010` (yes), i contatori valgono 2 e 1; si va avanti così fino a `111`. Se alla fine i yes sono 5 e i no 3, poiché $5 > 8/2$, la macchina accetta.",
-     "formale": "Teorema: $\\mathrm{PP} \\subseteq \\mathrm{PSPACE}$. Sia $N$ la macchina PP, con run lunghi $n^c$ passi per una costante $c$. La macchina deterministica $M$ tiene sui nastri, oltre all'input:\n- la sequenza di scelte del run corrente: $n^c$ bit;\n- i due contatori, che arrivano al massimo a $2^{n^c}$ e quindi in binario hanno circa $n^c$ cifre;\n- lo spazio di lavoro del run: in $n^c$ passi un run tocca al più $n^c$ celle, e questo spazio si riusa per tutti i run.\nIn tutto lo spazio è $O(n^c)$, cioè al più una costante per $n^c$. Quindi $L \\in \\mathrm{SPACE}(n^c) \\subseteq \\mathrm{PSPACE}$: il problema si risolve in spazio $n^c$, un polinomio. È il principio già visto nella Lezione 5: il tempo può essere esponenziale, ma lo spazio si riusa."
-    },
-    {
-     "id": "difetto-pp",
-     "title": "Il difetto di PP: la maggioranza può essere minima",
-     "notAsked": false,
-     "ref": "§3",
-     "idea": "Torniamo alla domanda vera: quante ripetizioni servono perché il voto sbagli raramente? Per PP la risposta è brutta. La definizione non chiede un margine minimo, quindi la risposta giusta può vincere per **un solo run** su un numero enorme di run. È come un'elezione vinta per un voto su milioni: nessun sondaggio ragionevole se ne accorge, e per sapere chi ha vinto bisogna contare tutte le schede.",
-     "esempio": "Con 10 monete ci sono 1024 run. Se 513 dicono yes e 511 no, $P(\\text{yes}) = 513/1024 \\approx 0{,}50098$: la risposta giusta vince di appena $1/1024$. Con la stima delle ripetizioni che vedremo per BPP servirebbero circa 1,45 milioni di ripetizioni per indovinare almeno 3 volte su 4. Ma i run sono solo 1024: fa prima una macchina deterministica a provarli tutti e a contarli.",
-     "formale": "Con $m$ monete i run sono $2^m$, e la maggioranza più piccola possibile è di $2^{m-1} + 1$ run giusti contro $2^{m-1} - 1$ sbagliati. Allora\n$$\nP(\\text{risposta giusta}) = \\frac{2^{m-1} + 1}{2^m} = \\frac12 + 2^{-m}\n$$\nSi legge così: la risposta giusta supera la metà solo di $2^{-m}$. Poiché $m$ cresce con l'input (per esempio $m = n^k$), questo vantaggio è **esponenzialmente piccolo**. Le ripetizioni necessarie crescono come 1 diviso il quadrato del vantaggio, qui circa $4^m$: più dei $2^m$ run stessi. Da ricordare: **per PP non si conosce un modo di portare l'errore sotto una soglia fissata in tempo polinomiale**. PP serve alla teoria, perché misura quanto è difficile contare le soluzioni, non a descrivere algoritmi da usare. Il rimedio è pretendere una maggioranza netta: è BPP."
-    }
-   ]
-  },
-  {
-   "id": "bpp",
-   "title": "La classe BPP",
-   "topics": [
-    {
-     "id": "def-bpp",
-     "title": "La classe BPP: una maggioranza netta",
-     "notAsked": false,
-     "ref": "§4",
-     "idea": "BPP (Bounded-error Probabilistic Polynomial time) corregge il difetto di PP pretendendo una **vittoria netta**: su **ogni** input la risposta giusta deve uscire in almeno 3 run su 4. Il vantaggio della risposta giusta resta fisso, 75% contro 25%, e non si assottiglia quando l'input cresce. \"Bounded error\" vuol dire \"errore limitato\": ogni tentativo sbaglia con probabilità al più $1/4$, una costante. È come un'elezione in cui il vincitore prende almeno il 75% dei voti: per indovinarlo bastano poche decine di interviste, qualunque sia la grandezza del paese.",
-     "esempio": "Un input con 16 run e 12 yes (75%) rispetta la condizione di BPP. Un input con 8 run e 5 yes (62,5%) va bene per PP ma **non** per BPP. Perché una macchina vada bene, la condizione deve valere su tutti gli input, sia quelli con risposta sì sia quelli con risposta no.",
-     "formale": "$L \\in \\mathrm{BPP}$ se e solo se esiste una MdT nondeterministica standardizzata $N$ che opera in tempo polinomiale tale che, per ogni input $x$:\n- se $x \\in L$, almeno $3/4$ dei run di $N$ **accettano** $x$;\n- se $x \\notin L$, almeno $3/4$ dei run di $N$ **rigettano** $x$.\nSulla retta delle probabilità di \"yes\", gli input con risposta sì stanno da $3/4$ in su e quelli con risposta no da $1/4$ in giù. La fascia in mezzo è vietata: nessun input può cadere lì. In PP invece un sì può stare appena sopra $1/2$."
-    },
-    {
-     "id": "chernoff",
-     "title": "Quante ripetizioni servono: la stima di Chernoff",
-     "notAsked": false,
-     "ref": "§4",
-     "idea": "In BPP il vantaggio della risposta giusta è fisso, e allora l'errore del voto scende **esponenzialmente** con il numero di ripetizioni. Il numero di ripetizioni che serve dipende solo dall'errore che si accetta, **non dalla lunghezza dell'input**. Per scriverlo si chiama **margine** $\\varepsilon$ (epsilon) la quantità di cui la risposta giusta supera il 50%: un tentativo è giusto con probabilità $\\frac12 + \\varepsilon$. Con la soglia di BPP il margine è $\\varepsilon = \\frac34 - \\frac12 = \\frac14$.",
-     "esempio": "Vogliamo che il voto sbagli al più l'1%. Chiamiamo $\\delta$ (delta) l'errore massimo voluto, qui $\\delta = 0{,}01$; le slide usano la lettera $\\varepsilon$ anche per questo. La formula delle slide dà $k = \\lceil -8 \\ln 0{,}01 \\rceil = \\lceil 8 \\cdot 4{,}605 \\rceil = 37$, cioè $2k + 1 = 75$ ripetizioni. Sono 75 sia per un input di 10 simboli sia per uno di 10 milioni.",
-     "formale": "Con $2k + 1$ ripetizioni:\n$$\nP(\\text{voto sbagliato}) \\le e^{-2\\varepsilon^2 k}\n$$\nPezzo per pezzo: $\\le$ vuol dire che è un **tetto** sicuro, e l'errore vero può essere molto più piccolo; $e^{-\\dots k}$ decresce esponenzialmente in $k$; $\\varepsilon^2$ dice che il margine conta al quadrato, quindi con un margine dimezzato servono 4 volte più ripetizioni; infine non compare $n$, la lunghezza dell'input. Con $\\varepsilon = 1/4$ si ha $2\\varepsilon^2 = 1/8$ e il tetto è $e^{-k/8}$. Chiedendo $e^{-k/8} \\le \\delta$ e prendendo il logaritmo naturale $\\ln$ di entrambi i lati si ottiene la formula delle slide:\n$$\nk = \\lceil -8 \\ln \\delta \\rceil\n$$\ndove $\\lceil \\cdot \\rceil$ arrotonda all'intero superiore. Anche un errore che si rimpicciolisce con l'input, come $\\delta = 2^{-n}$, chiede solo $k \\approx 5{,}55 \\cdot n$: un numero lineare di ripetizioni, quindi il tempo resta polinomiale. Ricetta per l'esame: in BPP l'errore si porta sotto una soglia prefissata in tempo polinomiale? **Sì.**"
-    },
-    {
-     "id": "soglia",
-     "title": "La soglia 3/4 è una convenzione",
-     "notAsked": false,
-     "ref": "§4",
-     "idea": "Il numero 3/4 non ha niente di speciale: qualunque soglia fissa strettamente tra $1/2$ e 1 dà **la stessa classe**. Il motivo è la stima di Chernoff: se un algoritmo ha un margine fisso, anche piccolo, basta ripeterlo un numero **costante** di volte per portarlo alla soglia che si vuole, e la macchina rallenta solo di un fattore costante. L'importante è che la soglia sia una **frazione fissa** dei run, che non si avvicina a $1/2$ quando l'input cresce, come invece può succedere in PP.",
-     "esempio": "Un algoritmo indovina il 51% delle volte: margine $\\varepsilon = 0{,}01$. Per portarlo al 75% servono $k = \\lceil 0{,}6931 / 0{,}0001 \\rceil = 6932$, cioè 13.865 ripetizioni. Sono tante, ma sono sempre le stesse, qualunque sia l'input: dipendono solo dall'algoritmo.",
-     "formale": "Per passare da una soglia $\\frac12 + \\varepsilon$ alla soglia $3/4$ si vuole errore $\\delta = 1/4$, e la condizione $e^{-2\\varepsilon^2 k} \\le 1/4$ dà\n$$\nk = \\left\\lceil \\frac{\\ln 2}{\\varepsilon^2} \\right\\rceil\n$$\nSi legge così: le ripetizioni crescono come 1 diviso $\\varepsilon^2$, e $k$ dipende solo dalla macchina, non da $n$. Nell'altra direzione, da $3/4$ a una soglia più alta $s$, basta $k = \\lceil -8 \\ln(1 - s) \\rceil$, ancora una costante. La soglia deve restare sotto 1 (le slide scrivono \"fino a 1 compreso\"): con $s = 1$ tutti i run sarebbero giusti, basterebbe seguirne uno e si avrebbe un algoritmo deterministico, cioè la classe P."
-    },
-    {
-     "id": "bpp-p-pp",
-     "title": "BPP tra P e PP",
-     "notAsked": false,
-     "ref": "§4",
-     "idea": "BPP sta in mezzo a due classi già viste. Un algoritmo deterministico veloce è un caso particolare di algoritmo BPP: non sbaglia mai. Un algoritmo BPP è un caso particolare di algoritmo PP: una maggioranza netta è anche una maggioranza semplice.",
-     "esempio": "Una macchina deterministica ha un solo run (per renderla standardizzata si scrive ogni mossa due volte, e le due copie danno la stessa risposta). Quel run è il 100% delle risposte, e il 100% supera 3/4. Una macchina BPP, su un input con 16 run, ha almeno 12 run giusti. Se la risposta è sì, 12 yes su 16 sono più della metà; se è no, i yes sono al più 4 su 16, e non sono la maggioranza. In entrambi i casi la macchina va bene anche per PP.",
-     "formale": "$$\n\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{PP}\n$$\nSi legge così: ogni problema risolubile in tempo polinomiale da una macchina deterministica sta in BPP, e ogni problema di BPP sta in PP."
-    }
-   ]
-  },
-  {
-   "id": "quantistico",
-   "title": "Calcolo quantistico",
-   "topics": [
-    {
-     "id": "qubit",
-     "title": "Il qubit",
-     "notAsked": true,
-     "ref": "§5",
-     "idea": "Per la complessità un computer quantistico è un **hardware speciale per eseguire algoritmi probabilistici**, in cui i run non hanno per forza la stessa probabilità. Il suo mattone è il **qubit**. Un bit classico è come una moneta appoggiata sul tavolo: 0 o 1. Un qubit è come una moneta che sta ancora girando: quando la si ferma e la si guarda (la si **misura**) cade su 0 o su 1 con certe probabilità, e da lì resta ferma. Il qubit è una combinazione, detta **sovrapposizione**, dei due valori classici, scritti $|0\\rangle$ e $|1\\rangle$. I pesi della combinazione si chiamano **ampiezze di probabilità**: possono essere negativi o anche numeri complessi, e la probabilità è il quadrato del loro modulo, che cancella il segno.",
-     "esempio": "Con ampiezze $\\sqrt3/2$ e $1/2$ si misura 0 con probabilità $3/4$ e 1 con probabilità $1/4$. Con ampiezze $1/\\sqrt2$ e $-1/\\sqrt2$ si misurano 0 e 1 al 50%: il segno meno, da solo, non si vede.",
-     "formale": "$$\n|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle, \\qquad |\\alpha|^2 + |\\beta|^2 = 1\n$$\nSi legge così: lo stato $|\\psi\\rangle$ del qubit ha ampiezza $\\alpha$ su 0 e $\\beta$ su 1; misurato, dà 0 con probabilità $|\\alpha|^2$ e 1 con probabilità $|\\beta|^2$, e le due probabilità sommano a 1. Le slide scrivono le ampiezze con due angoli, $\\alpha = \\cos\\frac{\\theta}{2}$ e $\\beta = e^{i\\varphi}\\sin\\frac{\\theta}{2}$: è solo un modo di avere la somma 1 in automatico."
-    },
-    {
-     "id": "circuiti",
-     "title": "Porte e circuiti quantistici",
-     "notAsked": true,
-     "ref": "§5",
-     "idea": "Come i circuiti classici combinano bit con porte AND, OR, NAND, i circuiti quantistici trasformano qubit con **porte quantistiche**. Matematicamente una porta è una **matrice** che trasforma le ampiezze dei qubit in ingresso. L'uscita del circuito è un gruppo di qubit da misurare, e la misura deve dare la risposta giusta con probabilità **nettamente** maggiore di $1/2$: così, ripetendo il calcolo e votando, l'errore scende come in BPP. Il problema è che i circuiti hanno una struttura troppo diversa dalle macchine di Turing per confrontarli direttamente con le classi già viste. Per questo si usano le macchine di Turing quantistiche.",
-     "esempio": "Il NOT quantistico scambia le due ampiezze: trasforma $\\alpha|0\\rangle + \\beta|1\\rangle$ in $\\beta|0\\rangle + \\alpha|1\\rangle$. La sua matrice è $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$."
-    },
-    {
-     "id": "qtm",
-     "title": "La macchina di Turing quantistica",
-     "notAsked": true,
-     "ref": "§6",
-     "idea": "Una QTM (Quantum Turing Machine) è una MdT nondeterministica in cui ogni mossa possibile ha un'**ampiezza**, come quelle del qubit. Stati e nastro sono fatti di qubit, quindi la macchina non segue un ramo alla volta: si trova in tutti i rami insieme, ognuno con la sua ampiezza. Si dice che è in una **sovrapposizione di configurazioni**. Solo alla fine si misura, e si ottiene una sola configurazione finale. Le QTM hanno la stessa potenza delle famiglie **uniformi** di circuiti quantistici (un circuito per ogni lunghezza dell'input, costruito da un algoritmo polinomiale), ma si confrontano molto più facilmente con le MdT classiche.",
-     "esempio": "Dalla configurazione $c_0$ sono possibili due mosse: scrivere 0 e andare a destra (si arriva in $c_1$) oppure scrivere 1 e andare a destra (si arriva in $c_2$). Una MdT nondeterministica ne segue una sola. La QTM le segue entrambe, con ampiezza $1/\\sqrt2$ ciascuna. Se ora la si misura, si osserva $c_1$ oppure $c_2$, ciascuna con probabilità $(1/\\sqrt2)^2 = 1/2$.",
-     "formale": "Una QTM è una quadrupla $\\langle K, \\Sigma, \\delta, s \\rangle$ come una MdT (stati, alfabeto, transizione, stato iniziale), ma con\n$$\n\\delta : K \\times \\Sigma \\to \\bar{\\mathbb{C}}^{\\,K \\times \\Sigma \\times \\{\\leftarrow, \\rightarrow, -\\}}\n$$\nSi legge così: per ogni coppia (stato, simbolo letto) la $\\delta$ non sceglie una mossa, ma dà un'ampiezza a **ogni** mossa (nuovo stato, simbolo da scrivere, direzione della testina); ampiezza 0 vuol dire mossa impossibile. $\\bar{\\mathbb{C}}$ sono i numeri complessi \"calcolabili velocemente\": una MdT ne calcola il $k$-esimo bit in tempo polinomiale in $k$."
-    },
-    {
-     "id": "ampiezze",
-     "title": "Come evolve una QTM: le ampiezze si sommano",
-     "notAsked": true,
-     "ref": "§6",
-     "idea": "Le slide dicono che a ogni passo la QTM passa a una nuova sovrapposizione, e che iterando si ottengono i passi successivi. Il calcolo segue due regole. Lungo un ramo le ampiezze **si moltiplicano**, come le probabilità lungo un run. Quando due rami arrivano nella **stessa** configurazione, le loro ampiezze **si sommano**, ciascuna con il suo segno. Le probabilità sono sempre positive e sommandole possono solo crescere; le ampiezze possono essere negative e quindi **cancellarsi**. È l'**interferenza**, la vera differenza dal calcolo probabilistico. Si comportano come onde: si rinforzano se arrivano cresta con cresta, si annullano se arrivano cresta con ventre.",
-     "esempio": "In due passi: da $c_0$ si va in $c_A$ e in $c_B$, con ampiezza $1/\\sqrt2$ ciascuna. Da $c_A$ si va in yes e in no, entrambe con ampiezza $+1/\\sqrt2$; da $c_B$ si va in yes con $+1/\\sqrt2$ e in no con $-1/\\sqrt2$. I due rami che arrivano in yes valgono $+1/2$ e $+1/2$: sommati danno 1. I due che arrivano in no valgono $+1/2$ e $-1/2$: si cancellano. Alla misura la QTM dice yes **con certezza**. Con monete normali, invece, yes e no uscirebbero al 50%.",
-     "formale": "In ogni istante la QTM è nella sovrapposizione $\\sum_c \\alpha_c \\cdot |c\\rangle$, che si legge \"la macchina è in ogni configurazione $c$ con ampiezza $\\alpha_c$\". L'ordine conta: prima si sommano le ampiezze dei rami che arrivano nella stessa configurazione, **poi** si fa il quadrato."
-    },
-    {
-     "id": "misura",
-     "title": "La misura, e perché la QTM deve essere precisa",
-     "notAsked": true,
-     "ref": "§6",
-     "idea": "Misurare vuol dire guardare in che configurazione si trova la macchina. La configurazione $c_i$ esce con probabilità $|\\alpha_i|^2$, e da quel momento la macchina è **solo** in $c_i$: la sovrapposizione **collassa**. Così si perde anche l'interferenza, che ha bisogno di tutti i rami. Per questo si misura **solo alla fine**. E perché ci sia un unico momento in cui tutti i rami sono finiti insieme, la QTM deve essere **precisa** (Lezione 4, §4): tutte le sue computazioni hanno esattamente la stessa lunghezza.",
-     "esempio": "Nell'esempio di prima, misurando dopo il primo passo si troverebbe $c_A$ o $c_B$ al 50%. Da ciascuna delle due, da sola, il secondo passo dà yes e no al 50%. In tutto $P(\\text{yes}) = 1/2$: la certezza è sparita, si è tornati alle monete."
-    }
-   ]
-  },
-  {
-   "id": "bqp",
-   "title": "La classe BQP",
-   "topics": [
-    {
-     "id": "def-bqp",
-     "title": "La classe BQP",
-     "notAsked": false,
-     "ref": "§7",
-     "idea": "BQP (Bounded-error Quantum Polynomial time) è \"BPP con le monete quantistiche\". Il computer quantistico è modellato da una QTM: una MdT in cui ogni ramo ha un'ampiezza, e la risposta si legge solo alla fine, misurando. BQP contiene i problemi che una QTM risolve in tempo polinomiale sbagliando, su ogni input, al più una volta su tre. L'unica differenza da BPP è **da dove vengono le probabilità**: in BPP i run sono equiprobabili, in BQP le probabilità delle configurazioni finali dipendono dalle ampiezze, cioè dalla $\\delta$ della QTM. Anche qui la soglia $2/3$ è una convenzione: ripetendo e votando, l'errore scende sotto qualunque soglia voluta con un numero polinomiale di ripetizioni.",
-     "esempio": "Una QTM che, su ogni input con risposta sì, finisce in yes con probabilità 0,8 e, su ogni input con risposta no, con probabilità 0,1, va bene per BQP. Se su qualche input con risposta sì finisse in yes solo con probabilità 0,6, non andrebbe bene: $0{,}6 < 2/3$, anche se il sì resta la risposta più probabile.",
-     "formale": "$L \\in \\mathrm{BQP}$ se e solo se esiste una QTM $Q$ che lavora in tempo polinomiale tale che, per ogni input $x$, la probabilità di osservare una configurazione con \"yes\" nella misura finale è:\n- almeno $2/3$ se $x \\in L$;\n- al più $1/3$ se $x \\notin L$, cioè $x$ è rifiutato con probabilità almeno $2/3$.\nLa \"probabilità di osservare yes\" è la somma dei quadrati $|\\alpha_c|^2$ delle ampiezze di tutte le configurazioni finali $c$ nello stato yes."
-    },
-    {
-     "id": "bqp-risultati",
-     "title": "Dove sta BQP: i risultati dimostrati",
-     "notAsked": false,
-     "ref": "§8",
-     "idea": "Confrontare BQP con le altre classi serve a capire quali problemi difficili diventeranno facili con un computer quantistico e quali resteranno difficili. Le QTM sono una macchina **ideale**, senza i problemi tecnologici di oggi (perdita di coerenza dei qubit, errori, poca memoria). Quindi questi risultati valgono anche se un giorno quei problemi saranno risolti: dipendono solo dalla natura delle computazioni. I risultati dimostrati sono tre:\n- $\\mathrm{BPP} \\subseteq \\mathrm{BQP}$: una QTM sa tirare una moneta equa (due mosse con ampiezza $1/\\sqrt2$, cioè probabilità $1/2$), quindi sa imitare una macchina BPP. Si pensa che le due classi siano diverse, ma è una domanda aperta;\n- $\\mathrm{BQP} \\subseteq \\mathrm{PP}$: la condizione di PP è più debole, basta più del 50% invece di almeno $2/3$;\n- BQP sta **strettamente** dentro 2-EXP, la classe dei problemi risolubili in tempo doppiamente esponenziale, del tipo $2^{2^{n^k}}$.",
-     "esempio": "Il ragionamento su ontologie scritte in OWL2, usate nel Semantic Web per descrivere basi di conoscenza, è almeno difficile quanto ogni problema di 2-EXP. Poiché BQP sta strettamente sotto 2-EXP, un computer quantistico **sicuramente** non lo risolve in tempo polinomiale. Qui non c'è nessuna congettura: è un risultato certo.",
-     "formale": "$$\n\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}\n$$\nSi legge da sinistra a destra. P sta in BQP perché sta in BPP. BQP sta in PSPACE perché PP sta in PSPACE: un computer classico simula un computer quantistico in spazio polinomiale. EXP (tempo esponenziale) sta strettamente dentro 2-EXP per il teorema di gerarchia del tempo (Lezione 5, §4 e §5), e il simbolo $\\subsetneq$ vuol dire proprio \"contenuto, ma non uguale\"."
-    },
-    {
-     "id": "congetture",
-     "title": "Le congetture: NP e BQP probabilmente incomparabili",
-     "notAsked": false,
-     "ref": "§8",
-     "idea": "Oltre ai risultati certi ci sono congetture forti, ma non dimostrate. La più importante: NP e BQP sarebbero **incomparabili**, cioè ognuna conterrebbe problemi che l'altra non contiene. In particolare un computer quantistico **non** risolverebbe in tempo polinomiale i problemi NP-completi. L'evidenza viene da \"mondi ipotetici\", le macchine con **oracolo** (Lezione 9, §2), in cui si dimostra che certe computazioni nondeterministiche non si simulano quantisticamente e viceversa. È un'evidenza forte ma non definitiva: gli algoritmi che non si riescono a simulare potrebbero non essere essenziali, cioè risolvere problemi che si risolvono anche in un altro modo.",
-     "esempio": "Ripasso (Lezione 7, §5): un problema è **completo** per una classe se sta nella classe e ogni altro problema della classe si riduce a lui. Se KNAPSACK, che è NP-completo, si risolvesse in tempo polinomiale su un computer quantistico, ogni problema di NP si risolverebbe riducendolo a KNAPSACK, e NP starebbe tutta dentro BQP, contro la congettura. Vale lo stesso per TSP, per SAT, per i sistemi di vincoli e per molti problemi di ottimizzazione. Allo stesso modo, se BQP sta strettamente dentro PSPACE, nessun problema PSPACE-completo si risolve in tempo polinomiale su un computer quantistico: per esempio decidere se esiste una strategia vincente a GO o a GEOGRAPHY, o QSAT (logica proposizionale con quantificatori).",
-     "formale": "Le congetture sono\n$$\n\\mathrm{PP} \\subsetneq \\mathrm{PSPACE}, \\qquad \\mathrm{NP} \\not\\subseteq \\mathrm{BQP}, \\qquad \\mathrm{BQP} \\not\\subseteq \\mathrm{NP}\n$$\nSi leggono così: PP non arriva a riempire PSPACE (e quindi neanche BQP, che sta dentro PP); NP non sta dentro BQP; BQP non sta dentro NP. La seconda da sola basta già per dire che BQP sta strettamente dentro PSPACE: NP sta in PSPACE, quindi se BQP fosse uguale a PSPACE conterrebbe anche NP. In sintesi BQP sta piuttosto in basso tra le classi, e la maggior parte dei problemi difficili resta difficile: l'interesse per il calcolo quantistico viene da alcuni problemi particolari."
-    }
-   ]
-  },
-  {
-   "id": "speedup",
-   "title": "Speedup quantistici",
-   "topics": [
-    {
-     "id": "speedup",
-     "title": "I tre speedup delle slide: Fourier, Shor, Grover",
-     "notAsked": true,
-     "ref": "§9",
-     "idea": "Uno **speedup** è un'accelerazione rispetto al miglior algoritmo classico noto. Le slide citano tre algoritmi quantistici, che danno la risposta con errore limitato, non con certezza:\n- la **trasformata di Fourier**, che scompone un segnale nelle sue frequenze, su spazi di dimensione $n$: da $O(n \\log n)$ a $O(\\log^2 n)$. Lo speedup è esponenziale, ma su un problema già in P; è il mattone dell'algoritmo di Shor;\n- la **fattorizzazione** degli interi con l'algoritmo di **Shor**: classicamente non si conosce un algoritmo polinomiale, Shor lo è. Il problema sta in NP, probabilmente non è NP-completo, e non si sa se sta in P;\n- la **ricerca non ordinata** con l'algoritmo di **Grover**: dati un insieme $S$ e una funzione $f$ che vale 0 o 1 e costa tempo $O(m)$, trovare un $x$ con $f(x) = 1$. A forza bruta si prova un elemento dopo l'altro, in tempo $O(m \\cdot |S|)$, dove $|S|$ è il numero di elementi; Grover impiega $O(m \\cdot \\sqrt{|S|})$. Lo speedup è **quadratico**.",
-     "esempio": "In un elenco telefonico **non ordinato** di un milione di nomi servono fino a un milione di controlli; con Grover ne bastano dell'ordine di $\\sqrt{1.000.000} = 1.000$."
-    },
-    {
-     "id": "grover-np",
-     "title": "Grover sui problemi NP: l'esponente si dimezza",
-     "notAsked": false,
-     "ref": "§9",
-     "idea": "La ricerca di Grover ha proprio la forma di un problema di NP: $S$ è l'insieme dei possibili certificati, che sono esponenzialmente tanti; ogni certificato è corto; $f$ è la verifica, che costa tempo polinomiale. Se la forza bruta classica costa $c^{n^k}$ passi, Grover la porta a circa $\\sqrt{c^{n^k}} = c^{n^k/2}$: l'esponente si **dimezza**. Il problema resta esponenziale, ma a parità di tempo si risolvono istanze **circa due volte più grandi**. Più il problema è difficile, meno si guadagna: se il classico costa $2^{n^k}$, la taglia risolubile nello stesso tempo cresce solo di un fattore $\\sqrt[k]{2}$.",
-     "esempio": "KNAPSACK (Lezione 8, §6): dati $n$ oggetti con pesi e valori, esiste un sottoinsieme con peso totale al più $W$ e valore totale almeno $V$? Grover cerca tra i $2^n$ sottoinsiemi, e controllarne uno costa $O(n)$. Il costo, scritto come nelle slide, è $O(4^{n/2})$: confrontato con il classico scritto nella stessa base, $O(4^n)$, è la radice quadrata. Con i tempi delle slide, in circa 3 ore e 20 minuti il classico arriva a 70 oggetti e Grover a 140. Le istanze reali, però, hanno decine di migliaia di oggetti: restano fuori portata anche con Grover.",
-     "formale": "Proposizione: ogni problema in NP si risolve quantisticamente, con errore limitato, in tempo $O\\big(c^{n^k/2}\\big)$ per qualche $c$ e $k$."
-    },
-    {
-     "id": "quando-conviene",
-     "title": "Quando conviene il calcolo quantistico",
-     "notAsked": true,
-     "ref": "§9",
-     "idea": "È una questione di rapporto tra costo e prestazioni. Le slide propongono quattro domande da porsi, in ordine, per ogni problema:\n1. È facile (in P)? Il calcolo classico è molto competitivo e costa decisamente meno: **classico**.\n2. È difficile, ma la taglia è gestibile con algoritmi classici? Il classico può convenire, a seconda di quanto accelera il quantistico.\n3. Altrimenti, la taglia è gestibile con un algoritmo quantistico (per gli NP-completi, circa il doppio)? Allora conviene il **quantistico**.\n4. Altrimenti serve una soluzione **approssimata**, che di solito richiede tempo polinomiale: lì il classico torna competitivo, perché per ora non ci sono risultati sull'approssimazione quantistica.",
-     "esempio": "SORT (ordinare una lista) è in P: caso 1, si usa il classico. KNAPSACK è NP-completo: dipende dalla taglia, quindi caso 2, 3 o 4."
-    }
-   ]
-  },
-  {
-   "id": "crittografia",
-   "title": "Crittografia e Shor",
-   "topics": [
-    {
-     "id": "crittografia",
-     "title": "Crittografia simmetrica e asimmetrica",
-     "notAsked": true,
-     "ref": "§10",
-     "idea": "La crittografia **simmetrica** usa una sola chiave, sia per cifrare sia per decifrare: i due interlocutori devono prima scambiarsela, e lo scambio è rischioso. La crittografia **asimmetrica**, o a chiave pubblica, usa due chiavi. Funziona come una cassetta delle lettere: chiunque può imbucare, cioè cifrare con la chiave **pubblica**, ma solo il proprietario può aprire, cioè decifrare con la chiave **privata**. Per la firma digitale si cifra con la chiave privata. La sicurezza dei cifrari asimmetrici è **computazionale**: non è impossibile romperli, è che nessuno conosce un algoritmo polinomiale per farlo.",
-     "esempio": "AES è un cifrario simmetrico; RSA e Diffie-Hellman sono asimmetrici.",
-     "formale": "Se cifrare e decifrare sono operazioni \"pratiche\" (in P), attaccare il cifrario sta al più in NP: si indovina la chiave e si verifica in tempo polinomiale se è giusta."
-    },
-    {
-     "id": "rsa",
-     "title": "RSA",
-     "notAsked": true,
-     "ref": "§10",
-     "idea": "Moltiplicare due numeri primi grandi è facile; risalire ai due primi partendo dal prodotto è, per i computer classici, difficilissimo. RSA mette il prodotto nella chiave pubblica e tiene segreti i due primi. Chi conosce i primi fa tutte le operazioni in tempo polinomiale; chi non li conosce dovrebbe fattorizzare. Nei conti, \"$a \\bmod n$\" è il resto della divisione di $a$ per $n$.",
-     "esempio": "Primi $p = 3$ e $q = 11$: $n = 33$ e $\\Phi(n) = (3-1)(11-1) = 20$. Si sceglie $e = 3$, che non ha fattori in comune con 20, e si trova $d = 7$, perché $3 \\cdot 7 = 21$ diviso 20 dà resto 1. Chiave pubblica $(3, 33)$, chiave privata $(7, 33)$. Il messaggio $m = 4$ si cifra in $4^3 \\bmod 33 = 64 \\bmod 33 = 31$ e si decifra con $31^7 \\bmod 33 = 4$.",
-     "formale": "Con $n = pq$ e $\\Phi(n) = (p-1)(q-1)$ (la funzione toziente di Eulero): $d = e^{-1} \\bmod \\Phi(n)$, cifratura $c = m^e \\bmod n$, decifratura $m = c^d \\bmod n$. RSA è sicuro perché non si conoscono algoritmi **classici** polinomiali né per la fattorizzazione (dato $n$, trovare $p$ e $q$), né per il logaritmo discreto (dati $c$, $n$ e $c^d \\bmod n$, trovare $d$), né per il calcolo di $\\Phi(n)$ a partire da $n$, che è difficile quanto fattorizzare."
-    },
-    {
-     "id": "shor",
-     "title": "L'impatto di Shor",
-     "notAsked": true,
-     "ref": "§10",
-     "idea": "Shor risolve in tempo polinomiale, su un computer quantistico, sia la fattorizzazione sia il logaritmo discreto: entrambi stanno in BQP. Quindi la crittografia **asimmetrica** (RSA, Diffie-Hellman) diventa violabile, perché non si basa su problemi NP-completi ma su problemi che Shor risolve. Sono a rischio SSL/TLS, HTTPS e le firme digitali. Le alternative sono cifrari basati su problemi NP-completi e la crittografia quantistica. La crittografia **simmetrica** invece sembra immune: Grover accelera l'attacco a forza bruta (provare tutte le chiavi), ma il costo resta esponenziale, e per tornare al livello di sicurezza di prima basta raddoppiare la lunghezza della chiave.",
-     "esempio": "Con una chiave da 128 bit la forza bruta classica prova circa $2^{128}$ chiavi, Grover circa $2^{64}$. Con una chiave da 256 bit Grover torna a $2^{128}$, e cifrare e decifrare diventano solo un po' più lenti. Nei protocolli reali la chiave pubblica serve solo all'inizio (handshake), per scambiarsi una chiave simmetrica di sessione: è quella fase, insieme alle firme digitali, che va ripensata."
-    }
-   ]
-  },
-  {
-   "id": "conclusioni",
-   "title": "Conclusioni",
-   "topics": [
-    {
-     "id": "conclusioni",
-     "title": "Le conclusioni: niente bacchetta magica",
-     "notAsked": false,
-     "ref": "§11",
-     "idea": "Il messaggio finale ha tre punti. Primo: il computer quantistico **non** è una bacchetta magica. I problemi difficili, dagli NP-completi in su, restano **plausibilmente** difficili (è una congettura); quelli da 2-EXP in su restano **sicuramente** difficili. Secondo: i benefici ci sono. Con Grover si risolvono istanze circa doppie dei problemi NP-completi, e qualche problema che si ritiene né NP-completo né in P, come la fattorizzazione, può diventare facile. Terzo: quando i problemi tecnologici saranno risolti, gli attuali cifrari asimmetrici potranno essere violati in fretta, e bisognerà ripensare le firme digitali e lo scambio iniziale delle chiavi.",
-     "esempio": "Domanda tipo: \"SAT sta in PP?\". Sì: SAT sta in NP, e NP sta dentro PP. Domanda tipo: \"ciò che risolve un computer quantistico richiede solo spazio polinomiale su un computer classico?\". Sì: BQP sta dentro PSPACE.",
-     "formale": "La catena da sapere è\n$$\n\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}, \\qquad \\mathrm{NP} \\subseteq \\mathrm{PP}\n$$\nE le tre classi della lezione a confronto:\n\n| Classe | Si accetta se | Errore sotto una soglia fissata in tempo polinomiale? |\n|---|---|---|\n| **PP** | più della metà dei run dice \"yes\" | non si sa (il vantaggio può essere esponenzialmente piccolo) |\n| **BPP** | almeno 3/4 dei run dà la risposta giusta | **sì** |\n| **BQP** | la QTM dà la risposta giusta con probabilità almeno 2/3 | **sì** |"
-    }
-   ]
-  }
- ],
- "exercises": [
-  {
-   "q": "Conviene risolvere SORT con un computer quantistico?",
-   "a": "**No.** SORT è in P ($O(n \\log n)$): il calcolo classico è già efficiente e costa molto meno. Non c'è margine per uno speedup esponenziale: ordinando per confronti servono almeno circa $n \\log n$ confronti anche con un algoritmo quantistico. È il caso 1 della lista \"Quando conviene il calcolo quantistico\"."
-  },
-  {
-   "q": "Conviene risolvere KNAPSACK con un computer quantistico?",
-   "a": "**Dipende dalla taglia.** KNAPSACK è NP-completo: si congettura che non stia in BQP, quindi niente soluzione polinomiale. Grover dà uno speedup quadratico ($O(c^n) \\to O(c^{n/2})$): conviene quando l'istanza è troppo grande per il classico ma rientra nella taglia circa **doppia** gestibile da Grover. Per istanze enormi (migliaia di oggetti) servono algoritmi **approssimati**, polinomiali, dove il classico torna competitivo."
-  },
-  {
-   "q": "Conviene sviluppare algoritmi quantistici di crittografia?",
-   "a": "**Sì.** Shor rende violabili in tempo polinomiale i cifrari asimmetrici (RSA, Diffie-Hellman), quindi l'handshake di TLS/HTTPS e le firme digitali. Servono alternative: crittografia **quantistica** (es. distribuzione quantistica delle chiavi) oppure cifrari classici basati su problemi ritenuti difficili anche per BQP (es. NP-completi). La crittografia simmetrica invece basta allungarla (chiavi lunghe il doppio contro Grover)."
-  },
-  {
-   "q": "Quante ripetizioni servono, con soglia $3/4$, per avere errore al massimo $1\\%$?",
-   "a": "Qui il margine è $\\varepsilon = 1/4$ e l'errore voluto è $\\delta = 0{,}01$. Con la formula della stima di Chernoff: $k = \\lceil -8 \\ln 0{,}01 \\rceil = \\lceil 8 \\cdot 4{,}605 \\rceil = 37$, quindi $2k+1 = 75$ ripetizioni. È un limite superiore e prudente (nella realtà ne bastano meno), ed è una **costante**: non dipende da $n$."
-  }
- ],
- "exam": {
-  "intro": "Gli argomenti di questa lezione compaiono all'esame come domande **SÌ / NO / altro**, da motivare in poche righe. Cosa saper fare:",
-  "bullets": [
-   "**Riduzione dell'errore.** Saper dire se l'errore si può portare sotto una soglia fissata in tempo polinomiale: **sì per BPP** (maggioranza netta, poche ripetizioni), **non noto per PP** (la maggioranza può essere di un solo run). È la domanda più frequente su questa lezione.",
-   "**Tradurre la domanda in una classe.** \"Algoritmo probabilistico a errore limitato, in tempo polinomiale\" significa **BPP**; \"macchina di Turing quantistica a errore limitato, in tempo polinomiale\" significa **BQP**.",
-   "**Usare la catena delle inclusioni.** Con $\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$ e $\\mathrm{NP} \\subseteq \\mathrm{PP}$ si risponde subito a domande come \"SAT sta in PP?\" (sì) o \"ciò che risolve un computer quantistico richiede solo spazio polinomiale su un computer classico?\" (sì).",
-   "**Grover.** Lo speedup è quadratico: $2^n$ diventa $2^{n/2}$. Contro la forza bruta sulle chiavi simmetriche basta quindi raddoppiarne la lunghezza.",
-   "**Distinguere il dimostrato dal congetturato.** Per i problemi NP-completi e PSPACE-completi su un computer quantistico la risposta è \"non si sa, ma si congettura di no\"; per i problemi 2-EXP-completi è un **no certo**."
-  ],
-  "notes": [
-   "🎯 Nelle tracce queste domande sono spesso combinate con classi che arrivano più avanti (Lezioni 9 e 10). Il ragionamento resta lo stesso: collocare le classi nella catena e controllare se l'inclusione richiesta è nota, impossibile o ancora aperta.",
-   "📖 **Riferimento:** slide lezione-6.pdf (Bonatti, \"Algoritmi probabilistici – Quantum Computation\"). Papadimitriou cap. 11 (Randomized computation, Teorema 11.3). La dispensa non ha un capitolo dedicato."
-  ]
- },
- "mapCaption": "Le frecce piene della figura sono inclusioni **dimostrate**: $\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$ in alto, e $\\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{PP}$ in basso. Il tratteggio giallo tra BQP e NP indica una relazione solo **congetturata** (incomparabili); la fattorizzazione sta in entrambe. Sotto ogni classe ci sono problemi d'esempio: MAJSAT è completo per PP; QSAT e GO sono PSPACE-completi e si congettura che stiano fuori da BQP; il ragionamento su ontologie OWL2 è almeno difficile quanto ogni problema di 2-EXP ed è fuori da BQP di sicuro.",
- "remember": "**Da ricordare.** Dimostrato: $\\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$, quindi un computer classico simula uno quantistico in spazio polinomiale; e $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$, quindi i problemi 2-EXP-completi restano **sicuramente** difficili. Congetturato: NP e BQP incomparabili, quindi niente algoritmi quantistici polinomiali per i problemi NP-completi e PSPACE-completi. BQP sta piuttosto in basso: l'interesse viene da alcuni speedup specifici."
+    "mapCaption": "Le frecce piene della figura sono inclusioni **dimostrate**: $\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$ in alto, e $\\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{PP}$ in basso. Il tratteggio giallo tra BQP e NP indica una relazione solo **congetturata** (incomparabili); la fattorizzazione sta in entrambe. Sotto ogni classe ci sono problemi d'esempio: MAJSAT è completo per PP; QSAT e GO sono PSPACE-completi e si congettura che stiano fuori da BQP; il ragionamento su ontologie OWL2 è almeno difficile quanto ogni problema di 2-EXP ed è fuori da BQP di sicuro.",
+    "remember": "**Da ricordare.** Dimostrato: $\\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$, quindi un computer classico simula uno quantistico in spazio polinomiale; e $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$, quindi i problemi 2-EXP-completi restano **sicuramente** difficili. Congetturato: NP e BQP incomparabili, quindi niente algoritmi quantistici polinomiali per i problemi NP-completi e PSPACE-completi. BQP sta piuttosto in basso: l'interesse viene da alcuni speedup specifici."
 }

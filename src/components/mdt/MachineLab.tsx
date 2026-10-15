@@ -17,7 +17,7 @@ export function SolutionLab({ id }: { id: string }) {
         <div className="flex flex-col gap-3">
             <Runner program={program} kind={m.kind} oracle={m.oracle} samples={m.samples} inputHint={m.inputHint} />
             <details className="border-line rounded-lg border p-3 text-sm">
-                <summary className="text-accent cursor-pointer">Il programma nel formato del simulatore</summary>
+                <summary className="text-accent cursor-pointer">Mostra il codice della soluzione</summary>
                 <pre className="bg-sunk mt-3 overflow-x-auto rounded-lg p-3 font-mono text-sm leading-relaxed">
                     {m.source}
                 </pre>
@@ -67,9 +67,9 @@ export function PracticeLab({ id, draftKey }: { id?: string; draftKey: string })
                     o.result === "h"
                         ? `output ${o.output || "(vuoto)"}`
                         : o.result === "limit"
-                          ? "non si ferma"
+                          ? "limite di esecuzione raggiunto"
                           : o.result;
-                fails.push(`${x || "(vuota)"}: atteso ${want}, la tua macchina dà ${got}`);
+                fails.push(`Input ${x || "(stringa vuota)"}: atteso ${want}; ottenuto ${got}`);
             }
         }
         setReport({ ok, tot: tests.length, fails });
@@ -79,7 +79,7 @@ export function PracticeLab({ id, draftKey }: { id?: string; draftKey: string })
         <div className="flex min-w-0 flex-col gap-3">
             {!id && (
                 <label className="font-ui text-muted flex flex-col gap-1 text-sm">
-                    Parti da
+                    Scegli un esercizio
                     <select
                         className={ui.select}
                         value={preset}
@@ -89,7 +89,7 @@ export function PracticeLab({ id, draftKey }: { id?: string; draftKey: string })
                             set(e.target.value ? MACHINE_BY[e.target.value].skeleton : null);
                         }}
                     >
-                        <option value="">un programma vuoto</option>
+                        <option value="">Programma libero</option>
                         {MACHINES.map((x) => (
                             <option key={x.id} value={x.id}>
                                 {x.title}
@@ -118,7 +118,7 @@ export function PracticeLab({ id, draftKey }: { id?: string; draftKey: string })
                 autoCapitalize="off"
                 autoCorrect="off"
                 rows={Math.min(18, Math.max(8, source.split("\n").length + 1))}
-                aria-label="Il programma della macchina"
+                aria-label="Scrivi le transizioni della macchina"
                 className="border-line-strong bg-bg text-ink focus:border-accent w-full min-w-0 rounded-lg border p-3 font-mono text-base leading-relaxed outline-none"
             />
             {errors.length > 0 && (
@@ -131,15 +131,15 @@ export function PracticeLab({ id, draftKey }: { id?: string; draftKey: string })
             <div className="flex flex-wrap gap-2">
                 {m && (
                     <button type="button" className={ui.btnPrimary} onClick={verify} disabled={!program}>
-                        Verifica su tutti gli input di prova
+                        Verifica i casi di prova
                     </button>
                 )}
                 <button type="button" className={ui.btn} onClick={() => set(null)}>
-                    Ricomincia
+                    Riparti dal modello
                 </button>
                 {m && (
                     <button type="button" className={ui.btn} onClick={() => set(m.source)}>
-                        Carica la soluzione
+                        Usa la soluzione
                     </button>
                 )}
             </div>
@@ -147,8 +147,8 @@ export function PracticeLab({ id, draftKey }: { id?: string; draftKey: string })
                 <div className={report.ok === report.tot ? ui.noteOk : ui.note} aria-live="polite">
                     <p className="font-semibold">
                         {report.ok === report.tot
-                            ? `Corretta su tutti i ${report.tot} input di prova.`
-                            : `Corretta su ${report.ok} input di prova su ${report.tot}.`}
+                            ? `Tutti i ${report.tot} casi di prova superati.`
+                            : `Casi di prova superati: ${report.ok} su ${report.tot}.`}
                     </p>
                     {report.fails.length > 0 && (
                         <ul className="mt-1 list-disc pl-5 font-mono text-sm">

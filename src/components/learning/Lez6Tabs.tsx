@@ -11,18 +11,14 @@ export const RANDOM_GROUPS = ["probabilistici", "pp", "bpp"];
 export const QUANTUM_GROUPS = ["quantistico", "bqp"];
 /** #ancora di ogni spiegazione → indice della scheda che la contiene */
 export const LEZ6_ANCHORS: Record<string, number> = Object.fromEntries([
-    ...lez6Groups(...RANDOM_GROUPS).flatMap((g) => g.topics.map((t) => [t.id, 2])),
-    ...lez6Groups(...QUANTUM_GROUPS).flatMap((g) => g.topics.map((t) => [t.id, 3])),
+    ...lez6Groups(...RANDOM_GROUPS).flatMap((g) => g.topics.map((t) => [t.id, 1])),
+    ...lez6Groups(...QUANTUM_GROUPS).flatMap((g) => g.topics.map((t) => [t.id, 2])),
 ]);
-const HOW_TO =
-    "Per ogni concetto prima l'idea, poi un esempio, poi la versione formale. Ogni titolo si apre con un clic; i riquadri «non chiesto all'esame» si possono saltare.";
+const HOW_TO = "Apri un argomento per leggere l'idea, un esempio e la definizione formale.";
 
 export function RandomTab() {
     return (
         <div className="flex flex-col gap-7">
-            <div className={ui.noteExt}>
-                <Markdown>{LEZ6.intro}</Markdown>
-            </div>
             <Lez6Questions only={[0, 1]} />
             <section className="flex flex-col gap-3">
                 <h3 className={ui.h3}>Dove stanno nella gerarchia</h3>
@@ -31,7 +27,6 @@ export function RandomTab() {
                     altre.
                 </p>
                 <Lez6Map initial="BPP" />
-                <Markdown className="text-muted text-base">{LEZ6.mapCaption}</Markdown>
             </section>
             <section className="flex flex-col gap-3">
                 <h2 className={ui.h2}>Spiegazione semplificata</h2>
@@ -42,7 +37,7 @@ export function RandomTab() {
                 <h3 className={ui.h3}>Esercizio</h3>
                 <Lez6Exercises only={[3]} />
             </section>
-            <Lez6Exam bullets={[0, 1, 2]} notes={[0]} test={/\b(?:BPP|PP)\b/} />
+            <Lez6Exam bullets={[0, 1, 2]} test={/\b(?:BPP|PP)\b/} />
             <Lez6Source />
         </div>
     );

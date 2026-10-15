@@ -43,7 +43,7 @@ export default function GuidedExample({
             <div className="flex flex-col gap-3">{s.body}</div>
             {program && !last && (
                 <div className="border-line bg-surface flex flex-col gap-1 rounded-xl border p-4">
-                    <p className={ui.label}>La tabella finora</p>
+                    <p className={ui.label}>Transizioni scritte finora</p>
                     <ul className="flex flex-col gap-1 font-mono text-sm">
                         {program.rules.map((r, k) => (
                             <li

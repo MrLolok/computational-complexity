@@ -67,7 +67,13 @@ export default function ContextHelp({ children }: { children: ReactNode }) {
   useEffect(() => () => { keep(); anchor.current?.removeAttribute("aria-describedby"); }, []);
 
   return (
-    <div className="flex min-w-0 flex-col gap-6" onPointerOver={show} onPointerOut={e => {
+    <div className="flex min-w-0 flex-col gap-6" onClickCapture={e => {
+      const details = (e.target as HTMLElement).closest("summary")?.parentElement;
+      if (!(details instanceof HTMLDetailsElement) || details.open) return;
+      requestAnimationFrame(() => {
+        if (details.open) details.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+      });
+    }} onPointerOver={show} onPointerOut={e => {
       if (anchor.current?.contains(e.relatedTarget as Node) || popup.current?.contains(e.relatedTarget as Node)) keep();
       else later();
     }} onFocusCapture={show} onBlurCapture={e => {

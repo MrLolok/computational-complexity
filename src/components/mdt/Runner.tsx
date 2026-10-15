@@ -105,7 +105,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
                     />
                 </label>
                 <button type="submit" className={ui.btn}>
-                    Carica
+                    Carica input
                 </button>
             </form>
             <div className="flex flex-wrap gap-2">
@@ -119,7 +119,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
                             restart(s);
                         }}
                     >
-                        {s || "(vuota)"}
+                        {s || "Stringa vuota"}
                     </button>
                 ))}
             </div>
@@ -150,7 +150,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
                             ? "yes: accetta"
                             : end.result === "no"
                               ? "no: rigetta"
-                              : `h: output ${output || "(vuoto)"}`}
+                              : `h: risultato ${output || "(nastro vuoto)"}`}
                     </span>
                 )}
             </div>
@@ -173,7 +173,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
 
             {choice && (
                 <div className="border-open/50 flex flex-col gap-2 rounded-lg border p-3">
-                    <p className="font-ui text-open text-sm">Scelta nondeterministica: quale ramo segui?</p>
+                    <p className="font-ui text-open text-sm">Ci sono più transizioni possibili. Scegli il ramo da seguire.</p>
                     {options.map((r, i) => (
                         <button
                             key={r.line}
@@ -190,7 +190,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
 
             <div className="flex flex-wrap gap-2">
                 <button type="button" className={ui.btn} onClick={() => restart()} disabled={history.length === 1}>
-                    ⟲ Da capo
+                    ⟲ Riparti dall&apos;input
                 </button>
                 <button
                     type="button"
@@ -198,7 +198,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
                     onClick={() => setHistory((h) => h.slice(0, -1))}
                     disabled={history.length === 1}
                 >
-                    ← Indietro
+                    ← Un passo indietro
                 </button>
                 <button
                     type="button"
@@ -206,7 +206,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
                     onClick={() => step()}
                     disabled={Boolean(end) || choice}
                 >
-                    {c.state === QUERY ? "Chiedi all'oracolo" : "Passo →"}
+                    {c.state === QUERY ? "Chiedi all'oracolo" : "Un passo →"}
                 </button>
                 <button
                     type="button"

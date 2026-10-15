@@ -10,7 +10,7 @@ import { PracticeLab, SolutionLab } from "@/components/mdt/MachineLab";
 import { goRightNote, MACHINES, MDT_BODY, MDT_METHOD, tracesOf } from "@/data/mdt";
 import { ui } from "@/lib/ui";
 
-export const metadata: Metadata = { title: "Programmare una MdT" };
+export const metadata: Metadata = { title: "Macchine di Turing: guida ed esercizi" };
 
 const GO = `s ▷ -> s ▷ R      # supera l'inizio del nastro
 s b -> s b R      # vai in fondo
@@ -26,65 +26,68 @@ o' ⊔ -> h 0 S     # aggiunge lo 0 in coda
 `;
 const STEPS: GuidedStep[] = [
     {
-        title: "L'idea",
+        title: "Parti dall'idea",
         source: GO,
         added: 3,
         body: (
             <Markdown>
                 {
-                    "**Incremento di 1.** Dal fondo verso sinistra: ogni 1 diventa 0 (riporto), il primo 0 diventa 1 e si termina. In binario si lavora dalla cifra meno significativa, che sta a destra: la macchina parte quindi con il blocco «vai in fondo» e, sulla prima cella vuota, torna indietro di una cella."
+                    "**Aggiungere 1 a un numero binario.** Parti da destra: trasforma ogni 1 finale in 0, poi cambia il primo 0 in 1. Per raggiungere l'ultima cifra, la macchina scorre l'input fino alla prima cella vuota e torna indietro di una posizione. Queste prime tre righe fanno proprio questo."
                 }
             </Markdown>
         ),
     },
     {
-        title: "Gli stati",
+        title: "Scegli gli stati",
         source: GO + CARRY,
         added: 2,
         body: (
             <Markdown>
                 {
-                    'Uno stato per ogni cosa da ricordare. Qui basta **q** = "sto portando un riporto": su un 1 scrive 0 e il riporto continua verso sinistra; sul primo 0 scrive 1, il riporto è assorbito e la macchina si ferma in $h$.'
+                    'Lo stato **q** ricorda una sola cosa: «devo ancora sommare il riporto». Se legge 1, scrive 0 e continua a sinistra. Se legge 0, scrive 1: il riporto è risolto e la macchina termina in $h$.'
                 }
             </Markdown>
         ),
     },
     {
-        title: "I casi limite",
+        title: "Gestisci i casi limite",
         source: GO + CARRY + OVERFLOW,
         added: 4,
         body: (
             <Markdown>
                 {
-                    "Se il riporto arriva fino a $\\triangleright$ c'è **overflow**: l'input era $1\\dots1$ e ora il nastro contiene $0\\dots0$. Si mette 1 nella prima cella e si aggiunge uno 0 in coda ($111 + 1 = 1000$). Tutte le coppie (stato, simbolo) che non compaiono nella tabella rigettano."
+                    "**E se il numero contiene solo 1?** Il riporto arriva fino a $\\triangleright$: serve una cifra in più. La macchina scrive 1 all'inizio e aggiunge uno 0 in coda: $111 + 1 = 1000$. Le combinazioni di stato e simbolo senza una regola portano al rifiuto."
                 }
             </Markdown>
         ),
     },
     {
-        title: "La simulazione",
+        title: "Prova la macchina",
         source: GO + CARRY + OVERFLOW,
         added: 0,
         body: (
             <Markdown>
                 {
-                    "Simula la macchina su un input piccolo, un passo alla volta: con **11** deve lasciare sul nastro **100** ($3 + 1 = 4$). Prova anche 1011 e 0, poi scrivi un input tuo."
+                    "La tabella è completa. Usa **Un passo** per seguire ogni transizione oppure **Esegui** per avviare la simulazione. Con input **11** il risultato deve essere **100** ($3 + 1 = 4$). Prova poi **1011** e **0**, o inserisci un altro numero binario."
                 }
             </Markdown>
         ),
     },
 ];
 
-const SYNTAX = `Nel simulatore una riga della tabella $\\delta$ è una riga di testo: \`q 1 -> q 0 L\` vuol dire $\\delta(q, 1) = (q, 0, \\leftarrow)$.
+const SYNTAX = `Scrivi **una transizione per riga**. Per esempio, \`q 1 -> q 0 L\` significa: «se sei in q e leggi 1, scrivi 0, spostati a sinistra e resta in q». In formule: $\\delta(q, 1) = (q, 0, \\leftarrow)$.
 
-- **Mosse**: \`R\` (destra, $\\rightarrow$), \`L\` (sinistra, $\\leftarrow$), \`S\` (ferma, $-$).
-- **Simboli speciali**: \`▷\` (o \`>\`) per l'inizio del nastro e \`⊔\` (o \`_\`) per la cella vuota. Ogni altro carattere è un simbolo del nastro.
-- **Jolly**: \`b\` e \`b'\` sono un bit qualsiasi, \`b̄\` (o \`!b\`) è il bit opposto a \`b\`, \`σ\` (o \`*\`) è un simbolo qualsiasi tranne $\\triangleright$. Scritti a destra della freccia ripetono il simbolo letto.
-- **Più nastri**: a sinistra lo stato e un simbolo letto per nastro; a destra il nuovo stato e una coppia (simbolo scritto, mossa) per nastro, per esempio \`s 0 ⊔ -> s 0 R 0 R\`.
-- **Stati**: si parte da \`s\`; \`h\`, \`yes\` e \`no\` sono finali. Con l'oracolo la macchina chiede nello stato \`q?\`, l'oracolo legge l'ultimo nastro (quello di query) e la macchina passa in \`qYES\` o \`qNO\`.
-- **Commenti**: tutto ciò che segue \`#\` sulla riga.
+- **Movimenti:** \`R\` = destra, \`L\` = sinistra, \`S\` = testina ferma.
+- **Celle speciali:** \`▷\` (oppure \`>\`) segna l'inizio del nastro; \`⊔\` (oppure \`_\`) indica una cella vuota.
+- **Jolly:** \`b\` indica un bit; \`b'\` un altro bit indipendente; \`b̄\` (oppure \`!b\`) il bit opposto a \`b\`. \`σ\` (oppure \`*\`) indica un simbolo qualsiasi tranne \`▷\`. A destra della freccia, \`b\`, \`b'\` e \`σ\` riscrivono il simbolo letto; \`b̄\` scrive il bit opposto a \`b\`.
+- **Stati finali:** parti da \`s\`; termina in \`h\` per restituire un risultato, in \`yes\` per accettare o in \`no\` per rifiutare.
+- **Commenti:** usa \`#\`; il resto della riga non viene eseguito.
 
-Due regole del simulatore: se per una coppia (stato, simboli letti) non c'è nessuna riga, la macchina rigetta; se ce ne sono più di una, vince quella con più simboli esatti, e se restano più righe la macchina è nondeterministica e ogni riga è una scelta.`;
+**Con più nastri**, scrivi a sinistra un simbolo letto per ciascun nastro. A destra, dopo il nuovo stato, scrivi una coppia «simbolo, movimento» per ciascuno. Esempio: \`s 0 ⊔ -> s 0 R 0 R\`.
+
+**Con un oracolo**, scrivi la domanda sull'ultimo nastro ed entra in \`q?\`. La risposta porta la macchina in \`qYES\` oppure \`qNO\`.
+
+**Se manca una regola**, la macchina rifiuta. Se più righe sono applicabili, hanno precedenza quelle con più simboli esatti. A parità di precedenza, ogni riga è un ramo nondeterministico.`;
 
 export default function Page() {
     return (
@@ -92,18 +95,18 @@ export default function Page() {
             <OpenOnHash />
             <header className="flex flex-col gap-3">
                 <p className={ui.eyebrow}>Domanda 8 delle tracce</p>
-                <h1 className={ui.h1}>Programmare una macchina di Turing, passo per passo</h1>
+                <h1 className={ui.h1}>Impara a programmare una macchina di Turing</h1>
                 <p className={ui.lede}>
-                    Il metodo per scrivere la tabella δ, un esempio guidato, un simulatore dove provare le tue macchine
-                    e le soluzioni di tutte le tracce da eseguire un passo alla volta.
+                    Parti dall&apos;idea, scegli gli stati e scrivi le transizioni. Segui l&apos;esempio guidato,
+                    poi prova la tua macchina nel simulatore o esplora le soluzioni delle tracce.
                 </p>
                 <nav aria-label="In questa pagina" className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
                     {[
                         ["metodo", "Il metodo"],
                         ["esempio", "Esempio guidato"],
-                        ["formato", "Come si scrive qui"],
-                        ["laboratorio", "Laboratorio"],
-                        ["macchine", "Le macchine delle tracce"],
+                        ["formato", "Sintassi"],
+                        ["laboratorio", "Prova tu"],
+                        ["macchine", "Soluzioni delle tracce"],
                     ].map(([id, label]) => (
                         <a key={id} href={`#${id}`} className="text-accent underline underline-offset-4">
                             {label}
@@ -124,35 +127,36 @@ export default function Page() {
             <section id="esempio" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
                 <h2 className={ui.h2}>Esempio guidato: l&apos;incremento di 1</h2>
                 <p className={ui.hint}>
-                    I quattro passi del metodo, uno alla volta. In ogni passo le righe nuove della tabella sono
-                    evidenziate.
+                    Costruisci la tabella in quattro passi. Le righe aggiunte a ogni passo sono evidenziate;
+                    alla fine puoi eseguire la macchina.
                 </p>
                 <GuidedExample steps={STEPS} samples={["11", "1011", "0"]} inputHint="un numero binario" />
             </section>
 
             <section id="formato" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
-                <h2 className={ui.h2}>Come si scrive una macchina qui</h2>
+                <h2 className={ui.h2}>Come scrivere le transizioni</h2>
                 <Markdown>{SYNTAX}</Markdown>
             </section>
 
             <section id="laboratorio" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
-                <h2 className={ui.h2}>Laboratorio</h2>
+                <h2 className={ui.h2}>Prova tu</h2>
                 <p className={ui.hint}>
-                    Scegli un esercizio delle tracce e scrivi la tua tabella: il pulsante Verifica la prova su tutti gli
-                    input di prova. Quello che scrivi resta salvato in questo browser.
+                    Scegli un esercizio e completa le transizioni. Usa «Verifica i casi di prova» per confrontare
+                    i risultati con quelli attesi. Il programma si salva automaticamente in questo browser.
                 </p>
                 <PracticeLab draftKey="laboratorio" />
             </section>
 
             <section id="macchine" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
-                <h2 className={ui.h2}>Le macchine delle tracce</h2>
+                <h2 className={ui.h2}>Soluzioni delle tracce</h2>
                 <p className={ui.hint}>
-                    Ogni soluzione con l&apos;idea, la tabella, le tracce passo passo e il simulatore.
+                    Apri un esercizio per leggere il ragionamento, consultare la tabella ed eseguire la soluzione.
                 </p>
                 {MACHINES.map((m) => (
                     <details
                         key={m.id}
                         id={m.id}
+                        name="mdt-solutions"
                         className="group border-line bg-surface open:border-line-strong scroll-mt-20 rounded-xl border"
                     >
                         <summary className="flex min-h-11 cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 [&::-webkit-details-marker]:hidden">
@@ -187,7 +191,7 @@ export default function Page() {
                                     <Markdown>{goRightNote(m.id)!}</Markdown>
                                 </div>
                             )}
-                            <h3 className={ui.h3}>Eseguila</h3>
+                            <h3 className={ui.h3}>Prova la soluzione</h3>
                             <SolutionLab id={m.id} />
                         </div>
                     </details>

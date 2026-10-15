@@ -6,18 +6,19 @@ import Markdown from "@/components/Markdown";
 import { LEZ6 } from "@/data/lezione6";
 import { TRACES } from "@/data/traces";
 import { ui } from "@/lib/ui";
+import LearningFigure from "./LearningFigure";
 import OpenOnHash from "./OpenOnHash";
 
 const PARTS = [
-    ["idea", "L'idea"],
-    ["esempio", "Un esempio"],
-    ["formale", "In termini formali"],
+    ["idea", "In breve"],
+    ["esempio", "Esempio"],
+    ["formale", "Definizione e formule"],
 ] as const;
 
 /** Spiegazione semplificata degli appunti: un riquadro per concetto, con idea, esempio e versione formale. */
 export function Lez6Topics({ groups }: { groups: Lez6Group[] }) {
     return (
-        <div className="flex flex-col gap-7">
+        <div className="flex min-w-0 flex-col gap-7 [&_p]:max-w-none!">
             <OpenOnHash />
             {groups.map((g) => (
                 <section key={g.id} className="flex flex-col gap-2">
@@ -26,6 +27,7 @@ export function Lez6Topics({ groups }: { groups: Lez6Group[] }) {
                         <details
                             key={t.id}
                             id={t.id}
+                            name="lezione-6"
                             className="group border-line bg-surface open:border-line-strong scroll-mt-20 rounded-xl border"
                         >
                             <summary className="flex min-h-11 cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 [&::-webkit-details-marker]:hidden">
@@ -40,12 +42,14 @@ export function Lez6Topics({ groups }: { groups: Lez6Group[] }) {
                                 </span>
                                 {t.notAsked && <span className={ui.pill}>non chiesto all&apos;esame</span>}
                             </summary>
-                            <div className="border-line flex flex-col gap-4 border-t px-4 pt-4 pb-5">
+                            <div className="border-line flex min-w-0 flex-col gap-5 border-t px-4 pt-4 pb-5 leading-relaxed">
                                 {PARTS.map(([key, label]) =>
                                     t[key] ? (
-                                        <div key={key} className="flex flex-col gap-1.5">
+                                        <div key={key} className="flex min-w-0 flex-col gap-1.5">
                                             <p className={ui.label}>{label}</p>
                                             <Markdown>{t[key]}</Markdown>
+                                            {key === "esempio" && t.id === "voto" && <LearningFigure kind="maggioranza" sizes="(width < 80rem) 90vw, 1200px" />}
+                                            {key === "esempio" && t.id === "ampiezze" && <LearningFigure kind="interferenza" sizes="(width < 80rem) 90vw, 1200px" />}
                                         </div>
                                     ) : null,
                                 )}
@@ -78,11 +82,11 @@ export function Lez6Questions({ only }: { only?: number[] }) {
 
 export function Lez6Exercises({ only }: { only: number[] }) {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 [&_p]:max-w-none!">
             {only
                 .map((i) => LEZ6.exercises[i])
                 .map((e) => (
-                    <details key={e.q} className="group border-line rounded-xl border">
+                    <details key={e.q} name="lezione-6" className="group border-line rounded-xl border">
                         <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 px-4 py-3 font-semibold [&::-webkit-details-marker]:hidden">
                             <span aria-hidden="true" className="text-muted transition-transform group-open:rotate-90">
                                 ›
@@ -114,7 +118,7 @@ export function Lez6Exam({ bullets, notes = [], test }: { bullets: number[]; not
                 </div>
             ))}
             {questions.length > 0 && (
-                <details className="border-line rounded-lg border p-4 text-sm">
+                <details name="lezione-6" className="border-line rounded-lg border p-4 text-sm">
                     <summary className="text-accent cursor-pointer">
                         Prova nelle tracce · {questions.length} domande
                     </summary>
