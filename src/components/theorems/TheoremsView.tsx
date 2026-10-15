@@ -8,6 +8,7 @@ import { THEOREMS, type Theorem } from "@/data/theorems";
 import { PRIORITY, PROOF, PROOF_KIND } from "@/data/theoremProofs";
 import { TRACE_BY } from "@/data/traces";
 import ClassChip from "@/components/ClassChip";
+import Markdown from "@/components/Markdown";
 import Rich from "@/components/Rich";
 import { chapterTitle, filterTheorems, groupByChapter, groupByPriority, thProblems, whereText } from "@/lib/theorems";
 import { fillChips } from "@/lib/rich";
@@ -23,8 +24,32 @@ const h4 = "mb-0.5 font-ui text-xs font-semibold uppercase tracking-widest text-
 /* evidenziazione del teorema aperto da un indirizzo: si accende e poi sfuma */
 const HL_ON = ["bg-accent-soft/70"];
 const HL_FADE = ["transition-colors", "duration-1500", "ease-out"];
-/* testo HTML delle dimostrazioni: paragrafi ed elenchi numerati */
-const proofText = "flex flex-col gap-2 [&_ol]:flex [&_ol]:list-decimal [&_ol]:flex-col [&_ol]:gap-1.5 [&_ol]:pl-6 [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-1 [&_ul]:pl-6";
+const box = "rounded-lg border border-line px-4 open:pb-4";
+const boxSummary = "flex min-h-11 cursor-pointer items-center font-ui text-sm font-semibold text-accent";
+/* i titoli di sezione delle spiegazioni diventano h4, con lo stile delle altre voci della scheda */
+const mdText = "[&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-semibold [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted";
+
+/* spiegazione in Markdown senza il titolo (è già nella scheda); le risposte alle domande di controllo sono blocchi <details> scritti a mano */
+function Explanation({ md }: { md: string }) {
+  const parts = md
+    .replace(/^# .*\n/, "")
+    .replace(/^## /gm, "#### ")
+    .split(/<details><summary>(.*?)<\/summary>|<\/details>/);
+  return (
+    <div className="flex flex-col gap-3">
+      {parts.map((p, i) =>
+        i % 2 || !p.trim() ? null : parts[i - 1] ? (
+          <details key={i} className={box}>
+            <summary className={boxSummary}>{parts[i - 1]}</summary>
+            <Markdown className={mdText}>{p}</Markdown>
+          </details>
+        ) : (
+          <Markdown key={i} className={mdText}>{p}</Markdown>
+        ),
+      )}
+    </div>
+  );
+}
 
 const subscribeHash = (cb: () => void) => {
   window.addEventListener("hashchange", cb);
@@ -43,11 +68,13 @@ const getHash = () => {
 };
 const getServerHash = () => "";
 
-function TheoremRow({ t }: { t: Theorem }) {
+function TheoremRow({ t, md }: { t: Theorem; md?: string }) {
   const cls = (t.classi || []).filter((c) => NAME[c]);
   const pr = thProblems(t);
   const pf = PROOF[t.id];
   const lesson = walkthroughs[t.id as keyof typeof walkthroughs];
+  /* le spiegazioni hanno migliaia di formule: si rendono solo quando la si apre */
+  const [mdOpen, setMdOpen] = useState(false);
   return (
     <details id={`teorema-${t.id}`} className={`${ui.card} group mt-3 scroll-mt-20 open:border-line-strong`}>
       <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
@@ -87,12 +114,10 @@ function TheoremRow({ t }: { t: Theorem }) {
           </div>
         )}
         {lesson && <LearningSlideshow lesson={lesson} name={plainMath(t.nome.replace(/<[^>]*>/g, ""))} title={lesson.kind === "conditional" ? "Ragionamento illustrato" : lesson.kind === "outline" ? "Schema illustrato" : "Dimostrazione illustrata"} heading="h4" />}
-        {pf?.dimostrazione && (
-          <details className="rounded-lg border border-line px-4 open:pb-4">
-            <summary className="flex min-h-11 cursor-pointer items-center font-ui text-sm font-semibold text-accent">
-              {PROOF_KIND[pf.tipo_dimostrazione]}
-            </summary>
-            <Rich className={proofText} html={pf.dimostrazione} />
+        {pf && md && (
+          <details className={box} onToggle={(e) => setMdOpen(e.currentTarget.open)}>
+            <summary className={boxSummary}>{PROOF_KIND[pf.tipo_dimostrazione]}</summary>
+            {mdOpen && <Explanation md={md} />}
           </details>
         )}
         {pf && pf.domande.length > 0 && (
@@ -151,7 +176,7 @@ function TheoremRow({ t }: { t: Theorem }) {
   );
 }
 
-export default function TheoremsView() {
+export default function TheoremsView({ explanations }: { explanations: Record<string, string> }) {
   const [q, setQ] = useState("");
   const [cls, setCls] = useState("all");
   const [provedOnly, setProvedOnly] = useState(false);
@@ -243,7 +268,7 @@ export default function TheoremsView() {
                 {byFreq && <span className="ml-2 font-normal normal-case tracking-normal">· {PRIORITY[g.k as keyof typeof PRIORITY].hint}</span>}
               </h2>
               {g.items.map((t) => (
-                <TheoremRow key={t.id} t={t} />
+                <TheoremRow key={t.id} t={t} md={explanations[t.id]} />
               ))}
             </section>
           ))

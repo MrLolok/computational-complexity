@@ -1,4 +1,4 @@
-/* Dimostrazione di ogni teorema e quanto serve nelle tracce (domande 1–7 delle 29 tracce). Testo in HTML. */
+/* Quanto serve ogni teorema nelle tracce (domande 1–7 delle 29 tracce) e la frase da esame, in HTML. La spiegazione è in spiegazioni/teoremi. */
 import raw from "./theoremProofs.json";
 
 export type Priority = "alta" | "media" | "bassa" | "orale" | "fuori";
@@ -11,7 +11,6 @@ export type TheoremProof = {
     tipo_dimostrazione: ProofKind;
     /** la motivazione da scrivere in una risposta SÌ/NO */
     frase_esame: string;
-    dimostrazione: string;
 };
 
 export const PROOF: Record<string, TheoremProof> = raw as Record<string, TheoremProof>;
