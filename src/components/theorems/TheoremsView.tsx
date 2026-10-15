@@ -14,7 +14,8 @@ import { fillChips } from "@/lib/rich";
 import { texHtml } from "@/lib/tex";
 import { plainMath } from "@/lib/mathNotation";
 import { ui } from "@/lib/ui";
-import LearningFigure from "@/components/learning/LearningFigure";
+import LearningSlideshow from "@/components/learning/LearningSlideshow";
+import walkthroughs from "@/data/theoremWalkthroughs.json";
 
 const PREFIX = "#teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
@@ -46,6 +47,7 @@ function TheoremRow({ t }: { t: Theorem }) {
   const cls = (t.classi || []).filter((c) => NAME[c]);
   const pr = thProblems(t);
   const pf = PROOF[t.id];
+  const lesson = walkthroughs[t.id as keyof typeof walkthroughs];
   return (
     <details id={`teorema-${t.id}`} className={`${ui.card} group mt-3 scroll-mt-20 open:border-line-strong`}>
       <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
@@ -66,7 +68,6 @@ function TheoremRow({ t }: { t: Theorem }) {
         <span className="col-span-full font-ui text-sm text-accent"><span className="group-open:hidden">Idea, frase per l&apos;esame e dimostrazione +</span><span className="hidden group-open:inline">Chiudi approfondimento −</span></span>
       </summary>
       <div className="flex max-w-prose flex-col gap-3 pb-4">
-        {t.id === "savitch" && <LearningFigure kind="savitch" />}
         {t.intuizione && (
           <div>
             <h4 className={h4}>Intuizione</h4>
@@ -85,6 +86,7 @@ function TheoremRow({ t }: { t: Theorem }) {
             <Rich as="p" html={pf.frase_esame} />
           </div>
         )}
+        {lesson && <LearningSlideshow lesson={lesson} name={plainMath(t.nome.replace(/<[^>]*>/g, ""))} title={lesson.kind === "conditional" ? "Ragionamento illustrato" : lesson.kind === "outline" ? "Schema illustrato" : "Dimostrazione illustrata"} heading="h4" />}
         {pf?.dimostrazione && (
           <details className="rounded-lg border border-line px-4 open:pb-4">
             <summary className="flex min-h-11 cursor-pointer items-center font-ui text-sm font-semibold text-accent">
@@ -190,7 +192,7 @@ export default function TheoremsView() {
     <section className="flex flex-col">
       <header className="mb-3"><p className={`${ui.eyebrow} mb-2`}>I risultati che collegano le classi</p><h1 className={ui.h2}>Teoremi del corso</h1></header>
       <p className={`${ui.lede} mb-4`}>
-        Leggi l&apos;enunciato, poi apri la scheda: trovi l&apos;idea, la frase da scrivere nella risposta e la dimostrazione.
+        Leggi l&apos;enunciato, poi apri la scheda: trovi l&apos;idea, i passaggi illustrati e la dimostrazione in testo.
       </p>
       <p className={`${ui.noteOk} mb-4 max-w-prose`}>
         I 17 teoremi segnati con ★ servono in almeno 8 domande delle tracce ciascuno e da soli coprono circa due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per vederli per primi.

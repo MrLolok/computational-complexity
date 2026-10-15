@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EXAM_QUESTIONS } from "@/data/examQuestions";
-import { PH_CLASSES } from "@/data/piani";
 import { ui } from "@/lib/ui";
 import Tex from "@/components/Tex";
-import { ExamQA } from "@/components/piani/ExamQA";
 import PianiTower from "@/components/piani/PianiTower";
 import PhLevels from "@/components/piani/PhLevels";
 import TowerDisclosure from "@/components/piani/TowerDisclosure";
@@ -14,7 +11,6 @@ import Reductions from "@/components/piani/Reductions";
 
 export const metadata: Metadata = { title: "Gerarchia polinomiale" };
 export default function Page() {
-  const questions = EXAM_QUESTIONS.filter(q => q.c.some(c => PH_CLASSES.includes(c)));
   return <section className="flex flex-col gap-6">
     <header><p className={`${ui.eyebrow} mb-2`}>Esiste · per ogni · esiste</p><h1 className={ui.h2}>La gerarchia polinomiale, un piano alla volta</h1><p className={`${ui.lede} mt-3`}>Parti da NP: «esiste una soluzione verificabile». Ogni nuovo livello aggiunge un&apos;alternanza tra «esiste» e «per ogni».</p></header>
     <PhLevels />
@@ -28,7 +24,6 @@ export default function Page() {
       <details className={ui.card}><summary className="cursor-pointer font-semibold">Come riconoscere un collasso</summary><p>Se <Tex>{String.raw`\Sigma_i^{\mathrm{P}} = \Pi_i^{\mathrm{P}}`}</Tex> per un <Tex>{String.raw`i \ge 1`}</Tex>, allora <Tex>{String.raw`\mathrm{PH} = \Sigma_i^{\mathrm{P}}`}</Tex>: i livelli superiori non aggiungono potenza (Teorema 17.9).</p><div className="grid gap-3 sm:grid-cols-2"><div className="rounded-lg bg-sunk p-4"><b><Tex>{String.raw`\mathrm{P} = \mathrm{NP} \Rightarrow \mathrm{PH} = \mathrm{P}`}</Tex></b><p className="mt-2 text-sm text-muted">Il controllo deterministico basta per tutti i livelli.</p></div><div className="rounded-lg bg-sunk p-4"><b><Tex>{String.raw`\mathrm{NP} = \mathrm{coNP} \Rightarrow \mathrm{PH} = \mathrm{NP}`}</Tex></b><p className="mt-2 text-sm text-muted">Collassa al primo livello; non implica da solo <Tex>{String.raw`\mathrm{P} = \mathrm{NP}`}</Tex>.</p></div></div><p className="text-sm text-muted">Se un problema completo per un livello superiore entra in un livello inferiore, scrivi prima l&apos;inclusione che ne segue. Poi cerca l&apos;uguaglianza <Tex>{String.raw`\Sigma_i^{\mathrm{P}} = \Pi_i^{\mathrm{P}}`}</Tex>.</p><Link href="/teoremi#teorema-t17-9" className="text-accent underline">Cerca i teoremi sul collasso →</Link></details>
       <details className={ui.card}><summary className="cursor-pointer font-semibold">Riduzioni tra problemi dei livelli</summary><Reductions /></details>
     </section>
-    <details className={ui.card}><summary className="cursor-pointer font-semibold">Verifica nelle tracce: {questions.length} domande su PH</summary><div>{questions.map((q, i) => <ExamQA key={i} t={q} />)}</div></details>
     <p className="text-xs text-muted">Fonti: dispensa cap. 16–17; slide Lez. 9; appunti Lez. 9 e 11.</p>
   </section>;
 }
