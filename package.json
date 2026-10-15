@@ -44,6 +44,9 @@
     "pnpm": {
         "patchedDependencies": {
             "@opennextjs/cloudflare": "patches/@opennextjs__cloudflare.patch"
+        },
+        "overrides": {
+            "rehype-katex>katex": "$katex"
         }
     }
 }
