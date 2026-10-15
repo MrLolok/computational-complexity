@@ -60,7 +60,6 @@ function TheoremRow({ t }: { t: Theorem }) {
             </span>
           )}
           {pf?.priorita === "orale" && <span className={ui.pill} title={PRIORITY.orale.hint}>per l&apos;orale</span>}
-          {t.correzione && <span className={ui.pillOpen}>correzione</span>}
           {t.prova === "nel corso" && <span className={ui.pill}>dimostrato nel corso</span>}
         </div>
         <p className="col-span-full max-w-prose" dangerouslySetInnerHTML={{ __html: fillChips(t.enunciato) }} />
@@ -86,7 +85,6 @@ function TheoremRow({ t }: { t: Theorem }) {
             <Rich as="p" html={pf.frase_esame} />
           </div>
         )}
-        {t.correzione && <Rich className={ui.note} html={`<b class="font-ui font-semibold">Correzione.</b> ${t.correzione}`} />}
         {pf?.dimostrazione && (
           <details className="rounded-lg border border-line px-4 open:pb-4">
             <summary className="flex min-h-11 cursor-pointer items-center font-ui text-sm font-semibold text-accent">

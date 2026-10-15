@@ -495,7 +495,7 @@ export const C: Record<ClassId, ClassContent> = {
   "complete": "REACHABILITY e 2-SAT sono NL-completi (appunti Lez. 8 §3; Lez. 10 §8). <span class=\"inline-block rounded-full px-2.5 py-0.5 font-ui text-xs font-semibold bg-accent-soft text-accent\" title=\"Negli appunti delle lezioni, non in dispensa né nelle slide disponibili\">✱ solo appunti</span> La dispensa dà solo $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$ e, per Savitch, $\\in \\mathrm{SPACE}(\\log^2 n)$.",
   "closed": "sì: $\\mathrm{NL} = \\mathrm{coNL}$",
   "form": "un run che accetta, con memoria $\\log n$",
-  "trap": "La dispensa (cap. 14 e 22) scrive «2-SAT is P-complete»: non è dimostrato. Il cap. 12 dice solo «2-SAT is in P»; la NL-completezza viene dagli appunti ✱, non da dispensa o slide. Con riduzioni in spazio logaritmico 2-SAT sarebbe P-completo solo se $\\mathrm{P} = \\mathrm{NL}$, che è aperto: all'esame «2-SAT è P-completo?» ha risposta «altro: solo se $\\mathrm{P} = \\mathrm{NL}$».",
+  "trap": "2-SAT sta in P (dispensa cap. 12); la NL-completezza viene dagli appunti ✱, non da dispensa o slide. Con riduzioni in spazio logaritmico 2-SAT sarebbe P-completo solo se $\\mathrm{P} = \\mathrm{NL}$, che è aperto: all'esame «2-SAT è P-completo?» ha risposta «altro: solo se $\\mathrm{P} = \\mathrm{NL}$».",
   "extra": "<div class=\"border-l-2 border-ok bg-ok-soft px-3 py-2 rounded-r-lg text-base\"><b>$\\mathrm{NL} = \\mathrm{coNL}$.</b> Le slide della Lez. 4 dicono che per lo spazio nondeterministico la chiusura per complemento si dimostra; per il tempo nondeterministico (NP contro coNP) è aperta.</div><div class=\"border-l-2 border-accent bg-accent-soft/50 px-3 py-2 rounded-r-lg text-base\"><b>Aggiunta esterna.</b> Il risultato si chiama Teorema di Immerman–Szelepcsényi (Papadimitriou, Teorema 7.6): il nome non è nelle slide.</div>",
   "src": "dispensa cap. 5 e 11; slide Lez. 4–5; appunti Lez. 3, 5 §10, 8 §3"
  },
@@ -587,7 +587,7 @@ export const C: Record<ClassId, ClassContent> = {
   "complete": "$\\mathrm{co\\text{-}QSAT}_2$, CIRC VALIDITY e il complemento di STRATEGIC COMPANIES sono $\\Pi_2^{\\mathrm{P}}$-completi.",
   "closed": "è la co-classe di $\\Sigma_2^{\\mathrm{P}}$",
   "form": "$\\forall y_1\\, \\exists y_2\\, R$",
-  "trap": "La dispensa (cap. 17.2.3) dice «HAMILTON PATH (complemento) è $\\Pi_2^{\\mathrm{P}}$-completo»: non è dimostrato. È coNP-completo; sarebbe $\\Pi_2^{\\mathrm{P}}$-completo solo se $\\mathrm{NP} = \\mathrm{coNP}$. Le risposte SÌ/NO di quell'esercizio restano giuste.",
+  "trap": "Il complemento di HAMILTON PATH è coNP-completo, non $\\Pi_2^{\\mathrm{P}}$-completo: lo sarebbe solo se $\\mathrm{NP} = \\mathrm{coNP}$.",
   "src": "dispensa cap. 17; appunti Lez. 9 §3–§5"
  },
  "SIGMAi": {
