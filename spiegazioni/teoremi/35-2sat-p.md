@@ -36,11 +36,11 @@ La propagazione non crea contraddizioni. Se da $\ell$ si raggiungessero sia $y$ 
 
 Prendi $\varphi = (x \lor y) \land (\neg x \lor z) \land (\neg y \lor z) \land (\neg z \lor \neg x)$. Gli archi sono:
 
-| clausola | archi |
-|---|---|
-| $(x \lor y)$ | $\neg x \to y$, $\neg y \to x$ |
-| $(\neg x \lor z)$ | $x \to z$, $\neg z \to \neg x$ |
-| $(\neg y \lor z)$ | $y \to z$, $\neg z \to \neg y$ |
+| clausola               | archi                          |
+| ---------------------- | ------------------------------ |
+| $(x \lor y)$           | $\neg x \to y$, $\neg y \to x$ |
+| $(\neg x \lor z)$      | $x \to z$, $\neg z \to \neg x$ |
+| $(\neg y \lor z)$      | $y \to z$, $\neg z \to \neg y$ |
 | $(\neg z \lor \neg x)$ | $z \to \neg x$, $x \to \neg z$ |
 
 C'è il cammino $x \to z \to \neg x$: se $x$ fosse vera, sarebbe vero anche $\neg x$, quindi $x$ deve essere falsa. Da $\neg x$ si raggiungono solo $y$, $z$ e di nuovo $\neg x$, mai $x$. La costruzione sceglie allora $\ell = \neg x$ e rende veri $\neg x$, $y$ e $z$. L'assegnazione con $x$ falsa e $y$, $z$ vere soddisfa le quattro clausole.

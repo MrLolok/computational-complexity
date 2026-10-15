@@ -116,13 +116,13 @@ La versione approvata di Savitch ha circa 990 parole.
 
 Backup in `spiegazioni/prove-savitch/`.
 
-| File | Ricetta | Parole | Esito |
-|---|---|---|---|
-| `1-attuale.md` | testo del sito | 854 | punto di partenza |
-| `2-learn-humanizer.md` | learn + humanizer | 1350 | il contenuto migliore, ma con esercizi, corollario e parte d'esame di troppo |
-| `3-feynman-learn-humanizer.md` | feynman + learn + humanizer | 1373 | troppo lunga; le analogie aiutano poco |
-| `4-humanizer.md` | solo humanizer | 785 | breve e scorrevole, ma lascia i buchi (perché $2^i$, da dove viene $\log n$) |
-| `5-humanizer-buchi.md` | 4 + buchi colmati | 1310 | buchi colmati, ma il corollario la allunga |
-| `6-learn-humanizer-ridotta.md` | 2 senza le parti di troppo + buchi minimi | 987 | la versione scelta |
+| File                           | Ricetta                                   | Parole | Esito                                                                        |
+| ------------------------------ | ----------------------------------------- | ------ | ---------------------------------------------------------------------------- |
+| `1-attuale.md`                 | testo del sito                            | 854    | punto di partenza                                                            |
+| `2-learn-humanizer.md`         | learn + humanizer                         | 1350   | il contenuto migliore, ma con esercizi, corollario e parte d'esame di troppo |
+| `3-feynman-learn-humanizer.md` | feynman + learn + humanizer               | 1373   | troppo lunga; le analogie aiutano poco                                       |
+| `4-humanizer.md`               | solo humanizer                            | 785    | breve e scorrevole, ma lascia i buchi (perché $2^i$, da dove viene $\log n$) |
+| `5-humanizer-buchi.md`         | 4 + buchi colmati                         | 1310   | buchi colmati, ma il corollario la allunga                                   |
+| `6-learn-humanizer-ridotta.md` | 2 senza le parti di troppo + buchi minimi | 987    | la versione scelta                                                           |
 
 Due lezioni dal test. Humanizer da solo migliora la forma ma non la comprensione: non aggiunge esempi né risposte ai "perché". La skill learn rende di più in chat, dove può interrogare; in un testo statico se ne tengono le domande di controllo, l'esempio svolto e gli errori tipici.

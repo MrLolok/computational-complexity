@@ -30,10 +30,10 @@ Il viceversa: se $\mathrm{NP} = \mathrm{coNP}$, PH collassa al primo livello e $
 
 ## Le riduzioni con QSAT
 
-| Riduzione | Esiste? | Perché |
-|---|---|---|
-| complemento di HAMILTON PATH → QSAT | sì | $\mathrm{coNP} \subseteq \mathrm{PSPACE}$ e QSAT è PSPACE-completo |
-| QSAT → complemento di HAMILTON PATH | solo se $\mathrm{PSPACE} = \mathrm{coNP}$ | QSAT è PSPACE-completo |
+| Riduzione                           | Esiste?                                   | Perché                                                             |
+| ----------------------------------- | ----------------------------------------- | ------------------------------------------------------------------ |
+| complemento di HAMILTON PATH → QSAT | sì                                        | $\mathrm{coNP} \subseteq \mathrm{PSPACE}$ e QSAT è PSPACE-completo |
+| QSAT → complemento di HAMILTON PATH | solo se $\mathrm{PSPACE} = \mathrm{coNP}$ | QSAT è PSPACE-completo                                             |
 
 La seconda riga porterebbe PSPACE dentro coNP. PSPACE è chiusa per complemento, quindi anche $\mathrm{PSPACE} \subseteq \mathrm{NP}$, e si avrebbe $\mathrm{PH} = \mathrm{PSPACE} = \mathrm{NP} = \mathrm{coNP}$: PH collasserebbe al primo livello.
 

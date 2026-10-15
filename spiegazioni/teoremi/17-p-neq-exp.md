@@ -24,12 +24,13 @@ $$\mathrm{P} \subseteq \mathrm{TIME}(2^n) \subsetneq \mathrm{TIME}(2^{6n+3}) \su
 
 1. $\mathrm{P} \subseteq \mathrm{TIME}(2^n)$. Ogni $n^k$ da un certo punto in poi sta sotto $2^n$. Per $n^3$:
 
-   | $n$ | $n^3$ | $2^n$ |
-   |---|---|---|
-   | 9 | 729 | 512 |
-   | 10 | 1000 | 1024 |
+    | $n$ | $n^3$ | $2^n$ |
+    | --- | ----- | ----- |
+    | 9   | 729   | 512   |
+    | 10  | 1000  | 1024  |
 
-   Da $n = 10$ in poi $2^n$ raddoppia a ogni passo, mentre $n^3$ cresce di un fattore $(11/10)^3 \approx 1{,}33$ e poi meno. Sui finiti $n$ più piccoli la differenza è una costante, che lo speedup lineare assorbe. Quindi ogni $\mathrm{TIME}(n^k)$ sta in $\mathrm{TIME}(2^n)$, e così la loro unione P.
+    Da $n = 10$ in poi $2^n$ raddoppia a ogni passo, mentre $n^3$ cresce di un fattore $(11/10)^3 \approx 1{,}33$ e poi meno. Sui finiti $n$ più piccoli la differenza è una costante, che lo speedup lineare assorbe. Quindi ogni $\mathrm{TIME}(n^k)$ sta in $\mathrm{TIME}(2^n)$, e così la loro unione P.
+
 2. $\mathrm{TIME}(2^n) \subsetneq \mathrm{TIME}(2^{6n+3})$. $f(n) = 2^n$ è propria e $2^n \ge n$, quindi vale il teorema di gerarchia, con $(2^{2n+1})^3 = 2^{6n+3}$.
 3. $\mathrm{TIME}(2^{6n+3}) \subseteq \mathrm{TIME}(2^{n^2})$. Vale $6n + 3 \le n^2$ per $n \ge 7$ ($n = 6$: $39 > 36$; $n = 7$: $45 \le 49$), e per gli $n$ più piccoli conta di nuovo solo una costante.
 4. $\mathrm{TIME}(2^{n^2}) \subseteq \mathrm{EXP}$: è il termine con $k = 2$ nella definizione.

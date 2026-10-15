@@ -45,16 +45,16 @@ Se $\varphi$ è soddisfacibile, si colorano $V$, $F$, $N$ e i letterali secondo 
 
 Prendi la clausola $(x \lor \neg y \lor z)$ con $x$ falsa, $y$ vera e $z$ vera. Indichiamo con $a_1, b_1, o_1$ il primo OR e con $a_2, b_2, o_2$ il secondo.
 
-| nodo | colore | perché |
-|---|---|---|
-| $x$ | $F$ | $x$ è falsa |
-| $\neg y$ | $F$ | $y$ è vera |
-| $z$ | $V$ | $z$ è vera |
+| nodo         | colore   | perché                               |
+| ------------ | -------- | ------------------------------------ |
+| $x$          | $F$      | $x$ è falsa                          |
+| $\neg y$     | $F$      | $y$ è vera                           |
+| $z$          | $V$      | $z$ è vera                           |
 | $a_1$, $b_1$ | $V$, $N$ | vicini di nodi $F$, diversi fra loro |
-| $o_1$ | $F$ | l'unico colore rimasto nel triangolo |
-| $a_2$ | $N$ | vicino di $o_1 = F$ |
-| $b_2$ | $F$ | vicino di $z = V$ |
-| $o_2$ | $V$ | collegato ai nodi $F$ e $N$ |
+| $o_1$        | $F$      | l'unico colore rimasto nel triangolo |
+| $a_2$        | $N$      | vicino di $o_1 = F$                  |
+| $b_2$        | $F$      | vicino di $z = V$                    |
+| $o_2$        | $V$      | collegato ai nodi $F$ e $N$          |
 
 Se anche $z$ fosse falsa, la clausola sarebbe falsa e il gadget non si completerebbe: $o_1$ sarebbe obbligato a $F$, poi $a_2$ e $b_2$ prenderebbero $V$ e $N$, e $o_2$ dovrebbe essere $F$, che è vietato.
 

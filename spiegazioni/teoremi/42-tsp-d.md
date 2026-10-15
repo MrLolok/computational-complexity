@@ -40,12 +40,12 @@ Il valore 2 non ha niente di speciale: andrebbe bene qualunque intero maggiore d
 
 $G$ ha nodi 1, 2, 3, 4 e archi $[1, 2]$, $[2, 3]$, $[3, 4]$, $[4, 1]$, $[1, 3]$. La matrice è:
 
-|   | 1 | 2 | 3 | 4 |
-|---|---|---|---|---|
-| 1 | 0 | 1 | 1 | 1 |
-| 2 | 1 | 0 | 1 | 2 |
-| 3 | 1 | 1 | 0 | 1 |
-| 4 | 1 | 2 | 1 | 0 |
+|     | 1   | 2   | 3   | 4   |
+| --- | --- | --- | --- | --- |
+| 1   | 0   | 1   | 1   | 1   |
+| 2   | 1   | 0   | 1   | 2   |
+| 3   | 1   | 1   | 0   | 1   |
+| 4   | 1   | 2   | 1   | 0   |
 
 Il giro $1, 2, 3, 4, 1$ costa $1 + 1 + 1 + 1 = 4 = B$: è il ciclo hamiltoniano di $G$. Il giro $1, 3, 2, 4, 1$ costa $1 + 1 + 2 + 1 = 5$, perché usa la coppia $[2, 4]$, che non è un arco.
 

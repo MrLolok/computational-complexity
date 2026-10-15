@@ -28,12 +28,12 @@ Perché si può mettere falso senza chiedere: l'algoritmo mantiene la proprietà
 
 $\varphi = (x_1 \lor x_2) \land (\neg x_1 \lor x_3) \land (\neg x_2 \lor \neg x_3)$.
 
-| Chiamata | Formula chiesta ad $A$ | Risposta | Scelta |
-|---|---|---|---|
-| 0 | $\varphi$ | sì | |
-| 1 | $x_1$ vera: $x_3 \land (\neg x_2 \lor \neg x_3)$ | sì ($x_2$ falsa, $x_3$ vera) | $T[1] = \text{vero}$ |
-| 2 | anche $x_2$ vera: $x_3 \land \neg x_3$ | no | $T[2] = \text{falso}$ |
-| 3 | $x_2$ falsa, $x_3$ vera: nessuna clausola falsa | sì | $T[3] = \text{vero}$ |
+| Chiamata | Formula chiesta ad $A$                           | Risposta                     | Scelta                |
+| -------- | ------------------------------------------------ | ---------------------------- | --------------------- |
+| 0        | $\varphi$                                        | sì                           |                       |
+| 1        | $x_1$ vera: $x_3 \land (\neg x_2 \lor \neg x_3)$ | sì ($x_2$ falsa, $x_3$ vera) | $T[1] = \text{vero}$  |
+| 2        | anche $x_2$ vera: $x_3 \land \neg x_3$           | no                           | $T[2] = \text{falso}$ |
+| 3        | $x_2$ falsa, $x_3$ vera: nessuna clausola falsa  | sì                           | $T[3] = \text{vero}$  |
 
 Il risultato è $T = (\text{vero}, \text{falso}, \text{vero})$, e infatti le tre clausole sono vere.
 

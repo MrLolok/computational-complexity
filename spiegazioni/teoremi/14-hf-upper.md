@@ -24,12 +24,12 @@ $$H_f = \{M;x : M \text{ accetta } x \text{ in al più } f(|x|) \text{ passi}\}.
 
 La macchina $U_f$ ha quattro nastri:
 
-| nastro | contenuto |
-|---|---|
-| 1 | i nastri di $M$, codificati e scritti uno dopo l'altro |
-| 2 | lo stato corrente di $M$ e i simboli sotto i suoi cursori |
-| 3 | la descrizione di $M$, cioè il suo programma |
-| 4 | la sveglia: $f(\lvert x \rvert)$ simboli scritti da $M_f$ |
+| nastro | contenuto                                                 |
+| ------ | --------------------------------------------------------- |
+| 1      | i nastri di $M$, codificati e scritti uno dopo l'altro    |
+| 2      | lo stato corrente di $M$ e i simboli sotto i suoi cursori |
+| 3      | la descrizione di $M$, cioè il suo programma              |
+| 4      | la sveglia: $f(\lvert x \rvert)$ simboli scritti da $M_f$ |
 
 Prima $U_f$ costruisce la sveglia e prepara gli altri nastri, controllando anche che $M$ sia la descrizione corretta di una MdT (se non lo è rifiuta). Poi simula un passo di $M$ alla volta: una scansione del primo nastro raccoglie i simboli sotto i cursori di $M$, una ricerca sul terzo nastro trova la transizione giusta, una seconda scansione applica le modifiche. Dopo ogni passo il cursore della sveglia avanza di una cella.
 
@@ -49,11 +49,11 @@ Con $n = 1024$, per esempio, una descrizione non può avere più di 10 nastri n�
 
 I tre fattori di $f(n)^3$ vengono da tre cose diverse:
 
-| fattore | da dove viene |
-|---|---|
-| $f(n)$ | i passi simulati, al più $f(\lvert x \rvert) \le f(n)$ |
-| $f(n)$ | la lunghezza dei nastri di $M$ da scorrere a ogni passo |
-| $f(n)$ | il sovraccarico $\ell_M \cdot k_M^2$ della codifica, al più $\log^3 n = O(f(n))$ |
+| fattore | da dove viene                                                                    |
+| ------- | -------------------------------------------------------------------------------- |
+| $f(n)$  | i passi simulati, al più $f(\lvert x \rvert) \le f(n)$                           |
+| $f(n)$  | la lunghezza dei nastri di $M$ da scorrere a ogni passo                          |
+| $f(n)$  | il sovraccarico $\ell_M \cdot k_M^2$ della codifica, al più $\log^3 n = O(f(n))$ |
 
 Il terzo è il prezzo dell'uniformità su tutte le $M$. Preparazione e ricerca restano sotto questo totale, che è $O(f(n)^3)$, e lo speedup lineare toglie la costante: $H_f \in \mathrm{TIME}(f(n)^3)$.
 

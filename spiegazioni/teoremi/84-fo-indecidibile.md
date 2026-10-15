@@ -41,10 +41,10 @@ Quindi $M$ si ferma su $x$ sse $\varphi_{M,x}$ è valida. L'arresto non è decid
 
 $\varphi$ è soddisfacibile sse $\neg\varphi$ non è valida. A meno di tradurre $\varphi$ in $\neg\varphi$, la soddisfacibilità è il complemento della validità, quindi sta in coRE. Non sta in R, perché R è chiuso per complemento e la validità non è in R. Non sta neppure in RE: altrimenti starebbe in $\mathrm{RE} \cap \mathrm{coRE} = \mathrm{R}$.
 
-| problema | il "sì" arriva? | il "no" arriva? | classe |
-|---|---|---|---|
-| validità | sì, trovando la dimostrazione | no | RE, non R |
-| soddisfacibilità | no | sì, trovando la dimostrazione di $\neg\varphi$ | coRE, non R |
+| problema         | il "sì" arriva?               | il "no" arriva?                                | classe      |
+| ---------------- | ----------------------------- | ---------------------------------------------- | ----------- |
+| validità         | sì, trovando la dimostrazione | no                                             | RE, non R   |
+| soddisfacibilità | no                            | sì, trovando la dimostrazione di $\neg\varphi$ | coRE, non R |
 
 ## Dove si inciampa di solito
 

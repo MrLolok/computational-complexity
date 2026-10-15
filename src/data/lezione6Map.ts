@@ -68,7 +68,10 @@ export const MAP_INFO: Record<MapNode, NodeInfo> = {
     P: {
         full: "Tempo polinomiale deterministico",
         idea: "Una MdT deterministica ha un solo run: la risposta giusta ha il 100% dei voti, quindi P sta sia in BPP sia in NP.",
-        proved: ["$\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP}$", "$\\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{PP}$"],
+        proved: [
+            "$\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP}$",
+            "$\\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{PP}$",
+        ],
         conjectured: [],
         examples: "SORT, in tempo $O(n \\log n)$: un computer quantistico non serve.",
         more: { href: "/classi/P", label: "Scheda della classe P" },
@@ -78,7 +81,10 @@ export const MAP_INFO: Record<MapNode, NodeInfo> = {
         idea: "Gli algoritmi randomizzati usabili davvero: serve una maggioranza netta, e ripetendo e votando l'errore scende con poche ripetizioni.",
         accept: 'almeno 3/4 dei run dice "yes" (e almeno 3/4 dice "no" se la risposta è no); la soglia è una convenzione',
         error: "sì",
-        proved: ["$\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP}$", "$\\mathrm{BPP} \\subseteq \\mathrm{PP}$"],
+        proved: [
+            "$\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{BQP}$",
+            "$\\mathrm{BPP} \\subseteq \\mathrm{PP}$",
+        ],
         conjectured: ["$\\mathrm{BPP} \\neq \\mathrm{BQP}$ (domanda aperta)"],
         more: { href: "#def-bpp", label: "Spiegazione di BPP" },
     },
@@ -86,7 +92,10 @@ export const MAP_INFO: Record<MapNode, NodeInfo> = {
         full: "Tempo polinomiale nondeterministico",
         idea: 'Basta che almeno un run dica "yes": come se un oracolo guidasse sempre sulla strada giusta.',
         proved: ["$\\mathrm{P} \\subseteq \\mathrm{NP}$", "$\\mathrm{NP} \\subseteq \\mathrm{PP}$ (Teorema 11.3)"],
-        conjectured: ["$\\mathrm{NP} \\not\\subseteq \\mathrm{BQP}$ e $\\mathrm{BQP} \\not\\subseteq \\mathrm{NP}$: NP e BQP incomparabili", "quindi nessun problema NP-completo in BQP"],
+        conjectured: [
+            "$\\mathrm{NP} \\not\\subseteq \\mathrm{BQP}$ e $\\mathrm{BQP} \\not\\subseteq \\mathrm{NP}$: NP e BQP incomparabili",
+            "quindi nessun problema NP-completo in BQP",
+        ],
         examples: "SAT, KNAPSACK, TSP sono NP-completi. La fattorizzazione sta in NP e in BQP.",
         more: { href: "/classi/NP", label: "Scheda della classe NP" },
     },
@@ -95,7 +104,10 @@ export const MAP_INFO: Record<MapNode, NodeInfo> = {
         idea: '"BPP con le monete quantistiche": le probabilità vengono dalle ampiezze di una QTM, misurata solo alla fine.',
         accept: "$P(\\text{yes}) \\ge 2/3$ (e $\\le 1/3$ se la risposta è no)",
         error: "sì",
-        proved: ["$\\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$", "$\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$"],
+        proved: [
+            "$\\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$",
+            "$\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$",
+        ],
         conjectured: ["NP e BQP incomparabili", "$\\mathrm{BQP} \\subsetneq \\mathrm{PSPACE}$"],
         examples: "La fattorizzazione (algoritmo di Shor), che si ritiene né NP-completa né in P.",
         more: { href: "#def-bqp", label: "Spiegazione di BQP" },
@@ -105,7 +117,10 @@ export const MAP_INFO: Record<MapNode, NodeInfo> = {
         idea: 'Basta la maggioranza semplice: più della metà dei run dice "yes". La maggioranza può essere di un solo run.',
         accept: 'più della metà dei run dice "yes"',
         error: "non noto: il margine può essere esponenzialmente piccolo",
-        proved: ["$\\mathrm{NP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$", "$\\mathrm{BQP} \\subseteq \\mathrm{PP}$"],
+        proved: [
+            "$\\mathrm{NP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$",
+            "$\\mathrm{BQP} \\subseteq \\mathrm{PP}$",
+        ],
         conjectured: ["$\\mathrm{PP} \\subsetneq \\mathrm{PSPACE}$"],
         examples: "MAJSAT è completo per PP.",
         more: { href: "#def-pp", label: "Spiegazione di PP" },
@@ -128,7 +143,9 @@ export const MAP_INFO: Record<MapNode, NodeInfo> = {
     EXP2: {
         full: "Tempo doppiamente esponenziale, del tipo $2^{2^{n^k}}$",
         idea: "BQP sta strettamente sotto 2-EXP: i problemi 2-EXP-completi non si risolvono in tempo polinomiale su un computer quantistico. È un risultato certo, non una congettura.",
-        proved: ["$\\mathrm{BQP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$"],
+        proved: [
+            "$\\mathrm{BQP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$",
+        ],
         conjectured: [],
         examples:
             "Il ragionamento su ontologie scritte in OWL2 (Semantic Web) è almeno difficile quanto ogni problema di 2-EXP.",

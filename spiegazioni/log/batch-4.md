@@ -4,16 +4,17 @@ Teoremi: 35-2sat-p, 36-horn-sat, 37-prop-9-1, 38-max2sat, 39-independent-set, 40
 
 ## Invocazioni delle skill
 
-| skill | invocazioni | caricata |
-|---|---|---|
-| `anthropic-skills:learn` | 1, all'inizio del batch, con l'argomento "spiegazioni statiche in Markdown adattate come dice STRATEGIA.md, nessun dialogo" | sì |
-| `humanizer` (da `.claude/skills/humanizer`) | 12, una per file, in modalità file con il percorso come argomento | sì, tutte e 12 |
+| skill                                       | invocazioni                                                                                                                 | caricata       |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| `anthropic-skills:learn`                    | 1, all'inizio del batch, con l'argomento "spiegazioni statiche in Markdown adattate come dice STRATEGIA.md, nessun dialogo" | sì             |
+| `humanizer` (da `.claude/skills/humanizer`) | 12, una per file, in modalità file con il percorso come argomento                                                           | sì, tutte e 12 |
 
 Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in `<details>` solo sui prerequisiti veri, spiegazione diretta (niente domande socratiche al posto della spiegazione), un esempio piccolo svolto, tabelle o blocchi quando c'è una struttura, la sezione degli errori tipici. Per ogni file humanizer è stato eseguito nei quattro passi (segnare, riscrivere, ricontrollare, versione finale) e nel file c'è solo la versione finale.
 
 ## Difetti segnati da humanizer e modifiche, file per file
 
 ### 35-2sat-p.md
+
 - §4 "La si costruisce così." (annuncio prima del punto): fuso nella frase, con soggetto esplicito ("Per costruirla, ... l'algoritmo sceglie").
 - §4 "Servono tre osservazioni." prima dell'elenco: tolto.
 - §4 domanda retorica "Perché non nasce una contraddizione?": diventata affermazione ("La propagazione non crea contraddizioni.").
@@ -26,6 +27,7 @@ Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in
 - Dopo i controlli di lunghezza: tolto il terzo errore tipico (ripeteva la regola di scelta di $\ell$) e accorciato il paragrafo sulle componenti fortemente connesse.
 
 ### 36-horn-sat.md
+
 - §4 "Il teorema dice anche di più:": frase diretta.
 - §4 "Da qui le due risposte.": tolto.
 - §4 domanda retorica "Perché partire da tutto falso?": affermazione, spostata prima dell'invariante.
@@ -38,6 +40,7 @@ Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in
 - Precisione: nel primo errore tipico "che soddisfa le altre clausole" è diventato "che soddisfa i fatti e le regole".
 
 ### 37-prop-9-1.md
+
 - §4/§2 frammento "I termini dell'enunciato.": fuso ("Nell'enunciato $R$ è...").
 - §4 "Qui si vede a che cosa serve il bilanciamento.": "In questo conto entra il bilanciamento."
 - §1 "l'esponente della relazione non è quello della macchina, ma resta una costante": affermazione diretta (circa il doppio, ed è una costante).
@@ -46,6 +49,7 @@ Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in
 - Tenuto "Il certificato non lo trova il verificatore": corregge un errore reale.
 
 ### 38-max2sat.md
+
 - §2/§3 "Il lavoro sta nella difficoltà.": "Resta da dimostrare la difficoltà, riducendo 3SAT."
 - §4 domanda retorica "A che cosa serve $w$?": tolta, il paragrafo parte dal fatto.
 - §1 "La difficoltà non viene dalla forma delle clausole ma dalla domanda" subito dopo la convinzione già citata fra virgolette: convinzione resa in forma discorsiva, poi affermazione diretta.
@@ -53,6 +57,7 @@ Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in
 - Tolto "Che MAX2SAT stia in NP è facile": "MAX2SAT sta in NP".
 
 ### 39-independent-set.md
+
 - §3 "Il ponte è questo:" e il contrasto messo in scena "Le due domande sembrano lontane": sostituiti da "Soddisfare una formula 3SAT vuol dire scegliere... La riduzione traduce questa scelta in una scelta di nodi."
 - §2 "ed è giusto così": tolto, resta la ragione.
 - §1 "solo letterali opposti, non tutte le occorrenze della stessa variabile": affermazione diretta più la conseguenza.
@@ -60,6 +65,7 @@ Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in
 - Tenuto "$K$ è il numero di clausole, non di variabili": corregge una confusione reale.
 
 ### 40-clique-nodecover.md
+
 - §1 "non serve una riduzione nuova da 3SAT, perché tutti e due sono INDEPENDENT SET riscritto": affermazione diretta.
 - §20 titolo a effetto "Due complementi diversi": "Le due riduzioni".
 - §4 frammento "Resta il "al più" del budget.": frase piena.
@@ -67,24 +73,28 @@ Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in
 - §2 "Scambiarli dà riduzioni sbagliate.": tolto.
 
 ### 41-hamilton-path.md
+
 - §3 "Il lavoro della costruzione sta nel fatto che...": affermazione diretta.
 - §25 "La corrispondenza fra grafo e formula è questa:" (descrive la tabella): tolta, le intestazioni bastano.
 - §1 "Il lato attraversato corrisponde al letterale falso, non a quello vero. Sembra rovesciato, ma è ciò che fa funzionare il triangolo": esplicitata la convinzione spontanea, tolta la frase a effetto.
 - §19 elenco con etichette all'inizio dei punti (senza grassetto): tenuto, le etichette sono i nomi dei gadget usati dopo.
 
 ### 42-tsp-d.md
+
 - §3/§4 "Tutto si regge su un limite dal basso." (annuncio): il limite è enunciato subito, poi "Da questo limite dal basso segue".
 - Ripetizione fra sezioni: la ragione "il giro si chiude sulla prima città, quindi si parte dal ciclo" stava sia in "Il problema" sia in "Dove si inciampa": tolta dalla prima.
 - §2 "e questo mostra che": "quindi".
 - "Tieni a mente la seconda risposta" (§4, debole): tenuta come nel modello di Savitch, legata con "perché".
 
 ### 43-3-coloring.md
+
 - §2 "Il triangolo serve proprio a questo": riformulato.
 - Ripetizione fra sezioni: l'ultimo errore tipico (i nomi dei colori non sono fissati) ripeteva il primo gadget: tolto, aggiunto "qualunque esso sia" nel gadget.
 - §2 "Con quei colori dei letterali il gadget non si completa, e infatti con quei valori la clausola è falsa." (commenta l'esempio appena visto): fuso nella frase iniziale del paragrafo.
 - §1 diviso "Il gadget OR non calcola l'OR. Garantisce due cose sole": convinzione reale esplicitata ("Viene da leggere il gadget come una porta OR, ma...").
 
 ### 44-tripartite-matching.md
+
 - §13 "Il passaggio dalle coppie alle terne cambia la natura del problema: ... le scelte si intrecciano in modi che un algoritmo per le coppie non sa gestire" (gonfiato e vago): "Con le coppie il problema è facile, con le terne diventa NP-completo."
 - §4 "Restano da contare le case.": tolto.
 - §1 "Il valore vero corrisponde alle case lasciate libere, non a quelle occupate.": affermazione diretta.
@@ -92,11 +102,13 @@ Da learn ho tenuto, come dice STRATEGIA.md: domande di controllo con risposta in
 - Il blocco di codice con le terne per $k = 2$ è rimasto invariato (regola della modalità file).
 
 ### 45-set-problems.md
+
 - §2 "In tutti e due i casi il ragionamento è un conteggio" (chiusura che ripete i due punti): spostata prima dell'elenco.
 - §1 e ripetizione: "La difficoltà passa dal caso particolare al problema generale, non al contrario." ripeteva la risposta della domanda iniziale: resta solo l'applicazione concreta.
 - Definizione di SET COVERING riscritta (frase contorta).
 
 ### 46-integer-programming.md
+
 - §3 "Le due metà della prova hanno difficoltà rovesciate rispetto al solito.": frase piana ("Al contrario del solito, la difficoltà si dimostra quasi subito...").
 - §1 ""Al più esponenziali" riguarda il valore, non la lunghezza.": "sembra troppo, ma si riferisce al valore".
 - §1 "L'appartenenza a NP sembra ovvia e non lo è.": convinzione reale esplicitata.

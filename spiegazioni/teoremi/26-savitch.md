@@ -68,4 +68,3 @@ I due fattori $\log n$ hanno origini diverse. Il primo conta i livelli, cioè qu
 Le due metà si controllano una dopo l'altra, sulla stessa porzione di nastro. Se la macchina tenesse aperte entrambe le chiamate, o un elenco degli $z$ già scartati, lo spazio crescerebbe. Un tentativo fallito invece non lascia niente in memoria: per sapere da dove ripartire basta il nome dell'ultimo $z$ provato, che sta già nella tripla.
 
 Il tempo è pessimo. Ogni livello prova fino a $n$ candidati e per ognuno fa due chiamate, quindi il tempo cresce come $(2n)^{\log n} = n^{O(\log n)}$, più di qualunque polinomio. Savitch risparmia spazio pagando in tempo.
-

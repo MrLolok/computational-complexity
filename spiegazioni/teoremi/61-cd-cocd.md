@@ -20,10 +20,10 @@ Dare a una macchina l'oracolo $A$ o l'oracolo $\overline{A}$ non cambia i lingua
 
 Chiedere "$w \in A$?" e chiedere "$w \in \overline{A}$?" dà la stessa informazione, letta al contrario. Sia $M^A$ una macchina che decide $L$ con l'oracolo $A \in D$, rispettando il budget di $C$. Si costruisce $M'$ uguale a $M$, ma con $q_{\mathrm{YES}}$ e $q_{\mathrm{NO}}$ scambiati nella tabella di transizione, e le si dà l'oracolo $\overline{A}$. Su ogni domanda le due macchine fanno la stessa mossa:
 
-| domanda $w$ | $M$ con oracolo $A$ | $M'$ con oracolo $\overline{A}$ |
-|---|---|---|
-| $w \in A$ | riceve $q_{\mathrm{YES}}$ e va nello stato $s_1$ | riceve $q_{\mathrm{NO}}$ e, per lo scambio, va in $s_1$ |
-| $w \notin A$ | riceve $q_{\mathrm{NO}}$ e va nello stato $s_2$ | riceve $q_{\mathrm{YES}}$ e, per lo scambio, va in $s_2$ |
+| domanda $w$  | $M$ con oracolo $A$                              | $M'$ con oracolo $\overline{A}$                          |
+| ------------ | ------------------------------------------------ | -------------------------------------------------------- |
+| $w \in A$    | riceve $q_{\mathrm{YES}}$ e va nello stato $s_1$ | riceve $q_{\mathrm{NO}}$ e, per lo scambio, va in $s_1$  |
+| $w \notin A$ | riceve $q_{\mathrm{NO}}$ e va nello stato $s_2$  | riceve $q_{\mathrm{YES}}$ e, per lo scambio, va in $s_2$ |
 
 Così le due computazioni coincidono passo dopo passo, su ogni domanda. $M'$ ha lo stesso tipo di $M$ (deterministica o no) e usa gli stessi passi e le stesse celle, quindi rispetta il budget di $C$. Dunque $C^D \subseteq C^{\mathrm{co}D}$. Per l'altra inclusione si parte da un oracolo in $\mathrm{co}D$ e si ripete tutto, perché il complemento di un linguaggio di $\mathrm{co}D$ sta in $D$.
 

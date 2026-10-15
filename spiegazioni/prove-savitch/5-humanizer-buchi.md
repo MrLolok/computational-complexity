@@ -1,6 +1,6 @@
 # Teorema di Savitch (Teorema 7.5)
 
-*Versione 5: la versione 4 con i buchi colmati.*
+_Versione 5: la versione 4 con i buchi colmati._
 
 ## Enunciato
 
@@ -26,9 +26,9 @@ Per il teorema di Savitch $\mathrm{REACHABILITY} \in \mathrm{SPACE}(\log^2 n)$: 
 
 1. Sia $G$ un grafo con $n$ nodi, $x$ e $y$ due nodi e $i \ge 0$. Il predicato $\mathrm{PATH}(x, y, i)$ vale se in $G$ c'è un cammino da $x$ a $y$ lungo al più $2^i$.
 
-   Il parametro $i$ conta quanti dimezzamenti restano. Una lunghezza massima $2^i$ si dimezza in $2^{i-1}$ senza arrotondamenti, e dopo $i$ dimezzamenti si arriva a $2^0 = 1$, il caso base. Per questo si usa $2^i$: la profondità della ricorsione coincide con $i$, che scende di 1 a ogni chiamata.
+    Il parametro $i$ conta quanti dimezzamenti restano. Una lunghezza massima $2^i$ si dimezza in $2^{i-1}$ senza arrotondamenti, e dopo $i$ dimezzamenti si arriva a $2^0 = 1$, il caso base. Per questo si usa $2^i$: la profondità della ricorsione coincide con $i$, che scende di 1 a ogni chiamata.
 
-   Si dice "al più" perché le due metà di un cammino non sono sempre uguali. Un cammino di 5 archi si spezza in 3 e 2, ed entrambi sono lunghi al più 4.
+    Si dice "al più" perché le due metà di un cammino non sono sempre uguali. Un cammino di 5 archi si spezza in 3 e 2, ed entrambi sono lunghi al più 4.
 
 2. Il valore iniziale di $i$ viene da qui. Se $y$ è raggiungibile da $x$, esiste anche un cammino senza nodi ripetuti: se un nodo compare due volte, si toglie il giro fra le due occorrenze. Un cammino così tocca al più $n$ nodi, quindi ha meno di $n$ archi. Basta allora un $i$ con $2^i \ge n$, e il più piccolo è $i = \lceil \log n \rceil$ (per $n = 1000$, $i = 10$). Decidere REACHABILITY equivale a decidere $\mathrm{PATH}(x, y, \lceil \log n \rceil)$.
 3. Caso base, $i = 0$. Un cammino lungo al più $2^0 = 1$ esiste se $x = y$ oppure se $(x, y)$ è un arco, e la macchina lo verifica leggendo una casella della matrice di adiacenza sul nastro di input.
@@ -36,7 +36,7 @@ Per il teorema di Savitch $\mathrm{REACHABILITY} \in \mathrm{SPACE}(\log^2 n)$: 
 5. La macchina ha il nastro di input, con la matrice di $G$ in sola lettura, e due nastri di lavoro. Il primo è la pila dei record di attivazione: contiene triple $(x, y, i)$ scritte in binario, con il problema corrente più a destra. Il secondo dà $O(\log n)$ celle di appoggio per il contatore che enumera i nodi.
 6. La macchina prova i nodi $z$ uno dopo l'altro. Per ciascuno aggiunge in cima alla pila la tripla $(x, z, i-1)$ e la risolve ricorsivamente. Se la risposta è no, cancella la tripla e passa allo $z$ successivo. Se è sì, la sovrascrive con $(z, y, i-1)$, leggendo $y$ dalla tripla a sinistra, e risolve anche questa. Se la seconda risposta è no, cancella e passa allo $z$ successivo. Se è sì, il confronto con la tripla a sinistra le dice che era la seconda chiamata: cancella e risponde sì a $\mathrm{PATH}(x, y, i)$. Se nessuno $z$ funziona, risponde no.
 
-   Per passare allo $z$ successivo la macchina legge $z$ dalla tripla appena risolta e scrive quella con $z + 1$, quindi non tiene un elenco dei nodi già provati.
+    Per passare allo $z$ successivo la macchina legge $z$ dalla tripla appena risolta e scrive quella con $z + 1$, quindi non tiene un elenco dei nodi già provati.
 
 7. Correttezza, per induzione su $i$. Per $i = 0$ vale il punto 3. Se la macchina risponde correttamente per $i-1$, per il punto 4 risponde correttamente anche per $i$.
 8. Spazio, dove compaiono i due logaritmi dell'intuizione. Ogni chiamata ricorsiva abbassa $i$ di 1 partendo da $\lceil \log n \rceil$, quindi la pila contiene al più $\lceil \log n \rceil$ triple, più una. Ogni tripla contiene due nodi di $\log n$ bit ciascuno e $i \le \log n$, quindi al più $3 \log n$ simboli. Una chiamata finita cancella la sua tripla, e lo spazio torna disponibile per lo $z$ successivo. In totale $\lceil \log n \rceil \cdot 3 \log n + \log n = O(\log^2 n)$. Per $n = 1024$ sono al più 11 triple da 30 bit, circa 330 bit, mentre una visita in profondità deve segnare 1024 nodi visitati.

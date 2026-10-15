@@ -4,32 +4,32 @@ import raw from "./tracce.json";
 export type TraceAnswer = "SI" | "NO" | "ALTRO";
 export type TraceRef = { code: string; n: number };
 export type TraceQuestion = {
-  n: number;
-  /** solo nelle domande sparse (SP): a, b, c… */
-  label?: string;
-  text: string;
-  answer: TraceAnswer;
-  /** risposta come è scritta, es. "altro: solo se P = NP" */
-  answerText: string;
-  explanation: string;
-  /** ✔️ confermata dal correttore */
-  confirmed: boolean;
-  /** 🔁 la soluzione nel file d'origine è sbagliata */
-  fileWrong: boolean;
-  /** ♻️ domanda ripetuta da un'altra traccia */
-  repeatOf: string | null;
-  seeAlso: TraceRef[];
+    n: number;
+    /** solo nelle domande sparse (SP): a, b, c… */
+    label?: string;
+    text: string;
+    answer: TraceAnswer;
+    /** risposta come è scritta, es. "altro: solo se P = NP" */
+    answerText: string;
+    explanation: string;
+    /** ✔️ confermata dal correttore */
+    confirmed: boolean;
+    /** 🔁 la soluzione nel file d'origine è sbagliata */
+    fileWrong: boolean;
+    /** ♻️ domanda ripetuta da un'altra traccia */
+    repeatOf: string | null;
+    seeAlso: TraceRef[];
 };
 export type TraceQ8 = { title: string; body: string; lessonRef: string | null; repeatOf: string | null };
 export type Trace = {
-  code: string;
-  title: string;
-  date: string | null;
-  dateLabel: string | null;
-  notionUrl: string;
-  intro: string;
-  questions: TraceQuestion[];
-  q8: TraceQ8 | null;
+    code: string;
+    title: string;
+    date: string | null;
+    dateLabel: string | null;
+    notionUrl: string;
+    intro: string;
+    questions: TraceQuestion[];
+    q8: TraceQ8 | null;
 };
 
 const data = raw as unknown as { source: string; legend?: string; traces: Trace[] };
@@ -40,10 +40,9 @@ export const TRACE_BY: Record<string, Trace> = Object.fromEntries(TRACES.map((t)
 
 /** testo semplice per la ricerca: senza Markdown né comandi LaTeX */
 export const plainText = (md: string) =>
-  md
-    .replace(/\\(mathrm|text|mathcal|operatorname)\{([^}]*)\}/g, "$2")
-    .replace(/\\[a-zA-Z]+/g, " ")
-    .replace(/[$*_`#>|{}^\\]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
+    md
+        .replace(/\\(mathrm|text|mathcal|operatorname)\{([^}]*)\}/g, "$2")
+        .replace(/\\[a-zA-Z]+/g, " ")
+        .replace(/[$*_`#>|{}^\\]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();

@@ -4,10 +4,10 @@ Teoremi: 01-ricorsivo-re, 02-speedup-multinastro, 03-ram-mdt, 04-linear-speedup,
 
 ## Invocazioni delle skill
 
-| skill | invocazioni | caricata |
-|---|---|---|
-| `anthropic-skills:learn` | 1, all'inizio, con l'adattamento a testo statico di STRATEGIA.md | sì |
-| `humanizer` (`.claude/skills/humanizer/`, modalità file) | 11, una per file, nell'ordine 01 → 11 | sì, tutte e 11 |
+| skill                                                    | invocazioni                                                      | caricata       |
+| -------------------------------------------------------- | ---------------------------------------------------------------- | -------------- |
+| `anthropic-skills:learn`                                 | 1, all'inizio, con l'adattamento a testo statico di STRATEGIA.md | sì             |
+| `humanizer` (`.claude/skills/humanizer/`, modalità file) | 11, una per file, nell'ordine 01 → 11                            | sì, tutte e 11 |
 
 Da learn ho tenuto quello che STRATEGIA prevede per un testo statico: domande di controllo con risposta in `<details>`, spiegazione diretta (il teorema è un concetto nuovo), un esempio parallelo svolto dove mostra il meccanismo, tabelle o blocchi di codice per le strutture, gli errori veri in "Dove si inciampa di solito".
 

@@ -48,8 +48,18 @@ export function Lez6Topics({ groups }: { groups: Lez6Group[] }) {
                                         <div key={key} className="flex min-w-0 flex-col gap-1.5">
                                             <p className={ui.label}>{label}</p>
                                             <Markdown>{t[key]}</Markdown>
-                                            {key === "esempio" && t.id === "voto" && <LearningFigure kind="maggioranza" sizes="(width < 80rem) 90vw, 1200px" />}
-                                            {key === "esempio" && t.id === "ampiezze" && <LearningFigure kind="interferenza" sizes="(width < 80rem) 90vw, 1200px" />}
+                                            {key === "esempio" && t.id === "voto" && (
+                                                <LearningFigure
+                                                    kind="maggioranza"
+                                                    sizes="(width < 80rem) 90vw, 1200px"
+                                                />
+                                            )}
+                                            {key === "esempio" && t.id === "ampiezze" && (
+                                                <LearningFigure
+                                                    kind="interferenza"
+                                                    sizes="(width < 80rem) 90vw, 1200px"
+                                                />
+                                            )}
                                         </div>
                                     ) : null,
                                 )}

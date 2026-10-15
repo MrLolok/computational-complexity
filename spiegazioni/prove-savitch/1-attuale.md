@@ -22,7 +22,6 @@ Per il teorema di Savitch $\mathrm{REACHABILITY} \in \mathrm{SPACE}(\log^2 n)$: 
 
 Idea: un cammino da $x$ a $y$ lungo al più $2^i$ ha un nodo di mezzo $z$, da cui $x$ e $y$ distano al più $2^{i-1}$. Si prova ogni $z$, uno alla volta, risolvendo ricorsivamente le due metà e riusando lo spazio. La ricorsione è profonda $\log n$ e ogni livello ricorda solo $O(\log n)$ bit.
 
-
 1. **Il predicato.** Sia $G$ un grafo con $n$ nodi, $x$ e $y$ due nodi, $i \ge 0$. $\mathrm{PATH}(x, y, i)$ vale se in $G$ c'è un cammino da $x$ a $y$ lungo al più $2^i$. Se $y$ è raggiungibile da $x$, c'è un cammino senza nodi ripetuti, quindi lungo al più $n \le 2^{\lceil \log n \rceil}$. Perciò REACHABILITY equivale a decidere $\mathrm{PATH}(x, y, \lceil \log n \rceil)$.
 1. **Caso base $i = 0$.** Un cammino lungo al più $2^0 = 1$ esiste se $x = y$ oppure se $(x, y)$ è un arco: basta guardare una casella della matrice di adiacenza sul nastro di input.
 1. **Passo ricorsivo $i \ge 1$.** $\mathrm{PATH}(x, y, i)$ vale se e solo se esiste un nodo $z$ con $\mathrm{PATH}(x, z, i-1)$ e $\mathrm{PATH}(z, y, i-1)$. Perché: se c'è un cammino lungo al più $2^i$, il nodo $z$ a metà lo divide in due pezzi lunghi al più $2^{i-1}$; viceversa, attaccando due cammini lunghi al più $2^{i-1}$ si ottiene un cammino lungo al più $2 \cdot 2^{i-1} = 2^i$.

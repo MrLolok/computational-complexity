@@ -52,11 +52,11 @@ $$\psi_{i+1}(X, Y) = \exists Z\, \forall A\, \forall B\, \big[((A = X \land B = 
 
 Il $\forall$ fa variare $(A, B)$ su tutte le coppie di configurazioni, ma l'implicazione con premessa falsa è vera, quindi conta solo per due coppie:
 
-| $(A, B)$ | premessa | che cosa impone |
-|---|---|---|
-| $(X, Z)$ | vera | $\psi_i(X, Z)$ |
-| $(Z, Y)$ | vera | $\psi_i(Z, Y)$ |
-| ogni altra coppia | falsa | niente |
+| $(A, B)$          | premessa | che cosa impone |
+| ----------------- | -------- | --------------- |
+| $(X, Z)$          | vera     | $\psi_i(X, Z)$  |
+| $(Z, Y)$          | vera     | $\psi_i(Z, Y)$  |
+| ogni altra coppia | falsa    | niente          |
 
 La formula è vera se e solo se esiste $Z$ con $\psi_i(X, Z) \land \psi_i(Z, Y)$, come quella ingenua, ma $\psi_i$ compare una volta sola. "$A = X$" è un'abbreviazione per $\bigwedge_{k=1}^{m} (a_k \leftrightarrow x_k)$, lunga $O(m)$.
 

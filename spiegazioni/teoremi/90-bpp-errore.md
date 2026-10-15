@@ -28,12 +28,12 @@ La macchina $N_k$ esegue $N$ per $2k + 1$ volte, con scelte indipendenti, e risp
 
 Con errore $1/4$ per esecuzione, gli errori della maggioranza si calcolano a mano:
 
-| esecuzioni | la maggioranza sbaglia se sbagliano almeno | probabilità di errore |
-|---|---|---|
-| 1 | 1 | $1/4 = 0{,}25$ |
-| 3 | 2 | $10/64 \approx 0{,}156$ |
-| 5 | 3 | $106/1024 \approx 0{,}104$ |
-| 7 | 4 | $1156/16384 \approx 0{,}071$ |
+| esecuzioni | la maggioranza sbaglia se sbagliano almeno | probabilità di errore        |
+| ---------- | ------------------------------------------ | ---------------------------- |
+| 1          | 1                                          | $1/4 = 0{,}25$               |
+| 3          | 2                                          | $10/64 \approx 0{,}156$      |
+| 5          | 3                                          | $106/1024 \approx 0{,}104$   |
+| 7          | 4                                          | $1156/16384 \approx 0{,}071$ |
 
 Per 3 esecuzioni: due errori, in uno dei 3 modi possibili, danno $3 \cdot (1/4)^2 \cdot (3/4) = 9/64$; tre errori danno $1/64$; in tutto $10/64$.
 

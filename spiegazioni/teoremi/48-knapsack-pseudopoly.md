@@ -35,19 +35,19 @@ La risposta è SÌ se e solo se $V(W, n) \ge K$.
 Tre oggetti, $W = 5$, $K = 7$:
 
 | oggetto | peso | valore |
-|---|---|---|
-| 1 | 2 | 3 |
-| 2 | 3 | 4 |
-| 3 | 4 | 5 |
+| ------- | ---- | ------ |
+| 1       | 2    | 3      |
+| 2       | 3    | 4      |
+| 3       | 4    | 5      |
 
 La tabella si riempie una riga alla volta, perché ogni riga usa solo quella sopra:
 
-| | $w = 0$ | 1 | 2 | 3 | 4 | 5 |
-|---|---|---|---|---|---|---|
-| $i = 0$ | 0 | 0 | 0 | 0 | 0 | 0 |
-| $i = 1$ | 0 | 0 | 3 | 3 | 3 | 3 |
-| $i = 2$ | 0 | 0 | 3 | 4 | 4 | 7 |
-| $i = 3$ | 0 | 0 | 3 | 4 | 5 | 7 |
+|         | $w = 0$ | 1   | 2   | 3   | 4   | 5   |
+| ------- | ------- | --- | --- | --- | --- | --- |
+| $i = 0$ | 0       | 0   | 0   | 0   | 0   | 0   |
+| $i = 1$ | 0       | 0   | 3   | 3   | 3   | 3   |
+| $i = 2$ | 0       | 0   | 3   | 4   | 4   | 7   |
+| $i = 3$ | 0       | 0   | 3   | 4   | 5   | 7   |
 
 Per esempio $V(5, 2) = \max\{V(5, 1),\ 4 + V(2, 1)\} = \max\{3, 7\} = 7$: prendere l'oggetto 2 lascia 2 unità di peso, che bastano per l'oggetto 1. In fondo a destra $V(5, 3) = 7 \ge K$, quindi la risposta è SÌ, con gli oggetti 1 e 2.
 

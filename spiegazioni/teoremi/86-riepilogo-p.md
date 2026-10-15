@@ -21,9 +21,9 @@ Se la prima risposta non ti tornava, rileggila: da lì viene tutta la difficolt�
 Sono due risultati citati senza dimostrazione e usati soprattutto negli esercizi sulle riduzioni. Delle prove si vede solo lo schema.
 
 | problema | in P? | P-completo? |
-|---|---|---|
-| PRIMES | sì | non si sa |
-| MAX FLOW | sì | sì |
+| -------- | ----- | ----------- |
+| PRIMES   | sì    | non si sa   |
+| MAX FLOW | sì    | sì          |
 
 ## PRIMES sta in P
 

@@ -18,12 +18,12 @@ Se la seconda risposta non ti tornava, rileggila: la prova la combina con un con
 
 Sia $M$ una MdT deterministica che decide $L$ usando al più $f(n)$ celle per nastro di lavoro, con $f(n) \ge \log n$. Le sue configurazioni sono fotografie di una memoria limitata, e si possono contare. Con un solo nastro di lavoro:
 
-| componente | valori possibili |
-|---|---|
-| stato | $\lvert K \rvert$ |
-| posizione sull'input | $n+1$ |
+| componente                     | valori possibili              |
+| ------------------------------ | ----------------------------- |
+| stato                          | $\lvert K \rvert$             |
+| posizione sull'input           | $n+1$                         |
 | contenuto del nastro di lavoro | $\lvert \Sigma \rvert^{f(n)}$ |
-| posizione sul nastro di lavoro | $f(n)$ |
+| posizione sul nastro di lavoro | $f(n)$                        |
 
 Ogni nastro di lavoro in più aggiunge due fattori dello stesso tipo. Il prodotto $N$ va messo nella forma $k^{f(n)}$, e il fattore $n+1$ è l'unico che non dipende da $f(n)$. Qui serve l'ipotesi: da $f(n) \ge \log n$ viene $n \le 2^{f(n)}$, quindi $n+1 \le 2^{f(n)+1}$. Inoltre $f(n) \le 2^{f(n)}$. Allora, con un nastro di lavoro e $f(n) \ge 1$,
 

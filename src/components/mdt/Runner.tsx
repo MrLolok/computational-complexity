@@ -173,7 +173,9 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
 
             {choice && (
                 <div className="border-open/50 flex flex-col gap-2 rounded-lg border p-3">
-                    <p className="font-ui text-open text-sm">Ci sono più transizioni possibili. Scegli il ramo da seguire.</p>
+                    <p className="font-ui text-open text-sm">
+                        Ci sono più transizioni possibili. Scegli il ramo da seguire.
+                    </p>
                     {options.map((r, i) => (
                         <button
                             key={r.line}

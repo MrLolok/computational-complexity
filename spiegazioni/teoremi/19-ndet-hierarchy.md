@@ -63,9 +63,9 @@ Per il teorema di Immerman e Szelepcsényi una macchina nondeterministica può d
 
 Gli esempi dell'enunciato soddisfano le due condizioni. Una $h$ crescente è illimitata, quindi il rapporto $f/g = 1/h(n)$ tende a 0 nei primi tre casi; per la seconda condizione $\log(n+1) = O(\log n)$, $(n+1)^k \le 2^k n^k$ e $2^{n+1} = 2 \cdot 2^n$. L'ultimo caso è diverso:
 
-| $f(n)$ | $f(n+1)$ | gradino $g(n)$ |
-|---|---|---|
-| $2^{2^n}$ | $2^{2^{n+1}} = (2^{2^n})^2$ | $2^{2^{n+1}}$ |
+| $f(n)$    | $f(n+1)$                    | gradino $g(n)$ |
+| --------- | --------------------------- | -------------- |
+| $2^{2^n}$ | $2^{2^{n+1}} = (2^{2^n})^2$ | $2^{2^{n+1}}$  |
 
 Con $g(n) = 2^{2^n} \cdot h(n)$ la seconda condizione fallirebbe, perché $f(n+1)$ è il quadrato di $f(n)$ e supera di molto $2^{2^n} \cdot h(n)$. Il gradino scelto è quindi $2^{2^{n+1}}$: $f(n+1) = g(n)$, e $f(n)/g(n) = 1/2^{2^n}$ tende a 0.
 

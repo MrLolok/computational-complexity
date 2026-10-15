@@ -29,11 +29,11 @@ Le clausole di un solo letterale contano come clausole di due: $(x)$ è la stess
 Il gruppo è simmetrico in $x, y, z$, quindi conta solo quante di queste tre sono vere; chiamiamo $t$ questo numero. Le clausole $(x)(y)(z)$ danno $t$ clausole vere. La seconda riga dà 3 meno il numero di coppie di letterali veri: 3, 3, 2, 0 per $t = 0, 1, 2, 3$. La variabile $w$ aggiunge $1 + t$ se è vera (la clausola $(w)$ e le clausole della terza riga con il letterale vero) e 3 se è falsa (tutta la terza riga). Scegliendo $w$ al meglio:
 
 | vere fra $x, y, z$ | con $w$ vera | con $w$ falsa | massimo |
-|---|---|---|---|
-| 3 | 7 | 6 | 7 |
-| 2 | 7 | 7 | 7 |
-| 1 | 6 | 7 | 7 |
-| 0 | 4 | 6 | 6 |
+| ------------------ | ------------ | ------------- | ------- |
+| 3                  | 7            | 6             | 7       |
+| 2                  | 7            | 7             | 7       |
+| 1                  | 6            | 7             | 7       |
+| 0                  | 4            | 6             | 6       |
 
 Il gruppo dà quindi al più 7 clausole vere: esattamente 7 se $(x \lor y \lor z)$ è vera, al più 6 se è falsa.
 

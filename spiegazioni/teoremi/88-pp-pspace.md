@@ -24,13 +24,13 @@ Una macchina di PP con tempo $n^c$ ha $2^{n^c}$ run. Per sapere se la maggioranz
 
 Sia $N$ la macchina standardizzata per $L$: ogni run fa esattamente $n^c$ scelte binarie, quindi i run sono $2^{n^c}$, e una volta fissate le scelte il run è deterministico. La macchina deterministica $M$ tiene sul nastro la sequenza delle scelte del run corrente, esegue quel run, aggiorna il contatore dei "yes" o quello dei "no", cancella lo spazio di lavoro e fa avanzare la sequenza come un contatore binario per passare al run successivo. Esauriti i run, accetta sse i "yes" sono più dei "no", che è proprio l'accettazione a maggioranza di $N$.
 
-| sul nastro | spazio |
-|---|---|
-| input $x$ | $n$ |
-| contatore dei "yes" | $n^c + 1$ cifre, perché arriva al più a $2^{n^c}$ |
-| contatore dei "no" | $n^c + 1$ cifre |
-| scelte del run corrente | $n^c$ simboli |
-| lavoro del run | al più $n^c$ celle |
+| sul nastro              | spazio                                            |
+| ----------------------- | ------------------------------------------------- |
+| input $x$               | $n$                                               |
+| contatore dei "yes"     | $n^c + 1$ cifre, perché arriva al più a $2^{n^c}$ |
+| contatore dei "no"      | $n^c + 1$ cifre                                   |
+| scelte del run corrente | $n^c$ simboli                                     |
+| lavoro del run          | al più $n^c$ celle                                |
 
 Il lavoro di un run sta in $n^c$ celle perché il run fa al più $n^c$ passi e ogni passo tocca al più una cella nuova. Finito un run, $M$ cancella quelle celle e le riusa per il successivo. In totale $M$ usa spazio $O(n^c)$, quindi $L \in \mathrm{SPACE}(n^c) \subseteq \mathrm{PSPACE}$.
 

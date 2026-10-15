@@ -20,12 +20,12 @@ Alcune domande contengono per natura due controlli di segno opposto. "Il tour ot
 
 Per mettere un problema in DP basta scriverlo come "parte in NP" e "parte in coNP" sulla stessa istanza.
 
-| Problema | Parte in NP | Parte in coNP |
-|---|---|---|
-| EXACT TSP | costo ottimo $\le B$ (certificato: un tour di costo $\le B$) | costo ottimo $\ge B$ (nessun tour costa meno di $B$) |
-| CRITICAL SAT | togliendo una qualsiasi clausola, $\varphi$ diventa soddisfacibile | $\varphi$ è insoddisfacibile |
-| CRITICAL HAMILTON PATH, CRITICAL 3-COLORING | dopo ogni modifica permessa del grafo la proprietà vale | il grafo non ha un cammino hamiltoniano (non è 3-colorabile) |
-| UNIQUE SAT | almeno un assegnamento soddisfa $\varphi$ | al più un assegnamento soddisfa $\varphi$ |
+| Problema                                    | Parte in NP                                                        | Parte in coNP                                                |
+| ------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------ |
+| EXACT TSP                                   | costo ottimo $\le B$ (certificato: un tour di costo $\le B$)       | costo ottimo $\ge B$ (nessun tour costa meno di $B$)         |
+| CRITICAL SAT                                | togliendo una qualsiasi clausola, $\varphi$ diventa soddisfacibile | $\varphi$ è insoddisfacibile                                 |
+| CRITICAL HAMILTON PATH, CRITICAL 3-COLORING | dopo ogni modifica permessa del grafo la proprietà vale            | il grafo non ha un cammino hamiltoniano (non è 3-colorabile) |
+| UNIQUE SAT                                  | almeno un assegnamento soddisfa $\varphi$                          | al più un assegnamento soddisfa $\varphi$                    |
 
 Due righe meritano un perché. La parte NP di CRITICAL SAT contiene un "per ogni clausola", che sembra un controllo universale. Le clausole però sono $m$, quindi il certificato può essere una lista di $m$ assegnamenti, uno per ogni clausola tolta: è lunga un polinomio e si verifica in tempo polinomiale. Lo stesso vale per i grafi, dove le modifiche possibili sono al più $n^2$. La parte coNP di UNIQUE SAT si vede dal complemento: "almeno due assegnamenti" ha come certificato due assegnamenti diversi, quindi sta in NP.
 
@@ -33,12 +33,12 @@ Due righe meritano un perché. La parte NP di CRITICAL SAT contiene un "per ogni
 
 Si riduce SAT-UNSAT. Si parte dalla riduzione da 3-SAT a HAMILTON PATH, modificata in modo che il grafo abbia sempre un cammino che salta un solo arco. Con distanza 1 sugli archi del grafo e 2 altrove, il costo ottimo del tour è $N$ se $\varphi$ è soddisfacibile e $N + 1$ se no. Per $\varphi'$ si fa la stessa costruzione raddoppiando le distanze: costo $2N'$ oppure $2N' + 2$. Si uniscono le due istanze in una sola, e il costo ottimo diventa la somma più una costante fissa per il collegamento.
 
-| $\varphi$ | $\varphi'$ | costo ottimo |
-|---|---|---|
-| soddisfacibile | soddisfacibile | base $+ 0$ |
-| insoddisfacibile | soddisfacibile | base $+ 1$ |
-| soddisfacibile | insoddisfacibile | base $+ 2$ |
-| insoddisfacibile | insoddisfacibile | base $+ 3$ |
+| $\varphi$        | $\varphi'$       | costo ottimo |
+| ---------------- | ---------------- | ------------ |
+| soddisfacibile   | soddisfacibile   | base $+ 0$   |
+| insoddisfacibile | soddisfacibile   | base $+ 1$   |
+| soddisfacibile   | insoddisfacibile | base $+ 2$   |
+| insoddisfacibile | insoddisfacibile | base $+ 3$   |
 
 Si sceglie $B$ = base $+ 2$, il caso di SAT-UNSAT. Il raddoppio serve a dare pesi diversi ai due "difetti": con pesi uguali le righe 2 e 3 darebbero lo stesso costo, e la domanda "costa esattamente $B$?" non saprebbe distinguere quale formula è insoddisfacibile.
 

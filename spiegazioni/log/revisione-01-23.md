@@ -24,19 +24,19 @@ Su tutti i 23 file: nessun trattino lungo, nessun grassetto, nessuna virgoletta 
 - 12-terminazione-space: nessuna modifica ($3 \cdot 2^{20} \cdot 21 = 66.060.288$ e 42 celle verificati).
 - 13-chiusura-det-complemento: nessuna modifica.
 - 14-hf-upper:
-  - tabella dei fattori, "al più $\log^3 n \le f(n)$" → "$\log^3 n = O(f(n))$" (errore matematico: la disuguaglianza è falsa per $n$ piccoli, per esempio $n = 100$, $f(n) = n$ dà $\log_2^3 100 \approx 293 > 100$; vale solo asintoticamente, come dice già la formula a blocco);
-  - aggiunta una parentesi sull'origine del quadrato su $k_M$ (una passata per ognuno dei $k_M$ nastri lungo un nastro che li contiene tutti, come nello speedup multinastro): buco minimo segnalato dagli autori stessi (dubbio 7 di batch-2).
+    - tabella dei fattori, "al più $\log^3 n \le f(n)$" → "$\log^3 n = O(f(n))$" (errore matematico: la disuguaglianza è falsa per $n$ piccoli, per esempio $n = 100$, $f(n) = n$ dà $\log_2^3 100 \approx 293 > 100$; vale solo asintoticamente, come dice già la formula a blocco);
+    - aggiunta una parentesi sull'origine del quadrato su $k_M$ (una passata per ognuno dei $k_M$ nastri lungo un nastro che li contiene tutti, come nello speedup multinastro): buco minimo segnalato dagli autori stessi (dubbio 7 di batch-2).
 - 15-hf-lower: nessuna modifica.
 - 16-time-hierarchy: nessuna modifica.
 - 17-p-neq-exp: definizioni di P ed EXP con `k > 0` → `k \gt 0`, come in `classes.ts` (STRATEGIA: le formule riprese devono essere quelle dei dati). Tabelle e conti ($729 > 512$, $1000 < 1024$, $39 > 36$, $45 \le 49$) verificati.
 - 18-space-hierarchy: "Il corso non dà la prova; qui c'è lo schema standard, la stessa diagonalizzazione del tempo con una macchina diversa." → "La prova usa la stessa diagonalizzazione del teorema per il tempo, con una macchina diversa." (STRATEGIA: niente rimandi al corso; humanizer §25, frase sul testo invece che sul contenuto).
 - 19-ndet-hierarchy:
-  - "Il corso enuncia questi risultati senza prova; qui c'è lo schema delle prove standard." → tolta; "teoremi deterministici visti" → "teoremi di gerarchia deterministici" (rimando al corso; i gradini restano nominati esplicitamente, quindi il confronto resta vero);
-  - "simula [$M_i$ su $1^{n+1}$] per $n^c$ passi" → "per $(n+1)^c$ passi, il budget di $M_i$ su un input lungo $n+1$" (errore matematico: con $n^c$ passi la simulazione può tagliare un ramo accettante di $M_i$ su $1^{n+1}$, e la copia non è più corretta);
-  - "ogni macchina compare infinite volte nell'elenco, quindi riceve intervalli lunghi quanto serve" → "riceve anche intervalli che cominciano da lunghezze grandi quanto serve" (precisione: per assorbire la costante serve che $a_i$ sia grande, non che l'intervallo sia lungo).
+    - "Il corso enuncia questi risultati senza prova; qui c'è lo schema delle prove standard." → tolta; "teoremi deterministici visti" → "teoremi di gerarchia deterministici" (rimando al corso; i gradini restano nominati esplicitamente, quindi il confronto resta vero);
+    - "simula [$M_i$ su $1^{n+1}$] per $n^c$ passi" → "per $(n+1)^c$ passi, il budget di $M_i$ su un input lungo $n+1$" (errore matematico: con $n^c$ passi la simulazione può tagliare un ramo accettante di $M_i$ su $1^{n+1}$, e la copia non è più corretta);
+    - "ogni macchina compare infinite volte nell'elenco, quindi riceve intervalli lunghi quanto serve" → "riceve anche intervalli che cominciano da lunghezze grandi quanto serve" (precisione: per assorbire la costante serve che $a_i$ sia grande, non che l'intervallo sia lungo).
 - 20-time-in-space:
-  - "Nel corso è citata senza prova; questo è lo schema." → tolta (rimando al corso);
-  - inciampo finale, "il tempo può arrivare all'ordine di $k^{f(n)}$" con $k$ mai definito nel file → "$c^{f(n)}$, con $c$ costante" (chiarezza).
+    - "Nel corso è citata senza prova; questo è lo schema." → tolta (rimando al corso);
+    - inciampo finale, "il tempo può arrivare all'ordine di $k^{f(n)}$" con $k$ mai definito nel file → "$c^{f(n)}$, con $c$ costante" (chiarezza).
 - 21-space-in-time: nessuna modifica (base $8|K||\Sigma|$, $5 \cdot 1001 \cdot 1024 \cdot 10 = 51.251.200$, $80^{10} \approx 1{,}07 \cdot 10^{19}$ verificati).
 - 22-t7-4a: nessuna modifica.
 - 23-t7-4b: nessuna modifica.

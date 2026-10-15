@@ -16,12 +16,12 @@ Se la seconda risposta non ti torna, rileggi la prova che TSP(D) è NP-completo:
 
 ## Quattro domande sullo stesso problema
 
-| variante | domanda | risposta |
-|---|---|---|
-| TSP(D) | esiste un giro di costo $\le B$? | sì o no |
-| EXACT TSP | il giro ottimo costa esattamente $B$? | sì o no |
-| TSP COST | quanto costa il giro ottimo? | un numero |
-| TSP | qual è un giro ottimo? | un giro |
+| variante  | domanda                               | risposta  |
+| --------- | ------------------------------------- | --------- |
+| TSP(D)    | esiste un giro di costo $\le B$?      | sì o no   |
+| EXACT TSP | il giro ottimo costa esattamente $B$? | sì o no   |
+| TSP COST  | quanto costa il giro ottimo?          | un numero |
+| TSP       | qual è un giro ottimo?                | un giro   |
 
 Ognuna si riduce alla successiva. Gli ultimi due passaggi sono banali. Chi sa trovare un giro ottimo somma le sue $n$ tratte e ne ha il costo; chi conosce il costo ottimo $c$ risponde a EXACT TSP confrontando $c$ con $B$.
 
@@ -41,11 +41,11 @@ Il valore 2 serve solo a rendere ogni coppia senza arco più cara di un arco: an
 
 Prendi due grafi sui nodi 1, 2, 3, 4. $G_1$ ha gli archi $\{1,2\}$, $\{2,3\}$, $\{3,4\}$, $\{4,1\}$; $G_2$ ha solo i primi tre. Su 4 città ci sono tre giri diversi:
 
-| giro | costo in $G_1$ | costo in $G_2$ |
-|---|---|---|
-| 1, 2, 3, 4, 1 | $1+1+1+1 = 4$ | $1+1+1+2 = 5$ |
-| 1, 2, 4, 3, 1 | $1+2+1+2 = 6$ | $1+2+1+2 = 6$ |
-| 1, 3, 2, 4, 1 | $2+1+2+1 = 6$ | $2+1+2+2 = 7$ |
+| giro          | costo in $G_1$ | costo in $G_2$ |
+| ------------- | -------------- | -------------- |
+| 1, 2, 3, 4, 1 | $1+1+1+1 = 4$  | $1+1+1+2 = 5$  |
+| 1, 2, 4, 3, 1 | $1+2+1+2 = 6$  | $1+2+1+2 = 6$  |
+| 1, 3, 2, 4, 1 | $2+1+2+1 = 6$  | $2+1+2+2 = 7$  |
 
 In $G_1$ l'ottimo è 4, uguale a $n$: c'è il ciclo hamiltoniano 1, 2, 3, 4, 1. In $G_2$ l'ottimo è 5, perché manca l'arco $\{4,1\}$ e nessun giro si chiude usando solo archi.
 

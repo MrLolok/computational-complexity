@@ -20,13 +20,13 @@ Per decidere $L'$ su un input $x$ si calcola $R(x)$ e si esegue su $R(x)$ l'algo
 
 ## Classe per classe
 
-| classe | come si decide $L'$ | perché si resta nella classe |
-|---|---|---|
-| P, NP | si calcola $R(x)$, poi si esegue l'algoritmo per $L$ | $q(\lvert R(x) \rvert) \le q(n^c)$, un polinomio di un polinomio |
-| EXP | come sopra | $2^{(n^c)^j} = 2^{n^{cj}}$, ancora esponenziale |
-| PSPACE | si scrive $R(x)$ su $n^c$ celle, poi si esegue l'algoritmo | $q(n^c)$ celle |
-| L, NL | $R(x)$ non si scrive: ogni simbolo si ricalcola quando serve | contatori e nastri da $O(\log n)$ |
-| coNP | $R$ riduce anche il complemento di $L'$ al complemento di $L$ | il complemento di $L$ sta in NP |
+| classe | come si decide $L'$                                           | perché si resta nella classe                                     |
+| ------ | ------------------------------------------------------------- | ---------------------------------------------------------------- |
+| P, NP  | si calcola $R(x)$, poi si esegue l'algoritmo per $L$          | $q(\lvert R(x) \rvert) \le q(n^c)$, un polinomio di un polinomio |
+| EXP    | come sopra                                                    | $2^{(n^c)^j} = 2^{n^{cj}}$, ancora esponenziale                  |
+| PSPACE | si scrive $R(x)$ su $n^c$ celle, poi si esegue l'algoritmo    | $q(n^c)$ celle                                                   |
+| L, NL  | $R(x)$ non si scrive: ogni simbolo si ricalcola quando serve  | contatori e nastri da $O(\log n)$                                |
+| coNP   | $R$ riduce anche il complemento di $L'$ al complemento di $L$ | il complemento di $L$ sta in NP                                  |
 
 Per esempio, se l'algoritmo per $L$ impiega $q(m) = m^2$ e $|R(x)| \le n^3$, il tempo su $R(x)$ è al più $n^6$.
 

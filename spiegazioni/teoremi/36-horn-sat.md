@@ -18,11 +18,11 @@ SAT è NP-completo. Una formula di Horn è una CNF in cui ogni clausola ha al pi
 
 Le clausole di Horn sono di tre tipi.
 
-| tipo | forma | lettura |
-|---|---|---|
-| fatto | $(y)$ | $y$ è vera |
-| regola | $(\neg x_1 \lor \dots \lor \neg x_k \lor y)$ | $(x_1 \land \dots \land x_k) \Rightarrow y$ |
-| divieto | $(\neg x_1 \lor \dots \lor \neg x_k)$ | le $x_i$ non sono tutte vere |
+| tipo    | forma                                        | lettura                                     |
+| ------- | -------------------------------------------- | ------------------------------------------- |
+| fatto   | $(y)$                                        | $y$ è vera                                  |
+| regola  | $(\neg x_1 \lor \dots \lor \neg x_k \lor y)$ | $(x_1 \land \dots \land x_k) \Rightarrow y$ |
+| divieto | $(\neg x_1 \lor \dots \lor \neg x_k)$        | le $x_i$ non sono tutte vere                |
 
 Il fatto è una regola senza premesse, cioè con $k = 0$.
 
@@ -46,12 +46,12 @@ Se alla fine un divieto risulta violato, le sue variabili sono tutte vere in ogn
 
 Prendi $\varphi = (x) \land (\neg x \lor y) \land (\neg x \lor \neg y \lor z) \land (\neg w \lor x) \land (\neg y \lor \neg w)$.
 
-| giro | regola che scatta | variabili vere |
-|---|---|---|
-| 0 | nessuna | nessuna |
-| 1 | $(x)$ | $x$ |
-| 2 | $x \Rightarrow y$ | $x, y$ |
-| 3 | $(x \land y) \Rightarrow z$ | $x, y, z$ |
+| giro | regola che scatta           | variabili vere |
+| ---- | --------------------------- | -------------- |
+| 0    | nessuna                     | nessuna        |
+| 1    | $(x)$                       | $x$            |
+| 2    | $x \Rightarrow y$           | $x, y$         |
+| 3    | $(x \land y) \Rightarrow z$ | $x, y, z$      |
 
 Dopo il terzo giro non scatta più niente: $w \Rightarrow x$ ha la premessa $w$ falsa. Il divieto $(\neg y \lor \neg w)$ è soddisfatto perché $w$ è falsa, quindi la risposta è "soddisfacibile", con $x$, $y$, $z$ vere e $w$ falsa.
 

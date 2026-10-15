@@ -26,11 +26,11 @@ La proposizione dice che questi vincoli non tolgono potenza: ogni MdT a $k$ nast
 
 $M$ può scrivere sul suo primo nastro e muoversi liberamente sull'ultimo. $M'$ quindi le prepara una copia dell'input su cui lavorare e tiene da parte il nastro di output: i due nastri in più sono il primo, per l'input, e l'ultimo, per l'output, e quelli di $M$ stanno in mezzo.
 
-| fase | nastro 1 (input) | nastri da 2 a $k+1$ | nastro $k+2$ (output) | passi |
-|---|---|---|---|---|
-| copia dell'input | letto fino al primo $\sqcup$ | $x$ copiato sul nastro 2 | fermo | $O(n)$ |
-| simulazione | fermo | $M$ lavora qui | fermo | al più $f(n)$ |
-| copia dell'output | fermo | si legge il nastro $k+1$ | scritto andando a destra | $O(f(n))$ |
+| fase              | nastro 1 (input)             | nastri da 2 a $k+1$      | nastro $k+2$ (output)    | passi         |
+| ----------------- | ---------------------------- | ------------------------ | ------------------------ | ------------- |
+| copia dell'input  | letto fino al primo $\sqcup$ | $x$ copiato sul nastro 2 | fermo                    | $O(n)$        |
+| simulazione       | fermo                        | $M$ lavora qui           | fermo                    | al più $f(n)$ |
+| copia dell'output | fermo                        | si legge il nastro $k+1$ | scritto andando a destra | $O(f(n))$     |
 
 Nella simulazione ogni passo di $M$ diventa un passo di $M'$, con il nastro $i+1$ di $M'$ al posto del nastro $i$ di $M$. Quando $M$ si ferma, il suo output sta sul suo ultimo nastro, cioè sul nastro $k+1$ di $M'$, e $M'$ lo ricopia sull'ultimo andando solo verso destra. $M'$ finisce nello stesso stato di $M$ ("yes", "no" o $h$) e con lo stesso output.
 

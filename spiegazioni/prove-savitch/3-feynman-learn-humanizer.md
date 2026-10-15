@@ -1,6 +1,6 @@
 # Teorema di Savitch
 
-*Versione 3 del test: struttura della skill feynman, approccio della skill learn, revisione con humanizer.*
+_Versione 3 del test: struttura della skill feynman, approccio della skill learn, revisione con humanizer._
 
 Concetto: perché una macchina deterministica decide REACHABILITY usando solo $O(\log^2 n)$ celle di memoria, e che cosa ne segue per le classi di spazio.
 
@@ -20,13 +20,13 @@ Il trucco per il taccuino è risolvere una domanda alla volta e cancellarla appe
 
 ## 2. Dove la spiegazione semplice zoppica
 
-| | Che cosa ho detto | Che cosa resta da chiarire |
-|---|---|---|
-| 1 | "Un percorso di al più 16 tappe" | Da quale lunghezza si parte, per un grafo qualsiasi? |
-| 2 | "Una riga per ogni dimezzamento" | Quanto è lunga una riga, misurata in bit? |
-| 3 | "Provi le città una alla volta" | Provarle tutte richiede molto tempo. Quanto? |
-| 4 | L'analogia del dizionario | La ricerca nel dizionario butta via una metà; Savitch deve controllarle entrambe. |
-| 5 | Il titolo parla di classi di spazio | Che cosa c'entra un grafo di città con NSPACE e PSPACE? |
+|     | Che cosa ho detto                   | Che cosa resta da chiarire                                                        |
+| --- | ----------------------------------- | --------------------------------------------------------------------------------- |
+| 1   | "Un percorso di al più 16 tappe"    | Da quale lunghezza si parte, per un grafo qualsiasi?                              |
+| 2   | "Una riga per ogni dimezzamento"    | Quanto è lunga una riga, misurata in bit?                                         |
+| 3   | "Provi le città una alla volta"     | Provarle tutte richiede molto tempo. Quanto?                                      |
+| 4   | L'analogia del dizionario           | La ricerca nel dizionario butta via una metà; Savitch deve controllarle entrambe. |
+| 5   | Il titolo parla di classi di spazio | Che cosa c'entra un grafo di città con NSPACE e PSPACE?                           |
 
 Termini tecnici usati finora: REACHABILITY (dato un grafo orientato con $n$ nodi e due nodi $x$, $y$, esiste un cammino da $x$ a $y$?), spazio (le celle dei nastri di lavoro che la macchina usa; l'input si legge soltanto e non si conta), NL (i problemi decisi da una macchina nondeterministica in spazio $O(\log n)$).
 

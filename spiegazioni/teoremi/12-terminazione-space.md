@@ -24,11 +24,11 @@ Il teorema dice che i rami infiniti si possono eliminare: esiste $M'$ che decide
 
 Con un nastro di lavoro lungo al più $f(n)$ le configurazioni diverse si contano:
 
-| componente | valori possibili |
-|---|---|
-| stato | $\lvert K \rvert$ |
-| contenuto del nastro | $\lvert \Sigma \rvert^{f(n)}$, un simbolo per cella |
-| posizione del cursore | $f(n)+1$ |
+| componente            | valori possibili                                    |
+| --------------------- | --------------------------------------------------- |
+| stato                 | $\lvert K \rvert$                                   |
+| contenuto del nastro  | $\lvert \Sigma \rvert^{f(n)}$, un simbolo per cella |
+| posizione del cursore | $f(n)+1$                                            |
 
 In tutto sono al più $c = |K| \cdot |\Sigma|^{f(n)} \cdot (f(n)+1)$. Un ramo che fa più di $c$ passi attraversa più di $c$ configurazioni, quindi per il principio dei cassetti ne incontra una due volte.
 

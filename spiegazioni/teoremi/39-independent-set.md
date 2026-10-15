@@ -39,11 +39,11 @@ Viceversa, se $\varphi$ è soddisfacibile, si fissa un'assegnazione che la soddi
 
 Prendi $\varphi = (x \lor y \lor z) \land (\neg x \lor \neg y \lor z) \land (x \lor \neg y \lor \neg z)$, con $m = 3$.
 
-| clausola | nodi del triangolo |
-|---|---|
-| $C_1$ | $x$, $y$, $z$ |
-| $C_2$ | $\neg x$, $\neg y$, $z$ |
-| $C_3$ | $x$, $\neg y$, $\neg z$ |
+| clausola | nodi del triangolo      |
+| -------- | ----------------------- |
+| $C_1$    | $x$, $y$, $z$           |
+| $C_2$    | $\neg x$, $\neg y$, $z$ |
+| $C_3$    | $x$, $\neg y$, $\neg z$ |
 
 Gli archi (b) sono sei: $\neg x$ di $C_2$ con $x$ di $C_1$ e con $x$ di $C_3$; $y$ di $C_1$ con $\neg y$ di $C_2$ e con $\neg y$ di $C_3$; $\neg z$ di $C_3$ con $z$ di $C_1$ e con $z$ di $C_2$. Con i 9 archi dei triangoli fanno 15 archi.
 

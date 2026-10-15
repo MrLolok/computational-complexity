@@ -1,6 +1,6 @@
 # Teorema di Savitch (Teorema 7.5)
 
-*Versione 4 del test: testo attuale del sito, revisione con humanizer.*
+_Versione 4 del test: testo attuale del sito, revisione con humanizer._
 
 ## Enunciato
 

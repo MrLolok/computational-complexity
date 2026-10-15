@@ -10,10 +10,10 @@ import Rich from "@/components/Rich";
 import { PROBLEM_BY, PROBLEMS } from "@/data/problems";
 import walkthroughs from "@/data/problemWalkthroughs.json";
 import { ansKey, classLabel, colorId, plain, REL, trapAnswer } from "@/lib/problems";
+import { texHtml } from "@/lib/tex";
 import { theoremsForProblem } from "@/lib/theorems";
 import { classColor, ui } from "@/lib/ui";
 import { codeCls, Html, YesNo } from "./bits";
-import { texHtml } from "@/lib/tex";
 
 function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void }) {
     return (
@@ -93,7 +93,7 @@ export default function ProblemDetail({
             </div>
             <header className="flex flex-col gap-3">
                 <h2
-                    className="font-head text-2xl sm:text-3xl leading-tight font-semibold"
+                    className="font-head text-2xl leading-tight font-semibold sm:text-3xl"
                     dangerouslySetInnerHTML={{ __html: p.name }}
                 />
                 <Rich as="p" html={p.def} />
@@ -104,7 +104,10 @@ export default function ProblemDetail({
                         dangerouslySetInnerHTML={{ __html: texHtml(clsName, false) }}
                     />
                     {p.full && (
-                        <span className={ui.pillOk} dangerouslySetInnerHTML={{ __html: texHtml(`${clsName}-completo`) }} />
+                        <span
+                            className={ui.pillOk}
+                            dangerouslySetInnerHTML={{ __html: texHtml(`${clsName}-completo`) }}
+                        />
                     )}
                 </div>
             </header>
@@ -130,7 +133,10 @@ export default function ProblemDetail({
                 name={plain(p.name)}
                 title="Un esempio, passo dopo passo"
             />
-            <Rich className="text-muted flex flex-col gap-3 leading-relaxed" html={/^\s*<(p|ul|ol|div)\b/.test(p.why) ? p.why : `<p>${p.why}</p>`} />
+            <Rich
+                className="text-muted flex flex-col gap-3 leading-relaxed"
+                html={/^\s*<(p|ul|ol|div)\b/.test(p.why) ? p.why : `<p>${p.why}</p>`}
+            />
             <details className={disclosure}>
                 <summary>Complemento e collegamenti</summary>
                 <div className="mt-3 flex flex-col gap-3">

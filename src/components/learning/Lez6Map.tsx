@@ -6,6 +6,8 @@ import type { KeyboardEvent } from "react";
 import { useState } from "react";
 import Link from "next/link";
 
+import { Html } from "@/components/problems/bits";
+import Tex from "@/components/Tex";
 import {
     MAP_CONJ,
     MAP_EXAMPLES,
@@ -16,8 +18,6 @@ import {
     MAP_POS,
     MAP_STRICT,
 } from "@/data/lezione6Map";
-import Tex from "@/components/Tex";
-import { Html } from "@/components/problems/bits";
 import { classColor, ui } from "@/lib/ui";
 
 const W = 104,

@@ -10,6 +10,7 @@ File: 82-t20-1, 83-nexp-completi, 84-fo-indecidibile, 85-2sat-p-completo, 86-rie
 ## Difetti segnati da humanizer e modifiche
 
 ### 82-t20-1
+
 - §1 contrasto "Il trucco non è cambiare la macchina, ma cambiare il linguaggio" (Il problema): riscritto come affermazione, "Si lascia quindi la macchina com'è e si cambia il linguaggio".
 - §2 chiusura "Il numero di passi è identico, è cambiato il metro" (risposta 2): tolta.
 - §3 "tutto il teorema sta in quel cambio di metro": diventato "La dimostrazione usa solo questo: contare gli stessi passi rispetto a una lunghezza diversa".
@@ -18,6 +19,7 @@ File: 82-t20-1, 83-nexp-completi, 84-fo-indecidibile, 85-2sat-p-completo, 86-rie
 - §7 tre paragrafi di "Dove si inciampa" aperti con "Si ...": aperture variate. "fase 1 di M", mai definita nel testo, riscritta ("far lavorare $M'$ direttamente su $x$"); "siamo in EXP" (chiusura) diventato "che in EXP è permesso".
 
 ### 83-nexp-completi
+
 - §25 "La dimostrazione completa è omessa; qui si segue lo schema": tolta.
 - §2 chiusure "C_x lavora su numeri di 20 bit, non su un milione di celle" (anche §1, coda negativa), "Il modello di un elemento basta.", "È proprio lì che sta il costo.": fuse nelle frasi precedenti o tolte.
 - §2 frammento "Si sa: no.": fuso in una frase con la motivazione.
@@ -25,11 +27,13 @@ File: 82-t20-1, 83-nexp-completi, 84-fo-indecidibile, 85-2sat-p-completo, 86-rie
 - "I due problemi vengono da mondi diversi..., ma": spezzato in due frasi senza contrasto.
 
 ### 84-fo-indecidibile
+
 - §25 e regola del sito: "La dimostrazione è omessa nel corso; qui si segue lo schema" (rimando al corso): tolta.
 - §1 contrasto diviso "'Indecidibile' non vuol dire che... Vuol dire che...": riscritto come affermazione diretta più un fatto ("Di molte formule particolari si sa benissimo se sono valide").
 - §11 (debole) "Si mette Ax come premessa": riscritto con soggetto esplicito. "La soddisfacibilità ha la situazione rovesciata" reso concreto ("con i ruoli di sì e no scambiati").
 
 ### 85-2sat-p-completo
+
 - §12 "Inoltre 2-SAT è NL-completo" (frase appiccicata): fusa nel paragrafo.
 - §4 "Un caso concreto:": tolto, la frase su PRIMES comincia dal fatto.
 - §2 chiusura "e niente di più": tolta.
@@ -38,6 +42,7 @@ File: 82-t20-1, 83-nexp-completi, 84-fo-indecidibile, 85-2sat-p-completo, 86-rie
 - Dopo humanizer, per lunghezza (era 638 parole): i due paragrafi di "Dove si inciampa" fusi in uno, senza cambiare contenuto.
 
 ### 86-riepilogo-p
+
 - §13 "due risultati famosi": tolto l'aggettivo.
 - §25 "Qui si segue lo schema delle prove, senza i dettagli" e regola del sito ("il corso usa senza dimostrarli"): riscritto senza rimando al corso.
 - §1 "sembra polinomiale, ma lo è in N, non nella lunghezza": il contrasto corregge un errore vero, quindi tenuto ma asciugato ("è polinomiale in N, e quindi esponenziale nella lunghezza dell'input").
@@ -45,21 +50,25 @@ File: 82-t20-1, 83-nexp-completi, 84-fo-indecidibile, 85-2sat-p-completo, 86-rie
 - Correzione di contenuto: "Per PRIMES la riduzione non c'è" diceva troppo; ora "una riduzione del genere non è nota".
 
 ### 87-np-pp
+
 - §3 "la dimostrazione si gioca tutta su quel 'più della metà'": sostituito con il fatto ("il caso esattamente metà è quello in cui la nuova macchina rifiuta").
 - §1 coda negativa "metà precisa, non di più": tolta.
 - §2 chiusura "Solo a metà esatta 'almeno uno' diventa 'più della metà'": tolta.
 - §7 aperture "Non si capisce", "Si pensa", "Si dà per scontato": variate.
 
 ### 88-pp-pspace
+
 - §2 chiusura "si risparmia spazio pagando in tempo" (ripeteva la frase prima): tolta.
 - Ripetizione fra sezioni: il primo errore tipico ridiceva l'idea; ridotto a "Servono soltanto i due conteggi".
 - §7 aperture "Si pensa" / "Si conclude": variate. §11 "quelle celle si cancellano" diventato attivo ("$M$ cancella quelle celle").
 
 ### 89-bpp-inclusioni
+
 - §25 "Conviene mettere le condizioni in fila" (descrive la tabella): tolta.
 - §7 e §6 tre paragrafi di "Dove si inciampa" aperti con "Si ...": il primo ("Si cerca una costruzione. Non ce n'è") ripeteva la sezione sull'idea ed è stato tolto; gli altri due riformulati.
 
 ### 90-bpp-errore
+
 - §4 aperture "Conviene dare un nome al margine." e "Il motivo è questo:": tolte, le frasi partono dal contenuto.
 - §3 "Per la teoria conta altro:": riscritto ("Per la classe BPP interessa che...").
 - §1 "in PP 'ripetere non serve'. Serve, ma...": corregge un errore vero, riscritto senza la messa in scena.
@@ -67,6 +76,7 @@ File: 82-t20-1, 83-nexp-completi, 84-fo-indecidibile, 85-2sat-p-completo, 86-rie
 - Dopo la scrittura ho corretto una svista della riscrittura: "lo diventa anche il tempo" (avrebbe detto tempo esponenzialmente piccolo) è ora "il tempo diventa esponenziale".
 
 ### 91-bqp
+
 - §25 "La prova è omessa; qui si segue lo schema": tolta.
 - §3 e §1 "L'inclusione dà un tetto, non dice che il tetto sia basso": riscritto ("l'inclusione limita BQP dall'alto, senza dire quanto in basso stia").
 - §7 e §6 tre paragrafi aperti con "Si ...": variati.
@@ -74,11 +84,13 @@ File: 82-t20-1, 83-nexp-completi, 84-fo-indecidibile, 85-2sat-p-completo, 86-rie
 - "Se la prima risposta non ti tornava, fermati:": "fermati" tolto.
 
 ### 92-bqp-2exp
+
 - §1 "Non è una congettura, è dimostrato": riscritto come affermazione; il confronto con la congettura su NP resta solo in "Dove si inciampa".
 - §20 titolo a effetto "Gli anelli della catena" (e la stessa metafora in "i primi anelli"): diventato "Le inclusioni una per una"; la frase finale dice quale inclusione è stretta.
 - §7 aperture "Si confonde" / "Si pensa": variate.
 
 ### 93-grover-np
+
 - §2 chiusure "e niente di più", "Si risolvono istanze circa doppie." (ripeteva 30 contro 60), "L'esponente si dimezza, la forma resta la stessa.": tolte o fuse nella frase precedente.
 - §7 e §6 tre paragrafi aperti con "Si conclude" / "Si immagina" / "Ci si preoccupa": variati.
 

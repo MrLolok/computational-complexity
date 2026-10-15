@@ -4,10 +4,10 @@ Teoremi: 12-terminazione-space, 13-chiusura-det-complemento, 14-hf-upper, 15-hf-
 
 ## Invocazioni delle skill
 
-| skill | invocazioni | caricata |
-|---|---|---|
-| `anthropic-skills:learn` | 1, all'inizio, con l'adattamento a testo statico di STRATEGIA.md (nessuna domanda all'utente) | sì |
-| `humanizer` (`.claude/skills/humanizer/`, modalità file) | 12, una per file, nell'ordine 12 → 23 | sì, tutte e 12 |
+| skill                                                    | invocazioni                                                                                   | caricata       |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------- |
+| `anthropic-skills:learn`                                 | 1, all'inizio, con l'adattamento a testo statico di STRATEGIA.md (nessuna domanda all'utente) | sì             |
+| `humanizer` (`.claude/skills/humanizer/`, modalità file) | 12, una per file, nell'ordine 12 → 23                                                         | sì, tutte e 12 |
 
 Da learn ho tenuto quello che STRATEGIA prevede per un testo statico: domande di controllo con risposta in `<details>` e una frase su cosa rileggere, spiegazione diretta, un esempio piccolo svolto dove mostra il meccanismo, tabelle o blocchi di codice per le strutture (configurazioni, catena della diagonalizzazione ritardata, albero delle computazioni, sequenze di scelte), gli errori veri in "Dove si inciampa di solito".
 

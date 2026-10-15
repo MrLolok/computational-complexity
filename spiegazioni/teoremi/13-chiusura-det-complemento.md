@@ -27,9 +27,9 @@ Da "$L \in C$ implica $\overline{L} \in C$" vengono le due inclusioni. Se $L \in
 $M$ legge una stringa binaria tenendo nello stato la parità degli 1 visti. Al primo blank va in "yes" se gli 1 sono pari, in "no" se sono dispari. Con le uscite scambiate:
 
 | input | numero di 1 | $M$ | $M'$ |
-|---|---|---|---|
-| 0110 | 2 | yes | no |
-| 111 | 3 | no | yes |
+| ----- | ----------- | --- | ---- |
+| 0110  | 2           | yes | no   |
+| 111   | 3           | no  | yes  |
 
 $M'$ decide le stringhe con un numero dispari di 1, facendo gli stessi passi di $M$.
 

@@ -34,13 +34,13 @@ I candidati $z$ per il punto di mezzo sono tutte le stringhe lunghe $O(f(n))$. P
 
 Nel caso base non c'è una matrice di adiacenza da leggere. Per sapere se $(C, C')$ è un arco la macchina controlla se $C'$ segue da $C$ con una mossa di $N$: legge il simbolo di $x$ sotto la testina indicata da $C$ e consulta la relazione di transizione $\Delta$. Il controllo usa spazio $O(f(n))$.
 
-| | Savitch su REACHABILITY | il corollario |
-|---|---|---|
-| nodi | $n$ | al più $(c^2)^{f(n)}$ configurazioni |
-| scrivere un nodo | $\log n$ bit | $O(f(n))$ simboli |
-| profondità della pila | $\lceil \log n \rceil + 1$ | $O(f(n))$ |
-| "c'è l'arco?" | una casella della matrice | simulare una mossa di $N$ |
-| spazio | $O(\log^2 n)$ | $O(f(n)^2)$ |
+|                       | Savitch su REACHABILITY    | il corollario                        |
+| --------------------- | -------------------------- | ------------------------------------ |
+| nodi                  | $n$                        | al più $(c^2)^{f(n)}$ configurazioni |
+| scrivere un nodo      | $\log n$ bit               | $O(f(n))$ simboli                    |
+| profondità della pila | $\lceil \log n \rceil + 1$ | $O(f(n))$                            |
+| "c'è l'arco?"         | una casella della matrice  | simulare una mossa di $N$            |
+| spazio                | $O(\log^2 n)$              | $O(f(n)^2)$                          |
 
 ## Il conto
 

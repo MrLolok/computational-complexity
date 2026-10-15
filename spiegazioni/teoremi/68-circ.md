@@ -47,11 +47,11 @@ Se invece ogni assegnamento delle $y$ soddisfa $\varphi$, prendi un $T'$ che sod
 
 Prendi $\Phi = \exists x\, \forall y\, (x \lor y)$, vera con $x = 1$. La base è $\mathit{KB} = \{x \lor x',\ y \lor y',\ (x \lor y) \to (y \land y')\}$. Tre assegnamenti che soddisfano $\mathit{KB}$, scritti con gli atomi veri:
 
-| atomi veri | $\varphi = x \lor y$ | è un modello? |
-|---|---|---|
-| $\{x, y, y'\}$ | vera | sì: spegnendo uno o più atomi si viola una formula di $\mathit{KB}$ |
-| $\{x', y, y'\}$ | vera | no: $\{x', y'\}$ soddisfa $\mathit{KB}$ ed è più normale |
-| $\{x', y'\}$ | falsa | sì |
+| atomi veri      | $\varphi = x \lor y$ | è un modello?                                                       |
+| --------------- | -------------------- | ------------------------------------------------------------------- |
+| $\{x, y, y'\}$  | vera                 | sì: spegnendo uno o più atomi si viola una formula di $\mathit{KB}$ |
+| $\{x', y, y'\}$ | vera                 | no: $\{x', y'\}$ soddisfa $\mathit{KB}$ ed è più normale            |
+| $\{x', y'\}$    | falsa                | sì                                                                  |
 
 La seconda riga è la scelta $x = 0$, e il modello più normale $\{x', y'\}$ è il controesempio $y = 0$: con $x = 0$ e $y = 0$ la formula $x \lor y$ è falsa. La scelta $x = 1$ non ha controesempi, e $\{x, y, y'\}$ resta un modello in cui vale $\varphi$: CIRC SAT risponde sì, come $\mathrm{QSAT}_2$.
 

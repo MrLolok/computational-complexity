@@ -35,9 +35,9 @@ Per lo spazio, il metro fa da recinto. $M'$ ne fa una copia per ogni nastro di l
 Sia $f(n) = n^2$ e siano $x$ e $x'$ due input lunghi 3. Il metro ha 9 quasi-blank. Su $x$ la macchina $M$ si ferma dopo 5 passi, su $x'$ dopo 8.
 
 | input | passi simulati di $M$ | passi a vuoto sul metro | totale della seconda fase |
-|---|---|---|---|
-| $x$ | 5 | 4 | 9 |
-| $x'$ | 8 | 1 | 9 |
+| ----- | --------------------- | ----------------------- | ------------------------- |
+| $x$   | 5                     | 4                       | 9                         |
+| $x'$  | 8                     | 1                       | 9                         |
 
 La prima fase dura lo stesso su $x$ e su $x'$, perché dipende solo dalla lunghezza. Quindi anche il totale è lo stesso.
 

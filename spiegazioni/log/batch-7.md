@@ -4,21 +4,21 @@ File: 70-strategic-companies, 71-t17-11, 72-ph-pspace, 73-cor-ph-pspace, 74-qsat
 
 ## Invocazioni delle skill
 
-| skill | argomento | caricata |
-|---|---|---|
-| `anthropic-skills:learn` | spiegazioni statiche in Markdown adattate come in STRATEGIA.md (una invocazione all'inizio, per tutto il batch) | sì |
-| `humanizer` | `spiegazioni/teoremi/70-strategic-companies.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/71-t17-11.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/72-ph-pspace.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/73-cor-ph-pspace.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/74-qsat-pspace.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/75-co-hamilton-pi2.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/76-db-queries.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/77-geography.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/78-go.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/79-fsat-fnp.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/80-fsat-sat.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/81-fp-fnp.md` | sì |
+| skill                    | argomento                                                                                                       | caricata |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- | -------- |
+| `anthropic-skills:learn` | spiegazioni statiche in Markdown adattate come in STRATEGIA.md (una invocazione all'inizio, per tutto il batch) | sì       |
+| `humanizer`              | `spiegazioni/teoremi/70-strategic-companies.md`                                                                 | sì       |
+| `humanizer`              | `spiegazioni/teoremi/71-t17-11.md`                                                                              | sì       |
+| `humanizer`              | `spiegazioni/teoremi/72-ph-pspace.md`                                                                           | sì       |
+| `humanizer`              | `spiegazioni/teoremi/73-cor-ph-pspace.md`                                                                       | sì       |
+| `humanizer`              | `spiegazioni/teoremi/74-qsat-pspace.md`                                                                         | sì       |
+| `humanizer`              | `spiegazioni/teoremi/75-co-hamilton-pi2.md`                                                                     | sì       |
+| `humanizer`              | `spiegazioni/teoremi/76-db-queries.md`                                                                          | sì       |
+| `humanizer`              | `spiegazioni/teoremi/77-geography.md`                                                                           | sì       |
+| `humanizer`              | `spiegazioni/teoremi/78-go.md`                                                                                  | sì       |
+| `humanizer`              | `spiegazioni/teoremi/79-fsat-fnp.md`                                                                            | sì       |
+| `humanizer`              | `spiegazioni/teoremi/80-fsat-sat.md`                                                                            | sì       |
+| `humanizer`              | `spiegazioni/teoremi/81-fp-fnp.md`                                                                              | sì       |
 
 Da learn ho preso: domande di controllo con risposta in `<details>`, spiegazione diretta (niente domande socratiche al posto della spiegazione), un esempio piccolo svolto dove rende visibile il meccanismo, tabelle o blocchi di codice dove c'è una struttura da vedere, gli errori tipici. Humanizer è stato eseguito nei suoi quattro passi (segnare, riscrivere, ricontrollare, versione finale) su ciascun file, con una invocazione per file; nel file c'è solo la versione finale. I blocchi di codice sono rimasti invariati (modalità file).
 

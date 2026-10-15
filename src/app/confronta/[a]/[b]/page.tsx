@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import { notFound } from "next/navigation";
+
 import ComparePicker from "@/components/classes/ComparePicker";
 import CompareVerdict from "@/components/classes/CompareVerdict";
 import { IDS, PLAIN } from "@/data/classes";
@@ -8,21 +10,21 @@ import { isClassId } from "@/lib/engine";
 type Props = { params: Promise<{ a: string; b: string }> };
 
 export function generateStaticParams() {
-  return IDS.flatMap((a) => IDS.filter((b) => b !== a).map((b) => ({ a, b })));
+    return IDS.flatMap((a) => IDS.filter((b) => b !== a).map((b) => ({ a, b })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { a, b } = await params;
-  if (!isClassId(a) || !isClassId(b) || a === b) return {};
-  return { title: `Confronta ${PLAIN[a]} e ${PLAIN[b]}` };
+    const { a, b } = await params;
+    if (!isClassId(a) || !isClassId(b) || a === b) return {};
+    return { title: `Confronta ${PLAIN[a]} e ${PLAIN[b]}` };
 }
 
 export default async function Page({ params }: Props) {
-  const { a, b } = await params;
-  if (!isClassId(a) || !isClassId(b) || a === b) notFound();
-  return (
-    <ComparePicker key={a + "~" + b} a={a} b={b}>
-      <CompareVerdict a={a} b={b} />
-    </ComparePicker>
-  );
+    const { a, b } = await params;
+    if (!isClassId(a) || !isClassId(b) || a === b) notFound();
+    return (
+        <ComparePicker key={a + "~" + b} a={a} b={b}>
+            <CompareVerdict a={a} b={b} />
+        </ComparePicker>
+    );
 }

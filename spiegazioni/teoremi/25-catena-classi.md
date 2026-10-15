@@ -14,12 +14,12 @@ Se non ti tornava, ripassa le definizioni delle classi: ogni anello della catena
 
 ## Quattro anelli dal Teorema 7.4
 
-| inclusione | parte del Teorema 7.4 | budget |
-|---|---|---|
-| $\mathrm{L} \subseteq \mathrm{NL}$ | (a) | spazio $\log n$ |
-| $\mathrm{NL} \subseteq \mathrm{P}$ | (c) | spazio $\log n$ |
-| $\mathrm{P} \subseteq \mathrm{NP}$ | (a) | tempo $n^j$ |
-| $\mathrm{NP} \subseteq \mathrm{PSPACE}$ | (b) | tempo $n^j$ |
+| inclusione                              | parte del Teorema 7.4 | budget          |
+| --------------------------------------- | --------------------- | --------------- |
+| $\mathrm{L} \subseteq \mathrm{NL}$      | (a)                   | spazio $\log n$ |
+| $\mathrm{NL} \subseteq \mathrm{P}$      | (c)                   | spazio $\log n$ |
+| $\mathrm{P} \subseteq \mathrm{NP}$      | (a)                   | tempo $n^j$     |
+| $\mathrm{NP} \subseteq \mathrm{PSPACE}$ | (b)                   | tempo $n^j$     |
 
 Le due righe con (a) sono gratis: una macchina deterministica è una nondeterministica che a ogni passo ha una sola scelta, con lo stesso tempo e lo stesso spazio.
 

@@ -40,20 +40,20 @@ Per tornare indietro bisogna ripartire dall'inizio, perché $M_R$ produce l'outp
 
 Supponi $R(x) = \texttt{abba}$ e che $M_{R'}$ legga le posizioni 1, 2, 3 e poi torni alla 2.
 
-| testina di $M_{R'}$ | $i$ | che cosa fa $M$ | simbolo |
-|---|---|---|---|
-| inizio | 1 | avvia $M_R$ finché produce il primo simbolo | a |
-| a destra | 2 | fa proseguire $M_R$ fino al simbolo successivo | b |
-| a destra | 3 | fa proseguire $M_R$ ancora | b |
-| a sinistra | 2 | riavvia $M_R$, scarta il primo simbolo, si ferma al secondo | b |
+| testina di $M_{R'}$ | $i$ | che cosa fa $M$                                             | simbolo |
+| ------------------- | --- | ----------------------------------------------------------- | ------- |
+| inizio              | 1   | avvia $M_R$ finché produce il primo simbolo                 | a       |
+| a destra            | 2   | fa proseguire $M_R$ fino al simbolo successivo              | b       |
+| a destra            | 3   | fa proseguire $M_R$ ancora                                  | b       |
+| a sinistra          | 2   | riavvia $M_R$, scarta il primo simbolo, si ferma al secondo | b       |
 
 ## Il conto
 
-| che cosa | spazio |
-|---|---|
-| contatore $i$ e contatore dei simboli prodotti | $O(\log n^c) = O(\log n)$ |
-| nastri di lavoro di $M_R$ | $O(\log n)$ |
-| nastri di lavoro di $M_{R'}$ | $O(\log \lvert R(x) \rvert) = O(\log n)$ |
+| che cosa                                       | spazio                                   |
+| ---------------------------------------------- | ---------------------------------------- |
+| contatore $i$ e contatore dei simboli prodotti | $O(\log n^c) = O(\log n)$                |
+| nastri di lavoro di $M_R$                      | $O(\log n)$                              |
+| nastri di lavoro di $M_{R'}$                   | $O(\log \lvert R(x) \rvert) = O(\log n)$ |
 
 I contatori arrivano al più a $n^c$, e $\log n^c = c \log n$. $M_{R'}$ usa spazio logaritmico nella lunghezza del proprio input, che è $R(x)$, quindi $\log |R(x)| \le c \log n$. In totale $O(\log n)$: $R' \circ R$ è ancora una riduzione in spazio logaritmico.
 

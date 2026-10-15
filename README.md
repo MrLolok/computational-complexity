@@ -16,16 +16,16 @@ npm run build   # build di produzione (tutte le pagine sono prerenderizzate)
 
 ## Struttura
 
-| Rotta | Contenuto |
-|---|---|
-| `/`, `/classi/[id]` | mappa delle inclusioni e scheda della classe |
-| `/problemi`, `/problemi/[id]` | i problemi del corso, scala delle classi e dettaglio |
-| `/teoremi` | elenco dei teoremi per capitolo (`#teorema-<id>`) |
-| `/confronta`, `/confronta/[a]/[b]` | confronto tra due classi |
-| `/dp`, `/piani` | focus su DP e piani della gerarchia polinomiale |
-| `/esercizi` | domande d'esame per classe, quiz sui problemi, flashcard |
-| `/tracce`, `/tracce/[code]` | libreria delle tracce d'esame ed esecuzione di una traccia |
-| `/fonti` | come sono state verificate le affermazioni |
+| Rotta                              | Contenuto                                                  |
+| ---------------------------------- | ---------------------------------------------------------- |
+| `/`, `/classi/[id]`                | mappa delle inclusioni e scheda della classe               |
+| `/problemi`, `/problemi/[id]`      | i problemi del corso, scala delle classi e dettaglio       |
+| `/teoremi`                         | elenco dei teoremi per capitolo (`#teorema-<id>`)          |
+| `/confronta`, `/confronta/[a]/[b]` | confronto tra due classi                                   |
+| `/dp`, `/piani`                    | focus su DP e piani della gerarchia polinomiale            |
+| `/esercizi`                        | domande d'esame per classe, quiz sui problemi, flashcard   |
+| `/tracce`, `/tracce/[code]`        | libreria delle tracce d'esame ed esecuzione di una traccia |
+| `/fonti`                           | come sono state verificate le affermazioni                 |
 
 - `src/data/`: i dati (classi, problemi, teoremi, domande, `tracce.json` esportato dalle pagine Notion delle tracce).
 - `src/store/`: Redux Toolkit. Lo slice `progress` tiene le risposte date nelle tracce e negli esercizi e viene salvato

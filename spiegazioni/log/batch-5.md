@@ -4,10 +4,10 @@ File: 47-knapsack, 48-knapsack-pseudopoly, 49-strong-np, 50-validity-conp, 51-pr
 
 ## Invocazioni delle skill
 
-| Skill | Invocazioni | Caricata |
-|---|---|---|
-| `anthropic-skills:learn` | 1, all'inizio, con l'argomento "spiegazioni statiche in Markdown adattate come dice STRATEGIA.md, niente domande all'utente" | sì |
-| `humanizer` (`.claude/skills/humanizer`, modalità file) | 12, una per file, nell'ordine 47 → 58 | sì, tutte e 12 |
+| Skill                                                   | Invocazioni                                                                                                                  | Caricata       |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| `anthropic-skills:learn`                                | 1, all'inizio, con l'argomento "spiegazioni statiche in Markdown adattate come dice STRATEGIA.md, niente domande all'utente" | sì             |
+| `humanizer` (`.claude/skills/humanizer`, modalità file) | 12, una per file, nell'ordine 47 → 58                                                                                        | sì, tutte e 12 |
 
 Da learn ho tenuto quello che STRATEGIA.md chiede per il testo statico: domande di controllo con risposte in `<details>` (omesse in 51 e 56, dove non ci sono prerequisiti veri da verificare), spiegazione diretta, esempio piccolo svolto quando rende visibile il meccanismo (47, 48, 50, 51, 52, 53, 57, 58), tabella o blocco di codice dove c'è una struttura (47 cifre degli insiemi, 48 tabella della programmazione dinamica, 57 varianti di TSP e costi dei giri), sezione "Dove si inciampa di solito".
 

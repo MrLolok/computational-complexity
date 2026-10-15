@@ -29,11 +29,11 @@ Data una formula $\varphi$, il grafo si costruisce con tre gadget e una chiusura
 
 Il grafo ha dimensione polinomiale in $\varphi$ e si costruisce in spazio logaritmico.
 
-| nel grafo | nella formula |
-|---|---|
-| collegamento usato nel gadget di $x_i$ | valore di $x_i$ |
-| lato di un triangolo attraversato | letterale falso |
-| lato di un triangolo non attraversato | letterale vero |
+| nel grafo                                     | nella formula        |
+| --------------------------------------------- | -------------------- |
+| collegamento usato nel gadget di $x_i$        | valore di $x_i$      |
+| lato di un triangolo attraversato             | letterale falso      |
+| lato di un triangolo non attraversato         | letterale vero       |
 | triangolo con almeno un lato non attraversato | clausola soddisfatta |
 
 ## Perché funziona

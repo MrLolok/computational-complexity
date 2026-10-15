@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import progress from "./progressSlice";
 
 export const makeStore = () => configureStore({ reducer: { progress } });

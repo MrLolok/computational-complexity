@@ -6,10 +6,10 @@ Metodo: `spiegazioni/STRATEGIA.md`, modello `26-savitch.md`. Fonti lette per ogn
 
 ## Invocazioni delle skill
 
-| skill | invocazioni | caricata |
-|---|---|---|
-| `anthropic-skills:learn` | 1, all'inizio del batch, con l'argomento "spiegazioni statiche in Markdown, adattate come dice STRATEGIA.md, niente domande all'utente" | sì |
-| `humanizer` (modalità file) | 11, una per file, dopo la bozza: 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69 | sì, tutte e 11 (skill di progetto in `.claude/skills/humanizer/`) |
+| skill                       | invocazioni                                                                                                                             | caricata                                                          |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `anthropic-skills:learn`    | 1, all'inizio del batch, con l'argomento "spiegazioni statiche in Markdown, adattate come dice STRATEGIA.md, niente domande all'utente" | sì                                                                |
+| `humanizer` (modalità file) | 11, una per file, dopo la bozza: 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69                                                             | sì, tutte e 11 (skill di progetto in `.claude/skills/humanizer/`) |
 
 Di learn ho tenuto quello che STRATEGIA prevede per un testo statico: domande di controllo con risposta in `<details>`, spiegazione diretta, un esempio piccolo svolto, tabelle dove c'è una struttura, "Dove si inciampa di solito". Per humanizer ho seguito i quattro passi (segnare, riscrivere, ricontrollare, versione finale) e nel file c'è solo la versione finale.
 

@@ -38,11 +38,11 @@ Alcune computazioni possono girare per sempre in un ciclo del grafo. La definizi
 
 Grafo con 5 nodi e archi $1 \to 2$, $2 \to 1$, $1 \to 3$, $3 \to 4$, $4 \to 5$. I nomi dei nodi occupano 3 bit. La computazione che accetta:
 
-| giro | nastro 2 ($i$) | scelta $j$ (nastro 3) | bit $(i, j)$ | cosa succede |
-|---|---|---|---|---|
-| 1 | 001 | 011 | 1 | copia 3 sul nastro 2 |
-| 2 | 011 | 100 | 1 | copia 4 sul nastro 2 |
-| 3 | 100 | 101 | 1 | $j = n$: "yes" |
+| giro | nastro 2 ($i$) | scelta $j$ (nastro 3) | bit $(i, j)$ | cosa succede         |
+| ---- | -------------- | --------------------- | ------------ | -------------------- |
+| 1    | 001            | 011                   | 1            | copia 3 sul nastro 2 |
+| 2    | 011            | 100                   | 1            | copia 4 sul nastro 2 |
+| 3    | 100            | 101                   | 1            | $j = n$: "yes"       |
 
 Una computazione che al primo giro sceglie $j = 4$ trova il bit 0 e si ferma in "no". Una che sceglie 2, poi 1, poi 2, e così via, gira per sempre fra 1 e 2; con il contatore si ferma in "no" dopo 5 giri. Nessuna delle due cambia la risposta, perché la prima computazione accetta.
 

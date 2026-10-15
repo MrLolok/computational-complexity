@@ -33,12 +33,12 @@ Una società è strategica se appartiene a un $C'$ che va bene ed è minimo per 
 
 Si parte da $\Phi = \exists x_1 \dots x_n\, \forall y_1 \dots y_m\, \varphi$ con $\varphi$ in forma normale disgiuntiva: un "oppure" di termini, ognuno un "e" di tre letterali. In questa forma $\mathrm{QSAT}_2$ resta $\Sigma_2^{\mathrm{P}}$-difficile, perché è la negazione della forma $\forall\exists$ con $\varphi$ in CNF che esce dalla prova del Teorema 17.10, e negando una CNF si ottiene una DNF. La forma disgiuntiva ricalca la regola di chiusura: un insieme di controllo fa da "e" (se ci sono tutte queste società, c'è anche $c$), e più insiemi di controllo per la stessa società fanno da "oppure".
 
-| Elemento | Ruolo |
-|---|---|
-| società $x_i$, $\neg x_i$, $y_j$, $\neg y_j$ | una per letterale |
-| società $w$ | quella di cui si chiede se è strategica |
-| merce $g_{x_i}$, merce $g_{y_j}$ | prodotte solo dai due letterali della loro variabile |
-| $\{w\}$ controlla $y_j$ e $\neg y_j$ | se $w$ è dentro, ci sono tutti i letterali delle $y$ |
+| Elemento                                       | Ruolo                                                      |
+| ---------------------------------------------- | ---------------------------------------------------------- |
+| società $x_i$, $\neg x_i$, $y_j$, $\neg y_j$   | una per letterale                                          |
+| società $w$                                    | quella di cui si chiede se è strategica                    |
+| merce $g_{x_i}$, merce $g_{y_j}$               | prodotte solo dai due letterali della loro variabile       |
+| $\{w\}$ controlla $y_j$ e $\neg y_j$           | se $w$ è dentro, ci sono tutti i letterali delle $y$       |
 | ogni termine $\{L_1, L_2, L_3\}$ controlla $w$ | se i tre letterali di un termine sono dentro, $w$ è dentro |
 
 I letterali delle $x$ non sono vincolati dalla chiusura, e quelli che stanno in $C'$ descrivono l'assegnazione del blocco $\exists$. Il $\forall$ sulle $y$ si ritrova nella minimalità. Un $C'$ con $w$ contiene, per chiusura, tutti e due i letterali di ogni $y_j$. Un sottoinsieme senza $w$ può tenerne anche uno solo per variabile, cioè scegliere un'assegnazione delle $y$, e va bene se nessun termine ha tutti i letterali dentro.
@@ -55,11 +55,11 @@ Prendi $\Phi = \exists x\, \forall y\, [(x \land y) \lor (x \land \neg y)]$, con
 
 Con $x$ vera si prende $C' = \{x, y, \neg y, w\}$. Un sottoinsieme proprio che produce le merci tiene $x$ e almeno una fra $y$ e $\neg y$; se tiene $w$ deve tenerle entrambe, e allora è $C'$. Restano tre candidati senza $w$:
 
-| $C''$ | termine tutto dentro | va bene? |
-|---|---|---|
-| $\{x, y\}$ | $\{x, y\}$ | no, la chiusura chiede $w$ |
-| $\{x, \neg y\}$ | $\{x, \neg y\}$ | no, la chiusura chiede $w$ |
-| $\{x, y, \neg y\}$ | tutti e due | no |
+| $C''$              | termine tutto dentro | va bene?                   |
+| ------------------ | -------------------- | -------------------------- |
+| $\{x, y\}$         | $\{x, y\}$           | no, la chiusura chiede $w$ |
+| $\{x, \neg y\}$    | $\{x, \neg y\}$      | no, la chiusura chiede $w$ |
+| $\{x, y, \neg y\}$ | tutti e due          | no                         |
 
 $C'$ è minimo e $w$ è strategica. Le prime due righe sono le due assegnazioni di $y$, e ognuna rende vero un termine. Con $x$ falsa, invece, dentro $\{\neg x, y, \neg y, w\}$ va bene il sottoinsieme $\{\neg x, y\}$, che corrisponde all'assegnazione $y$ vera, per la quale $\varphi$ è falsa.
 

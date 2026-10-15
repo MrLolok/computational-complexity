@@ -1,2505 +1,2505 @@
 {
- "ricorsivo-re": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ: ogni linguaggio ricorsivo è ricorsivamente enumerabile ($\\mathrm{R} \\subseteq \\mathrm{RE}$), perché dalla MdT che lo decide se ne ottiene una che lo accetta trasformando il \"no\" in un ciclo infinito."
- },
- "speedup-multinastro": {
-  "priorita": "media",
-  "frequenza": 5,
-  "domande": [
-   {
-    "traccia": "G16",
-    "n": 5
-   },
-   {
-    "traccia": "G20v4",
-    "n": 5
-   },
-   {
-    "traccia": "MA23",
-    "n": 4
-   },
-   {
-    "traccia": "LU24",
-    "n": 3
-   },
-   {
-    "traccia": "SP",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per lo speedup multinastro una MdT a $k$ nastri in tempo $f(n)$ si simula con un nastro solo in tempo $O(f(n)^2)$: i nastri cambiano il tempo solo polinomialmente."
- },
- "ram-mdt": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Per il Teorema 2.5 una RAM in tempo $f(n)$ si simula con una MdT in tempo $O(f(n)^3)$: ciò che è polinomiale su RAM resta in P."
- },
- "linear-speedup": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per lo speedup lineare, se $L \\in \\mathrm{TIME}(f(n))$ allora $L \\in \\mathrm{TIME}(\\varepsilon \\cdot f(n) + n + 2)$ per ogni $\\varepsilon \\gt 0$: le costanti moltiplicative del budget non contano, conta solo l'$O(\\cdot)$."
- },
- "mdt-io": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Ogni MdT a $k$ nastri in tempo $f(n)$ si simula con una MdT con input e output a $k+2$ nastri in tempo $O(f(n))$: l'input in sola lettura non toglie potenza."
- },
- "space-compression": {
-  "priorita": "media",
-  "frequenza": 4,
-  "domande": [
-   {
-    "traccia": "F04",
-    "n": 4
-   },
-   {
-    "traccia": "F05",
-    "n": 3
-   },
-   {
-    "traccia": "G16",
-    "n": 7
-   },
-   {
-    "traccia": "G17",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Per il teorema di compressione dello spazio, $L \\in \\mathrm{SPACE}(f(n))$ implica $L \\in \\mathrm{SPACE}(2 + \\varepsilon \\cdot f(n))$ per ogni $\\varepsilon \\gt 0$: anche nel budget di spazio le costanti moltiplicative non contano."
- },
- "p-sub-np": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ: $\\mathrm{P} \\subseteq \\mathrm{NP}$, perché una MdT deterministica polinomiale è una MdT nondeterministica (con $\\Delta$ che è una funzione) che decide lo stesso linguaggio nello stesso tempo."
- },
- "ndet-det": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F05",
-    "n": 4
-   },
-   {
-    "traccia": "G20v1",
-    "n": 5
-   },
-   {
-    "traccia": "G20v2",
-    "n": 5
-   },
-   {
-    "traccia": "G20v4",
-    "n": 5
-   },
-   {
-    "traccia": "G20v5",
-    "n": 5
-   },
-   {
-    "traccia": "LU24",
-    "n": 3
-   },
-   {
-    "traccia": "SP",
-    "n": 3
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il teorema da nondeterministico a deterministico $\\mathrm{NTIME}(f(n)) \\subseteq \\bigcup_{c \\gt 1} \\mathrm{TIME}(c^{f(n)})$: simulare il nondeterminismo costa un esponenziale, quindi per esempio $\\mathrm{NP} \\subseteq \\mathrm{EXP}$."
- },
- "reach-nl": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ: $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$, perché una MdT nondeterministica indovina il cammino ricordando solo il nodo corrente e il successivo, cioè $O(\\log n)$ celle di lavoro."
- },
- "gap-theorem": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Per il Gap Theorem esiste $f$ ricorsiva con $\\mathrm{TIME}(f(n)) = \\mathrm{TIME}(2^{f(n)})$: senza l'ipotesi di funzione propria i teoremi di gerarchia non valgono."
- },
- "soluzioni-precise": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il teorema delle soluzioni precise, con $f$ propria si può supporre che tempo o spazio della MdT dipendano solo da $|x|$, restando nel budget $O(f(n))$."
- },
- "terminazione-space": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il teorema di terminazione, una MdT con budget di spazio $f(n)$ ($f$ propria) si rende sempre terminante: ha al più $|K| \\cdot |\\Sigma|^{f(n)} \\cdot (f(n)+1)$ configurazioni, oltre le quali è in un ciclo."
- },
- "chiusura-det-complemento": {
-  "priorita": "bassa",
-  "frequenza": 2,
-  "domande": [
-   {
-    "traccia": "F05",
-    "n": 2
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ: le classi deterministiche di tempo e spazio sono chiuse per complemento (per esempio $\\mathrm{P} = \\mathrm{coP}$): basta scambiare \"yes\" e \"no\" nella MdT deterministica, con lo stesso budget."
- },
- "hf-upper": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Lemma 1, $H_f \\in \\mathrm{TIME}(f(n)^3)$: una macchina universale con una sveglia lunga $f(|x|)$ simula $M$ su $x$ spendendo $O(f(n)^2)$ per ogni passo."
- },
- "hf-lower": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Lemma 2, $H_f \\notin \\mathrm{TIME}(f(\\lfloor n/2 \\rfloor))$: la macchina diagonale $D_f$, che fa il contrario sulla propria descrizione, porterebbe a una contraddizione."
- },
- "time-hierarchy": {
-  "priorita": "alta",
-  "frequenza": 30,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 2
-   },
-   {
-    "traccia": "F01",
-    "n": 4
-   },
-   {
-    "traccia": "F02",
-    "n": 1
-   },
-   {
-    "traccia": "F02",
-    "n": 5
-   },
-   {
-    "traccia": "F03",
-    "n": 4
-   },
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F04",
-    "n": 6
-   },
-   {
-    "traccia": "F05",
-    "n": 1
-   },
-   {
-    "traccia": "F06",
-    "n": 1
-   },
-   {
-    "traccia": "F06",
-    "n": 4
-   },
-   {
-    "traccia": "F06",
-    "n": 5
-   },
-   {
-    "traccia": "F07",
-    "n": 1
-   },
-   {
-    "traccia": "F08",
-    "n": 1
-   },
-   {
-    "traccia": "G16",
-    "n": 1
-   },
-   {
-    "traccia": "F12",
-    "n": 7
-   },
-   {
-    "traccia": "F13",
-    "n": 6
-   },
-   {
-    "traccia": "F14",
-    "n": 1
-   },
-   {
-    "traccia": "G17",
-    "n": 2
-   },
-   {
-    "traccia": "L18",
-    "n": 2
-   },
-   {
-    "traccia": "G20v1",
-    "n": 2
-   },
-   {
-    "traccia": "G20v1",
-    "n": 7
-   },
-   {
-    "traccia": "G20v2",
-    "n": 2
-   },
-   {
-    "traccia": "G20v4",
-    "n": 2
-   },
-   {
-    "traccia": "LU22",
-    "n": 4
-   },
-   {
-    "traccia": "GE23",
-    "n": 4
-   },
-   {
-    "traccia": "GE23",
-    "n": 6
-   },
-   {
-    "traccia": "E26",
-    "n": 4
-   },
-   {
-    "traccia": "E26",
-    "n": 7
-   },
-   {
-    "traccia": "ND",
-    "n": 3
-   },
-   {
-    "traccia": "ND",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il teorema di gerarchia per il tempo, se $f(n) \\ge n$ è propria allora $\\mathrm{TIME}(f(n)) \\subsetneq \\mathrm{TIME}(f(2n+1)^3)$: con abbastanza tempo in più si risolvono problemi nuovi."
- },
- "p-neq-exp": {
-  "priorita": "alta",
-  "frequenza": 12,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 2
-   },
-   {
-    "traccia": "F01",
-    "n": 4
-   },
-   {
-    "traccia": "F02",
-    "n": 1
-   },
-   {
-    "traccia": "F02",
-    "n": 5
-   },
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F06",
-    "n": 5
-   },
-   {
-    "traccia": "G16",
-    "n": 1
-   },
-   {
-    "traccia": "G17",
-    "n": 2
-   },
-   {
-    "traccia": "G20v1",
-    "n": 2
-   },
-   {
-    "traccia": "G20v1",
-    "n": 7
-   },
-   {
-    "traccia": "GE23",
-    "n": 4
-   },
-   {
-    "traccia": "E26",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{P} \\subsetneq \\mathrm{EXP}$: per il teorema di gerarchia $\\mathrm{TIME}(2^n) \\subsetneq \\mathrm{TIME}(2^{6n+3}) \\subseteq \\mathrm{EXP}$, e $\\mathrm{P} \\subseteq \\mathrm{TIME}(2^n)$, quindi $\\mathrm{P} \\subsetneq \\mathrm{EXP}$."
- },
- "space-hierarchy": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F07",
-    "n": 5
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   },
-   {
-    "traccia": "G20v1",
-    "n": 7
-   },
-   {
-    "traccia": "LU22",
-    "n": 5
-   },
-   {
-    "traccia": "GE23",
-    "n": 3
-   },
-   {
-    "traccia": "MA23",
-    "n": 5
-   },
-   {
-    "traccia": "LU24",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Per il teorema di gerarchia per lo spazio, con $f$ propria $\\mathrm{SPACE}(f(n)) \\subsetneq \\mathrm{SPACE}(f(n) \\cdot \\log f(n))$; per esempio $\\mathrm{L} \\subsetneq \\mathrm{PSPACE}$."
- },
- "ndet-hierarchy": {
-  "priorita": "media",
-  "frequenza": 4,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 4
-   },
-   {
-    "traccia": "F07",
-    "n": 4
-   },
-   {
-    "traccia": "MZ22",
-    "n": 4
-   },
-   {
-    "traccia": "LU24",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Per le gerarchie nondeterministiche $\\mathrm{NTIME}(n^c) \\subsetneq \\mathrm{NTIME}(n^d)$ per $1 \\le c \\lt d$: per esempio $\\mathrm{NTIME}(n) \\subsetneq \\mathrm{NTIME}(n^2)$, quindi le due classi sono diverse."
- },
- "time-in-space": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "G20v1",
-    "n": 6
-   },
-   {
-    "traccia": "MZ22",
-    "n": 7
-   },
-   {
-    "traccia": "SE23",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "SÌ: $\\mathrm{TIME}(f(n)) \\subseteq \\mathrm{SPACE}(f(n))$, perché ogni cella usata costa almeno un passo per raggiungerla; per esempio $\\mathrm{P} \\subseteq \\mathrm{PSPACE}$."
- },
- "space-in-time": {
-  "priorita": "alta",
-  "frequenza": 25,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 1
-   },
-   {
-    "traccia": "F02",
-    "n": 5
-   },
-   {
-    "traccia": "F03",
-    "n": 4
-   },
-   {
-    "traccia": "F04",
-    "n": 6
-   },
-   {
-    "traccia": "F05",
-    "n": 1
-   },
-   {
-    "traccia": "F06",
-    "n": 1
-   },
-   {
-    "traccia": "F06",
-    "n": 4
-   },
-   {
-    "traccia": "F07",
-    "n": 1
-   },
-   {
-    "traccia": "F08",
-    "n": 1
-   },
-   {
-    "traccia": "F12",
-    "n": 7
-   },
-   {
-    "traccia": "F13",
-    "n": 6
-   },
-   {
-    "traccia": "L18",
-    "n": 1
-   },
-   {
-    "traccia": "L18",
-    "n": 4
-   },
-   {
-    "traccia": "G20v2",
-    "n": 2
-   },
-   {
-    "traccia": "G20v4",
-    "n": 2
-   },
-   {
-    "traccia": "LU22",
-    "n": 4
-   },
-   {
-    "traccia": "FE23",
-    "n": 4
-   },
-   {
-    "traccia": "MA23",
-    "n": 6
-   },
-   {
-    "traccia": "SE23",
-    "n": 3
-   },
-   {
-    "traccia": "SE23",
-    "n": 5
-   },
-   {
-    "traccia": "LU24",
-    "n": 1
-   },
-   {
-    "traccia": "LU24",
-    "n": 6
-   },
-   {
-    "traccia": "E26",
-    "n": 4
-   },
-   {
-    "traccia": "E26",
-    "n": 6
-   },
-   {
-    "traccia": "ND",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{SPACE}(f(n)) \\subseteq \\mathrm{TIME}(k^{f(n)})$, perché una macchina con budget di spazio $f(n)$ ha al più $k^{f(n)}$ configurazioni; quindi $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$."
- },
- "t7-4a": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ, per il Teorema 7.4 (a): una MdT deterministica è un caso particolare di nondeterministica, quindi $\\mathrm{TIME}(f(n)) \\subseteq \\mathrm{NTIME}(f(n))$ e $\\mathrm{SPACE}(f(n)) \\subseteq \\mathrm{NSPACE}(f(n))$."
- },
- "t7-4b": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F04",
-    "n": 5
-   },
-   {
-    "traccia": "G20v1",
-    "n": 6
-   },
-   {
-    "traccia": "SE23",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ, per il Teorema 7.4 (b) $\\mathrm{NTIME}(f(n)) \\subseteq \\mathrm{SPACE}(f(n))$ (si provano i rami uno alla volta riusando lo spazio); per esempio $\\mathrm{NP} \\subseteq \\mathrm{PSPACE}$."
- },
- "t7-4c": {
-  "priorita": "media",
-  "frequenza": 5,
-  "domande": [
-   {
-    "traccia": "F02",
-    "n": 6
-   },
-   {
-    "traccia": "F06",
-    "n": 7
-   },
-   {
-    "traccia": "F12",
-    "n": 1
-   },
-   {
-    "traccia": "G20v3",
-    "n": 7
-   },
-   {
-    "traccia": "SP",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ, per il Teorema 7.4 (c) $\\mathrm{NSPACE}(f(n)) \\subseteq \\mathrm{TIME}(k^{\\log n + f(n)})$ (REACHABILITY sul grafo delle configurazioni); con $f(n) = \\log n$ dà $\\mathrm{NL} \\subseteq \\mathrm{P}$."
- },
- "catena-classi": {
-  "priorita": "alta",
-  "frequenza": 13,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 4
-   },
-   {
-    "traccia": "F01",
-    "n": 7
-   },
-   {
-    "traccia": "F02",
-    "n": 4
-   },
-   {
-    "traccia": "F05",
-    "n": 6
-   },
-   {
-    "traccia": "F06",
-    "n": 2
-   },
-   {
-    "traccia": "G17",
-    "n": 2
-   },
-   {
-    "traccia": "L18",
-    "n": 7
-   },
-   {
-    "traccia": "G20v1",
-    "n": 7
-   },
-   {
-    "traccia": "G20v3",
-    "n": 4
-   },
-   {
-    "traccia": "G20v3",
-    "n": 7
-   },
-   {
-    "traccia": "LU22",
-    "n": 5
-   },
-   {
-    "traccia": "MA23",
-    "n": 3
-   },
-   {
-    "traccia": "ND",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Per la catena $\\mathrm{L} \\subseteq \\mathrm{NL} \\subseteq \\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{PSPACE}$, che segue dal Teorema 7.4 (a), (b) e (c)."
- },
- "savitch": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F08",
-    "n": 2
-   },
-   {
-    "traccia": "F13",
-    "n": 5
-   },
-   {
-    "traccia": "F13",
-    "n": 7
-   },
-   {
-    "traccia": "G20v3",
-    "n": 4
-   },
-   {
-    "traccia": "FE23",
-    "n": 6
-   },
-   {
-    "traccia": "E26",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 1
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il teorema di Savitch $\\mathrm{REACHABILITY} \\in \\mathrm{SPACE}(\\log^2 n)$: si cerca ricorsivamente il punto di mezzo del cammino, con ricorsione profonda $\\log n$ e $O(\\log n)$ bit per livello."
- },
- "savitch-cor": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F08",
-    "n": 2
-   },
-   {
-    "traccia": "F13",
-    "n": 5
-   },
-   {
-    "traccia": "F13",
-    "n": 7
-   },
-   {
-    "traccia": "G20v3",
-    "n": 4
-   },
-   {
-    "traccia": "FE23",
-    "n": 6
-   },
-   {
-    "traccia": "E26",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 1
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ, per il corollario di Savitch $\\mathrm{NSPACE}(f(n)) \\subseteq \\mathrm{SPACE}(f(n)^2)$ per $f(n) \\ge \\log n$ propria; per esempio $\\mathrm{NL} \\subseteq \\mathrm{SPACE}(\\log^2 n)$."
- },
- "pspace-npspace": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F13",
-    "n": 7
-   },
-   {
-    "traccia": "F14",
-    "n": 3
-   },
-   {
-    "traccia": "LU22",
-    "n": 4
-   },
-   {
-    "traccia": "FE23",
-    "n": 5
-   },
-   {
-    "traccia": "MA23",
-    "n": 1
-   },
-   {
-    "traccia": "E26",
-    "n": 7
-   },
-   {
-    "traccia": "ND",
-    "n": 1
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ: $\\mathrm{NPSPACE} \\subseteq \\mathrm{PSPACE}$ per il corollario di Savitch ($\\mathrm{NSPACE}(n^k) \\subseteq \\mathrm{SPACE}(n^{2k})$), quindi $\\mathrm{PSPACE} = \\mathrm{NPSPACE}$."
- },
- "composizione-riduzioni": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F02",
-    "n": 2
-   },
-   {
-    "traccia": "MZ22",
-    "n": 6
-   },
-   {
-    "traccia": "LU22",
-    "n": 3
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SÌ, perché le riduzioni (in spazio logaritmico) si compongono: se $L_1$ si riduce a $L_2$ e $L_2$ a $L_3$, allora $L_1$ si riduce a $L_3$."
- },
- "chiusura-riduzioni": {
-  "priorita": "alta",
-  "frequenza": 39,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 2
-   },
-   {
-    "traccia": "F02",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 4
-   },
-   {
-    "traccia": "F05",
-    "n": 5
-   },
-   {
-    "traccia": "F05",
-    "n": 6
-   },
-   {
-    "traccia": "F05",
-    "n": 7
-   },
-   {
-    "traccia": "F06",
-    "n": 2
-   },
-   {
-    "traccia": "F07",
-    "n": 4
-   },
-   {
-    "traccia": "F07",
-    "n": 7
-   },
-   {
-    "traccia": "F08",
-    "n": 7
-   },
-   {
-    "traccia": "G16",
-    "n": 1
-   },
-   {
-    "traccia": "G16",
-    "n": 4
-   },
-   {
-    "traccia": "G16",
-    "n": 6
-   },
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F13",
-    "n": 4
-   },
-   {
-    "traccia": "F13",
-    "n": 6
-   },
-   {
-    "traccia": "F14",
-    "n": 1
-   },
-   {
-    "traccia": "F14",
-    "n": 7
-   },
-   {
-    "traccia": "G17",
-    "n": 2
-   },
-   {
-    "traccia": "G20v1",
-    "n": 4
-   },
-   {
-    "traccia": "G20v2",
-    "n": 3
-   },
-   {
-    "traccia": "G20v2",
-    "n": 7
-   },
-   {
-    "traccia": "G20v3",
-    "n": 1
-   },
-   {
-    "traccia": "G20v3",
-    "n": 3
-   },
-   {
-    "traccia": "G20v4",
-    "n": 1
-   },
-   {
-    "traccia": "G20v4",
-    "n": 2
-   },
-   {
-    "traccia": "G20v4",
-    "n": 4
-   },
-   {
-    "traccia": "G20v5",
-    "n": 7
-   },
-   {
-    "traccia": "MZ22",
-    "n": 2
-   },
-   {
-    "traccia": "LU22",
-    "n": 7
-   },
-   {
-    "traccia": "GE23",
-    "n": 4
-   },
-   {
-    "traccia": "GE23",
-    "n": 7
-   },
-   {
-    "traccia": "MA23",
-    "n": 2
-   },
-   {
-    "traccia": "LU24",
-    "n": 1
-   },
-   {
-    "traccia": "E26",
-    "n": 5
-   },
-   {
-    "traccia": "E26",
-    "n": 7
-   },
-   {
-    "traccia": "ND",
-    "n": 6
-   },
-   {
-    "traccia": "ND",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Solo se $C \\subseteq D$: $D$ è chiusa rispetto alle riduzioni, quindi se un problema $C$-completo stesse in $D$, tutti i problemi di $C$ (che si riducono a lui) starebbero in $D$."
- },
- "completo-per-due-classi": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Solo se $\\mathrm{NP} = \\mathrm{coNP}$: un linguaggio completo per due classi chiuse rispetto alle riduzioni le fa coincidere."
- },
- "completo-classe-piccola": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Solo se $\\mathrm{P} = \\mathrm{NP}$: $\\mathrm{P} \\subseteq \\mathrm{NP}$ ed è chiusa rispetto alle riduzioni, quindi se contenesse un problema NP-completo sarebbe $\\mathrm{P} = \\mathrm{NP}$."
- },
- "cook-levin": {
-  "priorita": "alta",
-  "frequenza": 11,
-  "domande": [
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F05",
-    "n": 6
-   },
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F12",
-    "n": 5
-   },
-   {
-    "traccia": "F13",
-    "n": 3
-   },
-   {
-    "traccia": "F14",
-    "n": 6
-   },
-   {
-    "traccia": "L18",
-    "n": 5
-   },
-   {
-    "traccia": "GE23",
-    "n": 5
-   },
-   {
-    "traccia": "FE23",
-    "n": 2
-   },
-   {
-    "traccia": "SE23",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SAT è NP-completo per il teorema di Cook-Levin: ogni problema in NP si riduce a SAT, e $\\mathrm{SAT} \\in \\mathrm{NP}$."
- },
- "3sat": {
-  "priorita": "bassa",
-  "frequenza": 1,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 3
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "3-SAT è NP-completo (SAT si riduce a 3-SAT spezzando le clausole lunghe con variabili nuove), quindi ogni problema in NP si riduce a 3-SAT."
- },
- "2sat-p": {
-  "priorita": "media",
-  "frequenza": 6,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 7
-   },
-   {
-    "traccia": "F06",
-    "n": 2
-   },
-   {
-    "traccia": "G17",
-    "n": 2
-   },
-   {
-    "traccia": "GE23",
-    "n": 3
-   },
-   {
-    "traccia": "MA23",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 1
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "SÌ: $\\mathrm{2\\text{-}SAT} \\in \\mathrm{P} \\subseteq \\mathrm{NP}$ (si cercano cicli $x \\leadsto \\neg x \\leadsto x$ nel grafo delle implicazioni), quindi si riduce a ogni problema NP-completo, per esempio CLIQUE."
- },
- "horn-sat": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "SÌ: $\\mathrm{HORN\\text{-}SAT} \\in \\mathrm{P}$, perché si rendono vere solo le variabili obbligate dalle clausole e poi si controllano le clausole negative, in tempo lineare."
- },
- "prop-9-1": {
-  "priorita": "media",
-  "frequenza": 4,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 4
-   },
-   {
-    "traccia": "F14",
-    "n": 4
-   },
-   {
-    "traccia": "LU24",
-    "n": 4
-   },
-   {
-    "traccia": "SP",
-    "n": 4
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Sta in NP per la Proposizione 9.1: ha un certificato di lunghezza polinomiale che si verifica in tempo polinomiale (indovina e verifica)."
- },
- "max2sat": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "MAX2SAT è NP-completo (riduzione da 3SAT: 10 clausole per ogni clausola, obiettivo $K = 7m$), anche se $\\mathrm{2\\text{-}SAT} \\in \\mathrm{P}$."
- },
- "independent-set": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "INDEPENDENT SET è NP-completo (riduzione da 3SAT: un triangolo per clausola, archi tra letterali opposti, $K = m$)."
- },
- "clique-nodecover": {
-  "priorita": "alta",
-  "frequenza": 8,
-  "domande": [
-   {
-    "traccia": "F02",
-    "n": 3
-   },
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F04",
-    "n": 2
-   },
-   {
-    "traccia": "F07",
-    "n": 6
-   },
-   {
-    "traccia": "L18",
-    "n": 6
-   },
-   {
-    "traccia": "G20v4",
-    "n": 7
-   },
-   {
-    "traccia": "ND",
-    "n": 6
-   },
-   {
-    "traccia": "SP",
-    "n": 4
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "CLIQUE e NODE COVER sono NP-completi: una cricca di $G$ è un insieme indipendente del grafo complementare, e $I$ è indipendente se e solo se $V - I$ è una copertura dei nodi."
- },
- "hamilton-path": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 7
-   },
-   {
-    "traccia": "SP",
-    "n": 4
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "HAMILTON PATH è NP-completo (in NP perché un cammino proposto si verifica in tempo lineare, NP-difficile per riduzione da 3SAT), quindi il suo complemento è coNP-completo."
- },
- "tsp-d": {
-  "priorita": "media",
-  "frequenza": 5,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 2
-   },
-   {
-    "traccia": "F08",
-    "n": 7
-   },
-   {
-    "traccia": "F14",
-    "n": 2
-   },
-   {
-    "traccia": "F14",
-    "n": 4
-   },
-   {
-    "traccia": "F14",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "TSP(D) è NP-completo, anche in senso forte: HAMILTON CYCLE vi si riduce con distanza 1 sugli archi, 2 altrove e budget $B = n$."
- },
- "3-coloring": {
-  "priorita": "alta",
-  "frequenza": 10,
-  "domande": [
-   {
-    "traccia": "F04",
-    "n": 3
-   },
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F14",
-    "n": 1
-   },
-   {
-    "traccia": "G20v1",
-    "n": 4
-   },
-   {
-    "traccia": "MA23",
-    "n": 2
-   },
-   {
-    "traccia": "MA23",
-    "n": 7
-   },
-   {
-    "traccia": "SE23",
-    "n": 6
-   },
-   {
-    "traccia": "LU24",
-    "n": 2
-   },
-   {
-    "traccia": "ND",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 4
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "3-COLORING è NP-completo (riduzione da 3SAT con un gadget per i valori di verità e un gadget OR), mentre 2-COLORING è in P."
- },
- "tripartite-matching": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "TRIPARTITE MATCHING è NP-completo (riduzione da 3SAT, prova omessa nel corso), quindi lo sono anche le sue generalizzazioni come EXACT COVER BY 3-SETS."
- },
- "set-problems": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "EXACT COVER BY 3-SETS, SET COVERING e SET PACKING sono NP-completi perché generalizzano TRIPARTITE MATCHING, che è NP-completo."
- },
- "integer-programming": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "INTEGER PROGRAMMING è NP-completo (per esempio SET COVERING si scrive come disuguaglianze su variabili 0/1), mentre LINEAR PROGRAMMING è in P."
- },
- "knapsack": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "KNAPSACK è NP-completo (riduzione da EXACT COVER BY 3-SETS con numeri in base $n + 1$), ma non in senso forte: la riduzione crea numeri di valore esponenziale."
- },
- "knapsack-pseudopoly": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "KNAPSACK si risolve in tempo $O(nW)$, ma è un algoritmo pseudopolinomiale ($W$ è esponenziale nella lunghezza dell'input), quindi non implica $\\mathrm{P} = \\mathrm{NP}$."
- },
- "strong-np": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Un problema NP-completo in senso forte non ha algoritmi pseudopolinomiali a meno che $\\mathrm{P} = \\mathrm{NP}$; tutti gli NP-completi visti lo sono, tranne KNAPSACK."
- },
- "validity-conp": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F12",
-    "n": 5
-   },
-   {
-    "traccia": "F14",
-    "n": 2
-   },
-   {
-    "traccia": "G20v2",
-    "n": 3
-   },
-   {
-    "traccia": "LU22",
-    "n": 1
-   },
-   {
-    "traccia": "SE23",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "VALIDITY è coNP-completo (se $R$ riduce $\\overline{L}$ a SAT, $R'(x) = \\neg R(x)$ riduce $L$ a VALIDITY), quindi una riduzione da SAT a VALIDITY implicherebbe $\\mathrm{NP} = \\mathrm{coNP}$."
- },
- "prop-a": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per la Proposizione A, una riduzione $R$ da $L$ a $L'$ è anche una riduzione dal complemento di $L$ al complemento di $L'$."
- },
- "prop-b": {
-  "priorita": "media",
-  "frequenza": 5,
-  "domande": [
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F14",
-    "n": 2
-   },
-   {
-    "traccia": "G20v2",
-    "n": 3
-   },
-   {
-    "traccia": "LU22",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per la Proposizione B il complemento di un problema NP-completo è coNP-completo (per esempio UNSAT e HAMILTON PATH COMPLEMENT)."
- },
- "prop-c": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per la Proposizione C, se una classe $\\mathcal{C}$ è chiusa rispetto alle riduzioni lo è anche $\\mathrm{co}\\mathcal{C}$ (per esempio coNP, perché NP lo è)."
- },
- "prop-d": {
-  "priorita": "alta",
-  "frequenza": 18,
-  "domande": [
-   {
-    "traccia": "F02",
-    "n": 5
-   },
-   {
-    "traccia": "F03",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 4
-   },
-   {
-    "traccia": "F03",
-    "n": 7
-   },
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F04",
-    "n": 7
-   },
-   {
-    "traccia": "F07",
-    "n": 4
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   },
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F12",
-    "n": 5
-   },
-   {
-    "traccia": "F14",
-    "n": 2
-   },
-   {
-    "traccia": "F14",
-    "n": 7
-   },
-   {
-    "traccia": "G20v1",
-    "n": 4
-   },
-   {
-    "traccia": "G20v3",
-    "n": 1
-   },
-   {
-    "traccia": "MZ22",
-    "n": 1
-   },
-   {
-    "traccia": "LU22",
-    "n": 7
-   },
-   {
-    "traccia": "LU24",
-    "n": 5
-   },
-   {
-    "traccia": "ND",
-    "n": 6
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per la Proposizione D, se un problema NP-completo stesse in coNP (o un coNP-completo in NP), allora $\\mathrm{NP} = \\mathrm{coNP}$."
- },
- "p-np-conp": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Se $\\mathrm{P} = \\mathrm{NP}$ allora $\\mathrm{NP} = \\mathrm{coNP}$, perché P è chiusa per complemento: $\\mathrm{NP} = \\mathrm{P} = \\mathrm{coP} = \\mathrm{coNP}$."
- },
- "p-in-np-conp": {
-  "priorita": "media",
-  "frequenza": 6,
-  "domande": [
-   {
-    "traccia": "F02",
-    "n": 4
-   },
-   {
-    "traccia": "F03",
-    "n": 4
-   },
-   {
-    "traccia": "F07",
-    "n": 4
-   },
-   {
-    "traccia": "G20v2",
-    "n": 3
-   },
-   {
-    "traccia": "MZ22",
-    "n": 1
-   },
-   {
-    "traccia": "ND",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{P} \\subseteq \\mathrm{NP} \\cap \\mathrm{coNP}$: ogni problema in P sta in NP e, poiché P è chiusa per complemento, anche in coNP."
- },
- "exact-tsp-np-hard": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "EXACT TSP è NP-hard: con distanze 1 sugli archi e 2 altrove, $G$ ha un ciclo hamiltoniano se e solo se il giro ottimo costa esattamente $n$."
- },
- "sat-unsat-dp": {
-  "priorita": "bassa",
-  "frequenza": 2,
-  "domande": [
-   {
-    "traccia": "F07",
-    "n": 2
-   },
-   {
-    "traccia": "GE23",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "SAT-UNSAT è DP-completo e $\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} \\cap \\Pi_2^{\\mathrm{P}}$: quindi si riduce a ogni problema $\\Sigma_i^{\\mathrm{P}}$- o $\\Pi_i^{\\mathrm{P}}$-completo con $i \\ge 2$ (per esempio $\\mathrm{QSAT}_3$)."
- },
- "altri-dp-completi": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F14",
-    "n": 2
-   },
-   {
-    "traccia": "G20v5",
-    "n": 7
-   },
-   {
-    "traccia": "GE23",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Le versioni esatte e critiche (EXACT TSP, CRITICAL SAT, …) sono DP-complete: intersezione di un problema NP e di uno coNP, e SAT-UNSAT si riduce a esse."
- },
- "pl-psat": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per ogni $L$ NP-completo $\\mathrm{P}^L = \\mathrm{P}^{\\mathrm{SAT}} = \\mathrm{P}^{\\mathrm{NP}}$: le domande all'oracolo si traducono con una riduzione polinomiale, quindi conta solo la classe dell'oracolo."
- },
- "cd-cocd": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathcal{C}^{\\mathcal{D}} = \\mathcal{C}^{\\mathrm{co}\\mathcal{D}}$ (basta scambiare $q_{\\mathrm{YES}}$ e $q_{\\mathrm{NO}}$): per esempio $\\mathrm{NP}^{\\mathrm{coNP}} = \\mathrm{NP}^{\\mathrm{NP}} = \\Sigma_2^{\\mathrm{P}}$."
- },
- "oracoli-inutili": {
-  "priorita": "alta",
-  "frequenza": 10,
-  "domande": [
-   {
-    "traccia": "F07",
-    "n": 2
-   },
-   {
-    "traccia": "G16",
-    "n": 3
-   },
-   {
-    "traccia": "G20v1",
-    "n": 3
-   },
-   {
-    "traccia": "G20v2",
-    "n": 2
-   },
-   {
-    "traccia": "G20v3",
-    "n": 1
-   },
-   {
-    "traccia": "G20v5",
-    "n": 1
-   },
-   {
-    "traccia": "G20v5",
-    "n": 3
-   },
-   {
-    "traccia": "MZ22",
-    "n": 2
-   },
-   {
-    "traccia": "GE23",
-    "n": 7
-   },
-   {
-    "traccia": "MA23",
-    "n": 6
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{P}^{\\mathrm{P}} = \\mathrm{P}$ e $\\mathrm{NP}^{\\mathrm{P}} = \\mathrm{NP}$ (oracolo eseguito in linea); $\\mathrm{DP} \\subseteq \\mathrm{P}^{\\mathrm{NP}} = \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} \\cap \\Pi_2^{\\mathrm{P}}$, perché bastano due domande a un oracolo NP."
- },
- "t17-8": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Teorema 17.8, $L \\in \\Sigma_i^{\\mathrm{P}}$ sse $L = \\{x : \\exists y\\ (x, y) \\in R\\}$ con $R$ polinomialmente bilanciata e verificabile in $\\Pi_{i-1}^{\\mathrm{P}}$."
- },
- "t17-8-cor1": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Corollario 1 del Teorema 17.8, $L \\in \\Pi_i^{\\mathrm{P}}$ sse $L = \\{x : \\forall y\\ (x, y) \\in R\\}$ con $R$ polinomialmente bilanciata e verificabile in $\\Sigma_{i-1}^{\\mathrm{P}}$."
- },
- "t17-8-cor2": {
-  "priorita": "bassa",
-  "frequenza": 1,
-  "domande": [
-   {
-    "traccia": "G20v3",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Corollario 2 del Teorema 17.8, $L \\in \\Sigma_i^{\\mathrm{P}}$ sse $L = \\{x : \\exists y_1\\, \\forall y_2 \\dots Q y_i\\ R(x, y_1, \\dots, y_i)\\}$ con $R$ polinomiale: il livello è il numero di alternanze."
- },
- "t17-9": {
-  "priorita": "alta",
-  "frequenza": 23,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 7
-   },
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F04",
-    "n": 7
-   },
-   {
-    "traccia": "F06",
-    "n": 2
-   },
-   {
-    "traccia": "F07",
-    "n": 4
-   },
-   {
-    "traccia": "F07",
-    "n": 7
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   },
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F12",
-    "n": 5
-   },
-   {
-    "traccia": "F13",
-    "n": 1
-   },
-   {
-    "traccia": "L18",
-    "n": 1
-   },
-   {
-    "traccia": "L18",
-    "n": 7
-   },
-   {
-    "traccia": "G20v1",
-    "n": 1
-   },
-   {
-    "traccia": "G20v1",
-    "n": 4
-   },
-   {
-    "traccia": "G20v3",
-    "n": 1
-   },
-   {
-    "traccia": "G20v5",
-    "n": 1
-   },
-   {
-    "traccia": "MZ22",
-    "n": 2
-   },
-   {
-    "traccia": "LU22",
-    "n": 7
-   },
-   {
-    "traccia": "FE23",
-    "n": 7
-   },
-   {
-    "traccia": "MA23",
-    "n": 2
-   },
-   {
-    "traccia": "E26",
-    "n": 5
-   },
-   {
-    "traccia": "ND",
-    "n": 6
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Teorema 17.9, se $\\Sigma_i^{\\mathrm{P}} = \\Pi_i^{\\mathrm{P}}$ allora PH collassa al livello $i$: per esempio una riduzione da $\\mathrm{QSAT}_i$ al suo complemento esiste solo se PH collassa al livello $i$."
- },
- "cor-collasso-primo": {
-  "priorita": "alta",
-  "frequenza": 10,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 7
-   },
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F04",
-    "n": 7
-   },
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F12",
-    "n": 5
-   },
-   {
-    "traccia": "F14",
-    "n": 2
-   },
-   {
-    "traccia": "G20v1",
-    "n": 4
-   },
-   {
-    "traccia": "LU22",
-    "n": 7
-   },
-   {
-    "traccia": "ND",
-    "n": 6
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Se $\\mathrm{NP} = \\mathrm{coNP}$ (in particolare se $\\mathrm{P} = \\mathrm{NP}$) allora, per il Teorema 17.9 con $i = 1$, PH collassa al primo livello: $\\mathrm{PH} = \\mathrm{NP}$."
- },
- "circ": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 5
-   },
-   {
-    "traccia": "G20v3",
-    "n": 1
-   },
-   {
-    "traccia": "G20v4",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "CIRC SAT è $\\Sigma_2^{\\mathrm{P}}$-completo ($\\exists$ un modello, $\\forall$ modello più normale): CLIQUE vi si riduce perché $\\mathrm{NP} \\subseteq \\Sigma_2^{\\mathrm{P}}$; il contrario farebbe collassare PH al primo livello."
- },
- "t17-10": {
-  "priorita": "alta",
-  "frequenza": 30,
-  "domande": [
-   {
-    "traccia": "F02",
-    "n": 7
-   },
-   {
-    "traccia": "F03",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 5
-   },
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F05",
-    "n": 6
-   },
-   {
-    "traccia": "F06",
-    "n": 2
-   },
-   {
-    "traccia": "F07",
-    "n": 2
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   },
-   {
-    "traccia": "F08",
-    "n": 5
-   },
-   {
-    "traccia": "G16",
-    "n": 4
-   },
-   {
-    "traccia": "G16",
-    "n": 6
-   },
-   {
-    "traccia": "F12",
-    "n": 2
-   },
-   {
-    "traccia": "F12",
-    "n": 5
-   },
-   {
-    "traccia": "F13",
-    "n": 1
-   },
-   {
-    "traccia": "F13",
-    "n": 3
-   },
-   {
-    "traccia": "F14",
-    "n": 6
-   },
-   {
-    "traccia": "L18",
-    "n": 5
-   },
-   {
-    "traccia": "G20v1",
-    "n": 1
-   },
-   {
-    "traccia": "G20v2",
-    "n": 7
-   },
-   {
-    "traccia": "G20v4",
-    "n": 1
-   },
-   {
-    "traccia": "G20v5",
-    "n": 2
-   },
-   {
-    "traccia": "LU22",
-    "n": 1
-   },
-   {
-    "traccia": "GE23",
-    "n": 1
-   },
-   {
-    "traccia": "GE23",
-    "n": 5
-   },
-   {
-    "traccia": "FE23",
-    "n": 3
-   },
-   {
-    "traccia": "FE23",
-    "n": 7
-   },
-   {
-    "traccia": "SE23",
-    "n": 1
-   },
-   {
-    "traccia": "SE23",
-    "n": 6
-   },
-   {
-    "traccia": "E26",
-    "n": 5
-   },
-   {
-    "traccia": "ND",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Teorema 17.10 $\\mathrm{QSAT}_i$ è $\\Sigma_i^{\\mathrm{P}}$-completo e il complemento $\\Pi_i^{\\mathrm{P}}$-completo: $\\mathrm{QSAT}_2$ si riduce a $\\mathrm{QSAT}_4$ ($\\Sigma_2^{\\mathrm{P}} \\subseteq \\Sigma_4^{\\mathrm{P}}$); il contrario solo se PH collassa al 2° livello."
- },
- "strategic-companies": {
-  "priorita": "bassa",
-  "frequenza": 1,
-  "domande": [
-   {
-    "traccia": "G20v5",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "STRATEGIC COMPANIES è $\\Sigma_2^{\\mathrm{P}}$-completo e il complemento $\\Pi_2^{\\mathrm{P}}$-completo: CLIQUE si riduce al complemento perché $\\Sigma_1^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}}$; il contrario farebbe collassare PH al primo livello."
- },
- "t17-11": {
-  "priorita": "media",
-  "frequenza": 4,
-  "domande": [
-   {
-    "traccia": "F02",
-    "n": 7
-   },
-   {
-    "traccia": "G16",
-    "n": 1
-   },
-   {
-    "traccia": "MA23",
-    "n": 2
-   },
-   {
-    "traccia": "ND",
-    "n": 6
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Teorema 17.11 un problema PH-completo farebbe collassare PH a un livello finito: quindi un problema completo per PH (o per PSPACE in PH) esiste solo se PH collassa."
- },
- "ph-pspace": {
-  "priorita": "alta",
-  "frequenza": 18,
-  "domande": [
-   {
-    "traccia": "F04",
-    "n": 6
-   },
-   {
-    "traccia": "F05",
-    "n": 1
-   },
-   {
-    "traccia": "F06",
-    "n": 1
-   },
-   {
-    "traccia": "F07",
-    "n": 1
-   },
-   {
-    "traccia": "F08",
-    "n": 4
-   },
-   {
-    "traccia": "F14",
-    "n": 3
-   },
-   {
-    "traccia": "G17",
-    "n": 5
-   },
-   {
-    "traccia": "L18",
-    "n": 1
-   },
-   {
-    "traccia": "G20v2",
-    "n": 2
-   },
-   {
-    "traccia": "G20v4",
-    "n": 2
-   },
-   {
-    "traccia": "G20v5",
-    "n": 1
-   },
-   {
-    "traccia": "MZ22",
-    "n": 2
-   },
-   {
-    "traccia": "LU22",
-    "n": 5
-   },
-   {
-    "traccia": "FE23",
-    "n": 3
-   },
-   {
-    "traccia": "MA23",
-    "n": 6
-   },
-   {
-    "traccia": "SE23",
-    "n": 4
-   },
-   {
-    "traccia": "E26",
-    "n": 4
-   },
-   {
-    "traccia": "E26",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE}$ (Proposizione 17.1): quindi ogni problema di PH, per esempio $\\mathrm{QSAT}_3$, si riduce a QSAT, che è PSPACE-completo."
- },
- "cor-ph-pspace": {
-  "priorita": "media",
-  "frequenza": 4,
-  "domande": [
-   {
-    "traccia": "F04",
-    "n": 1
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   },
-   {
-    "traccia": "L18",
-    "n": 1
-   },
-   {
-    "traccia": "G20v4",
-    "n": 4
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Se $\\mathrm{PH} = \\mathrm{PSPACE}$, QSAT sarebbe PH-completo e PH collasserebbe (Teorema 17.11): quindi QSAT si riduce a $\\mathrm{QSAT}_3$ solo se PH collassa al 3° livello."
- },
- "qsat-pspace": {
-  "priorita": "alta",
-  "frequenza": 8,
-  "domande": [
-   {
-    "traccia": "F05",
-    "n": 7
-   },
-   {
-    "traccia": "F07",
-    "n": 7
-   },
-   {
-    "traccia": "G16",
-    "n": 6
-   },
-   {
-    "traccia": "F13",
-    "n": 6
-   },
-   {
-    "traccia": "L18",
-    "n": 1
-   },
-   {
-    "traccia": "L18",
-    "n": 4
-   },
-   {
-    "traccia": "FE23",
-    "n": 3
-   },
-   {
-    "traccia": "SE23",
-    "n": 3
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "QSAT è PSPACE-completo: $\\mathrm{QSAT}_3$ si riduce a QSAT perché $\\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE}$, mentre il contrario implicherebbe $\\mathrm{PSPACE} = \\Sigma_3^{\\mathrm{P}}$ e il collasso di PH."
- },
- "co-hamilton-pi2": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Il complemento di HAMILTON PATH è coNP-completo, non $\\Pi_2^{\\mathrm{P}}$-completo (lo sarebbe solo se $\\mathrm{NP} = \\mathrm{coNP}$): QSAT vi si riduce solo se $\\mathrm{PSPACE} = \\mathrm{coNP}$ e PH collassa al primo livello."
- },
- "db-queries": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "Per le query in algebra relazionale combined ed expression complexity sono PSPACE-complete e la data complexity è in $\\mathrm{L}$; per le query congiuntive NP-complete e $\\mathrm{AC}^0$."
- },
- "geography": {
-  "priorita": "media",
-  "frequenza": 5,
-  "domande": [
-   {
-    "traccia": "F05",
-    "n": 5
-   },
-   {
-    "traccia": "MZ22",
-    "n": 2
-   },
-   {
-    "traccia": "GE23",
-    "n": 3
-   },
-   {
-    "traccia": "MA23",
-    "n": 3
-   },
-   {
-    "traccia": "LU24",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "SÌ: GEOGRAPHY è PSPACE-completo (Teorema 19.3), quindi si riduce a QSAT; un $k$ fisso di alternanze per tutte le istanze esisterebbe solo se PH e PSPACE collassassero a $\\Sigma_k^{\\mathrm{P}}$."
- },
- "go": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "GO generalizzato ($n \\times n$) è PSPACE-completo (Teorema 19.4): dire se il nero ha una strategia vincente equivale a valutare una QBF, quindi è in P solo se $\\mathrm{P} = \\mathrm{PSPACE}$."
- },
- "fsat-fnp": {
-  "priorita": "bassa",
-  "frequenza": 2,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 6
-   },
-   {
-    "traccia": "F13",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "FSAT è FNP-completo (ogni problema di FNP si riduce a FSAT con la costruzione di Cook-Levin), quindi $\\mathrm{FSAT} \\in \\mathrm{FP}$ se e solo se $\\mathrm{FP} = \\mathrm{FNP}$."
- },
- "fsat-sat": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per la Proposizione su FSAT e SAT, FSAT si risolve in tempo polinomiale sse $\\mathrm{SAT} \\in \\mathrm{P}$: con un decisore per SAT si fissano le variabili una alla volta."
- },
- "fp-fnp": {
-  "priorita": "media",
-  "frequenza": 4,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 6
-   },
-   {
-    "traccia": "MZ22",
-    "n": 5
-   },
-   {
-    "traccia": "E26",
-    "n": 3
-   },
-   {
-    "traccia": "E26",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{FP} = \\mathrm{FNP}$ sse $\\mathrm{P} = \\mathrm{NP}$ (FSAT è FNP-completo e polinomiale sse $\\mathrm{SAT} \\in \\mathrm{P}$), quindi \"solo se $\\mathrm{FP} = \\mathrm{FNP}$\" equivale a \"solo se $\\mathrm{P} = \\mathrm{NP}$\"."
- },
- "t20-1": {
-  "priorita": "media",
-  "frequenza": 5,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 5
-   },
-   {
-    "traccia": "F03",
-    "n": 7
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   },
-   {
-    "traccia": "G20v4",
-    "n": 4
-   },
-   {
-    "traccia": "E26",
-    "n": 5
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Per il Teorema 20.1 (padding) $\\mathrm{P} = \\mathrm{NP} \\Rightarrow \\mathrm{EXP} = \\mathrm{NEXP}$; quindi, per contronominale, se $\\mathrm{EXP} \\neq \\mathrm{NEXP}$ allora $\\mathrm{P} \\neq \\mathrm{NP}$."
- },
- "nexp-completi": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 5
-   },
-   {
-    "traccia": "F08",
-    "n": 3
-   },
-   {
-    "traccia": "G20v3",
-    "n": 3
-   },
-   {
-    "traccia": "G20v4",
-    "n": 4
-   },
-   {
-    "traccia": "GE23",
-    "n": 3
-   },
-   {
-    "traccia": "FE23",
-    "n": 1
-   },
-   {
-    "traccia": "E26",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "SÌ/NO: SUCCINCT CIRCUIT SAT e SCHÖNFINKEL-BERNAYS SAT sono NEXP-completi; non si riducono a un problema in P perché $\\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq \\mathrm{NEXP}$ (gerarchia di tempo)."
- },
- "fo-indecidibile": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F06",
-    "n": 6
-   },
-   {
-    "traccia": "G20v4",
-    "n": 6
-   },
-   {
-    "traccia": "SE23",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "La validità del primo ordine sta in RE ma non in $\\mathrm{R}$, la soddisfacibilità in coRE ma non in $\\mathrm{R}$: sono indecidibili, quindi sopra ogni classe di complessità del corso."
- },
- "2sat-p-completo": {
-  "priorita": "fuori",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Di 2-SAT si sa solo che è in P (anzi NL-completo); essere P-completo equivarrebbe a $\\mathrm{P} = \\mathrm{NL}$, questione aperta, quindi la riduzione da un problema di P non è garantita."
- },
- "riepilogo-p": {
-  "priorita": "alta",
-  "frequenza": 8,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 2
-   },
-   {
-    "traccia": "F02",
-    "n": 1
-   },
-   {
-    "traccia": "F03",
-    "n": 2
-   },
-   {
-    "traccia": "G16",
-    "n": 1
-   },
-   {
-    "traccia": "MZ22",
-    "n": 7
-   },
-   {
-    "traccia": "GE23",
-    "n": 4
-   },
-   {
-    "traccia": "E26",
-    "n": 5
-   },
-   {
-    "traccia": "E26",
-    "n": 7
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "$\\mathrm{PRIMES} \\in \\mathrm{P}$ e $\\mathrm{MAX\\ FLOW} \\in \\mathrm{P}$ (è P-completo); 3-COLORING è NP-completo, quindi da MAX FLOW a 3-COLORING la riduzione esiste, al contrario solo se $\\mathrm{P} = \\mathrm{NP}$."
- },
- "np-pp": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F05",
-    "n": 2
-   },
-   {
-    "traccia": "G20v2",
-    "n": 4
-   },
-   {
-    "traccia": "FE23",
-    "n": 2
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{NP} \\subseteq \\mathrm{PP}$ (Teorema 11.3): aggiungendo metà run che accettano sempre, un solo run accettante basta per la maggioranza; il contrario si pensa che non valga."
- },
- "pp-pspace": {
-  "priorita": "media",
-  "frequenza": 7,
-  "domande": [
-   {
-    "traccia": "F05",
-    "n": 5
-   },
-   {
-    "traccia": "F12",
-    "n": 3
-   },
-   {
-    "traccia": "F12",
-    "n": 7
-   },
-   {
-    "traccia": "G17",
-    "n": 5
-   },
-   {
-    "traccia": "G20v3",
-    "n": 6
-   },
-   {
-    "traccia": "GE23",
-    "n": 2
-   },
-   {
-    "traccia": "LU24",
-    "n": 1
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{PP} \\subseteq \\mathrm{PSPACE}$: una MdT deterministica prova tutti i run uno alla volta riusando lo spazio e conta i \"yes\" con contatori binari di $n^c$ cifre."
- },
- "bpp-inclusioni": {
-  "priorita": "bassa",
-  "frequenza": 3,
-  "domande": [
-   {
-    "traccia": "F12",
-    "n": 4
-   },
-   {
-    "traccia": "F12",
-    "n": 7
-   },
-   {
-    "traccia": "LU22",
-    "n": 6
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{PP}$: un run deterministico è il 100% delle risposte, e la maggioranza qualificata ($3/4$) di BPP è in particolare una maggioranza semplice."
- },
- "bpp-errore": {
-  "priorita": "media",
-  "frequenza": 6,
-  "domande": [
-   {
-    "traccia": "F07",
-    "n": 3
-   },
-   {
-    "traccia": "F08",
-    "n": 6
-   },
-   {
-    "traccia": "F14",
-    "n": 5
-   },
-   {
-    "traccia": "G20v5",
-    "n": 6
-   },
-   {
-    "traccia": "MA23",
-    "n": 7
-   },
-   {
-    "traccia": "SP",
-    "n": 1
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "In BPP $2k + 1$ ripetizioni con voto di maggioranza portano l'errore sotto $\\varepsilon$, con $k = \\lceil -8 \\ln \\varepsilon \\rceil$ costante; in PP il vantaggio può essere esponenzialmente piccolo e le ripetizioni esponenziali."
- },
- "bqp": {
-  "priorita": "alta",
-  "frequenza": 8,
-  "domande": [
-   {
-    "traccia": "F01",
-    "n": 5
-   },
-   {
-    "traccia": "F12",
-    "n": 3
-   },
-   {
-    "traccia": "G20v3",
-    "n": 6
-   },
-   {
-    "traccia": "LU22",
-    "n": 6
-   },
-   {
-    "traccia": "GE23",
-    "n": 2
-   },
-   {
-    "traccia": "SE23",
-    "n": 4
-   },
-   {
-    "traccia": "ND",
-    "n": 2
-   },
-   {
-    "traccia": "SP",
-    "n": 4
-   }
-  ],
-  "tipo_dimostrazione": "schema",
-  "frase_esame": "$\\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$: un algoritmo quantistico si simula in spazio polinomiale, quindi i problemi PSPACE-completi stanno in BQP solo se $\\mathrm{PSPACE} = \\mathrm{BQP}$."
- },
- "grover-np": {
-  "priorita": "media",
-  "frequenza": 4,
-  "domande": [
-   {
-    "traccia": "F03",
-    "n": 6
-   },
-   {
-    "traccia": "G20v2",
-    "n": 6
-   },
-   {
-    "traccia": "G20v3",
-    "n": 5
-   },
-   {
-    "traccia": "SP",
-    "n": 4
-   }
-  ],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "Con Grover ogni problema in NP si risolve quantisticamente con errore limitato in tempo $O(c^{n^k/2})$: accelerazione solo quadratica, il tempo resta esponenziale."
- },
- "bqp-2exp": {
-  "priorita": "orale",
-  "frequenza": 0,
-  "domande": [],
-  "tipo_dimostrazione": "completa",
-  "frase_esame": "$\\mathrm{BQP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$, quindi $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$: un problema 2-EXP-completo (per esempio il ragionamento su ontologie OWL2) non si risolve in tempo polinomiale nemmeno con un calcolatore quantistico."
- }
+    "ricorsivo-re": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ: ogni linguaggio ricorsivo è ricorsivamente enumerabile ($\\mathrm{R} \\subseteq \\mathrm{RE}$), perché dalla MdT che lo decide se ne ottiene una che lo accetta trasformando il \"no\" in un ciclo infinito."
+    },
+    "speedup-multinastro": {
+        "priorita": "media",
+        "frequenza": 5,
+        "domande": [
+            {
+                "traccia": "G16",
+                "n": 5
+            },
+            {
+                "traccia": "G20v4",
+                "n": 5
+            },
+            {
+                "traccia": "MA23",
+                "n": 4
+            },
+            {
+                "traccia": "LU24",
+                "n": 3
+            },
+            {
+                "traccia": "SP",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per lo speedup multinastro una MdT a $k$ nastri in tempo $f(n)$ si simula con un nastro solo in tempo $O(f(n)^2)$: i nastri cambiano il tempo solo polinomialmente."
+    },
+    "ram-mdt": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Per il Teorema 2.5 una RAM in tempo $f(n)$ si simula con una MdT in tempo $O(f(n)^3)$: ciò che è polinomiale su RAM resta in P."
+    },
+    "linear-speedup": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per lo speedup lineare, se $L \\in \\mathrm{TIME}(f(n))$ allora $L \\in \\mathrm{TIME}(\\varepsilon \\cdot f(n) + n + 2)$ per ogni $\\varepsilon \\gt 0$: le costanti moltiplicative del budget non contano, conta solo l'$O(\\cdot)$."
+    },
+    "mdt-io": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Ogni MdT a $k$ nastri in tempo $f(n)$ si simula con una MdT con input e output a $k+2$ nastri in tempo $O(f(n))$: l'input in sola lettura non toglie potenza."
+    },
+    "space-compression": {
+        "priorita": "media",
+        "frequenza": 4,
+        "domande": [
+            {
+                "traccia": "F04",
+                "n": 4
+            },
+            {
+                "traccia": "F05",
+                "n": 3
+            },
+            {
+                "traccia": "G16",
+                "n": 7
+            },
+            {
+                "traccia": "G17",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Per il teorema di compressione dello spazio, $L \\in \\mathrm{SPACE}(f(n))$ implica $L \\in \\mathrm{SPACE}(2 + \\varepsilon \\cdot f(n))$ per ogni $\\varepsilon \\gt 0$: anche nel budget di spazio le costanti moltiplicative non contano."
+    },
+    "p-sub-np": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ: $\\mathrm{P} \\subseteq \\mathrm{NP}$, perché una MdT deterministica polinomiale è una MdT nondeterministica (con $\\Delta$ che è una funzione) che decide lo stesso linguaggio nello stesso tempo."
+    },
+    "ndet-det": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F05",
+                "n": 4
+            },
+            {
+                "traccia": "G20v1",
+                "n": 5
+            },
+            {
+                "traccia": "G20v2",
+                "n": 5
+            },
+            {
+                "traccia": "G20v4",
+                "n": 5
+            },
+            {
+                "traccia": "G20v5",
+                "n": 5
+            },
+            {
+                "traccia": "LU24",
+                "n": 3
+            },
+            {
+                "traccia": "SP",
+                "n": 3
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il teorema da nondeterministico a deterministico $\\mathrm{NTIME}(f(n)) \\subseteq \\bigcup_{c \\gt 1} \\mathrm{TIME}(c^{f(n)})$: simulare il nondeterminismo costa un esponenziale, quindi per esempio $\\mathrm{NP} \\subseteq \\mathrm{EXP}$."
+    },
+    "reach-nl": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ: $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$, perché una MdT nondeterministica indovina il cammino ricordando solo il nodo corrente e il successivo, cioè $O(\\log n)$ celle di lavoro."
+    },
+    "gap-theorem": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Per il Gap Theorem esiste $f$ ricorsiva con $\\mathrm{TIME}(f(n)) = \\mathrm{TIME}(2^{f(n)})$: senza l'ipotesi di funzione propria i teoremi di gerarchia non valgono."
+    },
+    "soluzioni-precise": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il teorema delle soluzioni precise, con $f$ propria si può supporre che tempo o spazio della MdT dipendano solo da $|x|$, restando nel budget $O(f(n))$."
+    },
+    "terminazione-space": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il teorema di terminazione, una MdT con budget di spazio $f(n)$ ($f$ propria) si rende sempre terminante: ha al più $|K| \\cdot |\\Sigma|^{f(n)} \\cdot (f(n)+1)$ configurazioni, oltre le quali è in un ciclo."
+    },
+    "chiusura-det-complemento": {
+        "priorita": "bassa",
+        "frequenza": 2,
+        "domande": [
+            {
+                "traccia": "F05",
+                "n": 2
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ: le classi deterministiche di tempo e spazio sono chiuse per complemento (per esempio $\\mathrm{P} = \\mathrm{coP}$): basta scambiare \"yes\" e \"no\" nella MdT deterministica, con lo stesso budget."
+    },
+    "hf-upper": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Lemma 1, $H_f \\in \\mathrm{TIME}(f(n)^3)$: una macchina universale con una sveglia lunga $f(|x|)$ simula $M$ su $x$ spendendo $O(f(n)^2)$ per ogni passo."
+    },
+    "hf-lower": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Lemma 2, $H_f \\notin \\mathrm{TIME}(f(\\lfloor n/2 \\rfloor))$: la macchina diagonale $D_f$, che fa il contrario sulla propria descrizione, porterebbe a una contraddizione."
+    },
+    "time-hierarchy": {
+        "priorita": "alta",
+        "frequenza": 30,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 2
+            },
+            {
+                "traccia": "F01",
+                "n": 4
+            },
+            {
+                "traccia": "F02",
+                "n": 1
+            },
+            {
+                "traccia": "F02",
+                "n": 5
+            },
+            {
+                "traccia": "F03",
+                "n": 4
+            },
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F04",
+                "n": 6
+            },
+            {
+                "traccia": "F05",
+                "n": 1
+            },
+            {
+                "traccia": "F06",
+                "n": 1
+            },
+            {
+                "traccia": "F06",
+                "n": 4
+            },
+            {
+                "traccia": "F06",
+                "n": 5
+            },
+            {
+                "traccia": "F07",
+                "n": 1
+            },
+            {
+                "traccia": "F08",
+                "n": 1
+            },
+            {
+                "traccia": "G16",
+                "n": 1
+            },
+            {
+                "traccia": "F12",
+                "n": 7
+            },
+            {
+                "traccia": "F13",
+                "n": 6
+            },
+            {
+                "traccia": "F14",
+                "n": 1
+            },
+            {
+                "traccia": "G17",
+                "n": 2
+            },
+            {
+                "traccia": "L18",
+                "n": 2
+            },
+            {
+                "traccia": "G20v1",
+                "n": 2
+            },
+            {
+                "traccia": "G20v1",
+                "n": 7
+            },
+            {
+                "traccia": "G20v2",
+                "n": 2
+            },
+            {
+                "traccia": "G20v4",
+                "n": 2
+            },
+            {
+                "traccia": "LU22",
+                "n": 4
+            },
+            {
+                "traccia": "GE23",
+                "n": 4
+            },
+            {
+                "traccia": "GE23",
+                "n": 6
+            },
+            {
+                "traccia": "E26",
+                "n": 4
+            },
+            {
+                "traccia": "E26",
+                "n": 7
+            },
+            {
+                "traccia": "ND",
+                "n": 3
+            },
+            {
+                "traccia": "ND",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il teorema di gerarchia per il tempo, se $f(n) \\ge n$ è propria allora $\\mathrm{TIME}(f(n)) \\subsetneq \\mathrm{TIME}(f(2n+1)^3)$: con abbastanza tempo in più si risolvono problemi nuovi."
+    },
+    "p-neq-exp": {
+        "priorita": "alta",
+        "frequenza": 12,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 2
+            },
+            {
+                "traccia": "F01",
+                "n": 4
+            },
+            {
+                "traccia": "F02",
+                "n": 1
+            },
+            {
+                "traccia": "F02",
+                "n": 5
+            },
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F06",
+                "n": 5
+            },
+            {
+                "traccia": "G16",
+                "n": 1
+            },
+            {
+                "traccia": "G17",
+                "n": 2
+            },
+            {
+                "traccia": "G20v1",
+                "n": 2
+            },
+            {
+                "traccia": "G20v1",
+                "n": 7
+            },
+            {
+                "traccia": "GE23",
+                "n": 4
+            },
+            {
+                "traccia": "E26",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{P} \\subsetneq \\mathrm{EXP}$: per il teorema di gerarchia $\\mathrm{TIME}(2^n) \\subsetneq \\mathrm{TIME}(2^{6n+3}) \\subseteq \\mathrm{EXP}$, e $\\mathrm{P} \\subseteq \\mathrm{TIME}(2^n)$, quindi $\\mathrm{P} \\subsetneq \\mathrm{EXP}$."
+    },
+    "space-hierarchy": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F07",
+                "n": 5
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            },
+            {
+                "traccia": "G20v1",
+                "n": 7
+            },
+            {
+                "traccia": "LU22",
+                "n": 5
+            },
+            {
+                "traccia": "GE23",
+                "n": 3
+            },
+            {
+                "traccia": "MA23",
+                "n": 5
+            },
+            {
+                "traccia": "LU24",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Per il teorema di gerarchia per lo spazio, con $f$ propria $\\mathrm{SPACE}(f(n)) \\subsetneq \\mathrm{SPACE}(f(n) \\cdot \\log f(n))$; per esempio $\\mathrm{L} \\subsetneq \\mathrm{PSPACE}$."
+    },
+    "ndet-hierarchy": {
+        "priorita": "media",
+        "frequenza": 4,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 4
+            },
+            {
+                "traccia": "F07",
+                "n": 4
+            },
+            {
+                "traccia": "MZ22",
+                "n": 4
+            },
+            {
+                "traccia": "LU24",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Per le gerarchie nondeterministiche $\\mathrm{NTIME}(n^c) \\subsetneq \\mathrm{NTIME}(n^d)$ per $1 \\le c \\lt d$: per esempio $\\mathrm{NTIME}(n) \\subsetneq \\mathrm{NTIME}(n^2)$, quindi le due classi sono diverse."
+    },
+    "time-in-space": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "G20v1",
+                "n": 6
+            },
+            {
+                "traccia": "MZ22",
+                "n": 7
+            },
+            {
+                "traccia": "SE23",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "SÌ: $\\mathrm{TIME}(f(n)) \\subseteq \\mathrm{SPACE}(f(n))$, perché ogni cella usata costa almeno un passo per raggiungerla; per esempio $\\mathrm{P} \\subseteq \\mathrm{PSPACE}$."
+    },
+    "space-in-time": {
+        "priorita": "alta",
+        "frequenza": 25,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 1
+            },
+            {
+                "traccia": "F02",
+                "n": 5
+            },
+            {
+                "traccia": "F03",
+                "n": 4
+            },
+            {
+                "traccia": "F04",
+                "n": 6
+            },
+            {
+                "traccia": "F05",
+                "n": 1
+            },
+            {
+                "traccia": "F06",
+                "n": 1
+            },
+            {
+                "traccia": "F06",
+                "n": 4
+            },
+            {
+                "traccia": "F07",
+                "n": 1
+            },
+            {
+                "traccia": "F08",
+                "n": 1
+            },
+            {
+                "traccia": "F12",
+                "n": 7
+            },
+            {
+                "traccia": "F13",
+                "n": 6
+            },
+            {
+                "traccia": "L18",
+                "n": 1
+            },
+            {
+                "traccia": "L18",
+                "n": 4
+            },
+            {
+                "traccia": "G20v2",
+                "n": 2
+            },
+            {
+                "traccia": "G20v4",
+                "n": 2
+            },
+            {
+                "traccia": "LU22",
+                "n": 4
+            },
+            {
+                "traccia": "FE23",
+                "n": 4
+            },
+            {
+                "traccia": "MA23",
+                "n": 6
+            },
+            {
+                "traccia": "SE23",
+                "n": 3
+            },
+            {
+                "traccia": "SE23",
+                "n": 5
+            },
+            {
+                "traccia": "LU24",
+                "n": 1
+            },
+            {
+                "traccia": "LU24",
+                "n": 6
+            },
+            {
+                "traccia": "E26",
+                "n": 4
+            },
+            {
+                "traccia": "E26",
+                "n": 6
+            },
+            {
+                "traccia": "ND",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{SPACE}(f(n)) \\subseteq \\mathrm{TIME}(k^{f(n)})$, perché una macchina con budget di spazio $f(n)$ ha al più $k^{f(n)}$ configurazioni; quindi $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$."
+    },
+    "t7-4a": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ, per il Teorema 7.4 (a): una MdT deterministica è un caso particolare di nondeterministica, quindi $\\mathrm{TIME}(f(n)) \\subseteq \\mathrm{NTIME}(f(n))$ e $\\mathrm{SPACE}(f(n)) \\subseteq \\mathrm{NSPACE}(f(n))$."
+    },
+    "t7-4b": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F04",
+                "n": 5
+            },
+            {
+                "traccia": "G20v1",
+                "n": 6
+            },
+            {
+                "traccia": "SE23",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ, per il Teorema 7.4 (b) $\\mathrm{NTIME}(f(n)) \\subseteq \\mathrm{SPACE}(f(n))$ (si provano i rami uno alla volta riusando lo spazio); per esempio $\\mathrm{NP} \\subseteq \\mathrm{PSPACE}$."
+    },
+    "t7-4c": {
+        "priorita": "media",
+        "frequenza": 5,
+        "domande": [
+            {
+                "traccia": "F02",
+                "n": 6
+            },
+            {
+                "traccia": "F06",
+                "n": 7
+            },
+            {
+                "traccia": "F12",
+                "n": 1
+            },
+            {
+                "traccia": "G20v3",
+                "n": 7
+            },
+            {
+                "traccia": "SP",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ, per il Teorema 7.4 (c) $\\mathrm{NSPACE}(f(n)) \\subseteq \\mathrm{TIME}(k^{\\log n + f(n)})$ (REACHABILITY sul grafo delle configurazioni); con $f(n) = \\log n$ dà $\\mathrm{NL} \\subseteq \\mathrm{P}$."
+    },
+    "catena-classi": {
+        "priorita": "alta",
+        "frequenza": 13,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 4
+            },
+            {
+                "traccia": "F01",
+                "n": 7
+            },
+            {
+                "traccia": "F02",
+                "n": 4
+            },
+            {
+                "traccia": "F05",
+                "n": 6
+            },
+            {
+                "traccia": "F06",
+                "n": 2
+            },
+            {
+                "traccia": "G17",
+                "n": 2
+            },
+            {
+                "traccia": "L18",
+                "n": 7
+            },
+            {
+                "traccia": "G20v1",
+                "n": 7
+            },
+            {
+                "traccia": "G20v3",
+                "n": 4
+            },
+            {
+                "traccia": "G20v3",
+                "n": 7
+            },
+            {
+                "traccia": "LU22",
+                "n": 5
+            },
+            {
+                "traccia": "MA23",
+                "n": 3
+            },
+            {
+                "traccia": "ND",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Per la catena $\\mathrm{L} \\subseteq \\mathrm{NL} \\subseteq \\mathrm{P} \\subseteq \\mathrm{NP} \\subseteq \\mathrm{PSPACE}$, che segue dal Teorema 7.4 (a), (b) e (c)."
+    },
+    "savitch": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F08",
+                "n": 2
+            },
+            {
+                "traccia": "F13",
+                "n": 5
+            },
+            {
+                "traccia": "F13",
+                "n": 7
+            },
+            {
+                "traccia": "G20v3",
+                "n": 4
+            },
+            {
+                "traccia": "FE23",
+                "n": 6
+            },
+            {
+                "traccia": "E26",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 1
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il teorema di Savitch $\\mathrm{REACHABILITY} \\in \\mathrm{SPACE}(\\log^2 n)$: si cerca ricorsivamente il punto di mezzo del cammino, con ricorsione profonda $\\log n$ e $O(\\log n)$ bit per livello."
+    },
+    "savitch-cor": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F08",
+                "n": 2
+            },
+            {
+                "traccia": "F13",
+                "n": 5
+            },
+            {
+                "traccia": "F13",
+                "n": 7
+            },
+            {
+                "traccia": "G20v3",
+                "n": 4
+            },
+            {
+                "traccia": "FE23",
+                "n": 6
+            },
+            {
+                "traccia": "E26",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 1
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ, per il corollario di Savitch $\\mathrm{NSPACE}(f(n)) \\subseteq \\mathrm{SPACE}(f(n)^2)$ per $f(n) \\ge \\log n$ propria; per esempio $\\mathrm{NL} \\subseteq \\mathrm{SPACE}(\\log^2 n)$."
+    },
+    "pspace-npspace": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F13",
+                "n": 7
+            },
+            {
+                "traccia": "F14",
+                "n": 3
+            },
+            {
+                "traccia": "LU22",
+                "n": 4
+            },
+            {
+                "traccia": "FE23",
+                "n": 5
+            },
+            {
+                "traccia": "MA23",
+                "n": 1
+            },
+            {
+                "traccia": "E26",
+                "n": 7
+            },
+            {
+                "traccia": "ND",
+                "n": 1
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ: $\\mathrm{NPSPACE} \\subseteq \\mathrm{PSPACE}$ per il corollario di Savitch ($\\mathrm{NSPACE}(n^k) \\subseteq \\mathrm{SPACE}(n^{2k})$), quindi $\\mathrm{PSPACE} = \\mathrm{NPSPACE}$."
+    },
+    "composizione-riduzioni": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F02",
+                "n": 2
+            },
+            {
+                "traccia": "MZ22",
+                "n": 6
+            },
+            {
+                "traccia": "LU22",
+                "n": 3
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SÌ, perché le riduzioni (in spazio logaritmico) si compongono: se $L_1$ si riduce a $L_2$ e $L_2$ a $L_3$, allora $L_1$ si riduce a $L_3$."
+    },
+    "chiusura-riduzioni": {
+        "priorita": "alta",
+        "frequenza": 39,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 2
+            },
+            {
+                "traccia": "F02",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 4
+            },
+            {
+                "traccia": "F05",
+                "n": 5
+            },
+            {
+                "traccia": "F05",
+                "n": 6
+            },
+            {
+                "traccia": "F05",
+                "n": 7
+            },
+            {
+                "traccia": "F06",
+                "n": 2
+            },
+            {
+                "traccia": "F07",
+                "n": 4
+            },
+            {
+                "traccia": "F07",
+                "n": 7
+            },
+            {
+                "traccia": "F08",
+                "n": 7
+            },
+            {
+                "traccia": "G16",
+                "n": 1
+            },
+            {
+                "traccia": "G16",
+                "n": 4
+            },
+            {
+                "traccia": "G16",
+                "n": 6
+            },
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F13",
+                "n": 4
+            },
+            {
+                "traccia": "F13",
+                "n": 6
+            },
+            {
+                "traccia": "F14",
+                "n": 1
+            },
+            {
+                "traccia": "F14",
+                "n": 7
+            },
+            {
+                "traccia": "G17",
+                "n": 2
+            },
+            {
+                "traccia": "G20v1",
+                "n": 4
+            },
+            {
+                "traccia": "G20v2",
+                "n": 3
+            },
+            {
+                "traccia": "G20v2",
+                "n": 7
+            },
+            {
+                "traccia": "G20v3",
+                "n": 1
+            },
+            {
+                "traccia": "G20v3",
+                "n": 3
+            },
+            {
+                "traccia": "G20v4",
+                "n": 1
+            },
+            {
+                "traccia": "G20v4",
+                "n": 2
+            },
+            {
+                "traccia": "G20v4",
+                "n": 4
+            },
+            {
+                "traccia": "G20v5",
+                "n": 7
+            },
+            {
+                "traccia": "MZ22",
+                "n": 2
+            },
+            {
+                "traccia": "LU22",
+                "n": 7
+            },
+            {
+                "traccia": "GE23",
+                "n": 4
+            },
+            {
+                "traccia": "GE23",
+                "n": 7
+            },
+            {
+                "traccia": "MA23",
+                "n": 2
+            },
+            {
+                "traccia": "LU24",
+                "n": 1
+            },
+            {
+                "traccia": "E26",
+                "n": 5
+            },
+            {
+                "traccia": "E26",
+                "n": 7
+            },
+            {
+                "traccia": "ND",
+                "n": 6
+            },
+            {
+                "traccia": "ND",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Solo se $C \\subseteq D$: $D$ è chiusa rispetto alle riduzioni, quindi se un problema $C$-completo stesse in $D$, tutti i problemi di $C$ (che si riducono a lui) starebbero in $D$."
+    },
+    "completo-per-due-classi": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Solo se $\\mathrm{NP} = \\mathrm{coNP}$: un linguaggio completo per due classi chiuse rispetto alle riduzioni le fa coincidere."
+    },
+    "completo-classe-piccola": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Solo se $\\mathrm{P} = \\mathrm{NP}$: $\\mathrm{P} \\subseteq \\mathrm{NP}$ ed è chiusa rispetto alle riduzioni, quindi se contenesse un problema NP-completo sarebbe $\\mathrm{P} = \\mathrm{NP}$."
+    },
+    "cook-levin": {
+        "priorita": "alta",
+        "frequenza": 11,
+        "domande": [
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F05",
+                "n": 6
+            },
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F12",
+                "n": 5
+            },
+            {
+                "traccia": "F13",
+                "n": 3
+            },
+            {
+                "traccia": "F14",
+                "n": 6
+            },
+            {
+                "traccia": "L18",
+                "n": 5
+            },
+            {
+                "traccia": "GE23",
+                "n": 5
+            },
+            {
+                "traccia": "FE23",
+                "n": 2
+            },
+            {
+                "traccia": "SE23",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SAT è NP-completo per il teorema di Cook-Levin: ogni problema in NP si riduce a SAT, e $\\mathrm{SAT} \\in \\mathrm{NP}$."
+    },
+    "3sat": {
+        "priorita": "bassa",
+        "frequenza": 1,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 3
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "3-SAT è NP-completo (SAT si riduce a 3-SAT spezzando le clausole lunghe con variabili nuove), quindi ogni problema in NP si riduce a 3-SAT."
+    },
+    "2sat-p": {
+        "priorita": "media",
+        "frequenza": 6,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 7
+            },
+            {
+                "traccia": "F06",
+                "n": 2
+            },
+            {
+                "traccia": "G17",
+                "n": 2
+            },
+            {
+                "traccia": "GE23",
+                "n": 3
+            },
+            {
+                "traccia": "MA23",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 1
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "SÌ: $\\mathrm{2\\text{-}SAT} \\in \\mathrm{P} \\subseteq \\mathrm{NP}$ (si cercano cicli $x \\leadsto \\neg x \\leadsto x$ nel grafo delle implicazioni), quindi si riduce a ogni problema NP-completo, per esempio CLIQUE."
+    },
+    "horn-sat": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "SÌ: $\\mathrm{HORN\\text{-}SAT} \\in \\mathrm{P}$, perché si rendono vere solo le variabili obbligate dalle clausole e poi si controllano le clausole negative, in tempo lineare."
+    },
+    "prop-9-1": {
+        "priorita": "media",
+        "frequenza": 4,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 4
+            },
+            {
+                "traccia": "F14",
+                "n": 4
+            },
+            {
+                "traccia": "LU24",
+                "n": 4
+            },
+            {
+                "traccia": "SP",
+                "n": 4
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Sta in NP per la Proposizione 9.1: ha un certificato di lunghezza polinomiale che si verifica in tempo polinomiale (indovina e verifica)."
+    },
+    "max2sat": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "MAX2SAT è NP-completo (riduzione da 3SAT: 10 clausole per ogni clausola, obiettivo $K = 7m$), anche se $\\mathrm{2\\text{-}SAT} \\in \\mathrm{P}$."
+    },
+    "independent-set": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "INDEPENDENT SET è NP-completo (riduzione da 3SAT: un triangolo per clausola, archi tra letterali opposti, $K = m$)."
+    },
+    "clique-nodecover": {
+        "priorita": "alta",
+        "frequenza": 8,
+        "domande": [
+            {
+                "traccia": "F02",
+                "n": 3
+            },
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F04",
+                "n": 2
+            },
+            {
+                "traccia": "F07",
+                "n": 6
+            },
+            {
+                "traccia": "L18",
+                "n": 6
+            },
+            {
+                "traccia": "G20v4",
+                "n": 7
+            },
+            {
+                "traccia": "ND",
+                "n": 6
+            },
+            {
+                "traccia": "SP",
+                "n": 4
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "CLIQUE e NODE COVER sono NP-completi: una cricca di $G$ è un insieme indipendente del grafo complementare, e $I$ è indipendente se e solo se $V - I$ è una copertura dei nodi."
+    },
+    "hamilton-path": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 7
+            },
+            {
+                "traccia": "SP",
+                "n": 4
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "HAMILTON PATH è NP-completo (in NP perché un cammino proposto si verifica in tempo lineare, NP-difficile per riduzione da 3SAT), quindi il suo complemento è coNP-completo."
+    },
+    "tsp-d": {
+        "priorita": "media",
+        "frequenza": 5,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 2
+            },
+            {
+                "traccia": "F08",
+                "n": 7
+            },
+            {
+                "traccia": "F14",
+                "n": 2
+            },
+            {
+                "traccia": "F14",
+                "n": 4
+            },
+            {
+                "traccia": "F14",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "TSP(D) è NP-completo, anche in senso forte: HAMILTON CYCLE vi si riduce con distanza 1 sugli archi, 2 altrove e budget $B = n$."
+    },
+    "3-coloring": {
+        "priorita": "alta",
+        "frequenza": 10,
+        "domande": [
+            {
+                "traccia": "F04",
+                "n": 3
+            },
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F14",
+                "n": 1
+            },
+            {
+                "traccia": "G20v1",
+                "n": 4
+            },
+            {
+                "traccia": "MA23",
+                "n": 2
+            },
+            {
+                "traccia": "MA23",
+                "n": 7
+            },
+            {
+                "traccia": "SE23",
+                "n": 6
+            },
+            {
+                "traccia": "LU24",
+                "n": 2
+            },
+            {
+                "traccia": "ND",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 4
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "3-COLORING è NP-completo (riduzione da 3SAT con un gadget per i valori di verità e un gadget OR), mentre 2-COLORING è in P."
+    },
+    "tripartite-matching": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "TRIPARTITE MATCHING è NP-completo (riduzione da 3SAT, prova omessa nel corso), quindi lo sono anche le sue generalizzazioni come EXACT COVER BY 3-SETS."
+    },
+    "set-problems": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "EXACT COVER BY 3-SETS, SET COVERING e SET PACKING sono NP-completi perché generalizzano TRIPARTITE MATCHING, che è NP-completo."
+    },
+    "integer-programming": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "INTEGER PROGRAMMING è NP-completo (per esempio SET COVERING si scrive come disuguaglianze su variabili 0/1), mentre LINEAR PROGRAMMING è in P."
+    },
+    "knapsack": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "KNAPSACK è NP-completo (riduzione da EXACT COVER BY 3-SETS con numeri in base $n + 1$), ma non in senso forte: la riduzione crea numeri di valore esponenziale."
+    },
+    "knapsack-pseudopoly": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "KNAPSACK si risolve in tempo $O(nW)$, ma è un algoritmo pseudopolinomiale ($W$ è esponenziale nella lunghezza dell'input), quindi non implica $\\mathrm{P} = \\mathrm{NP}$."
+    },
+    "strong-np": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Un problema NP-completo in senso forte non ha algoritmi pseudopolinomiali a meno che $\\mathrm{P} = \\mathrm{NP}$; tutti gli NP-completi visti lo sono, tranne KNAPSACK."
+    },
+    "validity-conp": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F12",
+                "n": 5
+            },
+            {
+                "traccia": "F14",
+                "n": 2
+            },
+            {
+                "traccia": "G20v2",
+                "n": 3
+            },
+            {
+                "traccia": "LU22",
+                "n": 1
+            },
+            {
+                "traccia": "SE23",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "VALIDITY è coNP-completo (se $R$ riduce $\\overline{L}$ a SAT, $R'(x) = \\neg R(x)$ riduce $L$ a VALIDITY), quindi una riduzione da SAT a VALIDITY implicherebbe $\\mathrm{NP} = \\mathrm{coNP}$."
+    },
+    "prop-a": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per la Proposizione A, una riduzione $R$ da $L$ a $L'$ è anche una riduzione dal complemento di $L$ al complemento di $L'$."
+    },
+    "prop-b": {
+        "priorita": "media",
+        "frequenza": 5,
+        "domande": [
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F14",
+                "n": 2
+            },
+            {
+                "traccia": "G20v2",
+                "n": 3
+            },
+            {
+                "traccia": "LU22",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per la Proposizione B il complemento di un problema NP-completo è coNP-completo (per esempio UNSAT e HAMILTON PATH COMPLEMENT)."
+    },
+    "prop-c": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per la Proposizione C, se una classe $\\mathcal{C}$ è chiusa rispetto alle riduzioni lo è anche $\\mathrm{co}\\mathcal{C}$ (per esempio coNP, perché NP lo è)."
+    },
+    "prop-d": {
+        "priorita": "alta",
+        "frequenza": 18,
+        "domande": [
+            {
+                "traccia": "F02",
+                "n": 5
+            },
+            {
+                "traccia": "F03",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 4
+            },
+            {
+                "traccia": "F03",
+                "n": 7
+            },
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F04",
+                "n": 7
+            },
+            {
+                "traccia": "F07",
+                "n": 4
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            },
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F12",
+                "n": 5
+            },
+            {
+                "traccia": "F14",
+                "n": 2
+            },
+            {
+                "traccia": "F14",
+                "n": 7
+            },
+            {
+                "traccia": "G20v1",
+                "n": 4
+            },
+            {
+                "traccia": "G20v3",
+                "n": 1
+            },
+            {
+                "traccia": "MZ22",
+                "n": 1
+            },
+            {
+                "traccia": "LU22",
+                "n": 7
+            },
+            {
+                "traccia": "LU24",
+                "n": 5
+            },
+            {
+                "traccia": "ND",
+                "n": 6
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per la Proposizione D, se un problema NP-completo stesse in coNP (o un coNP-completo in NP), allora $\\mathrm{NP} = \\mathrm{coNP}$."
+    },
+    "p-np-conp": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Se $\\mathrm{P} = \\mathrm{NP}$ allora $\\mathrm{NP} = \\mathrm{coNP}$, perché P è chiusa per complemento: $\\mathrm{NP} = \\mathrm{P} = \\mathrm{coP} = \\mathrm{coNP}$."
+    },
+    "p-in-np-conp": {
+        "priorita": "media",
+        "frequenza": 6,
+        "domande": [
+            {
+                "traccia": "F02",
+                "n": 4
+            },
+            {
+                "traccia": "F03",
+                "n": 4
+            },
+            {
+                "traccia": "F07",
+                "n": 4
+            },
+            {
+                "traccia": "G20v2",
+                "n": 3
+            },
+            {
+                "traccia": "MZ22",
+                "n": 1
+            },
+            {
+                "traccia": "ND",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{P} \\subseteq \\mathrm{NP} \\cap \\mathrm{coNP}$: ogni problema in P sta in NP e, poiché P è chiusa per complemento, anche in coNP."
+    },
+    "exact-tsp-np-hard": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "EXACT TSP è NP-hard: con distanze 1 sugli archi e 2 altrove, $G$ ha un ciclo hamiltoniano se e solo se il giro ottimo costa esattamente $n$."
+    },
+    "sat-unsat-dp": {
+        "priorita": "bassa",
+        "frequenza": 2,
+        "domande": [
+            {
+                "traccia": "F07",
+                "n": 2
+            },
+            {
+                "traccia": "GE23",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "SAT-UNSAT è DP-completo e $\\mathrm{DP} \\subseteq \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} \\cap \\Pi_2^{\\mathrm{P}}$: quindi si riduce a ogni problema $\\Sigma_i^{\\mathrm{P}}$- o $\\Pi_i^{\\mathrm{P}}$-completo con $i \\ge 2$ (per esempio $\\mathrm{QSAT}_3$)."
+    },
+    "altri-dp-completi": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F14",
+                "n": 2
+            },
+            {
+                "traccia": "G20v5",
+                "n": 7
+            },
+            {
+                "traccia": "GE23",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Le versioni esatte e critiche (EXACT TSP, CRITICAL SAT, …) sono DP-complete: intersezione di un problema NP e di uno coNP, e SAT-UNSAT si riduce a esse."
+    },
+    "pl-psat": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per ogni $L$ NP-completo $\\mathrm{P}^L = \\mathrm{P}^{\\mathrm{SAT}} = \\mathrm{P}^{\\mathrm{NP}}$: le domande all'oracolo si traducono con una riduzione polinomiale, quindi conta solo la classe dell'oracolo."
+    },
+    "cd-cocd": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathcal{C}^{\\mathcal{D}} = \\mathcal{C}^{\\mathrm{co}\\mathcal{D}}$ (basta scambiare $q_{\\mathrm{YES}}$ e $q_{\\mathrm{NO}}$): per esempio $\\mathrm{NP}^{\\mathrm{coNP}} = \\mathrm{NP}^{\\mathrm{NP}} = \\Sigma_2^{\\mathrm{P}}$."
+    },
+    "oracoli-inutili": {
+        "priorita": "alta",
+        "frequenza": 10,
+        "domande": [
+            {
+                "traccia": "F07",
+                "n": 2
+            },
+            {
+                "traccia": "G16",
+                "n": 3
+            },
+            {
+                "traccia": "G20v1",
+                "n": 3
+            },
+            {
+                "traccia": "G20v2",
+                "n": 2
+            },
+            {
+                "traccia": "G20v3",
+                "n": 1
+            },
+            {
+                "traccia": "G20v5",
+                "n": 1
+            },
+            {
+                "traccia": "G20v5",
+                "n": 3
+            },
+            {
+                "traccia": "MZ22",
+                "n": 2
+            },
+            {
+                "traccia": "GE23",
+                "n": 7
+            },
+            {
+                "traccia": "MA23",
+                "n": 6
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{P}^{\\mathrm{P}} = \\mathrm{P}$ e $\\mathrm{NP}^{\\mathrm{P}} = \\mathrm{NP}$ (oracolo eseguito in linea); $\\mathrm{DP} \\subseteq \\mathrm{P}^{\\mathrm{NP}} = \\Delta_2^{\\mathrm{P}} \\subseteq \\Sigma_2^{\\mathrm{P}} \\cap \\Pi_2^{\\mathrm{P}}$, perché bastano due domande a un oracolo NP."
+    },
+    "t17-8": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Teorema 17.8, $L \\in \\Sigma_i^{\\mathrm{P}}$ sse $L = \\{x : \\exists y\\ (x, y) \\in R\\}$ con $R$ polinomialmente bilanciata e verificabile in $\\Pi_{i-1}^{\\mathrm{P}}$."
+    },
+    "t17-8-cor1": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Corollario 1 del Teorema 17.8, $L \\in \\Pi_i^{\\mathrm{P}}$ sse $L = \\{x : \\forall y\\ (x, y) \\in R\\}$ con $R$ polinomialmente bilanciata e verificabile in $\\Sigma_{i-1}^{\\mathrm{P}}$."
+    },
+    "t17-8-cor2": {
+        "priorita": "bassa",
+        "frequenza": 1,
+        "domande": [
+            {
+                "traccia": "G20v3",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Corollario 2 del Teorema 17.8, $L \\in \\Sigma_i^{\\mathrm{P}}$ sse $L = \\{x : \\exists y_1\\, \\forall y_2 \\dots Q y_i\\ R(x, y_1, \\dots, y_i)\\}$ con $R$ polinomiale: il livello è il numero di alternanze."
+    },
+    "t17-9": {
+        "priorita": "alta",
+        "frequenza": 23,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 7
+            },
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F04",
+                "n": 7
+            },
+            {
+                "traccia": "F06",
+                "n": 2
+            },
+            {
+                "traccia": "F07",
+                "n": 4
+            },
+            {
+                "traccia": "F07",
+                "n": 7
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            },
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F12",
+                "n": 5
+            },
+            {
+                "traccia": "F13",
+                "n": 1
+            },
+            {
+                "traccia": "L18",
+                "n": 1
+            },
+            {
+                "traccia": "L18",
+                "n": 7
+            },
+            {
+                "traccia": "G20v1",
+                "n": 1
+            },
+            {
+                "traccia": "G20v1",
+                "n": 4
+            },
+            {
+                "traccia": "G20v3",
+                "n": 1
+            },
+            {
+                "traccia": "G20v5",
+                "n": 1
+            },
+            {
+                "traccia": "MZ22",
+                "n": 2
+            },
+            {
+                "traccia": "LU22",
+                "n": 7
+            },
+            {
+                "traccia": "FE23",
+                "n": 7
+            },
+            {
+                "traccia": "MA23",
+                "n": 2
+            },
+            {
+                "traccia": "E26",
+                "n": 5
+            },
+            {
+                "traccia": "ND",
+                "n": 6
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Teorema 17.9, se $\\Sigma_i^{\\mathrm{P}} = \\Pi_i^{\\mathrm{P}}$ allora PH collassa al livello $i$: per esempio una riduzione da $\\mathrm{QSAT}_i$ al suo complemento esiste solo se PH collassa al livello $i$."
+    },
+    "cor-collasso-primo": {
+        "priorita": "alta",
+        "frequenza": 10,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 7
+            },
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F04",
+                "n": 7
+            },
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F12",
+                "n": 5
+            },
+            {
+                "traccia": "F14",
+                "n": 2
+            },
+            {
+                "traccia": "G20v1",
+                "n": 4
+            },
+            {
+                "traccia": "LU22",
+                "n": 7
+            },
+            {
+                "traccia": "ND",
+                "n": 6
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Se $\\mathrm{NP} = \\mathrm{coNP}$ (in particolare se $\\mathrm{P} = \\mathrm{NP}$) allora, per il Teorema 17.9 con $i = 1$, PH collassa al primo livello: $\\mathrm{PH} = \\mathrm{NP}$."
+    },
+    "circ": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 5
+            },
+            {
+                "traccia": "G20v3",
+                "n": 1
+            },
+            {
+                "traccia": "G20v4",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "CIRC SAT è $\\Sigma_2^{\\mathrm{P}}$-completo ($\\exists$ un modello, $\\forall$ modello più normale): CLIQUE vi si riduce perché $\\mathrm{NP} \\subseteq \\Sigma_2^{\\mathrm{P}}$; il contrario farebbe collassare PH al primo livello."
+    },
+    "t17-10": {
+        "priorita": "alta",
+        "frequenza": 30,
+        "domande": [
+            {
+                "traccia": "F02",
+                "n": 7
+            },
+            {
+                "traccia": "F03",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 5
+            },
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F05",
+                "n": 6
+            },
+            {
+                "traccia": "F06",
+                "n": 2
+            },
+            {
+                "traccia": "F07",
+                "n": 2
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            },
+            {
+                "traccia": "F08",
+                "n": 5
+            },
+            {
+                "traccia": "G16",
+                "n": 4
+            },
+            {
+                "traccia": "G16",
+                "n": 6
+            },
+            {
+                "traccia": "F12",
+                "n": 2
+            },
+            {
+                "traccia": "F12",
+                "n": 5
+            },
+            {
+                "traccia": "F13",
+                "n": 1
+            },
+            {
+                "traccia": "F13",
+                "n": 3
+            },
+            {
+                "traccia": "F14",
+                "n": 6
+            },
+            {
+                "traccia": "L18",
+                "n": 5
+            },
+            {
+                "traccia": "G20v1",
+                "n": 1
+            },
+            {
+                "traccia": "G20v2",
+                "n": 7
+            },
+            {
+                "traccia": "G20v4",
+                "n": 1
+            },
+            {
+                "traccia": "G20v5",
+                "n": 2
+            },
+            {
+                "traccia": "LU22",
+                "n": 1
+            },
+            {
+                "traccia": "GE23",
+                "n": 1
+            },
+            {
+                "traccia": "GE23",
+                "n": 5
+            },
+            {
+                "traccia": "FE23",
+                "n": 3
+            },
+            {
+                "traccia": "FE23",
+                "n": 7
+            },
+            {
+                "traccia": "SE23",
+                "n": 1
+            },
+            {
+                "traccia": "SE23",
+                "n": 6
+            },
+            {
+                "traccia": "E26",
+                "n": 5
+            },
+            {
+                "traccia": "ND",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Teorema 17.10 $\\mathrm{QSAT}_i$ è $\\Sigma_i^{\\mathrm{P}}$-completo e il complemento $\\Pi_i^{\\mathrm{P}}$-completo: $\\mathrm{QSAT}_2$ si riduce a $\\mathrm{QSAT}_4$ ($\\Sigma_2^{\\mathrm{P}} \\subseteq \\Sigma_4^{\\mathrm{P}}$); il contrario solo se PH collassa al 2° livello."
+    },
+    "strategic-companies": {
+        "priorita": "bassa",
+        "frequenza": 1,
+        "domande": [
+            {
+                "traccia": "G20v5",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "STRATEGIC COMPANIES è $\\Sigma_2^{\\mathrm{P}}$-completo e il complemento $\\Pi_2^{\\mathrm{P}}$-completo: CLIQUE si riduce al complemento perché $\\Sigma_1^{\\mathrm{P}} \\subseteq \\Pi_2^{\\mathrm{P}}$; il contrario farebbe collassare PH al primo livello."
+    },
+    "t17-11": {
+        "priorita": "media",
+        "frequenza": 4,
+        "domande": [
+            {
+                "traccia": "F02",
+                "n": 7
+            },
+            {
+                "traccia": "G16",
+                "n": 1
+            },
+            {
+                "traccia": "MA23",
+                "n": 2
+            },
+            {
+                "traccia": "ND",
+                "n": 6
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Teorema 17.11 un problema PH-completo farebbe collassare PH a un livello finito: quindi un problema completo per PH (o per PSPACE in PH) esiste solo se PH collassa."
+    },
+    "ph-pspace": {
+        "priorita": "alta",
+        "frequenza": 18,
+        "domande": [
+            {
+                "traccia": "F04",
+                "n": 6
+            },
+            {
+                "traccia": "F05",
+                "n": 1
+            },
+            {
+                "traccia": "F06",
+                "n": 1
+            },
+            {
+                "traccia": "F07",
+                "n": 1
+            },
+            {
+                "traccia": "F08",
+                "n": 4
+            },
+            {
+                "traccia": "F14",
+                "n": 3
+            },
+            {
+                "traccia": "G17",
+                "n": 5
+            },
+            {
+                "traccia": "L18",
+                "n": 1
+            },
+            {
+                "traccia": "G20v2",
+                "n": 2
+            },
+            {
+                "traccia": "G20v4",
+                "n": 2
+            },
+            {
+                "traccia": "G20v5",
+                "n": 1
+            },
+            {
+                "traccia": "MZ22",
+                "n": 2
+            },
+            {
+                "traccia": "LU22",
+                "n": 5
+            },
+            {
+                "traccia": "FE23",
+                "n": 3
+            },
+            {
+                "traccia": "MA23",
+                "n": 6
+            },
+            {
+                "traccia": "SE23",
+                "n": 4
+            },
+            {
+                "traccia": "E26",
+                "n": 4
+            },
+            {
+                "traccia": "E26",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{PH} \\subseteq \\mathrm{PSPACE}$ (Proposizione 17.1): quindi ogni problema di PH, per esempio $\\mathrm{QSAT}_3$, si riduce a QSAT, che è PSPACE-completo."
+    },
+    "cor-ph-pspace": {
+        "priorita": "media",
+        "frequenza": 4,
+        "domande": [
+            {
+                "traccia": "F04",
+                "n": 1
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            },
+            {
+                "traccia": "L18",
+                "n": 1
+            },
+            {
+                "traccia": "G20v4",
+                "n": 4
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Se $\\mathrm{PH} = \\mathrm{PSPACE}$, QSAT sarebbe PH-completo e PH collasserebbe (Teorema 17.11): quindi QSAT si riduce a $\\mathrm{QSAT}_3$ solo se PH collassa al 3° livello."
+    },
+    "qsat-pspace": {
+        "priorita": "alta",
+        "frequenza": 8,
+        "domande": [
+            {
+                "traccia": "F05",
+                "n": 7
+            },
+            {
+                "traccia": "F07",
+                "n": 7
+            },
+            {
+                "traccia": "G16",
+                "n": 6
+            },
+            {
+                "traccia": "F13",
+                "n": 6
+            },
+            {
+                "traccia": "L18",
+                "n": 1
+            },
+            {
+                "traccia": "L18",
+                "n": 4
+            },
+            {
+                "traccia": "FE23",
+                "n": 3
+            },
+            {
+                "traccia": "SE23",
+                "n": 3
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "QSAT è PSPACE-completo: $\\mathrm{QSAT}_3$ si riduce a QSAT perché $\\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{PSPACE}$, mentre il contrario implicherebbe $\\mathrm{PSPACE} = \\Sigma_3^{\\mathrm{P}}$ e il collasso di PH."
+    },
+    "co-hamilton-pi2": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Il complemento di HAMILTON PATH è coNP-completo, non $\\Pi_2^{\\mathrm{P}}$-completo (lo sarebbe solo se $\\mathrm{NP} = \\mathrm{coNP}$): QSAT vi si riduce solo se $\\mathrm{PSPACE} = \\mathrm{coNP}$ e PH collassa al primo livello."
+    },
+    "db-queries": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "Per le query in algebra relazionale combined ed expression complexity sono PSPACE-complete e la data complexity è in $\\mathrm{L}$; per le query congiuntive NP-complete e $\\mathrm{AC}^0$."
+    },
+    "geography": {
+        "priorita": "media",
+        "frequenza": 5,
+        "domande": [
+            {
+                "traccia": "F05",
+                "n": 5
+            },
+            {
+                "traccia": "MZ22",
+                "n": 2
+            },
+            {
+                "traccia": "GE23",
+                "n": 3
+            },
+            {
+                "traccia": "MA23",
+                "n": 3
+            },
+            {
+                "traccia": "LU24",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "SÌ: GEOGRAPHY è PSPACE-completo (Teorema 19.3), quindi si riduce a QSAT; un $k$ fisso di alternanze per tutte le istanze esisterebbe solo se PH e PSPACE collassassero a $\\Sigma_k^{\\mathrm{P}}$."
+    },
+    "go": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "GO generalizzato ($n \\times n$) è PSPACE-completo (Teorema 19.4): dire se il nero ha una strategia vincente equivale a valutare una QBF, quindi è in P solo se $\\mathrm{P} = \\mathrm{PSPACE}$."
+    },
+    "fsat-fnp": {
+        "priorita": "bassa",
+        "frequenza": 2,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 6
+            },
+            {
+                "traccia": "F13",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "FSAT è FNP-completo (ogni problema di FNP si riduce a FSAT con la costruzione di Cook-Levin), quindi $\\mathrm{FSAT} \\in \\mathrm{FP}$ se e solo se $\\mathrm{FP} = \\mathrm{FNP}$."
+    },
+    "fsat-sat": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per la Proposizione su FSAT e SAT, FSAT si risolve in tempo polinomiale sse $\\mathrm{SAT} \\in \\mathrm{P}$: con un decisore per SAT si fissano le variabili una alla volta."
+    },
+    "fp-fnp": {
+        "priorita": "media",
+        "frequenza": 4,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 6
+            },
+            {
+                "traccia": "MZ22",
+                "n": 5
+            },
+            {
+                "traccia": "E26",
+                "n": 3
+            },
+            {
+                "traccia": "E26",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{FP} = \\mathrm{FNP}$ sse $\\mathrm{P} = \\mathrm{NP}$ (FSAT è FNP-completo e polinomiale sse $\\mathrm{SAT} \\in \\mathrm{P}$), quindi \"solo se $\\mathrm{FP} = \\mathrm{FNP}$\" equivale a \"solo se $\\mathrm{P} = \\mathrm{NP}$\"."
+    },
+    "t20-1": {
+        "priorita": "media",
+        "frequenza": 5,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 5
+            },
+            {
+                "traccia": "F03",
+                "n": 7
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            },
+            {
+                "traccia": "G20v4",
+                "n": 4
+            },
+            {
+                "traccia": "E26",
+                "n": 5
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Per il Teorema 20.1 (padding) $\\mathrm{P} = \\mathrm{NP} \\Rightarrow \\mathrm{EXP} = \\mathrm{NEXP}$; quindi, per contronominale, se $\\mathrm{EXP} \\neq \\mathrm{NEXP}$ allora $\\mathrm{P} \\neq \\mathrm{NP}$."
+    },
+    "nexp-completi": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 5
+            },
+            {
+                "traccia": "F08",
+                "n": 3
+            },
+            {
+                "traccia": "G20v3",
+                "n": 3
+            },
+            {
+                "traccia": "G20v4",
+                "n": 4
+            },
+            {
+                "traccia": "GE23",
+                "n": 3
+            },
+            {
+                "traccia": "FE23",
+                "n": 1
+            },
+            {
+                "traccia": "E26",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "SÌ/NO: SUCCINCT CIRCUIT SAT e SCHÖNFINKEL-BERNAYS SAT sono NEXP-completi; non si riducono a un problema in P perché $\\mathrm{P} \\subsetneq \\mathrm{EXP} \\subseteq \\mathrm{NEXP}$ (gerarchia di tempo)."
+    },
+    "fo-indecidibile": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F06",
+                "n": 6
+            },
+            {
+                "traccia": "G20v4",
+                "n": 6
+            },
+            {
+                "traccia": "SE23",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "La validità del primo ordine sta in RE ma non in $\\mathrm{R}$, la soddisfacibilità in coRE ma non in $\\mathrm{R}$: sono indecidibili, quindi sopra ogni classe di complessità del corso."
+    },
+    "2sat-p-completo": {
+        "priorita": "fuori",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Di 2-SAT si sa solo che è in P (anzi NL-completo); essere P-completo equivarrebbe a $\\mathrm{P} = \\mathrm{NL}$, questione aperta, quindi la riduzione da un problema di P non è garantita."
+    },
+    "riepilogo-p": {
+        "priorita": "alta",
+        "frequenza": 8,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 2
+            },
+            {
+                "traccia": "F02",
+                "n": 1
+            },
+            {
+                "traccia": "F03",
+                "n": 2
+            },
+            {
+                "traccia": "G16",
+                "n": 1
+            },
+            {
+                "traccia": "MZ22",
+                "n": 7
+            },
+            {
+                "traccia": "GE23",
+                "n": 4
+            },
+            {
+                "traccia": "E26",
+                "n": 5
+            },
+            {
+                "traccia": "E26",
+                "n": 7
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "$\\mathrm{PRIMES} \\in \\mathrm{P}$ e $\\mathrm{MAX\\ FLOW} \\in \\mathrm{P}$ (è P-completo); 3-COLORING è NP-completo, quindi da MAX FLOW a 3-COLORING la riduzione esiste, al contrario solo se $\\mathrm{P} = \\mathrm{NP}$."
+    },
+    "np-pp": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F05",
+                "n": 2
+            },
+            {
+                "traccia": "G20v2",
+                "n": 4
+            },
+            {
+                "traccia": "FE23",
+                "n": 2
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{NP} \\subseteq \\mathrm{PP}$ (Teorema 11.3): aggiungendo metà run che accettano sempre, un solo run accettante basta per la maggioranza; il contrario si pensa che non valga."
+    },
+    "pp-pspace": {
+        "priorita": "media",
+        "frequenza": 7,
+        "domande": [
+            {
+                "traccia": "F05",
+                "n": 5
+            },
+            {
+                "traccia": "F12",
+                "n": 3
+            },
+            {
+                "traccia": "F12",
+                "n": 7
+            },
+            {
+                "traccia": "G17",
+                "n": 5
+            },
+            {
+                "traccia": "G20v3",
+                "n": 6
+            },
+            {
+                "traccia": "GE23",
+                "n": 2
+            },
+            {
+                "traccia": "LU24",
+                "n": 1
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{PP} \\subseteq \\mathrm{PSPACE}$: una MdT deterministica prova tutti i run uno alla volta riusando lo spazio e conta i \"yes\" con contatori binari di $n^c$ cifre."
+    },
+    "bpp-inclusioni": {
+        "priorita": "bassa",
+        "frequenza": 3,
+        "domande": [
+            {
+                "traccia": "F12",
+                "n": 4
+            },
+            {
+                "traccia": "F12",
+                "n": 7
+            },
+            {
+                "traccia": "LU22",
+                "n": 6
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{P} \\subseteq \\mathrm{BPP} \\subseteq \\mathrm{PP}$: un run deterministico è il 100% delle risposte, e la maggioranza qualificata ($3/4$) di BPP è in particolare una maggioranza semplice."
+    },
+    "bpp-errore": {
+        "priorita": "media",
+        "frequenza": 6,
+        "domande": [
+            {
+                "traccia": "F07",
+                "n": 3
+            },
+            {
+                "traccia": "F08",
+                "n": 6
+            },
+            {
+                "traccia": "F14",
+                "n": 5
+            },
+            {
+                "traccia": "G20v5",
+                "n": 6
+            },
+            {
+                "traccia": "MA23",
+                "n": 7
+            },
+            {
+                "traccia": "SP",
+                "n": 1
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "In BPP $2k + 1$ ripetizioni con voto di maggioranza portano l'errore sotto $\\varepsilon$, con $k = \\lceil -8 \\ln \\varepsilon \\rceil$ costante; in PP il vantaggio può essere esponenzialmente piccolo e le ripetizioni esponenziali."
+    },
+    "bqp": {
+        "priorita": "alta",
+        "frequenza": 8,
+        "domande": [
+            {
+                "traccia": "F01",
+                "n": 5
+            },
+            {
+                "traccia": "F12",
+                "n": 3
+            },
+            {
+                "traccia": "G20v3",
+                "n": 6
+            },
+            {
+                "traccia": "LU22",
+                "n": 6
+            },
+            {
+                "traccia": "GE23",
+                "n": 2
+            },
+            {
+                "traccia": "SE23",
+                "n": 4
+            },
+            {
+                "traccia": "ND",
+                "n": 2
+            },
+            {
+                "traccia": "SP",
+                "n": 4
+            }
+        ],
+        "tipo_dimostrazione": "schema",
+        "frase_esame": "$\\mathrm{BPP} \\subseteq \\mathrm{BQP} \\subseteq \\mathrm{PP} \\subseteq \\mathrm{PSPACE}$: un algoritmo quantistico si simula in spazio polinomiale, quindi i problemi PSPACE-completi stanno in BQP solo se $\\mathrm{PSPACE} = \\mathrm{BQP}$."
+    },
+    "grover-np": {
+        "priorita": "media",
+        "frequenza": 4,
+        "domande": [
+            {
+                "traccia": "F03",
+                "n": 6
+            },
+            {
+                "traccia": "G20v2",
+                "n": 6
+            },
+            {
+                "traccia": "G20v3",
+                "n": 5
+            },
+            {
+                "traccia": "SP",
+                "n": 4
+            }
+        ],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "Con Grover ogni problema in NP si risolve quantisticamente con errore limitato in tempo $O(c^{n^k/2})$: accelerazione solo quadratica, il tempo resta esponenziale."
+    },
+    "bqp-2exp": {
+        "priorita": "orale",
+        "frequenza": 0,
+        "domande": [],
+        "tipo_dimostrazione": "completa",
+        "frase_esame": "$\\mathrm{BQP} \\subseteq \\mathrm{PSPACE} \\subseteq \\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$, quindi $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$: un problema 2-EXP-completo (per esempio il ragionamento su ontologie OWL2) non si risolve in tempo polinomiale nemmeno con un calcolatore quantistico."
+    }
 }

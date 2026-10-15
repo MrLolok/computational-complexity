@@ -2,76 +2,114 @@
 
 /* Palette e caratteri condivisi con tutte le sezioni. */
 @theme inline {
-  --font-head: var(--font-cereal), system-ui, -apple-system, sans-serif;
-  --font-body: var(--font-cereal), system-ui, -apple-system, sans-serif;
-  --font-ui: var(--font-cereal), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-cereal), system-ui, -apple-system, sans-serif;
+    --font-head: var(--font-cereal), system-ui, -apple-system, sans-serif;
+    --font-body: var(--font-cereal), system-ui, -apple-system, sans-serif;
+    --font-ui: var(--font-cereal), system-ui, -apple-system, sans-serif;
+    --font-mono: var(--font-cereal), system-ui, -apple-system, sans-serif;
 }
 
 /* static: emette sempre tutte le variabili, anche i colori delle classi usati solo tramite var(--color-c-<ID>) */
 @theme static {
-  --color-shadow-grey: #212529;
-  --color-ghost-white: #fafaff;
-  --color-periwinkle: #e4d9ff;
-  --color-twilight-indigo: #273469;
-  --color-space-indigo: #1e2749;
+    --color-shadow-grey: #212529;
+    --color-ghost-white: #fafaff;
+    --color-periwinkle: #e4d9ff;
+    --color-twilight-indigo: #273469;
+    --color-space-indigo: #1e2749;
 
-  --color-bg: var(--color-shadow-grey);
-  --color-surface: #292d36;
-  --color-sunk: #323641;
-  --color-ink: #fafaff;
-  --color-muted: #b8bac6;
-  --color-line: #424652;
-  --color-line-strong: #5e6272;
-  --color-accent: #e4d9ff;
-  --color-accent-soft: #4a4868;
-  --color-accent-ink: #212529;
-  --color-proved: #f0a3b0;
-  --color-proved-soft: #4f3a42;
-  --color-open: #efc678;
-  --color-open-soft: #4c4436;
-  --color-ok: #8fd6b3;
-  --color-ok-soft: #2f4a44;
-  --color-band-a: #353945;
-  --color-band-b: #383c48;
+    --color-bg: var(--color-shadow-grey);
+    --color-surface: #292d36;
+    --color-sunk: #323641;
+    --color-ink: #fafaff;
+    --color-muted: #b8bac6;
+    --color-line: #424652;
+    --color-line-strong: #5e6272;
+    --color-accent: #e4d9ff;
+    --color-accent-soft: #4a4868;
+    --color-accent-ink: #212529;
+    --color-proved: #f0a3b0;
+    --color-proved-soft: #4f3a42;
+    --color-open: #efc678;
+    --color-open-soft: #4c4436;
+    --color-ok: #8fd6b3;
+    --color-ok-soft: #2f4a44;
+    --color-band-a: #353945;
+    --color-band-b: #383c48;
 
-  --color-c-L: #7cc4cf;
-  --color-c-NL: #83cdb5;
-  --color-c-P: #9fcf8a;
-  --color-c-NPcapcoNP: #9fbadb;
-  --color-c-NP: #9fb1f0;
-  --color-c-coNP: #ee9fb0;
-  --color-c-DP: #c2abf2;
-  --color-c-DELTA2: #b2b5ea;
-  --color-c-SIGMA2: #a3b6f2;
-  --color-c-PI2: #eeaab9;
-  --color-c-SIGMAi: #aab7e8;
-  --color-c-PIi: #dfb0bb;
-  --color-c-PH: #b9bdd6;
-  --color-c-PSPACE: #e2c27f;
-  --color-c-EXP: #dba6d0;
-  --color-c-NEXP: #f0a0c0;
-  --color-c-R: #c2c4ce;
-  --color-c-RE: #d4b89a;
-  --color-c-coRE: #93c0d6;
+    --color-c-L: #7cc4cf;
+    --color-c-NL: #83cdb5;
+    --color-c-P: #9fcf8a;
+    --color-c-NPcapcoNP: #9fbadb;
+    --color-c-NP: #9fb1f0;
+    --color-c-coNP: #ee9fb0;
+    --color-c-DP: #c2abf2;
+    --color-c-DELTA2: #b2b5ea;
+    --color-c-SIGMA2: #a3b6f2;
+    --color-c-PI2: #eeaab9;
+    --color-c-SIGMAi: #aab7e8;
+    --color-c-PIi: #dfb0bb;
+    --color-c-PH: #b9bdd6;
+    --color-c-PSPACE: #e2c27f;
+    --color-c-EXP: #dba6d0;
+    --color-c-NEXP: #f0a0c0;
+    --color-c-R: #c2c4ce;
+    --color-c-RE: #d4b89a;
+    --color-c-coRE: #93c0d6;
 }
 
 /* Colori letti dinamicamente dalla mappa: dichiarati direttamente per evitarne la rimozione dal CSS generato. */
 :root {
-  --color-c-BPP: #8fd0c4;
-  --color-c-PP: #e8b48e;
-  --color-c-BQP: #c7a8f4;
-  --color-c-EXP2: #f2a593;
+    --color-c-BPP: #8fd0c4;
+    --color-c-PP: #e8b48e;
+    --color-c-BQP: #c7a8f4;
+    --color-c-EXP2: #f2a593;
 }
 
-code, pre { font-family: inherit; }
-details { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 5rem); }
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
-::selection { background: var(--color-accent); color: var(--color-bg); }
-.skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; transform: translateY(-180%); background: var(--color-accent); color: var(--color-bg); padding: 10px 16px; border-radius: 8px; }
-.skip-link:focus { transform: translateY(0); }
-[data-term] { text-decoration: underline dotted var(--color-muted); text-underline-offset: 4px; cursor: help; }
-.study-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23e4d9ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-position: right 12px center; background-repeat: no-repeat; }
+code,
+pre {
+    font-family: inherit;
+}
+details {
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 5rem);
+}
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+.skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 100;
+    transform: translateY(-180%);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+.skip-link:focus {
+    transform: translateY(0);
+}
+[data-term] {
+    text-decoration: underline dotted var(--color-muted);
+    text-underline-offset: 4px;
+    cursor: help;
+}
+.study-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23e4d9ff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+}
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
 }

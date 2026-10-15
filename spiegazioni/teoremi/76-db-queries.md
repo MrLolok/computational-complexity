@@ -20,11 +20,11 @@ Una query booleana risponde sì o no su un database. L'input può contenere la q
 - expression complexity, se il database è fisso e varia la query;
 - data complexity, se la query è fissa e varia il database.
 
-| | algebra relazionale | query congiuntive |
-|---|---|---|
-| combined | PSPACE-completa | NP-completa |
-| expression | PSPACE-completa | NP-completa |
-| data | L-completa | $\mathrm{AC}^0$-completa |
+|            | algebra relazionale | query congiuntive        |
+| ---------- | ------------------- | ------------------------ |
+| combined   | PSPACE-completa     | NP-completa              |
+| expression | PSPACE-completa     | NP-completa              |
+| data       | L-completa          | $\mathrm{AC}^0$-completa |
 
 $\mathrm{AC}^0$ è la classe dei problemi risolti da circuiti di profondità costante e dimensione polinomiale, con porte "e" e "oppure" che accettano un numero qualsiasi di ingressi e porte di negazione; sta dentro L.
 

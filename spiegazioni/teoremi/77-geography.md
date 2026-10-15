@@ -56,20 +56,20 @@ Il grafo ha dimensione lineare in $\varphi$ e si costruisce in spazio logaritmic
 
 $\varphi = \exists x_1\, \forall x_2\, \exists x_3\, (x_1 \lor x_2) \land (\neg x_2 \lor x_3)$ è vera: il primo prende $x_1$ vera e poi $x_3$ vera. In questa partita il secondo prova $x_2$ vera:
 
-| Mossa | Chi | Nodo | Significato |
-|---|---|---|---|
-| 1 | primo | $V_1$ | $x_1$ vera |
-| 2 | secondo | $B_1$ | |
-| 3 | primo | $T_2$ | |
-| 4 | secondo | $V_2$ | $x_2$ vera |
-| 5 | primo | $B_2$ | |
-| 6 | secondo | $T_3$ | |
-| 7 | primo | $V_3$ | $x_3$ vera |
-| 8 | secondo | $B_3$ | |
-| 9 | primo | $R$ | |
-| 10 | secondo | $C_2$ | "$\neg x_2 \lor x_3$ è falsa" |
-| 11 | primo | letterale $x_3$ | "$x_3$ è vero" |
-| 12 | secondo | nessuna | l'unico arco porta a $V_3$, già usato: perde |
+| Mossa | Chi     | Nodo            | Significato                                  |
+| ----- | ------- | --------------- | -------------------------------------------- |
+| 1     | primo   | $V_1$           | $x_1$ vera                                   |
+| 2     | secondo | $B_1$           |                                              |
+| 3     | primo   | $T_2$           |                                              |
+| 4     | secondo | $V_2$           | $x_2$ vera                                   |
+| 5     | primo   | $B_2$           |                                              |
+| 6     | secondo | $T_3$           |                                              |
+| 7     | primo   | $V_3$           | $x_3$ vera                                   |
+| 8     | secondo | $B_3$           |                                              |
+| 9     | primo   | $R$             |                                              |
+| 10    | secondo | $C_2$           | "$\neg x_2 \lor x_3$ è falsa"                |
+| 11    | primo   | letterale $x_3$ | "$x_3$ è vero"                               |
+| 12    | secondo | nessuna         | l'unico arco porta a $V_3$, già usato: perde |
 
 Se alla mossa 10 il secondo avesse scelto $C_1$, il primo avrebbe risposto con il letterale $x_1$, che porta a $V_1$, già usato. Se invece alla mossa 1 il primo avesse scelto $F_1$, il secondo avrebbe preso $F_2$ e poi $C_1$: entrambi i letterali di $C_1$ sono falsi, e qualunque scelga il primo, il secondo entra nel lato libero del rombo e lascia il primo senza mosse.
 

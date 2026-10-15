@@ -32,13 +32,13 @@ Le variabili descrivono le caselle:
 - $Q^i_t$: al tempo $t$ lo stato è $q_i$;
 - $S_{s,t}$: al tempo $t$ la testina è sulla cella $s$.
 
-| gruppo | che cosa impone | una clausola del gruppo |
-|---|---|---|
-| esattamente uno | in ogni riga una sola posizione della testina, uno stato, un simbolo per cella | $(S_{1,t} \lor \dots \lor S_{T,t})$ e $(\neg S_{s,t} \lor \neg S_{s',t})$ |
-| riga iniziale | la riga 1 è la configurazione iniziale su $x$ | $Q^1_1$, $S_{1,1}$, $P^{i_1}_{1,1}$ |
-| celle lontane | una cella senza testina non cambia | $(S_{s,t} \lor \neg P^i_{s,t} \lor P^i_{s,t+1})$ |
-| mosse lecite | ogni riga segue dalla precedente con una mossa di $\Delta$ | $(\neg Q^i_t \lor \neg S_{s,t} \lor \neg P^j_{s,t} \lor \neg Q^k_{t+1} \lor \neg P^m_{s,t+1} \lor \neg S_{s-1,t+1})$ |
-| accettazione | lo stato finale è yes | $Q^{\text{yes}}_T$ |
+| gruppo          | che cosa impone                                                                | una clausola del gruppo                                                                                              |
+| --------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| esattamente uno | in ogni riga una sola posizione della testina, uno stato, un simbolo per cella | $(S_{1,t} \lor \dots \lor S_{T,t})$ e $(\neg S_{s,t} \lor \neg S_{s',t})$                                            |
+| riga iniziale   | la riga 1 è la configurazione iniziale su $x$                                  | $Q^1_1$, $S_{1,1}$, $P^{i_1}_{1,1}$                                                                                  |
+| celle lontane   | una cella senza testina non cambia                                             | $(S_{s,t} \lor \neg P^i_{s,t} \lor P^i_{s,t+1})$                                                                     |
+| mosse lecite    | ogni riga segue dalla precedente con una mossa di $\Delta$                     | $(\neg Q^i_t \lor \neg S_{s,t} \lor \neg P^j_{s,t} \lor \neg Q^k_{t+1} \lor \neg P^m_{s,t+1} \lor \neg S_{s-1,t+1})$ |
+| accettazione    | lo stato finale è yes                                                          | $Q^{\text{yes}}_T$                                                                                                   |
 
 La clausola delle celle lontane è l'implicazione $(\neg S_{s,t} \land P^i_{s,t}) \Rightarrow P^i_{s,t+1}$ scritta come nella seconda domanda di controllo.
 

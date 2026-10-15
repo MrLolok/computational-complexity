@@ -32,10 +32,10 @@ Conta il tempo di $D_f$. Se $|M| = n$, l'input $M;M$ è lungo $2n+1$, e $M_H$ im
 
 Si esegue $D_f$ sulla propria descrizione, lunga $n$. Siccome $D_f$ si ferma sempre, risponde "yes" oppure "no":
 
-| se $D_f(D_f)$ è | allora $M_H(D_f;D_f)$ è | cioè | quindi |
-|---|---|---|---|
-| yes | no | $D_f$ non accetta $D_f$ entro $f(n)$ passi | $D_f$ si ferma entro $f(n)$ passi, dunque rifiuta: $D_f(D_f) = $ no |
-| no | yes | $D_f$ accetta $D_f$ entro $f(n)$ passi | $D_f(D_f) = $ yes |
+| se $D_f(D_f)$ è | allora $M_H(D_f;D_f)$ è | cioè                                       | quindi                                                              |
+| --------------- | ----------------------- | ------------------------------------------ | ------------------------------------------------------------------- |
+| yes             | no                      | $D_f$ non accetta $D_f$ entro $f(n)$ passi | $D_f$ si ferma entro $f(n)$ passi, dunque rifiuta: $D_f(D_f) = $ no |
+| no              | yes                     | $D_f$ accetta $D_f$ entro $f(n)$ passi     | $D_f(D_f) = $ yes                                                   |
 
 Uno dei due casi deve valere, e tutti e due si contraddicono. Quindi $M_H$ non esiste, e $H_f \notin \mathrm{TIME}(f(\lfloor n/2 \rfloor))$.
 

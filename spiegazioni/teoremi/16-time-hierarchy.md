@@ -38,10 +38,10 @@ Anche $g$ è propria (si calcola $2n+1$ e poi si usa $M_f$) e $g(n) \ge 2n+1 \ge
 Resta da vedere che $\mathrm{TIME}(f(n))$ sta dentro $\mathrm{TIME}(g(\lfloor n/2 \rfloor))$, cioè che $g(\lfloor n/2 \rfloor) = f(2\lfloor n/2 \rfloor + 1) \ge f(n)$. Siccome $f$ non decresce, basta che $2\lfloor n/2 \rfloor + 1 \ge n$:
 
 | $n$ | $\lfloor n/2 \rfloor$ | $2\lfloor n/2 \rfloor + 1$ |
-|---|---|---|
-| 6 | 3 | 7 |
-| 7 | 3 | 7 |
-| 8 | 4 | 9 |
+| --- | --------------------- | -------------------------- |
+| 6   | 3                     | 7                          |
+| 7   | 3                     | 7                          |
+| 8   | 4                     | 9                          |
 
 Con $n$ pari si ottiene $n+1$, con $n$ dispari esattamente $n$, quindi sempre almeno $n$.
 

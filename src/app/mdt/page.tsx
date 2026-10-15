@@ -44,7 +44,7 @@ const STEPS: GuidedStep[] = [
         body: (
             <Markdown>
                 {
-                    'Lo stato **q** ricorda una sola cosa: «devo ancora sommare il riporto». Se legge 1, scrive 0 e continua a sinistra. Se legge 0, scrive 1: il riporto è risolto e la macchina termina in $h$.'
+                    "Lo stato **q** ricorda una sola cosa: «devo ancora sommare il riporto». Se legge 1, scrive 0 e continua a sinistra. Se legge 0, scrive 1: il riporto è risolto e la macchina termina in $h$."
                 }
             </Markdown>
         ),
@@ -101,8 +101,8 @@ export default function Page() {
                 <p className={ui.eyebrow}>Domanda 8 delle tracce</p>
                 <h1 className={ui.h1}>Impara a programmare una macchina di Turing</h1>
                 <p className={ui.lede}>
-                    Parti dall&apos;idea, scegli gli stati e scrivi le transizioni. Segui l&apos;esempio guidato,
-                    poi prova la tua macchina nel simulatore o esplora le soluzioni delle tracce.
+                    Parti dall&apos;idea, scegli gli stati e scrivi le transizioni. Segui l&apos;esempio guidato, poi
+                    prova la tua macchina nel simulatore o esplora le soluzioni delle tracce.
                 </p>
                 <nav aria-label="In questa pagina" className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
                     {[
@@ -131,8 +131,8 @@ export default function Page() {
             <section id="esempio" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
                 <h2 className={ui.h2}>Esempio guidato: l&apos;incremento di 1</h2>
                 <p className={ui.hint}>
-                    Costruisci la tabella in quattro passi. Le righe aggiunte a ogni passo sono evidenziate;
-                    alla fine puoi eseguire la macchina.
+                    Costruisci la tabella in quattro passi. Le righe aggiunte a ogni passo sono evidenziate; alla fine
+                    puoi eseguire la macchina.
                 </p>
                 <GuidedExample steps={STEPS} samples={["11", "1011", "0"]} inputHint="un numero binario" />
             </section>
@@ -145,8 +145,8 @@ export default function Page() {
             <section id="laboratorio" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
                 <h2 className={ui.h2}>Prova tu</h2>
                 <p className={ui.hint}>
-                    Scegli un esercizio e completa le transizioni. Usa «Verifica i casi di prova» per confrontare
-                    i risultati con quelli attesi. Il programma si salva automaticamente in questo browser.
+                    Scegli un esercizio e completa le transizioni. Usa «Verifica i casi di prova» per confrontare i
+                    risultati con quelli attesi. Il programma si salva automaticamente in questo browser.
                 </p>
                 <PracticeLab draftKey="laboratorio" />
             </section>

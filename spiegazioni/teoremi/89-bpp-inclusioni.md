@@ -17,10 +17,10 @@ Se non ricordavi le soglie, la tabella qui sotto le mette in fila.
 In entrambe le inclusioni la macchina resta la stessa, e si controlla solo che soddisfi la definizione della classe più grande.
 
 | classe | frazione di run "yes" se $x \in L$ | frazione di run "yes" se $x \notin L$ |
-|---|---|---|
-| P | 1 | 0 |
-| BPP | almeno $3/4$ | al più $1/4$ |
-| PP | più di $1/2$ | al più $1/2$ |
+| ------ | ---------------------------------- | ------------------------------------- |
+| P      | 1                                  | 0                                     |
+| BPP    | almeno $3/4$                       | al più $1/4$                          |
+| PP     | più di $1/2$                       | al più $1/2$                          |
 
 Ogni riga soddisfa la condizione della riga sotto.
 

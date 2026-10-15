@@ -1,6 +1,6 @@
 # Teorema di Savitch
 
-*Versione 2 del test: spiegazione con la skill learn, poi revisione con humanizer.*
+_Versione 2 del test: spiegazione con la skill learn, poi revisione con humanizer._
 
 ## Prima di leggere, due domande di controllo
 

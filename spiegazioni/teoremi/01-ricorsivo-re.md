@@ -2,7 +2,7 @@
 
 ## Prima di leggere
 
-Che differenza c'è fra una MdT che *decide* un linguaggio $L$ e una che lo *accetta*?
+Che differenza c'è fra una MdT che _decide_ un linguaggio $L$ e una che lo _accetta_?
 
 <details><summary>Risposta</summary>
 
@@ -20,10 +20,10 @@ Verrebbe da dire che la macchina $M$ che decide $L$ lo accetta già, visto che r
 
 $M'$ ha gli stessi stati e le stesse istruzioni di $M$, più uno stato nuovo, che chiamiamo $q_\infty$. Le istruzioni che in $M$ portano nello stato "no", in $M'$ portano invece in $q_\infty$. In $q_\infty$, qualunque simbolo legga, la macchina lo lascia com'è, sposta il cursore a destra e resta in $q_\infty$. Da $q_\infty$ nessuna istruzione porta a uno stato di arresto, quindi la macchina va avanti per sempre sul nastro, che a destra non finisce.
 
-| input | $M$ | $M'$ |
-|---|---|---|
-| $x \in L$ | "yes" | "yes" |
-| $x \notin L$ | "no" | $\nearrow$ |
+| input        | $M$   | $M'$       |
+| ------------ | ----- | ---------- |
+| $x \in L$    | "yes" | "yes"      |
+| $x \notin L$ | "no"  | $\nearrow$ |
 
 Prima riga: $M$ non passa mai da "no", quindi le istruzioni modificate non entrano in gioco e $M'$ fa esattamente le stesse mosse di $M$. Seconda riga: nel punto in cui $M$ si fermerebbe in "no", $M'$ entra in $q_\infty$ e non si ferma più. Le due righe insieme sono la definizione di "$M'$ accetta $L$". Siccome $L$ era un linguaggio ricorsivo qualsiasi, $\mathrm{R} \subseteq \mathrm{RE}$.
 

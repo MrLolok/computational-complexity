@@ -4,19 +4,19 @@ File: 24-t7-4c, 25-catena-classi, 27-savitch-cor, 28-pspace-npspace, 29-composiz
 
 ## Invocazioni delle skill
 
-| skill | argomento | caricata |
-|---|---|---|
-| `anthropic-skills:learn` | spiegazioni statiche in Markdown adattate come in STRATEGIA.md (una invocazione all'inizio, per tutto il batch) | sì |
-| `humanizer` | `spiegazioni/teoremi/24-t7-4c.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/25-catena-classi.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/27-savitch-cor.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/28-pspace-npspace.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/29-composizione-riduzioni.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/30-chiusura-riduzioni.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/31-completo-per-due-classi.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/32-completo-classe-piccola.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/33-cook-levin.md` | sì |
-| `humanizer` | `spiegazioni/teoremi/34-3sat.md` | sì |
+| skill                    | argomento                                                                                                       | caricata |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- | -------- |
+| `anthropic-skills:learn` | spiegazioni statiche in Markdown adattate come in STRATEGIA.md (una invocazione all'inizio, per tutto il batch) | sì       |
+| `humanizer`              | `spiegazioni/teoremi/24-t7-4c.md`                                                                               | sì       |
+| `humanizer`              | `spiegazioni/teoremi/25-catena-classi.md`                                                                       | sì       |
+| `humanizer`              | `spiegazioni/teoremi/27-savitch-cor.md`                                                                         | sì       |
+| `humanizer`              | `spiegazioni/teoremi/28-pspace-npspace.md`                                                                      | sì       |
+| `humanizer`              | `spiegazioni/teoremi/29-composizione-riduzioni.md`                                                              | sì       |
+| `humanizer`              | `spiegazioni/teoremi/30-chiusura-riduzioni.md`                                                                  | sì       |
+| `humanizer`              | `spiegazioni/teoremi/31-completo-per-due-classi.md`                                                             | sì       |
+| `humanizer`              | `spiegazioni/teoremi/32-completo-classe-piccola.md`                                                             | sì       |
+| `humanizer`              | `spiegazioni/teoremi/33-cook-levin.md`                                                                          | sì       |
+| `humanizer`              | `spiegazioni/teoremi/34-3sat.md`                                                                                | sì       |
 
 Da learn ho preso: domande di controllo con risposta in `<details>`, spiegazione diretta (niente domande socratiche al posto della spiegazione), un esempio piccolo svolto, una tabella dove c'è una struttura da vedere, gli errori tipici. Humanizer è stato eseguito nei suoi quattro passi (segnare, riscrivere, ricontrollare, versione finale) e nel file c'è solo la versione finale.
 

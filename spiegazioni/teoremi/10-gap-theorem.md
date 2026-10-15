@@ -39,11 +39,11 @@ Si guardano solo $M_0, \ldots, M_n$ perché le computazioni da controllare devon
 Gli intervalli sono $[2, 4]$, $[5, 32]$, $[33, 2^{33}]$, e così via. Con input binari le computazioni da guardare sono 4: due macchine, $M_0$ e $M_1$, su due input, 0 e 1. Supponi che vadano così:
 
 | computazione | si ferma dopo | intervallo |
-|---|---|---|
-| $M_0$ su 0 | 3 passi | $[2, 4]$ |
-| $M_0$ su 1 | 7 passi | $[5, 32]$ |
-| $M_1$ su 0 | non si ferma | nessuno |
-| $M_1$ su 1 | 1 passo | nessuno |
+| ------------ | ------------- | ---------- |
+| $M_0$ su 0   | 3 passi       | $[2, 4]$   |
+| $M_0$ su 1   | 7 passi       | $[5, 32]$  |
+| $M_1$ su 0   | non si ferma  | nessuno    |
+| $M_1$ su 1   | 1 passo       | nessuno    |
 
 Il primo intervallo libero è il terzo, quindi $f(1) = 33$. Tutte le computazioni che si fermano entro $2^{33}$ passi lo fanno in meno di 33.
 

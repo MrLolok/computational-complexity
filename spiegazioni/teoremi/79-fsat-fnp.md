@@ -34,11 +34,11 @@ Data $x$, la funzione $R$ scrive la formula $\varphi_x$ di Cook-Levin per la com
 
 Il ritorno è facile. Un'assegnazione $T$ che soddisfa $\varphi_x$ descrive una computazione accettante di $M$ su $(x, y)$ per un certo $y$. $S$ legge in $T$ i valori di $y_1, \dots, y_{p(|x|)}$ e li scrive in uscita; basta un contatore, quindi spazio logaritmico. Siccome $M$ accetta, $(x, S(T)) \in R_L$.
 
-| | $F_L$ | FSAT |
-|---|---|---|
-| istanza | $x$ | $\varphi_x = R(x)$ |
-| soluzione | $y$ con $(x, y) \in R_L$ | $T$ che soddisfa $\varphi_x$ |
-| ritorno | $S(T)$: i valori di $y_1, \dots, y_{p(|x|)}$ in $T$ | |
+|           | $F_L$                                  | FSAT                         |
+| --------- | -------------------------------------- | ---------------------------- |
+| istanza   | $x$                                    | $\varphi_x = R(x)$           |
+| soluzione | $y$ con $(x, y) \in R_L$               | $T$ che soddisfa $\varphi_x$ |
+| ritorno   | $S(T)$: i valori di $y_1, \dots, y_{p( | x                            | )}$ in $T$ |     |
 
 Per esempio, se $F_L$ chiede un cammino hamiltoniano, $M$ è il verificatore che controlla una sequenza di nodi, $y$ è quella sequenza scritta in bit, e $S$ la ritrova leggendo in $T$ i valori delle variabili di $y$.
 

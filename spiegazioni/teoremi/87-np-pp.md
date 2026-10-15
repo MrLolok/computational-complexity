@@ -35,11 +35,11 @@ $N'$ fa una scelta in più di $N$ e lavora in tempo $p(n) + 1$, polinomiale. All
 
 $N$ ha 8 run, $N'$ ne ha 16, e il ramo (b) contribuisce 8 "yes".
 
-| caso | "yes" dal ramo (a) | "yes" totali su 16 | maggioranza? |
-|---|---|---|---|
-| $x \notin L$ | 0 | 8 | no, è esattamente metà |
-| $x \in L$, un run accettante | 1 | 9 | sì |
-| $x \in L$, tre run accettanti | 3 | 11 | sì |
+| caso                          | "yes" dal ramo (a) | "yes" totali su 16 | maggioranza?           |
+| ----------------------------- | ------------------ | ------------------ | ---------------------- |
+| $x \notin L$                  | 0                  | 8                  | no, è esattamente metà |
+| $x \in L$, un run accettante  | 1                  | 9                  | sì                     |
+| $x \in L$, tre run accettanti | 3                  | 11                 | sì                     |
 
 ## Dove si inciampa di solito
 

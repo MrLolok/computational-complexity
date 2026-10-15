@@ -26,10 +26,10 @@ Per $C_2 \subseteq C_1$ si scambiano i ruoli: ogni $L' \in C_2$ si riduce a $L$,
 
 Ogni inclusione usa la difficoltà rispetto a una classe e l'appartenenza all'altra:
 
-| per dimostrare | difficoltà rispetto a | appartenenza a | chiusura di |
-|---|---|---|---|
-| $C_1 \subseteq C_2$ | $C_1$ | $C_2$ | $C_2$ |
-| $C_2 \subseteq C_1$ | $C_2$ | $C_1$ | $C_1$ |
+| per dimostrare      | difficoltà rispetto a | appartenenza a | chiusura di |
+| ------------------- | --------------------- | -------------- | ----------- |
+| $C_1 \subseteq C_2$ | $C_1$                 | $C_2$          | $C_2$       |
+| $C_2 \subseteq C_1$ | $C_2$                 | $C_1$          | $C_1$       |
 
 ## Un esempio
 

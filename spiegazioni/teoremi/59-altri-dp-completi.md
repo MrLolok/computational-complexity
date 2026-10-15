@@ -46,11 +46,11 @@ Aggiungi una clausola: $\psi = (x) \land (\neg x) \land (y)$. È ancora insoddis
 
 La riduzione parte da una coppia $(\varphi, \varphi')$ di SAT-UNSAT. Usa la riduzione da 3-SAT a HAMILTON PATH, modificata in modo che il grafo abbia sempre un cammino che "salta" al più un arco. Nell'istanza di TSP le distanze valgono 1 sugli archi del grafo e 2 altrove, quindi il costo ottimo è $N$ se $\varphi$ è soddisfacibile e $N + 1$ se non lo è. Con $\varphi'$ si fa lo stesso raddoppiando le distanze, e il costo ottimo diventa $2N'$ oppure $2N' + 2$. Unendo le due istanze in una sola, il costo ottimo è la somma più una costante fissa $c$ per il collegamento.
 
-| $\varphi$ | $\varphi'$ | costo ottimo |
-|---|---|---|
-| soddisfacibile | soddisfacibile | $N + 2N' + c$ |
-| insoddisfacibile | soddisfacibile | $N + 2N' + c + 1$ |
-| soddisfacibile | insoddisfacibile | $N + 2N' + c + 2$ |
+| $\varphi$        | $\varphi'$       | costo ottimo      |
+| ---------------- | ---------------- | ----------------- |
+| soddisfacibile   | soddisfacibile   | $N + 2N' + c$     |
+| insoddisfacibile | soddisfacibile   | $N + 2N' + c + 1$ |
+| soddisfacibile   | insoddisfacibile | $N + 2N' + c + 2$ |
 | insoddisfacibile | insoddisfacibile | $N + 2N' + c + 3$ |
 
 Si sceglie $B = N + 2N' + c + 2$, il valore del caso "$\varphi$ soddisfacibile, $\varphi'$ no". Il raddoppio tiene distinti i quattro casi. Senza, "$\varphi$ insoddisfacibile" e "$\varphi'$ insoddisfacibile" aggiungerebbero entrambi 1, e il caso sì di SAT-UNSAT costerebbe quanto un caso no. Con il raddoppio lo scarto da $N + 2N' + c$ è un numero binario di due cifre: le unità dicono se fallisce $\varphi$, la cifra del 2 se fallisce $\varphi'$.
