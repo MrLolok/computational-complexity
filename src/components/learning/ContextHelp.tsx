@@ -5,13 +5,19 @@ import { useEffect, useId, useRef, useState, type ReactNode, type SyntheticEvent
 import { createPortal } from "react-dom";
 import { GLOSSARY } from "@/lib/glossary";
 
-/** Un solo popup per tutti i termini: hover, focus, tocco; Escape e clic esterno lo chiudono. */
+/** Un solo popup per tutti i termini: hover e focus col mouse, tocco sugli schermi touch; Escape e clic esterno lo chiudono.
+ *  Al tocco non c'è hover: il primo tocco apre il popup e lo lascia aperto, il secondo sullo stesso termine lo chiude
+ *  (o segue il link, se il termine è un link); un tocco fuori lo chiude. */
 export default function ContextHelp({ children }: { children: ReactNode }) {
   const id = useId();
   const [tip, setTip] = useState<{ key: string; left: number; top?: number; bottom?: number; maxWidth: number; maxHeight: number } | null>(null);
   const anchor = useRef<HTMLElement | null>(null);
   const popup = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  /* ultima pressione: se era un dito e quando, per distinguere il tocco dal mouse e dalla tastiera */
+  const press = useRef({ touch: false, at: 0 });
+  const touched = () => press.current.touch && Date.now() - press.current.at < 1000;
+  const pressed = () => Date.now() - press.current.at < 600;
   const keep = () => { if (timer.current) clearTimeout(timer.current); };
   const close = () => {
     keep();
@@ -68,25 +74,43 @@ export default function ContextHelp({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-w-0 flex-col gap-6" onClickCapture={e => {
+      /* in cattura, prima del Link: il primo tocco su un termine-link apre il popup invece di navigare */
+      const term = (e.target as HTMLElement).closest<HTMLElement>("[data-term]");
+      if (term && touched() && !popup.current?.contains(term)) {
+        /* secondo tocco: un link porta alla sua pagina, un termine semplice chiude e basta */
+        if (anchor.current === term && term.matches("a[href]")) { close(); return; }
+        e.preventDefault();
+        if (anchor.current === term) { close(); return; }
+        show(e);
+        return;
+      }
       const details = (e.target as HTMLElement).closest("summary")?.parentElement;
       if (!(details instanceof HTMLDetailsElement) || details.open) return;
       requestAnimationFrame(() => {
         if (details.open) details.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
       });
-    }} onPointerOver={show} onPointerOut={e => {
+    }} onPointerDownCapture={e => {
+      press.current = { touch: e.pointerType === "touch", at: Date.now() };
+    }} onPointerOver={e => {
+      if (e.pointerType !== "touch") show(e);
+    }} onPointerOut={e => {
+      if (e.pointerType === "touch") return;
       if (anchor.current?.contains(e.relatedTarget as Node) || popup.current?.contains(e.relatedTarget as Node)) keep();
       else later();
-    }} onFocusCapture={show} onBlurCapture={e => {
-      if (anchor.current?.contains(e.relatedTarget as Node) || popup.current?.contains(e.relatedTarget as Node)) keep();
+    }} onFocusCapture={e => {
+      if (!touched()) show(e);
+    }} onBlurCapture={e => {
+      /* dopo un tocco o un clic decide la pressione (tocco fuori, sul termine o nel popup), non la perdita del focus */
+      if (pressed() || anchor.current?.contains(e.relatedTarget as Node) || popup.current?.contains(e.relatedTarget as Node)) keep();
       else later();
     }} onClick={e => {
-      if ((e.target as HTMLElement).closest('[data-term][role="button"]')) show(e);
+      if (!touched() && (e.target as HTMLElement).closest('[data-term][role="button"]')) show(e);
     }} onKeyDown={e => {
       if ((e.key === "Enter" || e.key === " ") && (e.target as HTMLElement).matches('[data-term][role="button"]')) { e.preventDefault(); show(e); }
     }}>
       {children}
       {tip && createPortal(
-        <div ref={popup} id={id} role="dialog" aria-label={`Ripasso: ${GLOSSARY[tip.key].name}`} onPointerEnter={keep} onPointerLeave={later} onFocusCapture={keep} onBlurCapture={e => { if (!popup.current?.contains(e.relatedTarget as Node)) later(); }}
+        <div ref={popup} id={id} role="dialog" aria-label={`Ripasso: ${GLOSSARY[tip.key].name}`} onPointerEnter={keep} onPointerLeave={e => { if (e.pointerType !== "touch") later(); }} onFocusCapture={keep} onBlurCapture={e => { if (!pressed() && !popup.current?.contains(e.relatedTarget as Node)) later(); }}
           className="fixed z-50 w-84 overflow-auto overscroll-contain rounded-xl border border-line-strong bg-surface p-4 text-sm leading-relaxed shadow-xl"
           style={{ left: tip.left, top: tip.top, bottom: tip.bottom, maxWidth: tip.maxWidth, maxHeight: tip.maxHeight }}>
           <div className="mb-2 flex items-start justify-between gap-3">
