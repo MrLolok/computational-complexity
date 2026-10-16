@@ -17,7 +17,7 @@ const MOVE_OPTIONS = [
 const MOVE_NAME: Record<string, string> = { 1: "R", [-1]: "L", 0: "S" };
 const SUB = "₁₂₃";
 
-export const fit = (a: string[], k: number) => Array.from({ length: k }, (_, t) => a[t] ?? "");
+const fit = (a: string[], k: number) => Array.from({ length: k }, (_, t) => a[t] ?? "");
 const blank = (k: number): MdtRow => ({
     from: "",
     read: fit([], k),

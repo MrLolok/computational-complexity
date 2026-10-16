@@ -27,7 +27,7 @@ export type ProgressState = {
     problemQuiz: { ok: number; tot: number };
     /** flashcard dei problemi segnate come sapute */
     flashKnown: Record<string, true>;
-    /** tabelle δ scritte dall'utente, per traccia o per il laboratorio (stringa: bozza in testo, di prima della tabella) */
+    /** tabelle δ scritte dall'utente, per traccia (stringa: bozza in testo, di prima della tabella) */
     mdtDrafts?: Record<string, MdtRow[] | string>;
     /** ultima consegna di ogni macchina, per id: una MdT che torna in un'altra traccia risulta già consegnata */
     mdtResults?: Record<string, MdtResult>;
