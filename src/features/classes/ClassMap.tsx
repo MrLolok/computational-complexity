@@ -6,9 +6,9 @@ import type { KeyboardEvent } from "react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 
-import { ALIAS, HASSE_STRICT, IDS, INC, NAME, PLAIN } from "@/data/classes/classes";
+import { ALIAS, HASSE_STRICT, IDS, INCLUSIONS, NAME, PLAIN } from "@/data/classes/classes";
 import { classColor, NODE_RECT, ui } from "@/lib/tokens";
-import { BASE } from "./inclusions";
+import { BASE_CLOSURE } from "./inclusions";
 import { NODE_H as H, NOBADGE, NODE_W, POS, SEP_DRAW } from "./mapLayout";
 import { requestPanelScroll } from "./usePanelScroll";
 
@@ -79,8 +79,8 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
     }, []);
 
     const cur = hover ?? sel;
-    const inSub = (x: ClassId) => !!cur && (x === cur || BASE.R(x, cur));
-    const inSup = (x: ClassId) => !!cur && (x === cur || BASE.R(cur, x));
+    const inSub = (x: ClassId) => !!cur && (x === cur || BASE_CLOSURE.subset(x, cur));
+    const inSup = (x: ClassId) => !!cur && (x === cur || BASE_CLOSURE.subset(cur, x));
 
     const go = (id: ClassId | null) => {
         const next = id && id !== sel ? id : null;
@@ -152,7 +152,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
                     ))}
 
                     <g>
-                        {INC.map(([a, b]) => {
+                        {INCLUSIONS.map(([a, b]) => {
                             const [x1, y1] = POS[a],
                                 [x2, y2] = POS[b];
                             const strict = HASSE_STRICT.has(a + ">" + b);
@@ -173,7 +173,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
                     </g>
 
                     <g>
-                        {INC.map(([a, b]) => {
+                        {INCLUSIONS.map(([a, b]) => {
                             const k = a + ">" + b;
                             if (NOBADGE.has(k)) return null;
                             const strict = HASSE_STRICT.has(k);
@@ -275,9 +275,9 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
                                 ? ""
                                 : id === cur
                                   ? "sel"
-                                  : BASE.R(id, cur)
+                                  : BASE_CLOSURE.subset(id, cur)
                                     ? "sub"
-                                    : BASE.R(cur, id)
+                                    : BASE_CLOSURE.subset(cur, id)
                                       ? "sup"
                                       : "far";
                             const rect = NODE_RECT[state || "far"];

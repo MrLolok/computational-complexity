@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import Tex from "@/components/Tex";
-import { final, ui } from "@/lib/tokens";
+import { outcomeClass, ui } from "@/lib/tokens";
 import { CheckRow } from "./CheckRow";
 
 const TOURS = [10, 12, 15];
@@ -46,7 +46,7 @@ export default function ExactTsp() {
                     nessun giro costa meno di {B}?
                 </CheckRow>
             </div>
-            <div className={final(l1 && l2)}>
+            <div className={outcomeClass(l1 && l2)}>
                 {l1 && l2
                     ? `Sì: l'ottimo vale esattamente ${B}.`
                     : l1

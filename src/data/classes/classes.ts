@@ -119,7 +119,7 @@ export const TEX: Record<ClassId, string> = {
     RE: "\\mathrm{RE}",
     coRE: "\\mathrm{coRE}",
 };
-export const CO: Record<ClassId, ClassId | null> = {
+export const COMPLEMENT: Record<ClassId, ClassId | null> = {
     NP: "coNP",
     coNP: "NP",
     SIGMA2: "PI2",
@@ -141,7 +141,7 @@ export const CO: Record<ClassId, ClassId | null> = {
     NEXP: null,
 };
 /** inclusioni dimostrate A ⊆ B, come [A, B, motivo, fonte] */
-export const INC: [ClassId, ClassId, string, string][] = [
+export const INCLUSIONS: [ClassId, ClassId, string, string][] = [
     [
         "L",
         "NL",
@@ -226,7 +226,7 @@ export const INC: [ClassId, ClassId, string, string][] = [
     ],
 ];
 /** inclusioni strette dimostrate: [A, B, motivo, fonte, ricavata] */
-export const STRICT: [ClassId, ClassId, string, string, boolean][] = [
+export const STRICT_INCLUSIONS: [ClassId, ClassId, string, string, boolean][] = [
     ["P", "EXP", "teorema di gerarchia per il tempo", "dispensa cap. 7 «Separation of P and EXP»; slide Lez. 5", false],
     [
         "L",
@@ -279,7 +279,7 @@ export type ClassContent = {
     form: string;
     src: string;
 };
-export const C: Record<ClassId, ClassContent> = {
+export const CLASS_CONTENT: Record<ClassId, ClassContent> = {
     L: {
         full: "Spazio logaritmico deterministico",
         intu: "Una macchina <b>deterministica</b> che può rileggere l'input quante volte vuole, ma non scriverci, e che come memoria di lavoro ha solo $O(\\log n)$ celle. Bastano per tenere un numero fisso di contatori o di posizioni nell'input, non per copiarlo. Con un input di un milione di simboli, $\\log_2 n \\approx 20$: una ventina di bit per contatore.",
@@ -563,7 +563,7 @@ export const CLASS_PROBLEMS: Partial<Record<ClassId, [string, string][]>> = {
     RE: [["FOV", "Validità del primo ordine"]],
     coRE: [["FOS", "Soddisfacibilità del primo ordine"]],
 };
-export const PAIRNOTES: Record<string, string> = {
+export const PAIR_NOTES: Record<string, string> = {
     "DP|NPcapcoNP":
         "<b>L'errore classico.</b> In $\\mathrm{NP} \\cap \\mathrm{coNP}$ si intersecano due <i>classi</i>: il problema stesso sta in NP e in coNP, e ogni istanza ha <i>una</i> prova corta (certificato o squalifica). In DP si intersecano due <i>linguaggi</i>: l'istanza deve superare <i>due</i> controlli, uno NP e uno coNP. Per questo $\\mathrm{NP} \\cap \\mathrm{coNP}$ sta sotto NP e coNP, mentre DP sta sopra entrambe.",
     "NP|coNP":
@@ -584,7 +584,7 @@ export const PAIRNOTES: Record<string, string> = {
     "EXP|P":
         "$\\mathrm{P} \\subsetneq \\mathrm{EXP}$ per la gerarchia di tempo: è la separazione da cui partono quasi tutte le risposte NO.",
 };
-export const QUICK: [ClassId, ClassId][] = [
+export const QUICK_PAIRS: [ClassId, ClassId][] = [
     ["DP", "NPcapcoNP"],
     ["NP", "coNP"],
     ["DP", "DELTA2"],

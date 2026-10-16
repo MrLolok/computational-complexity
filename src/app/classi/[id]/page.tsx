@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
 
-import { C, IDS, PLAIN } from "@/data/classes/classes";
+import { CLASS_CONTENT, IDS, PLAIN } from "@/data/classes/classes";
 import ClassesView from "@/features/classes/ClassesView";
 import { isClassId } from "@/features/classes/inclusions";
 import { plainMath } from "@/lib/mathNotation";
@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { id } = await params;
     if (!isClassId(id)) return {};
-    return { title: PLAIN[id], description: plainMath(C[id].full) };
+    return { title: PLAIN[id], description: plainMath(CLASS_CONTENT[id].full) };
 }
 
 export default async function Page({ params }: Props) {

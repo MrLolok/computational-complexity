@@ -1,8 +1,8 @@
 /* Riduzioni tra problemi completi dei piani di PH. */
 /** classe di cui un problema è completo */
-export type RClass = { t: "P" | "DP" | "PSPACE" } | { t: "S" | "Pi"; l: number };
-export type RProblem = { id: string; label: string; cls: RClass };
-export const RP: RProblem[] = [
+export type ReductionClass = { t: "P" | "DP" | "PSPACE" } | { t: "S" | "Pi"; l: number };
+export type ReductionProblem = { id: string; label: string; cls: ReductionClass };
+export const REDUCTION_PROBLEMS: ReductionProblem[] = [
     { id: "MAXFLOW", label: "MAX FLOW (P-completo)", cls: { t: "P" } },
     { id: "SAT", label: "$\\mathrm{SAT} = \\mathrm{QSAT}_1$ (NP-completo)", cls: { t: "S", l: 1 } },
     { id: "CLIQUE", label: "CLIQUE (NP-completo)", cls: { t: "S", l: 1 } },
@@ -25,10 +25,10 @@ export const RP: RProblem[] = [
     { id: "COQSAT5", label: "$\\mathrm{co\\text{-}QSAT}_5$ ($\\Pi_5^{\\mathrm{P}}$-completo)", cls: { t: "Pi", l: 5 } },
     { id: "QSAT", label: "QSAT (PSPACE-completo)", cls: { t: "PSPACE" } },
 ];
-export const RP_DEFAULT: [string, string] = ["QSAT4", "QSAT2"];
+export const DEFAULT_REDUCTION: [string, string] = ["QSAT4", "QSAT2"];
 
 /** esercizi della dispensa (cap. 17.2.1): [da, a] */
-export const RQUICK: [string, string][] = [
+export const REDUCTION_EXERCISES: [string, string][] = [
     ["QSAT2", "QSAT4"],
     ["QSAT4", "QSAT2"],
     ["QSAT3", "COQSAT3"],

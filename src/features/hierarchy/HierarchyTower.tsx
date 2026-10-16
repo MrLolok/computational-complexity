@@ -10,11 +10,11 @@ import Arrow from "@/components/Arrow";
 import RichHtml from "@/components/RichHtml";
 import Tex from "@/components/Tex";
 import { CLASS_PROBLEMS } from "@/data/classes/classes";
-import { BANDS, HYP, TE, TOWER_IDS, TW } from "@/data/hierarchy/tower";
+import { HYPOTHESES, TOWER_BANDS, TOWER_EDGES, TOWER_IDS, TOWER_NODES } from "@/data/hierarchy/tower";
 import { texHtml } from "@/lib/tex";
 import { classColor, NODE_RECT, ui } from "@/lib/tokens";
-import { edgeHot, mergeBox, nodeState, nodeWidth, tDown, tUp } from "./tower";
-import { infoOf } from "./towerInfo";
+import { edgeHot, mergeBox, nodeState, nodeWidth, towerAbove, towerBelow } from "./tower";
+import { towerInfo } from "./towerInfo";
 import { selectTower, useTowerSel } from "./towerSelection";
 
 const h4 = "font-ui text-xs uppercase tracking-widest text-muted font-semibold mb-1.5";
@@ -61,9 +61,9 @@ export default function HierarchyTower() {
         if (bx && bx.scrollWidth > bx.clientWidth) bx.scrollLeft = (bx.scrollWidth - bx.clientWidth) / 2;
     }, []);
 
-    const up = tUp(sel),
-        dn = tDown(sel);
-    const h = HYP.find((x) => x.id === hyp) ?? HYP[0];
+    const up = towerAbove(sel),
+        dn = towerBelow(sel);
+    const h = HYPOTHESES.find((x) => x.id === hyp) ?? HYPOTHESES[0];
     const M = new Set<TowerId>(h.merged);
     const box = M.size ? mergeBox(h.merged) : null;
 
@@ -79,8 +79,8 @@ export default function HierarchyTower() {
         }
     };
 
-    const n = TW[sel],
-        I = infoOf(sel);
+    const n = TOWER_NODES[sel],
+        I = towerInfo(sel);
     const probs = n.map ? CLASS_PROBLEMS[n.map] : undefined;
 
     return (
@@ -94,7 +94,7 @@ export default function HierarchyTower() {
                         value={hyp}
                         onChange={(e) => setHyp(e.target.value)}
                     >
-                        {HYP.map((x) => (
+                        {HYPOTHESES.map((x) => (
                             <option key={x.id} value={x.id}>
                                 {x.label}
                             </option>
@@ -124,7 +124,7 @@ export default function HierarchyTower() {
                         aria-label="Torre dei piani di PH"
                         className="font-ui block h-auto w-full min-w-120"
                     >
-                        {BANDS.map(([lv, a, b], k) => (
+                        {TOWER_BANDS.map(([lv, a, b], k) => (
                             <g key={lv}>
                                 <rect
                                     x={0}
@@ -158,9 +158,9 @@ export default function HierarchyTower() {
                                 </text>
                             </g>
                         )}
-                        {TE.map(([a, b]) => {
-                            const A = TW[a],
-                                B = TW[b];
+                        {TOWER_EDGES.map(([a, b]) => {
+                            const A = TOWER_NODES[a],
+                                B = TOWER_NODES[b];
                             const dashed = a === "S4" || a === "P4";
                             const hot = edgeHot(a, b, sel, up, dn);
                             return (
@@ -196,7 +196,7 @@ export default function HierarchyTower() {
                             <g key={i} className={M.has(`S${i}` as TowerId) ? "opacity-12" : undefined}>
                                 <text
                                     x={260}
-                                    y={TW[`S${i}` as TowerId].y + 4}
+                                    y={TOWER_NODES[`S${i}` as TowerId].y + 4}
                                     textAnchor="middle"
                                     className="fill-open font-mono text-sm font-bold"
                                 >
@@ -205,7 +205,7 @@ export default function HierarchyTower() {
                             </g>
                         ))}
                         {TOWER_IDS.map((id) => {
-                            const t = TW[id];
+                            const t = TOWER_NODES[id];
                             const st = nodeState(id, sel, up, dn);
                             const w = nodeWidth(id);
                             return (

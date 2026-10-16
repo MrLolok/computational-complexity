@@ -1,5 +1,5 @@
 import { type ClassId } from "@/data/classes/classes";
-import { LEZ6_ANCHORS, QuantumTab, RandomTab } from "@/features/probabilistic-quantum/ProbabilisticQuantumTabs";
+import { LESSON_ANCHORS, QuantumTab, RandomTab } from "@/features/probabilistic-quantum/ProbabilisticQuantumTabs";
 import { ui } from "@/lib/tokens";
 import ClassExplorer from "./ClassExplorer";
 import ClassMap from "./ClassMap";
@@ -62,7 +62,7 @@ export default function ClassesView({ sel }: { sel: ClassId | null }) {
                 key={sel ?? "overview"}
                 random={<RandomTab />}
                 quantum={<QuantumTab />}
-                anchors={LEZ6_ANCHORS}
+                anchors={LESSON_ANCHORS}
             >
                 <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
                     <div className={ui.card}>

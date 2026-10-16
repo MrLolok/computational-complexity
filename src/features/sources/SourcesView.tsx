@@ -1,7 +1,7 @@
 import MathHtml from "@/components/MathHtml";
 import SourceBadge from "@/components/SourceBadge";
 import Tex from "@/components/Tex";
-import { VER } from "@/data/problems/problems";
+import { SOURCE_CHECKS } from "@/data/problems/problems";
 import { ui } from "@/lib/tokens";
 
 const prose =
@@ -114,7 +114,7 @@ export default function SourcesView() {
                             </tr>
                         </thead>
                         <tbody>
-                            {VER.map(([r, v, t]) => (
+                            {SOURCE_CHECKS.map(([r, v, t]) => (
                                 <tr key={r}>
                                     <td className="border-line border-b p-2 align-top">
                                         <MathHtml html={r} />

@@ -17,7 +17,7 @@ import { toChoice } from "@/lib/answer";
 import { htmlToPlain } from "@/lib/plainText";
 import { texHtml } from "@/lib/tex";
 import { classColor, ui } from "@/lib/tokens";
-import { classLabel, colorId, REL, trapAnswer } from "./problems";
+import { classLabel, colorId, RELATED, trapAnswer } from "./problems";
 
 function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void }) {
     return (
@@ -66,7 +66,7 @@ export default function ProblemDetail({
     const previous = previousId ? PROBLEM_BY[previousId] : undefined;
     const next = nextId ? PROBLEM_BY[nextId] : undefined;
     const clsName = classLabel(p);
-    const related = (REL[p.id] || []).filter(([id]) => id !== p.cpl);
+    const related = (RELATED[p.id] || []).filter(([id]) => id !== p.cpl);
     const theorems = theoremsForProblem(p.id);
     const disclosure =
         "rounded-lg border border-line px-4 py-3 text-sm [&>summary]:cursor-pointer [&>summary]:font-semibold";

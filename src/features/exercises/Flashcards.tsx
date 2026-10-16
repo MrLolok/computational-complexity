@@ -7,7 +7,7 @@ import AnswerTag from "@/components/AnswerTag";
 import MathHtml from "@/components/MathHtml";
 import SourceBadge from "@/components/SourceBadge";
 import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
-import { BANDS, colorId, trapAnswer } from "@/features/problems/problems";
+import { colorId, LADDER_BANDS, trapAnswer } from "@/features/problems/problems";
 import { toChoice } from "@/lib/answer";
 import { htmlToPlain } from "@/lib/plainText";
 import { shuffle } from "@/lib/shuffle";
@@ -16,7 +16,7 @@ import { classColor, ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setFlashKnown } from "@/store/progressSlice";
 
-const DECKS = BANDS.filter((b) => PROBLEMS.some((p) => p.b === b));
+const DECKS = LADDER_BANDS.filter((b) => PROBLEMS.some((p) => p.b === b));
 const face = `${ui.card} absolute inset-0 overflow-auto border-t-2 border-t-(--c) backface-hidden transition-transform duration-500 ease-in-out motion-reduce:transition-none`;
 const big = "block font-head text-4xl font-semibold leading-tight text-(--c)";
 

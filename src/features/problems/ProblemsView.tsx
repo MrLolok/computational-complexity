@@ -13,7 +13,7 @@ import { htmlToPlain } from "@/lib/plainText";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
 import ProblemDetail from "./ProblemDetail";
-import { BANDS, classLabel, matches } from "./problems";
+import { classLabel, LADDER_BANDS, matches } from "./problems";
 
 function selectedFrom(path: string | null) {
     const id = path?.match(/^\/problemi\/([^/]+)/)?.[1];
@@ -99,7 +99,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                         }}
                     >
                         <option value="all">Tutte le classi</option>
-                        {BANDS.map((id) => (
+                        {LADDER_BANDS.map((id) => (
                             <option key={id} value={id}>
                                 {LADDER[id].t || htmlToPlain(LADDER[id].n)}
                             </option>

@@ -78,7 +78,7 @@ export const LADDER: Record<LadderId, { n: string; t?: string; d: string }> = {
         d: "Complementi dei problemi di RE: si scopre il no, il sì può non arrivare mai.",
     },
 };
-export const ROWS: LadderId[][] = [
+export const LADDER_ROWS: LadderId[][] = [
     ["L"],
     ["NL"],
     ["P"],
@@ -90,7 +90,7 @@ export const ROWS: LadderId[][] = [
     ["RE", "coRE"],
 ];
 /** classificazioni in ordine, per le risposte sbagliate del quiz */
-export const ORDER: string[] = [
+export const CLASSIFICATION_ORDER: string[] = [
     "NL-completo",
     "in P",
     "P-completo",
@@ -1323,7 +1323,7 @@ export const LINKS: [string, string, string][] = [
     ["FOV", "FOS", "complementi: $\\mathrm{RE} \\setminus \\mathrm{R}$ e $\\mathrm{coRE} \\setminus \\mathrm{R}$"],
 ];
 /** verifica della tabella di partenza: [riga, esito, cosa dicono le fonti] */
-export const VER: [string, "ok" | "part", string][] = [
+export const SOURCE_CHECKS: [string, "ok" | "part", string][] = [
     [
         "REACHABILITY: NL-completo, in $\\mathrm{SPACE}(\\log^2 n)$ (Savitch)",
         "part",

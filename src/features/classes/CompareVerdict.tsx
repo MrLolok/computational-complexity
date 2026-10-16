@@ -7,7 +7,7 @@ import ClassChip from "@/components/ClassChip";
 import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
 import Tex from "@/components/Tex";
-import { C, PAIRNOTES, TEX } from "@/data/classes/classes";
+import { CLASS_CONTENT, PAIR_NOTES, TEX } from "@/data/classes/classes";
 import { ui } from "@/lib/tokens";
 import N from "./ClassName";
 import { answerLabel, compare, isStrictStep } from "./inclusions";
@@ -164,7 +164,7 @@ const ROWS: [string, "full" | "form" | "closed" | "complete" | "src"][] = [
 export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
     const v = compare(a, b);
     const [l, op, r] = v.head;
-    const note = PAIRNOTES[[a, b].sort().join("|")];
+    const note = PAIR_NOTES[[a, b].sort().join("|")];
     const th = "border-b border-line p-2 text-left align-top";
     return (
         <div className="mt-5 flex flex-col gap-4">
@@ -243,8 +243,8 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
                             {ROWS.map(([label, k]) => (
                                 <tr key={k}>
                                     <td className={`${th} font-ui text-muted w-1/4 text-sm font-medium`}>{label}</td>
-                                    <RichHtml as="td" className={th} html={C[a][k]} />
-                                    <RichHtml as="td" className={th} html={C[b][k]} />
+                                    <RichHtml as="td" className={th} html={CLASS_CONTENT[a][k]} />
+                                    <RichHtml as="td" className={th} html={CLASS_CONTENT[b][k]} />
                                 </tr>
                             ))}
                         </tbody>

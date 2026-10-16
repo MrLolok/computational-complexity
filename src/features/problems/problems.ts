@@ -2,7 +2,7 @@ import type { ClassId } from "@/data/classes/classes";
 import type { LadderId, Problem, Trap } from "@/data/problems/problems";
 
 import { TEX } from "@/data/classes/classes";
-import { LADDER, LINKS, PROBLEMS, ROWS } from "@/data/problems/problems";
+import { LADDER, LADDER_ROWS, LINKS, PROBLEMS } from "@/data/problems/problems";
 import { htmlToPlain, searchKey } from "@/lib/plainText";
 
 /* Logica della scheda Problemi (dal modulo PB della pagina). */
@@ -11,16 +11,17 @@ import { htmlToPlain, searchKey } from "@/lib/plainText";
 export const classLabel = (p: Problem) => (p.c ? `$${TEX[p.c as ClassId]}$` : LADDER[p.b].n);
 
 /** gradini della scala nell'ordine delle righe (dal basso) */
-export const BANDS: LadderId[] = ROWS.flat();
+export const LADDER_BANDS: LadderId[] = LADDER_ROWS.flat();
 
 /** collegamenti tra problemi, nei due versi, più il complemento quando non è già tra i collegamenti */
-export const REL: Record<string, [string, string][]> = {};
+export const RELATED: Record<string, [string, string][]> = {};
 LINKS.forEach(([a, b, t]) => {
-    (REL[a] ||= []).push([b, t]);
-    (REL[b] ||= []).push([a, t]);
+    (RELATED[a] ||= []).push([b, t]);
+    (RELATED[b] ||= []).push([a, t]);
 });
 PROBLEMS.forEach((p) => {
-    if (p.cpl && !(REL[p.id] || []).some((r) => r[0] === p.cpl)) (REL[p.id] ||= []).push([p.cpl, "complemento"]);
+    if (p.cpl && !(RELATED[p.id] || []).some((r) => r[0] === p.cpl))
+        (RELATED[p.id] ||= []).push([p.cpl, "complemento"]);
 });
 
 const norm = (s: string) => searchKey(htmlToPlain(s)).replace(/[^a-z0-9]/g, "");

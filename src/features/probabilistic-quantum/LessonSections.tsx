@@ -1,11 +1,11 @@
-import type { Lez6Group } from "@/data/probabilistic-quantum/lesson";
+import type { LessonGroup } from "@/data/probabilistic-quantum/lesson";
 
 import Link from "next/link";
 
 import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
 import OpenOnHash from "@/components/OpenOnHash";
-import { LEZ6 } from "@/data/probabilistic-quantum/lesson";
+import { LESSON } from "@/data/probabilistic-quantum/lesson";
 import { TRACES } from "@/data/traces/traces";
 import { ui } from "@/lib/tokens";
 import LessonFigure from "./LessonFigure";
@@ -17,7 +17,7 @@ const PARTS = [
 ] as const;
 
 /** Spiegazione semplificata degli appunti: un riquadro per concetto, con idea, esempio e versione formale. */
-export function Lez6Topics({ groups }: { groups: Lez6Group[] }) {
+export function LessonTopics({ groups }: { groups: LessonGroup[] }) {
     return (
         <div className="flex min-w-0 flex-col gap-7 [&_p]:max-w-none!">
             <OpenOnHash />
@@ -70,8 +70,8 @@ export function Lez6Topics({ groups }: { groups: Lez6Group[] }) {
 }
 
 /** Domande guida della lezione (parte A degli appunti). */
-export function Lez6Questions({ only }: { only?: number[] }) {
-    const qs = LEZ6.questions.filter((_, i) => !only || only.includes(i));
+export function LessonQuestions({ only }: { only?: number[] }) {
+    const qs = LESSON.questions.filter((_, i) => !only || only.includes(i));
     return (
         <dl className="grid gap-3 sm:grid-cols-2">
             {qs.map((q) => (
@@ -86,11 +86,11 @@ export function Lez6Questions({ only }: { only?: number[] }) {
     );
 }
 
-export function Lez6Exercises({ only }: { only: number[] }) {
+export function LessonExercises({ only }: { only: number[] }) {
     return (
         <div className="flex flex-col gap-2 [&_p]:max-w-none!">
             {only
-                .map((i) => LEZ6.exercises[i])
+                .map((i) => LESSON.exercises[i])
                 .map((e) => (
                     <details key={e.q} name="lezione-6" className="group border-line rounded-xl border">
                         <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 px-4 py-3 font-semibold [&::-webkit-details-marker]:hidden">
@@ -107,15 +107,15 @@ export function Lez6Exercises({ only }: { only: number[] }) {
 }
 
 /** Collegamenti con l'esame: i punti scelti e le domande delle tracce che li usano. */
-export function Lez6Exam({ bullets, test }: { bullets: number[]; test: RegExp }) {
+export function LessonExam({ bullets, test }: { bullets: number[]; test: RegExp }) {
     const questions = TRACES.flatMap((trace) =>
         trace.questions.filter((q) => test.test(q.text)).map((q) => ({ code: trace.code, n: q.n, label: q.label })),
     );
     return (
         <section className="border-line flex flex-col gap-3 border-t pt-6">
             <h3 className={ui.h3}>Collegamenti con l&apos;esame</h3>
-            <Markdown>{LEZ6.exam.intro}</Markdown>
-            <Markdown>{bullets.map((i) => `- ${LEZ6.exam.bullets[i]}`).join("\n")}</Markdown>
+            <Markdown>{LESSON.exam.intro}</Markdown>
+            <Markdown>{bullets.map((i) => `- ${LESSON.exam.bullets[i]}`).join("\n")}</Markdown>
             {questions.length > 0 && (
                 <details name="lezione-6" className="border-line rounded-lg border p-4 text-sm">
                     <summary className="text-accent cursor-pointer">
@@ -138,7 +138,7 @@ export function Lez6Exam({ bullets, test }: { bullets: number[]; test: RegExp })
     );
 }
 
-export function Lez6Source() {
+export function LessonSource() {
     return (
         <p className="text-muted text-xs">
             Fonte: appunti della Lezione 6 · Algoritmi probabilistici e calcolo quantistico (slide lezione-6.pdf,

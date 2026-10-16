@@ -18,10 +18,13 @@ export const PROOF: Record<string, TheoremProof> = raw as Record<string, Theorem
 export const PRIORITY_ORDER: Priority[] = ["alta", "media", "bassa", "orale", "fuori"];
 
 /** quanti teoremi hanno priorità alta (★) */
-export const TOP = Object.values(PROOF).filter((p) => p.priorita === "alta").length;
+export const HIGH_PRIORITY_COUNT = Object.values(PROOF).filter((p) => p.priorita === "alta").length;
 
 export const PRIORITY: Record<Priority, { label: string; hint: string }> = {
-    alta: { label: "Più chiesto", hint: `serve in 8 domande o più: sono i ${TOP} teoremi da sapere per primi` },
+    alta: {
+        label: "Più chiesto",
+        hint: `serve in 8 domande o più: sono i ${HIGH_PRIORITY_COUNT} teoremi da sapere per primi`,
+    },
     media: { label: "Chiesto spesso", hint: "serve in 4–7 domande" },
     bassa: { label: "Chiesto a volte", hint: "serve in 1–3 domande" },
     orale: { label: "Per l'orale", hint: "mai usato nelle tracce, ma dimostrato nel corso" },

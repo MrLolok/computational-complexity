@@ -1,6 +1,6 @@
 "use client";
 
-import type { QuizMode, QuizQuestion } from "./problemQuiz";
+import type { QuizMode, QuizQuestion } from "./quiz";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ import { toChoice } from "@/lib/answer";
 import { classColor, ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { recordProblemQuiz, resetProblemQuiz } from "@/store/progressSlice";
-import { newQuestion, QMODES } from "./problemQuiz";
+import { newQuestion, QUIZ_MODES } from "./quiz";
 
 const opt =
     "min-h-11 cursor-pointer rounded-lg border px-3 py-2 text-left font-ui text-sm font-semibold disabled:cursor-default";
@@ -98,7 +98,7 @@ export default function ProblemQuiz() {
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                 <span className="font-ui text-muted text-base">Tipo di domanda</span>
                 <div className="flex flex-wrap gap-1.5">
-                    {QMODES.map(([k, t]) => (
+                    {QUIZ_MODES.map(([k, t]) => (
                         <button
                             key={k}
                             type="button"

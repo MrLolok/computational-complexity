@@ -7,8 +7,8 @@ import { useState } from "react";
 import Tex from "@/components/Tex";
 import { QBF, QBF_DEFAULT } from "@/data/hierarchy/qbf";
 import { texHtml } from "@/lib/tex";
-import { final, formulaBtn, ui } from "@/lib/tokens";
-import { hPi, hS, qsat } from "./notation";
+import { formulaBtn, outcomeClass, ui } from "@/lib/tokens";
+import { piP, qsat, sigmaP } from "./notation";
 import { blocksOf, qbfLayout } from "./qbf";
 
 type Guess = "1" | "0" | "x" | null;
@@ -125,7 +125,7 @@ export default function QbfEval() {
                                 <b className="font-ui font-semibold">{right ? "Giusto." : "Non proprio."}</b>
                             </p>
                         )}
-                        <div className={final(T.val)}>La formula è {T.val ? "vera" : "falsa"}.</div>
+                        <div className={outcomeClass(T.val)}>La formula è {T.val ? "vera" : "falsa"}.</div>
                         <p>
                             Le linee spesse mostrano il perché. Un <Tex>{String.raw`\exists`}</Tex> è vero se basta{" "}
                             <b>un</b> ramo vero (la scelta giusta); un <Tex>{String.raw`\forall`}</Tex> è vero solo se
@@ -153,7 +153,7 @@ export default function QbfEval() {
             </div>
             <p className={ui.hint}>
                 Prefisso con {k} blocc{k === 1 ? "o" : "hi"}, il primo <Tex>{isS ? "\\exists" : "\\forall"}</Tex>: è
-                un&apos;istanza di <Tex>{qsat(k, !isS)}</Tex>, che sta in <Tex>{isS ? hS(k) : hPi(k)}</Tex>.{" "}
+                un&apos;istanza di <Tex>{qsat(k, !isS)}</Tex>, che sta in <Tex>{isS ? sigmaP(k) : piP(k)}</Tex>.{" "}
                 <span className="text-sm">Formula da: {F.src}.</span>
             </p>
         </>

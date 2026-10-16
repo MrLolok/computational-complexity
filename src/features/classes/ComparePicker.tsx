@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
-import { IDS, PLAIN, QUICK } from "@/data/classes/classes";
+import { IDS, PLAIN, QUICK_PAIRS } from "@/data/classes/classes";
 import { ui } from "@/lib/tokens";
 
 export default function ComparePicker({ a, b, children }: { a?: ClassId; b?: ClassId; children?: ReactNode }) {
@@ -104,7 +104,7 @@ export default function ComparePicker({ a, b, children }: { a?: ClassId; b?: Cla
                 )}
                 <div className="border-line mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-t pt-4 text-sm">
                     <span className="text-muted">Oppure prova:</span>
-                    {[["P", "NP"], ["NP", "coNP"], ...QUICK.slice(0, 1)].map(([x, y]) => (
+                    {[["P", "NP"], ["NP", "coNP"], ...QUICK_PAIRS.slice(0, 1)].map(([x, y]) => (
                         <Link
                             key={`${x}-${y}`}
                             href={`/confronta/${x}/${y}`}

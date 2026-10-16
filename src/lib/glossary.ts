@@ -1,4 +1,4 @@
-import { C, IDS, NAME } from "@/data/classes/classes";
+import { CLASS_CONTENT, IDS, NAME } from "@/data/classes/classes";
 import { QUANTUM_CLASSES, RANDOM_CLASSES, SPECIAL_TERMS } from "@/data/glossary";
 import { PROBLEMS } from "@/data/problems/problems";
 import { htmlToPlain, shorten } from "./plainText";
@@ -7,7 +7,11 @@ export type GlossaryEntry = { name: string; definition: string; href: string };
 export const GLOSSARY: Record<string, GlossaryEntry> = Object.fromEntries([
     ...IDS.map((id) => [
         id,
-        { name: htmlToPlain(NAME[id]), definition: shorten(htmlToPlain(C[id].intu)), href: `/classi/${id}` },
+        {
+            name: htmlToPlain(NAME[id]),
+            definition: shorten(htmlToPlain(CLASS_CONTENT[id].intu)),
+            href: `/classi/${id}`,
+        },
     ]),
     ...PROBLEMS.map((p) => [
         `problem:${p.id}`,

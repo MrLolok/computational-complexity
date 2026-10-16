@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import Tex from "@/components/Tex";
 import { texHtml } from "@/lib/tex";
-import { final, formulaBtn, ui } from "@/lib/tokens";
+import { formulaBtn, outcomeClass, ui } from "@/lib/tokens";
 import { CheckRow } from "./CheckRow";
 
 /** formule tra cui scegliere: [LaTeX, soddisfacibile] */
@@ -75,7 +75,7 @@ export default function SatUnsat() {
                     )}
                 </CheckRow>
             </div>
-            <div className={final(s1 && u2)}>
+            <div className={outcomeClass(s1 && u2)}>
                 {s1 && u2 ? "Sì: la coppia sta in SAT-UNSAT." : "No: almeno uno dei due controlli fallisce."}
             </div>
         </>

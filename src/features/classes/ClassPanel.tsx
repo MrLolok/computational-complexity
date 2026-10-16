@@ -8,7 +8,7 @@ import ClassChip from "@/components/ClassChip";
 import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
 import Tex from "@/components/Tex";
-import { ALIAS_TEX, C, CLASS_PROBLEMS, TEX } from "@/data/classes/classes";
+import { ALIAS_TEX, CLASS_CONTENT, CLASS_PROBLEMS, TEX } from "@/data/classes/classes";
 import { EXAM_QUESTIONS } from "@/data/classes/examQuestions";
 import { TOWER_OF } from "@/data/hierarchy/tower";
 import { THEOREMS } from "@/data/theorems/theorems";
@@ -43,7 +43,7 @@ function QA({ t }: { t: ExamQuestion }) {
 
 /** scheda di una classe */
 export default function ClassPanel({ id }: { id: ClassId }) {
-    const c = C[id];
+    const c = CLASS_CONTENT[id];
     const rg = relGroups(id);
     const tr = EXAM_QUESTIONS.filter((t) => t.c.includes(id));
     const probs = CLASS_PROBLEMS[id];

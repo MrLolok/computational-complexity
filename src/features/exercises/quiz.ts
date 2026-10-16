@@ -1,26 +1,26 @@
 import type { Trap } from "@/data/problems/problems";
 
-import { ORDER, PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
+import { CLASSIFICATION_ORDER, PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
 import { shuffle } from "@/lib/shuffle";
 
 /* Quiz sui problemi: domande casuali, da creare solo in gestori di eventi o effetti. */
 
 function distractors(correct: string, n: number) {
-    const i = ORDER.indexOf(correct);
-    const near = ORDER.filter((o) => o !== correct).sort(
-        (a, b) => Math.abs(ORDER.indexOf(a) - i) - Math.abs(ORDER.indexOf(b) - i),
+    const i = CLASSIFICATION_ORDER.indexOf(correct);
+    const near = CLASSIFICATION_ORDER.filter((o) => o !== correct).sort(
+        (a, b) => Math.abs(CLASSIFICATION_ORDER.indexOf(a) - i) - Math.abs(CLASSIFICATION_ORDER.indexOf(b) - i),
     );
     return shuffle(near.slice(0, 6)).slice(0, n);
 }
 
 export type QuizMode = "mix" | "cls" | "cpl" | "exam";
-export const QMODES: [QuizMode, string][] = [
+export const QUIZ_MODES: [QuizMode, string][] = [
     ["mix", "Misto"],
     ["cls", "In quale classe?"],
     ["cpl", "Il complemento"],
     ["exam", "Trappole d'esame"],
 ];
-export const EXAMQ = PROBLEMS.flatMap((p) => p.traps.filter((t) => t.q).map((t) => ({ ...t, pid: p.id })));
+export const EXAM_TRAPS = PROBLEMS.flatMap((p) => p.traps.filter((t) => t.q).map((t) => ({ ...t, pid: p.id })));
 
 export type QuizQuestion =
     | { type: "exam"; pid: string; trap: Trap; opts: string[]; right: string }
@@ -30,7 +30,7 @@ export type QuizQuestion =
 export function newQuestion(qmode: QuizMode): QuizQuestion {
     const mode = qmode === "mix" ? shuffle(["cls", "cls", "cpl", "exam", "exam"] as const)[0] : qmode;
     if (mode === "exam") {
-        const t = shuffle(EXAMQ)[0];
+        const t = shuffle(EXAM_TRAPS)[0];
         return { type: "exam", pid: t.pid, trap: t, opts: ["SÌ", "NO", "altro"], right: t.a! };
     }
     if (mode === "cpl") {

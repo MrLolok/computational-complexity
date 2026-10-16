@@ -4,22 +4,22 @@ import { useState } from "react";
 
 import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
-import { RP, RP_DEFAULT, RQUICK } from "@/data/hierarchy/reductions";
+import { DEFAULT_REDUCTION, REDUCTION_EXERCISES, REDUCTION_PROBLEMS } from "@/data/hierarchy/reductions";
 import { plainMath } from "@/lib/mathNotation";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
-import { rSub, shortName } from "./reductions";
+import { reduces, shortName } from "./reductionRules";
 
-const byId = (id: string) => RP.find((r) => r.id === id) ?? RP[0];
+const byId = (id: string) => REDUCTION_PROBLEMS.find((r) => r.id === id) ?? REDUCTION_PROBLEMS[0];
 const label = "flex min-w-0 max-w-full flex-col gap-1 font-ui text-xs font-semibold text-muted";
 
 /** riduzioni tra problemi completi dei piani: esiste A → B? */
 export default function Reductions() {
-    const [a, setA] = useState(RP_DEFAULT[0]);
-    const [b, setB] = useState(RP_DEFAULT[1]);
+    const [a, setA] = useState(DEFAULT_REDUCTION[0]);
+    const [b, setB] = useState(DEFAULT_REDUCTION[1]);
     const A = byId(a),
         B = byId(b);
-    const [r, why] = rSub(A.cls, B.cls);
+    const [r, why] = reduces(A.cls, B.cls);
 
     return (
         <>
@@ -27,7 +27,7 @@ export default function Reductions() {
                 <label className={label}>
                     Da (problema A)
                     <select className={ui.select} value={a} onChange={(e) => setA(e.target.value)}>
-                        {RP.map((x) => (
+                        {REDUCTION_PROBLEMS.map((x) => (
                             <option key={x.id} value={x.id}>
                                 {plainMath(x.label)}
                             </option>
@@ -40,7 +40,7 @@ export default function Reductions() {
                 <label className={label}>
                     A (problema B)
                     <select className={ui.select} value={b} onChange={(e) => setB(e.target.value)}>
-                        {RP.map((x) => (
+                        {REDUCTION_PROBLEMS.map((x) => (
                             <option key={x.id} value={x.id}>
                                 {plainMath(x.label)}
                             </option>
@@ -50,7 +50,7 @@ export default function Reductions() {
             </div>
             <p className={ui.hint}>Gli esercizi della dispensa (cap. 17.2.1):</p>
             <div className="flex flex-wrap gap-1.5">
-                {RQUICK.map(([x, y]) => (
+                {REDUCTION_EXERCISES.map(([x, y]) => (
                     <button
                         key={x + y}
                         type="button"

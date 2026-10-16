@@ -35,7 +35,7 @@ const flat = (h: string) =>
         .replace(/ᵢ/g, "i");
 
 /** id dei problemi citati da un teorema */
-export function thProblems(t: Theorem): string[] {
+export function problemsInTheorem(t: Theorem): string[] {
     if (TH_PROB[t.id]) return TH_PROB[t.id];
     const txt = " " + flat(t.nome + " · " + t.enunciato) + " ";
     const esc = (x: string) => flat(x).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -49,7 +49,7 @@ export function thProblems(t: Theorem): string[] {
     return (TH_PROB[t.id] = out);
 }
 
-export const theoremsForProblem = (pid: string) => THEOREMS.filter((t) => thProblems(t).includes(pid));
+export const theoremsForProblem = (pid: string) => THEOREMS.filter((t) => problemsInTheorem(t).includes(pid));
 
 const chapNum = (c: string) => {
     const m = String(c || "").match(/^\s*(\d+)/);

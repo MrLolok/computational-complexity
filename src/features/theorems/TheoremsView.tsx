@@ -11,14 +11,21 @@ import RichHtml from "@/components/RichHtml";
 import Walkthrough from "@/components/Walkthrough";
 import { IDS, NAME, PLAIN } from "@/data/classes/classes";
 import { PROBLEM_BY } from "@/data/problems/problems";
-import { PRIORITY, PROOF, PROOF_KIND, TOP } from "@/data/theorems/proofs";
+import { HIGH_PRIORITY_COUNT, PRIORITY, PROOF, PROOF_KIND } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
 import walkthroughs from "@/data/theorems/walkthroughs.json";
 import { htmlToPlain } from "@/lib/plainText";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
 import { useHash } from "@/lib/useHash";
-import { chapterTitle, filterTheorems, groupByChapter, groupByPriority, thProblems, whereText } from "./theorems";
+import {
+    chapterTitle,
+    filterTheorems,
+    groupByChapter,
+    groupByPriority,
+    problemsInTheorem,
+    whereText,
+} from "./theorems";
 
 const PREFIX = "teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
@@ -67,7 +74,7 @@ const TheoremRow = memo(function TheoremRow({
     traceTitles: Record<string, string>;
 }) {
     const cls = (t.classi || []).filter((c) => NAME[c]);
-    const pr = thProblems(t);
+    const pr = problemsInTheorem(t);
     const pf = PROOF[t.id];
     const lesson = walkthroughs[t.id as keyof typeof walkthroughs];
     /* le spiegazioni hanno migliaia di formule: si rendono solo quando la si apre */
@@ -256,8 +263,9 @@ export default function TheoremsView({
                 in testo.
             </p>
             <p className={`${ui.noteOk} mb-4`}>
-                I {TOP} teoremi segnati con ★ servono in almeno 8 domande delle tracce ciascuno e da soli coprono circa
-                due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per vederli per primi.
+                I {HIGH_PRIORITY_COUNT} teoremi segnati con ★ servono in almeno 8 domande delle tracce ciascuno e da
+                soli coprono circa due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per
+                vederli per primi.
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 pb-1.5">
                 <label className={ui.search} htmlFor="thq">

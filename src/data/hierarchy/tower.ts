@@ -37,7 +37,7 @@ export type TowerNode = {
     map?: ClassId;
 };
 
-export const TW: Record<TowerId, TowerNode> = {
+export const TOWER_NODES: Record<TowerId, TowerNode> = {
     L0: { x: 260, y: 790, lab: "P", sub: "Δ₀ᴾ = Σ₀ᴾ = Π₀ᴾ", c: "P", map: "P" },
     S1: { lv: 1, k: "S", x: 130, y: 700, lab: "NP", sub: "Σ₁ᴾ", c: "NP", map: "NP" },
     P1: { lv: 1, k: "Pi", x: 390, y: 700, lab: "coNP", sub: "Π₁ᴾ", c: "coNP", map: "coNP" },
@@ -56,7 +56,7 @@ export const TW: Record<TowerId, TowerNode> = {
 };
 
 /** inclusioni della torre, dal basso verso l'alto */
-export const TE: [TowerId, TowerId][] = [
+export const TOWER_EDGES: [TowerId, TowerId][] = [
     ["L0", "S1"],
     ["L0", "P1"],
     ["S1", "DP"],
@@ -93,7 +93,7 @@ export const TOWER_OF: Partial<Record<ClassId, TowerId>> = {
 };
 
 /** fasce dei piani: [piano, y iniziale, y finale] */
-export const BANDS: [number, number, number][] = [
+export const TOWER_BANDS: [number, number, number][] = [
     [0, 760, 820],
     [1, 672, 728],
     [2, 462, 588],
@@ -102,7 +102,7 @@ export const BANDS: [number, number, number][] = [
 ];
 
 export type Hypothesis = { id: string; label: string; merged: TowerId[]; tag: string; note: string };
-export const HYP: Hypothesis[] = [
+export const HYPOTHESES: Hypothesis[] = [
     { id: "none", label: "Nessuna ipotesi: com'è oggi", merged: [], tag: "", note: "" },
     {
         id: "PNP",
@@ -156,7 +156,7 @@ export const HYP: Hypothesis[] = [
 ];
 
 /** esempio di QBF per ogni nodo Σ/Π della torre */
-export const QEX: Partial<Record<TowerId, { f: string; w: string }>> = {
+export const QBF_BY_NODE: Partial<Record<TowerId, { f: string; w: string }>> = {
     S1: {
         f: "$\\exists p\\ \\exists q.\\ (p \\lor q) \\land \\neg p$",
         w: "vera: con $p$ falsa e $q$ vera la formula vale vero (appunti Lez. 9 §3).",
@@ -192,7 +192,7 @@ export const QEX: Partial<Record<TowerId, { f: string; w: string }>> = {
 };
 
 /** problemi completi per piano: [lato Σ, lato Π] */
-export const QCOMP: Record<number, [string, string]> = {
+export const COMPLETE_BY_LEVEL: Record<number, [string, string]> = {
     1: [
         "$\\mathrm{SAT} = \\mathrm{QSAT}_1$, CLIQUE, TSP(D), 3-COLORING e gli altri NP-completi",
         "VALIDITY, $\\mathrm{co\\text{-}SAT} = \\mathrm{co\\text{-}QSAT}_1$, i complementi di HAMILTON PATH e TSP(D)",

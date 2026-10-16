@@ -1,6 +1,6 @@
 import type { TowerId } from "@/data/hierarchy/tower";
 
-import { TE, TW } from "@/data/hierarchy/tower";
+import { TOWER_EDGES, TOWER_NODES } from "@/data/hierarchy/tower";
 
 /* Torre dei piani: catene di inclusioni del nodo scelto e misure del disegno. */
 /** classi della torre raggiungibili da id seguendo le inclusioni verso l'alto o verso il basso */
@@ -9,7 +9,7 @@ function reach(id: TowerId, up: boolean): Set<TowerId> {
         st: TowerId[] = [id];
     while (st.length) {
         const a = st.pop();
-        TE.forEach(([x, y]) => {
+        TOWER_EDGES.forEach(([x, y]) => {
             const [from, to] = up ? [x, y] : [y, x];
             if (from === a && !out.has(to)) {
                 out.add(to);
@@ -20,9 +20,9 @@ function reach(id: TowerId, up: boolean): Set<TowerId> {
     return out;
 }
 /** classi della torre che contengono id (tutte quelle sopra) */
-export const tUp = (id: TowerId) => reach(id, true);
+export const towerAbove = (id: TowerId) => reach(id, true);
 /** classi della torre contenute in id (tutte quelle sotto) */
-export const tDown = (id: TowerId) => reach(id, false);
+export const towerBelow = (id: TowerId) => reach(id, false);
 export type NodeState = "sel" | "sub" | "sup" | "far";
 export function nodeState(id: TowerId, sel: TowerId, up: Set<TowerId>, dn: Set<TowerId>): NodeState {
     if (id === sel) return "sel";
@@ -44,7 +44,7 @@ export function mergeBox(ids: TowerId[]) {
         x1 = -1e9,
         y1 = -1e9;
     ids.forEach((id) => {
-        const n = TW[id];
+        const n = TOWER_NODES[id];
         const w = nodeWidth(id) / 2;
         x0 = Math.min(x0, n.x - w);
         x1 = Math.max(x1, n.x + w);
