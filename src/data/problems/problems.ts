@@ -117,7 +117,7 @@ export const PROBLEMS: Problem[] = [
         ext: true,
         def: "Dato un grafo orientato con $n$ nodi e due nodi $x$ e $y$: esiste un cammino da $x$ a $y$?",
         brief: "Una MdT nondeterministica ricorda solo il nodo corrente e il prossimo: spazio $O(\\log n)$.",
-        why: "Una macchina nondeterministica indovina un cammino mantenendo il nodo corrente e un contatore di $O(\\log n)$ bit. Questo dà un algoritmo in spazio logaritmico nondeterministico. Una visita del grafo risolve il problema in tempo polinomiale; la simulazione di Savitch usa spazio deterministico $O(\\log^2 n)$. Ogni problema di NL si riduce alla raggiungibilità nel grafo delle configurazioni.",
+        why: "Una macchina nondeterministica indovina un cammino tenendo in memoria solo il nodo corrente e un contatore di $O(\\log n)$ bit, quindi lavora in spazio logaritmico nondeterministico. Una visita del grafo risolve il problema in tempo polinomiale; la simulazione di Savitch usa spazio deterministico $O(\\log^2 n)$. Ogni problema di NL si riduce alla raggiungibilità nel grafo delle configurazioni.",
         comp: "NL-completo: decidere un qualsiasi problema di NL equivale a cercare un cammino nel grafo delle configurazioni della macchina, quindi ogni problema di NL si riduce a REACHABILITY in spazio logaritmico.",
         compl: "Il complemento chiede se $y$ non è raggiungibile da $x$. Appartiene a $\\mathrm{coNL} = \\mathrm{NL}$.",
         complLab: "NL-completo",
@@ -127,7 +127,7 @@ export const PROBLEMS: Problem[] = [
                 n: "Il teorema di Savitch, $\\mathrm{NSPACE}(f) \\subseteq \\mathrm{SPACE}(f^2)$, si dimostra proprio risolvendo REACHABILITY sul grafo delle configurazioni. È la domanda di E26#1 e FE23#6 ($\\mathrm{NSPACE}(\\log n)$ contro $\\mathrm{SPACE}((\\log n)^2)$).",
             },
             {
-                n: "Il costo della riduzione conta: una trasformazione che risolve già il problema iniziale non dimostra la sua appartenenza alla classe del problema di arrivo.",
+                n: "Se la riduzione è così costosa da risolvere già il problema di partenza, non dimostra che questo stia nella classe del problema di arrivo.",
             },
         ],
         src: [
@@ -197,7 +197,7 @@ export const PROBLEMS: Problem[] = [
         full: false,
         def: "Si possono colorare i nodi di un grafo con 2 colori in modo che due nodi collegati abbiano sempre colori diversi?",
         brief: "Colorato un nodo, i vicini sono obbligati: una visita trova il conflitto (ciclo dispari) in tempo polinomiale.",
-        why: "Una visita propaga due colori alternati ai vertici adiacenti. Un conflitto si verifica esattamente in presenza di un ciclo dispari. Il grafo è quindi 2-colorabile se e solo se è bipartito; questa proprietà è decidibile anche in spazio logaritmico.",
+        why: "Una visita propaga due colori alternati ai vertici adiacenti e incontra un conflitto esattamente quando il grafo ha un ciclo dispari. Il grafo è quindi 2-colorabile se e solo se è bipartito; questa proprietà è decidibile anche in spazio logaritmico.",
         comp: "Non è noto completo per nessuna classe del corso.",
         ext_t: '"Anzi in L" non sta nelle fonti del corso. È un risultato della letteratura (la raggiungibilità su grafi non orientati sta in L, Reingold 2005), riportato negli appunti (Lezione 8 §9). All\'esame basta $\\mathrm{2\\text{-}COL} \\in \\mathrm{P}$.',
         traps: [
@@ -212,7 +212,7 @@ export const PROBLEMS: Problem[] = [
                 c: "ND#1",
                 q: "È vero che 2-COL non può essere deciso da una MdT nondeterministica in spazio polinomiale?",
                 a: "NO",
-                e: "$\\mathrm{2\\text{-}COL} \\in \\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$. Nella soluzione dello studente 2-COL è trattato come P-completo: non lo è (non è noto).",
+                e: "$\\mathrm{2\\text{-}COL} \\in \\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$. La soluzione dello studente tratta 2-COL come P-completo, ma non è noto che lo sia.",
             },
         ],
         src: [
@@ -231,7 +231,7 @@ export const PROBLEMS: Problem[] = [
         def: "Data una rete con capacità intere sugli archi, una sorgente $s$, un pozzo $t$ e un intero $K$: esiste un flusso da $s$ a $t$ di valore almeno $K$?",
         brief: "Si migliora il flusso con cammini nella rete residua; la versione furba costa $O(n^5)$.",
         why: "Si aumenta il flusso lungo cammini dalla sorgente al pozzo nella rete residua, rispettando capacità e conservazione. Scegliere cammini aumentanti minimi per numero di archi dà un numero polinomiale di aumenti, anche quando le capacità sono codificate in binario. Il valore massimo coincide con la capacità di un taglio minimo.",
-        comp: "P-completo: ogni problema di P si riduce a MAX FLOW in spazio logaritmico. Il corso lo enuncia senza prova (riepilogo della dispensa).",
+        comp: "P-completo: ogni problema di P si riduce a MAX FLOW in spazio logaritmico.",
         traps: [
             {
                 c: "F02#1",
@@ -274,7 +274,7 @@ export const PROBLEMS: Problem[] = [
         ext: true,
         def: "Dato un sistema di disequazioni lineari, con soluzioni reali (non per forza intere): esiste una soluzione?",
         brief: "Come INTEGER PROGRAMMING ma con soluzioni reali: si risolve in tempo polinomiale.",
-        why: "<p><b>L’idea:</b> trovare numeri che rispettino tutti i vincoli contemporaneamente. Con $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$, la coppia $x = 2$, $y = 1$ funziona: verifica una disequazione alla volta.</p><p>Ogni vincolo delimita una regione; una soluzione è un punto nella loro intersezione. Sono ammessi anche valori frazionari: $x = 1{,}5$ e $y = 0{,}5$ è un’altra soluzione. In INTEGER PROGRAMMING, invece, le variabili devono essere intere.</p><p>Con coefficienti razionali codificati in binario, decidere se esiste una soluzione richiede tempo polinomiale nella lunghezza dell’input. Algoritmi come il metodo dell’ellissoide garantiscono questo limite; il simplesso può richiedere tempo esponenziale nel caso peggiore.</p>",
+        why: "<p>Si cercano numeri che rispettino tutti i vincoli insieme. Con $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$, la coppia $x = 2$, $y = 1$ funziona, e lo si verifica una disequazione alla volta.</p><p>Ogni vincolo delimita una regione e una soluzione è un punto nella loro intersezione. Sono ammessi anche valori frazionari: $x = 1{,}5$ e $y = 0{,}5$ è un'altra soluzione. In INTEGER PROGRAMMING, invece, le variabili devono essere intere.</p><p>Con coefficienti razionali codificati in binario, si decide in tempo polinomiale nella lunghezza dell'input se esiste una soluzione. Il metodo dell'ellissoide, per esempio, garantisce questo limite; il simplesso nel caso peggiore può richiedere tempo esponenziale.</p>",
         comp: "P-completo.",
         ext_t: 'La P-completezza non sta nelle fonti del corso, che dicono solo "in P". È un risultato della letteratura (Dobkin, Lipton, Reiss, 1979) riportato negli appunti (Lezione 8 §9).',
         traps: [
@@ -297,8 +297,8 @@ export const PROBLEMS: Problem[] = [
         full: false,
         def: "Dato un intero $N$ scritto in binario: $N$ è primo?",
         brief: "In P, ma non è noto P-completo. L'input è lungo $\\log N$ cifre: provare i divisori è esponenziale.",
-        why: "La lunghezza dell’input è $O(\\log N)$, perché $N$ è scritto in binario. Provare i divisori fino a $\\sqrt{N}$ non è polinomiale rispetto a questa lunghezza. Esistono invece test deterministici di primalità polinomiali, come AKS. Non è nota la P-completezza di PRIMES.",
-        comp: 'Non è noto P-completo. La dispensa, negli esercizi: "would be true if PRIMES were P-complete, but we don\'t know that".',
+        why: "Con $N$ scritto in binario, l'input è lungo $O(\\log N)$. Provare i divisori fino a $\\sqrt{N}$ non è polinomiale rispetto a questa lunghezza, ma esistono test di primalità deterministici e polinomiali, come AKS. Non si sa se PRIMES sia P-completo.",
+        comp: "Non è noto P-completo.",
         ext_t: "Il nome dell'algoritmo (AKS, Agrawal, Kayal e Saxena, 2002) non compare nelle fonti del corso.",
         traps: [
             {
@@ -339,7 +339,7 @@ export const PROBLEMS: Problem[] = [
         ext: true,
         def: "Formula CNF in cui ogni clausola ha al più un letterale positivo (clausole di Horn): è soddisfacibile?",
         brief: "Si parte da tutto falso e si rende vero solo ciò che è obbligatorio: tempo lineare.",
-        why: "Si parte con gli atomi falsi e si rendono veri solo quelli imposti dai fatti e dalle implicazioni. Si continua fino a un punto fisso. Se una clausola negativa risulta violata, la formula è insoddisfacibile; altrimenti l’assegnamento ottenuto la soddisfa. La propagazione può essere implementata in tempo lineare.",
+        why: "Si parte con tutti gli atomi falsi e si rendono veri solo quelli imposti dai fatti e dalle implicazioni, fino a un punto fisso. Se a quel punto una clausola negativa è violata, la formula è insoddisfacibile; altrimenti l'assegnamento ottenuto la soddisfa. La propagazione si implementa in tempo lineare.",
         comp: "P-completo.",
         ext_t: "La P-completezza non sta nelle fonti del corso: viene dal libro di riferimento ed è negli appunti (Lezione 8 §9).",
         traps: [
@@ -361,7 +361,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Data una formula booleana in CNF: esiste un assegnamento delle variabili che la rende vera?",
         brief: "Certificato: l'assegnamento. Cook-Levin: ogni problema di NP si riduce a SAT. $\\mathrm{SAT} = \\mathrm{QSAT}_1$.",
-        why: "Un assegnamento è un certificato: controllare che ogni clausola sia vera richiede tempo polinomiale. Il teorema di Cook–Levin traduce la computazione di una macchina nondeterministica in una formula soddisfacibile esattamente quando esiste un ramo accettante. Con un solo blocco esistenziale, $\\mathrm{QSAT}_1$ coincide con SAT.",
+        why: "Un assegnamento è un certificato: controllare che ogni clausola sia vera richiede tempo polinomiale. Il teorema di Cook-Levin traduce la computazione di una macchina nondeterministica in una formula soddisfacibile esattamente quando esiste un ramo accettante. Con un solo blocco esistenziale, $\\mathrm{QSAT}_1$ coincide con SAT.",
         comp: "NP-completo (Cook-Levin). Coincide con $\\mathrm{QSAT}_1$: una QBF con il solo blocco $\\exists$ chiede proprio se esiste un assegnamento che la rende vera.",
         cpl: "COSAT",
         traps: [
@@ -384,7 +384,7 @@ export const PROBLEMS: Problem[] = [
                 e: "Un problema NP-completo è hard per ogni classe contenuta in NP, quindi anche per L.",
             },
             {
-                n: "SAT e VALIDITY si riducono l’uno all’altro in tempo polinomiale se e solo se $\\mathrm{NP} = \\mathrm{coNP}$.",
+                n: "SAT e VALIDITY si riducono l'uno all'altro in tempo polinomiale se e solo se $\\mathrm{NP} = \\mathrm{coNP}$.",
             },
         ],
         src: [
@@ -401,7 +401,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "SAT in cui ogni clausola ha al più 3 letterali.",
         brief: "SAT si riduce a 3-SAT spezzando le clausole lunghe con variabili nuove.",
-        why: "Un assegnamento si verifica come per SAT. Una clausola lunga si può trasformare in clausole con al più tre letterali introducendo variabili ausiliarie e preservando la soddisfacibilità. La restrizione a tre letterali mantiene quindi la difficoltà di SAT.",
+        why: "Un assegnamento si verifica come per SAT. Introducendo variabili ausiliarie, una clausola lunga si trasforma in clausole con al più tre letterali preservando la soddisfacibilità, quindi la restrizione a tre letterali mantiene la difficoltà di SAT.",
         comp: "NP-completo.",
         traps: [
             {
@@ -443,7 +443,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Dato un circuito booleano con porte AND, OR e NOT: esiste un input che dà uscita 1?",
         brief: "La versione a circuito di SAT. Da non confondere con CIRC SAT.",
-        why: "Il certificato è un assegnamento agli ingressi. Si valuta il circuito in ordine topologico, una porta alla volta, e si controlla l’uscita. Una formula SAT può essere rappresentata da un circuito di dimensione polinomiale.",
+        why: "Il certificato è un assegnamento agli ingressi. Si valuta il circuito in ordine topologico, una porta alla volta, e si controlla l'uscita. Una formula di SAT si può scrivere come circuito di dimensione polinomiale.",
         comp: "NP-completo.",
         traps: [
             {
@@ -461,7 +461,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Dato un grafo e un intero $K$: esistono $K$ nodi tutti collegati tra loro?",
         brief: "Certificato: i $K$ nodi. Una clique in $G$ è un insieme indipendente nel grafo complementare.",
-        why: "<p>Una clique è un gruppo di vertici in cui <b>ogni coppia è collegata</b>. Il certificato sono i $K$ vertici scelti: si controllano al più $K(K-1)/2$ coppie.</p><p><b>Grafo complementare:</b> si mantengono tutti i vertici e si invertono gli archi fra vertici distinti. Se $A$ e $B$ erano collegati, nel complementare non lo sono; se non erano collegati, lo diventano. Non si aggiungono cappi.</p><p>Per esempio, il complementare di un triangolo completo su $A$, $B$, $C$ ha gli stessi tre vertici e nessun arco. Quindi una clique in $G$ diventa un insieme indipendente nel complementare di $G$: gli archi cambiano, i vertici scelti restano gli stessi.</p>",
+        why: "<p>Una clique è un gruppo di vertici in cui ogni coppia è collegata. Il certificato sono i $K$ vertici scelti: si controllano al più $K(K-1)/2$ coppie.</p><p>Il grafo complementare ha gli stessi vertici e inverte gli archi fra vertici distinti: se $A$ e $B$ erano collegati, nel complementare non lo sono; se non lo erano, lo diventano. Non si aggiungono cappi.</p><p>Per esempio, il complementare di un triangolo completo su $A$, $B$, $C$ ha gli stessi tre vertici e nessun arco. Una clique in $G$ diventa così un insieme indipendente nel complementare di $G$: cambiano gli archi, i vertici scelti restano gli stessi.</p>",
         comp: "NP-completo.",
         traps: [
             {
@@ -480,7 +480,7 @@ export const PROBLEMS: Problem[] = [
                 c: "L18#6",
                 q: "CLIQUE si può risolvere in $O(2^{n/2})$?",
                 a: "SÌ",
-                e: "<b>$m$ è il numero di nodi; $n$ è la lunghezza dell’intero input in bit.</b> Il limite richiesto usa $n$, non $m$.<br><br><b>1. Quanto è grande l’input?</b> Con la codifica tramite matrice di adiacenza, un grafo di $m$ nodi richiede $m$ righe e $m$ colonne: almeno $m^2$ bit, uno per ogni cella. Quindi $n \\ge m^2$ e $m \\le \\sqrt{n}$.<br><br><b>2. Che algoritmo usiamo?</b> Proviamo tutti i $2^m$ gruppi di nodi. Per ogni gruppo controlliamo che contenga almeno $K$ nodi e che ogni coppia sia collegata. Il controllo richiede tempo polinomiale, quindi il totale è al più $2^{\\sqrt{n}} \\cdot \\mathrm{poly}(n)$.<br><br><b>3. Perché basta?</b> Per $n$ abbastanza grande, $\\sqrt{n}$ cresce molto più lentamente di $n/2$. Anche includendo il costo polinomiale dei controlli, il tempo rimane entro $O(2^{n/2})$: infatti $\\sqrt{n} + k \\log _2 n \\le n/2$ per ogni $k$ fissato, da un certo $n$ in poi.<br><br><b>Esempio:</b> con 10 nodi, la sola matrice ha 100 celle. I gruppi da provare sono $2^{10} = 1.024$, mentre $2^{n/2}$ è almeno $2^{50}$. La differenza nasce dal fatto che $n$ conta i bit della descrizione.",
+                e: "$m$ è il numero di nodi e $n$ la lunghezza dell'intero input in bit: il limite richiesto usa $n$, non $m$.<br><br>Con la codifica tramite matrice di adiacenza, un grafo di $m$ nodi richiede $m$ righe e $m$ colonne: almeno $m^2$ bit, uno per ogni cella. Quindi $n \\ge m^2$ e $m \\le \\sqrt{n}$.<br><br>L'algoritmo prova tutti i $2^m$ gruppi di nodi e per ognuno controlla che contenga almeno $K$ nodi e che ogni coppia sia collegata. Il controllo richiede tempo polinomiale, quindi il totale è al più $2^{\\sqrt{n}} \\cdot \\mathrm{poly}(n)$.<br><br>Questo basta perché, per $n$ abbastanza grande, $\\sqrt{n}$ cresce molto più lentamente di $n/2$. Anche con il costo polinomiale dei controlli il tempo resta entro $O(2^{n/2})$: infatti $\\sqrt{n} + k \\log _2 n \\le n/2$ per ogni $k$ fissato, da un certo $n$ in poi.<br><br>Per esempio, con 10 nodi la sola matrice ha 100 celle: i gruppi da provare sono $2^{10} = 1.024$, mentre $2^{n/2}$ è almeno $2^{50}$.",
             },
             {
                 c: "ND#6",
@@ -507,12 +507,12 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Dato un grafo e un intero $K$: possiamo scegliere almeno $K$ vertici senza che un arco colleghi due vertici scelti?",
         brief: "Scegli $K$ vertici: nessuna coppia scelta deve essere collegata da un arco. Gli archi verso vertici non scelti sono ammessi.",
-        why: "<p><b>L’idea:</b> scegli alcuni vertici e controlla soltanto i collegamenti fra quelli scelti. Se anche una sola coppia è collegata da un arco, il gruppo non è indipendente.</p><p><b>Esempio $A$—$B$—$C$—$D$, con $K = 2$:</b> $\\{A, C\\}$ va bene, perché non c’è un arco diretto $A$—$C$. $\\{A, B\\}$ non va bene, perché l’arco $A$—$B$ collega due vertici scelti. Anche $\\{A, D\\}$ e $\\{B, D\\}$ vanno bene. Con $K = 3$ la risposta è no: ogni terna contiene almeno una coppia collegata.</p><p><b>Indipendente non significa isolato:</b> $A$ può essere collegato a $B$, purché $B$ resti fuori dal gruppo. $A$ e $C$ possono anche essere connessi dal percorso $A$—$B$—$C$: quello che è vietato è un arco diretto fra due vertici scelti.</p><p><b>Perché appartiene a NP:</b> il certificato è l’elenco dei $K$ vertici. Si controlla che siano distinti e che nessuna delle loro coppie formi un arco. Verificare un gruppo già proposto è polinomiale; trovare un gruppo adatto può essere molto più difficile.</p><p><b>Perché è NP-hard:</b> si può tradurre 3-SAT in questo problema. Per ogni clausola si crea un triangolo con un vertice per ogni occorrenza di letterale; così puoi sceglierne al massimo uno per clausola. Si collegano inoltre le occorrenze opposte, come $x$ e $\\neg x$, per impedirti di sceglierle insieme. Chiedere tanti vertici indipendenti quante sono le clausole equivale a scegliere un letterale vero per ciascuna, senza contraddizioni: esiste quel gruppo se e solo se la formula è soddisfacibile.</p>",
+        why: "<p>Scegli alcuni vertici e controlla soltanto i collegamenti fra quelli scelti: se anche una sola coppia è collegata da un arco, il gruppo non è indipendente.</p><p>Sul cammino $A$-$B$-$C$-$D$, con $K = 2$, $\\{A, C\\}$ va bene, perché non c'è un arco diretto $A$-$C$. $\\{A, B\\}$ non va bene, perché l'arco $A$-$B$ collega due vertici scelti. Vanno bene anche $\\{A, D\\}$ e $\\{B, D\\}$. Con $K = 3$ la risposta è no: ogni terna contiene almeno una coppia collegata.</p><p>Indipendente non vuol dire isolato: $A$ può essere collegato a $B$, purché $B$ resti fuori dal gruppo, e $A$ e $C$ possono essere connessi dal percorso $A$-$B$-$C$. È vietato solo un arco diretto fra due vertici scelti.</p><p>Il problema sta in NP: il certificato è l'elenco dei $K$ vertici, e si controlla che siano distinti e che nessuna delle loro coppie formi un arco. Verificare un gruppo già proposto è polinomiale; trovare un gruppo adatto può essere molto più difficile.</p><p>È NP-hard perché 3-SAT si traduce in questo problema. Per ogni clausola si crea un triangolo con un vertice per ogni occorrenza di letterale, così se ne può scegliere al massimo uno per clausola. Si collegano poi le occorrenze opposte, come $x$ e $\\neg x$, perché non si possano scegliere insieme. Chiedere tanti vertici indipendenti quante sono le clausole equivale allora a scegliere un letterale vero in ciascuna senza contraddizioni: il gruppo esiste se e solo se la formula è soddisfacibile.</p>",
         comp: "NP-completo.",
         traps: [
             {
                 c: "SP",
-                n: "Una macchina con oracolo CLIQUE decide INDEPENDENT SET passando all’oracolo il grafo complementare e lo stesso $K$: fra i vertici scelti, ogni arco assente nel grafo iniziale diventa presente nel complementare.",
+                n: "Una macchina con oracolo CLIQUE decide INDEPENDENT SET passando all'oracolo il grafo complementare e lo stesso $K$: fra i vertici scelti, ogni arco assente nel grafo iniziale diventa presente nel complementare.",
             },
         ],
         src: [["d", 'Cap. 13: "INDEPENDENT SET is NP-complete"']],
@@ -526,7 +526,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Dato un grafo e un intero $K$: esistono $K$ nodi che toccano tutti gli archi?",
         brief: "$S$ è indipendente se e solo se i nodi fuori da $S$ coprono tutti gli archi.",
-        why: "<p>Una copertura è un insieme di vertici che <b>tocca almeno un estremo di ogni arco</b>. Per verificarla, basta scorrere tutti gli archi.</p><p>Qui «complemento di $S$» significa <b>i vertici che non hai scelto</b>: $T = V \\setminus S$. Il grafo e i suoi archi restano invariati. Sul cammino $A$—$B$—$C$—$D$, $S = \\{A, C\\}$ è indipendente e $T = \\{B, D\\}$ copre tutti e tre gli archi.</p><p>Perché funziona? Se $S$ è indipendente, nessun arco ha entrambi gli estremi in $S$: almeno uno sta in $T$, dunque $T$ lo copre. Viceversa, se $T$ copre tutti gli archi, non può esserci un arco con entrambi gli estremi in $S$. Su $n$ vertici, scegliere $K$ vertici indipendenti equivale a una copertura di $n - K$ vertici.</p>",
+        why: "<p>Una copertura è un insieme di vertici che tocca almeno un estremo di ogni arco; per verificarla basta scorrere tutti gli archi.</p><p>Qui il complemento di $S$ è l'insieme dei vertici che non hai scelto, $T = V \\setminus S$, mentre il grafo e i suoi archi restano invariati. Sul cammino $A$-$B$-$C$-$D$, $S = \\{A, C\\}$ è indipendente e $T = \\{B, D\\}$ copre tutti e tre gli archi.</p><p>Se $S$ è indipendente, nessun arco ha entrambi gli estremi in $S$: almeno uno sta in $T$, che dunque lo copre. Viceversa, se $T$ copre tutti gli archi, non può esserci un arco con entrambi gli estremi in $S$. Su $n$ vertici, scegliere $K$ vertici indipendenti equivale quindi a trovare una copertura di $n - K$ vertici.</p>",
         comp: "NP-completo.",
         traps: [
             {
@@ -544,7 +544,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Dato un grafo: esiste un cammino che passa per ogni nodo esattamente una volta?",
         brief: "Certificato: l'ordine dei nodi. Il complemento è coNP-completo, non $\\Pi_2^{\\mathrm{P}}$-completo.",
-        why: "Il certificato è un ordine di tutti i vertici. Si controlla che nessuno compaia due volte e che ogni coppia consecutiva sia un arco. Non si richiede di tornare al vertice iniziale. Una riduzione da 3-SAT mostra la difficoltà del problema.",
+        why: "Il certificato è un ordine di tutti i vertici: si controlla che nessuno compaia due volte e che ogni coppia consecutiva sia un arco. Non serve tornare al vertice iniziale. La difficoltà si dimostra con una riduzione da 3-SAT.",
         comp: "NP-completo.",
         cpl: "COHP",
         traps: [
@@ -553,7 +553,7 @@ export const PROBLEMS: Problem[] = [
                 q: "Supponiamo $\\mathrm{EXP} \\subset \\mathrm{NEXP}$. È vero che HAMILTON PATH non è $\\Pi_2^{\\mathrm{P}}$-completo?",
                 a: "altro",
                 ac: "solo se $\\mathrm{NP} \\neq \\mathrm{coNP}$",
-                e: "Sarebbe $\\Pi_2^{\\mathrm{P}}$-completo se e solo se $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$. L’ipotesi $\\mathrm{EXP} \\subsetneq \\mathrm{NEXP}$ implica $\\mathrm{P} \\neq \\mathrm{NP}$, ma non decide se $\\mathrm{NP} = \\mathrm{coNP}$.",
+                e: "Sarebbe $\\Pi_2^{\\mathrm{P}}$-completo se e solo se $\\Pi_2^{\\mathrm{P}} \\subseteq \\mathrm{NP}$, cioè $\\mathrm{NP} = \\mathrm{coNP}$. L'ipotesi $\\mathrm{EXP} \\subsetneq \\mathrm{NEXP}$ implica $\\mathrm{P} \\neq \\mathrm{NP}$, ma non decide se $\\mathrm{NP} = \\mathrm{coNP}$.",
             },
             {
                 c: "F03#1",
@@ -657,11 +657,11 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Dato un sistema di disequazioni lineari: esiste una soluzione intera?",
         brief: "Con soluzioni intere è NP-completo; con soluzioni reali (LINEAR PROGRAMMING) è in P.",
-        why: "Le variabili devono assumere valori interi, quindi una soluzione reale del rilassamento non basta. Il certificato è una soluzione intera con codifica di lunghezza polinomiale; si controllano i vincoli con aritmetica binaria. Scelte sì/no possono essere rappresentate da variabili vincolate a 0 o 1.",
+        why: "Le variabili devono assumere valori interi, quindi una soluzione reale del rilassamento non basta. Il certificato è una soluzione intera con codifica di lunghezza polinomiale; si controllano i vincoli con aritmetica binaria. Una variabile vincolata a 0 o 1 rappresenta una scelta sì/no.",
         comp: "NP-completo.",
         traps: [
             {
-                n: "Contrasto da ricordare: INTEGER PROGRAMMING è NP-completo, LINEAR PROGRAMMING sta in P.",
+                n: "INTEGER PROGRAMMING è NP-completo, mentre LINEAR PROGRAMMING sta in P.",
             },
         ],
         src: [["d", 'Cap. 13: "INTEGER PROGRAMMING is NP-complete"']],
@@ -693,8 +693,8 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Data una formula booleana: è vera per ogni assegnamento delle variabili (è una tautologia)?",
         brief: "Il no ha un certificato corto (un assegnamento che la rende falsa). $\\varphi$ valida $\\iff \\neg\\varphi$ insoddisfacibile.",
-        why: "Un assegnamento che rende falsa la formula certifica una risposta no. La formula $\\varphi$ è valida esattamente quando $\\neg\\varphi$ è insoddisfacibile. Per provare la validità, trovare un solo assegnamento che la rende vera non è sufficiente.",
-        comp: "coNP-completo: se $L$ sta in coNP, il suo complemento sta in NP e si riduce a SAT con una riduzione $R$; allora $R'(x) = \\neg R(x)$ riduce $L$ a VALIDITY (dispensa cap. 14).",
+        why: "Un assegnamento che rende falsa la formula certifica una risposta no. La formula $\\varphi$ è valida esattamente quando $\\neg\\varphi$ è insoddisfacibile. Un solo assegnamento che la rende vera non basta a provarne la validità.",
+        comp: "coNP-completo: se $L$ sta in coNP, il suo complemento sta in NP e si riduce a SAT con una riduzione $R$; allora $R'(x) = \\neg R(x)$ riduce $L$ a VALIDITY.",
         compl: "Il complemento (esiste un assegnamento che rende falsa $\\varphi$) è SAT applicato a $\\neg\\varphi$: NP-completo.",
         complLab: "NP-completo",
         traps: [
@@ -763,12 +763,12 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Dato un grafo: è vero che non esiste nessun cammino hamiltoniano?",
         brief: "Complemento di un NP-completo: coNP-completo. Non è noto $\\Pi_2^{\\mathrm{P}}$-completo.",
-        why: "È il complemento di HAMILTON PATH. Un ordine hamiltoniano certifica una risposta no. Per rispondere sì si deve escludere l’esistenza di ogni cammino che visita tutti i vertici una sola volta.",
+        why: "È il complemento di HAMILTON PATH. Un ordine hamiltoniano certifica una risposta no; per rispondere sì bisogna escludere ogni cammino che visita tutti i vertici una sola volta.",
         comp: "coNP-completo.",
         cpl: "HP",
         traps: [
             {
-                n: "Distinguere: HAMILTON PATH è NP-completo, il suo complemento coNP-completo, e nessuno dei due è noto $\\Pi_2^{\\mathrm{P}}$-completo (F03#7).",
+                n: "HAMILTON PATH è NP-completo, il suo complemento è coNP-completo e nessuno dei due è noto $\\Pi_2^{\\mathrm{P}}$-completo (F03#7).",
             },
         ],
         src: [
@@ -844,8 +844,8 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Date le distanze tra le città e un intero $B$: il giro più corto ha lunghezza esattamente $B$?",
         brief: '"Ottimo $= B$" = "esiste un giro $\\le B$" (NP) e "nessun giro $\\le B - 1$" (coNP).',
-        why: "L’ottimo è $B$ se e solo se esiste un giro di costo $\\le B$ e non esiste un giro di costo $\\lt B$. Il primo controllo è di tipo NP, il secondo di tipo coNP. Trovare un giro da $B$ non certifica da solo che sia ottimo: occorre escludere giri più economici.",
-        comp: "DP-completo: riduzione da SAT-UNSAT (slide Lezione 9).",
+        why: "L'ottimo è $B$ se e solo se esiste un giro di costo $\\le B$ e non esiste un giro di costo $\\lt B$. Il primo controllo è di tipo NP, il secondo di tipo coNP. Trovare un giro da $B$ non certifica da solo che sia ottimo: occorre escludere giri più economici.",
+        comp: "DP-completo per riduzione da SAT-UNSAT.",
         traps: [
             {
                 c: "GE23#7",
@@ -877,8 +877,8 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Formula booleana quantificata $\\exists X_1\\, \\forall X_2\\, \\exists X_3 \\ldots \\varphi$ con $i$ blocchi di quantificatori alternati, il primo esistenziale: è vera?",
         brief: "$i$ blocchi alternati che iniziano con $\\exists$: $\\Sigma_i^{\\mathrm{P}}$-completo. $\\mathrm{QSAT}_1 = \\mathrm{SAT}$.",
-        why: "<p><b>$\\mathrm{QSAT}_1$:</b> $\\exists x\\, \\varphi$ è SAT: basta un assegnamento. <b>$\\mathrm{QSAT}_2$:</b> $\\exists x\\, \\forall y\\, \\varphi$ richiede una scelta di $x$ che funzioni per entrambi i valori di $y$. Esempio: $\\exists x\\, \\forall y\\, (x \\lor y)$ è vera scegliendo $x = 1$; scegliendo $x = 0$ fallisce per $y = 0$.</p><p>Al secondo livello la formula è $\\exists X\\, \\forall Y\\, \\varphi(X, Y)$. La macchina sceglie i valori di $X$ e li sostituisce in $\\varphi$. Deve poi stabilire se $\\varphi$ è vera per ogni possibile $Y$.</p><p>All’oracolo SAT chiede la domanda opposta: <b>«Esiste un $Y$ che rende falsa $\\varphi$ con questi valori di $X$?»</b>, cioè se $\\neg\\varphi(X, Y)$ è soddisfacibile. <b>Se l’oracolo risponde no</b>, non ci sono controesempi e la scelta di $X$ funziona. <b>Se risponde sì</b>, quella scelta viene scartata.</p><p>Con $i$ blocchi, dopo aver fissato il primo ne restano $i - 1$. Si nega la formula residua: i quantificatori si scambiano e il primo diventa $\\exists$, quindi la domanda appartiene a $\\Sigma_{i-1}^{\\mathrm{P}}$. L’oracolo decide questa domanda; la macchina ne inverte la risposta. Per $i = 1$, senza blocchi residui, basta valutare direttamente la formula.</p>",
-        comp: "$\\Sigma_i^{\\mathrm{P}}$-completo per ogni $i$. Casi da ricordare: $\\mathrm{QSAT}_1 = \\mathrm{SAT}$ (NP-completo), $\\mathrm{QSAT}_2$ è $\\Sigma_2^{\\mathrm{P}}$-completo.",
+        why: "<p>$\\mathrm{QSAT}_1$, cioè $\\exists x\\, \\varphi$, è SAT: basta un assegnamento. $\\mathrm{QSAT}_2$, cioè $\\exists x\\, \\forall y\\, \\varphi$, richiede una scelta di $x$ che funzioni per entrambi i valori di $y$. Per esempio $\\exists x\\, \\forall y\\, (x \\lor y)$ è vera scegliendo $x = 1$, mentre con $x = 0$ fallisce per $y = 0$.</p><p>Al secondo livello la formula è $\\exists X\\, \\forall Y\\, \\varphi(X, Y)$. La macchina sceglie i valori di $X$, li sostituisce in $\\varphi$ e deve poi stabilire se $\\varphi$ è vera per ogni possibile $Y$.</p><p>Per farlo chiede all'oracolo SAT la domanda opposta: esiste un $Y$ che rende falsa $\\varphi$ con questi valori di $X$, cioè $\\neg\\varphi(X, Y)$ è soddisfacibile? Se l'oracolo risponde no, non ci sono controesempi e la scelta di $X$ funziona; se risponde sì, quella scelta viene scartata.</p><p>Con $i$ blocchi, dopo aver fissato il primo ne restano $i - 1$. Negando la formula residua i quantificatori si scambiano e il primo diventa $\\exists$, quindi la domanda appartiene a $\\Sigma_{i-1}^{\\mathrm{P}}$: l'oracolo la decide e la macchina ne inverte la risposta. Per $i = 1$ non restano blocchi e basta valutare direttamente la formula.</p>",
+        comp: "$\\Sigma_i^{\\mathrm{P}}$-completo per ogni $i$: $\\mathrm{QSAT}_1 = \\mathrm{SAT}$ è NP-completo, $\\mathrm{QSAT}_2$ è $\\Sigma_2^{\\mathrm{P}}$-completo.",
         cpl: "COQSATi",
         traps: [
             {
@@ -924,7 +924,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Complemento di $\\mathrm{QSAT}_i$: la QBF $\\exists X_1\\, \\forall X_2 \\ldots \\varphi$ è falsa? Equivale a chiedere se $\\forall X_1\\, \\exists X_2 \\ldots \\neg\\varphi$ è vera.",
         brief: "Complemento di $\\mathrm{QSAT}_i$: $\\Pi_i^{\\mathrm{P}}$-completo. $\\mathrm{co\\text{-}QSAT}_1 = \\mathrm{co\\text{-}SAT}$.",
-        why: "<p>È la domanda opposta a $\\mathrm{QSAT}_i$: <b>la formula quantificata è falsa?</b> Non significa semplicemente mettere $\\forall$ davanti alla stessa formula.</p><p>Per negare una formula si scambiano $\\exists$ e $\\forall$ e si nega la parte finale: $\\neg(\\exists x\\, \\forall y\\, \\varphi)$ equivale a $\\forall x\\, \\exists y\\, \\neg\\varphi$. Esempio: $\\exists x\\, \\forall y\\, (x \\land y)$ è falsa, perché $y = 0$ la rende falsa qualunque $x$ si scelga. Il complemento risponde quindi sì.</p><p>$\\mathrm{QSAT}_i$ è completo per $\\Sigma_i^{\\mathrm{P}}$; il suo complemento è completo per $\\Pi_i^{\\mathrm{P}}$. Con $i = 1$ si ottiene co-SAT, cioè l’insoddisfacibilità.</p>",
+        why: "<p>È la domanda opposta a $\\mathrm{QSAT}_i$: la formula quantificata è falsa? Non vuol dire semplicemente mettere $\\forall$ davanti alla stessa formula.</p><p>Per negare una formula si scambiano $\\exists$ e $\\forall$ e si nega la parte finale: $\\neg(\\exists x\\, \\forall y\\, \\varphi)$ equivale a $\\forall x\\, \\exists y\\, \\neg\\varphi$. Per esempio $\\exists x\\, \\forall y\\, (x \\land y)$ è falsa, perché $y = 0$ la rende falsa qualunque $x$ si scelga, quindi il complemento risponde sì.</p><p>$\\mathrm{QSAT}_i$ è completo per $\\Sigma_i^{\\mathrm{P}}$ e il suo complemento è completo per $\\Pi_i^{\\mathrm{P}}$. Con $i = 1$ si ottiene co-SAT, cioè l'insoddisfacibilità.</p>",
         comp: "$\\Pi_i^{\\mathrm{P}}$-completo. Per $i = 1$: $\\mathrm{co\\text{-}QSAT}_1 = \\mathrm{co\\text{-}SAT}$, coNP-completo.",
         cpl: "QSATi",
         traps: [
@@ -980,9 +980,9 @@ export const PROBLEMS: Problem[] = [
         lv: "Σ₂",
         lab: "Σ<sub>2</sub><sup>P</sup>-completo",
         full: true,
-        def: "Scegli un gruppo di società che produca tutte le merci. Se le società scelte controllano un’altra società, includi anche quella. Il gruppo è minimale se non puoi togliere una o più società e continuare a rispettare queste regole. La domanda è: esiste un gruppo minimale che contiene la società indicata?",
+        def: "Scegli un gruppo di società che produca tutte le merci. Se le società scelte controllano un'altra società, includi anche quella. Il gruppo è minimale se non puoi togliere una o più società e continuare a rispettare queste regole. Esiste un gruppo minimale che contiene la società indicata?",
         brief: "Una società è strategica se compare in almeno un gruppo che produce tutto, rispetta i controlli e non può essere ridotto mantenendo queste condizioni.",
-        why: "<p><b>Quali società sono davvero indispensabili in almeno una scelta minimale?</b> Un insieme è ammissibile se produce tutte le merci e rispetta i controlli. Se $A$ e $B$ insieme controllano $C$ e scegli entrambe, devi includere anche $C$.</p><p>Esempio senza controlli: $A$ e $B$ producono la merce 1, $C$ produce la merce 2. $\\{A, C\\}$ e $\\{B, C\\}$ sono due scelte minimali: togliendo una qualsiasi società si perde una merce. $\\{A, B, C\\}$ non è minimale, perché puoi togliere $A$ oppure $B$. $A$ è strategica perché appartiene almeno alla scelta minimale $\\{A, C\\}$.</p><p><b>Minimale per inclusione</b> significa che nessun sottoinsieme proprio funziona; non richiede il minor numero di società tra tutte le soluzioni. Si cerca $\\exists$ un insieme ammissibile contenente la società richiesta e si controlla $\\forall$ sottoinsiemi propri che nessuno sia ammissibile. Questo porta al secondo livello della PH.</p>",
+        why: "<p>Una società è strategica se appartiene ad almeno una scelta minimale. Un insieme è ammissibile se produce tutte le merci e rispetta i controlli: se $A$ e $B$ insieme controllano $C$ e scegli entrambe, devi includere anche $C$.</p><p>Un esempio senza controlli: $A$ e $B$ producono la merce 1, $C$ produce la merce 2. $\\{A, C\\}$ e $\\{B, C\\}$ sono due scelte minimali, perché togliendo una qualsiasi società si perde una merce. $\\{A, B, C\\}$ non è minimale, perché puoi togliere $A$ oppure $B$. $A$ è strategica perché appartiene almeno alla scelta minimale $\\{A, C\\}$.</p><p>Minimale per inclusione significa che nessun sottoinsieme proprio funziona; non richiede il minor numero di società tra tutte le soluzioni. Si cerca $\\exists$ un insieme ammissibile contenente la società richiesta e si controlla $\\forall$ sottoinsiemi propri che nessuno sia ammissibile, e questo porta il problema al secondo livello della PH.</p>",
         comp: "$\\Sigma_2^{\\mathrm{P}}$-completo.",
         cpl: "COSC",
         traps: [
@@ -1028,9 +1028,9 @@ export const PROBLEMS: Problem[] = [
         lv: "Σ₂",
         lab: "Σ<sub>2</sub><sup>P</sup>-completo",
         full: true,
-        def: "Data una base di conoscenza KB e una formula $\\varphi$: $\\varphi$ è vera in almeno un modello di KB minimale rispetto all’inclusione degli atomi da minimizzare?",
+        def: "Data una base di conoscenza KB e una formula $\\varphi$: $\\varphi$ è vera in almeno un modello di KB minimale rispetto all'inclusione degli atomi da minimizzare?",
         brief: "$\\exists$ un modello di KB che soddisfa $\\varphi$, $\\forall$ modello più piccolo non lo è: $\\Sigma_2^{\\mathrm{P}}$-completo.",
-        why: "<p>Un modello proposizionale indica quali atomi sono veri. Nella circoscrizione si minimizzano alcuni atomi: <b>si scarta un modello se ne esiste uno ammissibile con un insieme strettamente più piccolo di atomi minimizzati veri</b>, rispettando gli eventuali atomi fissati.</p><p>Esempio: $\\mathit{KB} = p \\lor q$ e minimizziamo entrambi gli atomi. I modelli sono $\\{p\\}$, $\\{q\\}$ e $\\{p, q\\}$. I primi due sono minimali; l’ultimo non lo è, perché contiene un modello più piccolo. La domanda «$p$ è vera in almeno un modello minimale?» ha risposta sì grazie a $\\{p\\}$. «$p$ è vera in tutti?» ha invece risposta no, per $\\{q\\}$.</p><p>CIRC SAT usa la prima domanda: $\\exists$ un modello che soddisfa KB e $\\varphi$, e $\\forall$ candidati strettamente minori nessuno soddisfa i vincoli. La minimalità riguarda l’inclusione degli atomi minimizzati, non semplicemente il loro numero.</p>",
+        why: "<p>Un modello proposizionale indica quali atomi sono veri. Nella circoscrizione si minimizzano alcuni atomi: si scarta un modello se ne esiste uno ammissibile con un insieme strettamente più piccolo di atomi minimizzati veri, rispettando gli eventuali atomi fissati.</p><p>Per esempio, con $\\mathit{KB} = p \\lor q$ minimizziamo entrambi gli atomi. I modelli sono $\\{p\\}$, $\\{q\\}$ e $\\{p, q\\}$: i primi due sono minimali, l'ultimo no, perché contiene un modello più piccolo. Alla domanda se $p$ sia vera in almeno un modello minimale la risposta è sì, grazie a $\\{p\\}$; alla domanda se sia vera in tutti la risposta è no, per $\\{q\\}$.</p><p>CIRC SAT usa la prima domanda: $\\exists$ un modello che soddisfa KB e $\\varphi$, e $\\forall$ candidati strettamente minori nessuno soddisfa i vincoli. La minimalità riguarda l'inclusione degli atomi minimizzati, non semplicemente il loro numero.</p>",
         comp: "$\\Sigma_2^{\\mathrm{P}}$-completo.",
         traps: [
             {
@@ -1072,7 +1072,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Formula booleana quantificata con un numero qualsiasi di alternanze di quantificatori: è vera?",
         brief: "Valutazione ricorsiva che riusa lo spazio. Hard per ogni classe dentro PSPACE.",
-        why: "<p><b>SAT cerca un assegnamento; QSAT valuta scelte e condizioni universali nell’ordine indicato.</b> $\\exists$ significa che basta una scelta; $\\forall$ significa che devono funzionare entrambe, 0 e 1.</p><p>In $\\exists x\\, \\forall y\\, \\exists z\\, (z \\leftrightarrow (x \\oplus y))$, scegli prima $x$. Poi, per ciascun valore di $y$, puoi scegliere uno $z$ diverso: con $x = 0$, scegli $z = 0$ quando $y = 0$ e $z = 1$ quando $y = 1$. La formula è vera. Una scelta esistenziale può dipendere dai valori universali che la precedono.</p><p>Si esplora l’albero: per $\\exists$ basta un ramo vero, per $\\forall$ devono essere veri entrambi. Una visita in profondità riusa lo spazio tra i rami e usa spazio polinomiale. Qui il numero di blocchi può crescere con l’input; $\\mathrm{QSAT}_i$, invece, fissa $i$ in anticipo.</p>",
+        why: "<p>SAT cerca un assegnamento; QSAT valuta scelte e condizioni universali nell'ordine indicato. Con $\\exists$ basta una scelta, con $\\forall$ devono funzionare entrambi i valori, 0 e 1.</p><p>In $\\exists x\\, \\forall y\\, \\exists z\\, (z \\leftrightarrow (x \\oplus y))$ si sceglie prima $x$; poi, per ciascun valore di $y$, si può scegliere uno $z$ diverso. Con $x = 0$ basta $z = 0$ quando $y = 0$ e $z = 1$ quando $y = 1$, quindi la formula è vera: una scelta esistenziale può dipendere dai valori universali che la precedono.</p><p>Per decidere si esplora l'albero delle scelte: per $\\exists$ basta un ramo vero, per $\\forall$ devono essere veri entrambi. Una visita in profondità riusa lo spazio tra i rami e usa spazio polinomiale. Qui il numero di blocchi può crescere con l'input, mentre $\\mathrm{QSAT}_i$ fissa $i$ in anticipo.</p>",
         comp: "PSPACE-completo. Quindi è hard per ogni classe contenuta in PSPACE: P, NP, coNP, DP, ogni $\\Sigma_i^{\\mathrm{P}}$ e $\\Pi_i^{\\mathrm{P}}$.",
         traps: [
             {
@@ -1121,7 +1121,7 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Gioco su un grafo orientato con un nodo di partenza: due giocatori scelgono a turno un successore dell'ultimo nodo, senza ripetere nodi; chi non può muovere perde. Il primo giocatore ha una strategia vincente?",
         brief: '"Esiste una mia mossa tale che per ogni tua mossa…": l\'alternanza $\\exists\\forall$ di QSAT.',
-        why: "Si esplora l’albero delle partite in profondità. Poiché i vertici non possono essere ripetuti, ogni partita dura al più $n$ mosse e richiede spazio polinomiale. Una strategia vincente deve prevedere una propria mossa per ogni risposta possibile dell’avversario.",
+        why: "Si esplora l'albero delle partite in profondità. I vertici non si possono ripetere, quindi ogni partita dura al più $n$ mosse e la visita richiede spazio polinomiale. Una strategia vincente deve prevedere una propria mossa per ogni risposta possibile dell'avversario.",
         comp: "PSPACE-completo.",
         traps: [
             {
@@ -1162,10 +1162,10 @@ export const PROBLEMS: Problem[] = [
         b: "NEXP",
         lab: "NEXP-completo",
         full: true,
-        def: "Possiamo costruire una situazione in cui una regola come «esiste una persona che conosce tutti» sia vera? Le regole ammesse scelgono prima alcuni oggetti («esiste», $\\exists$), poi controllano una condizione per ogni oggetto («per tutti», $\\forall$). Si usano proprietà e relazioni, senza funzioni come «il padre di $x$».",
-        brief: "Scegli oggetti e relazioni per rendere vera una regola: prima «esiste», poi «per tutti», senza funzioni. Esempio: esiste una persona che conosce tutti.",
-        why: "<p><b>Di che cosa parliamo?</b> Di oggetti e relazioni: per esempio persone e la relazione «conosce». Qui $x$ e $y$ rappresentano persone, non bit 0 o 1. «Soddisfacibile» significa che possiamo costruire almeno una situazione in cui la regola è vera.</p><p><b>Esempio:</b> la regola è «esiste una persona che conosce tutti». Immagina un mondo con una sola persona, Ada, e stabilisci che Ada conosce se stessa. La regola è vera: scegli Ada e verifica che conosca ogni persona di quel mondo. Abbiamo costruito un <b>modello</b>: un insieme di oggetti e una descrizione delle relazioni fra loro.</p><p><b>Come si legge la notazione:</b> $\\exists x\\, \\forall y\\, \\mathrm{Conosce}(x, y)$ significa «esiste una persona $x$ tale che, per ogni persona $y$, $x$ conosce $y$». Nella forma generale $\\exists X\\, \\forall Y\\, \\varphi$, $X$ e $Y$ sono gruppi di variabili; $\\varphi$ è la condizione da verificare, composta da proprietà e relazioni, senza altri quantificatori. Tutte le scelte «esiste» vengono prima dei controlli «per tutti».</p><p><b>Che cosa escludiamo?</b> Una funzione come $\\mathrm{Padre}(x)$ restituisce un oggetto, il padre di $x$; una relazione come $\\mathrm{Conosce}(x, y)$ dice invece se un collegamento è vero o falso. Questo problema ammette relazioni e nomi di oggetti, ma non funzioni che producono oggetti a partire da altri.</p><p>Queste restrizioni garantiscono che, se la regola è soddisfacibile, basta un modello finito con al più tanti elementi quanti le variabili esistenziali e i nomi di oggetti presenti, e almeno un elemento. Si scelgono le relazioni e si controllano tutte le combinazioni dei valori di $Y$. Le tabelle delle relazioni e i controlli possono richiedere tempo esponenziale.</p>",
-        comp: "NEXP-completo. Quindi non sta in NP, perché $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ ✱ (appunti).",
+        def: 'Possiamo costruire una situazione in cui una regola come "esiste una persona che conosce tutti" sia vera? Le regole ammesse scelgono prima alcuni oggetti ("esiste", $\\exists$), poi controllano una condizione per ogni oggetto ("per tutti", $\\forall$). Si usano proprietà e relazioni, senza funzioni come "il padre di $x$".',
+        brief: 'Scegli oggetti e relazioni per rendere vera una regola come "esiste una persona che conosce tutti": prima "esiste", poi "per tutti", senza funzioni.',
+        why: '<p>Si parla di oggetti e relazioni: per esempio persone e la relazione "conosce". Qui $x$ e $y$ rappresentano persone, non bit 0 o 1, e "soddisfacibile" vuol dire che possiamo costruire almeno una situazione in cui la regola è vera.</p><p>Prendiamo la regola "esiste una persona che conosce tutti". In un mondo con una sola persona, Ada, che conosce se stessa, la regola è vera: scegli Ada e verifichi che conosca ogni persona di quel mondo. Abbiamo costruito un modello, cioè un insieme di oggetti con una descrizione delle relazioni fra loro.</p><p>In simboli la regola si scrive $\\exists x\\, \\forall y\\, \\mathrm{Conosce}(x, y)$: esiste una persona $x$ tale che, per ogni persona $y$, $x$ conosce $y$. Nella forma generale $\\exists X\\, \\forall Y\\, \\varphi$, $X$ e $Y$ sono gruppi di variabili e $\\varphi$ è la condizione da verificare, fatta di proprietà e relazioni senza altri quantificatori. Tutte le scelte "esiste" vengono prima dei controlli "per tutti".</p><p>Una funzione come $\\mathrm{Padre}(x)$ restituisce un oggetto, il padre di $x$, mentre una relazione come $\\mathrm{Conosce}(x, y)$ dice se un collegamento è vero o falso. Il problema ammette relazioni e nomi di oggetti, ma non funzioni che producono oggetti a partire da altri.</p><p>Con queste restrizioni, se la regola è soddisfacibile basta un modello finito con almeno un elemento e al più tanti elementi quante sono le variabili esistenziali e i nomi di oggetti presenti. Si scelgono le relazioni e si controllano tutte le combinazioni dei valori di $Y$; le tabelle delle relazioni e i controlli possono richiedere tempo esponenziale.</p>',
+        comp: "NEXP-completo. Quindi non sta in NP, perché $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ ✱.",
         traps: [
             {
                 c: "E26#2",
@@ -1212,8 +1212,8 @@ export const PROBLEMS: Problem[] = [
         full: true,
         def: "Un circuito piccolo descrive un circuito enorme: dato il numero di una porta, ne restituisce il tipo e gli ingressi. Il circuito enorme è soddisfacibile?",
         brief: "CIRCUIT SAT in forma succinta: l'input è esponenzialmente più corto del circuito, e si sale da NP a NEXP.",
-        why: "Un circuito piccolo descrive porte e collegamenti di un circuito molto più grande, attraverso i loro indici. L’assegnamento e il circuito descritto possono avere dimensione esponenziale rispetto all’input. Indovinare l’assegnamento e valutare tutte le porte richiede tempo esponenziale nondeterministico.",
-        comp: "NEXP-completo. Negli appunti è fuori esame: basta sapere la classe.",
+        why: "Un circuito piccolo descrive porte e collegamenti di un circuito molto più grande, attraverso i loro indici. L'assegnamento e il circuito descritto possono avere dimensione esponenziale rispetto all'input. Indovinare l'assegnamento e valutare tutte le porte richiede tempo esponenziale nondeterministico.",
+        comp: "NEXP-completo. È fuori esame: basta sapere la classe.",
         traps: [
             {
                 n: 'Il prefisso "succinct" fa salire di un esponenziale: CIRCUIT SAT è NP-completo, SUCCINCT CIRCUIT SAT è NEXP-completo.',
@@ -1233,7 +1233,7 @@ export const PROBLEMS: Problem[] = [
         full: false,
         def: "Una formula del primo ordine è valida, cioè vera in tutti i modelli?",
         brief: "Si enumerano le dimostrazioni (Gödel): il sì arriva. Non decidibile (Church-Turing).",
-        why: "Ogni formula valida del primo ordine ha una dimostrazione formale. Enumerare le dimostrazioni permette di trovare prima o poi una prova delle istanze sì. Sulle istanze no la ricerca può non terminare: la validità è semidecidibile, ma non decidibile.",
+        why: "Ogni formula valida del primo ordine ha una dimostrazione formale. Enumerando le dimostrazioni, prima o poi si trova la prova di ogni istanza sì. Sulle istanze no la ricerca può non terminare: la validità è semidecidibile, ma non decidibile.",
         comp: "Sta in RE ma non in R (è semidecidibile, non decidibile).",
         cpl: "FOS",
         traps: [
@@ -1258,7 +1258,7 @@ export const PROBLEMS: Problem[] = [
         full: false,
         def: "Una formula del primo ordine è soddisfacibile, cioè vera in almeno un modello?",
         brief: "$\\varphi$ soddisfacibile $\\iff \\neg\\varphi$ non valida: il complemento della validità.",
-        why: "<p>Chiediamo se esistono <b>un dominio e un’interpretazione dei predicati</b> che rendono vera la formula. Per $\\exists x\\, R(x)$ basta il dominio $\\{a\\}$ con $R(a)$ vera: abbiamo un modello e quindi una risposta sì.</p><p>Soddisfacibilità significa «vera in almeno un modello»; validità significa «vera in ogni modello». Per esempio, $\\exists x\\, R(x)$ è soddisfacibile ma non valida: nel dominio $\\{a\\}$ con $R$ sempre falsa non vale.</p><p>Senza le restrizioni di Schönfinkel–Bernays, non esiste un algoritmo che termini sempre e risponda correttamente per ogni formula. Alcune formule hanno soltanto modelli infiniti, quindi cercare solo domini finiti non basta. $\\varphi$ è soddisfacibile se e solo se $\\neg\\varphi$ non è valida: per questo il problema appartiene a coRE ed è indecidibile.</p>",
+        why: "<p>Ci si chiede se esistono un dominio e un'interpretazione dei predicati che rendono vera la formula. Per $\\exists x\\, R(x)$ basta il dominio $\\{a\\}$ con $R(a)$ vera: c'è un modello, quindi la risposta è sì.</p><p>Una formula è soddisfacibile se è vera in almeno un modello, valida se è vera in ogni modello. Per esempio $\\exists x\\, R(x)$ è soddisfacibile ma non valida: nel dominio $\\{a\\}$ con $R$ sempre falsa non vale.</p><p>Senza le restrizioni di Schönfinkel-Bernays non esiste un algoritmo che termini sempre e risponda correttamente per ogni formula. Alcune formule hanno soltanto modelli infiniti, quindi non basta cercare fra i domini finiti. $\\varphi$ è soddisfacibile se e solo se $\\neg\\varphi$ non è valida: per questo il problema sta in coRE ed è indecidibile.</p>",
         comp: "Sta in coRE ma non in R.",
         cpl: "FOV",
         traps: [
