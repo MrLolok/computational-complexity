@@ -8,7 +8,7 @@ import Link from "next/link";
 import { searchKey } from "@/lib/plainText";
 import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { resetTraces } from "@/store/progressSlice";
+import { resetMdtResults, resetTraces } from "@/store/progressSlice";
 
 export type TraceSummary = {
     code: string;
@@ -107,16 +107,30 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
                     </b>{" "}
                     risolte
                 </span>
-                <button
-                    type="button"
-                    className={`${ui.linkBtn} ml-auto self-center disabled:cursor-default disabled:opacity-35`}
-                    disabled={!Object.keys(progress).length && !Object.keys(mdt ?? {}).length}
-                    onClick={() =>
-                        confirm("Azzerare risposte e risultati di tutte le tracce?") && dispatch(resetTraces())
-                    }
-                >
-                    Azzera statistiche
-                </button>
+                <div className="ml-auto flex gap-4 self-center">
+                    <button
+                        type="button"
+                        className={`${ui.linkBtn} disabled:cursor-default disabled:opacity-35`}
+                        disabled={!Object.keys(progress).length}
+                        onClick={() =>
+                            confirm("Azzerare risposte e risultati delle domande di tutte le tracce?") &&
+                            dispatch(resetTraces())
+                        }
+                    >
+                        Azzera domande
+                    </button>
+                    <button
+                        type="button"
+                        className={`${ui.linkBtn} disabled:cursor-default disabled:opacity-35`}
+                        disabled={!Object.keys(mdt ?? {}).length}
+                        onClick={() =>
+                            confirm("Azzerare le consegne di tutte le MdT? Le tabelle scritte restano.") &&
+                            dispatch(resetMdtResults())
+                        }
+                    >
+                        Azzera MdT
+                    </button>
+                </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">

@@ -29,6 +29,45 @@ const yes = (ok: boolean): Expected => ({ result: ok ? "yes" : "no" });
 const fn = (output: string): Expected => ({ result: "h", output });
 const isBits = (s: string) => /^[01]+$/.test(s);
 const twoBits = (max: number) => bits(max).flatMap((x) => bits(max).map((y) => `${x};${y}`));
+const reverse = (s: string) => [...s].reverse().join("");
+const flip = (c: string) => (c === "0" ? "1" : "0");
+
+/** bit pseudo-casuali con seme fisso: a ogni consegna gli stessi casi di prova */
+const randomBits = (seed: number) => (length: number) => {
+    let out = "";
+    for (let i = 0; i < length; i++) {
+        seed = (seed * 48271) % 2147483647;
+        out += seed % 2;
+    }
+    return out;
+};
+/** numeri lunghi, oltre i casi esaustivi: tutti 0, tutti 1, potenze di 2 e 30 stringhe da 10 a 32 cifre */
+const longBits = () => {
+    const rnd = randomBits(42);
+    return [
+        "0".repeat(32),
+        "1".repeat(32),
+        "1" + "0".repeat(31),
+        "0".repeat(31) + "1",
+        ...Array.from({ length: 30 }, (_, i) => rnd(10 + (i % 23))),
+    ];
+};
+/** palindrome lunghe, pari e dispari, e quasi palindrome: un solo bit fuori posto, al centro o agli estremi */
+const longPalindromes = () => {
+    const rnd = randomBits(7);
+    return Array.from({ length: 12 }, (_, i) => rnd(4 + i)).flatMap((h) => {
+        const r = reverse(h);
+        return [h + r, h + "0" + r, h + "1" + r, h + flip(r[0]) + r.slice(1), h + r.slice(0, -1) + flip(r.at(-1)!)];
+    });
+};
+/** coppie x;y lunghe: stessa lunghezza, numeri uguali, lunghezze diverse */
+const longPairs = () => {
+    const rnd = randomBits(11);
+    return Array.from({ length: 48 }, (_, i) => {
+        const x = rnd(5 + (i % 12));
+        return i % 4 === 3 ? `${x};${rnd(x.length + 1)}` : i % 4 === 2 ? `${x};${x}` : `${x};${rnd(x.length)}`;
+    });
+};
 
 const GO_RIGHT = `s ▷ -> s ▷ R      # supera l'inizio del nastro
 s b -> s b R      # vai in fondo
@@ -59,7 +98,7 @@ o' ⊔ -> h 0 S     # aggiunge lo 0 in coda`,
             if (!x.includes("0")) return fn("1" + "0".repeat(x.length));
             return fn((parseInt(x, 2) + 1).toString(2).padStart(x.length, "0"));
         },
-        tests: () => bits(7),
+        tests: () => [...bits(9), ...longBits()],
     },
     {
         id: "per-2",
@@ -71,7 +110,7 @@ o' ⊔ -> h 0 S     # aggiunge lo 0 in coda`,
         source: `${GO_RIGHT}s ⊔ -> h 0 S      # fine input: scrive 0 e si ferma`,
         skeleton: ONE_TAPE_SKELETON,
         expected: (x) => (isBits(x) ? fn(x + "0") : null),
-        tests: () => bits(7),
+        tests: () => [...bits(9), ...longBits()],
     },
     {
         id: "per-4",
@@ -84,7 +123,7 @@ o' ⊔ -> h 0 S     # aggiunge lo 0 in coda`,
 q ⊔ -> h 0 S      # scrive il secondo 0 e si ferma`,
         skeleton: ONE_TAPE_SKELETON,
         expected: (x) => (isBits(x) ? fn(x + "00") : null),
-        tests: () => bits(7),
+        tests: () => [...bits(9), ...longBits()],
     },
     {
         id: "diviso-2",
@@ -100,7 +139,7 @@ r ▷ -> z ▷ R      # non è rimasto niente…
 z ⊔ -> h 0 S      # …quindi scrive 0`,
         skeleton: ONE_TAPE_SKELETON,
         expected: (x) => (isBits(x) ? fn(x.length > 1 ? x.slice(0, -1) : "0") : null),
-        tests: () => bits(7),
+        tests: () => [...bits(9), ...longBits()],
     },
     {
         id: "diviso-4",
@@ -118,7 +157,7 @@ t ▷ -> z ▷ R      # non è rimasto niente…
 z ⊔ -> h 0 S      # …quindi scrive 0`,
         skeleton: ONE_TAPE_SKELETON,
         expected: (x) => (isBits(x) ? fn(x.length > 2 ? x.slice(0, -2) : "0") : null),
-        tests: () => bits(7),
+        tests: () => [...bits(9), ...longBits()],
     },
     {
         id: "resto-2",
@@ -138,7 +177,7 @@ w0 ⊔ -> h 0 S     # scrive il resto
 w1 ⊔ -> h 1 S`,
         skeleton: ONE_TAPE_SKELETON,
         expected: (x) => (isBits(x) ? fn(x.slice(-1)) : null),
-        tests: () => bits(7),
+        tests: () => [...bits(9), ...longBits()],
     },
     {
         id: "meno-x",
@@ -161,7 +200,7 @@ i ▷ -> h ▷ R      # fine`,
             if (k < 0) return fn(x);
             return fn([...x.slice(0, k)].map((c) => (c === "0" ? "1" : "0")).join("") + x.slice(k));
         },
-        tests: () => bits(7),
+        tests: () => [...bits(9), ...longBits()],
     },
     {
         id: "dispari",
@@ -181,7 +220,7 @@ t 0 -> no 0 S     # pari (o zero)`,
         skeleton: `s ▷ -> s ▷ R      # supera l'inizio del nastro
 `,
         expected: (x) => (/^[01]*$/.test(x) ? yes(x[0] === "0" && x.endsWith("1")) : null),
-        tests: () => bits(7, 0),
+        tests: () => [...bits(9, 0), ...longBits(), ...longPalindromes()],
     },
     {
         id: "non-palindrome",
@@ -209,7 +248,7 @@ c0 0 ▷ -> no 0 S ▷ R    # questo ramo rigetta
 c1 1 ▷ -> no 1 S ▷ R`,
         skeleton: TWO_TAPE_SKELETON,
         expected: (x) => (/^[01]*$/.test(x) ? yes(x !== [...x].reverse().join("")) : null),
-        tests: () => bits(7, 0),
+        tests: () => [...bits(9, 0), ...longBits(), ...longPalindromes()],
     },
     {
         id: "palindrome-nd",
@@ -228,7 +267,7 @@ m b b -> m b R b L      # cifre simmetriche uguali
 m ⊔ ▷ -> yes ⊔ S ▷ R    # finite insieme: palindroma`,
         skeleton: TWO_TAPE_SKELETON,
         expected: (x) => (/^[01]*$/.test(x) ? yes(x === [...x].reverse().join("")) : null),
-        tests: () => bits(7, 0),
+        tests: () => [...bits(9, 0), ...longBits(), ...longPalindromes()],
     },
     {
         id: "palindrome",
@@ -247,7 +286,7 @@ c b b̄ -> no b S b̄ S     # cifre simmetriche diverse
 c ⊔ ▷ -> yes ⊔ S ▷ R    # finite insieme: palindroma`,
         skeleton: TWO_TAPE_SKELETON,
         expected: (x) => (/^[01]*$/.test(x) ? yes(x === [...x].reverse().join("")) : null),
-        tests: () => bits(7, 0),
+        tests: () => [...bits(9, 0), ...longBits(), ...longPalindromes()],
     },
     {
         id: "confronto",
@@ -276,7 +315,7 @@ l ⊔ b -> no ⊔ S b S`,
             const m = s.match(/^([01]+);([01]+)$/);
             return m ? yes(m[1].length === m[2].length && parseInt(m[1], 2) <= parseInt(m[2], 2)) : null;
         },
-        tests: () => twoBits(4),
+        tests: () => [...twoBits(5), ...longPairs()],
     },
     {
         id: "somma",
@@ -313,7 +352,7 @@ c1 b ▷ -> no b S ▷ S`,
             if (x.length !== y.length || sum >= 2 ** x.length) return { result: "no" };
             return fn(sum.toString(2).padStart(x.length, "0"));
         },
-        tests: () => twoBits(4),
+        tests: () => [...twoBits(5), ...longPairs()],
     },
     {
         id: "chiave",
@@ -348,8 +387,23 @@ k , σ -> r , R σ L      # passa al prossimo elemento`,
                 out.push(`${key},`);
                 for (const a of words) {
                     out.push(`${key},${a},`);
-                    for (const b of words) out.push(`${key},${a},${b},`);
+                    for (const b of words) {
+                        out.push(`${key},${a},${b},`);
+                        for (const c of words) out.push(`${key},${a},${b},${c},`);
+                    }
                 }
+            }
+            /* key lunghe: in fondo alla lista, prima, dopo un suo prefisso o un suo prolungamento */
+            const rnd = randomBits(5);
+            for (let i = 0; i < 20; i++) {
+                const key = rnd(4 + (i % 6));
+                const other = rnd(key.length);
+                out.push(
+                    `${key},${other},${key.slice(1)},${key}0,`,
+                    `${key},${other},${key},`,
+                    `${key},${key},${other},`,
+                    `${key},${key.slice(0, -1)}${flip(key.at(-1)!)},`,
+                );
             }
             return out;
         },
@@ -382,7 +436,22 @@ qNO ⊔ ⊔ -> yes ⊔ S ⊔ S      # x sì, y no`,
             return yes(satisfiableRef(parts[0]) && !satisfiableRef(parts[1]));
         },
         tests: () => {
-            const f = ["x", "!x", "x&!x", "x|y", "(x|y)&!x&!y", "(x|!y)&y", "x&y&!y", "!(x|!x)"];
+            const f = [
+                "x",
+                "!x",
+                "x&!x",
+                "x|y",
+                "(x|y)&!x&!y",
+                "(x|!y)&y",
+                "x&y&!y",
+                "!(x|!x)",
+                "a&b&c",
+                "(a|b)&(!a|b)&(a|!b)&(!a|!b)",
+                "(a|b)&(!a|c)&(!b|!c)",
+                "x1&!x2|x2&!x1",
+                "!(a&!a)&b&!b",
+                "((p|q))&!(p|q)|r",
+            ];
             return f.flatMap((a) => f.map((b) => `${a};${b}`));
         },
     },
@@ -421,7 +490,7 @@ qNO ⊔ ⊔ -> no ⊔ S ⊔ S   # non c'è`,
         },
         tests: () => {
             const out: string[] = [];
-            for (let n = 1; n <= 3; n++) {
+            for (let n = 1; n <= 4; n++) {
                 const pairs: [number, number][] = [];
                 for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) pairs.push([i, j]);
                 for (let mask = 0; mask < 1 << pairs.length; mask++) {
@@ -429,7 +498,8 @@ qNO ⊔ ⊔ -> no ⊔ S ⊔ S   # non c'è`,
                     pairs.forEach(([i, j], k) => {
                         if (mask & (1 << k)) m[i][j] = m[j][i] = "1";
                     });
-                    for (let K = 0; K <= 4; K++) out.push(`${m.map((r) => r.join(",")).join(";")}:${K.toString(2)}`);
+                    for (let K = 0; K <= n + 1; K++)
+                        out.push(`${m.map((r) => r.join(",")).join(";")}:${K.toString(2)}`);
                 }
             }
             return out;

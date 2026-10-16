@@ -101,6 +101,9 @@ const progressSlice = createSlice({
         },
         resetTraces(state) {
             state.traces = {};
+        },
+        /** cancella le consegne delle MdT, non le tabelle scritte */
+        resetMdtResults(state) {
             state.mdtResults = {};
         },
         /** azzera tutto Esercitati: quiz delle tracce, quiz sui problemi, flashcard */
@@ -125,6 +128,7 @@ export const {
     saveMdtDraft,
     submitMdt,
     resetTraces,
+    resetMdtResults,
     resetExercises,
 } = progressSlice.actions;
 export default progressSlice.reducer;

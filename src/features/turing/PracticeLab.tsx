@@ -2,13 +2,13 @@
 
 import type { MdtRow } from "@/store/progressSlice";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { MACHINE_BY, MACHINES } from "@/data/turing/machines";
 import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { saveMdtDraft, submitMdt } from "@/store/progressSlice";
-import { ORACLES, run } from "./machine";
+import { check, lint } from "./diagnose";
 import MachineRunner from "./MachineRunner";
 import TransitionTable, { compile, fit, rowsFrom } from "./TransitionTable";
 
@@ -26,7 +26,12 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
     );
     const tapes = m?.tapes ?? rows[0]?.read.length ?? 1;
     const { source, program, errors } = useMemo(() => compile(rows), [rows]);
-    const [report, setReport] = useState<{ ok: number; tot: number; fails: string[] } | null>(null);
+    const warnings = useMemo(() => (program ? lint(program, m) : []), [program, m]);
+    const [report, setReport] = useState<ReturnType<typeof check> | null>(null);
+    /** input di un caso fallito, caricato nel simulatore */
+    const [probe, setProbe] = useState<string | null>(null);
+    const runner = useRef<HTMLDivElement>(null);
+    const samples = m?.samples ?? ["1011"];
     const [compare, setCompare] = useState(false);
     const solution = useMemo(() => (m ? rowsFrom(m.source, m.tapes) : []), [m]);
     const set = (value: MdtRow[] | null) => {
@@ -35,27 +40,13 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
     };
     const verify = () => {
         if (!m || !program) return;
-        const tests = m.tests();
-        const fails: string[] = [];
-        let ok = 0;
-        for (const x of tests) {
-            const e = m.expected(x)!;
-            const o = run(program, x, { oracle: m.oracle ? ORACLES[m.oracle] : undefined });
-            const good = e.result === "h" ? o.result === "h" && o.output === e.output : o.result === e.result;
-            if (good) ok++;
-            else if (fails.length < 4) {
-                const want = e.result === "h" ? `output ${e.output}` : e.result;
-                const got =
-                    o.result === "h"
-                        ? `output ${o.output || "(vuoto)"}`
-                        : o.result === "limit"
-                          ? "limite di esecuzione raggiunto"
-                          : o.result;
-                fails.push(`Input ${x || "(stringa vuota)"}: atteso ${want}; ottenuto ${got}`);
-            }
-        }
-        setReport({ ok, tot: tests.length, fails });
-        if (code) dispatch(submitMdt({ id: m.id, code, ok, tot: tests.length }));
+        const r = check(program, m);
+        setReport(r);
+        if (code) dispatch(submitMdt({ id: m.id, code, ok: r.ok, tot: r.tot }));
+    };
+    const follow = (input: string) => {
+        setProbe(input);
+        requestAnimationFrame(() => runner.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
     };
 
     return (
@@ -107,13 +98,33 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
                     )}
                 </div>
             )}
-            <TransitionTable rows={rows} tapes={tapes} bad={new Set(errors.map((e) => e.line - 1))} onChange={set} />
+            <TransitionTable
+                rows={rows}
+                tapes={tapes}
+                bad={
+                    new Set([...errors.map((e) => e.line - 1), ...(report?.issues ?? []).map((i) => (i.row ?? 0) - 1)])
+                }
+                warn={new Set(warnings.map((w) => w.line - 1))}
+                onChange={set}
+            />
             {errors.length > 0 && (
                 <ul className={`${ui.noteTrap} flex flex-col gap-1 text-sm`}>
                     {errors.slice(0, 5).map((e, i) => (
                         <li key={i}>{e.line ? `Riga ${e.line}: ${e.message}` : e.message}</li>
                     ))}
                 </ul>
+            )}
+            {warnings.length > 0 && (
+                <div className={`${ui.note} text-sm`}>
+                    <p className="font-semibold">Da controllare</p>
+                    <ul className="mt-1 flex flex-col gap-1">
+                        {warnings.map((w, i) => (
+                            <li key={i}>
+                                Riga {w.line}: {w.message}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
             <div className="flex flex-wrap gap-2">
                 {m && (
@@ -153,24 +164,45 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
                             ? `Tutti i ${report.tot} casi di prova superati.`
                             : `Casi di prova superati: ${report.ok} su ${report.tot}.`}
                     </p>
-                    {report.fails.length > 0 && (
-                        <ul className="mt-1 list-disc pl-5 font-mono text-sm">
-                            {report.fails.map((f) => (
-                                <li key={f}>{f}</li>
+                    {report.issues.length > 0 && (
+                        <ul className="mt-2 flex flex-col gap-2 text-sm">
+                            {report.issues.slice(0, 6).map((i) => (
+                                <li key={`${i.row} ${i.text}`}>
+                                    {i.row ? (
+                                        <>
+                                            <b>Riga {i.row}</b>: {i.text}
+                                        </>
+                                    ) : (
+                                        i.text[0].toUpperCase() + i.text.slice(1)
+                                    )}{" "}
+                                    ({i.count} {i.count === 1 ? "caso" : "casi"}, per esempio{" "}
+                                    <code className="font-mono">{i.example || "stringa vuota"}</code>).{" "}
+                                    <button type="button" className={ui.linkBtn} onClick={() => follow(i.example)}>
+                                        Seguilo passo per passo
+                                    </button>
+                                </li>
                             ))}
                         </ul>
+                    )}
+                    {report.issues.length > 0 && warnings.length > 0 && (
+                        <p className="mt-2 text-sm">
+                            Sistema prima le righe «da controllare»: spesso causano anche gli altri errori.
+                        </p>
                     )}
                 </div>
             )}
             {program && (
-                <MachineRunner
-                    key={source}
-                    program={program}
-                    kind={m?.kind ?? "funzione"}
-                    oracle={m?.oracle}
-                    samples={m?.samples ?? ["1011"]}
-                    inputHint={m?.inputHint ?? "una stringa di simboli"}
-                />
+                <div ref={runner} className="scroll-mt-44 sm:scroll-mt-32">
+                    <MachineRunner
+                        key={`${source}|${probe}`}
+                        program={program}
+                        kind={m?.kind ?? "funzione"}
+                        oracle={m?.oracle}
+                        samples={probe === null ? samples : [...new Set([probe, ...samples])]}
+                        inputHint={m?.inputHint ?? "una stringa di simboli"}
+                        numbered
+                    />
+                </div>
             )}
         </div>
     );

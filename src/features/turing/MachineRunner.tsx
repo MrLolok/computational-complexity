@@ -21,10 +21,12 @@ type Props = {
     oracle?: "SAT" | "CLIQUE";
     samples: string[];
     inputHint: string;
+    /** le righe del programma sono quelle di una tabella numerata: mostra il numero di riga */
+    numbered?: boolean;
 };
 
 /** Esegue una macchina passo per passo: nastri, stato, riga usata, scelte nondeterministiche e oracolo. */
-export default function MachineRunner({ program, kind, oracle, samples, inputHint }: Props) {
+export default function MachineRunner({ program, kind, oracle, samples, inputHint, numbered }: Props) {
     const orc = oracle ? ORACLES[oracle] : undefined;
     const [input, setInput] = useState(samples[0] ?? "");
     const [history, setHistory] = useState<{ config: Config; rule: Rule | null; note?: string }[]>(() => [
@@ -36,6 +38,8 @@ export default function MachineRunner({ program, kind, oracle, samples, inputHin
     const end = halted(program, c, orc);
     const options = end || c.state === QUERY ? [] : applicable(program, c);
     const choice = options.length > 1;
+    /* prima del passo la transizione che sta per scattare; a macchina ferma quella che l'ha fermata */
+    const shown = end ? cur.rule : options.length === 1 ? options[0] : null;
 
     const restart = (value = input) => {
         setPlaying(false);
@@ -80,7 +84,7 @@ export default function MachineRunner({ program, kind, oracle, samples, inputHin
             const t = setTimeout(() => setPlaying(false), 0);
             return () => clearTimeout(t);
         }
-        const t = setTimeout(() => step(), 380);
+        const t = setTimeout(() => step(), 900);
         return () => clearTimeout(t);
     });
 
@@ -155,15 +159,18 @@ export default function MachineRunner({ program, kind, oracle, samples, inputHin
                     </span>
                 )}
             </div>
-            {(cur.rule || cur.note || end?.reason) && (
+            {(shown || cur.note || end?.reason) && (
                 <p className="text-muted font-mono text-sm">
-                    {cur.rule ? (
+                    {cur.note && <span className="font-ui block">{cur.note}</span>}
+                    {shown && (
                         <>
-                            {ruleText(cur.rule)}
-                            {cur.rule.note && <span className="font-ui"> · {cur.rule.note}</span>}
+                            <span className="font-ui">
+                                {end ? "Ultima transizione" : "Prossima transizione"}
+                                {numbered && ` (riga ${shown.line})`}:{" "}
+                            </span>
+                            <span className="text-ink">{ruleText(shown)}</span>
+                            {shown.note && <span className="font-ui"> · {shown.note}</span>}
                         </>
-                    ) : (
-                        cur.note
                     )}
                     {end?.reason && <span className="font-ui block">{end.reason}</span>}
                 </p>

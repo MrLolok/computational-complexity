@@ -82,12 +82,14 @@ export default function TransitionTable({
     rows,
     tapes,
     bad,
+    warn,
     onChange,
 }: {
     rows: MdtRow[];
     tapes: number;
-    /** righe con un errore, da 0 */
+    /** righe con un errore e righe da controllare, da 0 */
     bad?: Set<number>;
+    warn?: Set<number>;
     onChange?: (rows: MdtRow[]) => void;
 }) {
     const readOnly = !onChange;
@@ -200,7 +202,7 @@ export default function TransitionTable({
                         {rows.map((r, i) => (
                             <tr
                                 key={i}
-                                className={`border-line divide-line divide-x border-t ${bad?.has(i) ? "bg-proved-soft" : ""}`}
+                                className={`border-line divide-line divide-x border-t ${bad?.has(i) ? "bg-proved-soft" : warn?.has(i) ? "bg-open-soft" : ""}`}
                             >
                                 <td className="font-ui text-muted px-2 text-center text-xs whitespace-nowrap">
                                     {i + 1}
