@@ -46,6 +46,75 @@
             "file": "fos-3.webp",
             "prompt": "Use case: scientific-educational. Edit this exact image for formula ∃x R(x) in the singleton domain U={a}. Remove ONLY the two blue boxes x=b and x=c and their two branching arrows: b and c are not members of this domain. Keep root ∃x, ONLY arrow to x=a mint with check, and the right model box U with one a plus R containing one a. Preserve all other geometry, dark background, colors and 3:2 canvas. No new labels or nodes.",
             "ref": "fos-3.webp"
+        },
+        {
+            "file": "sat-2.webp",
+            "ref": "sat-2.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: Show literal truth values for assignment x=1,y=0,z=1. Mint means TRUE, lavender means FALSE. First title x OR y: x mint,y lavender. Second title NOT x OR z: whole NOT x lavender,z mint. Third title NOT y OR NOT z: NOT y mint,NOT z lavender. Circuit raw variable labels BEFORE negation: x mint in first and second boxes; y lavender in first and third; z mint in second and third. Wires AFTER NOT gates follow inverted value: NOT x lavender,NOT y mint,NOT z lavender. Keep toggles x,z on and y off. Do not color by position.",
+            "followups": [
+                "Edit target: diagram. In rightmost panel heading, change JUST the y in 'NOT y' from lavender to MINT GREEN, so the WHOLE first literal 'NOT y' has uniform mint color. NOT z remains all lavender. Raw variable y beside the NOT gate input MUST STAY lavender, because y=0 while NOT y=1. Keep everything else exactly unchanged."
+            ]
+        },
+        {
+            "file": "sat-3.webp",
+            "ref": "sat-3.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: Correct colors for x=1,y=0,z=1. First panel already correct x mint,y lavender. Second panel raw x input circle BEFORE NOT must be MINT (x=1); output wire AFTER NOT LAVENDER (¬x=0); z raw input and wire MINT. Title ¬x lavender and z mint. Third panel raw y circle BEFORE NOT must be LAVENDER (y=0), raw z circle BEFORE NOT MINT(z=1); AFTER NOT y wire MINT(¬y=1), AFTER NOT z wire LAVENDER(¬z=0). Third title ¬y MINT and ¬z LAVENDER. All OR outputs stay mint checkmarks. Keep switches as shown.",
+            "followups": []
+        },
+        {
+            "file": "validity-3.webp",
+            "ref": "validity-3.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: In BOTH OR evaluation rows, replace first input label x₀ with x; replace second input label x₁ with ¬x. Keep top values 0,1 and bottom values1,0 and both outputs1/checks. They represent one variable and its negation, not two separate inputs.",
+            "followups": []
+        },
+        {
+            "file": "cosat-3.webp",
+            "ref": "cosat-3.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: In BOTH AND evaluation rows replace first input label x₀ with x; replace second input label x₁ with ¬x. Preserve colored input circles, red false outputs, large green check.",
+            "followups": []
+        },
+        {
+            "file": "cotsp-3.webp",
+            "ref": "cotsp-3.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: RIGHT triangle only: orient EXACTLY one arrow per edge in cycle A→C→B→A. Right sloping edge arrow points DOWN from A(top) to C(bottom-right). Bottom edge points LEFT C→B. Left sloping edge points UP B→A, with ONE arrowhead near A and NO arrowhead near B. Left triangle remains A→B→C→A, unchanged. Preserve weights2,3,4 and both9>8 labels, red crosses, green check.",
+            "followups": []
+        },
+        {
+            "file": "succ-1.webp",
+            "ref": "succ-1.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: Circuit must have ONE shared input x, gate0. Connect gate0 input pin into a single wire that forks: top branch into OR, lower branch into NOT, whose output feeds second OR input. Remove independent NOT input pin. Add x label beside shared pin. Colored arrows from0,1,2 on left are description pointers:0 points to input x;1 points to NOT gate BODY (not a second input pin);2 points to OR gate BODY. They must be visually distinct from white signal wires. Circuit is x∨¬x. No second input.",
+            "followups": []
+        },
+        {
+            "file": "succ-2.webp",
+            "ref": "succ-2.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: LEFT list with circles numbered0,1,2: move the white horizontal wire that currently starts from circle1 to start from circle0. From circle0 route to existing shared fork x. Circle1 and circle2 stay unconnected (description indices only). Preserve fork from x to both OR and NOT, NOT feeding OR. No extra inputs.",
+            "followups": []
+        },
+        {
+            "file": "knap-3.webp",
+            "ref": "knap-3.webp",
+            "tool": "image_gen",
+            "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+            "prompt": "Use case: scientific-educational. Edit target: attached 960×640 Italian educational diagram. Preserve original dark charcoal background, mint/lavender/coral palette, typography, all unmentioned objects and geometry. Correct ONLY: The bottom-right excluded C card must display exactly THREE readable lines: C,4,5. Remove unreadable extra character between C and4. Keep the red diagonal cross but move its intersection into blank margin beside card or above the numeric labels, so ALL C/4/5 remain legible. Keep A2,3 and B3,4, backpack,5/5 and7/7 gauges unchanged.",
+            "followups": [
+                "Edit target: diagram. Bottom-right card: remove EVERY white glyph above the clearly visible C. There is still an illegible white mark at the red cross intersection above C. Fill that tiny mark with the same charcoal background, keep the red cross intact. Card must show only C,4,5 as exactly three white lines, no white glyphs at all at or above the red cross intersection. Keep every other object unchanged.",
+                "Edit target diagram. Completely ERASE AND REDRAW the entire bottom-right excluded-item card region, including old cross and all old glyphs. New card in same style: dark interior, gray rounded border, exactly three centered white lines 'C', '4', '5'. These must be the ONLY white glyphs in this card. Put ONE red X entirely to the RIGHT of the card, outside it, not overlapping card or text. This clean replacement eliminates the unreadable extra mark previously under the X. Keep backpack A2,3 B3,4 and5/5,7/7 gauges exactly unchanged. Return full landscape diagram."
+            ]
         }
     ]
 }

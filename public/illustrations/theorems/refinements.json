@@ -143,5 +143,265 @@
         "file": "proofs-35-storyboard-v2.webp",
         "ref": "proofs-35-storyboard.webp",
         "prompt": "Use case: scientific-educational. Edit target: attached exact3-column by4-row Italian Grover/NP proof storyboard. Preserve grid, dark palette, local numbers, and all untouched cells. Correct ONLY THREE panels. TOP RIGHT number3: replace the misleading nonorthogonal good/bad state rotation sketch with a SIMPLE probability bar chart, no state vectors or angles. Title small 'se esiste un certificato valido'. Two pairs of bars, categories 'inizio' and 'dopo': initial good/valid mint probability small0.1 and bad/nonvalid periwinkle0.9; after good0.9 and bad0.1. Label bars 'validi' and 'non validi' in legend, vertical 'probabilità'. Under it 'O(√N) interrogazioni'. The bars are illustrative, no exact numerical labels needed, each pair sums1. SECOND ROW LEFT number4: keep search→candidate→verification pipeline, yes branch remains 'y valido'. Replace NO branch box 'nessun certificato' with 'non trovato (errore limitato)'. Add short note 'il sì è verificato; il no può sbagliare'. A failed bounded-error search is not a proof of nonexistence. SECOND ROW MIDDLE number5: fix the asymptotic equality to 'O(√N)=O(2^{p(n)/2})', not O(√N)=2^{p(n)/2}. Keep N=2^{p(n)}, polynomial verifier cost, and quadratic gain message. All other content unchanged."
+    },
+    {
+        "file": "proofs-02-storyboard.webp",
+        "ref": "proofs-02-storyboard.webp",
+        "panels": [3, 6],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Edit target: this storyboard. Exactly TWO very small corrections, preserve everything else. SECOND ROW LEFT panel numbered4: in the RIGHT vertical output stack, TOP cell currently Y′ must be just Y, REMOVE its apostrophe. Outputs must read Y, X′, Z′. Do not leave Y′. THIRD ROW LEFT panel numbered2: remove the thin white connector line between M and the top-left corner of output tape k+2. There must be a visible gap of empty charcoal background between M and the output tape: they are completely disconnected in this phase. Input already disconnected, keep that. Leave work tapes connected and keep both 'fermo' labels. No other changes. Return full exact3-by4 storyboard.",
+        "followups": []
+    },
+    {
+        "file": "proofs-03-storyboard.webp",
+        "ref": "proofs-03-storyboard.webp",
+        "panels": [9],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: BOTTOM LEFT panel, numbered 3 (REACH): replace the counter cells 0,1,2,...,v with binary bit cells 0|1|0|1|...|1. Under them write 'O(log v) bit'. Keep the path and '< v archi' unchanged. Counter stores a binary number, not a list of v integers.",
+        "followups": []
+    },
+    {
+        "file": "proofs-04-storyboard-v2.webp",
+        "ref": "proofs-04-storyboard-v2.webp",
+        "panels": [1, 2, 6],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: TOP MIDDLE and TOP RIGHT panels for gap theorem: draw three immediately consecutive integer intervals [k₁,2^k₁], [k₂,2^k₂], [k₃,2^k₃] with shared adjacent borders and NO gaps; indicate k₂=2^k₁+1, k₃=2^k₂+1. Use SAME positions and SAME number of pink halt-time crosses in BOTH panels: two under first interval, zero under second, two under third. The second interval is already empty in top middle; in top right highlight ONLY it with mint dashed outline, f(n)=k₂. Do not move, add, or delete crosses between panels. THIRD ROW LEFT, numbered3 (precise solutions): replace tape illustration with TWO separate horizontal tapes. Upper lavender tape labelled 'input (sola lettura)' contains x₁,x₂,...,xₙ. Lower work tape labelled 'lavoro' has e.g. 3 mint used cells and 3 # quasi-blank unused cells, ALL SIX under ONE brace labelled f(n). Label used section 'celle usate', unused section 'inutilizzate: #'. No work cells outside brace. Keep input separate from workspace.",
+        "followups": [
+            "Edit target: storyboard. Change ONLY TOP RIGHT panel numbered3. Its intervals still have gaps, which is mathematically WRONG. Redraw this panel as a SINGLE continuous horizontal bar subdivided into THREE adjacent rectangles sharing vertical borders. Use exactly same layout as top middle panel2: in local square coordinates bar from x30 to330, first border x145, next border x220. First rectangle lavender, middle rectangle dark with mint dashed outline, third lavender. They touch: no gaps anywhere between these rectangles. Labels above respectively [k₁,2^k₁], [k₂,2^k₂], [k₃,2^k₃]. Label f(n)=k₂ above with arrow to middle. Four pink crosses below at local x55,x117,x242,x290, all on same horizontal line: zero crosses beneath middle interval. Positions of crosses must be identical to panel2 to left (two first interval, zero second, two third). Preserve other11 panels, numbering and exact3x4 grid."
+        ]
+    },
+    {
+        "file": "proofs-05-storyboard-v2.webp",
+        "ref": "proofs-05-storyboard-v2.webp",
+        "panels": [8, 9],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: THIRD ROW RIGHT number2 and BOTTOM LEFT number3 (diagonalization D): redraw inner flow strictly as input → M_H(⟨M⟩,⟨M⟩) [or M_H(⟨D⟩,⟨D⟩) bottom left] → 'inverte la risposta' → both external output boxes sì and no. There must be ZERO bypass arrows directly from M_H to an external sì box. BOTH sì/no connectors originate ONLY at 'inverte la risposta'. Explicitly label inversion outputs 'M_H=no' beside D's sì and 'M_H=sì' beside D's no. Label the decider M_H rather than H_f. Keep green D enclosure, self input, contradiction panels. Output yes branch must visibly go upward from inversion box, not from decider.",
+        "followups": []
+    },
+    {
+        "file": "proofs-06-storyboard-v2.webp",
+        "ref": "proofs-06-storyboard-v2.webp",
+        "panels": [10],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: BOTTOM MIDDLE panel number4: replace final non-strict inclusion by STRICT inclusion: SPACE(f(n)) ⊊ SPACE(f(n) log f(n)). The symbol must have a slash across the equality line; it is a proper subset. Keep all other math unchanged.",
+        "followups": [
+            "Edit target: the attached single square proof panel4. Keep the upper deterministic machine contradiction diagram, step number4, mint/coral/lavender palette and charcoal background. ERASE the ENTIRE bottom formula including the INCORRECT crossed inclusion symbol. Replace that area with THREE separate centered crisp mint lines, exact text: line1 'SPACE(f(n))'; line2 'è contenuta strettamente in'; line3 'SPACE(f(n) log f(n))'. The middle line is plain Italian text and MUST contain strettamente. Do NOT draw ANY subset, crossed subset, equality or comparison symbol between the classes; the Italian words express the proper containment clearly. Keep enough margin from all square edges. Render legibly, same mathematical font for class names. Return only this one square panel, no storyboard."
+        ]
+    },
+    {
+        "file": "proofs-07-storyboard-v2.webp",
+        "ref": "proofs-07-storyboard-v2.webp",
+        "panels": [5],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: SECOND ROW RIGHT panel number2: each of THREE per-tape bound labels must read '≤ f(n) + 1 celle' instead of '≤ f(n) celle'. Keep overall O(f(n)) cells brace and all other panels unchanged.",
+        "followups": []
+    },
+    {
+        "file": "proofs-08-storyboard.webp",
+        "ref": "proofs-08-storyboard.webp",
+        "panels": [7],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: THIRD ROW MIDDLE panel number2: the transition arrow between configurations (q,i,w) and (q′,j,w′) must be labelled capital Greek Δ instead of lowercase δ. This is a nondeterministic move. Keep 'una mossa' unchanged.",
+        "followups": []
+    },
+    {
+        "file": "proofs-09-storyboard-v2.webp",
+        "ref": "proofs-09-storyboard-v2.webp",
+        "panels": [2],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: TOP RIGHT panel number3: keep P deterministic straight path at top. Replace the lower branching NP tree with a single mint chain of four configuration circles and one accepting double circle, exactly one outgoing arrow per nonfinal configuration, no dashed alternative branches. Add label 'stessa macchina, scelta unica'. This illustrates viewing a deterministic P machine as nondeterministic with one possible move. No branching in this panel.",
+        "followups": []
+    },
+    {
+        "file": "proofs-12-storyboard-v2.webp",
+        "ref": "proofs-12-storyboard-v2.webp",
+        "panels": [5],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: SECOND ROW RIGHT panel number6: replace '# clausole: O(T²)' with '# clausole: O(T³)'. Keep '# variabili: O(T²)' unchanged. Use small additional line 'unicità testina: coppie di celle' if space. The one-hot head-position encoding contributes T choices of time times T² pairs of cells.",
+        "followups": []
+    },
+    {
+        "file": "proofs-15-storyboard-v2.webp",
+        "ref": "proofs-15-storyboard-v2.webp",
+        "panels": [3, 8],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian educational storyboard. Preserve exact 3 columns × 4 rows, equal square cells, original dark charcoal/mint/lavender/coral style and panel numbering. All unmentioned panels must stay unchanged. Keep content safely inside its square panel, with clear outer margins. Return complete storyboard. Correct ONLY: SECOND ROW LEFT panel number4: CLIQUE pentagon on left must be a full K5, all ten edges present. Specifically add both missing diagonals from TOP vertex to each BOTTOM vertex, not a single dangling segment. NODE COVER graph right: color ALL its vertices mint (a valid simple cover), all edges retained, so no gray-gray uncovered edge. THIRD ROW RIGHT number1 TSP tour: swap labels on the two left-side vertices so top-left is vₙ and bottom-left is vₙ₋₁. Orient EVERY cycle arrow clockwise v₁ → v₂ → v₃ → ... → vₙ₋₁ → vₙ → v₁. On left side arrows go upward. Preserve cost formula and other panels. Ensure no neighboring-panel fragments in margins.",
+        "followups": []
+    },
+    {
+        "file": "proofs-16-storyboard-v2.webp",
+        "ref": "proofs-16-storyboard-v2.webp",
+        "panels": [6, 7],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3-column × 4-row grid, original dark charcoal, mint, lavender, coral palette and panel numbers. Unmentioned panels unchanged. Keep content well inside each square. Return complete edited storyboard. Correct ONLY: THIRD ROW LEFT number2 variable gadget: replace inaccurate drawing with compact k=2 example with two side-by-side states. Each state has 2 A elements a₁,a₂; 2 B elements b₁,b₂; FOUR C elements c₁,c₂,c₃,c₄. 'x=vero' state uses exactly triples (a₁,b₁,c₁),(a₂,b₂,c₃); c₂,c₄ remain free outlined coral, label 'liberi'. 'x=falso' state uses (a₁,b₂,c₂),(a₂,b₁,c₄); c₁,c₃ free outlined coral. Draw hyperedges as clearly grouped triples, or write the two selected triples below each of two diagrams, no ambiguity from straight pairwise graph edges. THIRD ROW MIDDLE number3 clause gadget: show A column with SINGLE a_C, B with SINGLE b_C, C column with THREE distinct elements labelled h(ℓ₁),h(ℓ₂),h(ℓ₃). Show three alternative triples (a_C,b_C,h(ℓ_j)) for j=1,2,3 as three separate rows with repeated a_C,b_C labels and a brace 'alternative: scegli una'. At bottom small note 'raccolta: 2m coppie per 2m case libere'. Do not put three literal nodes in A. Keep the rest of board.",
+        "followups": []
+    },
+    {
+        "file": "proofs-17-storyboard.webp",
+        "ref": "proofs-17-storyboard.webp",
+        "panels": [6],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3-column × 4-row grid, original dark charcoal, mint, lavender, coral palette and panel numbers. Unmentioned panels unchanged. Keep content well inside each square. Return complete edited storyboard. Correct ONLY: THIRD ROW LEFT number3 integer programming conclusion: split logical flow into two independent facts. Top: '3SAT ↔ vincoli 0/1' → 'NP-difficile'. Separate box: 'Teorema delle soluzioni piccole' → 'soluzione intera con poly(|I|) bit' → 'verifica polinomiale' → 'IP ∈ NP'. These two branches join bottom 'INTEGER PROGRAMMING è NP-completo'. NEVER infer existence of short certificates from equivalence with 3SAT.",
+        "followups": []
+    },
+    {
+        "file": "proofs-18-storyboard-v2.webp",
+        "ref": "proofs-18-storyboard-v2.webp",
+        "panels": [9],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3-column × 4-row grid, original dark charcoal, mint, lavender, coral palette and panel numbers. Unmentioned panels unchanged. Keep content well inside each square. Return complete edited storyboard. Correct ONLY: BOTTOM LEFT panel number3: replace '¬SAT' by 'co-SAT' and replace '¬HAMILTON PATH' by 'co-HAMILTON PATH'. The complement is a language complement, not formula negation. Preserve SAT/HP NP-complete and complements coNP-complete. Do not alter formula negation ¬φ in the earlier panel.",
+        "followups": []
+    },
+    {
+        "file": "proofs-19-storyboard.webp",
+        "ref": "proofs-19-storyboard.webp",
+        "panels": [2],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3-column × 4-row grid, original dark charcoal, mint, lavender, coral palette and panel numbers. Unmentioned panels unchanged. Keep content well inside each square. Return complete edited storyboard. Correct ONLY: TOP RIGHT panel number3: replace boxed 'time(R) = time(R)' by boxed 'spazio(R) = O(log |x|)' and small label 'stessa funzione R'. Keep x ∉ A ⇔ R(x) ∉ B and the two nodes unchanged.",
+        "followups": []
+    },
+    {
+        "file": "proofs-21-storyboard.webp",
+        "ref": "proofs-21-storyboard.webp",
+        "panels": [5, 10],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3-column × 4-row grid, original dark charcoal, mint, lavender, coral palette and panel numbers. Unmentioned panels unchanged. Keep content well inside each square. Return complete edited storyboard. Correct ONLY: SECOND ROW RIGHT number2: show two clearly separated horizontal cases: 'ottimo esatto: esiste soluzione di valore B [NP] ∧ nessuna migliore [coNP]'; 'criticità: fallimento originale [coNP] ∧ proprietà dopo ogni modifica [NP]'. Use readable short lines and boxes; don't label generic condition1 NP for both. BOTTOM MIDDLE number3: replace mixed two-oracle machine by TWO INDEPENDENT diagrams stacked vertically: 'P^SAT: domanda φ → riduzione → L' labelled 'P^SAT ⊆ P^L'; and 'P^L: domanda x → Cook–Levin → SAT' labelled 'P^L ⊆ P^SAT'. Separate machines, each uses ONLY ONE target oracle. Bottom equation P^L = P^SAT. No arrows from one machine to both L and SAT.",
+        "followups": []
+    },
+    {
+        "file": "proofs-22-storyboard-v3.webp",
+        "ref": "proofs-22-storyboard-v3.webp",
+        "panels": [9],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3-column × 4-row grid, original dark charcoal, mint, lavender, coral palette and panel numbers. Unmentioned panels unchanged. Keep content well inside each square. Return complete edited storyboard. Correct ONLY: BOTTOM LEFT panel number3: the green accepting branch is on LEFT. Remove the right-hand Q box and its arrow to witnesses w₁,...,w_m from a gray branch. Branch BOTH data connectors from the LEFT green accepting branch / its Q box: one to answers a₁,...,a_k and the other to witnesses w₁,...,w_m. Ensure the arrow toward witnesses originates on the SAME highlighted accepting green path. Gray paths have no outgoing witness connectors. Keep board grid precise; no neighboring-panel fragments at row edges.",
+        "followups": []
+    },
+    {
+        "file": "proofs-23-storyboard-v2.webp",
+        "ref": "proofs-23-storyboard-v2.webp",
+        "panels": [1, 2, 5],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3-column × 4-row grid, original dark charcoal, mint, lavender, coral palette and panel numbers. Unmentioned panels unchanged. Keep content well inside each square. Return complete edited storyboard. Correct ONLY: TOP MIDDLE panel number2: replace initial 'L̄ ∈ Σᵢᴾ' with 'x ∈ L̄'; leave equivalence to ∃y(|y|≤p(|x|)∧R(x,y)). TOP RIGHT number3: replace initial 'L ∈ Πᵢᴾ' with 'x ∈ L'; keep negation and ∀y equivalences. SECOND ROW RIGHT number3: color terminal Qᵢyᵢ box neutral gray, not mint nor lavender. Add clear two-line legend 'Qᵢ=∃ se i dispari' and 'Qᵢ=∀ se i pari'. Keep first ∃ box mint and second ∀ box lavender.",
+        "followups": []
+    },
+    {
+        "file": "proofs-24-storyboard-v2.webp",
+        "ref": "proofs-24-storyboard-v2.webp",
+        "panels": [1, 6],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: TOP MIDDLE number2: replace nested rectangles by a vertical STACK of separate non-overlapping equal boxes, connected by equality signs, under explicit heading 'Ipotesi: NP = coNP'. Boxes read 'Σ₁ᴾ = Π₁ᴾ = NP', 'Σ₂ᴾ = Π₂ᴾ = NP', '⋮', 'Σₖᴾ = Πₖᴾ = NP', final 'PH = NP'. No set drawn inside another. THIRD ROW LEFT number4: in right-hand T box change 'minimale' to 'candidato'. Under the T′ versus T comparison write 'T non minimale'. Keep T′ satisfying KB, and make proper subset symbol M(T′) ⊊ M(T) (not ≤). This panel displays a counterexample, so T is not minimal.",
+        "followups": [
+            "Edit target: this one square CIRC proof panel. Keep original diagram, charcoal background, mint/coral boxes, number4 and upper universal-counterexample box. In bottom RIGHT box change English 'candidate' to Italian 'candidato'. In bottom LEFT T′ box replace the entire incorrect line 'M(T′) ≤ M(T)' with THREE small centered lines: 'M(T′)', 'sottoinsieme proprio', 'di M(T)'. NO inequality or subset symbol in these lines. Keep 'T non minimale' underneath, so strict inclusion is explicit and the conclusion correct. Preserve T′⊨KB and T′⊨α and dashed arrow. Text must stay within the boxes; extend left box slightly upwards or reduce font a little if needed. Return only this square panel."
+        ]
+    },
+    {
+        "file": "proofs-27-storyboard-v2.webp",
+        "ref": "proofs-27-storyboard-v2.webp",
+        "panels": [4],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: SECOND ROW MIDDLE number5: reduction input box currently M must read 'x'; output formula box must read 'φ_{M,x}' (M fixed). Upper size bound must read '|φ_{M,x}| = poly(|x|)' instead of poly(|M|). Equivalence below must read 'M accetta x ⇔ φ_{M,x} è vera'. Keep quantifier row and remaining diagrams.",
+        "followups": []
+    },
+    {
+        "file": "proofs-28-storyboard-v2.webp",
+        "ref": "proofs-28-storyboard-v2.webp",
+        "panels": [9],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: BOTTOM LEFT panel number4 GEOGRAPHY: replace header with 'Φ = ∃x ∀y ∃z φ(x,y,z)', so last quantifier is existential. Replace binary CHOICE TREE by THREE sequential small DIAMONDS, for x, y, z: each consists of entry node, two alternatives labelled 0/1, and ONE shared exit where both sides merge; shared exit links to entry of next diamond. Use mint existential x,z and coral universal y. Both alternatives MUST rejoin before next variable; never duplicate downstream nodes. Next to it small clause gadget: '∀: scegli clausola' → '∃: scegli letterale' → 'nodo già usato?'. Keep compact, polynomial graph, not branching exponential tree.",
+        "followups": [
+            "Edit ONLY BOTTOM LEFT panel4 geography. Keep formula ∃x∀y∃zφ and right clause gadget. The 3 diamonds must form a DIRECTED CHAIN. Current arrows connect exit to exit, which is WRONG. Draw the THREE diamonds VERTICALLY stacked on left, small enough to fit. Diamond1: mint top entry marked x forks to TWO distinct midpoint circles marked0 and1; BOTH point DOWN to one shared exit. That exit points DOWN to TOP ENTRY of diamond2 marked y (coral). Diamond2 again forks to two midpoint circles0,1, both point down to shared exit. Its exit points DOWN to TOP ENTRY of diamond3 marked z(mint). Diamond3 same construction. No horizontal exit-to-exit arrow. Every variable choice is traversed in order x THEN y THEN z. Each diamond has FOUR nodes and FOUR internal arrows, plus2 interdiamond arrows. Use small compact circles; no duplicate downstream gadgets. Keep all other11 panels unchanged.",
+            "Redraw the corrected GEOGRAPHY panel alone: three sequential four-node diamonds, with explicit exit nodes B_x, B_y, B_z and edges B_x to T_y, B_y to T_z. Keep the clause schematic separate; remove any bypass from B_z to the final literal test."
+        ]
+    },
+    {
+        "file": "proofs-29-storyboard-v2.webp",
+        "ref": "proofs-29-storyboard-v2.webp",
+        "panels": [5],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: SECOND ROW RIGHT panel number2 FSAT-FNP: change 'L ∈ FNP' to 'F_L ∈ FNP'. Add small nearby 'L ∈ NP' if room. Keep verifier M, Cook–Levin and φ_L(x,y). Align exact square panel grid so rows do not bleed into neighbors.",
+        "followups": []
+    },
+    {
+        "file": "proofs-30-storyboard-v2.webp",
+        "ref": "proofs-30-storyboard-v2.webp",
+        "panels": [5, 6],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: SECOND ROW RIGHT panel number2: change padding suffix symbols 0,0,0,... to '#,#,#,...', with tiny note '# ∉ Σ'. Prefix x remains bits 1,0,1. Change brace label to exact equality 'N = 2^{p(n)}', not ≈. THIRD ROW LEFT number3: likewise replace N≈2^{p(n)} by N=2^{p(n)}. Keep all other math. Keep equal-row grid and no number fragments spilling across panels.",
+        "followups": []
+    },
+    {
+        "file": "proofs-31-storyboard-v2.webp",
+        "ref": "proofs-31-storyboard-v2.webp",
+        "panels": [0, 1, 5],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: TOP LEFT number1: small C input label becomes 'i (binario)' instead of x. C outputs three labels 'tipo(i)', 'pred₁(i)', 'pred₂(i)' instead of g₁(i₁),g₂(i₂),...g_m(i_m). It describes indexed gates. Keep expanded circuit below. TOP MIDDLE number2 tableau: label BOTH last row and last column '2^{n^k}−1' instead of 2^n−1, add 'n=|x|' and 'T=2^{n^k}'. Keep local-rule magnification. SECOND ROW RIGHT number6: R(i) column must contain generic values b₀,b₁,⋮,1, not all zeros; last entry 1 highlighted mint, label 'uscita'. Add 'R(out)=1'. Retain local correctness constraints and every other panel.",
+        "followups": []
+    },
+    {
+        "file": "proofs-33-storyboard-v3.webp",
+        "ref": "proofs-33-storyboard-v3.webp",
+        "panels": [2],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: TOP RIGHT number3 PP-PSPACE: number line must be CORAL from 0 through midpoint 2^{p(n)−1} inclusive; MINT strictly to RIGHT of midpoint up to 2^{p(n)}. Add explicit label 'accetta ⇔ c > 2^{p(n)−1}'. Keep counter bit count and final PP⊆PSPACE unchanged.",
+        "followups": []
+    },
+    {
+        "file": "proofs-34-storyboard-v2.webp",
+        "ref": "proofs-34-storyboard-v2.webp",
+        "panels": [2, 3, 7, 8],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md",
+        "prompt": "Use case: scientific-educational. Edit target: attached Italian proof storyboard. Preserve exact 3 columns × 4 rows, original dark charcoal/mint/lavender/coral palette and panel numbering. All unmentioned panels unchanged; safe margins inside every cell. Return complete edited storyboard. Correct ONLY: TOP RIGHT number3: amplitude formula must read α_z = (1/√2)^h (N₊(z) − N₋(z)); bundle labels likewise N₊(z),N₋(z). SECOND ROW LEFT number4: squared amplitude factor must be 2^{−h}, formula '|α_z|² = 2^{−h}(N₊₊(z) − N₊₋(z) − N₋₊(z) + N₋₋(z))'; probability sum over z∈A. No amplitude factor 1/2^{p(n)} or squared 1/2^{2p(n)} in these two panels. THIRD ROW MIDDLE number2: replace deterministic branching tree by a SINGLE directed chain C₀→C₁→C₂→⋯→C_t, each node one successor at most. Label '# configurazioni ≤ c^{n^k}', 'deterministica: nessuna ripetizione'; keep PSPACE⊆EXP. THIRD ROW RIGHT number3: top heading becomes STRICT 'EXP ⊊ 2-EXP'. Keep point outside EXP. Preserve exact equal rows so adjacent numbered panels don't leak.",
+        "followups": [
+            "Make ONLY2 corrections in this storyboard. SECOND ROW LEFT panel4: probability sum at bottom must read Pr[acc] = Σ_{z∈A} |α_z|², NOT α_x. Keep squared amplitude formula at top exactly unchanged with factor2^(−h). THIRD ROW RIGHT panel3: replace top heading entirely with TWO LINES OF WORDS: 'EXP è contenuta' and 'strettamente in 2-EXP'. No subset symbol here, as its strictness has been rendered ambiguously. The words strettamente in must be present, since strict containment is the theorem. Keep diagram chain and point outsideEXP, and all10 other panels unchanged."
+        ]
+    },
+    {
+        "file": "proofs-31-storyboard-v2.webp",
+        "ref": "proofs-31-storyboard-v2.webp",
+        "panels": [5],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md#verifica-dopo-la-correzione-16-ottobre-2026",
+        "prompt": "Use case: precise-object-edit, scientific-educational. Edit target is the attached SINGLE square educational proof panel. Preserve dark charcoal background, mint/lavender/coral palette, panel number, readable math typography and ample square margins. Return ONLY this single corrected square panel, not a storyboard. Change only the last index to the LEFT of the R(i) column: it currently reads 2^{n^k}−1, which is WRONG for this panel. Replace it with exactly 2^n−1. There must be NO k anywhere in this panel. Keep the last column VALUE 1, mint highlight, 'uscita' arrow, R(out)=1, b₀,b₁, all other text and the local-correctness AND gate unchanged. The indexed circuit has n-bit gate indices; do not use the tableau size."
+    },
+    {
+        "file": "proofs-16-storyboard-v2.webp",
+        "ref": "proofs-16-storyboard-v2.webp",
+        "panels": [6],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md#verifica-dopo-la-correzione-16-ottobre-2026",
+        "prompt": "Use case: precise-object-edit, scientific-educational. Edit target is the attached SINGLE square educational proof panel. Preserve dark charcoal background, mint/lavender/coral palette, panel number, readable math typography and ample square margins. Return ONLY this single corrected square panel, not a storyboard. Redraw the variable gadget as TWO clean side-by-side halves headed 'x = vero' and 'x = falso', with thin divider. Remove ALL old tangled wires, malformed labels and old gadget shapes. In EACH half display TWO disjoint horizontal rounded capsules, each enclosing EXACTLY THREE labelled circles A(lavender),B(mint),C(coral). Each capsule represents ONE selected triple, not graph edges. TRUE half top capsule labels a₁,b₁,c₁; bottom capsule labels a₂,b₂,c₃. Under them show exactly two separate EMPTY coral outlined circles labelled c₂ and c₄, with caption 'c₂, c₄ liberi'. FALSE half top capsule labels a₁,b₂,c₂; bottom capsule labels a₂,b₁,c₄. Under them exactly two EMPTY coral outlined circles labelled c₁ and c₃, caption 'c₁, c₃ liberi'. Thus each half has2 A nodes,2 B nodes,4 C nodes. All a/b/c labels must be clearly legible, including b₁ and b₂; use simple upright math letters. At bottom of each half also write its selected triples on2 lines: TRUE '(a₁,b₁,c₁)' then '(a₂,b₂,c₃)'; FALSE '(a₁,b₂,c₂)' then '(a₂,b₁,c₄)'. No wire connects to any free C node. No wire joins b₁ to b₂. Keep panel number2."
+    },
+    {
+        "file": "proofs-15-storyboard-v2.webp",
+        "ref": "proofs-15-storyboard-v2.webp",
+        "panels": [10],
+        "tool": "image_gen",
+        "source": "spiegazioni/DISEGNI-DA-CORREGGERE.md#verifica-dopo-la-correzione-16-ottobre-2026",
+        "prompt": "Use case: precise-object-edit, scientific-educational. Edit target is the attached SINGLE square educational proof panel. Preserve dark charcoal background, mint/lavender/coral palette, panel number, readable math typography and ample square margins. Return ONLY this single corrected square panel, not a storyboard. Remove EVERY arrowhead from the mint tour edges. Keep exactly the same six mint city circles, the six connecting mint segments including the lower ellipsis for omitted cities, all coral cost1 labels, heading 'costo ≥ n' and panel number3. The cycle is undirected: ALL mint segments are plain lines with no pointed triangular heads at either end or halfway. This solves conflicting directions without changing the city geometry, labels or cost argument. No other changes."
     }
 ]
