@@ -37,7 +37,7 @@ const box = "rounded-lg border border-line px-4 open:pb-4";
 const boxSummary = "flex min-h-11 cursor-pointer items-center font-ui text-sm font-semibold text-accent";
 /* i titoli di sezione delle spiegazioni diventano h4, con lo stile delle altre voci della scheda */
 const mdText =
-    "[&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-semibold [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted";
+    "[&_p]:max-w-none! [&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-semibold [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted";
 
 /* spiegazione in Markdown senza il titolo (è già nella scheda); le risposte alle domande di controllo sono blocchi <details> scritti a mano */
 function Explanation({ md }: { md: string }) {
@@ -108,13 +108,13 @@ const TheoremRow = memo(function TheoremRow({
                     )}
                     {t.prova === "nel corso" && <span className={ui.pill}>dimostrato nel corso</span>}
                 </div>
-                <Rich as="p" className="col-span-full max-w-prose" html={t.enunciato} />
+                <Rich as="p" className="col-span-full" html={t.enunciato} />
                 <span className="font-ui text-accent col-span-full text-sm">
                     <span className="group-open:hidden">Idea, frase per l&apos;esame e dimostrazione +</span>
                     <span className="hidden group-open:inline">Chiudi approfondimento −</span>
                 </span>
             </summary>
-            <div className="flex max-w-prose flex-col gap-3 pb-4">
+            <div className="flex flex-col gap-3 pb-4">
                 {t.intuizione && (
                     <div>
                         <h4 className={h4}>Intuizione</h4>
@@ -262,7 +262,7 @@ export default function TheoremsView({
                 Leggi l&apos;enunciato, poi apri la scheda: trovi l&apos;idea, i passaggi illustrati e la dimostrazione
                 in testo.
             </p>
-            <p className={`${ui.noteOk} mb-4 max-w-prose`}>
+            <p className={`${ui.noteOk} mb-4`}>
                 I {TOP} teoremi segnati con ★ servono in almeno 8 domande delle tracce ciascuno e da soli coprono circa
                 due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per vederli per primi.
             </p>

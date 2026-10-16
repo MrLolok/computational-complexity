@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
 import { LEZ6, lez6Groups } from "@/data/lezione6";
 import { ui } from "@/lib/ui";
@@ -60,7 +61,7 @@ export function QuantumTab() {
                 <Lez6Topics groups={lez6Groups(...QUANTUM_GROUPS)} />
             </section>
             <Link href="/quantistico" className={`${ui.btn} self-start`}>
-                Algoritmi quantistici: Grover, Shor e quando conviene →
+                Algoritmi quantistici: Grover, Shor e quando conviene <Arrow />
             </Link>
             <Lez6Exam bullets={[4]} test={/\bBQP\b|MdT quantistica|quantistico a errore limitato/} />
             <Lez6Source />

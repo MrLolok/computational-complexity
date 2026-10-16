@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { useState } from "react";
 
+import Arrow from "@/components/Arrow";
 import { ui } from "@/lib/ui";
 import { usePanelScroll } from "./ClassMap";
 
@@ -56,7 +57,7 @@ export default function StepTabs({ bodies }: { bodies: ReactNode[] }) {
                     disabled={step === 0}
                     onClick={() => setStep((s) => Math.max(0, s - 1))}
                 >
-                    ← Indietro
+                    <Arrow shape="left" /> Indietro
                 </button>
                 <button
                     className={ui.btnPrimary}
@@ -64,7 +65,7 @@ export default function StepTabs({ bodies }: { bodies: ReactNode[] }) {
                     disabled={step === last}
                     onClick={() => setStep((s) => Math.min(last, s + 1))}
                 >
-                    Avanti →
+                    Avanti <Arrow />
                 </button>
             </div>
         </>

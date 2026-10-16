@@ -1,7 +1,7 @@
 import type { Qbf, Quant, RClass, TowerId } from "@/data/piani";
 
 import { QCOMP, QEX, TE, TW } from "@/data/piani";
-import { ui } from "./ui";
+import { arrowSvg, ui } from "./ui";
 
 /* Logica pura della scheda "Piani di PH": notazione, torre, schede dei nodi, prefissi, alberi delle QBF, riduzioni. */
 
@@ -223,7 +223,7 @@ export function infoOf(id: TowerId): TowerInfo {
                 ],
                 [
                     "Approfondisci",
-                    `<p><a href="/dp" class="inline-block no-underline ${ui.btn}">Apri il Focus DP →</a></p>`,
+                    `<p><a href="/dp" class="inline-block no-underline ${ui.btn}">Apri il Focus DP ${arrowSvg()}</a></p>`,
                 ],
             ],
         };

@@ -6,6 +6,7 @@ import type { Choice } from "@/store/progressSlice";
 import { useState } from "react";
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import ClassChip from "@/components/ClassChip";
 import Rich from "@/components/Rich";
 import { IDS, PLAIN } from "@/data/classes";
@@ -145,10 +146,16 @@ export default function ExamQuiz() {
                                 disabled={qi === 0}
                                 onClick={() => setQi(Math.max(0, qi - 1))}
                             >
-                                ← Precedente
+                                <Arrow shape="left" /> Precedente
                             </button>
                             <button className={ui.btnPrimary} type="button" onClick={next}>
-                                {last ? "Ricomincia" : "Prossima →"}
+                                {last ? (
+                                    "Ricomincia"
+                                ) : (
+                                    <>
+                                        Prossima <Arrow />
+                                    </>
+                                )}
                             </button>
                         </div>
                     </>

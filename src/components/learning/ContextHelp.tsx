@@ -6,6 +6,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 
+import Arrow from "@/components/Arrow";
 import { GLOSSARY } from "@/lib/glossary";
 import { texHtml } from "@/lib/tex";
 
@@ -223,7 +224,7 @@ export default function ContextHelp({ children }: { children: ReactNode }) {
                             className="text-accent mt-3 inline-block underline underline-offset-4"
                             onClick={close}
                         >
-                            Approfondisci →
+                            Approfondisci <Arrow />
                         </Link>
                     </div>,
                     document.body,

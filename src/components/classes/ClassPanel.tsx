@@ -3,6 +3,7 @@ import type { ExamQuestion } from "@/data/examQuestions";
 
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import ClassChip from "@/components/ClassChip";
 import ExactTsp from "@/components/dp/ExactTsp";
 import SatUnsat from "@/components/dp/SatUnsat";
@@ -37,7 +38,7 @@ export function PanelIntro() {
                 </p>
                 <p>
                     <Tex>{String.raw`\subseteq`}</Tex> = contenuta; <Tex>{String.raw`\subsetneq`}</Tex> = contenuta e
-                    diversa. Attiva le opzioni per separazioni e questioni aperte.
+                    diversa. Usa le opzioni sopra la mappa per separazioni e questioni aperte.
                 </p>
                 <p>
                     Un buon punto di partenza: <ClassChip id="P" /> <ClassChip id="NP" /> <ClassChip id="coNP" />
@@ -113,7 +114,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
                 <p className="mt-3">
                     <Link className={`${ui.btn} inline-block`} href={`/piani#${tower}`}>
                         <span>
-                            Vedi <N id={id} /> nei piani di PH →
+                            Vedi <N id={id} /> nei piani di PH <Arrow />
                         </span>
                     </Link>
                 </p>
@@ -260,7 +261,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
                     {tr.length > 6 && (
                         <p>
                             <Link className={`${ui.btn} inline-block`} href="/esercizi">
-                                Altre {tr.length - 6} nel quiz →
+                                Altre {tr.length - 6} nel quiz <Arrow />
                             </Link>
                         </p>
                     )}

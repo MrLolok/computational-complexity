@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
 import { RP, RP_DEFAULT, RQUICK } from "@/data/piani";
 import { plainMath } from "@/lib/mathNotation";
@@ -33,7 +34,9 @@ export default function Reductions() {
                         ))}
                     </select>
                 </label>
-                <span className={`${ui.mono} pb-2.5`}>→</span>
+                <span className={`${ui.mono} pb-2.5`}>
+                    <Arrow />
+                </span>
                 <label className={label}>
                     A (problema B)
                     <select className={ui.select} value={b} onChange={(e) => setB(e.target.value)}>

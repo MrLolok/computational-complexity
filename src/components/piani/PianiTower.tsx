@@ -6,6 +6,7 @@ import type { KeyboardEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import Rich from "@/components/Rich";
 import Tex from "@/components/Tex";
 import { CLASS_PROBLEMS } from "@/data/classes";
@@ -278,7 +279,7 @@ export default function PianiTower() {
                     </div>
                     {n.map && (
                         <Link href={`/classi/${n.map}`} className={`${ui.btn} no-underline`}>
-                            Scheda della classe →
+                            Scheda della classe <Arrow />
                         </Link>
                     )}
                 </div>

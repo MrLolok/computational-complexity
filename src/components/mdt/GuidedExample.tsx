@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { useMemo, useState } from "react";
 
+import Arrow from "@/components/Arrow";
 import { parseProgram } from "@/lib/tm";
 import { ui } from "@/lib/ui";
 import Runner, { ruleText } from "./Runner";
@@ -60,10 +61,10 @@ export default function GuidedExample({
             {program && last && <Runner program={program} kind="funzione" samples={samples} inputHint={inputHint} />}
             <div className="flex gap-2">
                 <button type="button" className={ui.btn} disabled={i === 0} onClick={() => setI(i - 1)}>
-                    ← Passo precedente
+                    <Arrow shape="left" /> Passo precedente
                 </button>
                 <button type="button" className={ui.btnPrimary} disabled={last} onClick={() => setI(i + 1)}>
-                    Passo successivo →
+                    Passo successivo <Arrow />
                 </button>
             </div>
         </div>

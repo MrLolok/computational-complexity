@@ -2,6 +2,7 @@ import type { Lez6Group } from "@/data/lezione6";
 
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
 import { LEZ6 } from "@/data/lezione6";
 import { TRACES } from "@/data/traces";
@@ -31,12 +32,10 @@ export function Lez6Topics({ groups }: { groups: Lez6Group[] }) {
                             className="group border-line bg-surface open:border-line-strong scroll-mt-20 rounded-xl border"
                         >
                             <summary className="flex min-h-11 cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 [&::-webkit-details-marker]:hidden">
-                                <span
-                                    aria-hidden="true"
+                                <Arrow
+                                    shape="chevron"
                                     className="text-muted transition-transform group-open:rotate-90"
-                                >
-                                    ›
-                                </span>
+                                />
                                 <span className={`min-w-0 flex-1 font-semibold ${t.notAsked ? "text-muted" : ""}`}>
                                     {t.title}
                                 </span>
@@ -98,9 +97,7 @@ export function Lez6Exercises({ only }: { only: number[] }) {
                 .map((e) => (
                     <details key={e.q} name="lezione-6" className="group border-line rounded-xl border">
                         <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 px-4 py-3 font-semibold [&::-webkit-details-marker]:hidden">
-                            <span aria-hidden="true" className="text-muted transition-transform group-open:rotate-90">
-                                ›
-                            </span>
+                            <Arrow shape="chevron" className="text-muted transition-transform group-open:rotate-90" />
                             <Markdown className="min-w-0 flex-1">{e.q}</Markdown>
                         </summary>
                         <div className="border-line border-t px-4 pt-3 pb-4">

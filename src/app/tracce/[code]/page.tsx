@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
 import { PracticeLab, SolutionLab } from "@/components/mdt/MachineLab";
 import TraceRunner from "@/components/traces/TraceRunner";
@@ -122,14 +123,14 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
             >
                 {prev ? (
                     <Link href={`/tracce/${prev.code}`} className="text-muted hover:text-accent">
-                        ← {prev.code} · {plainText(prev.dateLabel || prev.title)}
+                        <Arrow shape="left" /> {prev.code} · {plainText(prev.dateLabel || prev.title)}
                     </Link>
                 ) : (
                     <span />
                 )}
                 {next && (
                     <Link href={`/tracce/${next.code}`} className="text-muted hover:text-accent">
-                        {next.code} · {plainText(next.dateLabel || next.title)} →
+                        {next.code} · {plainText(next.dateLabel || next.title)} <Arrow />
                     </Link>
                 )}
             </nav>

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import Arrow from "@/components/Arrow";
 import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems";
 import { stripHtml } from "@/lib/glossary";
 import { BANDS, classLabel, matches } from "@/lib/problems";
@@ -197,7 +198,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                                 </span>
                             </span>
                             <span className="text-muted" aria-hidden="true">
-                                →
+                                <Arrow />
                             </span>
                         </button>
                     ))}

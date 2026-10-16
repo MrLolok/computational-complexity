@@ -7,6 +7,7 @@ import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
 import { IDS, PLAIN, QUICK } from "@/data/classes";
 import { ui } from "@/lib/ui";
@@ -87,7 +88,13 @@ export default function ComparePicker({ a, b, children }: { a?: ClassId; b?: Cla
                         </select>
                     </label>
                     <button type="submit" className={ui.btnPrimary} disabled={!valid || pending}>
-                        {pending ? "Confronto…" : "Confronta →"}
+                        {pending ? (
+                            "Confronto…"
+                        ) : (
+                            <>
+                                Confronta <Arrow />
+                            </>
+                        )}
                     </button>
                 </div>
                 {pa && pa === pb && (

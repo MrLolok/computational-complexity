@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import PhLevels from "@/components/piani/PhLevels";
 import PianiTower from "@/components/piani/PianiTower";
 import PrefixBuilder from "@/components/piani/PrefixBuilder";
@@ -100,7 +101,7 @@ export default function Page() {
                         <Tex>{String.raw`\Pi_3^{\mathrm{P}}`}</Tex>-completo.
                     </p>
                     <Link href="/classi/DP" className="text-accent self-start underline">
-                        La scheda sintetica di DP →
+                        La scheda sintetica di DP <Arrow />
                     </Link>
                 </details>
                 <TowerDisclosure>
@@ -139,7 +140,7 @@ export default function Page() {
                         <Tex>{String.raw`\Sigma_i^{\mathrm{P}} = \Pi_i^{\mathrm{P}}`}</Tex>.
                     </p>
                     <Link href="/teoremi#teorema-t17-9" className="text-accent underline">
-                        Cerca i teoremi sul collasso →
+                        Cerca i teoremi sul collasso <Arrow />
                     </Link>
                 </details>
                 <details className={ui.card}>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import ClassesView from "@/components/classes/ClassesView";
+import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
 import { ui } from "@/lib/ui";
 
@@ -46,7 +46,7 @@ export default function Page() {
                     </p>
                     <div className="flex flex-wrap gap-3">
                         <Link href="/classi/NP" className={ui.btnPrimary}>
-                            Inizia da NP →
+                            Inizia da NP <Arrow />
                         </Link>
                         <Link href="/tracce" className={ui.btn}>
                             Apri una traccia
@@ -64,7 +64,7 @@ export default function Page() {
                             <div key={id} className="w-full" style={{ paddingLeft: `${i * 16}px` }}>
                                 {i > 0 && (
                                     <span className="text-muted mb-2 block pl-3 font-mono" aria-label="è contenuta in">
-                                        ↓ <Tex>{String.raw`\subseteq`}</Tex>
+                                        <Arrow shape="down" /> <Tex>{String.raw`\subseteq`}</Tex>
                                     </span>
                                 )}
                                 <Link
@@ -100,7 +100,7 @@ export default function Page() {
                             <span className="text-accent font-mono text-sm">
                                 {p.n}
                                 <span className="float-right" aria-hidden="true">
-                                    ↗
+                                    <Arrow shape="up-right" />
                                 </span>
                             </span>
                             <h3 className={ui.h3}>{p.title}</h3>
@@ -109,30 +109,6 @@ export default function Page() {
                         </Link>
                     ))}
                 </div>
-            </section>
-            <section className="border-line flex flex-wrap items-center gap-x-8 gap-y-3 rounded-lg border-y py-5 text-sm">
-                <h2 className="font-semibold">Come si usa</h2>
-                <ol className="text-muted flex flex-wrap gap-x-7 gap-y-2">
-                    <li>1. Scegli un concetto.</li>
-                    <li>2. Apri un esempio.</li>
-                    <li>3. Prova una domanda.</li>
-                </ol>
-                <p className="text-muted">I termini sottolineati offrono un aiuto al passaggio, al focus o al tocco.</p>
-            </section>
-            <ClassesView sel={null} embedded />
-            <section className="border-line grid gap-4 border-t pt-7 sm:grid-cols-2">
-                <Link href="/confronta" className={ui.card}>
-                    <h2 className={ui.h3}>Come si collegano due classi? →</h2>
-                    <p className="text-muted text-sm">
-                        Scegli una coppia e distingui inclusioni note, separazioni e questioni aperte.
-                    </p>
-                </Link>
-                <Link href="/quantistico" className={ui.card}>
-                    <h2 className={ui.h3}>Algoritmi quantistici →</h2>
-                    <p className="text-muted text-sm">
-                        Grover, Shor e quando conviene il calcolo quantistico, come nella Lezione 6.
-                    </p>
-                </Link>
             </section>
         </>
     );

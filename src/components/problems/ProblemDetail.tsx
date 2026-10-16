@@ -5,6 +5,7 @@ import type { TraceRef } from "@/data/traces";
 
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import LearningSlideshow from "@/components/learning/LearningSlideshow";
 import Rich from "@/components/Rich";
 import { PROBLEM_BY, PROBLEMS } from "@/data/problems";
@@ -79,7 +80,7 @@ export default function ProblemDetail({
                         disabled={!previous}
                         onClick={() => previous && onGo(previous.id)}
                     >
-                        ← Precedente
+                        <Arrow shape="left" /> Precedente
                     </button>
                     <button
                         type="button"
@@ -87,7 +88,7 @@ export default function ProblemDetail({
                         disabled={!next}
                         onClick={() => next && onGo(next.id)}
                     >
-                        Prossimo →
+                        Prossimo <Arrow />
                     </button>
                 </nav>
             </div>
@@ -183,7 +184,7 @@ export default function ProblemDetail({
             )}
             {next && (
                 <button type="button" className={`${ui.btn} w-full`} onClick={() => onGo(next.id)}>
-                    Prossimo: <span className="ml-1" dangerouslySetInnerHTML={{ __html: next.name }} /> →
+                    Prossimo: <span dangerouslySetInnerHTML={{ __html: next.name }} /> <Arrow />
                 </button>
             )}
         </div>

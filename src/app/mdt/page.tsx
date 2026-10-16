@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import OpenOnHash from "@/components/learning/OpenOnHash";
 import Markdown from "@/components/Markdown";
 import GuidedExample from "@/components/mdt/GuidedExample";
@@ -164,10 +165,11 @@ export default function Page() {
                         className="group border-line bg-surface open:border-line-strong scroll-mt-20 rounded-xl border"
                     >
                         <summary className="flex min-h-11 cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 [&::-webkit-details-marker]:hidden">
-                            <span aria-hidden="true" className="text-muted transition-transform group-open:rotate-90">
-                                ›
-                            </span>
+                            <Arrow shape="chevron" className="text-muted transition-transform group-open:rotate-90" />
                             <span className="min-w-0 flex-1 basis-52 font-semibold wrap-normal">{m.title}</span>
+                            <span className={ui.pill}>
+                                {tracesOf(m.id).length === 1 ? "1 traccia" : `${tracesOf(m.id).length} tracce`}
+                            </span>
                             <span className={ui.pill}>
                                 {m.kind} · {m.tapes === 1 ? "1 nastro" : `${m.tapes} nastri`}
                                 {m.nondet ? " · nondeterministica" : ""}

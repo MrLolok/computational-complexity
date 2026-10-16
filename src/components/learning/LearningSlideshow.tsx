@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 
+import Arrow from "@/components/Arrow";
 import { Html } from "@/components/problems/bits";
 import { plainMath } from "@/lib/mathNotation";
 import { ui } from "@/lib/ui";
@@ -146,7 +147,7 @@ export default function LearningSlideshow({
                     disabled={step === 0}
                     onClick={() => go(step - 1)}
                 >
-                    ← Indietro
+                    <Arrow shape="left" /> Indietro
                 </button>
                 <div
                     role="group"
@@ -173,7 +174,7 @@ export default function LearningSlideshow({
                     disabled={step === lesson.slides.length - 1}
                     onClick={() => go(step + 1)}
                 >
-                    Avanti →
+                    Avanti <Arrow />
                 </button>
             </div>
             {step === lesson.slides.length - 1 && (lesson.outcome || lesson.note) && (

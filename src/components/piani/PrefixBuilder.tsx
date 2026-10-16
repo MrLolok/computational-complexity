@@ -4,6 +4,7 @@ import type { QLetter } from "@/lib/piani";
 
 import { useState } from "react";
 
+import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
 import { analyzePrefix, readit } from "@/lib/piani";
 import { texHtml } from "@/lib/tex";
@@ -67,7 +68,7 @@ export default function PrefixBuilder() {
                 {P.tid ? (
                     <p>
                         <button type="button" className={ui.btn} onClick={show}>
-                            Mostrala nella torre ↑
+                            Mostrala nella torre <Arrow shape="up" />
                         </button>
                     </p>
                 ) : (

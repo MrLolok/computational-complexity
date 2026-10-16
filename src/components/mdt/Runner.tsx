@@ -4,6 +4,7 @@ import type { Config, Program, Rule } from "@/lib/tm";
 
 import { useEffect, useRef, useState } from "react";
 
+import Arrow from "@/components/Arrow";
 import { applicable, apply, ask, BLANK, content, halted, initial, ORACLES, QUERY, run } from "@/lib/tm";
 import { ui } from "@/lib/ui";
 
@@ -200,7 +201,7 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
                     onClick={() => setHistory((h) => h.slice(0, -1))}
                     disabled={history.length === 1}
                 >
-                    ← Un passo indietro
+                    <Arrow shape="left" /> Un passo indietro
                 </button>
                 <button
                     type="button"
@@ -208,7 +209,13 @@ export default function Runner({ program, kind, oracle, samples, inputHint }: Pr
                     onClick={() => step()}
                     disabled={Boolean(end) || choice}
                 >
-                    {c.state === QUERY ? "Chiedi all'oracolo" : "Un passo →"}
+                    {c.state === QUERY ? (
+                        "Chiedi all'oracolo"
+                    ) : (
+                        <>
+                            Un passo <Arrow />
+                        </>
+                    )}
                 </button>
                 <button
                     type="button"

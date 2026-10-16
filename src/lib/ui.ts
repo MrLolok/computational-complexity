@@ -9,9 +9,9 @@ export const ui = {
     hint: "text-muted text-base",
     card: "bg-surface border border-line rounded-xl p-4 sm:p-5 flex flex-col gap-3 min-w-0",
     sec: "mt-5 pt-4 border-t border-line flex flex-col gap-2",
-    btn: "inline-flex items-center justify-center min-h-11 font-ui text-sm border border-line-strong rounded-lg px-3 py-2 text-ink hover:border-accent hover:text-accent disabled:opacity-35 disabled:cursor-default transition-colors cursor-pointer",
+    btn: "inline-flex items-center justify-center gap-1.5 min-h-11 font-ui text-sm border border-line-strong rounded-lg px-3 py-2 text-ink hover:border-accent hover:text-accent disabled:opacity-35 disabled:cursor-default transition-colors cursor-pointer",
     btnPrimary:
-        "inline-flex items-center justify-center min-h-11 font-ui text-sm rounded-lg px-3 py-2 bg-accent text-accent-ink border border-accent hover:opacity-90 disabled:opacity-35 cursor-pointer",
+        "inline-flex items-center justify-center gap-1.5 min-h-11 font-ui text-sm rounded-lg px-3 py-2 bg-accent text-accent-ink border border-accent hover:opacity-90 disabled:opacity-35 cursor-pointer",
     linkBtn: "font-ui text-sm text-accent underline underline-offset-2 cursor-pointer",
     pill: "inline-block font-ui text-xs font-semibold rounded-full px-2.5 py-0.5 bg-sunk text-ink whitespace-nowrap",
     pillProved:
@@ -45,3 +45,18 @@ export const NODE_RECT = {
 } as const;
 
 export const classColor = (id: string) => ({ "--c": `var(--color-c-${id})` }) as React.CSSProperties;
+
+/** frecce SVG (tracciati su 24×24) al posto dei glifi → ← ↑ ↓ ↗ ›: colore e corpo li prendono dal testo */
+export const ARROWS = {
+    right: "M5 12h14M13 6l6 6-6 6",
+    left: "M19 12H5M11 6l-6 6 6 6",
+    up: "M12 19V5M6 11l6-6 6 6",
+    down: "M12 5v14M6 13l6 6 6-6",
+    "up-right": "M7 17 17 7M8 7h9v9",
+    chevron: "M9 6l6 6-6 6",
+} as const;
+export const ARROW_CLASS = "inline-block size-[1.1em] shrink-0 align-[-0.2em]";
+
+/** la stessa freccia per l'HTML scritto come stringa */
+export const arrowSvg = (shape: keyof typeof ARROWS = "right") =>
+    `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${ARROW_CLASS}"><path d="${ARROWS[shape]}"/></svg>`;

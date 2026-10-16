@@ -24,7 +24,7 @@ import { classColor, NODE_RECT, ui } from "@/lib/ui";
 
 /* Opzioni della mappa (Separazioni dimostrate / Questioni aperte): restano tra una classe e l'altra. */
 type Opts = { sep: boolean; open: boolean };
-const DEFAULT_OPTS: Opts = { sep: false, open: false };
+const DEFAULT_OPTS: Opts = { sep: true, open: false };
 let opts = DEFAULT_OPTS;
 const subs = new Set<() => void>();
 const setOpts = (p: Partial<Opts>) => {

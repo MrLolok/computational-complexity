@@ -109,4 +109,12 @@ export const SPECIAL_TERMS = [
             "Se $\\Sigma_i^{\\mathrm{P}} = \\Pi_i^{\\mathrm{P}}$ a un livello finito, tutti i livelli superiori coincidono con quel livello. $\\mathrm{PH} = \\Sigma_i^{\\mathrm{P}}$.",
         href: "/piani",
     },
+    {
+        id: "proper",
+        name: "Funzione propria",
+        aliases: ["funzione propria", "funzioni proprie", "funzioni di complessità proprie"],
+        definition:
+            "Una $f$ non decrescente per cui una MdT $M_f$, su ogni input $x$, scrive esattamente $f(|x|)$ simboli in tempo $O(|x| + f(|x|))$ e spazio $O(f(|x|))$. È l'ipotesi dei teoremi di gerarchia.",
+        href: "/teoremi#teorema-soluzioni-precise",
+    },
 ] as const;

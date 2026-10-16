@@ -50,13 +50,12 @@ function Legend() {
 }
 
 /** scheda Classi: mappa delle inclusioni e scheda della classe scelta */
-export default function ClassesView({ sel, embedded = false }: { sel: ClassId | null; embedded?: boolean }) {
-    const Heading = embedded ? "h2" : "h1";
+export default function ClassesView({ sel }: { sel: ClassId | null }) {
     return (
         <section className="flex flex-col gap-5">
             <header>
                 <p className={`${ui.eyebrow} mb-2`}>Le risorse del calcolo</p>
-                <Heading className={ui.h2}>Classi di complessità</Heading>
+                <h1 className={ui.h2}>Classi di complessità</h1>
             </header>
             <ClassExplorer
                 key={sel ?? "overview"}

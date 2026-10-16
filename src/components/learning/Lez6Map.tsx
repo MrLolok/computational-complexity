@@ -6,6 +6,7 @@ import type { KeyboardEvent } from "react";
 import { useState } from "react";
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import { Html } from "@/components/problems/bits";
 import Tex from "@/components/Tex";
 import {
@@ -272,11 +273,11 @@ export default function Lez6Map({ initial }: { initial: MapNode }) {
                 {info.more.href.startsWith("#") ? (
                     /* stessa pagina: un'ancora vera fa scattare hashchange, che apre la scheda e il riquadro giusti */
                     <a href={info.more.href} className={`${ui.linkBtn} self-start`}>
-                        {info.more.label} →
+                        {info.more.label} <Arrow />
                     </a>
                 ) : (
                     <Link href={info.more.href} className={`${ui.linkBtn} self-start`}>
-                        {info.more.label} →
+                        {info.more.label} <Arrow />
                     </Link>
                 )}
             </aside>

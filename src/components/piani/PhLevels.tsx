@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
 import { tex, texHtml } from "@/lib/tex";
 import { ui } from "@/lib/ui";
@@ -80,7 +81,7 @@ export default function PhLevels() {
                         data-term={`problem:${l.id}`}
                         className="text-accent self-start text-sm underline underline-offset-4"
                     >
-                        Esempio: <span dangerouslySetInnerHTML={{ __html: tex(l.problem, false, false) }} /> →
+                        Esempio: <span dangerouslySetInnerHTML={{ __html: tex(l.problem, false, false) }} /> <Arrow />
                     </Link>
                 </div>
             </div>
