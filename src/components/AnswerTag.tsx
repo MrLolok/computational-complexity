@@ -1,4 +1,4 @@
-import type { Choice } from "@/store/progressSlice";
+import type { Choice } from "@/lib/answer";
 
 import MathHtml from "@/components/MathHtml";
 import { ui } from "@/lib/tokens";

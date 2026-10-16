@@ -8,11 +8,12 @@ import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
 import { PROOF } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
-import { plainText, TRACE_BY, TRACES } from "@/data/traces/traces";
+import { TRACE_BY, TRACES } from "@/data/traces/traces";
 import { goRightNote, MDT_BODY, TRACE_MACHINE, TRACE_NOTE } from "@/data/turing/solutions";
 import TraceRunner from "@/features/traces/TraceRunner";
 import PracticeLab from "@/features/turing/PracticeLab";
 import SolutionLab from "@/features/turing/SolutionLab";
+import { markdownToPlain } from "@/lib/plainText";
 import { ui } from "@/lib/tokens";
 
 /** schede di /teoremi che dicono dove sta un problema (es. PRIMES ∈ P, SAT NP-completo): non vanno nei Riferimenti */
@@ -124,14 +125,14 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
             >
                 {prev ? (
                     <Link href={`/tracce/${prev.code}`} className="text-muted hover:text-accent">
-                        <Arrow shape="left" /> {prev.code} · {plainText(prev.dateLabel || prev.title)}
+                        <Arrow shape="left" /> {prev.code} · {markdownToPlain(prev.dateLabel || prev.title)}
                     </Link>
                 ) : (
                     <span />
                 )}
                 {next && (
                     <Link href={`/tracce/${next.code}`} className="text-muted hover:text-accent">
-                        {next.code} · {plainText(next.dateLabel || next.title)} <Arrow />
+                        {next.code} · {markdownToPlain(next.dateLabel || next.title)} <Arrow />
                     </Link>
                 )}
             </nav>

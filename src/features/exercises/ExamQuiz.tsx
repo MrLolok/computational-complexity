@@ -1,7 +1,6 @@
 "use client";
 
-import type { ExamQuestion } from "@/data/classes/examQuestions";
-import type { Choice } from "@/store/progressSlice";
+import type { Choice } from "@/lib/answer";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -11,14 +10,11 @@ import ClassChip from "@/components/ClassChip";
 import RichHtml from "@/components/RichHtml";
 import { IDS, PLAIN } from "@/data/classes/classes";
 import { EXAM_QUESTIONS } from "@/data/classes/examQuestions";
+import { CHOICES, toChoice } from "@/lib/answer";
 import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { answerExamQuestion, CHOICES, resetExamQuiz } from "@/store/progressSlice";
+import { answerExamQuestion, resetExamQuiz } from "@/store/progressSlice";
 
-const ansKey = (t: ExamQuestion): Choice => {
-    const a = t.a.replace(/<[^>]+>/g, "");
-    return /^SÌ/.test(a) ? "SI" : /^NO/.test(a) ? "NO" : "ALTRO";
-};
 const ALL = EXAM_QUESTIONS.map((q, i) => ({ q, i }));
 const FILTERS = IDS.filter((id) => EXAM_QUESTIONS.some((t) => t.c.includes(id)));
 
@@ -43,7 +39,7 @@ export default function ExamQuiz() {
 
     const choose = (choice: Choice) => {
         if (!cur || answers[cur.i]) return;
-        dispatch(answerExamQuestion({ index: cur.i, choice, correct: choice === ansKey(cur.q) }));
+        dispatch(answerExamQuestion({ index: cur.i, choice, correct: choice === toChoice(cur.q.a) }));
     };
     const next = () => {
         if (last) {
@@ -53,7 +49,7 @@ export default function ExamQuiz() {
     };
 
     const rec = cur ? answers[cur.i] : undefined;
-    const k = cur ? ansKey(cur.q) : "ALTRO";
+    const k = cur ? toChoice(cur.q.a) : "ALTRO";
 
     return (
         <div>

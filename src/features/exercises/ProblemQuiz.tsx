@@ -10,7 +10,8 @@ import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
 import SourceBadge from "@/components/SourceBadge";
 import { PROBLEM_BY } from "@/data/problems/problems";
-import { ansKey, colorId, trapAnswer } from "@/features/problems/problems";
+import { colorId, trapAnswer } from "@/features/problems/problems";
+import { toChoice } from "@/lib/answer";
 import { classColor, ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { recordProblemQuiz, resetProblemQuiz } from "@/store/progressSlice";
@@ -46,7 +47,7 @@ function Explanation({ q }: { q: QuizQuestion }) {
     if (q.type === "exam")
         return (
             <span>
-                <AnswerTag k={ansKey(q.trap.a)}>{trapAnswer(q.trap)}</AnswerTag>
+                <AnswerTag k={toChoice(q.trap.a)}>{trapAnswer(q.trap)}</AnswerTag>
                 <RichHtml as="span" html={q.trap.e || ""} />
             </span>
         );

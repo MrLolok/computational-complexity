@@ -13,9 +13,11 @@ import Walkthrough from "@/components/Walkthrough";
 import { PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
 import walkthroughs from "@/data/problems/walkthroughs.json";
 import { theoremsForProblem } from "@/features/theorems/theorems";
+import { toChoice } from "@/lib/answer";
+import { htmlToPlain } from "@/lib/plainText";
 import { texHtml } from "@/lib/tex";
 import { classColor, ui } from "@/lib/tokens";
-import { ansKey, classLabel, colorId, plain, REL, trapAnswer } from "./problems";
+import { classLabel, colorId, REL, trapAnswer } from "./problems";
 
 function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void }) {
     return (
@@ -39,7 +41,7 @@ function TrapItem({ t }: { t: Trap }) {
                 <>
                     <RichHtml html={t.q || ""} />
                     <p>
-                        <AnswerTag k={ansKey(t.a)}>{trapAnswer(t)}</AnswerTag>
+                        <AnswerTag k={toChoice(t.a)}>{trapAnswer(t)}</AnswerTag>
                         <RichHtml as="span" html={t.e || ""} />
                     </p>
                 </>
@@ -132,7 +134,7 @@ export default function ProblemDetail({
             <Walkthrough
                 key={p.id}
                 lesson={walkthroughs[p.id as keyof typeof walkthroughs]}
-                name={plain(p.name)}
+                name={htmlToPlain(p.name)}
                 title="Un esempio, passo dopo passo"
             />
             <RichHtml

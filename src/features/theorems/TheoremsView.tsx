@@ -14,18 +14,11 @@ import { PROBLEM_BY } from "@/data/problems/problems";
 import { PRIORITY, PROOF, PROOF_KIND, TOP } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
 import walkthroughs from "@/data/theorems/walkthroughs.json";
+import { htmlToPlain } from "@/lib/plainText";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
 import { useHash } from "@/lib/useHash";
-import {
-    chapterTitle,
-    filterTheorems,
-    groupByChapter,
-    groupByPriority,
-    thPlain,
-    thProblems,
-    whereText,
-} from "./theorems";
+import { chapterTitle, filterTheorems, groupByChapter, groupByPriority, thProblems, whereText } from "./theorems";
 
 const PREFIX = "teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
@@ -136,7 +129,7 @@ const TheoremRow = memo(function TheoremRow({
                 {lesson && (
                     <Walkthrough
                         lesson={lesson}
-                        name={thPlain(t.nome)}
+                        name={htmlToPlain(t.nome)}
                         title={
                             lesson.kind === "conditional"
                                 ? "Ragionamento illustrato"

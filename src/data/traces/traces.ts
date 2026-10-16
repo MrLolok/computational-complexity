@@ -37,12 +37,3 @@ const data = raw as unknown as { source: string; legend?: string; traces: Trace[
 export const TRACES: Trace[] = data.traces;
 export const TRACE_LEGEND: string = data.legend ?? "";
 export const TRACE_BY: Record<string, Trace> = Object.fromEntries(TRACES.map((t) => [t.code, t]));
-
-/** testo semplice per la ricerca: senza Markdown né comandi LaTeX */
-export const plainText = (md: string) =>
-    md
-        .replace(/\\(mathrm|text|mathcal|operatorname)\{([^}]*)\}/g, "$2")
-        .replace(/\\[a-zA-Z]+/g, " ")
-        .replace(/[$*_`#>|{}^\\]/g, "")
-        .replace(/\s+/g, " ")
-        .trim();

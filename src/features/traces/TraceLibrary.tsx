@@ -5,6 +5,7 @@ import type { TraceProgress } from "@/store/progressSlice";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 
+import { searchKey } from "@/lib/plainText";
 import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { resetTraces } from "@/store/progressSlice";
@@ -35,8 +36,6 @@ function statusOf(p: TraceProgress | undefined): Status {
     return Object.keys(p.answers).length || p.q8Done ? "doing" : p.best ? "done" : "todo";
 }
 
-const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-
 export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
     const dispatch = useAppDispatch();
     const progress = useAppSelector((s) => s.progress.traces);
@@ -59,11 +58,11 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
     }, [traces, progress]);
 
     const shown = useMemo(() => {
-        const k = norm(q.trim());
+        const k = searchKey(q.trim());
         return traces.filter(
             (t) =>
                 (filter === "all" || statusOf(progress[t.code]) === filter) &&
-                (!k || norm(`${t.code} ${t.title} ${t.dateLabel} ${t.q8 ?? ""} ${t.search}`).includes(k)),
+                (!k || searchKey(`${t.code} ${t.title} ${t.dateLabel} ${t.q8 ?? ""} ${t.search}`).includes(k)),
         );
     }, [traces, progress, q, filter]);
 

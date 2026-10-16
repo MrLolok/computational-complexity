@@ -7,7 +7,9 @@ import AnswerTag from "@/components/AnswerTag";
 import MathHtml from "@/components/MathHtml";
 import SourceBadge from "@/components/SourceBadge";
 import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
-import { ansKey, BANDS, colorId, plain, trapAnswer } from "@/features/problems/problems";
+import { BANDS, colorId, trapAnswer } from "@/features/problems/problems";
+import { toChoice } from "@/lib/answer";
+import { htmlToPlain } from "@/lib/plainText";
 import { shuffle } from "@/lib/shuffle";
 import { texHtml } from "@/lib/tex";
 import { classColor, ui } from "@/lib/tokens";
@@ -94,7 +96,7 @@ export default function Flashcards() {
                     <option value="all">Tutti i problemi ({n})</option>
                     {DECKS.map((b) => (
                         <option key={b} value={b}>
-                            {LADDER[b].t || plain(LADDER[b].n)} ({PROBLEMS.filter((p) => p.b === b).length})
+                            {LADDER[b].t || htmlToPlain(LADDER[b].n)} ({PROBLEMS.filter((p) => p.b === b).length})
                         </option>
                     ))}
                 </select>
@@ -175,7 +177,7 @@ export default function Flashcards() {
                                     {trap.q ? (
                                         <>
                                             <MathHtml html={trap.q} terms={false} />{" "}
-                                            <AnswerTag k={ansKey(trap.a)}>{trapAnswer(trap)}</AnswerTag>
+                                            <AnswerTag k={toChoice(trap.a)}>{trapAnswer(trap)}</AnswerTag>
                                         </>
                                     ) : (
                                         <MathHtml html={trap.n || ""} terms={false} />

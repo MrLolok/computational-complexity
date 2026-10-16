@@ -1,15 +1,8 @@
+import type { Choice } from "@/lib/answer";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { createSlice } from "@reduxjs/toolkit";
 
-/** Risposta data a una domanda SÌ / NO / altro. */
-export type Choice = "SI" | "NO" | "ALTRO";
-/** i tre bottoni di risposta, con la loro etichetta */
-export const CHOICES: [Choice, string][] = [
-    ["SI", "SÌ"],
-    ["NO", "NO"],
-    ["ALTRO", "altro"],
-];
 export type AnswerRecord = { choice: Choice; correct: boolean; at: number };
 
 export type TraceProgress = {

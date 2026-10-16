@@ -136,7 +136,7 @@ export function infoOf(id: TowerId): TowerInfo {
                 ],
                 [
                     "Approfondisci",
-                    `<p><a href="/dp" class="inline-block no-underline ${ui.btn}">Apri il Focus DP ${arrowSvg()}</a></p>`,
+                    `<p><a href="/classi/DP" class="inline-block no-underline ${ui.btn}">Apri la scheda di DP ${arrowSvg()}</a></p>`,
                 ],
             ],
         };

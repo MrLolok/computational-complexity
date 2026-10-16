@@ -1,16 +1,17 @@
 "use client";
 
 import type { TraceAnswer, TraceRef } from "@/data/traces/traces";
-import type { Choice } from "@/store/progressSlice";
+import type { Choice } from "@/lib/answer";
 import type { ReactNode } from "react";
 
 import { useState } from "react";
 import Link from "next/link";
 
+import { CHOICES } from "@/lib/answer";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { answerTraceQuestion, CHOICES, completeTrace, restartTrace, setTraceQ8Done } from "@/store/progressSlice";
+import { answerTraceQuestion, completeTrace, restartTrace, setTraceQ8Done } from "@/store/progressSlice";
 
 export type RunnerQuestion = {
     n: number;

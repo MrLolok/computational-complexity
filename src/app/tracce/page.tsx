@@ -2,8 +2,9 @@ import type { TraceSummary } from "@/features/traces/TraceLibrary";
 import type { Metadata } from "next";
 
 import Markdown from "@/components/Markdown";
-import { plainText, TRACE_LEGEND, TRACES } from "@/data/traces/traces";
+import { TRACE_LEGEND, TRACES } from "@/data/traces/traces";
 import TraceLibrary from "@/features/traces/TraceLibrary";
+import { markdownToPlain } from "@/lib/plainText";
 import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Tracce d'esame" };
@@ -18,8 +19,8 @@ export default function Page() {
         group: groupOf(t.date),
         total: t.questions.length,
         repeated: t.questions.filter((q) => q.repeatOf).length,
-        q8: t.q8 ? plainText(t.q8.title) : null,
-        search: t.questions.map((q) => plainText(q.text)).join(" "),
+        q8: t.q8 ? markdownToPlain(t.q8.title) : null,
+        search: t.questions.map((q) => markdownToPlain(q.text)).join(" "),
     }));
     const total = TRACES.reduce((n, t) => n + t.questions.length, 0);
 

@@ -1,25 +1,17 @@
-import { C, IDS, NAME, PLAIN } from "@/data/classes/classes";
+import { C, IDS, NAME } from "@/data/classes/classes";
 import { QUANTUM_CLASSES, RANDOM_CLASSES, SPECIAL_TERMS } from "@/data/glossary";
 import { PROBLEMS } from "@/data/problems/problems";
-import { plainMath } from "./mathNotation";
+import { htmlToPlain, shorten } from "./plainText";
 
-export const stripHtml = (s: string) =>
-    plainMath(s)
-        .replace(/<[^>]*>/g, "")
-        .replace(/\{\{(\w+)\}\}/g, (_, id: string) => (id in PLAIN ? PLAIN[id as keyof typeof PLAIN] : id))
-        .replace(/&[a-z]+;/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-export const shorten = (s: string, max = 260) => (s.length > max ? s.slice(0, s.lastIndexOf(" ", max)) + "…" : s);
 export type GlossaryEntry = { name: string; definition: string; href: string };
 export const GLOSSARY: Record<string, GlossaryEntry> = Object.fromEntries([
     ...IDS.map((id) => [
         id,
-        { name: stripHtml(NAME[id]), definition: shorten(stripHtml(C[id].intu)), href: `/classi/${id}` },
+        { name: htmlToPlain(NAME[id]), definition: shorten(htmlToPlain(C[id].intu)), href: `/classi/${id}` },
     ]),
     ...PROBLEMS.map((p) => [
         `problem:${p.id}`,
-        { name: p.name, definition: shorten(stripHtml(p.def)), href: `/problemi/${p.id}` },
+        { name: p.name, definition: shorten(htmlToPlain(p.def)), href: `/problemi/${p.id}` },
     ]),
     ...[...RANDOM_CLASSES, ...QUANTUM_CLASSES].map((c) => [
         c.id,
@@ -32,7 +24,7 @@ export const GLOSSARY: Record<string, GlossaryEntry> = Object.fromEntries([
     ...SPECIAL_TERMS.map((t) => [t.id, { name: t.name, definition: t.definition, href: t.href }]),
 ]);
 const aliases: [string, string][] = [
-    ...IDS.map((id) => [stripHtml(NAME[id]), id] as [string, string]),
+    ...IDS.map((id) => [htmlToPlain(NAME[id]), id] as [string, string]),
     ...PROBLEMS.flatMap((p) =>
         [p.name, ...(p.al ? [p.al] : [])].map((name) => [name, `problem:${p.id}`] as [string, string]),
     ),

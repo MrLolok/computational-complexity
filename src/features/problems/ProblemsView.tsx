@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 
 import Arrow from "@/components/Arrow";
 import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
-import { stripHtml } from "@/lib/glossary";
+import { htmlToPlain } from "@/lib/plainText";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
 import ProblemDetail from "./ProblemDetail";
@@ -101,7 +101,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                         <option value="all">Tutte le classi</option>
                         {BANDS.map((id) => (
                             <option key={id} value={id}>
-                                {LADDER[id].t || stripHtml(LADDER[id].n)}
+                                {LADDER[id].t || htmlToPlain(LADDER[id].n)}
                             </option>
                         ))}
                     </select>

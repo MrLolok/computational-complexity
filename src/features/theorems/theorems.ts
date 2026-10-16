@@ -5,10 +5,7 @@ import type { Theorem } from "@/data/theorems/theorems";
 import { PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
 import { PRIORITY_ORDER, PROOF } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
-import { plainMath } from "@/lib/mathNotation";
-
-export const thPlain = (h: string | null | undefined) => plainMath(String(h || "")).replace(/<[^>]+>/g, "");
-export const thNorm = (s: string) => thPlain(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+import { htmlToPlain, searchKey } from "@/lib/plainText";
 
 /* problemi citati nell'enunciato: il nome deve comparire intero, non dentro un altro nome (SAT non dentro SAT-UNSAT) */
 const TH_ALIAS: Record<string, string[]> = {
@@ -33,7 +30,7 @@ const TH_PROB: Record<string, string[]> = {};
 
 /* pedici Unicode delle formule ($\mathrm{QSAT}_i$ → QSATᵢ) riportati a lettere e cifre, come nei nomi HTML (QSAT<sub>i</sub> → QSATi) */
 const flat = (h: string) =>
-    thPlain(h)
+    htmlToPlain(h)
         .replace(/[₀-₉]/g, (c) => String(c.charCodeAt(0) - 0x2080))
         .replace(/ᵢ/g, "i");
 
@@ -98,12 +95,12 @@ export const whereText = (t: Theorem) =>
 const SEARCH = new Map(
     THEOREMS.map((t) => [
         t,
-        thNorm(t.nome + " " + t.enunciato + " " + (t.intuizione || "") + " " + (t.capitolo || "")),
+        searchKey(htmlToPlain(t.nome + " " + t.enunciato + " " + (t.intuizione || "") + " " + (t.capitolo || ""))),
     ]),
 );
 
 export function filterTheorems(q: string, cls: string, provedOnly = false) {
-    const nq = thNorm(q).trim();
+    const nq = searchKey(htmlToPlain(q));
     return THEOREMS.filter(
         (t) =>
             (!provedOnly || t.prova === "nel corso") &&

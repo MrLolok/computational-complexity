@@ -4,18 +4,18 @@ import type { TraceRef } from "@/data/traces/traces";
 
 import { PROBLEMS } from "@/data/problems/problems";
 import { TRACES } from "@/data/traces/traces";
+import { searchKey } from "@/lib/plainText";
 
 const normalize = (text: string) => {
     let value = text.replace(/<[^>]+>/g, "");
     for (let i = 0; i < 3; i++) value = value.replace(/\\(?:mathrm|text)\{([^{}]*)\}/g, "$1");
-    return value
-        .replace(/[₀-₉ᵢ]/g, (c) => (c === "ᵢ" ? "i" : String("₀₁₂₃₄₅₆₇₈₉".indexOf(c))))
-        .replace(/_/g, "")
-        .replace(/\\ /g, " ")
-        .replace(/\\[a-zA-Z]+/g, " ")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase()
+    return searchKey(
+        value
+            .replace(/[₀-₉ᵢ]/g, (c) => (c === "ᵢ" ? "i" : String("₀₁₂₃₄₅₆₇₈₉".indexOf(c))))
+            .replace(/_/g, "")
+            .replace(/\\ /g, " ")
+            .replace(/\\[a-zA-Z]+/g, " "),
+    )
         .replace(/[^a-z0-9]+/g, " ")
         .trim();
 };
