@@ -39,6 +39,9 @@ export const HALT = new Set(["h", "yes", "no"]);
 export const QUERY = "q?";
 
 export const sym = (t: string) => SYM[t] ?? t;
+/** stati con un nome fisso, scritti con qualunque maiuscola: qyes e QYes sono qYES */
+const FIXED: Record<string, string> = { qyes: "qYES", qno: "qNO", "q?": "q?", yes: "yes", no: "no" };
+const state = (t: string) => FIXED[t.toLowerCase()] ?? t;
 
 export function parseProgram(source: string): { program: Program | null; errors: ParseError[] } {
     const rules: Rule[] = [];
@@ -94,7 +97,7 @@ export function parseProgram(source: string): { program: Program | null; errors:
             if (w === "σ" && !read.includes("σ"))
                 errors.push({ line, message: "σ si può scrivere solo se la riga legge σ" });
         }
-        rules.push({ line, from: l[0], read, to: r[0], write, move, note });
+        rules.push({ line, from: state(l[0]), read, to: state(r[0]), write, move, note });
     });
     if (!rules.length && !errors.length) errors.push({ line: 0, message: "il programma è vuoto" });
     return { program: errors.length ? null : { tapes, rules }, errors };
