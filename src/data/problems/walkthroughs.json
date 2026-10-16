@@ -1,24 +1,24 @@
 {
     "REACH": {
         "outcome": "Sì: $D$ è raggiungibile da $A$.",
-        "note": "Il cammino trovato è un certificato; la visita del grafo è un algoritmo risolutivo.",
+        "note": "Il cammino trovato è un certificato del sì; per trovarlo basta una visita del grafo.",
         "slides": [
             {
                 "title": "Individua partenza e arrivo",
-                "caption": "Grafo orientato con archi $A \\to B$, $B \\to C$, $A \\to C$ e $C \\to D$. Cerchiamo un cammino da $A$ a $D$.",
-                "alt": "Individua partenza e arrivo. Grafo orientato con archi A → B, B → C, A → C e C → D. Cerchiamo un cammino da A a D.",
+                "caption": "Il grafo orientato ha quattro nodi e gli archi $A \\to B$, $B \\to C$, $A \\to C$ e $C \\to D$; $A \\to C$ è l'arco curvo in alto. $A$ e $D$ hanno il bordo blu perché sono la partenza e l'arrivo. Cerchiamo un cammino da $A$ a $D$.",
+                "alt": "Individua partenza e arrivo. Il grafo orientato ha quattro nodi e gli archi $A \\to B$, $B \\to C$, $A \\to C$ e $C \\to D$; $A \\to C$ è l'arco curvo in alto. $A$ e $D$ hanno il bordo blu perché sono la partenza e l'arrivo. Cerchiamo un cammino da $A$ a $D$.",
                 "src": "/illustrations/problems/reach-1.webp"
             },
             {
                 "title": "Esplora i successori",
-                "caption": "Da $A$ raggiungi $B$ e $C$; da $C$ raggiungi $D$. Tieni traccia dei nodi già visitati.",
-                "alt": "Esplora i successori. Da A raggiungi B e C; da C raggiungi D. Tieni traccia dei nodi già visitati.",
+                "caption": "Da $A$ escono due archi, verso $B$ e verso $C$, e da $C$ si arriva a $D$. Il disegno segue la strada che porta a $D$: colora di verde $A$ e $C$ e gli archi $A \\to C$ e $C \\to D$, mentre $B$ resta grigio. Segnare i nodi già visitati evita di esplorarli una seconda volta.",
+                "alt": "Esplora i successori. Da $A$ escono due archi, verso $B$ e verso $C$, e da $C$ si arriva a $D$. Il disegno segue la strada che porta a $D$: colora di verde $A$ e $C$ e gli archi $A \\to C$ e $C \\to D$, mentre $B$ resta grigio. Segnare i nodi già visitati evita di esplorarli una seconda volta.",
                 "src": "/illustrations/problems/reach-2.webp"
             },
             {
                 "title": "Leggi il cammino",
-                "caption": "$A \\to C \\to D$ usa solo archi del grafo: la risposta è sì.",
-                "alt": "Leggi il cammino. A → C → D usa solo archi del grafo: la risposta è sì.",
+                "caption": "In verde resta il cammino $A \\to C \\to D$; $B$ e gli archi $A \\to B$ e $B \\to C$ sono grigi perché il cammino non li usa. I due archi verdi esistono nel grafo, quindi $D$ è raggiungibile da $A$ e la risposta è sì.",
+                "alt": "Leggi il cammino. In verde resta il cammino $A \\to C \\to D$; $B$ e gli archi $A \\to B$ e $B \\to C$ sono grigi perché il cammino non li usa. I due archi verdi esistono nel grafo, quindi $D$ è raggiungibile da $A$ e la risposta è sì.",
                 "src": "/illustrations/problems/reach-3.webp"
             }
         ]
@@ -29,20 +29,20 @@
         "slides": [
             {
                 "title": "Leggi le clausole",
-                "caption": "Considera $(x \\lor y) \\land (\\neg x \\lor y) \\land (x \\lor \\neg y)$. Ogni clausola ha due letterali.",
-                "alt": "Leggi le clausole. Considera (x ∨ y) ∧ (¬x ∨ y) ∧ (x ∨ ¬y). Ogni clausola ha due letterali.",
+                "caption": "I tre riquadri sono le clausole di $(x \\lor y) \\land (\\neg x \\lor y) \\land (x \\lor \\neg y)$, scritte con OR e NOT, e ognuna ha due letterali. Gli interruttori sotto servono a scegliere i valori di $x$ e $y$.",
+                "alt": "Leggi le clausole. I tre riquadri sono le clausole di $(x \\lor y) \\land (\\neg x \\lor y) \\land (x \\lor \\neg y)$, scritte con OR e NOT, e ognuna ha due letterali. Gli interruttori sotto servono a scegliere i valori di $x$ e $y$.",
                 "src": "/illustrations/problems/sat2-1.webp"
             },
             {
                 "title": "Trova i valori coerenti",
-                "caption": "La seconda clausola impone $x \\Rightarrow y$ e la terza $y \\Rightarrow x$. La prima esclude $x = y = 0$.",
-                "alt": "Trova i valori coerenti. La seconda clausola impone x ⇒ y e la terza y ⇒ x. La prima esclude x = y = 0.",
+                "caption": "La seconda clausola equivale a $x \\Rightarrow y$ e la terza a $y \\Rightarrow x$: sono le due frecce fra gli interruttori, archi del grafo delle implicazioni, e obbligano $x$ e $y$ ad avere lo stesso valore. La coppia di interruttori spenti, barrata in rosso, è $x = y = 0$, esclusa dalla prima clausola. Resta $x = y = 1$, i due interruttori verdi.",
+                "alt": "Trova i valori coerenti. La seconda clausola equivale a $x \\Rightarrow y$ e la terza a $y \\Rightarrow x$: sono le due frecce fra gli interruttori, archi del grafo delle implicazioni, e obbligano $x$ e $y$ ad avere lo stesso valore. La coppia di interruttori spenti, barrata in rosso, è $x = y = 0$, esclusa dalla prima clausola. Resta $x = y = 1$, i due interruttori verdi.",
                 "src": "/illustrations/problems/sat2-2.webp"
             },
             {
                 "title": "Verifica tutte le clausole",
-                "caption": "Con $x = y = 1$, le tre clausole sono vere. Nessuna variabile deve coincidere con la propria negazione in una componente del grafo delle implicazioni.",
-                "alt": "Verifica tutte le clausole. Con x = y = 1, le tre clausole sono vere. Nessuna variabile deve coincidere con la propria negazione in una componente del grafo delle implicazioni.",
+                "caption": "Con $x = y = 1$, gli interruttori accesi, ogni riquadro ha un segno di spunta verde. In $x \\lor y$ e in $\\neg x \\lor y$ è vero $y$, in $x \\lor \\neg y$ è vero $x$, quindi la formula è soddisfatta.",
+                "alt": "Verifica tutte le clausole. Con $x = y = 1$, gli interruttori accesi, ogni riquadro ha un segno di spunta verde. In $x \\lor y$ e in $\\neg x \\lor y$ è vero $y$, in $x \\lor \\neg y$ è vero $x$, quindi la formula è soddisfatta.",
                 "src": "/illustrations/problems/sat2-3.webp"
             }
         ]
@@ -53,20 +53,20 @@
         "slides": [
             {
                 "title": "Osserva il grafo",
-                "caption": "Il grafo è il ciclo $A$–$B$–$C$–$D$–$A$, senza diagonali.",
-                "alt": "Osserva il grafo. Il grafo è il ciclo A–B–C–D–A, senza diagonali.",
+                "caption": "Quattro vertici disposti in quadrato e quattro archi: $AB$, $BC$, $CD$ e $DA$. È il ciclo $A, B, C, D$ senza diagonali, quindi $A$ non è collegato a $C$ e $B$ non è collegato a $D$.",
+                "alt": "Osserva il grafo. Quattro vertici disposti in quadrato e quattro archi: $AB$, $BC$, $CD$ e $DA$. È il ciclo $A, B, C, D$ senza diagonali, quindi $A$ non è collegato a $C$ e $B$ non è collegato a $D$.",
                 "src": "/illustrations/problems/col2-1.webp"
             },
             {
                 "title": "Alterna i due colori",
-                "caption": "Colora $A$ e $C$ in blu; $B$ e $D$ in corallo. Ogni vicino riceve il colore opposto.",
-                "alt": "Alterna i due colori. Colora A e C in blu; B e D in corallo. Ogni vicino riceve il colore opposto.",
+                "caption": "Si parte da $A$ in blu; i suoi vicini $B$ e $D$ prendono il corallo e $C$, vicino di entrambi, torna blu. Nel disegno $A$ e $C$ sono blu, $B$ e $D$ corallo. Il ciclo ha lunghezza pari, quindi l'alternanza si chiude senza conflitti.",
+                "alt": "Alterna i due colori. Si parte da $A$ in blu; i suoi vicini $B$ e $D$ prendono il corallo e $C$, vicino di entrambi, torna blu. Nel disegno $A$ e $C$ sono blu, $B$ e $D$ corallo. Il ciclo ha lunghezza pari, quindi l'alternanza si chiude senza conflitti.",
                 "src": "/illustrations/problems/col2-2.webp"
             },
             {
                 "title": "Controlla gli archi",
-                "caption": "Tutti e quattro gli archi collegano colori diversi: la colorazione è valida.",
-                "alt": "Controlla gli archi. Tutti e quattro gli archi collegano colori diversi: la colorazione è valida.",
+                "caption": "Tutti e quattro gli archi sono verdi con un segno di spunta, perché $AB$, $BC$, $CD$ e $DA$ collegano sempre un vertice blu e uno corallo. Due colori bastano e la colorazione è valida.",
+                "alt": "Controlla gli archi. Tutti e quattro gli archi sono verdi con un segno di spunta, perché $AB$, $BC$, $CD$ e $DA$ collegano sempre un vertice blu e uno corallo. Due colori bastano e la colorazione è valida.",
                 "src": "/illustrations/problems/col2-3.webp"
             }
         ]
@@ -77,92 +77,92 @@
         "slides": [
             {
                 "title": "Leggi le capacità",
-                "caption": "Rete: $s \\to a$ con capacità 3, $a \\to t$ con 2, $s \\to b$ con 2, $b \\to t$ con 3. Obiettivo $K = 4$.",
-                "alt": "Leggi le capacità. Rete: s → a con capacità 3, a → t con 2, s → b con 2, b → t con 3. Obiettivo K = 4.",
+                "caption": "I numeri sugli archi sono le capacità: $s \\to a$ porta al più 3 unità, $a \\to t$ ne porta 2, $s \\to b$ 2 e $b \\to t$ 3. Vogliamo sapere se da $s$ a $t$ passa un flusso di valore almeno $K = 4$.",
+                "alt": "Leggi le capacità. I numeri sugli archi sono le capacità: $s \\to a$ porta al più 3 unità, $a \\to t$ ne porta 2, $s \\to b$ 2 e $b \\to t$ 3. Vogliamo sapere se da $s$ a $t$ passa un flusso di valore almeno $K = 4$.",
                 "src": "/illustrations/problems/maxflow-1.webp"
             },
             {
                 "title": "Invia il flusso",
-                "caption": "Manda 2 unità lungo $s \\to a \\to t$ e 2 lungo $s \\to b \\to t$. Nei nodi $a$ e $b$ entra quanto esce.",
-                "alt": "Invia il flusso. Manda 2 unità lungo s → a → t e 2 lungo s → b → t. Nei nodi a e b entra quanto esce.",
+                "caption": "Ogni arco è verde e porta due pallini, cioè 2 unità: 2 vanno lungo $s \\to a \\to t$ e 2 lungo $s \\to b \\to t$. Nessun arco supera la capacità, e su $s \\to a$ e $b \\to t$ resta 1 unità libera. In $a$ e in $b$ entrano 2 unità ed escono 2, e a $t$ ne arrivano 4.",
+                "alt": "Invia il flusso. Ogni arco è verde e porta due pallini, cioè 2 unità: 2 vanno lungo $s \\to a \\to t$ e 2 lungo $s \\to b \\to t$. Nessun arco supera la capacità, e su $s \\to a$ e $b \\to t$ resta 1 unità libera. In $a$ e in $b$ entrano 2 unità ed escono 2, e a $t$ ne arrivano 4.",
                 "src": "/illustrations/problems/maxflow-2.webp"
             },
             {
                 "title": "Certifica il massimo",
-                "caption": "Il flusso vale 4. Il taglio $\\{s, a\\} / \\{b, t\\}$ ha capacità $2 + 2 = 4$, quindi non si può fare meglio.",
-                "alt": "Certifica il massimo. Il flusso vale 4. Il taglio {s,a} / {b,t} ha capacità 2 + 2 = 4, quindi non si può fare meglio.",
+                "caption": "Il tratteggio racchiude $s$ e $a$: è il taglio $\\{s, a\\} / \\{b, t\\}$. Gli archi rossi, $a \\to t$ e $s \\to b$, sono quelli che lo attraversano, con capacità $2 + 2 = 4$. Ogni flusso da $s$ a $t$ deve passare di lì, quindi non supera 4 e quello trovato è massimo.",
+                "alt": "Certifica il massimo. Il tratteggio racchiude $s$ e $a$: è il taglio $\\{s, a\\} / \\{b, t\\}$. Gli archi rossi, $a \\to t$ e $s \\to b$, sono quelli che lo attraversano, con capacità $2 + 2 = 4$. Ogni flusso da $s$ a $t$ deve passare di lì, quindi non supera 4 e quello trovato è massimo.",
                 "src": "/illustrations/problems/maxflow-3.webp"
             }
         ]
     },
     "LP": {
         "outcome": "Sì: $(2, 1)$ è una soluzione reale ammissibile.",
-        "note": "L’insieme delle soluzioni reali forma una regione convessa; non si impone che i valori siano interi.",
+        "note": "Le soluzioni reali formano una regione convessa, e i valori possono anche non essere interi.",
         "slides": [
             {
                 "title": "Traduci i vincoli",
-                "caption": "Considera $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$. Il dominio è reale.",
-                "alt": "Traduci i vincoli. Considera x ≥ 1, y ≥ 0 e x + y ≤ 3. Il dominio è reale.",
+                "caption": "I vincoli sono $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$, con $x$ e $y$ reali. Nel disegno la retta verticale è $x = 1$, quella obliqua da $(0, 3)$ a $(3, 0)$ è $x + y = 3$, e il bordo di $y \\ge 0$ è l'asse $x$. Ogni vincolo ammette i punti da un lato della sua retta, retta compresa.",
+                "alt": "Traduci i vincoli. I vincoli sono $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$, con $x$ e $y$ reali. Nel disegno la retta verticale è $x = 1$, quella obliqua da $(0, 3)$ a $(3, 0)$ è $x + y = 3$, e il bordo di $y \\ge 0$ è l'asse $x$. Ogni vincolo ammette i punti da un lato della sua retta, retta compresa.",
                 "src": "/illustrations/problems/lp-1.webp"
             },
             {
                 "title": "Interseca le regioni",
-                "caption": "I vincoli lasciano il triangolo con vertici $(1, 0)$, $(3, 0)$ e $(1, 2)$.",
-                "alt": "Interseca le regioni. I vincoli lasciano il triangolo con vertici (1,0), (3,0) e (1,2).",
+                "caption": "La parte verde è dove valgono i tre vincoli insieme: il triangolo con vertici $(1, 0)$, $(3, 0)$ e $(1, 2)$, segnati con i pallini. I lati fanno parte della regione, perché le disuguaglianze non sono strette, e ogni suo punto reale è una soluzione.",
+                "alt": "Interseca le regioni. La parte verde è dove valgono i tre vincoli insieme: il triangolo con vertici $(1, 0)$, $(3, 0)$ e $(1, 2)$, segnati con i pallini. I lati fanno parte della regione, perché le disuguaglianze non sono strette, e ogni suo punto reale è una soluzione.",
                 "src": "/illustrations/problems/lp-2.webp"
             },
             {
                 "title": "Scegli e verifica",
-                "caption": "Il punto $(2, 1)$ soddisfa $2 \\ge 1$, $1 \\ge 0$ e $2 + 1 = 3$.",
-                "alt": "Scegli e verifica. Il punto (2,1) soddisfa 2 ≥ 1, 1 ≥ 0 e 2 + 1 = 3.",
+                "caption": "Il punto blu, con le linee tratteggiate verso gli assi, è $(2, 1)$. Sta sul lato obliquo del triangolo, perché $2 + 1 = 3$, e il vincolo $x + y \\le 3$ ammette l'uguaglianza. Valgono anche $2 \\ge 1$ e $1 \\ge 0$, quindi $(2, 1)$ è una soluzione.",
+                "alt": "Scegli e verifica. Il punto blu, con le linee tratteggiate verso gli assi, è $(2, 1)$. Sta sul lato obliquo del triangolo, perché $2 + 1 = 3$, e il vincolo $x + y \\le 3$ ammette l'uguaglianza. Valgono anche $2 \\ge 1$ e $1 \\ge 0$, quindi $(2, 1)$ è una soluzione.",
                 "src": "/illustrations/problems/lp-3.webp"
             }
         ]
     },
     "PRIMES": {
         "outcome": "Sì: 7 è primo.",
-        "note": "Provare i divisori basta per questo esempio piccolo, ma non è polinomiale nella lunghezza binaria in generale. PRIMES è in P grazie ad algoritmi come AKS.",
+        "note": "Provare i divisori basta per questo esempio piccolo, ma in generale non è polinomiale nella lunghezza binaria di $N$. PRIMES sta in P grazie a test come AKS.",
         "slides": [
             {
-                "title": "Leggi l’intero",
-                "caption": "L’input $111_2$ rappresenta $N = 7$. Chiediamo se ha divisori diversi da 1 e da sé stesso.",
-                "alt": "Leggi l’intero. L’input 111₂ rappresenta N = 7. Chiediamo se ha divisori diversi da 1 e da sé stesso.",
+                "title": "Leggi l'intero",
+                "caption": "Il riquadro contiene l'input $111_2$, cioè $N = 7$, e i sette pallini blu sono le sue unità. Chiediamo se 7 ha un divisore diverso da 1 e da sé stesso. L'input è lungo 3 bit, ed è su questa lunghezza che si misura il costo di un algoritmo.",
+                "alt": "Leggi l'intero. Il riquadro contiene l'input $111_2$, cioè $N = 7$, e i sette pallini blu sono le sue unità. Chiediamo se 7 ha un divisore diverso da 1 e da sé stesso. L'input è lungo 3 bit, ed è su questa lunghezza che si misura il costo di un algoritmo.",
                 "src": "/illustrations/problems/primes-1.webp"
             },
             {
                 "title": "Prova il divisore necessario",
-                "caption": "Per 7 basta provare 2, l’unico intero da 2 a $\\lfloor\\sqrt{7}\\rfloor$. La divisione lascia resto 1.",
-                "alt": "Prova il divisore necessario. Per 7 basta provare 2, l’unico intero da 2 a ⌊√7⌋. La divisione lascia resto 1.",
+                "caption": "I divisori da provare vanno da 2 a $\\lfloor\\sqrt{7}\\rfloor = 2$, perché un divisore fra $\\sqrt{7}$ e 7 ne avrebbe uno corrispondente sotto $\\sqrt{7}$. Il disegno divide i sette pallini per 2: tre coppie verdi e un pallino rosso che avanza. Quindi $7 = 3 \\cdot 2 + 1$ e il resto è 1.",
+                "alt": "Prova il divisore necessario. I divisori da provare vanno da 2 a $\\lfloor\\sqrt{7}\\rfloor = 2$, perché un divisore fra $\\sqrt{7}$ e 7 ne avrebbe uno corrispondente sotto $\\sqrt{7}$. Il disegno divide i sette pallini per 2: tre coppie verdi e un pallino rosso che avanza. Quindi $7 = 3 \\cdot 2 + 1$ e il resto è 1.",
                 "src": "/illustrations/problems/primes-2.webp"
             },
             {
-                "title": "Concludi",
-                "caption": "Nessun divisore tra 2 e $\\lfloor\\sqrt{7}\\rfloor$: 7 è primo.",
-                "alt": "Concludi. Nessun divisore tra 2 e ⌊√7⌋: 7 è primo.",
+                "title": "Concludi che 7 è primo",
+                "caption": "Il 2 non divide 7 e fino a $\\lfloor\\sqrt{7}\\rfloor$ non ci sono altri candidati, quindi gli unici divisori di 7 sono 1 e 7. Il segno di spunta accanto al 7 e i sette pallini verdi indicano che 7 è primo.",
+                "alt": "Concludi che 7 è primo. Il 2 non divide 7 e fino a $\\lfloor\\sqrt{7}\\rfloor$ non ci sono altri candidati, quindi gli unici divisori di 7 sono 1 e 7. Il segno di spunta accanto al 7 e i sette pallini verdi indicano che 7 è primo.",
                 "src": "/illustrations/problems/primes-3.webp"
             }
         ]
     },
     "HORN": {
         "outcome": "Sì: $x = y = z = 1$ soddisfa la formula.",
-        "note": "La propagazione rende veri solo gli atomi obbligati. Una clausola negativa violata segnalerebbe insoddisfacibilità.",
+        "note": "La propagazione rende veri solo gli atomi obbligati. Una clausola negativa violata segnalerebbe che la formula è insoddisfacibile.",
         "slides": [
             {
                 "title": "Parti dai fatti",
-                "caption": "Clausole: $x$, $\\neg x \\lor y$, $\\neg y \\lor z$. Inizialmente tutti gli atomi sono falsi.",
-                "alt": "Parti dai fatti. Clausole: x, ¬x ∨ y, ¬y ∨ z. Inizialmente tutti gli atomi sono falsi.",
+                "caption": "Le clausole sono $x$, $\\neg x \\lor y$ e $\\neg y \\lor z$. Il pallino grigio con la freccia verso $x$ è il fatto $x$, una clausola senza premesse; le frecce $x \\to y$ e $y \\to z$ sono le altre due, lette come $x \\Rightarrow y$ e $y \\Rightarrow z$. All'inizio gli interruttori sono tutti spenti: ogni atomo vale 0.",
+                "alt": "Parti dai fatti. Le clausole sono $x$, $\\neg x \\lor y$ e $\\neg y \\lor z$. Il pallino grigio con la freccia verso $x$ è il fatto $x$, una clausola senza premesse; le frecce $x \\to y$ e $y \\to z$ sono le altre due, lette come $x \\Rightarrow y$ e $y \\Rightarrow z$. All'inizio gli interruttori sono tutti spenti: ogni atomo vale 0.",
                 "src": "/illustrations/problems/horn-1.webp"
             },
             {
                 "title": "Propaga gli obblighi",
-                "caption": "Il fatto $x$ impone $x = 1$; $x \\Rightarrow y$ impone $y = 1$; $y \\Rightarrow z$ impone $z = 1$.",
-                "alt": "Propaga gli obblighi. Il fatto x impone x = 1; x ⇒ y impone y = 1; y ⇒ z impone z = 1.",
+                "caption": "Il fatto impone $x = 1$; allora $x \\Rightarrow y$ impone $y = 1$ e $y \\Rightarrow z$ impone $z = 1$. Nel disegno $x$, $y$ e $z$ sono verdi, insieme alle frecce che hanno trasmesso l'obbligo. Un atomo diventa vero solo se una clausola lo costringe.",
+                "alt": "Propaga gli obblighi. Il fatto impone $x = 1$; allora $x \\Rightarrow y$ impone $y = 1$ e $y \\Rightarrow z$ impone $z = 1$. Nel disegno $x$, $y$ e $z$ sono verdi, insieme alle frecce che hanno trasmesso l'obbligo. Un atomo diventa vero solo se una clausola lo costringe.",
                 "src": "/illustrations/problems/horn-2.webp"
             },
             {
                 "title": "Controlla il punto fisso",
-                "caption": "Non resta nessun obbligo insoddisfatto: tutte le clausole sono vere.",
-                "alt": "Controlla il punto fisso. Non resta nessun obbligo insoddisfatto: tutte le clausole sono vere.",
+                "caption": "Con $x = y = z = 1$ non resta nessun atomo da rendere vero: la propagazione è arrivata al punto fisso. I segni di spunta sotto $x$, $y$ e $z$ dicono che le clausole sono tutte vere, $x$ per il fatto, $\\neg x \\lor y$ grazie a $y$ e $\\neg y \\lor z$ grazie a $z$. L'istanza non ha clausole negative, quindi nessuna può risultare violata.",
+                "alt": "Controlla il punto fisso. Con $x = y = z = 1$ non resta nessun atomo da rendere vero: la propagazione è arrivata al punto fisso. I segni di spunta sotto $x$, $y$ e $z$ dicono che le clausole sono tutte vere, $x$ per il fatto, $\\neg x \\lor y$ grazie a $y$ e $\\neg y \\lor z$ grazie a $z$. L'istanza non ha clausole negative, quindi nessuna può risultare violata.",
                 "src": "/illustrations/problems/horn-3.webp"
             }
         ]
@@ -172,21 +172,21 @@
         "note": "Verificare un assegnamento è polinomiale. Trovarlo con ricerca esaustiva può richiedere tempo esponenziale.",
         "slides": [
             {
-                "title": "Leggi l’istanza",
-                "caption": "Formula: $(x \\lor y) \\land (\\neg x \\lor z) \\land (\\neg y \\lor \\neg z)$. Tutte le clausole devono essere vere.",
-                "alt": "Leggi l’istanza. Formula: (x ∨ y) ∧ (¬x ∨ z) ∧ (¬y ∨ ¬z). Tutte le clausole devono essere vere.",
+                "title": "Leggi l'istanza",
+                "caption": "I tre riquadri sono le clausole di $(x \\lor y) \\land (\\neg x \\lor z) \\land (\\neg y \\lor \\neg z)$, scritte con OR e NOT. La formula è vera solo se lo sono tutte e tre. Gli interruttori sotto servono a scegliere i valori di $x$, $y$ e $z$.",
+                "alt": "Leggi l'istanza. I tre riquadri sono le clausole di $(x \\lor y) \\land (\\neg x \\lor z) \\land (\\neg y \\lor \\neg z)$, scritte con OR e NOT. La formula è vera solo se lo sono tutte e tre. Gli interruttori sotto servono a scegliere i valori di $x$, $y$ e $z$.",
                 "src": "/illustrations/problems/sat-1.webp"
             },
             {
                 "title": "Scegli un assegnamento",
-                "caption": "Prova $x = 1$, $y = 0$, $z = 1$: ogni clausola contiene almeno un letterale vero.",
-                "alt": "Scegli un assegnamento. Prova x = 1, y = 0, z = 1: ogni clausola contiene almeno un letterale vero.",
+                "caption": "Ogni clausola è ridisegnata come un piccolo circuito: una porta OR, con una NOT davanti a ogni letterale negato. Gli interruttori fissano il candidato $x = 1$, $y = 0$, $z = 1$: $x$ e $z$ sono accesi in verde, $y$ è spento.",
+                "alt": "Scegli un assegnamento. Ogni clausola è ridisegnata come un piccolo circuito: una porta OR, con una NOT davanti a ogni letterale negato. Gli interruttori fissano il candidato $x = 1$, $y = 0$, $z = 1$: $x$ e $z$ sono accesi in verde, $y$ è spento.",
                 "src": "/illustrations/problems/sat-2.webp"
             },
             {
                 "title": "Verifica il certificato",
-                "caption": "La formula vale 1. Per risolvere in generale, se un candidato fallisce bisogna cercarne un altro.",
-                "alt": "Verifica il certificato. La formula vale 1. Per risolvere in generale, se un candidato fallisce bisogna cercarne un altro.",
+                "caption": "Con $x = 1$, $y = 0$, $z = 1$ ogni porta OR ha in uscita un segno di spunta: in $x \\lor y$ è vero $x$, in $\\neg x \\lor z$ è vero $z$, in $\\neg y \\lor \\neg z$ è vero $\\neg y$. La formula vale 1, e per controllarlo è bastato un passaggio per clausola. Se il candidato fallisse, per decidere l'istanza bisognerebbe provarne un altro.",
+                "alt": "Verifica il certificato. Con $x = 1$, $y = 0$, $z = 1$ ogni porta OR ha in uscita un segno di spunta: in $x \\lor y$ è vero $x$, in $\\neg x \\lor z$ è vero $z$, in $\\neg y \\lor \\neg z$ è vero $\\neg y$. La formula vale 1, e per controllarlo è bastato un passaggio per clausola. Se il candidato fallisse, per decidere l'istanza bisognerebbe provarne un altro.",
                 "src": "/illustrations/problems/sat-3.webp"
             }
         ]
@@ -197,20 +197,20 @@
         "slides": [
             {
                 "title": "Conta i letterali",
-                "caption": "Considera $(x \\lor y \\lor z) \\land (\\neg x \\lor y \\lor \\neg z)$: ogni clausola ha tre letterali.",
-                "alt": "Conta i letterali. Considera (x ∨ y ∨ z) ∧ (¬x ∨ y ∨ ¬z): ogni clausola ha tre letterali.",
+                "caption": "I due riquadri sono le clausole di $(x \\lor y \\lor z) \\land (\\neg x \\lor y \\lor \\neg z)$. Ogni cerchio è un letterale e ogni riquadro ne contiene tre, come chiede 3-SAT. La formula è vera se in ogni riquadro almeno un cerchio è vero.",
+                "alt": "Conta i letterali. I due riquadri sono le clausole di $(x \\lor y \\lor z) \\land (\\neg x \\lor y \\lor \\neg z)$. Ogni cerchio è un letterale e ogni riquadro ne contiene tre, come chiede 3-SAT. La formula è vera se in ogni riquadro almeno un cerchio è vero.",
                 "src": "/illustrations/problems/sat3-1.webp"
             },
             {
                 "title": "Scegli il certificato",
-                "caption": "Imposta $y = 1$, $x = z = 0$. Il letterale $y$ rende vere entrambe le clausole.",
-                "alt": "Scegli il certificato. Imposta y = 1, x = z = 0. Il letterale y rende vere entrambe le clausole.",
+                "caption": "Gli interruttori in basso fissano $x = 0$, $y = 1$, $z = 0$. In verde ci sono i due cerchi di $y$: con $y = 1$ quel letterale è vero in entrambe le clausole. Nella seconda sarebbero veri anche $\\neg x$ e $\\neg z$, ma per soddisfarla basta un letterale.",
+                "alt": "Scegli il certificato. Gli interruttori in basso fissano $x = 0$, $y = 1$, $z = 0$. In verde ci sono i due cerchi di $y$: con $y = 1$ quel letterale è vero in entrambe le clausole. Nella seconda sarebbero veri anche $\\neg x$ e $\\neg z$, ma per soddisfarla basta un letterale.",
                 "src": "/illustrations/problems/sat3-2.webp"
             },
             {
                 "title": "Controlla tutte le clausole",
-                "caption": "Entrambe valgono 1, quindi la congiunzione è soddisfatta.",
-                "alt": "Controlla tutte le clausole. Entrambe valgono 1, quindi la congiunzione è soddisfatta.",
+                "caption": "Accanto a ogni riquadro c'è un segno di spunta verde: con $x = 0$, $y = 1$, $z = 0$ entrambe le clausole valgono 1. La congiunzione è soddisfatta e l'assegnamento è un certificato del sì.",
+                "alt": "Controlla tutte le clausole. Accanto a ogni riquadro c'è un segno di spunta verde: con $x = 0$, $y = 1$, $z = 0$ entrambe le clausole valgono 1. La congiunzione è soddisfatta e l'assegnamento è un certificato del sì.",
                 "src": "/illustrations/problems/sat3-3.webp"
             }
         ]
@@ -221,20 +221,20 @@
         "slides": [
             {
                 "title": "Leggi soglia e clausole",
-                "caption": "Clausole: $x \\lor y$, $x \\lor \\neg y$, $\\neg x \\lor y$, $\\neg x \\lor \\neg y$. Obiettivo $K = 3$.",
-                "alt": "Leggi soglia e clausole. Clausole: x∨y, x∨¬y, ¬x∨y, ¬x∨¬y. Obiettivo K = 3.",
+                "caption": "A sinistra ci sono le quattro clausole $x \\lor y$, $x \\lor \\neg y$, $\\neg x \\lor y$ e $\\neg x \\lor \\neg y$; il riquadro con il 3 è la soglia $K = 3$. Gli interruttori di $x$ e $y$ servono a scegliere i valori. Basta rendere vere almeno 3 clausole su 4.",
+                "alt": "Leggi soglia e clausole. A sinistra ci sono le quattro clausole $x \\lor y$, $x \\lor \\neg y$, $\\neg x \\lor y$ e $\\neg x \\lor \\neg y$; il riquadro con il 3 è la soglia $K = 3$. Gli interruttori di $x$ e $y$ servono a scegliere i valori. Basta rendere vere almeno 3 clausole su 4.",
                 "src": "/illustrations/problems/max2sat-1.webp"
             },
             {
                 "title": "Conta quelle vere",
-                "caption": "Con $x = y = 1$, le prime tre clausole sono vere; l’ultima è falsa.",
-                "alt": "Conta quelle vere. Con x = y = 1, le prime tre clausole sono vere; l’ultima è falsa.",
+                "caption": "Con $x = y = 1$, gli interruttori verdi, ogni clausola diventa una porta OR. $x \\lor y$, $\\neg x \\lor y$ e $x \\lor \\neg y$ hanno un segno di spunta, mentre $\\neg x \\lor \\neg y$ è in rosso con una croce, perché i suoi due letterali valgono 0. Le clausole vere sono 3.",
+                "alt": "Conta quelle vere. Con $x = y = 1$, gli interruttori verdi, ogni clausola diventa una porta OR. $x \\lor y$, $\\neg x \\lor y$ e $x \\lor \\neg y$ hanno un segno di spunta, mentre $\\neg x \\lor \\neg y$ è in rosso con una croce, perché i suoi due letterali valgono 0. Le clausole vere sono 3.",
                 "src": "/illustrations/problems/max2sat-2.webp"
             },
             {
                 "title": "Confronta con $K$",
-                "caption": "Il conteggio è $3 \\ge K$. Provando i quattro assegnamenti si vede che ciascuno rende vera esattamente una quantità di tre clausole.",
-                "alt": "Confronta con K. Il conteggio è 3 ≥ K. Provando i quattro assegnamenti si vede che ciascuno rende vera esattamente una quantità di tre clausole.",
+                "caption": "Il conteggio $3 \\ge K = 3$ basta per il sì. La tabella mostra tutti e quattro gli assegnamenti: ogni riga è un valore di $xy$ (00, 01, 10, 11) e ogni colonna una clausola, nell'ordine del primo passo. In ogni riga c'è esattamente un cerchio rosso, quindi nessun assegnamento rende vere tutte e quattro le clausole.",
+                "alt": "Confronta con $K$. Il conteggio $3 \\ge K = 3$ basta per il sì. La tabella mostra tutti e quattro gli assegnamenti: ogni riga è un valore di $xy$ (00, 01, 10, 11) e ogni colonna una clausola, nell'ordine del primo passo. In ogni riga c'è esattamente un cerchio rosso, quindi nessun assegnamento rende vere tutte e quattro le clausole.",
                 "src": "/illustrations/problems/max2sat-3.webp"
             }
         ]
@@ -245,44 +245,44 @@
         "slides": [
             {
                 "title": "Segui le porte",
-                "caption": "Circuito: $(x \\lor y) \\land \\neg y$. Due ingressi, una porta OR, una NOT e una AND finale.",
-                "alt": "Segui le porte. Circuito: (x ∨ y) ∧ ¬y. Due ingressi, una porta OR, una NOT e una AND finale.",
+                "caption": "Il circuito calcola $(x \\lor y) \\land \\neg y$. Gli ingressi $x$ e $y$ entrano nella porta OR, $y$ entra anche nella NOT, e le uscite di OR e NOT arrivano alla porta AND finale, che dà l'uscita del circuito.",
+                "alt": "Segui le porte. Il circuito calcola $(x \\lor y) \\land \\neg y$. Gli ingressi $x$ e $y$ entrano nella porta OR, $y$ entra anche nella NOT, e le uscite di OR e NOT arrivano alla porta AND finale, che dà l'uscita del circuito.",
                 "src": "/illustrations/problems/circuitsat-1.webp"
             },
             {
                 "title": "Propaga i bit",
-                "caption": "Con $x = 1$, $y = 0$: OR dà 1, $\\mathrm{NOT}(y)$ dà 1.",
-                "alt": "Propaga i bit. Con x = 1, y = 0: OR dà 1, NOT(y) dà 1.",
+                "caption": "Il candidato è $x = 1$, $y = 0$. I valori avanzano da sinistra verso destra: la OR riceve 1 e 0 e dà 1, la NOT riceve 0 e dà 1. I due 1 verdi sono gli ingressi della porta AND.",
+                "alt": "Propaga i bit. Il candidato è $x = 1$, $y = 0$. I valori avanzano da sinistra verso destra: la OR riceve 1 e 0 e dà 1, la NOT riceve 0 e dà 1. I due 1 verdi sono gli ingressi della porta AND.",
                 "src": "/illustrations/problems/circuitsat-2.webp"
             },
             {
-                "title": "Leggi l’uscita",
-                "caption": "$\\mathrm{AND}(1, 1) = 1$: il circuito è soddisfacibile.",
-                "alt": "Leggi l’uscita. AND(1,1) = 1: il circuito è soddisfacibile.",
+                "title": "Leggi l'uscita",
+                "caption": "La porta AND riceve 1 e 1, quindi $\\mathrm{AND}(1, 1) = 1$: è l'1 verde a destra. Gli ingressi $x = 1$, $y = 0$ sono un certificato e il circuito è soddisfacibile.",
+                "alt": "Leggi l'uscita. La porta AND riceve 1 e 1, quindi $\\mathrm{AND}(1, 1) = 1$: è l'1 verde a destra. Gli ingressi $x = 1$, $y = 0$ sono un certificato e il circuito è soddisfacibile.",
                 "src": "/illustrations/problems/circuitsat-3.webp"
             }
         ]
     },
     "CLIQUE": {
         "outcome": "Sì per $K = 3$: $\\{A, B, C\\}$ è una clique.",
-        "note": "Si verificano tutte le coppie del candidato, non soltanto la connessione del sottografo.",
+        "note": "Si controllano tutte le coppie del candidato: non basta che il sottografo sia connesso.",
         "slides": [
             {
                 "title": "Leggi grafo e dimensione",
-                "caption": "Archi $AB$, $AC$, $BC$, $CD$. Cerchiamo $K = 3$ vertici collegati a coppie.",
-                "alt": "Leggi grafo e dimensione. Archi AB, AC, BC, CD. Cerchiamo K = 3 vertici collegati a coppie.",
+                "caption": "Il grafo ha i vertici $A$, $B$, $C$, $D$ e gli archi $AB$, $AC$, $BC$ e $CD$: un triangolo, con $D$ attaccato a $C$. Con $K = 3$ cerchiamo tre vertici collegati a due a due.",
+                "alt": "Leggi grafo e dimensione. Il grafo ha i vertici $A$, $B$, $C$, $D$ e gli archi $AB$, $AC$, $BC$ e $CD$: un triangolo, con $D$ attaccato a $C$. Con $K = 3$ cerchiamo tre vertici collegati a due a due.",
                 "src": "/illustrations/problems/clique-1.webp"
             },
             {
                 "title": "Scegli i vertici",
-                "caption": "Candidato $\\{A, B, C\\}$: sono tre vertici. $D$ non serve alla soluzione.",
-                "alt": "Scegli i vertici. Candidato {A,B,C}: sono tre vertici. D non serve alla soluzione.",
+                "caption": "Il candidato è $\\{A, B, C\\}$, i tre vertici verdi. $D$ resta grigio: è collegato solo a $C$, quindi non può stare in una clique di tre vertici.",
+                "alt": "Scegli i vertici. Il candidato è $\\{A, B, C\\}$, i tre vertici verdi. $D$ resta grigio: è collegato solo a $C$, quindi non può stare in una clique di tre vertici.",
                 "src": "/illustrations/problems/clique-2.webp"
             },
             {
                 "title": "Verifica ogni coppia",
-                "caption": "$AB$, $AC$ e $BC$ esistono: tutte le tre coppie sono adiacenti.",
-                "alt": "Verifica ogni coppia. AB, AC e BC esistono: tutte le tre coppie sono adiacenti.",
+                "caption": "Le coppie di $\\{A, B, C\\}$ sono tre, $AB$, $AC$ e $BC$, e ognuno di questi archi è verde con un segno di spunta. Tutte le coppie sono adiacenti, quindi $\\{A, B, C\\}$ è una clique di dimensione 3. L'arco $CD$, grigio, non entra nel controllo.",
+                "alt": "Verifica ogni coppia. Le coppie di $\\{A, B, C\\}$ sono tre, $AB$, $AC$ e $BC$, e ognuno di questi archi è verde con un segno di spunta. Tutte le coppie sono adiacenti, quindi $\\{A, B, C\\}$ è una clique di dimensione 3. L'arco $CD$, grigio, non entra nel controllo.",
                 "src": "/illustrations/problems/clique-3.webp"
             }
         ]
@@ -293,44 +293,44 @@
         "slides": [
             {
                 "title": "Leggi il grafo",
-                "caption": "Gli archi sono $A$–$B$, $B$–$C$ e $C$–$D$. Con $K = 2$ dobbiamo scegliere due vertici che non siano uniti da un arco.",
-                "alt": "Leggi il grafo. Gli archi sono A–B, B–C e C–D. Con K = 2 dobbiamo scegliere due vertici che non siano uniti da un arco.",
+                "caption": "I quattro vertici sono in fila, $A$, $B$, $C$, $D$, e gli archi sono $AB$, $BC$ e $CD$. Con $K = 2$ dobbiamo scegliere due vertici che non siano uniti da un arco.",
+                "alt": "Leggi il grafo. I quattro vertici sono in fila, $A$, $B$, $C$, $D$, e gli archi sono $AB$, $BC$ e $CD$. Con $K = 2$ dobbiamo scegliere due vertici che non siano uniti da un arco.",
                 "src": "/illustrations/problems/is-1.webp"
             },
             {
                 "title": "Scegli senza adiacenze",
-                "caption": "Scegli $A$ e $C$; lascia fuori $B$ e $D$. Gli archi verso $B$ e $D$ sono ammessi, perché quei vertici non sono scelti.",
-                "alt": "Scegli senza adiacenze. Scegli A e C; lascia fuori B e D. Gli archi verso B e D sono ammessi, perché quei vertici non sono scelti.",
+                "caption": "Il candidato è $\\{A, C\\}$, i due vertici verdi; $B$ e $D$, grigi, restano fuori. Gli archi $AB$, $BC$ e $CD$ toccano vertici non scelti e quindi sono ammessi: il divieto riguarda solo gli archi fra due vertici scelti.",
+                "alt": "Scegli senza adiacenze. Il candidato è $\\{A, C\\}$, i due vertici verdi; $B$ e $D$, grigi, restano fuori. Gli archi $AB$, $BC$ e $CD$ toccano vertici non scelti e quindi sono ammessi: il divieto riguarda solo gli archi fra due vertici scelti.",
                 "src": "/illustrations/problems/is-2.webp"
             },
             {
                 "title": "Controlla il sottoinsieme",
-                "caption": "L’unica coppia scelta è $A$, $C$: non esiste un arco diretto $A$–$C$, quindi va bene. Il percorso $A$–$B$–$C$ non viola la condizione, perché $B$ non è scelto.",
-                "alt": "Controlla il sottoinsieme. L’unica coppia scelta è A, C: non esiste un arco diretto A–C, quindi va bene. Il percorso A–B–C non viola la condizione, perché B non è scelto.",
+                "caption": "Fra i vertici scelti c'è una sola coppia, $A$ e $C$, e l'arco $AC$ non esiste: il segno di spunta conferma che $\\{A, C\\}$ è indipendente. $A$ e $C$ sono collegati dal percorso che passa per $B$, ma questo non viola la condizione, perché $B$ non è scelto.",
+                "alt": "Controlla il sottoinsieme. Fra i vertici scelti c'è una sola coppia, $A$ e $C$, e l'arco $AC$ non esiste: il segno di spunta conferma che $\\{A, C\\}$ è indipendente. $A$ e $C$ sono collegati dal percorso che passa per $B$, ma questo non viola la condizione, perché $B$ non è scelto.",
                 "src": "/illustrations/problems/is-3.webp"
             }
         ]
     },
     "NC": {
         "outcome": "Sì per $K = 1$: $\\{B\\}$ copre tutti gli archi.",
-        "note": "NODE COVER riguarda gli archi coperti, non tutti i vertici visitati.",
+        "note": "NODE COVER chiede di coprire gli archi: i vertici non scelti non devono essere coperti a loro volta.",
         "slides": [
             {
                 "title": "Osserva gli archi",
-                "caption": "Il grafo è $A$–$B$–$C$. Abbiamo un budget di un vertice.",
-                "alt": "Osserva gli archi. Il grafo è A–B–C. Abbiamo un budget di un vertice.",
+                "caption": "Il grafo è il cammino $A$, $B$, $C$, con gli archi $AB$ e $BC$. Il numero 1 sotto il disegno è il budget $K = 1$: possiamo scegliere un solo vertice, e deve toccare tutti e due gli archi.",
+                "alt": "Osserva gli archi. Il grafo è il cammino $A$, $B$, $C$, con gli archi $AB$ e $BC$. Il numero 1 sotto il disegno è il budget $K = 1$: possiamo scegliere un solo vertice, e deve toccare tutti e due gli archi.",
                 "src": "/illustrations/problems/nc-1.webp"
             },
             {
                 "title": "Scegli il centro",
-                "caption": "Il vertice $B$ tocca entrambi gli archi.",
-                "alt": "Scegli il centro. Il vertice B tocca entrambi gli archi.",
+                "caption": "Scegliamo $B$, in verde. Entrambi gli archi, $AB$ e $BC$, hanno $B$ come estremo e diventano verdi anche loro. Con $A$ o con $C$ da solo resterebbe scoperto un arco.",
+                "alt": "Scegli il centro. Scegliamo $B$, in verde. Entrambi gli archi, $AB$ e $BC$, hanno $B$ come estremo e diventano verdi anche loro. Con $A$ o con $C$ da solo resterebbe scoperto un arco.",
                 "src": "/illustrations/problems/nc-2.webp"
             },
             {
                 "title": "Verifica la copertura",
-                "caption": "Ogni arco ha almeno un estremo in $\\{B\\}$, e $|\\{B\\}| = 1 \\le K$.",
-                "alt": "Verifica la copertura. Ogni arco ha almeno un estremo in {B}, e |{B}| = 1 ≤ K.",
+                "caption": "Su ogni arco c'è un segno di spunta, perché $AB$ e $BC$ hanno un estremo in $\\{B\\}$. La copertura usa $|\\{B\\}| = 1 \\le K$ vertici, quindi la risposta è sì. $A$ e $C$ restano grigi: non sono scelti e non serve che lo siano.",
+                "alt": "Verifica la copertura. Su ogni arco c'è un segno di spunta, perché $AB$ e $BC$ hanno un estremo in $\\{B\\}$. La copertura usa $|\\{B\\}| = 1 \\le K$ vertici, quindi la risposta è sì. $A$ e $C$ restano grigi: non sono scelti e non serve che lo siano.",
                 "src": "/illustrations/problems/nc-3.webp"
             }
         ]
@@ -341,20 +341,20 @@
         "slides": [
             {
                 "title": "Leggi il grafo",
-                "caption": "Archi $AB$, $BC$, $CD$ e $AC$. Ci sono quattro vertici da visitare.",
-                "alt": "Leggi il grafo. Archi AB, BC, CD e AC. Ci sono quattro vertici da visitare.",
+                "caption": "Il grafo ha quattro vertici e gli archi $AB$, $BC$, $CD$ e $AC$, quello curvo in basso. Cerchiamo un ordine che passi per $A$, $B$, $C$ e $D$ una volta ciascuno, usando solo questi archi.",
+                "alt": "Leggi il grafo. Il grafo ha quattro vertici e gli archi $AB$, $BC$, $CD$ e $AC$, quello curvo in basso. Cerchiamo un ordine che passi per $A$, $B$, $C$ e $D$ una volta ciascuno, usando solo questi archi.",
                 "src": "/illustrations/problems/hp-1.webp"
             },
             {
                 "title": "Proponi un ordine",
-                "caption": "Prova l’ordine $A$, $B$, $C$, $D$. Ogni vertice compare una volta.",
-                "alt": "Proponi un ordine. Prova l’ordine A, B, C, D. Ogni vertice compare una volta.",
+                "caption": "I numeri nei vertici verdi danno l'ordine proposto: $A$ è 1, $B$ è 2, $C$ è 3 e $D$ è 4. Ogni vertice ha un solo numero, quindi compare una volta sola. Resta da controllare che ogni passo segua un arco.",
+                "alt": "Proponi un ordine. I numeri nei vertici verdi danno l'ordine proposto: $A$ è 1, $B$ è 2, $C$ è 3 e $D$ è 4. Ogni vertice ha un solo numero, quindi compare una volta sola. Resta da controllare che ogni passo segua un arco.",
                 "src": "/illustrations/problems/hp-2.webp"
             },
             {
                 "title": "Verifica i passi",
-                "caption": "$AB$, $BC$ e $CD$ sono archi; l’ordine usa tutti i vertici senza ripetizioni.",
-                "alt": "Verifica i passi. AB, BC e CD sono archi; l’ordine usa tutti i vertici senza ripetizioni.",
+                "caption": "I passi $A \\to B$, $B \\to C$ e $C \\to D$ usano gli archi $AB$, $BC$ e $CD$, in verde; l'arco $AC$, grigio, non serve. L'ordine tocca tutti i vertici senza ripetizioni, quindi $A, B, C, D$ è un cammino hamiltoniano.",
+                "alt": "Verifica i passi. I passi $A \\to B$, $B \\to C$ e $C \\to D$ usano gli archi $AB$, $BC$ e $CD$, in verde; l'arco $AC$, grigio, non serve. L'ordine tocca tutti i vertici senza ripetizioni, quindi $A, B, C, D$ è un cammino hamiltoniano.",
                 "src": "/illustrations/problems/hp-3.webp"
             }
         ]
@@ -365,20 +365,20 @@
         "slides": [
             {
                 "title": "Leggi distanze e budget",
-                "caption": "Tre città: $AB = 2$, $BC = 3$, $CA = 4$. Budget $B = 10$.",
-                "alt": "Leggi distanze e budget. Tre città: AB = 2, BC = 3, CA = 4. Budget B = 10.",
+                "caption": "Le città sono $A$, $B$ e $C$, e i numeri sui lati sono le distanze: $AB = 2$, $BC = 3$, $CA = 4$. Il riquadro \"B 10\" indica il budget $B = 10$, da non confondere con la città $B$.",
+                "alt": "Leggi distanze e budget. Le città sono $A$, $B$ e $C$, e i numeri sui lati sono le distanze: $AB = 2$, $BC = 3$, $CA = 4$. Il riquadro \"B 10\" indica il budget $B = 10$, da non confondere con la città $B$.",
                 "src": "/illustrations/problems/tspd-1.webp"
             },
             {
                 "title": "Costruisci un giro",
-                "caption": "Visita $A \\to B \\to C \\to A$ e somma le distanze: $2 + 3 + 4 = 9$.",
-                "alt": "Costruisci un giro. Visita A → B → C → A e somma le distanze: 2 + 3 + 4 = 9.",
+                "caption": "Le frecce verdi seguono il giro $A \\to B \\to C \\to A$, che passa per tutte le città e torna alla partenza. Sommando le distanze dei tre lati si ottiene $2 + 3 + 4 = 9$.",
+                "alt": "Costruisci un giro. Le frecce verdi seguono il giro $A \\to B \\to C \\to A$, che passa per tutte le città e torna alla partenza. Sommando le distanze dei tre lati si ottiene $2 + 3 + 4 = 9$.",
                 "src": "/illustrations/problems/tspd-2.webp"
             },
             {
                 "title": "Confronta il costo",
-                "caption": "Il giro visita tutte le città e $9 \\le 10$: è un certificato valido.",
-                "alt": "Confronta il costo. Il giro visita tutte le città e 9 ≤ 10: è un certificato valido.",
+                "caption": "La barra in alto si riempie fino a 9 e si ferma prima della tacca del 10, il budget; il segno di spunta indica che $9 \\le 10$. Il giro è un certificato del sì, e per verificarlo bastano una somma e un confronto.",
+                "alt": "Confronta il costo. La barra in alto si riempie fino a 9 e si ferma prima della tacca del 10, il budget; il segno di spunta indica che $9 \\le 10$. Il giro è un certificato del sì, e per verificarlo bastano una somma e un confronto.",
                 "src": "/illustrations/problems/tspd-3.webp"
             }
         ]
@@ -389,44 +389,44 @@
         "slides": [
             {
                 "title": "Osserva il triangolo",
-                "caption": "Archi $AB$, $BC$ e $CA$. Due colori non bastano; ne abbiamo tre.",
-                "alt": "Osserva il triangolo. Archi AB, BC e CA. Due colori non bastano; ne abbiamo tre.",
+                "caption": "Il grafo è un triangolo: gli archi $AB$, $BC$ e $CA$ collegano ogni vertice agli altri due, e per questo due colori non bastano. A destra ci sono i tre colori disponibili: blu, corallo e verde.",
+                "alt": "Osserva il triangolo. Il grafo è un triangolo: gli archi $AB$, $BC$ e $CA$ collegano ogni vertice agli altri due, e per questo due colori non bastano. A destra ci sono i tre colori disponibili: blu, corallo e verde.",
                 "src": "/illustrations/problems/col3-1.webp"
             },
             {
                 "title": "Assegna i colori",
-                "caption": "$A$ blu, $B$ corallo, $C$ verde: ogni vertice ha un colore.",
-                "alt": "Assegna i colori. A blu, B corallo, C verde: ogni vertice ha un colore.",
+                "caption": "Il candidato colora $A$ di blu, $B$ di corallo e $C$ di verde: un colore per vertice, tutti diversi. Questa assegnazione è il certificato da controllare.",
+                "alt": "Assegna i colori. Il candidato colora $A$ di blu, $B$ di corallo e $C$ di verde: un colore per vertice, tutti diversi. Questa assegnazione è il certificato da controllare.",
                 "src": "/illustrations/problems/col3-2.webp"
             },
             {
                 "title": "Verifica gli archi",
-                "caption": "$AB$, $BC$ e $CA$ collegano sempre colori diversi.",
-                "alt": "Verifica gli archi. AB, BC e CA collegano sempre colori diversi.",
+                "caption": "Su ogni arco c'è un segno di spunta: $AB$ unisce blu e corallo, $BC$ corallo e verde, $CA$ verde e blu. Nessun arco ha gli estremi dello stesso colore, quindi il triangolo è 3-colorabile.",
+                "alt": "Verifica gli archi. Su ogni arco c'è un segno di spunta: $AB$ unisce blu e corallo, $BC$ corallo e verde, $CA$ verde e blu. Nessun arco ha gli estremi dello stesso colore, quindi il triangolo è 3-colorabile.",
                 "src": "/illustrations/problems/col3-3.webp"
             }
         ]
     },
     "IP": {
         "outcome": "Sì: $(2, 1)$ è una soluzione intera.",
-        "note": "Con i vincoli integrali conta un punto della griglia, non un qualsiasi punto reale della regione.",
+        "note": "Con i vincoli di interezza serve un punto della griglia: un punto reale qualsiasi della regione non basta.",
         "slides": [
             {
                 "title": "Leggi i vincoli",
-                "caption": "$x \\ge 1$, $y \\ge 0$, $x + y \\le 3$; in più $x$ e $y$ devono essere interi.",
-                "alt": "Leggi i vincoli. x ≥ 1, y ≥ 0, x + y ≤ 3; in più x e y devono essere interi.",
+                "caption": "I vincoli sono $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$, e in più $x$ e $y$ devono essere interi. I pallini sono i punti con coordinate intere da 0 a 3, e le due rette sono $x = 1$ e $x + y = 3$. Una soluzione deve essere uno di questi pallini.",
+                "alt": "Leggi i vincoli. I vincoli sono $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$, e in più $x$ e $y$ devono essere interi. I pallini sono i punti con coordinate intere da 0 a 3, e le due rette sono $x = 1$ e $x + y = 3$. Una soluzione deve essere uno di questi pallini.",
                 "src": "/illustrations/problems/ip-1.webp"
             },
             {
                 "title": "Cerca sulla griglia",
-                "caption": "Tra i punti interi della regione scegli $(2, 1)$.",
-                "alt": "Cerca sulla griglia. Tra i punti interi della regione scegli (2,1).",
+                "caption": "Il triangolo verde è la regione dei vincoli e contiene sei punti interi: $(1, 0)$, $(2, 0)$, $(3, 0)$, $(1, 1)$, $(2, 1)$ e $(1, 2)$. Fra questi scegliamo $(2, 1)$, il pallino verde più grande, sul lato obliquo.",
+                "alt": "Cerca sulla griglia. Il triangolo verde è la regione dei vincoli e contiene sei punti interi: $(1, 0)$, $(2, 0)$, $(3, 0)$, $(1, 1)$, $(2, 1)$ e $(1, 2)$. Fra questi scegliamo $(2, 1)$, il pallino verde più grande, sul lato obliquo.",
                 "src": "/illustrations/problems/ip-2.webp"
             },
             {
-                "title": "Verifica anche l’integralità",
-                "caption": "2 e 1 sono interi e soddisfano i tre vincoli: il candidato è valido.",
-                "alt": "Verifica anche l’integralità. 2 e 1 sono interi e soddisfano i tre vincoli: il candidato è valido.",
+                "title": "Verifica anche l'integralità",
+                "caption": "Il candidato è il pallino verde $(2, 1)$, e i tre segni di spunta in basso sono i tre vincoli: $2 \\ge 1$, $1 \\ge 0$ e $2 + 1 = 3 \\le 3$. In più 2 e 1 sono interi, quindi $(2, 1)$ è una soluzione intera e certifica il sì.",
+                "alt": "Verifica anche l'integralità. Il candidato è il pallino verde $(2, 1)$, e i tre segni di spunta in basso sono i tre vincoli: $2 \\ge 1$, $1 \\ge 0$ e $2 + 1 = 3 \\le 3$. In più 2 e 1 sono interi, quindi $(2, 1)$ è una soluzione intera e certifica il sì.",
                 "src": "/illustrations/problems/ip-3.webp"
             }
         ]
@@ -437,44 +437,44 @@
         "slides": [
             {
                 "title": "Leggi gli oggetti",
-                "caption": "$A$: peso 2, valore 3; $B$: peso 3, valore 4; $C$: peso 4, valore 5. Capacità $W = 5$, obiettivo $K = 7$.",
-                "alt": "Leggi gli oggetti. A: peso 2, valore 3; B: peso 3, valore 4; C: peso 4, valore 5. Capacità W = 5, obiettivo K = 7.",
+                "caption": "Ogni carta è un oggetto, con il peso accanto all'icona del peso e il valore accanto alla stella. $A$ pesa 2 e vale 3, $B$ pesa 3 e vale 4, $C$ pesa 4 e vale 5. Lo zaino porta al più $W = 5$, e cerchiamo un valore totale di almeno $K = 7$.",
+                "alt": "Leggi gli oggetti. Ogni carta è un oggetto, con il peso accanto all'icona del peso e il valore accanto alla stella. $A$ pesa 2 e vale 3, $B$ pesa 3 e vale 4, $C$ pesa 4 e vale 5. Lo zaino porta al più $W = 5$, e cerchiamo un valore totale di almeno $K = 7$.",
                 "src": "/illustrations/problems/knap-1.webp"
             },
             {
                 "title": "Scegli un sottoinsieme",
-                "caption": "Inserisci $A$ e $B$ nello zaino e lascia fuori $C$.",
-                "alt": "Scegli un sottoinsieme. Inserisci A e B nello zaino e lascia fuori C.",
+                "caption": "Mettiamo nello zaino $A$ e $B$, le carte verdi; $C$ resta fuori, in grigio. Da solo $C$ vale 5, meno di 7, e insieme a un altro oggetto supera il peso 5. Il sottoinsieme $\\{A, B\\}$ è il certificato da verificare.",
+                "alt": "Scegli un sottoinsieme. Mettiamo nello zaino $A$ e $B$, le carte verdi; $C$ resta fuori, in grigio. Da solo $C$ vale 5, meno di 7, e insieme a un altro oggetto supera il peso 5. Il sottoinsieme $\\{A, B\\}$ è il certificato da verificare.",
                 "src": "/illustrations/problems/knap-2.webp"
             },
             {
                 "title": "Verifica i due limiti",
-                "caption": "Peso $2 + 3 = 5 \\le W$; valore $3 + 4 = 7 \\ge K$. Entrambi i controlli riescono.",
-                "alt": "Verifica i due limiti. Peso 2 + 3 = 5 ≤ W; valore 3 + 4 = 7 ≥ K. Entrambi i controlli riescono.",
+                "caption": "La prima barra è il peso: $2 + 3 = 5$ su un massimo di 5, quindi $5 \\le W$. La seconda è il valore: $3 + 4 = 7$ con obiettivo 7, quindi $7 \\ge K$. Entrambe hanno un segno di spunta, e la carta di $C$, fuori dallo zaino con una croce rossa accanto, non entra nei conti.",
+                "alt": "Verifica i due limiti. La prima barra è il peso: $2 + 3 = 5$ su un massimo di 5, quindi $5 \\le W$. La seconda è il valore: $3 + 4 = 7$ con obiettivo 7, quindi $7 \\ge K$. Entrambe hanno un segno di spunta, e la carta di $C$, fuori dallo zaino con una croce rossa accanto, non entra nei conti.",
                 "src": "/illustrations/problems/knap-3.webp"
             }
         ]
     },
     "VALIDITY": {
         "outcome": "Sì: $x \\lor \\neg x$ è una tautologia.",
-        "note": "Un solo assegnamento vero non basta: servono tutti gli assegnamenti.",
+        "note": "Non basta un assegnamento che rende vera la formula: devono renderla vera tutti.",
         "slides": [
             {
                 "title": "Leggi la formula",
-                "caption": "Considera $x \\lor \\neg x$ e chiedi se vale per ogni valore di $x$.",
-                "alt": "Leggi la formula. Considera x ∨ ¬x e chiedi se vale per ogni valore di x.",
+                "caption": "Il circuito calcola $x \\lor \\neg x$: l'ingresso $x$ arriva alla porta OR due volte, una direttamente e una passando per la NOT. Chiediamo se l'uscita vale 1 per ogni valore di $x$.",
+                "alt": "Leggi la formula. Il circuito calcola $x \\lor \\neg x$: l'ingresso $x$ arriva alla porta OR due volte, una direttamente e una passando per la NOT. Chiediamo se l'uscita vale 1 per ogni valore di $x$.",
                 "src": "/illustrations/problems/validity-1.webp"
             },
             {
                 "title": "Esamina entrambi i casi",
-                "caption": "Se $x = 0$, è vero $\\neg x$; se $x = 1$, è vero $x$.",
-                "alt": "Esamina entrambi i casi. Se x = 0, è vero ¬x; se x = 1, è vero x.",
+                "caption": "Il circuito è disegnato due volte. Sopra entra $x = 0$: la NOT dà 1 e l'OR dà 1, grazie a $\\neg x$. Sotto entra $x = 1$: la NOT dà 0, in rosso, e l'OR dà comunque 1, grazie a $x$.",
+                "alt": "Esamina entrambi i casi. Il circuito è disegnato due volte. Sopra entra $x = 0$: la NOT dà 1 e l'OR dà 1, grazie a $\\neg x$. Sotto entra $x = 1$: la NOT dà 0, in rosso, e l'OR dà comunque 1, grazie a $x$.",
                 "src": "/illustrations/problems/validity-2.webp"
             },
             {
                 "title": "Concludi per tutti i valori",
-                "caption": "Entrambi gli assegnamenti danno 1: la formula è valida.",
-                "alt": "Concludi per tutti i valori. Entrambi gli assegnamenti danno 1: la formula è valida.",
+                "caption": "Il riquadro riassume i due casi. Gli ingressi dell'OR, cioè i valori di $x$ e di $\\neg x$, sono 0 e 1 quando $x = 0$, 1 e 0 quando $x = 1$, e in entrambe le righe l'uscita è 1, con un segno di spunta. Gli assegnamenti possibili sono solo questi due, quindi $x \\lor \\neg x$ è valida.",
+                "alt": "Concludi per tutti i valori. Il riquadro riassume i due casi. Gli ingressi dell'OR, cioè i valori di $x$ e di $\\neg x$, sono 0 e 1 quando $x = 0$, 1 e 0 quando $x = 1$, e in entrambe le righe l'uscita è 1, con un segno di spunta. Gli assegnamenti possibili sono solo questi due, quindi $x \\lor \\neg x$ è valida.",
                 "src": "/illustrations/problems/validity-3.webp"
             }
         ]
@@ -485,20 +485,20 @@
         "slides": [
             {
                 "title": "Osserva il conflitto",
-                "caption": "La formula è la congiunzione delle clausole $x$ e $\\neg x$.",
-                "alt": "Osserva il conflitto. La formula è la congiunzione delle clausole x e ¬x.",
+                "caption": "La formula è la congiunzione delle clausole $x$ e $\\neg x$. Nel disegno l'interruttore $x$ alimenta due riquadri, uno per clausola, e le loro uscite entrano in una porta AND, che dà 1 solo se entrambe le clausole sono vere.",
+                "alt": "Osserva il conflitto. La formula è la congiunzione delle clausole $x$ e $\\neg x$. Nel disegno l'interruttore $x$ alimenta due riquadri, uno per clausola, e le loro uscite entrano in una porta AND, che dà 1 solo se entrambe le clausole sono vere.",
                 "src": "/illustrations/problems/cosat-1.webp"
             },
             {
                 "title": "Controlla i due assegnamenti",
-                "caption": "Con $x = 0$ fallisce $x$; con $x = 1$ fallisce $\\neg x$.",
-                "alt": "Controlla i due assegnamenti. Con x = 0 fallisce x; con x = 1 fallisce ¬x.",
+                "caption": "Ogni riga è un assegnamento. Con $x = 0$, in alto, la clausola $x$ è falsa (croce rossa) e $\\neg x$ è vera. Con $x = 1$, in basso, succede il contrario: $x$ è vera e $\\neg x$ è falsa.",
+                "alt": "Controlla i due assegnamenti. Ogni riga è un assegnamento. Con $x = 0$, in alto, la clausola $x$ è falsa (croce rossa) e $\\neg x$ è vera. Con $x = 1$, in basso, succede il contrario: $x$ è vera e $\\neg x$ è falsa.",
                 "src": "/illustrations/problems/cosat-2.webp"
             },
             {
                 "title": "Escludi la soddisfacibilità",
-                "caption": "In ogni riga c’è una clausola falsa: nessun assegnamento soddisfa la congiunzione.",
-                "alt": "Escludi la soddisfacibilità. In ogni riga c’è una clausola falsa: nessun assegnamento soddisfa la congiunzione.",
+                "caption": "In entrambe le righe la porta AND riceve un ingresso verde e uno blu, cioè una clausola vera e una falsa, e la sua uscita è rossa: vale 0. Nessuno dei due assegnamenti soddisfa la congiunzione, quindi $x \\land \\neg x$ è insoddisfacibile. Il segno di spunta grande è il sì di co-SAT.",
+                "alt": "Escludi la soddisfacibilità. In entrambe le righe la porta AND riceve un ingresso verde e uno blu, cioè una clausola vera e una falsa, e la sua uscita è rossa: vale 0. Nessuno dei due assegnamenti soddisfa la congiunzione, quindi $x \\land \\neg x$ è insoddisfacibile. Il segno di spunta grande è il sì di co-SAT.",
                 "src": "/illustrations/problems/cosat-3.webp"
             }
         ]
@@ -509,20 +509,20 @@
         "slides": [
             {
                 "title": "Leggi le componenti",
-                "caption": "Quattro vertici, con soli archi $AB$ e $CD$. Nessun arco collega le due coppie.",
-                "alt": "Leggi le componenti. Quattro vertici, con soli archi AB e CD. Nessun arco collega le due coppie.",
+                "caption": "Il grafo ha quattro vertici e solo due archi: $AB$ a sinistra e $CD$ a destra. Nessun arco collega $\\{A, B\\}$ a $\\{C, D\\}$, quindi il grafo è diviso in due componenti.",
+                "alt": "Leggi le componenti. Il grafo ha quattro vertici e solo due archi: $AB$ a sinistra e $CD$ a destra. Nessun arco collega $\\{A, B\\}$ a $\\{C, D\\}$, quindi il grafo è diviso in due componenti.",
                 "src": "/illustrations/problems/cohp-1.webp"
             },
             {
-                "title": "Prova a passare da una componente all’altra",
-                "caption": "Un cammino che parte nella prima coppia non può raggiungere la seconda.",
-                "alt": "Prova a passare da una componente all’altra. Un cammino che parte nella prima coppia non può raggiungere la seconda.",
+                "title": "Prova a cambiare componente",
+                "caption": "Un cammino che parte da $A$ arriva a $B$, in verde. Da $B$ non esce nessun arco verso $C$ o $D$: il tratteggio che finisce nella croce rossa è il passo che manca. Partendo da $C$ o da $D$ succede lo stesso al contrario.",
+                "alt": "Prova a cambiare componente. Un cammino che parte da $A$ arriva a $B$, in verde. Da $B$ non esce nessun arco verso $C$ o $D$: il tratteggio che finisce nella croce rossa è il passo che manca. Partendo da $C$ o da $D$ succede lo stesso al contrario.",
                 "src": "/illustrations/problems/cohp-2.webp"
             },
             {
-                "title": "Concludi l’assenza",
-                "caption": "Ogni cammino resta nella sua componente: non può visitare tutti e quattro i vertici.",
-                "alt": "Concludi l’assenza. Ogni cammino resta nella sua componente: non può visitare tutti e quattro i vertici.",
+                "title": "Escludi ogni cammino hamiltoniano",
+                "caption": "I due riquadri sono le componenti, e la linea rossa tratteggiata con la croce indica che fra loro non c'è nessun arco. Ogni cammino resta dentro un riquadro e tocca al più due vertici su quattro, quindi non esiste un cammino hamiltoniano. Il segno di spunta è il sì di co-HAMILTON PATH.",
+                "alt": "Escludi ogni cammino hamiltoniano. I due riquadri sono le componenti, e la linea rossa tratteggiata con la croce indica che fra loro non c'è nessun arco. Ogni cammino resta dentro un riquadro e tocca al più due vertici su quattro, quindi non esiste un cammino hamiltoniano. Il segno di spunta è il sì di co-HAMILTON PATH.",
                 "src": "/illustrations/problems/cohp-3.webp"
             }
         ]
@@ -533,68 +533,68 @@
         "slides": [
             {
                 "title": "Leggi il budget",
-                "caption": "Tre città con $AB = 2$, $BC = 3$, $CA = 4$. Questa volta $B = 8$.",
-                "alt": "Leggi il budget. Tre città con AB = 2, BC = 3, CA = 4. Questa volta B = 8.",
+                "caption": "Le distanze sono $AB = 2$, $BC = 3$, $CA = 4$, e il riquadro a destra fissa il budget $B = 8$, da non confondere con la città $B$. Chiediamo se nessun giro costa al più 8.",
+                "alt": "Leggi il budget. Le distanze sono $AB = 2$, $BC = 3$, $CA = 4$, e il riquadro a destra fissa il budget $B = 8$, da non confondere con la città $B$. Chiediamo se nessun giro costa al più 8.",
                 "src": "/illustrations/problems/cotsp-1.webp"
             },
             {
                 "title": "Esamina i giri",
-                "caption": "Fissando $A$ come partenza, i due ordini $A$–$B$–$C$–$A$ e $A$–$C$–$B$–$A$ hanno entrambi costo 9.",
-                "alt": "Esamina i giri. Fissando A come partenza, i due ordini A–B–C–A e A–C–B–A hanno entrambi costo 9.",
+                "caption": "Partendo da $A$, con tre città i giri sono due: $A \\to B \\to C \\to A$ a sinistra e $A \\to C \\to B \\to A$ a destra, lo stesso percorso al contrario. Il riquadro sotto ciascuno riporta il costo, $2 + 3 + 4 = 9$ in entrambi i casi.",
+                "alt": "Esamina i giri. Partendo da $A$, con tre città i giri sono due: $A \\to B \\to C \\to A$ a sinistra e $A \\to C \\to B \\to A$ a destra, lo stesso percorso al contrario. Il riquadro sotto ciascuno riporta il costo, $2 + 3 + 4 = 9$ in entrambi i casi.",
                 "src": "/illustrations/problems/cotsp-2.webp"
             },
             {
-                "title": "Escludi il budget",
-                "caption": "Entrambi i giri costano $9 \\gt 8$. Nessun ordine diverso resta da esaminare.",
-                "alt": "Escludi il budget. Entrambi i giri costano 9 > 8. Nessun ordine diverso resta da esaminare.",
+                "title": "Nessun giro entro il budget",
+                "caption": "Ora entrambi i giri sono rossi, con la scritta $9 \\gt 8$ e una croce: nessuno rientra nel budget. Altri giri non ce ne sono, quindi la risposta a co-TSP(D) è sì, ed è il segno di spunta verde in basso.",
+                "alt": "Nessun giro entro il budget. Ora entrambi i giri sono rossi, con la scritta $9 \\gt 8$ e una croce: nessuno rientra nel budget. Altri giri non ce ne sono, quindi la risposta a co-TSP(D) è sì, ed è il segno di spunta verde in basso.",
                 "src": "/illustrations/problems/cotsp-3.webp"
             }
         ]
     },
     "SATUNSAT": {
         "outcome": "Sì: la prima formula è soddisfacibile, la seconda no.",
-        "note": "DP combina due condizioni diverse, entrambe necessarie.",
+        "note": "DP combina due condizioni di tipo diverso, e servono entrambe.",
         "slides": [
             {
                 "title": "Separa le due formule",
-                "caption": "$\\varphi = x \\lor y$; $\\psi = z \\land \\neg z$. La domanda richiede $\\mathrm{SAT}(\\varphi)$ e $\\mathrm{UNSAT}(\\psi)$.",
-                "alt": "Separa le due formule. φ = x ∨ y; ψ = z ∧ ¬z. La domanda richiede SAT(φ) e UNSAT(ψ).",
+                "caption": "A sinistra c'è il circuito di $\\varphi = x \\lor y$, una porta OR con gli interruttori $x$ e $y$. A destra quello di $\\psi = z \\land \\neg z$: $z$ entra in una AND sia direttamente sia passando per una NOT. La domanda chiede insieme $\\mathrm{SAT}(\\varphi)$ e $\\mathrm{UNSAT}(\\psi)$.",
+                "alt": "Separa le due formule. A sinistra c'è il circuito di $\\varphi = x \\lor y$, una porta OR con gli interruttori $x$ e $y$. A destra quello di $\\psi = z \\land \\neg z$: $z$ entra in una AND sia direttamente sia passando per una NOT. La domanda chiede insieme $\\mathrm{SAT}(\\varphi)$ e $\\mathrm{UNSAT}(\\psi)$.",
                 "src": "/illustrations/problems/satunsat-1.webp"
             },
             {
                 "title": "Controlla il lato SAT",
-                "caption": "Per $\\varphi$ scegli $x = 1$, $y = 0$: l’OR vale 1.",
-                "alt": "Controlla il lato SAT. Per φ scegli x = 1, y = 0: l’OR vale 1.",
+                "caption": "Per $\\varphi$ basta un assegnamento: con $x = 1$ e $y = 0$ l'OR dà 1, il pallino verde in uscita. Questo certifica che $\\varphi$ è soddisfacibile. Il circuito di $\\psi$, a destra, è ancora da esaminare.",
+                "alt": "Controlla il lato SAT. Per $\\varphi$ basta un assegnamento: con $x = 1$ e $y = 0$ l'OR dà 1, il pallino verde in uscita. Questo certifica che $\\varphi$ è soddisfacibile. Il circuito di $\\psi$, a destra, è ancora da esaminare.",
                 "src": "/illustrations/problems/satunsat-2.webp"
             },
             {
                 "title": "Controlla il lato UNSAT",
-                "caption": "Per $\\psi$, $z = 0$ e $z = 1$ danno entrambi 0. I due controlli riescono insieme.",
-                "alt": "Controlla il lato UNSAT. Per ψ, z = 0 e z = 1 danno entrambi 0. I due controlli riescono insieme.",
+                "caption": "Per $\\psi$ servono tutti e due i valori di $z$, disegnati a destra: sopra $z = 0$, sotto $z = 1$. Con $z = 0$ la NOT dà 1 ma $z$ vale 0; con $z = 1$ è la NOT a dare 0. L'uscita della AND resta grigia, cioè 0, in entrambi i casi, quindi $\\psi$ è insoddisfacibile e i due segni di spunta dicono che i controlli riescono insieme.",
+                "alt": "Controlla il lato UNSAT. Per $\\psi$ servono tutti e due i valori di $z$, disegnati a destra: sopra $z = 0$, sotto $z = 1$. Con $z = 0$ la NOT dà 1 ma $z$ vale 0; con $z = 1$ è la NOT a dare 0. L'uscita della AND resta grigia, cioè 0, in entrambi i casi, quindi $\\psi$ è insoddisfacibile e i due segni di spunta dicono che i controlli riescono insieme.",
                 "src": "/illustrations/problems/satunsat-3.webp"
             }
         ]
     },
     "EXACT": {
-        "outcome": "Sì per $B = 9$: l’ottimo è esattamente 9.",
+        "outcome": "Sì per $B = 9$: l'ottimo è esattamente 9.",
         "note": "Trovare un giro da 9 non basta: bisogna anche escluderne uno più economico.",
         "slides": [
             {
                 "title": "Leggi il valore richiesto",
-                "caption": "Tre città: $AB = 2$, $BC = 3$, $CA = 4$. Chiediamo se l’ottimo è $B = 9$.",
-                "alt": "Leggi il valore richiesto. Tre città: AB = 2, BC = 3, CA = 4. Chiediamo se l’ottimo è B = 9.",
+                "caption": "Le distanze sono $AB = 2$, $BC = 3$, $CA = 4$. Il 9 fra parentesi quadre è il valore $B = 9$, un numero e non la città $B$: chiediamo se il giro più corto costa esattamente 9.",
+                "alt": "Leggi il valore richiesto. Le distanze sono $AB = 2$, $BC = 3$, $CA = 4$. Il 9 fra parentesi quadre è il valore $B = 9$, un numero e non la città $B$: chiediamo se il giro più corto costa esattamente 9.",
                 "src": "/illustrations/problems/exact-1.webp"
             },
             {
                 "title": "Trova un giro entro $B$",
-                "caption": "Il giro $A$–$B$–$C$–$A$ costa 9: il controllo di tipo NP riesce.",
-                "alt": "Trova un giro entro B. Il giro A–B–C–A costa 9: il controllo di tipo NP riesce.",
+                "caption": "Il giro $A \\to B \\to C \\to A$ usa i tre lati, in verde, e costa $2 + 3 + 4 = 9$. È il primo controllo, di tipo NP: esiste un giro di costo $\\le 9$. Il primo riquadro ha il segno di spunta; il secondo, ancora vuoto, è il controllo che resta.",
+                "alt": "Trova un giro entro $B$. Il giro $A \\to B \\to C \\to A$ usa i tre lati, in verde, e costa $2 + 3 + 4 = 9$. È il primo controllo, di tipo NP: esiste un giro di costo $\\le 9$. Il primo riquadro ha il segno di spunta; il secondo, ancora vuoto, è il controllo che resta.",
                 "src": "/illustrations/problems/exact-2.webp"
             },
             {
                 "title": "Escludi giri sotto $B$",
-                "caption": "I due ordini possibili costano entrambi 9: nessun giro ha costo $\\lt 9$. Anche il controllo coNP riesce.",
-                "alt": "Escludi giri sotto B. I due ordini possibili costano entrambi 9: nessun giro ha costo < 9. Anche il controllo coNP riesce.",
+                "caption": "Il secondo controllo, di tipo coNP, deve escludere ogni giro di costo $\\lt 9$. I giri possibili sono due, $A \\to B \\to C \\to A$ e $A \\to C \\to B \\to A$, e sotto ciascuno c'è il costo 9. Nessuno scende sotto 9, quindi anche il riquadro coNP ha il segno di spunta e l'ottimo è esattamente 9.",
+                "alt": "Escludi giri sotto $B$. Il secondo controllo, di tipo coNP, deve escludere ogni giro di costo $\\lt 9$. I giri possibili sono due, $A \\to B \\to C \\to A$ e $A \\to C \\to B \\to A$, e sotto ciascuno c'è il costo 9. Nessuno scende sotto 9, quindi anche il riquadro coNP ha il segno di spunta e l'ottimo è esattamente 9.",
                 "src": "/illustrations/problems/exact-3.webp"
             }
         ]
@@ -605,20 +605,20 @@
         "slides": [
             {
                 "title": "Leggi il prefisso",
-                "caption": "Esempio $i = 2$: $\\exists x\\, \\forall y\\, (x \\lor y)$. Prima scegli $x$, poi considera ogni $y$.",
-                "alt": "Leggi il prefisso. Esempio i = 2: ∃x ∀y (x ∨ y). Prima scegli x, poi considera ogni y.",
+                "caption": "La formula è $\\exists x\\, \\forall y\\, (x \\lor y)$, con $i = 2$ blocchi. L'albero la segue dall'alto: la radice $\\exists x$ si divide nei rami $x_0$ e $x_1$, cioè $x = 0$ e $x = 1$, e sotto ciascuno un nodo $\\forall y$ apre i due valori di $y$. Le foglie grigie sono i valori di $x \\lor y$, ancora da calcolare.",
+                "alt": "Leggi il prefisso. La formula è $\\exists x\\, \\forall y\\, (x \\lor y)$, con $i = 2$ blocchi. L'albero la segue dall'alto: la radice $\\exists x$ si divide nei rami $x_0$ e $x_1$, cioè $x = 0$ e $x = 1$, e sotto ciascuno un nodo $\\forall y$ apre i due valori di $y$. Le foglie grigie sono i valori di $x \\lor y$, ancora da calcolare.",
                 "src": "/illustrations/problems/qsati-1.webp"
             },
             {
                 "title": "Fissa la scelta esistenziale",
-                "caption": "Scegli $x = 1$. Ora esamina $y = 0$ e $y = 1$.",
-                "alt": "Fissa la scelta esistenziale. Scegli x = 1. Ora esamina y = 0 e y = 1.",
+                "caption": "Scegliamo $x = 1$: il ramo $x_1$ è evidenziato in verde, quello di $x = 0$ resta in ombra. Sotto $\\forall y$ vanno esaminati entrambi i valori, $y_0$ e $y_1$, e in tutti e due i casi $x \\lor y$ vale 1, le foglie verdi.",
+                "alt": "Fissa la scelta esistenziale. Scegliamo $x = 1$: il ramo $x_1$ è evidenziato in verde, quello di $x = 0$ resta in ombra. Sotto $\\forall y$ vanno esaminati entrambi i valori, $y_0$ e $y_1$, e in tutti e due i casi $x \\lor y$ vale 1, le foglie verdi.",
                 "src": "/illustrations/problems/qsati-2.webp"
             },
             {
                 "title": "Combina i rami universali",
-                "caption": "Con $x = 1$, $x \\lor y$ vale 1 per entrambi i valori di $y$: il ramo $\\forall$ riesce.",
-                "alt": "Combina i rami universali. Con x = 1, x ∨ y vale 1 per entrambi i valori di y: il ramo ∀ riesce.",
+                "caption": "Il nodo $\\forall y$ ha il segno di spunta perché entrambe le sue foglie valgono 1, come chiede il $\\forall$. Allora è vero anche $\\exists x$, che ha bisogno di un solo ramo vero, quello di $x = 1$. Il ramo $x = 0$ non serve: con $y = 0$ fallirebbe.",
+                "alt": "Combina i rami universali. Il nodo $\\forall y$ ha il segno di spunta perché entrambe le sue foglie valgono 1, come chiede il $\\forall$. Allora è vero anche $\\exists x$, che ha bisogno di un solo ramo vero, quello di $x = 1$. Il ramo $x = 0$ non serve: con $y = 0$ fallirebbe.",
                 "src": "/illustrations/problems/qsati-3.webp"
             }
         ]
@@ -629,92 +629,92 @@
         "slides": [
             {
                 "title": "Leggi la formula originale",
-                "caption": "Esempio: $\\exists x\\, \\forall y\\, (x \\land y)$. Chiediamo se è falsa.",
-                "alt": "Leggi la formula originale. Esempio: ∃x ∀y (x ∧ y). Chiediamo se è falsa.",
+                "caption": "La formula è $\\exists x\\, \\forall y\\, (x \\land y)$ e chiediamo se è falsa. L'albero ha la radice $\\exists x$, i rami $x_0$ e $x_1$ (cioè $x = 0$ e $x = 1$), un nodo $\\forall y$ per ciascuno e sotto i rami $y_0$ e $y_1$. Le foglie grigie sono i valori di $x \\land y$, ancora da calcolare.",
+                "alt": "Leggi la formula originale. La formula è $\\exists x\\, \\forall y\\, (x \\land y)$ e chiediamo se è falsa. L'albero ha la radice $\\exists x$, i rami $x_0$ e $x_1$ (cioè $x = 0$ e $x = 1$), un nodo $\\forall y$ per ciascuno e sotto i rami $y_0$ e $y_1$. Le foglie grigie sono i valori di $x \\land y$, ancora da calcolare.",
                 "src": "/illustrations/problems/coqsati-1.webp"
             },
             {
-                "title": "Cerca il valore universale che la smentisce",
-                "caption": "Per entrambe le scelte di $x$, $y = 0$ rende $x \\land y$ falso. Nessuna $x$ funziona per tutte le $y$.",
-                "alt": "Cerca il valore universale che la smentisce. Per entrambe le scelte di x, y = 0 rende x ∧ y falso. Nessuna x funziona per tutte le y.",
+                "title": "Cerca la $y$ che smentisce",
+                "caption": "Sotto entrambi i nodi $\\forall y$ il ramo $y_0$ è rosso e porta alla foglia 0: con $y = 0$, $x \\land y$ è falso qualunque sia $x$. Questo controesempio fa fallire ogni $\\forall y$, segnato con una croce, e le foglie di $y_1$ restano grigie perché non serve calcolarle. Nessuna scelta di $x$ funziona, quindi la formula originale è falsa.",
+                "alt": "Cerca la $y$ che smentisce. Sotto entrambi i nodi $\\forall y$ il ramo $y_0$ è rosso e porta alla foglia 0: con $y = 0$, $x \\land y$ è falso qualunque sia $x$. Questo controesempio fa fallire ogni $\\forall y$, segnato con una croce, e le foglie di $y_1$ restano grigie perché non serve calcolarle. Nessuna scelta di $x$ funziona, quindi la formula originale è falsa.",
                 "src": "/illustrations/problems/coqsati-2.webp"
             },
             {
                 "title": "Leggi il complemento",
-                "caption": "$\\forall x\\, \\exists y\\, \\neg(x \\land y)$ è vera: per ogni $x$ scegli $y = 0$.",
-                "alt": "Leggi il complemento. ∀x ∃y ¬(x ∧ y) è vera: per ogni x scegli y = 0.",
+                "caption": "Il complemento è $\\forall x\\, \\exists y\\, \\neg(x \\land y)$: nell'albero la radice diventa $\\forall x$ e i nodi sotto diventano $\\exists y$. Per ogni $x$ si sceglie $y = 0$, e la foglia verde vale 1 perché $\\neg(x \\land 0) = 1$. Entrambi i rami di $x$ riescono, quindi la radice ha il segno di spunta e il complemento è vero.",
+                "alt": "Leggi il complemento. Il complemento è $\\forall x\\, \\exists y\\, \\neg(x \\land y)$: nell'albero la radice diventa $\\forall x$ e i nodi sotto diventano $\\exists y$. Per ogni $x$ si sceglie $y = 0$, e la foglia verde vale 1 perché $\\neg(x \\land 0) = 1$. Entrambi i rami di $x$ riescono, quindi la radice ha il segno di spunta e il complemento è vero.",
                 "src": "/illustrations/problems/coqsati-3.webp"
             }
         ]
     },
     "SC": {
-        "outcome": "Sì: $A$ appartiene all’insieme minimale $\\{A, C\\}$.",
-        "note": "Minimale significa che non puoi togliere una società mantenendo tutti i requisiti; non è sinonimo di cardinalità minima.",
+        "outcome": "Sì: $A$ appartiene all'insieme minimale $\\{A, C\\}$.",
+        "note": "Minimale significa che non puoi togliere nessuna società senza perdere un requisito; non vuol dire con il minor numero di società.",
         "slides": [
             {
                 "title": "Leggi merci e società",
-                "caption": "$A$ e $B$ producono la merce 1; $C$ produce la merce 2. Nell’esempio non ci sono relazioni di controllo.",
-                "alt": "Leggi merci e società. A e B producono la merce 1; C produce la merce 2. Nell’esempio non ci sono relazioni di controllo.",
+                "caption": "I quadrati sono le società, i cerchi le merci, e le linee dicono chi produce cosa: $A$ e $B$ producono la merce 1, $C$ produce la merce 2. In questo esempio non ci sono relazioni di controllo, quindi conta solo coprire le due merci.",
+                "alt": "Leggi merci e società. I quadrati sono le società, i cerchi le merci, e le linee dicono chi produce cosa: $A$ e $B$ producono la merce 1, $C$ produce la merce 2. In questo esempio non ci sono relazioni di controllo, quindi conta solo coprire le due merci.",
                 "src": "/illustrations/problems/sc-1.webp"
             },
             {
                 "title": "Scegli un insieme ammissibile",
-                "caption": "$\\{A, C\\}$ produce entrambe le merci. La società richiesta $A$ ne fa parte.",
-                "alt": "Scegli un insieme ammissibile. {A,C} produce entrambe le merci. La società richiesta A ne fa parte.",
+                "caption": "L'insieme $\\{A, C\\}$ è segnato dal doppio bordo verde: $A$ copre la merce 1 e $C$ la merce 2, quindi è ammissibile. $B$ resta grigio, fuori dall'insieme. La società richiesta, $A$, ne fa parte.",
+                "alt": "Scegli un insieme ammissibile. L'insieme $\\{A, C\\}$ è segnato dal doppio bordo verde: $A$ copre la merce 1 e $C$ la merce 2, quindi è ammissibile. $B$ resta grigio, fuori dall'insieme. La società richiesta, $A$, ne fa parte.",
                 "src": "/illustrations/problems/sc-2.webp"
             },
             {
                 "title": "Verifica la minimalità",
-                "caption": "Togliendo $A$ manca la merce 1; togliendo $C$ manca la merce 2. $\\{A, C\\}$ è minimale, quindi $A$ è strategica.",
-                "alt": "Verifica la minimalità. Togliendo A manca la merce 1; togliendo C manca la merce 2. {A,C} è minimale, quindi A è strategica.",
+                "caption": "I due riquadri provano a togliere una società alla volta. A sinistra, senza $A$, la merce 1 resta scoperta (croce rossa); a destra, senza $C$, resta scoperta la merce 2. Nessun sottoinsieme proprio funziona, quindi $\\{A, C\\}$ è minimale e $A$, che ne fa parte, è strategica.",
+                "alt": "Verifica la minimalità. I due riquadri provano a togliere una società alla volta. A sinistra, senza $A$, la merce 1 resta scoperta (croce rossa); a destra, senza $C$, resta scoperta la merce 2. Nessun sottoinsieme proprio funziona, quindi $\\{A, C\\}$ è minimale e $A$, che ne fa parte, è strategica.",
                 "src": "/illustrations/problems/sc-3.webp"
             }
         ]
     },
     "COSC": {
         "outcome": "Sì: $C$ non appartiene a nessun insieme minimale.",
-        "note": "Il complemento chiede l’assenza della società da tutti gli insiemi strategici, non da un solo candidato.",
+        "note": "Il complemento chiede l'assenza della società da tutti gli insiemi strategici, non da un solo candidato.",
         "slides": [
             {
-                "title": "Leggi l’istanza",
-                "caption": "$A$ produce la merce 1; $B$ la merce 2; $C$ non produce merci. Non ci sono relazioni di controllo.",
-                "alt": "Leggi l’istanza. A produce la merce 1; B la merce 2; C non produce merci. Non ci sono relazioni di controllo.",
+                "title": "Leggi l'istanza",
+                "caption": "Le società sono $A$, $B$ e $C$, e i cerchi goods1 e goods2 sono le merci 1 e 2. $A$ produce la merce 1, $B$ la merce 2, mentre $C$ non ha linee perché non produce merci. Non ci sono relazioni di controllo, e chiediamo se $C$ non è strategica.",
+                "alt": "Leggi l'istanza. Le società sono $A$, $B$ e $C$, e i cerchi goods1 e goods2 sono le merci 1 e 2. $A$ produce la merce 1, $B$ la merce 2, mentre $C$ non ha linee perché non produce merci. Non ci sono relazioni di controllo, e chiediamo se $C$ non è strategica.",
                 "src": "/illustrations/problems/cosc-1.webp"
             },
             {
                 "title": "Esamina gli insiemi ammissibili",
-                "caption": "Per produrre entrambe le merci servono $A$ e $B$. Aggiungere $C$ non aggiunge alcuna merce.",
-                "alt": "Esamina gli insiemi ammissibili. Per produrre entrambe le merci servono A e B. Aggiungere C non aggiunge alcuna merce.",
+                "caption": "Per coprire le due merci servono sia $A$ sia $B$, i rettangoli verdi con le frecce verso goods1 e goods2. Gli insiemi ammissibili sono quindi $\\{A, B\\}$ e $\\{A, B, C\\}$: $C$, tratteggiata in grigio, può starci ma non aggiunge nessuna merce.",
+                "alt": "Esamina gli insiemi ammissibili. Per coprire le due merci servono sia $A$ sia $B$, i rettangoli verdi con le frecce verso goods1 e goods2. Gli insiemi ammissibili sono quindi $\\{A, B\\}$ e $\\{A, B, C\\}$: $C$, tratteggiata in grigio, può starci ma non aggiunge nessuna merce.",
                 "src": "/illustrations/problems/cosc-2.webp"
             },
             {
                 "title": "Togli la società superflua",
-                "caption": "$\\{A, B\\}$ è l’unico insieme minimale. $C$ può sempre essere rimossa, quindi non è strategica.",
-                "alt": "Togli la società superflua. {A,B} è l’unico insieme minimale. C può sempre essere rimossa, quindi non è strategica.",
+                "caption": "Il riquadro verde con il segno di spunta racchiude $\\{A, B\\}$, l'unico insieme minimale: togliendo $A$ o $B$ si perde una merce. $C$ resta fuori, perché da $\\{A, B, C\\}$ si può sempre togliere. Non sta in nessun insieme minimale, quindi non è strategica e la risposta a co-STRATEGIC COMPANIES è sì.",
+                "alt": "Togli la società superflua. Il riquadro verde con il segno di spunta racchiude $\\{A, B\\}$, l'unico insieme minimale: togliendo $A$ o $B$ si perde una merce. $C$ resta fuori, perché da $\\{A, B, C\\}$ si può sempre togliere. Non sta in nessun insieme minimale, quindi non è strategica e la risposta a co-STRATEGIC COMPANIES è sì.",
                 "src": "/illustrations/problems/cosc-3.webp"
             }
         ]
     },
     "CIRC": {
         "outcome": "Sì: il modello minimale $\\{p\\}$ soddisfa la query $p$.",
-        "note": "La circoscrizione minimizza gli atomi designati rispetto all’inclusione, non soltanto il loro numero.",
+        "note": "La circoscrizione confronta i modelli per inclusione degli atomi minimizzati, non per il loro numero.",
         "slides": [
             {
                 "title": "Leggi conoscenza e query",
-                "caption": "$\\mathit{KB} = p \\lor q$. Minimizza $p$ e $q$; chiedi se $p$ è vera in almeno un modello minimale.",
-                "alt": "Leggi conoscenza e query. KB = p ∨ q. Minimizza p e q; chiedi se p è vera in almeno un modello minimale.",
+                "caption": "La base di conoscenza è $\\mathit{KB} = p \\lor q$; minimizziamo $p$ e $q$ e chiediamo se $p$ è vera in almeno un modello minimale. I riquadri sono i quattro assegnamenti, con in verde gli atomi veri: $\\{p\\}$, $\\{q\\}$, $\\{p, q\\}$ e quello senza atomi veri, barrato perché non soddisfa $p \\lor q$.",
+                "alt": "Leggi conoscenza e query. La base di conoscenza è $\\mathit{KB} = p \\lor q$; minimizziamo $p$ e $q$ e chiediamo se $p$ è vera in almeno un modello minimale. I riquadri sono i quattro assegnamenti, con in verde gli atomi veri: $\\{p\\}$, $\\{q\\}$, $\\{p, q\\}$ e quello senza atomi veri, barrato perché non soddisfa $p \\lor q$.",
                 "src": "/illustrations/problems/circ-1.webp"
             },
             {
                 "title": "Elimina il modello non minimale",
-                "caption": "$\\{p, q\\}$ contiene i modelli più piccoli $\\{p\\}$ e $\\{q\\}$, entrambi compatibili con KB.",
-                "alt": "Elimina il modello non minimale. {p,q} contiene i modelli più piccoli {p} e {q}, entrambi compatibili con KB.",
+                "caption": "In alto il modello $\\{p, q\\}$ è barrato. Le frecce portano ai modelli $\\{p\\}$ e $\\{q\\}$, contenuti in $\\{p, q\\}$ e anch'essi compatibili con KB: esistono modelli strettamente più piccoli, quindi $\\{p, q\\}$ non è minimale.",
+                "alt": "Elimina il modello non minimale. In alto il modello $\\{p, q\\}$ è barrato. Le frecce portano ai modelli $\\{p\\}$ e $\\{q\\}$, contenuti in $\\{p, q\\}$ e anch'essi compatibili con KB: esistono modelli strettamente più piccoli, quindi $\\{p, q\\}$ non è minimale.",
                 "src": "/illustrations/problems/circ-2.webp"
             },
             {
                 "title": "Controlla la query",
-                "caption": "Restano $\\{p\\}$ e $\\{q\\}$. Nel primo $p$ è vera: esiste un modello minimale che soddisfa la query.",
-                "alt": "Controlla la query. Restano {p} e {q}. Nel primo p è vera: esiste un modello minimale che soddisfa la query.",
+                "caption": "Restano i modelli minimali $\\{p\\}$ e $\\{q\\}$. Nel riquadro di $\\{p\\}$, con il bordo verde e il segno di spunta, la query $p$ è vera; in $\\{q\\}$ no. Per il sì basta un solo modello minimale che soddisfi la query.",
+                "alt": "Controlla la query. Restano i modelli minimali $\\{p\\}$ e $\\{q\\}$. Nel riquadro di $\\{p\\}$, con il bordo verde e il segno di spunta, la query $p$ è vera; in $\\{q\\}$ no. Per il sì basta un solo modello minimale che soddisfi la query.",
                 "src": "/illustrations/problems/circ-3.webp"
             }
         ]
@@ -724,93 +724,93 @@
         "note": "$\\exists$ combina con OR, $\\forall$ con AND. La valutazione visita i rami riusando lo spazio.",
         "slides": [
             {
-                "title": "Leggi l’alternanza",
-                "caption": "Esempio $\\exists x\\, \\forall y\\, \\exists z\\, [z \\leftrightarrow (x \\oplus y)]$. L’ultima scelta può dipendere da $y$.",
-                "alt": "Leggi l’alternanza. Esempio ∃x ∀y ∃z [z ↔ (x ⊕ y)]. L’ultima scelta può dipendere da y.",
+                "title": "Leggi l'alternanza",
+                "caption": "La formula è $\\exists x\\, \\forall y\\, \\exists z\\, [z \\leftrightarrow (x \\oplus y)]$. L'albero ha un livello per quantificatore, ognuno con il suo colore: $\\exists x$ in cima, poi $\\forall y$, poi $\\exists z$; le etichette dei rami, come $x_0$ o $y_1$, indicano $x = 0$ e $y = 1$. Poiché $z$ si sceglie sotto $y$, la scelta può dipendere da $y$.",
+                "alt": "Leggi l'alternanza. La formula è $\\exists x\\, \\forall y\\, \\exists z\\, [z \\leftrightarrow (x \\oplus y)]$. L'albero ha un livello per quantificatore, ognuno con il suo colore: $\\exists x$ in cima, poi $\\forall y$, poi $\\exists z$; le etichette dei rami, come $x_0$ o $y_1$, indicano $x = 0$ e $y = 1$. Poiché $z$ si sceglie sotto $y$, la scelta può dipendere da $y$.",
                 "src": "/illustrations/problems/qsat-1.webp"
             },
             {
                 "title": "Segui una strategia",
-                "caption": "Fissa $x = 0$. Se $y = 0$ scegli $z = 0$; se $y = 1$ scegli $z = 1$.",
-                "alt": "Segui una strategia. Fissa x = 0. Se y = 0 scegli z = 0; se y = 1 scegli z = 1.",
+                "caption": "Il ramo verde fissa $x = 0$, e la metà destra dell'albero è grigia. Sotto $\\forall y$ si seguono entrambi i valori: con $y = 0$ si sceglie $z = 0$, con $y = 1$ si sceglie $z = 1$. In tutti e due i casi $z = x \\oplus y$ e la foglia vale 1.",
+                "alt": "Segui una strategia. Il ramo verde fissa $x = 0$, e la metà destra dell'albero è grigia. Sotto $\\forall y$ si seguono entrambi i valori: con $y = 0$ si sceglie $z = 0$, con $y = 1$ si sceglie $z = 1$. In tutti e due i casi $z = x \\oplus y$ e la foglia vale 1.",
                 "src": "/illustrations/problems/qsat-2.webp"
             },
             {
                 "title": "Valuta dal basso",
-                "caption": "Entrambe le scelte di $y$ hanno un ramo $z$ che funziona. Il nodo $\\forall$ è vero, quindi la QBF è vera.",
-                "alt": "Valuta dal basso. Entrambe le scelte di y hanno un ramo z che funziona. Il nodo ∀ è vero, quindi la QBF è vera.",
+                "caption": "Si risale dalle foglie. Ogni $\\exists z$ è vero perché ha un ramo che porta a 1, il nodo $\\forall y$ è vero (segno di spunta) perché lo sono entrambi i suoi figli, e $\\exists x$ è vero grazie al ramo $x = 0$, quindi la QBF è vera.",
+                "alt": "Valuta dal basso. Si risale dalle foglie. Ogni $\\exists z$ è vero perché ha un ramo che porta a 1, il nodo $\\forall y$ è vero (segno di spunta) perché lo sono entrambi i suoi figli, e $\\exists x$ è vero grazie al ramo $x = 0$, quindi la QBF è vera.",
                 "src": "/illustrations/problems/qsat-3.webp"
             }
         ]
     },
     "GEO": {
         "outcome": "Sì: il primo giocatore sceglie $B$ e vince.",
-        "note": "Una strategia deve considerare la risposta dell’avversario, non soltanto un cammino lungo.",
+        "note": "Una strategia deve considerare la risposta dell'avversario, non soltanto un cammino lungo.",
         "slides": [
             {
                 "title": "Leggi le mosse",
-                "caption": "Archi $S \\to A$, $S \\to B$, $A \\to C$. La pedina parte da $S$; $B$ e $C$ non hanno uscite.",
-                "alt": "Leggi le mosse. Archi S → A, S → B, A → C. La pedina parte da S; B e C non hanno uscite.",
+                "caption": "Il grafo ha gli archi $S \\to A$, $S \\to B$ e $A \\to C$. Il pallino verde in $S$ è la pedina, e il primo giocatore muove da lì. $B$ e $C$ non hanno archi in uscita: chi deve muovere da uno di loro perde.",
+                "alt": "Leggi le mosse. Il grafo ha gli archi $S \\to A$, $S \\to B$ e $A \\to C$. Il pallino verde in $S$ è la pedina, e il primo giocatore muove da lì. $B$ e $C$ non hanno archi in uscita: chi deve muovere da uno di loro perde.",
                 "src": "/illustrations/problems/geo-1.webp"
             },
             {
                 "title": "Scegli la mossa vincente",
-                "caption": "$S \\to B$ lascia subito il secondo giocatore senza mosse.",
-                "alt": "Scegli la mossa vincente. S → B lascia subito il secondo giocatore senza mosse.",
+                "caption": "Il primo giocatore porta la pedina su $B$ lungo l'arco verde $S \\to B$. Da $B$ non esce nessun arco, quindi il secondo giocatore non ha mosse e perde subito.",
+                "alt": "Scegli la mossa vincente. Il primo giocatore porta la pedina su $B$ lungo l'arco verde $S \\to B$. Da $B$ non esce nessun arco, quindi il secondo giocatore non ha mosse e perde subito.",
                 "src": "/illustrations/problems/geo-2.webp"
             },
             {
-                "title": "Confronta l’alternativa",
-                "caption": "$S \\to A$ permetterebbe all’avversario $A \\to C$, lasciando te senza mosse. La scelta di $B$ evita quel ramo.",
-                "alt": "Confronta l’alternativa. S → A permetterebbe all’avversario A → C, lasciando te senza mosse. La scelta di B evita quel ramo.",
+                "title": "Confronta l'alternativa",
+                "caption": "A sinistra la mossa $S \\to B$, con il segno di spunta. A destra, in rosso, l'alternativa: se il primo giocatore va in $A$, l'avversario risponde con $A \\to C$, e la pedina in $C$ lascia il primo giocatore senza mosse (croce). Una strategia vincente sceglie $B$ tenendo conto di questa risposta.",
+                "alt": "Confronta l'alternativa. A sinistra la mossa $S \\to B$, con il segno di spunta. A destra, in rosso, l'alternativa: se il primo giocatore va in $A$, l'avversario risponde con $A \\to C$, e la pedina in $C$ lascia il primo giocatore senza mosse (croce). Una strategia vincente sceglie $B$ tenendo conto di questa risposta.",
                 "src": "/illustrations/problems/geo-3.webp"
             }
         ]
     },
     "SB": {
         "outcome": "Sì: un dominio di un elemento soddisfa la formula.",
-        "note": "L’assenza di simboli di funzione permette la proprietà del modello finito per questa forma; la ricerca generale può essere esponenziale.",
+        "note": "Senza simboli di funzione, una formula di questa forma, se è soddisfacibile, ha un modello finito; cercarlo può richiedere tempo esponenziale.",
         "slides": [
             {
                 "title": "Leggi la forma",
-                "caption": "Formula senza funzioni: $\\exists x\\, \\forall y\\, R(x, y)$. Serve un elemento $x$ che sia in relazione con ogni $y$.",
-                "alt": "Leggi la forma. Formula senza funzioni: ∃x ∀y R(x,y). Serve un elemento x che sia in relazione con ogni y.",
+                "caption": "La formula è $\\exists x\\, \\forall y\\, R(x, y)$, senza simboli di funzione: serve un elemento $x$ in relazione con ogni $y$. Il disegno mostra lo schema generale, con un dominio ancora da scegliere (i cerchi vuoti a sinistra), la scelta $\\exists x$, il controllo $\\forall y$ e la tabella di $R$, che ha una casella per ogni coppia di elementi.",
+                "alt": "Leggi la forma. La formula è $\\exists x\\, \\forall y\\, R(x, y)$, senza simboli di funzione: serve un elemento $x$ in relazione con ogni $y$. Il disegno mostra lo schema generale, con un dominio ancora da scegliere (i cerchi vuoti a sinistra), la scelta $\\exists x$, il controllo $\\forall y$ e la tabella di $R$, che ha una casella per ogni coppia di elementi.",
                 "src": "/illustrations/problems/sb-1.webp"
             },
             {
                 "title": "Costruisci un modello",
-                "caption": "Scegli dominio $\\{a\\}$, $x = a$ e relazione $R = \\{(a, a)\\}$.",
-                "alt": "Costruisci un modello. Scegli dominio {a}, x = a e relazione R = {(a,a)}.",
+                "caption": "Il modello ha un solo elemento, $a$, e $R = \\{(a, a)\\}$: è la freccia $R$ che parte da $a$ e torna su $a$. La tabella di $R$ ha ora una sola casella, riga $a$ e colonna $a$, con il segno di spunta. Come valore di $x$ scegliamo $a$.",
+                "alt": "Costruisci un modello. Il modello ha un solo elemento, $a$, e $R = \\{(a, a)\\}$: è la freccia $R$ che parte da $a$ e torna su $a$. La tabella di $R$ ha ora una sola casella, riga $a$ e colonna $a$, con il segno di spunta. Come valore di $x$ scegliamo $a$.",
                 "src": "/illustrations/problems/sb-2.webp"
             },
             {
                 "title": "Verifica il quantificatore universale",
-                "caption": "L’unico $y$ possibile è $a$, e $R(a, a)$ è vera. La formula è soddisfatta.",
-                "alt": "Verifica il quantificatore universale. L’unico y possibile è a, e R(a,a) è vera. La formula è soddisfatta.",
+                "caption": "Lo schema a sinistra segue la formula: $\\exists x$ sceglie $a$, poi $\\forall y$ deve controllare ogni elemento del dominio $\\{a\\}$, e l'unico è di nuovo $a$. Resta da verificare $R(a, a)$, che è vera come mostra il cappio a destra, quindi la formula è soddisfatta.",
+                "alt": "Verifica il quantificatore universale. Lo schema a sinistra segue la formula: $\\exists x$ sceglie $a$, poi $\\forall y$ deve controllare ogni elemento del dominio $\\{a\\}$, e l'unico è di nuovo $a$. Resta da verificare $R(a, a)$, che è vera come mostra il cappio a destra, quindi la formula è soddisfatta.",
                 "src": "/illustrations/problems/sb-3.webp"
             }
         ]
     },
     "SUCC": {
         "outcome": "Sì: il circuito descritto produce sempre 1.",
-        "note": "Nell’esempio il circuito espanso è piccolo. In generale può essere esponenziale rispetto alla descrizione succinta.",
+        "note": "Nell'esempio il circuito espanso è piccolo. In generale può essere esponenziale rispetto alla descrizione succinta.",
         "slides": [
             {
                 "title": "Leggi la descrizione compatta",
-                "caption": "Una descrizione indicizzata specifica tre porte: input $x$, $\\mathrm{NOT}(x)$, $\\mathrm{OR}(x, \\mathrm{NOT}(x))$.",
-                "alt": "Leggi la descrizione compatta. Una descrizione indicizzata specifica tre porte: input x, NOT(x), OR(x,NOT(x)).",
+                "caption": "A sinistra c'è la descrizione compatta: numera le porte 0, 1 e 2 e per ciascun numero dice tipo e ingressi. La porta 0 è l'ingresso $x$, la 1 è $\\mathrm{NOT}(x)$, la 2 è $\\mathrm{OR}(x, \\mathrm{NOT}(x))$. Le frecce colorate collegano ogni numero al suo pezzo del circuito descritto, disegnato nel riquadro a destra.",
+                "alt": "Leggi la descrizione compatta. A sinistra c'è la descrizione compatta: numera le porte 0, 1 e 2 e per ciascun numero dice tipo e ingressi. La porta 0 è l'ingresso $x$, la 1 è $\\mathrm{NOT}(x)$, la 2 è $\\mathrm{OR}(x, \\mathrm{NOT}(x))$. Le frecce colorate collegano ogni numero al suo pezzo del circuito descritto, disegnato nel riquadro a destra.",
                 "src": "/illustrations/problems/succ-1.webp"
             },
             {
-                "title": "Ricostruisci le porte dell’esempio",
-                "caption": "Interroga la descrizione sulle porte 0, 1 e 2: ottieni i collegamenti del circuito.",
-                "alt": "Ricostruisci le porte dell’esempio. Interroga la descrizione sulle porte 0, 1 e 2: ottieni i collegamenti del circuito.",
+                "title": "Ricostruisci le porte dell'esempio",
+                "caption": "Interrogando la descrizione sui numeri 0, 1 e 2 si ottengono tipo e ingressi di ogni porta, e il circuito si ricompone. L'ingresso $x$ entra nella porta OR direttamente e, passando per la NOT, una seconda volta come $\\mathrm{NOT}(x)$.",
+                "alt": "Ricostruisci le porte dell'esempio. Interrogando la descrizione sui numeri 0, 1 e 2 si ottengono tipo e ingressi di ogni porta, e il circuito si ricompone. L'ingresso $x$ entra nella porta OR direttamente e, passando per la NOT, una seconda volta come $\\mathrm{NOT}(x)$.",
                 "src": "/illustrations/problems/succ-2.webp"
             },
             {
                 "title": "Valuta un input",
-                "caption": "Con $x = 0$, $\\mathrm{NOT}(x) = 1$ e l’OR dà 1. Il circuito è soddisfacibile.",
-                "alt": "Valuta un input. Con x = 0, NOT(x) = 1 e l’OR dà 1. Il circuito è soddisfacibile.",
+                "caption": "Con l'ingresso $x = 0$ la NOT dà 1 e l'OR riceve 0 e 1, quindi l'uscita è 1, il pallino verde a destra. Un input con uscita 1 basta per dire che il circuito è soddisfacibile. Anche con $x = 1$ l'uscita sarebbe 1, perché $x \\lor \\neg x$ è sempre vera.",
+                "alt": "Valuta un input. Con l'ingresso $x = 0$ la NOT dà 1 e l'OR riceve 0 e 1, quindi l'uscita è 1, il pallino verde a destra. Un input con uscita 1 basta per dire che il circuito è soddisfacibile. Anche con $x = 1$ l'uscita sarebbe 1, perché $x \\lor \\neg x$ è sempre vera.",
                 "src": "/illustrations/problems/succ-3.webp"
             }
         ]
@@ -821,20 +821,20 @@
         "slides": [
             {
                 "title": "Leggi la formula",
-                "caption": "Per ogni $x$, $R(x)$ oppure la sua negazione. La domanda riguarda tutti i modelli.",
-                "alt": "Leggi la formula. Per ogni x, R(x) oppure la sua negazione. La domanda riguarda tutti i modelli.",
+                "caption": "La formula è $\\forall x\\, [R(x) \\lor \\neg R(x)]$: per ogni $x$ vale $R(x)$ oppure la sua negazione. Al centro c'è questa disgiunzione, con $R(x)$ e $\\neg R(x)$ che entrano in una porta OR. I riquadri sopra e sotto, con domini di grandezze diverse, sono i modelli, e la formula deve essere vera in tutti.",
+                "alt": "Leggi la formula. La formula è $\\forall x\\, [R(x) \\lor \\neg R(x)]$: per ogni $x$ vale $R(x)$ oppure la sua negazione. Al centro c'è questa disgiunzione, con $R(x)$ e $\\neg R(x)$ che entrano in una porta OR. I riquadri sopra e sotto, con domini di grandezze diverse, sono i modelli, e la formula deve essere vera in tutti.",
                 "src": "/illustrations/problems/fov-1.webp"
             },
             {
                 "title": "Usa una legge logica",
-                "caption": "Per qualunque elemento e interpretazione, uno tra $R(x)$ e $\\neg R(x)$ è vero.",
-                "alt": "Usa una legge logica. Per qualunque elemento e interpretazione, uno tra R(x) e ¬R(x) è vero.",
+                "caption": "Per un elemento $x$ qualunque, in un'interpretazione qualunque, i casi sono due. Se $R(x)$ è vera (riga in alto, cerchio verde) l'OR dà 1; se è falsa (riga in basso) è vera $\\neg R(x)$ e l'OR dà di nuovo 1.",
+                "alt": "Usa una legge logica. Per un elemento $x$ qualunque, in un'interpretazione qualunque, i casi sono due. Se $R(x)$ è vera (riga in alto, cerchio verde) l'OR dà 1; se è falsa (riga in basso) è vera $\\neg R(x)$ e l'OR dà di nuovo 1.",
                 "src": "/illustrations/problems/fov-2.webp"
             },
             {
                 "title": "Concludi la validità",
-                "caption": "La legge del terzo escluso vale per ogni $x$ in ogni modello: la formula è valida.",
-                "alt": "Concludi la validità. La legge del terzo escluso vale per ogni x in ogni modello: la formula è valida.",
+                "caption": "Il riquadro con $\\forall$ in alto racchiude il ragionamento: il foglio con $R$ OR $\\neg R$ si divide nei due casi, $R$ e $\\neg R$, e ciascuno ha il segno di spunta. È la legge del terzo escluso e non dipende né dall'elemento né dal modello, quindi la formula è valida.",
+                "alt": "Concludi la validità. Il riquadro con $\\forall$ in alto racchiude il ragionamento: il foglio con $R$ OR $\\neg R$ si divide nei due casi, $R$ e $\\neg R$, e ciascuno ha il segno di spunta. È la legge del terzo escluso e non dipende né dall'elemento né dal modello, quindi la formula è valida.",
                 "src": "/illustrations/problems/fov-3.webp"
             }
         ]
@@ -845,20 +845,20 @@
         "slides": [
             {
                 "title": "Leggi la domanda",
-                "caption": "Formula $\\exists x\\, R(x)$: cerchiamo almeno un modello e un elemento che la rendano vera.",
-                "alt": "Leggi la domanda. Formula ∃x R(x): cerchiamo almeno un modello e un elemento che la rendano vera.",
+                "caption": "La formula è $\\exists x\\, R(x)$. Per renderla vera servono un modello e un suo elemento: nel riquadro a destra il cerchio vuoto è l'elemento da trovare e il rettangolo $R$ è l'interpretazione del predicato, ancora da decidere.",
+                "alt": "Leggi la domanda. La formula è $\\exists x\\, R(x)$. Per renderla vera servono un modello e un suo elemento: nel riquadro a destra il cerchio vuoto è l'elemento da trovare e il rettangolo $R$ è l'interpretazione del predicato, ancora da decidere.",
                 "src": "/illustrations/problems/fos-1.webp"
             },
             {
                 "title": "Costruisci un modello concreto",
-                "caption": "Dominio $\\{a\\}$; interpreta $R$ come $\\{a\\}$. Scegli $x = a$.",
-                "alt": "Costruisci un modello concreto. Dominio {a}; interpreta R come {a}. Scegli x = a.",
+                "caption": "Il dominio è $\\{a\\}$, il riquadro a sinistra. La freccia verde porta $a$ dentro il cerchio $R$: interpretiamo $R$ come $\\{a\\}$, quindi $R(a)$ è vera. Come valore di $x$ scegliamo $a$.",
+                "alt": "Costruisci un modello concreto. Il dominio è $\\{a\\}$, il riquadro a sinistra. La freccia verde porta $a$ dentro il cerchio $R$: interpretiamo $R$ come $\\{a\\}$, quindi $R(a)$ è vera. Come valore di $x$ scegliamo $a$.",
                 "src": "/illustrations/problems/fos-2.webp"
             },
             {
                 "title": "Verifica il testimone",
-                "caption": "$R(a)$ è vera nel modello scelto: la formula è soddisfacibile.",
-                "alt": "Verifica il testimone. R(a) è vera nel modello scelto: la formula è soddisfacibile.",
+                "caption": "A sinistra $\\exists x$ porta a $x = a$, con il segno di spunta. A destra c'è il modello: $U$ è il dominio, con il solo elemento $a$, e il riquadro $R$ contiene $a$. Quindi $R(a)$ è vera, $a$ è il testimone e la formula è soddisfacibile.",
+                "alt": "Verifica il testimone. A sinistra $\\exists x$ porta a $x = a$, con il segno di spunta. A destra c'è il modello: $U$ è il dominio, con il solo elemento $a$, e il riquadro $R$ contiene $a$. Quindi $R(a)$ è vera, $a$ è il testimone e la formula è soddisfacibile.",
                 "src": "/illustrations/problems/fos-3.webp"
             }
         ]
