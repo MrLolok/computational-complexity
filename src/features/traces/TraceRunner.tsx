@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 import { useState } from "react";
 import Link from "next/link";
 
+import Arrow from "@/components/Arrow";
 import { CHOICES } from "@/lib/answer";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
@@ -258,48 +259,60 @@ export default function TraceRunner({
 
 function Q8({ code, q8, num }: { code: string; q8: RunnerQ8; num: string }) {
     const delivered = useAppSelector((s) => s.progress.mdtResults?.[q8.machine]);
-    const [open, setOpen] = useState<"prova" | "soluzione" | null>(null);
-    const toggle = (v: "prova" | "soluzione") => setOpen((o) => (o === v ? null : v));
+    const [tab, setTab] = useState<"prova" | "soluzione">("prova");
     return (
         <section id="d8" className={`${ui.card} scroll-mt-44 sm:scroll-mt-32`}>
             <div className="flex items-baseline gap-3">
                 <span className="font-head text-accent text-2xl font-semibold">{num}</span>
                 <div className="min-w-0 flex-1">
-                    <span className={ui.eyebrow}>Macchina di Turing</span>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <span className={ui.eyebrow}>Macchina di Turing</span>
+                        {delivered && (
+                            <span className={delivered.ok === delivered.tot ? ui.pillOk : ui.pillOpen}>
+                                {delivered.ok === delivered.tot
+                                    ? "✓ Consegnata e risolta"
+                                    : `Consegnata: ${delivered.ok}/${delivered.tot} casi`}
+                                {delivered.code !== code && ` nella traccia ${delivered.code}`}
+                            </span>
+                        )}
+                    </div>
                     <div className="text-lg">{q8.title}</div>
                 </div>
             </div>
-            <div className="flex flex-wrap items-center gap-3 sm:pl-8">
-                <button
-                    type="button"
-                    className={open === "prova" ? ui.btnPrimary : ui.btn}
-                    aria-expanded={open === "prova"}
-                    onClick={() => toggle("prova")}
+            <div className="flex flex-wrap items-center justify-between gap-3 sm:pl-8">
+                <div
+                    role="group"
+                    aria-label="Cosa mostrare"
+                    className="border-line font-ui flex gap-1 rounded-lg border p-0.5 text-sm"
                 >
-                    Provala tu
-                </button>
-                <button
-                    type="button"
-                    className={open === "soluzione" ? ui.btnPrimary : ui.btn}
-                    aria-expanded={open === "soluzione"}
-                    onClick={() => toggle("soluzione")}
-                >
-                    {open === "soluzione" ? "Nascondi la soluzione" : "Mostra la soluzione"}
-                </button>
-                {delivered && (
-                    <span className={delivered.ok === delivered.tot ? ui.pillOk : ui.pillOpen}>
-                        {delivered.ok === delivered.tot
-                            ? "✓ Consegnata e risolta"
-                            : `Consegnata: ${delivered.ok}/${delivered.tot} casi`}
-                        {delivered.code !== code && ` nella traccia ${delivered.code}`}
-                    </span>
-                )}
-                <Link href={`/mdt#${q8.machine}`} className={ui.linkBtn}>
-                    Il metodo, passo per passo
+                    {(
+                        [
+                            ["prova", "La tua macchina"],
+                            ["soluzione", "Soluzione"],
+                        ] as const
+                    ).map(([v, label]) => (
+                        <button
+                            key={v}
+                            type="button"
+                            aria-pressed={tab === v}
+                            onClick={() => setTab(v)}
+                            className={`min-h-11 cursor-pointer rounded-md px-3 py-2 ${tab === v ? "bg-accent-soft text-accent" : "text-muted hover:text-ink"}`}
+                        >
+                            {label}
+                        </button>
+                    ))}
+                </div>
+                <Link href={`/mdt#${q8.machine}`} className="font-ui text-muted hover:text-accent text-sm">
+                    Il metodo, passo per passo <Arrow />
                 </Link>
             </div>
-            {open === "prova" && <div className="border-line min-w-0 border-t pt-3 sm:pl-8">{q8.practice}</div>}
-            {open === "soluzione" && <div className="border-line min-w-0 border-t pt-3 sm:pl-8">{q8.body}</div>}
+            {/* nascosta e non smontata: cambiando scheda restano resoconto e simulazione */}
+            <div hidden={tab !== "prova"} className="border-line min-w-0 border-t pt-3 sm:pl-8">
+                {q8.practice}
+            </div>
+            <div hidden={tab !== "soluzione"} className="border-line min-w-0 border-t pt-3 sm:pl-8">
+                {q8.body}
+            </div>
         </section>
     );
 }

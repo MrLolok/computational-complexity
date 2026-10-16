@@ -6,6 +6,7 @@ import type { ParseError, Program } from "./machine";
 import { BLANK, HALT, ORACLES, QUERY, run } from "./machine";
 
 const BITS = new Set(["b", "b'"]);
+const JOLLY = new Set(["b", "b'", "b̄", "σ"]);
 
 /** righe sospette: non sono errori di sintassi, ma di solito sono sbagli */
 export function lint(program: Program, m?: MachineSpec): ParseError[] {
@@ -58,6 +59,8 @@ export function check(program: Program, m: MachineSpec) {
     const oracle = m.oracle ? ORACLES[m.oracle] : undefined;
     const tests = m.tests();
     const issues = new Map<string, Issue>();
+    /** per ogni stato, le combinazioni di simboli letti per cui manca una riga */
+    const gaps = new Map<string, Map<string, string[]>>();
     let ok = 0;
     for (const x of tests) {
         const e = m.expected(x)!;
@@ -80,9 +83,11 @@ export function check(program: Program, m: MachineSpec) {
         } else if (o.reason && last && o.reason.startsWith("nessuna riga")) {
             const c = last.config;
             const read = c.tapes.map((tape, t) => tape[c.heads[t]] ?? BLANK);
-            key = `manca ${c.state} ${read.join(" ")}`;
+            key = `manca ${c.state}`;
             row = null;
-            text = `manca la riga per lo stato ${c.state} che legge ${read.join(", ")}: la macchina si blocca e rigetta, ma serve ${want}`;
+            if (!gaps.has(c.state)) gaps.set(c.state, new Map());
+            gaps.get(c.state)!.set(read.join(" "), read);
+            text = `serve ${want}`;
         } else if (o.reason) {
             key = `fuori ${row}`;
             text = "porta la testina a sinistra di ▷";
@@ -95,5 +100,31 @@ export function check(program: Program, m: MachineSpec) {
         if (issue) issue.count++;
         else issues.set(key, { row, text, example: x, count: 1 });
     }
+    /* una sola voce per stato, con tutte le combinazioni che mancano */
+    for (const [state, combos] of gaps) {
+        const issue = issues.get(`manca ${state}`)!;
+        const reads = [...combos.values()];
+        const k = reads[0].length;
+        const list = reads
+            .slice(0, 6)
+            .map((r) => r.map((x) => `«${x}»`).join(" e "))
+            .join(", ");
+        issue.text =
+            `nello stato ${state} nessuna riga copre ${list}${reads.length > 6 ? "…" : ""}` +
+            `${k === 2 ? " (nastro 1 e nastro 2)" : k > 2 ? " (un simbolo per nastro)" : ""}` +
+            `: la macchina si blocca e rigetta, ma ${issue.text}${k > 1 ? fixedTape(program, state, reads) : ""}`;
+    }
     return { ok, tot: tests.length, issues: [...issues.values()].sort((a, b) => b.count - a.count) };
+}
+
+/** con più nastri: se le righe dello stato leggono tutte lo stesso simbolo su un nastro e lì c'è altro, la testina non è dove si pensa */
+function fixedTape(program: Program, state: string, reads: string[][]) {
+    const rules = program.rules.filter((r) => r.from === state);
+    for (let t = 0; rules.length && t < reads[0].length; t++) {
+        const used = new Set(rules.map((r) => r.read[t]));
+        const [only] = used;
+        if (used.size === 1 && !JOLLY.has(only) && reads.some((r) => r[t] !== only))
+            return `. Tutte le righe dello stato ${state} leggono «${only}» sul nastro ${t + 1}, ma qui la testina del nastro ${t + 1} è su un altro simbolo: se va bene qualsiasi simbolo usa σ (o b per un bit)`;
+    }
+    return "";
 }

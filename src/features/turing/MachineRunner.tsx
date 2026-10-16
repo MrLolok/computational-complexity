@@ -91,28 +91,20 @@ export default function MachineRunner({ program, kind, oracle, samples, inputHin
     const output = content(c.tapes[c.tapes.length - 1]);
     return (
         <div className="border-line bg-surface flex min-w-0 flex-col gap-4 rounded-xl border p-4">
-            <form
-                className="flex flex-wrap items-end gap-2"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    restart();
-                }}
-            >
-                <label className="font-ui text-muted flex min-w-0 flex-1 basis-56 flex-col gap-1 text-sm">
-                    Input ({inputHint})
-                    <input
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        spellCheck={false}
-                        autoCapitalize="off"
-                        autoComplete="off"
-                        className="border-line-strong bg-bg text-ink focus:border-accent min-h-11 rounded-lg border px-3 font-mono outline-none"
-                    />
-                </label>
-                <button type="submit" className={ui.btn}>
-                    Carica input
-                </button>
-            </form>
+            <label className="font-ui text-muted flex min-w-0 flex-col gap-1 text-sm">
+                Input ({inputHint})
+                <input
+                    value={input}
+                    onChange={(e) => {
+                        setInput(e.target.value);
+                        restart(e.target.value);
+                    }}
+                    spellCheck={false}
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    className="border-line-strong bg-bg text-ink focus:border-accent min-h-11 rounded-lg border px-3 font-mono outline-none"
+                />
+            </label>
             <div className="flex flex-wrap gap-2">
                 {samples.map((s) => (
                     <button
@@ -199,16 +191,25 @@ export default function MachineRunner({ program, kind, oracle, samples, inputHin
             )}
 
             <div className="flex flex-wrap gap-2">
-                <button type="button" className={ui.btn} onClick={() => restart()} disabled={history.length === 1}>
-                    ⟲ Riparti dall&apos;input
+                <button
+                    type="button"
+                    className={`${ui.btn} min-w-11`}
+                    onClick={() => restart()}
+                    disabled={history.length === 1}
+                    aria-label="Riparti dall'inizio"
+                    title="Riparti dall'inizio"
+                >
+                    ⟲
                 </button>
                 <button
                     type="button"
-                    className={ui.btn}
+                    className={`${ui.btn} min-w-11`}
                     onClick={() => setHistory((h) => h.slice(0, -1))}
                     disabled={history.length === 1}
+                    aria-label="Un passo indietro"
+                    title="Un passo indietro"
                 >
-                    <Arrow shape="left" /> Un passo indietro
+                    <Arrow shape="left" />
                 </button>
                 <button
                     type="button"

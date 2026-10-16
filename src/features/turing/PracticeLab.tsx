@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { saveMdtDraft, submitMdt } from "@/store/progressSlice";
 import { check, lint } from "./diagnose";
 import MachineRunner from "./MachineRunner";
+import SolutionDiff from "./SolutionDiff";
 import TransitionTable, { compile, fit, rowsFrom } from "./TransitionTable";
 
 /** Compila la tabella della tua macchina, provala passo per passo e confrontala con i risultati attesi.
@@ -33,7 +34,6 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
     const runner = useRef<HTMLDivElement>(null);
     const samples = m?.samples ?? ["1011"];
     const [compare, setCompare] = useState(false);
-    const solution = useMemo(() => (m ? rowsFrom(m.source, m.tapes) : []), [m]);
     const set = (value: MdtRow[] | null) => {
         setReport(null);
         dispatch(saveMdtDraft({ key: draftKey, rows: value }));
@@ -126,15 +126,18 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
                     </ul>
                 </div>
             )}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
                 {m && (
-                    <button type="button" className={ui.btnPrimary} onClick={verify} disabled={!program}>
+                    <button
+                        type="button"
+                        className={ui.btnPrimary}
+                        onClick={verify}
+                        disabled={!program}
+                        title={code && delivered ? "La nuova consegna sostituisce quella di prima" : undefined}
+                    >
                         {!code ? "Verifica i casi di prova" : delivered ? "Consegna di nuovo" : "Consegna"}
                     </button>
                 )}
-                <button type="button" className={ui.btn} onClick={() => set(null)}>
-                    Riparti dal modello
-                </button>
                 {m && (
                     <button
                         type="button"
@@ -142,21 +145,18 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
                         aria-expanded={compare}
                         onClick={() => setCompare((c) => !c)}
                     >
-                        {compare ? "Nascondi la soluzione" : "Confronta con la soluzione"}
+                        {compare ? "Nascondi il confronto" : "Confronta con la soluzione"}
                     </button>
                 )}
-                {code && delivered && !report && (
-                    <span className={`${ui.hint} self-center text-sm`}>
-                        La nuova consegna sostituisce quella di prima.
-                    </span>
-                )}
+                <button
+                    type="button"
+                    className={`${ui.linkBtn} text-muted ml-auto`}
+                    onClick={() => confirm("Cancellare la tabella e ripartire dal modello?") && set(null)}
+                >
+                    Ricomincia da capo
+                </button>
             </div>
-            {m && compare && (
-                <div className="flex min-w-0 flex-col gap-2">
-                    <p className={ui.label}>La soluzione</p>
-                    <TransitionTable rows={solution} tapes={m.tapes} />
-                </div>
-            )}
+            {m && compare && <SolutionDiff program={program} m={m} />}
             {report && (
                 <div className={report.ok === report.tot ? ui.noteOk : ui.note} aria-live="polite">
                     <p className="font-semibold">
@@ -166,7 +166,7 @@ export default function PracticeLab({ id, draftKey, code }: { id?: string; draft
                     </p>
                     {report.issues.length > 0 && (
                         <ul className="mt-2 flex flex-col gap-2 text-sm">
-                            {report.issues.slice(0, 6).map((i) => (
+                            {report.issues.map((i) => (
                                 <li key={`${i.row} ${i.text}`}>
                                     {i.row ? (
                                         <>

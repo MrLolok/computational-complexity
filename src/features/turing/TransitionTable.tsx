@@ -6,7 +6,6 @@ import type { ParseError } from "./machine";
 import { useRef } from "react";
 
 import Arrow from "@/components/Arrow";
-import { ui } from "@/lib/tokens";
 import { MOVES, parseProgram, sym } from "./machine";
 
 const PALETTE = ["▷", "⊔", "b", "b'", "b̄", "σ", "yes", "no", "h"];
@@ -145,27 +144,8 @@ export default function TransitionTable({
     };
 
     return (
-        <div className="flex min-w-0 flex-col gap-2">
-            {!readOnly && (
-                <div
-                    role="group"
-                    aria-label="Inserisci un simbolo nella cella selezionata"
-                    className="flex flex-wrap gap-1.5"
-                >
-                    {PALETTE.map((s) => (
-                        <button
-                            key={s}
-                            type="button"
-                            className="border-line-strong hover:border-accent hover:text-accent min-h-9 min-w-9 cursor-pointer rounded-md border px-2 font-mono text-sm"
-                            onMouseDown={(e) => e.preventDefault()}
-                            onClick={() => pick(s)}
-                        >
-                            {s}
-                        </button>
-                    ))}
-                </div>
-            )}
-            <div ref={box} className="border-line-strong bg-bg overflow-x-auto rounded-lg border">
+        <div className="border-line-strong bg-bg flex min-w-0 flex-col rounded-lg border">
+            <div ref={box} className="overflow-x-auto rounded-t-lg">
                 <table className="w-full border-collapse font-mono text-base">
                     <thead className="bg-sunk font-ui text-muted text-xs">
                         <tr className="divide-line divide-x">
@@ -202,7 +182,7 @@ export default function TransitionTable({
                         {rows.map((r, i) => (
                             <tr
                                 key={i}
-                                className={`border-line divide-line divide-x border-t ${bad?.has(i) ? "bg-proved-soft" : warn?.has(i) ? "bg-open-soft" : ""}`}
+                                className={`group border-line divide-line divide-x border-t ${bad?.has(i) ? "bg-proved-soft" : warn?.has(i) ? "bg-open-soft" : ""}`}
                             >
                                 <td className="font-ui text-muted px-2 text-center text-xs whitespace-nowrap">
                                     {i + 1}
@@ -240,7 +220,7 @@ export default function TransitionTable({
                                 ])}
                                 <td className="p-0">{input(i, "note", 0, "commento")}</td>
                                 {!readOnly && (
-                                    <td className="px-1 whitespace-nowrap">
+                                    <td className="px-1 whitespace-nowrap transition-opacity group-focus-within:opacity-100 group-hover:opacity-100 [@media(hover:hover)]:opacity-0">
                                         <button
                                             type="button"
                                             aria-label={`Inserisci una riga sotto la riga ${i + 1}`}
@@ -268,9 +248,36 @@ export default function TransitionTable({
                 </table>
             </div>
             {!readOnly && (
-                <button type="button" className={`${ui.btn} self-start`} onClick={() => insert(rows.length)}>
-                    + Aggiungi una riga
-                </button>
+                /* sotto la tabella e fermo in fondo allo schermo finché la tabella è in vista */
+                <div className="bg-sunk border-line sticky bottom-0 z-20 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-b-lg border-t px-2 py-1">
+                    <button
+                        type="button"
+                        className="font-ui text-muted hover:bg-bg hover:text-accent min-h-9 cursor-pointer rounded-md px-2 text-sm"
+                        onClick={() => insert(rows.length)}
+                    >
+                        + Aggiungi una riga
+                    </button>
+                    <div
+                        role="group"
+                        aria-label="Inserisci un simbolo nella cella selezionata"
+                        className="flex flex-wrap items-center gap-0.5"
+                    >
+                        <span aria-hidden="true" className="font-ui text-muted mr-1 text-xs">
+                            Inserisci
+                        </span>
+                        {PALETTE.map((s) => (
+                            <button
+                                key={s}
+                                type="button"
+                                className="hover:bg-bg hover:text-accent min-h-9 min-w-9 cursor-pointer rounded-md px-2 font-mono text-sm"
+                                onMouseDown={(e) => e.preventDefault()}
+                                onClick={() => pick(s)}
+                            >
+                                {s}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             )}
         </div>
     );
