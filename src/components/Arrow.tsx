@@ -1,4 +1,4 @@
-import { ARROW_CLASS, ARROWS } from "@/lib/ui";
+import { ARROW_CLASS, ARROWS } from "@/lib/tokens";
 
 /** freccia in linea col testo; decorativa, il significato sta nell'etichetta accanto */
 export default function Arrow({

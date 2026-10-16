@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import SourcesView from "@/components/sources/SourcesView";
+import SourcesView from "@/features/sources/SourcesView";
 
 export const metadata: Metadata = { title: "Fonti" };
 

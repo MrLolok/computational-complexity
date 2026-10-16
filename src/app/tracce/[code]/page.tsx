@@ -1,4 +1,4 @@
-import type { RunnerQuestion } from "@/components/traces/TraceRunner";
+import type { RunnerQuestion } from "@/features/traces/TraceRunner";
 import type { Metadata } from "next";
 
 import Link from "next/link";
@@ -6,13 +6,13 @@ import { notFound } from "next/navigation";
 
 import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
-import { PracticeLab, SolutionLab } from "@/components/mdt/MachineLab";
-import TraceRunner from "@/components/traces/TraceRunner";
-import { goRightNote, MDT_BODY, TRACE_MACHINE, TRACE_NOTE } from "@/data/mdt";
-import { PROOF } from "@/data/theoremProofs";
-import { THEOREMS } from "@/data/theorems";
-import { plainText, TRACE_BY, TRACES } from "@/data/traces";
-import { ui } from "@/lib/ui";
+import { PROOF } from "@/data/theorems/proofs";
+import { THEOREMS } from "@/data/theorems/theorems";
+import { plainText, TRACE_BY, TRACES } from "@/data/traces/traces";
+import { goRightNote, MDT_BODY, TRACE_MACHINE, TRACE_NOTE } from "@/data/turing/solutions";
+import TraceRunner from "@/features/traces/TraceRunner";
+import { PracticeLab, SolutionLab } from "@/features/turing/MachineLab";
+import { ui } from "@/lib/tokens";
 
 /** schede di /teoremi che dicono dove sta un problema (es. PRIMES ∈ P, SAT NP-completo): non vanno nei Riferimenti */
 const PROBLEM_RESULTS = new Set([

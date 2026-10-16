@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import GroverDemo from "@/components/learning/GroverDemo";
-import { Lez6Exam, Lez6Exercises, Lez6Source, Lez6Topics } from "@/components/learning/Lez6";
 import Markdown from "@/components/Markdown";
-import { LEZ6, lez6Groups } from "@/data/lezione6";
-import { ui } from "@/lib/ui";
+import { LEZ6, lez6Groups } from "@/data/probabilistic-quantum/lesson";
+import GroverDemo from "@/features/probabilistic-quantum/GroverDemo";
+import { Lez6Exam, Lez6Exercises, Lez6Source, Lez6Topics } from "@/features/probabilistic-quantum/LessonSections";
+import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Algoritmi quantistici" };
 

@@ -27,9 +27,18 @@ npm run build   # build di produzione (tutte le pagine sono prerenderizzate)
 | `/tracce`, `/tracce/[code]`        | libreria delle tracce d'esame ed esecuzione di una traccia |
 | `/fonti`                           | come sono state verificate le affermazioni                 |
 
-- `src/data/`: i dati (classi, problemi, teoremi, domande, `tracce.json` esportato dalle pagine Notion delle tracce).
+Il codice è diviso per area del sito; le dipendenze vanno in un verso solo: `app → features → components / lib → data`.
+
+- `src/app/`: le rotte, che compongono le pagine.
+- `src/features/<area>/`: logica pura (`.ts`) e componenti (`.tsx`) di un'area: `classes`, `problems`, `theorems`,
+  `traces`, `hierarchy` (piani di PH), `turing` (MdT), `probabilistic-quantum` (Lezione 6), `exercises`, `sources`.
+  Un'area importa da un'altra solo per mostrarne i contenuti (es. un problema elenca i teoremi che lo citano).
+- `src/components/`: solo componenti condivisi da più aree (formule, Markdown, gettoni delle classi, glossario, frecce).
+- `src/lib/`: solo funzioni condivise (formule e testo, glossario, `#hash`, classi Tailwind in `tokens.ts`).
+- `src/data/<area>/`: i testi del corso, senza logica (classi, problemi, teoremi, domande, `traces/traces.json`
+  esportato dalle pagine Notion delle tracce).
 - `src/store/`: Redux Toolkit. Lo slice `progress` tiene le risposte date nelle tracce e negli esercizi e viene salvato
   in `localStorage` (chiave `cc-progress:v1`), quindi resta solo nel browser di chi studia.
 - Stile: solo Tailwind CSS v4. `src/app/globals.css` contiene unicamente l'import di Tailwind e i token del tema
-  (palette shadow-grey, ghost-white, periwinkle, twilight-indigo, space-indigo); le classi ricorrenti stanno in `src/lib/ui.ts`.
+  (palette shadow-grey, ghost-white, periwinkle, twilight-indigo, space-indigo); le classi ricorrenti stanno in `src/lib/tokens.ts`.
   L'unico CSS importato è quello della libreria KaTeX per le formule.

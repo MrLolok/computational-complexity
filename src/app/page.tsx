@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
-import { ui } from "@/lib/ui";
+import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Inizia il ripasso" };
 const PATHS = [

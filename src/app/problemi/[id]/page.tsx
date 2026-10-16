@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
 
-import ProblemsView from "@/components/problems/ProblemsView";
-import { PROBLEM_BY, PROBLEMS } from "@/data/problems";
+import { PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
+import ProblemsView from "@/features/problems/ProblemsView";
+import { PROBLEM_TRACE_REFS } from "@/features/problems/traceRefs";
 import { stripHtml } from "@/lib/glossary";
-import { PROBLEM_TRACE_REFS } from "@/lib/problemTraces";
 
 export function generateStaticParams() {
     return PROBLEMS.map((p) => ({ id: p.id }));

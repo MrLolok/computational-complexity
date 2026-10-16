@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 
-import ContextHelp from "@/components/learning/ContextHelp";
+import GlossaryPopover from "@/components/GlossaryPopover";
 import SiteNav, { NavFallback } from "@/components/SiteNav";
 import StoreProvider from "@/store/StoreProvider";
 
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                             <SiteNav />
                         </Suspense>
                         <main id="contenuto" className="flex min-w-0 flex-1 flex-col gap-6">
-                            <ContextHelp>{children}</ContextHelp>
+                            <GlossaryPopover>{children}</GlossaryPopover>
                         </main>
                         <footer className="border-line font-ui text-muted mt-6 flex flex-wrap gap-x-5 gap-y-1 border-t pt-4 text-sm">
                             <span>Fonti: dispensa, slide e appunti del corso.</span>

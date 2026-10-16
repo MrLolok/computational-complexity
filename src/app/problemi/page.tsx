@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import ProblemsView from "@/components/problems/ProblemsView";
-import { PROBLEM_TRACE_REFS } from "@/lib/problemTraces";
+import ProblemsView from "@/features/problems/ProblemsView";
+import { PROBLEM_TRACE_REFS } from "@/features/problems/traceRefs";
 
 export const metadata: Metadata = { title: "Problemi" };
 

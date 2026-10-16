@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
 
-import ComparePicker from "@/components/classes/ComparePicker";
-import CompareVerdict from "@/components/classes/CompareVerdict";
-import { IDS, PLAIN } from "@/data/classes";
-import { isClassId } from "@/lib/engine";
+import { IDS, PLAIN } from "@/data/classes/classes";
+import ComparePicker from "@/features/classes/ComparePicker";
+import CompareVerdict from "@/features/classes/CompareVerdict";
+import { isClassId } from "@/features/classes/inclusions";
 
 type Props = { params: Promise<{ a: string; b: string }> };
 

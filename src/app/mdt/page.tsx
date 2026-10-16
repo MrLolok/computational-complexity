@@ -1,15 +1,15 @@
-import type { GuidedStep } from "@/components/mdt/GuidedExample";
+import type { GuidedStep } from "@/features/turing/GuidedExample";
 import type { Metadata } from "next";
 
 import Link from "next/link";
 
 import Arrow from "@/components/Arrow";
-import OpenOnHash from "@/components/learning/OpenOnHash";
 import Markdown from "@/components/Markdown";
-import GuidedExample from "@/components/mdt/GuidedExample";
-import { PracticeLab, SolutionLab } from "@/components/mdt/MachineLab";
-import { goRightNote, MACHINES, MDT_BODY, MDT_METHOD, tracesOf } from "@/data/mdt";
-import { ui } from "@/lib/ui";
+import OpenOnHash from "@/components/OpenOnHash";
+import { goRightNote, MACHINES, MDT_BODY, MDT_METHOD, tracesOf } from "@/data/turing/solutions";
+import GuidedExample from "@/features/turing/GuidedExample";
+import { PracticeLab, SolutionLab } from "@/features/turing/MachineLab";
+import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Macchine di Turing: guida ed esercizi" };
 

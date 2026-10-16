@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
 
-import ClassesView from "@/components/classes/ClassesView";
-import { C, IDS, PLAIN } from "@/data/classes";
-import { isClassId } from "@/lib/engine";
+import { C, IDS, PLAIN } from "@/data/classes/classes";
+import ClassesView from "@/features/classes/ClassesView";
+import { isClassId } from "@/features/classes/inclusions";
 import { plainMath } from "@/lib/mathNotation";
 
 type Props = { params: Promise<{ id: string }> };

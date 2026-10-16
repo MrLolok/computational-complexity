@@ -2,8 +2,8 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
 
-import TheoremsView from "@/components/theorems/TheoremsView";
-import { TRACES } from "@/data/traces";
+import { TRACES } from "@/data/traces/traces";
+import TheoremsView from "@/features/theorems/TheoremsView";
 import { plainMath } from "@/lib/mathNotation";
 
 export const metadata: Metadata = { title: "Teoremi" };

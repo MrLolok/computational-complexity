@@ -1,9 +1,9 @@
-import type { ClassId } from "@/data/classes";
+import type { ClassId } from "@/data/classes/classes";
 
 import Link from "next/link";
 
-import { NAME } from "@/data/classes";
-import { classColor, ui } from "@/lib/ui";
+import { NAME } from "@/data/classes/classes";
+import { classColor, ui } from "@/lib/tokens";
 
 export default function ClassChip({ id }: { id: ClassId }) {
     return (

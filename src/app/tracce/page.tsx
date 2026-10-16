@@ -1,10 +1,10 @@
-import type { TraceSummary } from "@/components/traces/TraceLibrary";
+import type { TraceSummary } from "@/features/traces/TraceLibrary";
 import type { Metadata } from "next";
 
 import Markdown from "@/components/Markdown";
-import TraceLibrary from "@/components/traces/TraceLibrary";
-import { plainText, TRACE_LEGEND, TRACES } from "@/data/traces";
-import { ui } from "@/lib/ui";
+import { plainText, TRACE_LEGEND, TRACES } from "@/data/traces/traces";
+import TraceLibrary from "@/features/traces/TraceLibrary";
+import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Tracce d'esame" };
 

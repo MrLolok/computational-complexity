@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import ExercisesView from "@/components/exercises/ExercisesView";
+import ExercisesView from "@/features/exercises/ExercisesView";
 
 export const metadata: Metadata = { title: "Esercitati" };
 

@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import Arrow from "@/components/Arrow";
-import PhLevels from "@/components/piani/PhLevels";
-import PianiTower from "@/components/piani/PianiTower";
-import PrefixBuilder from "@/components/piani/PrefixBuilder";
-import QbfEval from "@/components/piani/QbfEval";
-import Reductions from "@/components/piani/Reductions";
-import TowerDisclosure from "@/components/piani/TowerDisclosure";
 import Tex from "@/components/Tex";
-import { ui } from "@/lib/ui";
+import HierarchyTower from "@/features/hierarchy/HierarchyTower";
+import PhLevels from "@/features/hierarchy/PhLevels";
+import PrefixBuilder from "@/features/hierarchy/PrefixBuilder";
+import QbfEval from "@/features/hierarchy/QbfEval";
+import Reductions from "@/features/hierarchy/Reductions";
+import TowerDisclosure from "@/features/hierarchy/TowerDisclosure";
+import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Gerarchia polinomiale" };
 export default function Page() {
@@ -105,7 +105,7 @@ export default function Page() {
                     </Link>
                 </details>
                 <TowerDisclosure>
-                    <PianiTower />
+                    <HierarchyTower />
                 </TowerDisclosure>
                 <details className={ui.card}>
                     <summary className="cursor-pointer font-semibold">Come riconoscere un collasso</summary>

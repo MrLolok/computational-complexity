@@ -1,6 +1,6 @@
-import { C, IDS, NAME, PLAIN } from "@/data/classes";
-import { QUANTUM_CLASSES, RANDOM_CLASSES, SPECIAL_TERMS } from "@/data/learning";
-import { PROBLEMS } from "@/data/problems";
+import { C, IDS, NAME, PLAIN } from "@/data/classes/classes";
+import { QUANTUM_CLASSES, RANDOM_CLASSES, SPECIAL_TERMS } from "@/data/glossary";
+import { PROBLEMS } from "@/data/problems/problems";
 import { plainMath } from "./mathNotation";
 
 export const stripHtml = (s: string) =>
