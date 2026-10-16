@@ -3,7 +3,8 @@ import { LEZ6_ANCHORS, QuantumTab, RandomTab } from "@/features/probabilistic-qu
 import { ui } from "@/lib/tokens";
 import ClassExplorer from "./ClassExplorer";
 import ClassMap from "./ClassMap";
-import ClassPanel, { PanelIntro } from "./ClassPanel";
+import ClassPanel from "./ClassPanel";
+import ClassPanelIntro from "./ClassPanelIntro";
 
 const badgeText = "text-xs font-bold [text-anchor:middle] [dominant-baseline:central]";
 
@@ -73,7 +74,7 @@ export default function ClassesView({ sel }: { sel: ClassId | null }) {
                         aria-live="polite"
                         className={`${ui.card} scroll-mt-16 lg:sticky lg:top-[calc(env(safe-area-inset-top)+var(--spacing)*16)] lg:max-h-[calc(100svh-env(safe-area-inset-top)-env(safe-area-inset-bottom)-var(--spacing)*20)] lg:overflow-auto`}
                     >
-                        {sel ? <ClassPanel id={sel} /> : <PanelIntro />}
+                        {sel ? <ClassPanel id={sel} /> : <ClassPanelIntro />}
                     </aside>
                 </div>
             </ClassExplorer>

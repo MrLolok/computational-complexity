@@ -4,19 +4,20 @@ import type { ExamQuestion } from "@/data/classes/examQuestions";
 import Link from "next/link";
 
 import Arrow from "@/components/Arrow";
-import { Html, ClassName as N } from "@/components/bits";
 import ClassChip from "@/components/ClassChip";
+import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
 import Tex from "@/components/Tex";
 import { ALIAS_TEX, C, CLASS_PROBLEMS, TEX } from "@/data/classes/classes";
 import { EXAM_QUESTIONS } from "@/data/classes/examQuestions";
-import { TOWER_OF } from "@/data/hierarchy/hierarchy";
+import { TOWER_OF } from "@/data/hierarchy/tower";
 import { THEOREMS } from "@/data/theorems/theorems";
 import ExactTsp from "@/features/classes/dp/ExactTsp";
 import SatUnsat from "@/features/classes/dp/SatUnsat";
 import TrueFalse from "@/features/classes/dp/TrueFalse";
 import { texHtml } from "@/lib/tex";
 import { classColor, ui } from "@/lib/tokens";
+import N from "./ClassName";
 import ClassSteps from "./ClassSteps";
 import { relGroups } from "./inclusions";
 
@@ -25,28 +26,6 @@ const link = "text-accent underline underline-offset-2 decoration-1";
 const relList = "flex flex-wrap gap-1.5";
 const relItem = "inline-flex items-center gap-1";
 const mk = "font-mono text-sm font-bold";
-
-/** scheda iniziale, senza classe scelta */
-export function PanelIntro() {
-    return (
-        <>
-            <h2 className={ui.h3}>Scegli una classe nella mappa</h2>
-            <div className="text-muted mt-3 flex flex-col gap-3 text-sm">
-                <p>
-                    Leggi le inclusioni dal basso verso l&apos;alto. Apri una classe per intuizione, definizione ed
-                    esempio.
-                </p>
-                <p>
-                    <Tex>{String.raw`\subseteq`}</Tex> = contenuta; <Tex>{String.raw`\subsetneq`}</Tex> = contenuta e
-                    diversa. Usa le opzioni sopra la mappa per separazioni e questioni aperte.
-                </p>
-                <p>
-                    Un buon punto di partenza: <ClassChip id="P" /> <ClassChip id="NP" /> <ClassChip id="coNP" />
-                </p>
-            </div>
-        </>
-    );
-}
 
 function QA({ t }: { t: ExamQuestion }) {
     return (
@@ -94,10 +73,10 @@ export default function ClassPanel({ id }: { id: ClassId }) {
             <div className="flex flex-wrap items-start justify-between gap-3.5">
                 <div>
                     <Tex className="block text-3xl leading-tight font-semibold text-(--c)">{TEX[id]}</Tex>
-                    <Html html={c.full} className="font-ui text-muted mt-1 block text-base font-medium" />
+                    <MathHtml html={c.full} className="font-ui text-muted mt-1 block text-base font-medium" />
                     <div className="mt-2 flex flex-wrap gap-1.5">
-                        {alias && <Html className={ui.pillOk} html={alias} />}
-                        <Html
+                        {alias && <MathHtml className={ui.pillOk} html={alias} />}
+                        <MathHtml
                             className={`${ui.pill} whitespace-normal!`}
                             html={`chiusa per complemento: ${c.closed}`}
                         />

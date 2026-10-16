@@ -1,14 +1,15 @@
 "use client";
 
-import type { QbfNode } from "./hierarchy";
+import type { QbfNode } from "./qbf";
 
 import { useState } from "react";
 
 import Tex from "@/components/Tex";
-import { QBF, QBF_DEFAULT } from "@/data/hierarchy/hierarchy";
+import { QBF, QBF_DEFAULT } from "@/data/hierarchy/qbf";
 import { texHtml } from "@/lib/tex";
 import { final, formulaBtn, ui } from "@/lib/tokens";
-import { blocksOf, hPi, hS, qbfLayout, qsat, readit } from "./hierarchy";
+import { hPi, hS, qsat } from "./notation";
+import { blocksOf, qbfLayout } from "./qbf";
 
 type Guess = "1" | "0" | "x" | null;
 
@@ -150,7 +151,7 @@ export default function QbfEval() {
                     </>
                 )}
             </div>
-            <p className={readit}>
+            <p className={ui.hint}>
                 Prefisso con {k} blocc{k === 1 ? "o" : "hi"}, il primo <Tex>{isS ? "\\exists" : "\\forall"}</Tex>: è
                 un&apos;istanza di <Tex>{qsat(k, !isS)}</Tex>, che sta in <Tex>{isS ? hS(k) : hPi(k)}</Tex>.{" "}
                 <span className="text-sm">Formula da: {F.src}.</span>

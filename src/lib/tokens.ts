@@ -27,6 +27,8 @@ export const ui = {
     noteInfo: "border-l-2 border-line-strong bg-sunk px-3 py-2 rounded-r-lg text-base",
     formula: "font-mono bg-sunk rounded-lg px-3 py-2 text-sm overflow-x-auto whitespace-nowrap",
     mono: "font-mono text-sm",
+    /** codice della traccia accanto a una domanda */
+    code: "font-mono text-xs text-muted",
     select: "study-select min-h-11 min-w-0 font-ui text-base rounded-lg border border-line-strong bg-surface text-ink pl-3 pr-10 py-2 max-w-full cursor-pointer hover:border-accent focus-visible:border-accent transition-colors",
     input: "w-full min-w-0 bg-transparent font-ui text-base text-ink placeholder:text-muted outline-none py-2",
     search: "flex flex-1 basis-60 min-w-0 items-center gap-2 bg-surface border border-line-strong rounded-lg px-2.5 text-muted focus-within:border-accent",

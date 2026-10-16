@@ -1,17 +1,20 @@
 "use client";
 
-import type { QuizMode, QuizQuestion } from "@/features/problems/problems";
+import type { QuizMode, QuizQuestion } from "./problemQuiz";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { codeCls, Html, SourceBadge, YesNo } from "@/components/bits";
+import AnswerTag from "@/components/AnswerTag";
+import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
+import SourceBadge from "@/components/SourceBadge";
 import { PROBLEM_BY } from "@/data/problems/problems";
-import { ansKey, colorId, newQuestion, QMODES, trapAnswer } from "@/features/problems/problems";
+import { ansKey, colorId, trapAnswer } from "@/features/problems/problems";
 import { classColor, ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { recordProblemQuiz, resetProblemQuiz } from "@/store/progressSlice";
+import { newQuestion, QMODES } from "./problemQuiz";
 
 const opt =
     "min-h-11 cursor-pointer rounded-lg border px-3 py-2 text-left font-ui text-sm font-semibold disabled:cursor-default";
@@ -21,18 +24,18 @@ function QuestionText({ q }: { q: QuizQuestion }) {
     if (q.type === "exam")
         return (
             <>
-                <RichHtml as="span" html={q.trap.q || ""} /> <span className={codeCls}>{q.trap.c}</span>
+                <RichHtml as="span" html={q.trap.q || ""} /> <span className={ui.code}>{q.trap.c}</span>
             </>
         );
     if (q.type === "cpl")
         return (
             <>
-                Com&apos;è classificato il complemento di <Html as="strong" className="font-bold" html={p.name} />?
+                Com&apos;è classificato il complemento di <MathHtml as="strong" className="font-bold" html={p.name} />?
             </>
         );
     return (
         <>
-            <Html as="strong" className="font-bold" html={p.name} />: in quale classe sta, ed è completo?
+            <MathHtml as="strong" className="font-bold" html={p.name} />: in quale classe sta, ed è completo?
             <RichHtml as="span" className="font-body text-muted mt-1.5 block text-base font-normal" html={p.def} />
         </>
     );
@@ -43,7 +46,7 @@ function Explanation({ q }: { q: QuizQuestion }) {
     if (q.type === "exam")
         return (
             <span>
-                <YesNo k={ansKey(q.trap.a)}>{trapAnswer(q.trap)}</YesNo>
+                <AnswerTag k={ansKey(q.trap.a)}>{trapAnswer(q.trap)}</AnswerTag>
                 <RichHtml as="span" html={q.trap.e || ""} />
             </span>
         );
@@ -137,7 +140,11 @@ export default function ProblemQuiz() {
                                         onClick={() => choose(i)}
                                         className={`${opt} ${state || "border-line-strong text-ink enabled:hover:border-accent bg-transparent"}`}
                                     >
-                                        {q.type === "exam" && o === "altro" ? "altro (solo se…)" : <Html html={o} />}
+                                        {q.type === "exam" && o === "altro" ? (
+                                            "altro (solo se…)"
+                                        ) : (
+                                            <MathHtml html={o} />
+                                        )}
                                     </button>
                                 );
                             })}

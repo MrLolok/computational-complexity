@@ -6,21 +6,11 @@ import type { KeyboardEvent } from "react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 
-import {
-    ALIAS,
-    NODE_H as H,
-    HASSE_STRICT,
-    IDS,
-    INC,
-    NAME,
-    NOBADGE,
-    NODE_W,
-    PLAIN,
-    POS,
-    SEP_DRAW,
-} from "@/data/classes/classes";
+import { ALIAS, HASSE_STRICT, IDS, INC, NAME, PLAIN } from "@/data/classes/classes";
 import { classColor, NODE_RECT, ui } from "@/lib/tokens";
 import { BASE } from "./inclusions";
+import { NODE_H as H, NOBADGE, NODE_W, POS, SEP_DRAW } from "./mapLayout";
+import { requestPanelScroll } from "./usePanelScroll";
 
 /* Opzioni della mappa (Separazioni dimostrate / Questioni aperte): restano tra una classe e l'altra. */
 type Opts = { sep: boolean; open: boolean };
@@ -43,20 +33,6 @@ const useOpts = () =>
         () => opts,
         () => DEFAULT_OPTS,
     );
-
-/* Su schermi stretti, dopo un tocco sulla mappa la scheda scorre in vista (come nella pagina). */
-const panelScroll = { pending: false };
-const requestPanelScroll = () => {
-    panelScroll.pending = true;
-};
-export function usePanelScroll() {
-    useEffect(() => {
-        if (!panelScroll.pending) return;
-        panelScroll.pending = false;
-        if (!window.matchMedia("(min-width: 64rem)").matches)
-            document.getElementById("panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, []);
-}
 
 const BANDS: [string, number, number][] = [
     ["Calcolabilità", 15, 195],

@@ -6,9 +6,11 @@ import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
 import OpenOnHash from "@/components/OpenOnHash";
-import { goRightNote, MACHINES, MDT_BODY, MDT_METHOD, tracesOf } from "@/data/turing/solutions";
+import { MACHINES } from "@/data/turing/machines";
+import { goRightNote, MDT_BODY, MDT_METHOD, tracesOf } from "@/data/turing/solutions";
 import GuidedExample from "@/features/turing/GuidedExample";
-import { PracticeLab, SolutionLab } from "@/features/turing/MachineLab";
+import PracticeLab from "@/features/turing/PracticeLab";
+import SolutionLab from "@/features/turing/SolutionLab";
 import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Macchine di Turing: guida ed esercizi" };

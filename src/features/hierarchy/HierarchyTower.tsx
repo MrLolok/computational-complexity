@@ -1,6 +1,6 @@
 "use client";
 
-import type { TowerId } from "@/data/hierarchy/hierarchy";
+import type { TowerId } from "@/data/hierarchy/tower";
 import type { KeyboardEvent } from "react";
 
 import { useEffect, useRef, useState } from "react";
@@ -10,10 +10,11 @@ import Arrow from "@/components/Arrow";
 import RichHtml from "@/components/RichHtml";
 import Tex from "@/components/Tex";
 import { CLASS_PROBLEMS } from "@/data/classes/classes";
-import { BANDS, HYP, TE, TOWER_IDS, TW } from "@/data/hierarchy/hierarchy";
+import { BANDS, HYP, TE, TOWER_IDS, TW } from "@/data/hierarchy/tower";
 import { texHtml } from "@/lib/tex";
 import { classColor, NODE_RECT, ui } from "@/lib/tokens";
-import { edgeHot, infoOf, mergeBox, nodeState, nodeWidth, tDown, tUp } from "./hierarchy";
+import { edgeHot, mergeBox, nodeState, nodeWidth, tDown, tUp } from "./tower";
+import { infoOf } from "./towerInfo";
 import { selectTower, useTowerSel } from "./towerSelection";
 
 const h4 = "font-ui text-xs uppercase tracking-widest text-muted font-semibold mb-1.5";

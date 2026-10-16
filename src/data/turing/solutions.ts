@@ -1,8 +1,5 @@
 /* Domanda 8 delle tracce: programmare una macchina di Turing.
    Testi delle soluzioni (dagli appunti, senza rimandi alle lezioni) e macchina usata da ogni traccia. */
-import type { MachineSpec } from "./machines";
-
-import { MACHINES } from "./machines";
 import raw from "./solutions.json";
 
 export type MethodSection = { id: string; title: string; body: string };
@@ -57,4 +54,3 @@ export const goRightNote = (id: string) =>
         : null;
 
 export const tracesOf = (id: string) => Object.keys(TRACE_MACHINE).filter((c) => TRACE_MACHINE[c] === id);
-export { MACHINES, type MachineSpec };

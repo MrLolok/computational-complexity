@@ -11,7 +11,8 @@ import { THEOREMS } from "@/data/theorems/theorems";
 import { plainText, TRACE_BY, TRACES } from "@/data/traces/traces";
 import { goRightNote, MDT_BODY, TRACE_MACHINE, TRACE_NOTE } from "@/data/turing/solutions";
 import TraceRunner from "@/features/traces/TraceRunner";
-import { PracticeLab, SolutionLab } from "@/features/turing/MachineLab";
+import PracticeLab from "@/features/turing/PracticeLab";
+import SolutionLab from "@/features/turing/SolutionLab";
 import { ui } from "@/lib/tokens";
 
 /** schede di /teoremi che dicono dove sta un problema (es. PRIMES ∈ P, SAT NP-completo): non vanno nei Riferimenti */

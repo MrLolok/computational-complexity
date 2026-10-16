@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import Arrow from "@/components/Arrow";
 import { ui } from "@/lib/tokens";
-import { usePanelScroll } from "./ClassMap";
+import { usePanelScroll } from "./usePanelScroll";
 
 const STEPS = ["Intuizione", "Definizione", "Esempio", "All'esame"];
 

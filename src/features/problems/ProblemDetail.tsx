@@ -5,8 +5,9 @@ import type { TraceRef } from "@/data/traces/traces";
 
 import Link from "next/link";
 
+import AnswerTag from "@/components/AnswerTag";
 import Arrow from "@/components/Arrow";
-import { codeCls, Html, YesNo } from "@/components/bits";
+import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
 import Walkthrough from "@/components/Walkthrough";
 import { PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
@@ -24,21 +25,21 @@ function ProblemButton({ id, onGo }: { id: string; onGo: (id: string) => void })
             data-term={`problem:${id}`}
             className="text-accent cursor-pointer underline underline-offset-4"
         >
-            <Html html={PROBLEM_BY[id].name} />
+            <MathHtml html={PROBLEM_BY[id].name} />
         </button>
     );
 }
 function TrapItem({ t }: { t: Trap }) {
     return (
         <li className="border-line flex flex-col gap-2 border-l-2 pl-3 text-sm">
-            {t.c && <span className={codeCls}>{t.c}</span>}
+            {t.c && <span className={ui.code}>{t.c}</span>}
             {t.n ? (
                 <RichHtml html={t.n} />
             ) : (
                 <>
                     <RichHtml html={t.q || ""} />
                     <p>
-                        <YesNo k={ansKey(t.a)}>{trapAnswer(t)}</YesNo>
+                        <AnswerTag k={ansKey(t.a)}>{trapAnswer(t)}</AnswerTag>
                         <RichHtml as="span" html={t.e || ""} />
                     </p>
                 </>
@@ -153,7 +154,7 @@ export default function ProblemDetail({
                             {related.map(([id, text]) => (
                                 <li key={id}>
                                     <ProblemButton id={id} onGo={onGo} />
-                                    <Html className="text-muted ml-2" html={text} />
+                                    <MathHtml className="text-muted ml-2" html={text} />
                                 </li>
                             ))}
                         </ul>

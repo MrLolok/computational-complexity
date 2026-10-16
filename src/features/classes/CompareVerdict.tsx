@@ -3,12 +3,13 @@ import type { Answer, Edge } from "./inclusions";
 
 import { Fragment } from "react";
 
-import { Html, ClassName as N } from "@/components/bits";
 import ClassChip from "@/components/ClassChip";
+import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
 import Tex from "@/components/Tex";
 import { C, PAIRNOTES, TEX } from "@/data/classes/classes";
 import { ui } from "@/lib/tokens";
+import N from "./ClassName";
 import { answerLabel, compare, isStrictStep } from "./inclusions";
 
 /** simbolo della relazione in testa al confronto */
@@ -19,7 +20,6 @@ const OP = {
     "≠": String.raw`\neq`,
     "?": String.raw`\mathrel{?}`,
 } as const;
-const readit = ui.hint;
 const tone = { si: "text-ok", no: "text-proved", altro: "text-open" } as const;
 const pillOf = { ok: ui.pillOk, proved: ui.pillProved, open: ui.pillOpen } as const;
 
@@ -67,8 +67,8 @@ function WhyList({ steps }: { steps: Edge[] }) {
             <ol className="mt-2 flex list-decimal flex-col gap-1 pl-5 text-sm">
                 {steps.map((e) => (
                     <li key={e.a + ">" + e.b}>
-                        <Tex>{`${TEX[e.a]} \\subseteq ${TEX[e.b]}`}</Tex>: <Html html={e.why} />
-                        {e.src && <Html className="text-muted text-sm" html={` (${e.src})`} />}
+                        <Tex>{`${TEX[e.a]} \\subseteq ${TEX[e.b]}`}</Tex>: <MathHtml html={e.why} />
+                        {e.src && <MathHtml className="text-muted text-sm" html={` (${e.src})`} />}
                     </li>
                 ))}
             </ol>
@@ -83,17 +83,17 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
             <>
                 <Chain steps={r.chain} start={a} />
                 {r.strict ? (
-                    <p className={readit}>
+                    <p className={ui.hint}>
                         Stretta perché <Tex>{`${TEX[r.strict.s[0]]} \\subsetneq ${TEX[r.strict.s[1]]}`}</Tex> (
-                        <Html html={r.strict.s[2]} />
+                        <MathHtml html={r.strict.s[2]} />
                         ).
                     </p>
                 ) : r.revNo ? (
-                    <p className={readit}>
+                    <p className={ui.hint}>
                         Ed è stretta: l&apos;inclusione opposta è esclusa (vedi la risposta accanto).
                     </p>
                 ) : (
-                    <p className={readit}>Se sia stretta non si sa.</p>
+                    <p className={ui.hint}>Se sia stretta non si sa.</p>
                 )}
                 <WhyList steps={r.chain} />
             </>
@@ -102,16 +102,16 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
         const [x, y, why, src] = r.contra.s;
         body = (
             <>
-                <p className={readit}>
+                <p className={ui.hint}>
                     Se fosse <Tex>{`${TEX[a]} \\subseteq ${TEX[b]}`}</Tex>, si avrebbe:
                 </p>
                 <Chain steps={r.contra.p} start={y} />
-                <p className={readit}>
+                <p className={ui.hint}>
                     cioè <Tex>{`${TEX[y]} \\subseteq ${TEX[x]}`}</Tex>, contro{" "}
                     <b>
                         <Tex>{`${TEX[x]} \\subsetneq ${TEX[y]}`}</Tex>
                     </b>{" "}
-                    (<Html html={why} />; <Html html={src} />
+                    (<MathHtml html={why} />; <MathHtml html={src} />
                     ).
                 </p>
                 <WhyList steps={r.contra.p} />
@@ -120,10 +120,10 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
     } else {
         body = (
             <>
-                <Html className={`${readit} block`} html={r.text} />
+                <MathHtml className={`${ui.hint} block`} html={r.text} />
                 {r.groups.length > 0 && (
                     <>
-                        <p className={readit}>Ne seguirebbe:</p>
+                        <p className={ui.hint}>Ne seguirebbe:</p>
                         <ul className="m-0 flex list-disc flex-col gap-1.5 pl-4">
                             {r.groups.map((g) => (
                                 <li key={g.join()} className="text-sm">
@@ -135,7 +135,7 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
                 )}
                 {r.flags.map((f) => (
                     <div key={f} className={ui.note}>
-                        <Html html={f} />
+                        <MathHtml html={f} />
                     </div>
                 ))}
             </>
@@ -143,9 +143,9 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
     }
     return (
         <div className={ui.card}>
-            <Html className="font-semibold" html={q} />
+            <MathHtml className="font-semibold" html={q} />
             <div className={`font-ui text-base font-bold ${tone[r.ans]}`}>
-                <Html html={answerLabel(r, a, b)} />
+                <MathHtml html={answerLabel(r, a, b)} />
             </div>
             {body}
         </div>
@@ -203,9 +203,9 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
                         <AnswerCard q={`$${TEX[a]} \\subseteq ${TEX[b]}$?`} r={v.ab} a={a} b={b} />
                         <AnswerCard q={`$${TEX[b]} \\subseteq ${TEX[a]}$?`} r={v.ba} a={b} b={a} />
                         <div className={ui.card}>
-                            <Html className="font-semibold" html={`$${TEX[a]} = ${TEX[b]}$?`} />
+                            <MathHtml className="font-semibold" html={`$${TEX[a]} = ${TEX[b]}$?`} />
                             <div className={`font-ui text-base font-bold ${tone[v.eq.ans]}`}>{v.eq.text}</div>
-                            <p className={readit}>{v.eq.why}.</p>
+                            <p className={ui.hint}>{v.eq.why}.</p>
                         </div>
                     </div>
                     <p className={`${ui.hint} mt-2`}>

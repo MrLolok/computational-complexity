@@ -1,8 +1,8 @@
 "use client";
 
-import type { TowerId } from "@/data/hierarchy/hierarchy";
+import type { TowerId } from "@/data/hierarchy/tower";
 
-import { DEFAULT_TOWER, isTowerId } from "@/data/hierarchy/hierarchy";
+import { DEFAULT_TOWER, isTowerId } from "@/data/hierarchy/tower";
 import { setHash, useHash } from "@/lib/useHash";
 
 /* Il nodo selezionato della torre vive nell'#hash (/piani#S2): così si può linkare da altre pagine. */

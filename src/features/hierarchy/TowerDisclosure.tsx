@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import { useState } from "react";
 
-import { isTowerId } from "@/data/hierarchy/hierarchy";
+import { isTowerId } from "@/data/hierarchy/tower";
 import { useHash } from "@/lib/useHash";
 
 export default function TowerDisclosure({ children }: { children: ReactNode }) {

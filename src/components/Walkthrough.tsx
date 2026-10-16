@@ -6,7 +6,7 @@ import Image from "next/image";
 import { plainMath } from "@/lib/mathNotation";
 import { ui } from "@/lib/tokens";
 import Arrow from "./Arrow";
-import { Html } from "./bits";
+import MathHtml from "./MathHtml";
 
 export type IllustratedWalkthrough = {
     outcome?: string;
@@ -132,9 +132,9 @@ export default function Walkthrough({
                         </div>
                         <figcaption className="border-line flex flex-col gap-2 border-t p-4">
                             <StepTitle className="font-semibold">
-                                {i + 1}. <Html html={slide.title} />
+                                {i + 1}. <MathHtml html={slide.title} />
                             </StepTitle>
-                            <Html as="p" className="text-muted text-sm leading-relaxed" html={slide.caption} />
+                            <MathHtml as="p" className="text-muted text-sm leading-relaxed" html={slide.caption} />
                         </figcaption>
                     </figure>
                 ))}
@@ -179,8 +179,10 @@ export default function Walkthrough({
             </div>
             {step === lesson.slides.length - 1 && (lesson.outcome || lesson.note) && (
                 <div className="border-line bg-ok-soft/25 flex flex-col gap-2 border-t p-4">
-                    {lesson.outcome && <Html as="p" className="text-ok font-semibold" html={lesson.outcome} />}
-                    {lesson.note && <Html as="p" className="text-muted text-xs leading-relaxed" html={lesson.note} />}
+                    {lesson.outcome && <MathHtml as="p" className="text-ok font-semibold" html={lesson.outcome} />}
+                    {lesson.note && (
+                        <MathHtml as="p" className="text-muted text-xs leading-relaxed" html={lesson.note} />
+                    )}
                 </div>
             )}
             <p className="border-line text-muted border-t px-4 py-2 text-xs sm:hidden">

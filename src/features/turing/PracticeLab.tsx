@@ -9,33 +9,10 @@ import { saveMdtDraft } from "@/store/progressSlice";
 import { ORACLES, parseProgram, run } from "./machine";
 import MachineRunner from "./MachineRunner";
 
-/** La soluzione di una traccia, da eseguire passo per passo. */
-export function SolutionLab({ id }: { id: string }) {
-    const m = MACHINE_BY[id];
-    const program = useMemo(() => parseProgram(m.source).program!, [m]);
-    return (
-        <div className="flex flex-col gap-3">
-            <MachineRunner
-                program={program}
-                kind={m.kind}
-                oracle={m.oracle}
-                samples={m.samples}
-                inputHint={m.inputHint}
-            />
-            <details className="border-line rounded-lg border p-3 text-sm">
-                <summary className="text-accent cursor-pointer">Mostra il codice della soluzione</summary>
-                <pre className="bg-sunk mt-3 overflow-x-auto rounded-lg p-3 font-mono text-sm leading-relaxed">
-                    {m.source}
-                </pre>
-            </details>
-        </div>
-    );
-}
-
 const SYMBOLS = ["▷", "⊔", "->", "b", "b̄", "σ", "R", "L", "S", "yes", "no", "h"];
 
 /** Scrivi la tua macchina, provala passo per passo e confrontala con i risultati attesi. */
-export function PracticeLab({ id, draftKey }: { id?: string; draftKey: string }) {
+export default function PracticeLab({ id, draftKey }: { id?: string; draftKey: string }) {
     const dispatch = useAppDispatch();
     const saved = useAppSelector((s) => s.progress.mdtDrafts?.[draftKey]);
     const [preset, setPreset] = useState(id ?? "");

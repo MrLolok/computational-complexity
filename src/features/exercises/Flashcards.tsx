@@ -3,9 +3,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { codeCls, Html, LabPill, SourceBadge, YesNo } from "@/components/bits";
+import AnswerTag from "@/components/AnswerTag";
+import MathHtml from "@/components/MathHtml";
+import SourceBadge from "@/components/SourceBadge";
 import { LADDER, PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
-import { ansKey, BANDS, colorId, deckIds, plain, trapAnswer } from "@/features/problems/problems";
+import { ansKey, BANDS, colorId, plain, trapAnswer } from "@/features/problems/problems";
+import { shuffle } from "@/lib/shuffle";
+import { texHtml } from "@/lib/tex";
 import { classColor, ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setFlashKnown } from "@/store/progressSlice";
@@ -13,6 +17,23 @@ import { setFlashKnown } from "@/store/progressSlice";
 const DECKS = BANDS.filter((b) => PROBLEMS.some((p) => p.b === b));
 const face = `${ui.card} absolute inset-0 overflow-auto border-t-2 border-t-(--c) backface-hidden transition-transform duration-500 ease-in-out motion-reduce:transition-none`;
 const big = "block font-head text-4xl font-semibold leading-tight text-(--c)";
+
+/** classificazione del problema, nel colore della sua classe (variabile --c) */
+/** mazzo di flashcard: tutti i problemi o quelli di un gradino, eventualmente senza le carte sapute */
+function deckIds(deck: string, onlyToReview: boolean, known: Record<string, true>) {
+    return shuffle(
+        PROBLEMS.filter((p) => (deck === "all" || p.b === deck) && (!onlyToReview || !known[p.id])).map((p) => p.id),
+    );
+}
+
+function LabPill({ html }: { html: string }) {
+    return (
+        <span
+            className="inline-block rounded-full border border-(--c)/40 bg-(--c)/13 px-2.5 py-0.5 font-mono text-sm font-semibold text-(--c)"
+            dangerouslySetInnerHTML={{ __html: texHtml(html) }}
+        />
+    );
+}
 
 export default function Flashcards() {
     const router = useRouter();
@@ -128,35 +149,36 @@ export default function Flashcards() {
                 ) : (
                     <>
                         <span className={`${face} ${flip ? "-rotate-y-180" : "rotate-y-0"}`}>
-                            <span className={codeCls}>
+                            <span className={ui.code}>
                                 carta {(fi % deck.length) + 1} di {deck.length}
                             </span>
-                            <Html className={big} html={cur.name} />
-                            <Html className="block" html={cur.def} terms={false} />
+                            <MathHtml className={big} html={cur.name} />
+                            <MathHtml className="block" html={cur.def} terms={false} />
                             <span className={`${ui.hint} mt-auto block`}>
                                 In quale classe sta? È completo? Qual è il complemento? Tocca per girare.
                             </span>
                         </span>
                         <span className={`${face} ${flip ? "rotate-y-0" : "rotate-y-180"}`}>
                             <span className="flex flex-wrap items-center gap-2">
-                                <Html className={`${big} text-2xl!`} html={cur.name} />
+                                <MathHtml className={`${big} text-2xl!`} html={cur.name} />
                                 <LabPill html={cur.lab} />
                                 {cur.ext && <SourceBadge kind="x">✱ esterno</SourceBadge>}
                             </span>
-                            <Html className="block" html={cur.brief} terms={false} />
+                            <MathHtml className="block" html={cur.brief} terms={false} />
                             <span className="block">
-                                <strong className="font-semibold">Complemento:</strong> <Html html={cp} terms={false} />
+                                <strong className="font-semibold">Complemento:</strong>{" "}
+                                <MathHtml html={cp} terms={false} />
                             </span>
                             {trap && (
                                 <span className="block text-base">
                                     <strong className="font-semibold">Trappola{trap.c ? ` (${trap.c})` : ""}:</strong>{" "}
                                     {trap.q ? (
                                         <>
-                                            <Html html={trap.q} terms={false} />{" "}
-                                            <YesNo k={ansKey(trap.a)}>{trapAnswer(trap)}</YesNo>
+                                            <MathHtml html={trap.q} terms={false} />{" "}
+                                            <AnswerTag k={ansKey(trap.a)}>{trapAnswer(trap)}</AnswerTag>
                                         </>
                                     ) : (
-                                        <Html html={trap.n || ""} terms={false} />
+                                        <MathHtml html={trap.n || ""} terms={false} />
                                     )}
                                 </span>
                             )}

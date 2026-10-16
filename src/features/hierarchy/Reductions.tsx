@@ -4,11 +4,11 @@ import { useState } from "react";
 
 import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
-import { RP, RP_DEFAULT, RQUICK } from "@/data/hierarchy/hierarchy";
+import { RP, RP_DEFAULT, RQUICK } from "@/data/hierarchy/reductions";
 import { plainMath } from "@/lib/mathNotation";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
-import { readit, rSub, shortName } from "./hierarchy";
+import { rSub, shortName } from "./reductions";
 
 const byId = (id: string) => RP.find((r) => r.id === id) ?? RP[0];
 const label = "flex min-w-0 max-w-full flex-col gap-1 font-ui text-xs font-semibold text-muted";
@@ -79,7 +79,7 @@ export default function Reductions() {
                     {r === "si" ? "Esiste: " : "Non si sa; esisterebbe "}
                     <span dangerouslySetInnerHTML={{ __html: texHtml(why) }} />
                 </p>
-                <p className={readit}>
+                <p className={ui.hint}>
                     Regola usata: se A è completo per X e B per Y, A si riduce a B esattamente quando{" "}
                     <Tex>{String.raw`X \subseteq Y`}</Tex>, perché le classi sono chiuse per riduzioni.
                 </p>

@@ -7,7 +7,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 import Arrow from "@/components/Arrow";
-import { Html } from "@/components/bits";
+import MathHtml from "@/components/MathHtml";
 import Tex from "@/components/Tex";
 import {
     MAP_CONJ,
@@ -235,13 +235,13 @@ export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode 
             >
                 <p className={ui.eyebrow}>Classe scelta sulla mappa</p>
                 <h3 className="font-mono text-2xl font-semibold text-(--c)">{MAP_NAME[sel]}</h3>
-                <Html className="text-muted block text-sm" html={info.full} />
-                <Html className="block leading-relaxed" html={info.idea} />
+                <MathHtml className="text-muted block text-sm" html={info.full} />
+                <MathHtml className="block leading-relaxed" html={info.idea} />
                 {info.accept && (
                     <dl className="bg-sunk grid grid-cols-1 gap-x-4 gap-y-1 rounded-lg p-3 text-sm sm:grid-cols-[auto_minmax(0,1fr)]">
                         <dt className="text-muted">Si accetta se</dt>
                         <dd>
-                            <Html html={info.accept} />
+                            <MathHtml html={info.accept} />
                         </dd>
                         <dt className="text-muted">Errore riducibile in tempo pol.?</dt>
                         <dd className="font-semibold">{info.error}</dd>
@@ -252,7 +252,7 @@ export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode 
                     <ul className="flex flex-wrap gap-2">
                         {info.proved.map((r) => (
                             <li key={r} className={ui.pillOk}>
-                                <Html html={r} />
+                                <MathHtml html={r} />
                             </li>
                         ))}
                     </ul>
@@ -262,14 +262,14 @@ export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode 
                             <ul className="flex flex-wrap gap-2">
                                 {info.conjectured.map((r) => (
                                     <li key={r} className={`${ui.pillOpen} whitespace-normal`}>
-                                        <Html html={r} />
+                                        <MathHtml html={r} />
                                     </li>
                                 ))}
                             </ul>
                         </>
                     )}
                 </div>
-                {info.examples && <Html className="text-muted block text-sm" html={info.examples} />}
+                {info.examples && <MathHtml className="text-muted block text-sm" html={info.examples} />}
                 {info.more.href.startsWith("#") ? (
                     /* stessa pagina: un'ancora vera fa scattare hashchange, che apre la scheda e il riquadro giusti */
                     <a href={info.more.href} className={`${ui.linkBtn} self-start`}>

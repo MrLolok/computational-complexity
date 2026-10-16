@@ -1,6 +1,6 @@
 "use client";
 
-import type { QLetter } from "./hierarchy";
+import type { QLetter } from "./prefix";
 
 import { useState } from "react";
 
@@ -8,7 +8,7 @@ import Arrow from "@/components/Arrow";
 import Tex from "@/components/Tex";
 import { texHtml } from "@/lib/tex";
 import { formulaBtn, ui } from "@/lib/tokens";
-import { analyzePrefix, readit } from "./hierarchy";
+import { analyzePrefix } from "./prefix";
 import { selectTower } from "./towerSelection";
 
 /** costruttore di prefissi: blocchi di quantificatori davanti a R → classe della torre */
@@ -63,7 +63,7 @@ export default function PrefixBuilder() {
                     </>
                 )}
                 <p dangerouslySetInnerHTML={{ __html: texHtml(P.expl) }} />
-                <p className={readit} dangerouslySetInnerHTML={{ __html: texHtml(P.comp) }} />
+                <p className={ui.hint} dangerouslySetInnerHTML={{ __html: texHtml(P.comp) }} />
                 {P.tid ? (
                     <p>
                         <button type="button" className={ui.btn} onClick={show}>
