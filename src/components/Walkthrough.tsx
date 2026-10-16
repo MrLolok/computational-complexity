@@ -25,11 +25,14 @@ export default function Walkthrough({
     name,
     title,
     heading = "h3",
+    side = false,
 }: {
     lesson: IllustratedWalkthrough;
     name: string;
     title: string;
     heading?: "h3" | "h4";
+    /** da desktop testo a sinistra e immagine a destra */
+    side?: boolean;
 }) {
     const Title = heading;
     const StepTitle = heading === "h3" ? "h4" : "h5";
@@ -97,9 +100,11 @@ export default function Walkthrough({
                     <figure
                         key={`${slide.src}-${i}`}
                         aria-hidden={i !== step}
-                        className="w-full min-w-0 flex-none snap-start snap-always"
+                        className={`w-full min-w-0 flex-none snap-start snap-always ${side ? "lg:flex lg:flex-row-reverse" : ""}`}
                     >
-                        <div className="bg-surface flex h-56 max-h-[40svh] min-h-44 items-center justify-center sm:h-80">
+                        <div
+                            className={`bg-surface flex h-56 max-h-[40svh] min-h-44 items-center justify-center sm:h-80 ${side ? "lg:w-1/2 lg:flex-none" : ""}`}
+                        >
                             {slide.crop ? (
                                 <div className="relative aspect-square w-full max-w-[min(14rem,40svh)] overflow-hidden sm:max-w-[min(20rem,40svh)]">
                                     <Image
@@ -130,11 +135,17 @@ export default function Walkthrough({
                                 />
                             )}
                         </div>
-                        <figcaption className="border-line flex flex-col gap-2 border-t p-4">
+                        <figcaption
+                            className={`border-line flex flex-col gap-2 border-t p-4 ${side ? "lg:min-w-0 lg:flex-1 lg:justify-center lg:border-t-0 lg:border-r lg:p-6" : ""}`}
+                        >
                             <StepTitle className="font-semibold">
                                 {i + 1}. <MathHtml html={slide.title} />
                             </StepTitle>
-                            <MathHtml as="p" className="text-muted text-sm leading-relaxed" html={slide.caption} />
+                            <MathHtml
+                                as="p"
+                                className={`text-muted text-sm leading-relaxed ${side ? "lg:text-base" : ""}`}
+                                html={slide.caption}
+                            />
                         </figcaption>
                     </figure>
                 ))}

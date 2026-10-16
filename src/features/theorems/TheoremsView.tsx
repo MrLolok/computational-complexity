@@ -35,9 +35,9 @@ const HL_ON = ["bg-accent-soft/70"];
 const HL_FADE = ["transition-colors", "duration-1500", "ease-out"];
 const box = "rounded-lg border border-line px-4 open:pb-4";
 const boxSummary = "flex min-h-11 cursor-pointer items-center font-ui text-sm font-semibold text-accent";
-/* i titoli di sezione delle spiegazioni diventano h4, con lo stile delle altre voci della scheda */
+/* i titoli di sezione delle spiegazioni diventano h4, con lo stile delle altre voci della scheda (le formule restano minuscole) */
 const mdText =
-    "[&_p]:max-w-none! [&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-semibold [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted";
+    "[&_p]:max-w-none! [&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-semibold [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted [&_h4_.katex]:normal-case [&_h4_.katex]:tracking-normal";
 
 /* spiegazione in Markdown senza il titolo (è già nella scheda); le risposte alle domande di controllo sono blocchi <details> scritti a mano */
 function Explanation({ md }: { md: string }) {
@@ -145,6 +145,7 @@ const TheoremRow = memo(function TheoremRow({
                                   : "Dimostrazione illustrata"
                         }
                         heading="h4"
+                        side
                     />
                 )}
                 {pf && md && (
@@ -218,7 +219,7 @@ export default function TheoremsView({
 }) {
     const [q, setQ] = useState("");
     const [cls, setCls] = useState("all");
-    const [provedOnly, setProvedOnly] = useState(false);
+    const [provedOnly, setProvedOnly] = useState(true);
     const [byFreq, setByFreq] = useState(false);
     const hash = useHash();
     const target = hash.startsWith(PREFIX) ? hash.slice(PREFIX.length) : "";

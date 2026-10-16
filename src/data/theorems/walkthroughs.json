@@ -597,7 +597,7 @@
         "slides": [
             {
                 "title": "Ricevi programma e input",
-                "caption": "Il problema H_f chiede se M accetta x entro f(|x|) passi. La macchina universale legge la descrizione di entrambi.",
+                "caption": "Il problema $H_f$ chiede se $M$ accetta $x$ entro $f(|x|)$ passi. La macchina universale legge la descrizione di entrambi.",
                 "alt": "Ricevi programma e input. Il problema H_f chiede se M accetta x entro f(|x|) passi. La macchina universale legge la descrizione di entrambi.",
                 "src": "/illustrations/theorems/proofs-05-storyboard-v2.webp",
                 "crop": {
@@ -679,7 +679,7 @@
             },
             {
                 "title": "Ottieni la contraddizione",
-                "caption": "Nessuna risposta può essere corretta. Quindi il decisore di H_f con il budget ipotizzato non esiste.",
+                "caption": "Nessuna risposta può essere corretta. Quindi il decisore di $H_f$ con il budget ipotizzato non esiste.",
                 "alt": "Ottieni la contraddizione. Nessuna risposta può essere corretta. Quindi il decisore di H_f con il budget ipotizzato non esiste.",
                 "src": "/illustrations/theorems/proofs-05-storyboard-v2.webp",
                 "crop": {
@@ -706,7 +706,7 @@
             },
             {
                 "title": "Scegli il linguaggio testimone",
-                "caption": "Usa H_g con g(n) = f(2n + 1). Il lemma superiore lo decide in tempo O(f(2n + 1)³).",
+                "caption": "Usa $H_g$ con $g(n) = f(2n + 1)$. Il lemma superiore lo decide in tempo $O(f(2n + 1)^3)$.",
                 "alt": "Scegli il linguaggio testimone. Usa H_g con g(n) = f(2n + 1). Il lemma superiore lo decide in tempo O(f(2n + 1)³).",
                 "src": "/illustrations/theorems/proofs-06-storyboard-v2.webp",
                 "crop": {
