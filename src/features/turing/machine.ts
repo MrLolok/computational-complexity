@@ -33,12 +33,12 @@ const SYM: Record<string, string> = {
     "*": "σ",
     sigma: "σ",
 };
-const MOVES: Record<string, Move> = { R: 1, "→": 1, ">": 1, L: -1, "←": -1, "<": -1, S: 0, "-": 0, "=": 0 };
+export const MOVES: Record<string, Move> = { R: 1, "→": 1, ">": 1, L: -1, "←": -1, "<": -1, S: 0, "-": 0, "=": 0 };
 const WILD = new Set(["b", "b'", "b̄", "σ"]);
 export const HALT = new Set(["h", "yes", "no"]);
 export const QUERY = "q?";
 
-const sym = (t: string) => SYM[t] ?? t;
+export const sym = (t: string) => SYM[t] ?? t;
 
 export function parseProgram(source: string): { program: Program | null; errors: ParseError[] } {
     const rules: Rule[] = [];

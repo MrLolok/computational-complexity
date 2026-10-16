@@ -1,8 +1,8 @@
 import type { TraceSummary } from "@/features/traces/TraceLibrary";
 import type { Metadata } from "next";
 
-import Markdown from "@/components/Markdown";
-import { TRACE_LEGEND, TRACES } from "@/data/traces/traces";
+import { TRACES } from "@/data/traces/traces";
+import { TRACE_MACHINE } from "@/data/turing/solutions";
 import TraceLibrary from "@/features/traces/TraceLibrary";
 import { markdownToPlain } from "@/lib/plainText";
 import { ui } from "@/lib/tokens";
@@ -20,6 +20,7 @@ export default function Page() {
         total: t.questions.length,
         repeated: t.questions.filter((q) => q.repeatOf).length,
         q8: t.q8 ? markdownToPlain(t.q8.title) : null,
+        machine: TRACE_MACHINE[t.code] ?? null,
         search: t.questions.map((q) => markdownToPlain(q.text)).join(" "),
     }));
     const total = TRACES.reduce((n, t) => n + t.questions.length, 0);
@@ -34,12 +35,6 @@ export default function Page() {
                     di Turing. Apri una traccia, rispondi e consegna: le risposte restano salvate in questo browser.
                 </p>
             </header>
-            {TRACE_LEGEND && (
-                <details className={ui.card}>
-                    <summary className="font-ui text-muted cursor-pointer text-sm">Legenda dei simboli</summary>
-                    <Markdown className="mt-2 text-base">{TRACE_LEGEND}</Markdown>
-                </details>
-            )}
             <TraceLibrary traces={summaries} />
         </div>
     );

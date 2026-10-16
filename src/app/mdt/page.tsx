@@ -78,15 +78,15 @@ const STEPS: GuidedStep[] = [
     },
 ];
 
-const SYNTAX = `Scrivi **una transizione per riga**. Per esempio, \`q 1 -> q 0 L\` significa: «se sei in q e leggi 1, scrivi 0, spostati a sinistra e resta in q». In formule: $\\delta(q, 1) = (q, 0, \\leftarrow)$.
+const SYNTAX = `Compila **una riga della tabella per ogni transizione**. La riga con stato \`q\`, legge \`1\`, nuovo stato \`q\`, scrive \`0\` e mossa ← significa: «se sei in q e leggi 1, scrivi 0, spostati a sinistra e resta in q». In formule: $\\delta(q, 1) = (q, 0, \\leftarrow)$.
 
-- **Movimenti:** \`R\` = destra, \`L\` = sinistra, \`S\` = testina ferma.
-- **Celle speciali:** \`▷\` (oppure \`>\`) segna l'inizio del nastro; \`⊔\` (oppure \`_\`) indica una cella vuota.
+- **Movimenti:** → destra, ← sinistra, − testina ferma.
+- **Celle speciali:** \`▷\` (oppure \`>\`) segna l'inizio del nastro; \`⊔\` (oppure \`_\`) indica una cella vuota. I pulsanti sopra la tabella scrivono il simbolo nella cella selezionata.
 - **Jolly:** \`b\` indica un bit; \`b'\` un altro bit indipendente; \`b̄\` (oppure \`!b\`) il bit opposto a \`b\`. \`σ\` (oppure \`*\`) indica un simbolo qualsiasi tranne \`▷\`. A destra della freccia, \`b\`, \`b'\` e \`σ\` riscrivono il simbolo letto; \`b̄\` scrive il bit opposto a \`b\`.
 - **Stati finali:** parti da \`s\`; termina in \`h\` per restituire un risultato, in \`yes\` per accettare o in \`no\` per rifiutare.
-- **Commenti:** usa \`#\`; il resto della riga non viene eseguito.
+- **Commento:** l'ultima colonna è facoltativa e non viene eseguita.
 
-**Con più nastri**, scrivi a sinistra un simbolo letto per ciascun nastro. A destra, dopo il nuovo stato, scrivi una coppia «simbolo, movimento» per ciascuno. Esempio: \`s 0 ⊔ -> s 0 R 0 R\`.
+**Con più nastri**, ogni riga ha un simbolo letto, un simbolo scritto e una mossa per ciascun nastro. Nel programma libero scegli quanti nastri usare.
 
 **Con un oracolo**, scrivi la domanda sull'ultimo nastro ed entra in \`q?\`. La risposta porta la macchina in \`qYES\` oppure \`qNO\`.
 
@@ -148,8 +148,8 @@ export default function Page() {
             <section id="laboratorio" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
                 <h2 className={ui.h2}>Prova tu</h2>
                 <p className={ui.hint}>
-                    Scegli un esercizio e completa le transizioni. Usa «Verifica i casi di prova» per confrontare i
-                    risultati con quelli attesi. Il programma si salva automaticamente in questo browser.
+                    Scegli un esercizio e completa la tabella delle transizioni. Usa «Verifica i casi di prova» per
+                    confrontare i risultati con quelli attesi. Il programma si salva automaticamente in questo browser.
                 </p>
                 <PracticeLab draftKey="laboratorio" />
             </section>

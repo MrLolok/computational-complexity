@@ -11,7 +11,7 @@ import { CHOICES } from "@/lib/answer";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { answerTraceQuestion, completeTrace, restartTrace, setTraceQ8Done } from "@/store/progressSlice";
+import { answerTraceQuestion, completeTrace, restartTrace } from "@/store/progressSlice";
 
 export type RunnerQuestion = {
     n: number;
@@ -26,7 +26,8 @@ export type RunnerQuestion = {
     explanation: ReactNode;
     answerNode: ReactNode;
 };
-export type RunnerQ8 = { title: ReactNode; body: ReactNode; practice: ReactNode };
+/** machine: id della macchina, per mostrare la consegna anche se è avvenuta in un'altra traccia */
+export type RunnerQ8 = { machine: string; title: ReactNode; body: ReactNode; practice: ReactNode };
 
 type Mode = "end" | "now";
 
@@ -250,15 +251,13 @@ export default function TraceRunner({
                 </div>
             )}
 
-            {q8 && (
-                <Q8 code={code} q8={q8} done={Boolean(p?.q8Done)} num={questions.some((q) => q.label) ? "MdT" : "8"} />
-            )}
+            {q8 && <Q8 code={code} q8={q8} num={questions.some((q) => q.label) ? "MdT" : "8"} />}
         </div>
     );
 }
 
-function Q8({ code, q8, done, num }: { code: string; q8: RunnerQ8; done: boolean; num: string }) {
-    const dispatch = useAppDispatch();
+function Q8({ code, q8, num }: { code: string; q8: RunnerQ8; num: string }) {
+    const delivered = useAppSelector((s) => s.progress.mdtResults?.[q8.machine]);
     const [open, setOpen] = useState<"prova" | "soluzione" | null>(null);
     const toggle = (v: "prova" | "soluzione") => setOpen((o) => (o === v ? null : v));
     return (
@@ -287,16 +286,15 @@ function Q8({ code, q8, done, num }: { code: string; q8: RunnerQ8; done: boolean
                 >
                     {open === "soluzione" ? "Nascondi la soluzione" : "Mostra la soluzione"}
                 </button>
-                <label className="font-ui flex cursor-pointer items-center gap-2 text-sm">
-                    <input
-                        type="checkbox"
-                        className="size-4 accent-(--color-accent)"
-                        checked={done}
-                        onChange={(e) => dispatch(setTraceQ8Done({ code, done: e.target.checked }))}
-                    />
-                    L&apos;ho svolta
-                </label>
-                <Link href="/mdt" className={ui.linkBtn}>
+                {delivered && (
+                    <span className={delivered.ok === delivered.tot ? ui.pillOk : ui.pillOpen}>
+                        {delivered.ok === delivered.tot
+                            ? "✓ Consegnata e risolta"
+                            : `Consegnata: ${delivered.ok}/${delivered.tot} casi`}
+                        {delivered.code !== code && ` nella traccia ${delivered.code}`}
+                    </span>
+                )}
+                <Link href={`/mdt#${q8.machine}`} className={ui.linkBtn}>
                     Il metodo, passo per passo
                 </Link>
             </div>

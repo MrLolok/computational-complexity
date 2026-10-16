@@ -112,9 +112,12 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
                 questions={questions}
                 q8={
                     t.q8 && {
+                        machine: TRACE_MACHINE[t.code],
                         title: <Markdown>{t.q8.title}</Markdown>,
                         body: <Q8Solution code={t.code} />,
-                        practice: <PracticeLab id={TRACE_MACHINE[t.code]} draftKey={`traccia:${t.code}`} />,
+                        practice: (
+                            <PracticeLab id={TRACE_MACHINE[t.code]} draftKey={`traccia:${t.code}`} code={t.code} />
+                        ),
                     }
                 }
             />

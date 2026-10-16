@@ -32,8 +32,7 @@ export type Trace = {
     q8: TraceQ8 | null;
 };
 
-const data = raw as unknown as { source: string; legend?: string; traces: Trace[] };
+const data = raw as unknown as { source: string; traces: Trace[] };
 
 export const TRACES: Trace[] = data.traces;
-export const TRACE_LEGEND: string = data.legend ?? "";
 export const TRACE_BY: Record<string, Trace> = Object.fromEntries(TRACES.map((t) => [t.code, t]));

@@ -33,13 +33,9 @@ const twoBits = (max: number) => bits(max).flatMap((x) => bits(max).map((y) => `
 const GO_RIGHT = `s ▷ -> s ▷ R      # supera l'inizio del nastro
 s b -> s b R      # vai in fondo
 `;
-const ONE_TAPE_SKELETON = `# Una riga: stato letto -> nuovo_stato scritto mossa   (mosse: R, L, S)
-# Jolly: b = un bit qualsiasi, b̄ = il bit opposto, σ = un simbolo qualsiasi
-${GO_RIGHT}s ⊔ -> q ⊔ L      # fine input: da qui tocca a te
+const ONE_TAPE_SKELETON = `${GO_RIGHT}s ⊔ -> q ⊔ L      # fine input: da qui tocca a te
 `;
-const TWO_TAPE_SKELETON = `# Una riga: stato letto1 letto2 -> nuovo_stato scritto1 mossa1 scritto2 mossa2
-# Jolly: b = un bit qualsiasi, b̄ = il bit opposto, σ = un simbolo qualsiasi
-s ▷ ▷ -> s ▷ R ▷ R   # supera l'inizio dei due nastri
+const TWO_TAPE_SKELETON = `s ▷ ▷ -> s ▷ R ▷ R   # supera l'inizio dei due nastri
 `;
 
 export const MACHINES: MachineSpec[] = [
@@ -182,9 +178,7 @@ a b -> a b R      # va in fondo
 a ⊔ -> t ⊔ L      # torna sull'ultimo bit
 t 1 -> yes 1 S    # dispari
 t 0 -> no 0 S     # pari (o zero)`,
-        skeleton: `# Una riga: stato letto -> nuovo_stato scritto mossa   (mosse: R, L, S)
-# Stati finali per decidere: yes e no
-s ▷ -> s ▷ R      # supera l'inizio del nastro
+        skeleton: `s ▷ -> s ▷ R      # supera l'inizio del nastro
 `,
         expected: (x) => (/^[01]*$/.test(x) ? yes(x[0] === "0" && x.endsWith("1")) : null),
         tests: () => bits(7, 0),
@@ -381,10 +375,7 @@ a σ ⊔ -> a σ R σ R          # copia y
 a ⊔ ⊔ -> q? ⊔ S ⊔ S         # "y ∈ SAT?"
 qYES ⊔ ⊔ -> no ⊔ S ⊔ S      # y soddisfacibile
 qNO ⊔ ⊔ -> yes ⊔ S ⊔ S      # x sì, y no`,
-        skeleton: `# Una riga: stato letto1 letto2 -> nuovo_stato scritto1 mossa1 scritto2 mossa2
-# Il 2° nastro è il nastro di query: nello stato q? l'oracolo risponde e la macchina passa in qYES o qNO
-s ▷ ▷ -> s ▷ R ▷ R   # supera l'inizio dei due nastri
-`,
+        skeleton: TWO_TAPE_SKELETON,
         expected: (s) => {
             const parts = s.split(";");
             if (parts.length !== 2 || !parts[0] || !parts[1]) return null;
@@ -414,10 +405,7 @@ k b ⊔ -> k b R b R      # copia K senza cambiarlo
 k ⊔ ⊔ -> q? ⊔ S ⊔ S     # "il complemento ha una cricca di almeno K nodi?"
 qYES ⊔ ⊔ -> yes ⊔ S ⊔ S # c'è un independent set di almeno K nodi
 qNO ⊔ ⊔ -> no ⊔ S ⊔ S   # non c'è`,
-        skeleton: `# Una riga: stato letto1 letto2 -> nuovo_stato scritto1 mossa1 scritto2 mossa2
-# Il 2° nastro è il nastro di query: nello stato q? l'oracolo risponde e la macchina passa in qYES o qNO
-s ▷ ▷ -> s ▷ R ▷ R   # supera l'inizio dei due nastri
-`,
+        skeleton: TWO_TAPE_SKELETON,
         expected: (s) => {
             const m = s.match(/^([01,;]+):([01]+)$/);
             if (!m) return null;

@@ -5,11 +5,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type AnswerRecord = { choice: Choice; correct: boolean; at: number };
 
+/** una riga della tabella δ: stato e simboli letti, nuovo stato, simboli scritti e mosse (uno per nastro) */
+export type MdtRow = { from: string; read: string[]; to: string; write: string[]; move: string[]; note: string };
+/** casi di prova superati alla consegna e traccia in cui è stata consegnata */
+export type MdtResult = { ok: number; tot: number; at: number; code: string };
+
 export type TraceProgress = {
     /** risposte per numero di domanda (1–7) */
     answers: Record<number, AnswerRecord>;
-    /** la domanda 8 (MdT) non ha una risposta chiusa: l'utente la segna come svolta */
-    q8Done?: boolean;
     startedAt: number;
     completedAt?: number;
     /** migliori risultati delle esecuzioni concluse: giuste su totale */
@@ -24,8 +27,10 @@ export type ProgressState = {
     problemQuiz: { ok: number; tot: number };
     /** flashcard dei problemi segnate come sapute */
     flashKnown: Record<string, true>;
-    /** macchine di Turing scritte dall'utente, per traccia o per il laboratorio */
-    mdtDrafts?: Record<string, string>;
+    /** tabelle δ scritte dall'utente, per traccia o per il laboratorio (stringa: bozza in testo, di prima della tabella) */
+    mdtDrafts?: Record<string, MdtRow[] | string>;
+    /** ultima consegna di ogni macchina, per id: una MdT che torna in un'altra traccia risulta già consegnata */
+    mdtResults?: Record<string, MdtResult>;
 };
 
 export const initialProgress: ProgressState = {
@@ -50,10 +55,6 @@ const progressSlice = createSlice({
             const t = (state.traces[code] ??= { answers: {}, startedAt: Date.now(), runs: 0 });
             t.answers[n] = { choice, correct, at: Date.now() };
         },
-        setTraceQ8Done(state, action: PayloadAction<{ code: string; done: boolean }>) {
-            const t = (state.traces[action.payload.code] ??= { answers: {}, startedAt: Date.now(), runs: 0 });
-            t.q8Done = action.payload.done;
-        },
         completeTrace(state, action: PayloadAction<{ code: string; ok: number; tot: number }>) {
             const { code, ok, tot } = action.payload;
             const t = state.traces[code];
@@ -67,7 +68,6 @@ const progressSlice = createSlice({
             const t = state.traces[action.payload];
             if (!t) return;
             t.answers = {};
-            t.q8Done = false;
             t.completedAt = undefined;
             t.startedAt = Date.now();
         },
@@ -85,10 +85,15 @@ const progressSlice = createSlice({
         resetProblemQuiz(state) {
             state.problemQuiz = { ok: 0, tot: 0 };
         },
-        saveMdtDraft(state, action: PayloadAction<{ key: string; source: string | null }>) {
+        saveMdtDraft(state, action: PayloadAction<{ key: string; rows: MdtRow[] | null }>) {
             const drafts = (state.mdtDrafts ??= {});
-            if (action.payload.source === null) delete drafts[action.payload.key];
-            else drafts[action.payload.key] = action.payload.source;
+            if (action.payload.rows === null) delete drafts[action.payload.key];
+            else drafts[action.payload.key] = action.payload.rows;
+        },
+        /** la nuova consegna sostituisce la precedente, anche se va peggio */
+        submitMdt(state, action: PayloadAction<{ id: string; code: string; ok: number; tot: number }>) {
+            const { id, ...result } = action.payload;
+            (state.mdtResults ??= {})[id] = { ...result, at: Date.now() };
         },
         setFlashKnown(state, action: PayloadAction<{ id: string; known: boolean }>) {
             if (action.payload.known) state.flashKnown[action.payload.id] = true;
@@ -96,6 +101,7 @@ const progressSlice = createSlice({
         },
         resetTraces(state) {
             state.traces = {};
+            state.mdtResults = {};
         },
         /** azzera tutto Esercitati: quiz delle tracce, quiz sui problemi, flashcard */
         resetExercises(state) {
@@ -109,7 +115,6 @@ const progressSlice = createSlice({
 export const {
     hydrate,
     answerTraceQuestion,
-    setTraceQ8Done,
     completeTrace,
     restartTrace,
     answerExamQuestion,
@@ -118,6 +123,7 @@ export const {
     resetProblemQuiz,
     setFlashKnown,
     saveMdtDraft,
+    submitMdt,
     resetTraces,
     resetExercises,
 } = progressSlice.actions;

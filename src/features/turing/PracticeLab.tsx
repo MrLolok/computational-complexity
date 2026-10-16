@@ -1,38 +1,37 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import type { MdtRow } from "@/store/progressSlice";
+
+import { useMemo, useState } from "react";
 
 import { MACHINE_BY, MACHINES } from "@/data/turing/machines";
 import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { saveMdtDraft } from "@/store/progressSlice";
-import { ORACLES, parseProgram, run } from "./machine";
+import { saveMdtDraft, submitMdt } from "@/store/progressSlice";
+import { ORACLES, run } from "./machine";
 import MachineRunner from "./MachineRunner";
+import TransitionTable, { compile, fit, rowsFrom } from "./TransitionTable";
 
-const SYMBOLS = ["▷", "⊔", "->", "b", "b̄", "σ", "R", "L", "S", "yes", "no", "h"];
-
-/** Scrivi la tua macchina, provala passo per passo e confrontala con i risultati attesi. */
-export default function PracticeLab({ id, draftKey }: { id?: string; draftKey: string }) {
+/** Compila la tabella della tua macchina, provala passo per passo e confrontala con i risultati attesi.
+    In una traccia (code) la verifica è la consegna: il risultato resta salvato per la macchina. */
+export default function PracticeLab({ id, draftKey, code }: { id?: string; draftKey: string; code?: string }) {
     const dispatch = useAppDispatch();
     const saved = useAppSelector((s) => s.progress.mdtDrafts?.[draftKey]);
+    const delivered = useAppSelector((s) => (id ? s.progress.mdtResults?.[id] : undefined));
     const [preset, setPreset] = useState(id ?? "");
     const m = preset ? MACHINE_BY[preset] : undefined;
-    const fallback = m?.skeleton ?? EMPTY;
-    const source = saved ?? fallback;
-    const area = useRef<HTMLTextAreaElement>(null);
-    const { program, errors } = useMemo(() => parseProgram(source), [source]);
+    const rows = useMemo(
+        () => (Array.isArray(saved) ? saved : rowsFrom(saved ?? m?.skeleton ?? EMPTY, m?.tapes)),
+        [saved, m],
+    );
+    const tapes = m?.tapes ?? rows[0]?.read.length ?? 1;
+    const { source, program, errors } = useMemo(() => compile(rows), [rows]);
     const [report, setReport] = useState<{ ok: number; tot: number; fails: string[] } | null>(null);
-    const set = (value: string | null) => {
+    const [compare, setCompare] = useState(false);
+    const solution = useMemo(() => (m ? rowsFrom(m.source, m.tapes) : []), [m]);
+    const set = (value: MdtRow[] | null) => {
         setReport(null);
-        dispatch(saveMdtDraft({ key: draftKey, source: value }));
-    };
-    const insert = (text: string) => {
-        const el = area.current;
-        if (!el) return;
-        const pad = /^[a-z>-]/i.test(text) ? ` ${text} ` : text;
-        el.setRangeText(pad, el.selectionStart, el.selectionEnd, "end");
-        set(el.value);
-        el.focus();
+        dispatch(saveMdtDraft({ key: draftKey, rows: value }));
     };
     const verify = () => {
         if (!m || !program) return;
@@ -56,54 +55,59 @@ export default function PracticeLab({ id, draftKey }: { id?: string; draftKey: s
             }
         }
         setReport({ ok, tot: tests.length, fails });
+        if (code) dispatch(submitMdt({ id: m.id, code, ok, tot: tests.length }));
     };
 
     return (
         <div className="flex min-w-0 flex-col gap-3">
             {!id && (
-                <label className="font-ui text-muted flex flex-col gap-1 text-sm">
-                    Scegli un esercizio
-                    <select
-                        className={ui.select}
-                        value={preset}
-                        onChange={(e) => {
-                            setPreset(e.target.value);
-                            setReport(null);
-                            set(e.target.value ? MACHINE_BY[e.target.value].skeleton : null);
-                        }}
-                    >
-                        <option value="">Programma libero</option>
-                        {MACHINES.map((x) => (
-                            <option key={x.id} value={x.id}>
-                                {x.title}
-                            </option>
-                        ))}
-                    </select>
-                </label>
+                <div className="flex flex-wrap gap-3">
+                    <label className="font-ui text-muted flex min-w-0 flex-1 basis-56 flex-col gap-1 text-sm">
+                        Scegli un esercizio
+                        <select
+                            className={ui.select}
+                            value={preset}
+                            onChange={(e) => {
+                                const next = MACHINE_BY[e.target.value];
+                                setPreset(e.target.value);
+                                set(next ? rowsFrom(next.skeleton, next.tapes) : null);
+                            }}
+                        >
+                            <option value="">Programma libero</option>
+                            {MACHINES.map((x) => (
+                                <option key={x.id} value={x.id}>
+                                    {x.title}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                    {!m && (
+                        <label className="font-ui text-muted flex flex-col gap-1 text-sm">
+                            Nastri
+                            <select
+                                className={ui.select}
+                                value={tapes}
+                                onChange={(e) => {
+                                    const k = Number(e.target.value);
+                                    set(
+                                        rows.map((r) => ({
+                                            ...r,
+                                            read: fit(r.read, k),
+                                            write: fit(r.write, k),
+                                            move: fit(r.move, k),
+                                        })),
+                                    );
+                                }}
+                            >
+                                {[1, 2, 3].map((k) => (
+                                    <option key={k}>{k}</option>
+                                ))}
+                            </select>
+                        </label>
+                    )}
+                </div>
             )}
-            <div className="flex flex-wrap gap-1.5" aria-label="Inserisci un simbolo">
-                {SYMBOLS.map((s) => (
-                    <button
-                        key={s}
-                        type="button"
-                        className="border-line-strong hover:border-accent hover:text-accent min-h-9 min-w-9 rounded-md border px-2 font-mono text-sm"
-                        onClick={() => insert(s)}
-                    >
-                        {s}
-                    </button>
-                ))}
-            </div>
-            <textarea
-                ref={area}
-                value={source}
-                onChange={(e) => set(e.target.value)}
-                spellCheck={false}
-                autoCapitalize="off"
-                autoCorrect="off"
-                rows={Math.min(18, Math.max(8, source.split("\n").length + 1))}
-                aria-label="Scrivi le transizioni della macchina"
-                className="border-line-strong bg-bg text-ink focus:border-accent w-full min-w-0 rounded-lg border p-3 font-mono text-base leading-relaxed outline-none"
-            />
+            <TransitionTable rows={rows} tapes={tapes} bad={new Set(errors.map((e) => e.line - 1))} onChange={set} />
             {errors.length > 0 && (
                 <ul className={`${ui.noteTrap} flex flex-col gap-1 text-sm`}>
                     {errors.slice(0, 5).map((e, i) => (
@@ -114,18 +118,34 @@ export default function PracticeLab({ id, draftKey }: { id?: string; draftKey: s
             <div className="flex flex-wrap gap-2">
                 {m && (
                     <button type="button" className={ui.btnPrimary} onClick={verify} disabled={!program}>
-                        Verifica i casi di prova
+                        {!code ? "Verifica i casi di prova" : delivered ? "Consegna di nuovo" : "Consegna"}
                     </button>
                 )}
                 <button type="button" className={ui.btn} onClick={() => set(null)}>
                     Riparti dal modello
                 </button>
                 {m && (
-                    <button type="button" className={ui.btn} onClick={() => set(m.source)}>
-                        Usa la soluzione
+                    <button
+                        type="button"
+                        className={ui.btn}
+                        aria-expanded={compare}
+                        onClick={() => setCompare((c) => !c)}
+                    >
+                        {compare ? "Nascondi la soluzione" : "Confronta con la soluzione"}
                     </button>
                 )}
+                {code && delivered && !report && (
+                    <span className={`${ui.hint} self-center text-sm`}>
+                        La nuova consegna sostituisce quella di prima.
+                    </span>
+                )}
             </div>
+            {m && compare && (
+                <div className="flex min-w-0 flex-col gap-2">
+                    <p className={ui.label}>La soluzione</p>
+                    <TransitionTable rows={solution} tapes={m.tapes} />
+                </div>
+            )}
             {report && (
                 <div className={report.ok === report.tot ? ui.noteOk : ui.note} aria-live="polite">
                     <p className="font-semibold">
@@ -156,8 +176,4 @@ export default function PracticeLab({ id, draftKey }: { id?: string; draftKey: s
     );
 }
 
-const EMPTY = `# Una riga: stato letto -> nuovo_stato scritto mossa   (mosse: R, L, S)
-# Con due nastri: stato letto1 letto2 -> nuovo_stato scritto1 mossa1 scritto2 mossa2
-# Jolly: b = un bit qualsiasi, b̄ = il bit opposto, σ = un simbolo qualsiasi
-s ▷ -> s ▷ R
-`;
+const EMPTY = "s ▷ -> s ▷ R";

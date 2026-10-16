@@ -1,6 +1,6 @@
 "use client";
 
-import type { TraceProgress } from "@/store/progressSlice";
+import type { MdtResult, TraceProgress } from "@/store/progressSlice";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -18,6 +18,8 @@ export type TraceSummary = {
     total: number;
     repeated: number;
     q8: string | null;
+    /** id della macchina della domanda 8 */
+    machine: string | null;
     /** testo semplice delle domande, per la ricerca */
     search: string;
 };
@@ -33,12 +35,13 @@ const FILTERS: [Status | "all", string][] = [
 function statusOf(p: TraceProgress | undefined): Status {
     if (!p) return "todo";
     if (p.completedAt) return "done";
-    return Object.keys(p.answers).length || p.q8Done ? "doing" : p.best ? "done" : "todo";
+    return Object.keys(p.answers).length ? "doing" : p.best ? "done" : "todo";
 }
 
 export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
     const dispatch = useAppDispatch();
     const progress = useAppSelector((s) => s.progress.traces);
+    const mdt = useAppSelector((s) => s.progress.mdtResults);
     const [q, setQ] = useState("");
     const [filter, setFilter] = useState<Status | "all">("all");
 
@@ -54,8 +57,12 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
             answered += a.length;
             ok += a.filter((x) => x.correct).length;
         }
-        return { done, answered, ok };
-    }, [traces, progress]);
+        /* una MdT che compare in più tracce conta una volta */
+        const machines = [...new Set(traces.flatMap((t) => (t.machine ? [t.machine] : [])))];
+        const delivered = machines.flatMap((id) => (mdt?.[id] ? [mdt[id]] : []));
+        const solved = delivered.filter((r) => r.ok === r.tot).length;
+        return { done, answered, ok, machines: machines.length, delivered: delivered.length, solved };
+    }, [traces, progress, mdt]);
 
     const shown = useMemo(() => {
         const k = searchKey(q.trim());
@@ -91,10 +98,19 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
                     </b>{" "}
                     giuste
                 </span>
+                <span>
+                    <b className="font-head text-ink text-2xl">{stats.delivered}</b> di {stats.machines} MdT consegnate
+                </span>
+                <span>
+                    <b className="font-head text-ink text-2xl">
+                        {stats.delivered ? Math.round((100 * stats.solved) / stats.delivered) : 0}%
+                    </b>{" "}
+                    risolte
+                </span>
                 <button
                     type="button"
                     className={`${ui.linkBtn} ml-auto self-center disabled:cursor-default disabled:opacity-35`}
-                    disabled={!Object.keys(progress).length}
+                    disabled={!Object.keys(progress).length && !Object.keys(mdt ?? {}).length}
                     onClick={() =>
                         confirm("Azzerare risposte e risultati di tutte le tracce?") && dispatch(resetTraces())
                     }
@@ -143,7 +159,7 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
                     <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {g.items.map((t) => (
                             <li key={t.code} className="min-w-0">
-                                <TraceCard t={t} p={progress[t.code]} />
+                                <TraceCard t={t} p={progress[t.code]} mdt={t.machine ? mdt?.[t.machine] : undefined} />
                             </li>
                         ))}
                     </ul>
@@ -153,7 +169,7 @@ export default function TraceLibrary({ traces }: { traces: TraceSummary[] }) {
     );
 }
 
-function TraceCard({ t, p }: { t: TraceSummary; p: TraceProgress | undefined }) {
+function TraceCard({ t, p, mdt }: { t: TraceSummary; p: TraceProgress | undefined; mdt?: MdtResult }) {
     const st = statusOf(p);
     const answered = p ? Object.keys(p.answers).length : 0;
     return (
@@ -178,6 +194,15 @@ function TraceCard({ t, p }: { t: TraceSummary; p: TraceProgress | undefined }) 
             <span className="font-ui text-muted text-xs">
                 {t.total} domande{t.repeated ? ` · ${t.repeated} ripetute ♻` : ""}
                 {t.q8 ? " · MdT" : ""}
+                {mdt &&
+                    (mdt.ok === mdt.tot ? (
+                        <span className="text-ok"> ✓</span>
+                    ) : (
+                        <span className="text-open">
+                            {" "}
+                            {mdt.ok}/{mdt.tot}
+                        </span>
+                    ))}
             </span>
             {t.q8 && <span className="text-muted line-clamp-2 text-sm">Domanda 8: {t.q8}</span>}
         </Link>
