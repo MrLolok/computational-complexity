@@ -9,7 +9,7 @@ import MathHtml from "@/components/MathHtml";
 import RichHtml from "@/components/RichHtml";
 import Tex from "@/components/Tex";
 import { ALIAS_TEX, CLASS_CONTENT, CLASS_PROBLEMS, TEX } from "@/data/classes/classes";
-import { EXAM_QUESTIONS } from "@/data/classes/examQuestions";
+import { EXAM_QUESTIONS, refCodes } from "@/data/classes/examQuestions";
 import { TOWER_OF } from "@/data/hierarchy/tower";
 import { THEOREMS } from "@/data/theorems/theorems";
 import ExactTsp from "@/features/classes/dp/ExactTsp";
@@ -31,11 +31,11 @@ function QA({ t }: { t: ExamQuestion }) {
     return (
         <details className="border-line border-b py-2">
             <summary className="marker:text-muted cursor-pointer text-base">
-                <RichHtml as="span" html={t.q} />
+                <RichHtml as="span" html={t.q} /> <span className="text-muted text-sm">({refCodes(t)})</span>
             </summary>
             <div className="mt-2 flex flex-col gap-1 text-base">
                 <RichHtml html={t.a} />
-                <RichHtml html={t.e} />
+                <RichHtml className="flex flex-col gap-2 [&_ol]:list-decimal [&_ol]:pl-5" html={t.e} />
             </div>
         </details>
     );
@@ -233,8 +233,8 @@ export default function ClassPanel({ id }: { id: ClassId }) {
                 <div className={ui.sec}>
                     <h3 className={ui.h3}>Dalle tracce d&apos;esame</h3>
                     <div>
-                        {tr.slice(0, 6).map((t, i) => (
-                            <QA key={i} t={t} />
+                        {tr.slice(0, 6).map((t) => (
+                            <QA key={t.id} t={t} />
                         ))}
                     </div>
                     {tr.length > 6 && (

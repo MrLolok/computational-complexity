@@ -22,8 +22,8 @@ export type TraceProgress = {
 
 export type ProgressState = {
     traces: Record<string, TraceProgress>;
-    /** domande delle tracce nel quiz per classi, per indice nell'elenco EXAM_QUESTIONS */
-    examQuiz: Record<number, AnswerRecord>;
+    /** domande delle tracce nel quiz per classi, per id della domanda in EXAM_QUESTIONS ("F04-2") */
+    examQuiz: Record<string, AnswerRecord>;
     problemQuiz: { ok: number; tot: number };
     /** flashcard dei problemi segnate come sapute */
     flashKnown: Record<string, true>;
@@ -45,7 +45,10 @@ const progressSlice = createSlice({
     initialState: initialProgress,
     reducers: {
         hydrate(_state, action: PayloadAction<ProgressState>) {
-            return { ...initialProgress, ...action.payload };
+            const p = { ...initialProgress, ...action.payload };
+            /* le risposte salvate per posizione nel vecchio elenco di 56 domande non corrispondono più a nulla */
+            const examQuiz = Object.fromEntries(Object.entries(p.examQuiz).filter(([id]) => !/^\d+$/.test(id)));
+            return { ...p, examQuiz };
         },
         answerTraceQuestion(
             state,
@@ -71,11 +74,11 @@ const progressSlice = createSlice({
             t.completedAt = undefined;
             t.startedAt = Date.now();
         },
-        answerExamQuestion(state, action: PayloadAction<{ index: number; choice: Choice; correct: boolean }>) {
-            const { index, choice, correct } = action.payload;
-            state.examQuiz[index] = { choice, correct, at: Date.now() };
+        answerExamQuestion(state, action: PayloadAction<{ id: string; choice: Choice; correct: boolean }>) {
+            const { id, choice, correct } = action.payload;
+            state.examQuiz[id] = { choice, correct, at: Date.now() };
         },
-        resetExamQuiz(state, action: PayloadAction<number[]>) {
+        resetExamQuiz(state, action: PayloadAction<string[]>) {
             action.payload.forEach((i) => delete state.examQuiz[i]);
         },
         recordProblemQuiz(state, action: PayloadAction<{ correct: boolean }>) {

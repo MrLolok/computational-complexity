@@ -15,7 +15,8 @@ import { ui } from "@/lib/tokens";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { answerExamQuestion, resetExamQuiz } from "@/store/progressSlice";
 
-const ALL = EXAM_QUESTIONS.map((q, i) => ({ q, i }));
+const ALL = EXAM_QUESTIONS.map((q) => ({ q, i: q.id }));
+const REPEATED = EXAM_QUESTIONS.filter((q) => q.refs.length > 1).length;
 const FILTERS = IDS.filter((id) => EXAM_QUESTIONS.some((t) => t.c.includes(id)));
 
 const optBase =
@@ -39,7 +40,7 @@ export default function ExamQuiz() {
 
     const choose = (choice: Choice) => {
         if (!cur || answers[cur.i]) return;
-        dispatch(answerExamQuestion({ index: cur.i, choice, correct: choice === toChoice(cur.q.a) }));
+        dispatch(answerExamQuestion({ id: cur.i, choice, correct: choice === toChoice(cur.q.a) }));
     };
     const next = () => {
         if (last) {
@@ -57,7 +58,9 @@ export default function ExamQuiz() {
                 <div className="flex flex-col gap-1">
                     <h2 className={ui.h2}>Le domande vere delle tracce</h2>
                     <p className={ui.hint}>
-                        Risposta e spiegazione sono già verificate. Scegli SÌ, NO o altro, poi leggi il perché.
+                        Tutte le domande SÌ / NO / altro delle tracce, ognuna una volta sola: {REPEATED} sono uscite in
+                        più tracce, anche con una costante, un indice o la negazione cambiati, e qui trovi la prima
+                        versione. Scegli SÌ, NO o altro, poi leggi il perché.
                     </p>
                     <Link href="/tracce" className={ui.linkBtn}>
                         Tutte le tracce d&apos;esame, una per una
@@ -92,6 +95,17 @@ export default function ExamQuiz() {
                             Domanda {qi + 1} di {list.length} · giuste {ok} su {answered.length}
                         </div>
                         <RichHtml className="font-head text-2xl leading-snug font-medium" html={cur.q.q} />
+                        <p className={ui.hint}>
+                            {cur.q.refs.length > 1 ? "Uscita nelle tracce " : "Uscita nella traccia "}
+                            {cur.q.refs.map((r, j) => (
+                                <span key={`${r.code}-${r.n}`}>
+                                    {j > 0 && " · "}
+                                    <Link className="text-accent underline" href={`/tracce/${r.code}#d${r.n}`}>
+                                        {r.code}, domanda {r.label ?? r.n}
+                                    </Link>
+                                </span>
+                            ))}
+                        </p>
                         <div className="flex flex-wrap gap-2">
                             {CHOICES.map(([kk, l]) => {
                                 const cls = !rec
@@ -120,7 +134,10 @@ export default function ExamQuiz() {
                                     className="bg-accent-soft/50 text-accent w-fit max-w-full rounded-lg px-3 py-2 text-sm font-medium"
                                     html={`<span>Risposta:</span> ${cur.q.a}`}
                                 />
-                                <RichHtml as="p" className="max-w-prose leading-relaxed" html={cur.q.e} />
+                                <RichHtml
+                                    className="flex max-w-prose flex-col gap-2 leading-relaxed [&_li]:my-0.5 [&_ol]:list-decimal [&_ol]:pl-5"
+                                    html={cur.q.e}
+                                />
                                 {cur.q.c.length > 0 && (
                                     <p className={`${ui.hint} mt-2`}>
                                         Classi coinvolte:{" "}
