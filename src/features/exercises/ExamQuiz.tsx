@@ -57,8 +57,7 @@ export default function ExamQuiz() {
                 <div className="flex flex-col gap-1">
                     <h2 className={ui.h2}>Le domande vere delle tracce</h2>
                     <p className={ui.hint}>
-                        Risposta e spiegazione sono già verificate negli appunti. Scegli SÌ, NO o altro, poi leggi il
-                        perché.
+                        Risposta e spiegazione sono già verificate. Scegli SÌ, NO o altro, poi leggi il perché.
                     </p>
                     <Link href="/tracce" className={ui.linkBtn}>
                         Tutte le tracce d&apos;esame, una per una

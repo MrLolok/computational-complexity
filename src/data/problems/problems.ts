@@ -21,7 +21,7 @@ export type Problem = {
     ext_t?: string;
     fix?: string;
     traps: Trap[];
-    src: ["d" | "s" | "a" | "x", string][];
+    src: ["d" | "s" | "x", string][];
 };
 /** gradini della scala: n nome (HTML con formule $…$), t nome Unicode (per le <option>), d descrizione */
 export const LADDER: Record<LadderId, { n: string; t?: string; d: string }> = {
@@ -65,7 +65,7 @@ export const LADDER: Record<LadderId, { n: string; t?: string; d: string }> = {
     },
     NEXP: {
         n: "NEXP",
-        d: "Tempo esponenziale nondeterministico. $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ ✱ (gerarchia nondeterministica, dagli appunti).",
+        d: "Tempo esponenziale nondeterministico. $\\mathrm{NP} \\subsetneq \\mathrm{NEXP}$ ✱ (gerarchia nondeterministica, che nelle fonti è data solo tra polinomi).",
     },
     RE: {
         t: "RE ∖ R",
@@ -121,7 +121,7 @@ export const PROBLEMS: Problem[] = [
         comp: "NL-completo: decidere un qualsiasi problema di NL equivale a cercare un cammino nel grafo delle configurazioni della macchina, quindi ogni problema di NL si riduce a REACHABILITY in spazio logaritmico.",
         compl: "Il complemento chiede se $y$ non è raggiungibile da $x$. Appartiene a $\\mathrm{coNL} = \\mathrm{NL}$.",
         complLab: "NL-completo",
-        ext_t: "La NL-completezza non compare né nella dispensa né nelle slide: viene dal libro di riferimento del corso (Papadimitriou) ed è riportata negli appunti (Lezione 8 §9). Dalle fonti risulta solo $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$ e $\\in \\mathrm{SPACE}(\\log^2 n)$.",
+        ext_t: "La NL-completezza non compare né nella dispensa né nelle slide: viene dal libro di riferimento del corso (Papadimitriou). Dalle fonti risulta solo $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$ e $\\in \\mathrm{SPACE}(\\log^2 n)$.",
         traps: [
             {
                 n: "Il teorema di Savitch, $\\mathrm{NSPACE}(f) \\subseteq \\mathrm{SPACE}(f^2)$, si dimostra proprio risolvendo REACHABILITY sul grafo delle configurazioni. È la domanda di E26#1 e FE23#6 ($\\mathrm{NSPACE}(\\log n)$ contro $\\mathrm{SPACE}((\\log n)^2)$).",
@@ -151,7 +151,7 @@ export const PROBLEMS: Problem[] = [
         comp: 'NL-completo, come REACHABILITY. Per questo, anche se sta in P, non lo si usa come problema "più difficile di P".',
         compl: "Il complemento (2-CNF insoddisfacibili) sta in $\\mathrm{coNL} = \\mathrm{NL}$, quindi è anch'esso NL-completo.",
         complLab: "NL-completo",
-        ext_t: 'Dispensa e slide dicono solo "2-SAT is in P" (cap. 12). La NL-completezza viene dal libro di riferimento ed è negli appunti (Lezione 8 §3 e §9).',
+        ext_t: 'Dispensa e slide dicono solo "2-SAT is in P" (cap. 12). La NL-completezza viene dal libro di riferimento.',
         traps: [
             {
                 c: "F01#7",
@@ -184,7 +184,6 @@ export const PROBLEMS: Problem[] = [
         ],
         src: [
             ["d", 'Cap. 12: "2-SAT is in P"'],
-            ["a", "Lezione 8 §3 e §9"],
             ["x", "NL-completezza: libro di riferimento"],
         ],
     },
@@ -199,7 +198,7 @@ export const PROBLEMS: Problem[] = [
         brief: "Colorato un nodo, i vicini sono obbligati: una visita trova il conflitto (ciclo dispari) in tempo polinomiale.",
         why: "Una visita propaga due colori alternati ai vertici adiacenti e incontra un conflitto esattamente quando il grafo ha un ciclo dispari. Il grafo è quindi 2-colorabile se e solo se è bipartito; questa proprietà è decidibile anche in spazio logaritmico.",
         comp: "Non è noto completo per nessuna classe del corso.",
-        ext_t: '"Anzi in L" non sta nelle fonti del corso. È un risultato della letteratura (la raggiungibilità su grafi non orientati sta in L, Reingold 2005), riportato negli appunti (Lezione 8 §9). All\'esame basta $\\mathrm{2\\text{-}COL} \\in \\mathrm{P}$.',
+        ext_t: '"Anzi in L" non sta nelle fonti del corso. È un risultato della letteratura (la raggiungibilità su grafi non orientati sta in L, Reingold 2005). All\'esame basta $\\mathrm{2\\text{-}COL} \\in \\mathrm{P}$.',
         traps: [
             {
                 c: "MA23#2",
@@ -217,7 +216,6 @@ export const PROBLEMS: Problem[] = [
         ],
         src: [
             ["d", 'Cap. 13, prova di 3-COLORING: "2-COLORING is in P"'],
-            ["a", "Lezione 8 §4 e §9"],
             ["x", "$\\mathrm{2\\text{-}COL} \\in \\mathrm{L}$: letteratura"],
         ],
     },
@@ -276,7 +274,7 @@ export const PROBLEMS: Problem[] = [
         brief: "Come INTEGER PROGRAMMING ma con soluzioni reali: si risolve in tempo polinomiale.",
         why: "<p>Si cercano numeri che rispettino tutti i vincoli insieme. Con $x \\ge 1$, $y \\ge 0$ e $x + y \\le 3$, la coppia $x = 2$, $y = 1$ funziona, e lo si verifica una disequazione alla volta.</p><p>Ogni vincolo delimita una regione e una soluzione è un punto nella loro intersezione. Sono ammessi anche valori frazionari: $x = 1{,}5$ e $y = 0{,}5$ è un'altra soluzione. In INTEGER PROGRAMMING, invece, le variabili devono essere intere.</p><p>Con coefficienti razionali codificati in binario, si decide in tempo polinomiale nella lunghezza dell'input se esiste una soluzione. Il metodo dell'ellissoide, per esempio, garantisce questo limite; il simplesso nel caso peggiore può richiedere tempo esponenziale.</p>",
         comp: "P-completo.",
-        ext_t: 'La P-completezza non sta nelle fonti del corso, che dicono solo "in P". È un risultato della letteratura (Dobkin, Lipton, Reiss, 1979) riportato negli appunti (Lezione 8 §9).',
+        ext_t: 'La P-completezza non sta nelle fonti del corso, che dicono solo "in P". È un risultato della letteratura (Dobkin, Lipton, Reiss, 1979).',
         traps: [
             {
                 n: "Non confonderlo con INTEGER PROGRAMMING: chiedendo soluzioni intere diventa NP-completo.",
@@ -341,7 +339,7 @@ export const PROBLEMS: Problem[] = [
         brief: "Si parte da tutto falso e si rende vero solo ciò che è obbligatorio: tempo lineare.",
         why: "Si parte con tutti gli atomi falsi e si rendono veri solo quelli imposti dai fatti e dalle implicazioni, fino a un punto fisso. Se a quel punto una clausola negativa è violata, la formula è insoddisfacibile; altrimenti l'assegnamento ottenuto la soddisfa. La propagazione si implementa in tempo lineare.",
         comp: "P-completo.",
-        ext_t: "La P-completezza non sta nelle fonti del corso: viene dal libro di riferimento ed è negli appunti (Lezione 8 §9).",
+        ext_t: "La P-completezza non sta nelle fonti del corso: viene dal libro di riferimento.",
         traps: [
             {
                 n: "Come 2-SAT, è una restrizione di SAT che diventa facile: la difficoltà dipende dalla forma delle clausole.",
@@ -864,7 +862,7 @@ export const PROBLEMS: Problem[] = [
         src: [
             ["s", 'Slide Lezione 9: analisi di EXACT TSP, "altri problemi DP-completi"'],
             ["d", "Cap. 15: EXACT TSP e TSP COST"],
-            ["a", "Lezione 9: riduzione da HAMILTON CYCLE"],
+            ["s", "Slide Lezione 9: EXACT TSP NP-hard con $B = n$ e distanze 1 o 2"],
         ],
     },
     {
@@ -1200,7 +1198,6 @@ export const PROBLEMS: Problem[] = [
         src: [
             ["d", "Cap. 13.6: premessa degli esercizi"],
             ["d", 'Cap. 22: "Schönfinkel-Bernays SAT is NEXP-complete"'],
-            ["a", "Lezione 10 §6"],
         ],
     },
     {
@@ -1219,10 +1216,7 @@ export const PROBLEMS: Problem[] = [
                 n: 'Il prefisso "succinct" fa salire di un esponenziale: CIRCUIT SAT è NP-completo, SUCCINCT CIRCUIT SAT è NEXP-completo.',
             },
         ],
-        src: [
-            ["d", 'Cap. 22: "Succinct Circuit sat is NEXP-complete"'],
-            ["a", "Lezione 10 §6"],
-        ],
+        src: [["d", 'Cap. 22: "Succinct Circuit sat is NEXP-complete"']],
     },
     {
         id: "FOV",
@@ -1246,7 +1240,7 @@ export const PROBLEMS: Problem[] = [
         ],
         src: [
             ["d", 'Cap. 22: "1st-order validity $\\in \\mathrm{RE} \\setminus \\mathrm{R}$"'],
-            ["a", "Lezione 10 §7"],
+            ["x", "Teorema di completezza di Gödel e teorema di Church-Turing: libro di riferimento"],
         ],
     },
     {
@@ -1269,10 +1263,7 @@ export const PROBLEMS: Problem[] = [
                 e: "È il complemento della validità, che sta in RE.",
             },
         ],
-        src: [
-            ["d", 'Cap. 22: "1st-order sat $\\in \\mathrm{coRE} \\setminus \\mathrm{R}$"'],
-            ["a", "Lezione 10 §7"],
-        ],
+        src: [["d", 'Cap. 22: "1st-order sat $\\in \\mathrm{coRE} \\setminus \\mathrm{R}$"']],
     },
 ];
 export const PROBLEM_BY: Record<string, Problem> = Object.fromEntries(PROBLEMS.map((x) => [x.id, x]));
@@ -1374,14 +1365,10 @@ export const SOURCE_CHECKS: [string, "ok" | "part", string][] = [
         "ok",
         "Slide Lezione 9, dispensa cap. 19 e 22. Un problema completo per PSPACE è hard per ogni classe contenuta in PSPACE.",
     ],
-    [
-        "SCHÖNFINKEL-BERNAYS SAT, SUCCINCT CIRCUIT SAT: NEXP-completi",
-        "ok",
-        "Dispensa cap. 13.6 e cap. 22; appunti Lezione 10 §6.",
-    ],
+    ["SCHÖNFINKEL-BERNAYS SAT, SUCCINCT CIRCUIT SAT: NEXP-completi", "ok", "Dispensa cap. 13.6 e cap. 22."],
     [
         "Validità del primo ordine: $\\mathrm{RE} \\setminus \\mathrm{R}$",
         "ok",
-        "Dispensa cap. 22 (anche la soddisfacibilità: $\\mathrm{coRE} \\setminus \\mathrm{R}$); appunti Lezione 10 §7.",
+        "Dispensa cap. 22 (anche la soddisfacibilità: $\\mathrm{coRE} \\setminus \\mathrm{R}$).",
     ],
 ];

@@ -15,13 +15,13 @@ import { ui } from "@/lib/tokens";
 
 export const metadata: Metadata = { title: "Algoritmi quantistici" };
 
-/* Lezione 6, §9–§11: speedup quantistici, crittografia e conclusioni. Qubit, QTM e BQP stanno nella scheda Quantistiche di /classi. */
+/* Slide della Lez. 6, ultime sezioni: speedup quantistici, crittografia e conclusioni. Qubit, QTM e BQP stanno nella scheda Quantistiche di /classi. */
 export default function Page() {
     const [speedup, crypto, end] = lessonGroups("speedup", "crittografia", "conclusioni");
     return (
         <section className="flex flex-col gap-7">
             <header>
-                <p className={`${ui.eyebrow} mb-2`}>Lezione 6 · calcolo quantistico</p>
+                <p className={`${ui.eyebrow} mb-2`}>Calcolo quantistico</p>
                 <h1 className={ui.h2}>Algoritmi quantistici: che cosa diventa facile</h1>
                 <div className={`${ui.lede} mt-3`}>
                     <Markdown>{LESSON.questions[3].a}</Markdown>

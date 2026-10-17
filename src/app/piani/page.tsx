@@ -148,7 +148,7 @@ export default function Page() {
                     <Reductions />
                 </details>
             </section>
-            <p className="text-muted text-xs">Fonti: dispensa cap. 16–17; slide Lez. 9; appunti Lez. 9 e 11.</p>
+            <p className="text-muted text-xs">Fonti: dispensa cap. 16–17; slide Lez. 9.</p>
         </section>
     );
 }

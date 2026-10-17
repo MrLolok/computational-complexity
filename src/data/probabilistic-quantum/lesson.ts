@@ -1,17 +1,17 @@
-/* Lezione 6 · Algoritmi probabilistici e calcolo quantistico, esportata (in sola lettura) dalla pagina Notion degli appunti.
-   Spiegazione semplificata (parte C), domande guida, esercizi e collegamenti con l'esame. Testi in Markdown con formule $…$. */
+/* Algoritmi probabilistici e calcolo quantistico (slide Lez. 6): spiegazione semplificata, domande guida, esercizi
+   e collegamenti con l'esame. Testi in Markdown con formule $…$. */
 import raw from "./lesson.json";
 
 export type LessonTopic = {
     id: string;
     title: string;
-    /** "· non chiesto all'esame" negli appunti */
+    /** argomento che le tracce non chiedono */
     notAsked: boolean;
-    /** paragrafo della parte B degli appunti, es. "§7" */
+    /** titolo della slide che tratta l'argomento, es. "La classe BQP" */
     ref: string;
     idea: string;
     esempio: string;
-    /** manca nei concetti che negli appunti non hanno la versione formale */
+    /** manca nei concetti senza una versione formale */
     formale?: string;
 };
 export type LessonGroup = { id: string; title: string; topics: LessonTopic[] };

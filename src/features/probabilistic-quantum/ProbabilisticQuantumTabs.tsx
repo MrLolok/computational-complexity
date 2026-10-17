@@ -7,7 +7,7 @@ import { ui } from "@/lib/tokens";
 import { LessonExam, LessonExercises, LessonQuestions, LessonSource, LessonTopics } from "./LessonSections";
 import ProbabilisticQuantumMap from "./ProbabilisticQuantumMap";
 
-/* Le schede Probabilistiche e Quantistiche di /classi seguono la Lezione 6 degli appunti; gli algoritmi quantistici stanno in /quantistico. */
+/* Le schede Probabilistiche e Quantistiche di /classi seguono le slide della Lez. 6; gli algoritmi quantistici stanno in /quantistico. */
 export const RANDOM_GROUPS = ["probabilistici", "pp", "bpp"];
 export const QUANTUM_GROUPS = ["quantistico", "bqp"];
 /** #ancora di ogni spiegazione → indice della scheda che la contiene */

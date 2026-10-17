@@ -1,5 +1,5 @@
 /* Domanda 8 delle tracce: programmare una macchina di Turing.
-   Testi delle soluzioni (dagli appunti, senza rimandi alle lezioni) e macchina usata da ogni traccia. */
+   Testi delle soluzioni (senza rimandi alle lezioni) e macchina usata da ogni traccia. */
 import raw from "./solutions.json";
 
 export type MethodSection = { id: string; title: string; body: string };

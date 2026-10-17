@@ -22,13 +22,13 @@ export default function SourcesView() {
                     <p>
                         Dispensa <i>Computational Complexity</i> (M. Mignogna, 2025): cap. 1 (R, RE), 2.6 (L), 5–11
                         (classi, gerarchie, Savitch), 12–13 (NP-completezza), 14 (coNP), 15 (DP), 16 (oracoli), 17 (PH),
-                        19 (giochi), 21–22 (NEXP, riepilogo). Slide di P. A. Bonatti, Lezioni 1–9. Appunti delle Lezioni
-                        3–11 su Notion e pagine delle tracce risolte.
+                        19 (giochi), 20 (crittografia e function problems), 21–22 (NEXP, riepilogo). Slide di P. A.
+                        Bonatti delle Lezioni 1–6 e 9, le sole disponibili: il resto si cita dalla dispensa. Le tracce
+                        d&apos;esame danno solo le domande: le risposte si motivano con dispensa e slide.
                     </p>
                     <p className="flex flex-wrap items-center gap-2">
                         <SourceBadge kind="d">Dispensa</SourceBadge>
                         <SourceBadge kind="s">Slide</SourceBadge>
-                        <SourceBadge kind="a">Appunti</SourceBadge>
                         <SourceBadge kind="x">Fuori dalle fonti</SourceBadge> sono le etichette usate nelle schede dei
                         problemi.
                     </p>
@@ -58,23 +58,35 @@ export default function SourcesView() {
                             per lo spazio nondeterministico la chiusura per complemento si dimostra.
                         </li>
                         <li>
-                            <span className={ui.pillExt}>✱ solo appunti</span> NL-completezza di REACHABILITY e 2-SAT,
-                            P-completezza di CIRCUIT VALUE, HORNSAT e LINEAR PROGRAMMING, 2-COL in L, il nome AKS: sono
-                            negli appunti o nella letteratura, non in dispensa o nelle slide disponibili.
+                            <span className={ui.pillExt}>esterno</span>{" "}
+                            <Tex>{String.raw`\mathrm{R} = \mathrm{RE} \cap \mathrm{coRE}`}</Tex>, il teorema di
+                            completezza di Gödel e il teorema di Church-Turing per la validità del primo ordine, il
+                            prefisso <Tex>{String.raw`\exists\ldots\exists\forall\ldots\forall`}</Tex> del frammento di
+                            Schönfinkel-Bernays e la tecnica che spezza le clausole lunghe nella riduzione da SAT a
+                            3-SAT: sono spiegazioni aggiunte, perché la dispensa dà solo i risultati (cap. 1.5, 12, 13.6
+                            e 22).
                         </li>
                         <li>
-                            <span className={ui.pillExt}>✱ solo appunti</span>{" "}
+                            <span className={ui.pillExt}>✱ fuori dalle fonti</span> NL-completezza di REACHABILITY e
+                            2-SAT, P-completezza di CIRCUIT VALUE, HORNSAT e LINEAR PROGRAMMING, 2-COL in L, il nome
+                            AKS: vengono dal libro di riferimento o dalla letteratura, non dalla dispensa né dalle
+                            slide.
+                        </li>
+                        <li>
+                            <span className={ui.pillExt}>✱ fuori dalle fonti</span>{" "}
                             <Tex>{String.raw`\mathrm{NP} \subsetneq \mathrm{NEXP}`}</Tex>: dispensa (cap. 8) e slide
                             danno la gerarchia di tempo nondeterministico solo tra polinomi,{" "}
                             <Tex>{String.raw`\mathrm{NTIME}(n^c) \subsetneq \mathrm{NTIME}(n^d)`}</Tex>. La separazione{" "}
-                            <Tex>{String.raw`\mathrm{NP} \subsetneq \mathrm{NEXP}`}</Tex>, usata nelle risposte NO,
-                            viene dagli appunti (Lez. 5 §7, dal Papadimitriou).
+                            <Tex>{String.raw`\mathrm{NP} \subsetneq \mathrm{NEXP}`}</Tex>, usata nelle risposte NO, non
+                            è né nella dispensa né nelle slide.
                         </li>
                         <li>
                             <span className={ui.pillOk}>ricavata</span>{" "}
                             <Tex>{String.raw`\mathrm{NEXP} \subsetneq \mathrm{R}`}</Tex> e{" "}
                             <Tex>{String.raw`\mathrm{RE} \neq \mathrm{coRE}`}</Tex> non sono scritte così nelle fonti:
-                            seguono da risultati del corso (Lez. 10 §4 e §7), con il ragionamento mostrato nella scheda.
+                            la prima segue dalla dispensa (cap. 1.5, 7, 10 e 11), la seconda dalla validità del primo
+                            ordine (cap. 22) e da <Tex>{String.raw`\mathrm{R} = \mathrm{RE} \cap \mathrm{coRE}`}</Tex>.
+                            Il ragionamento è nelle schede delle classi R e RE.
                         </li>
                     </ul>
                 </details>
@@ -96,8 +108,8 @@ export default function SourcesView() {
             <details className={`${prose} border-line mt-4 max-w-none rounded-xl border p-4 sm:p-5`}>
                 <summary className="cursor-pointer font-semibold">Verifica della tabella dei problemi</summary>
                 <p className={ui.hint}>
-                    Ogni riga della tabella di partenza della mappa dei problemi, controllata su dispensa, slide delle
-                    Lezioni 1–9 e pagine delle tracce risolte.
+                    Ogni riga della tabella di partenza della mappa dei problemi, controllata su dispensa e slide
+                    (Lezioni 1–6 e 9).
                 </p>
                 <div className="border-line overflow-x-auto border-t">
                     <table className="w-full min-w-160 border-collapse text-base">

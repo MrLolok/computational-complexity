@@ -154,7 +154,7 @@ export default function QbfEval() {
             <p className={ui.hint}>
                 Prefisso con {k} blocc{k === 1 ? "o" : "hi"}, il primo <Tex>{isS ? "\\exists" : "\\forall"}</Tex>: è
                 un&apos;istanza di <Tex>{qsat(k, !isS)}</Tex>, che sta in <Tex>{isS ? sigmaP(k) : piP(k)}</Tex>.{" "}
-                <span className="text-sm">Formula da: {F.src}.</span>
+                {F.src && <span className="text-sm">Formula da: {F.src}.</span>}
             </p>
         </>
     );

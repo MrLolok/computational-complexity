@@ -1,5 +1,6 @@
 /* QBF da valutare con l'albero nella scheda "Piani di PH". */
 export type Quant = "∃" | "∀";
+/** src: dove sta la formula nelle slide; vuoto per gli esempi costruiti per l'esercizio */
 export type Qbf = { f: string; q: Quant[]; v: string[]; ev: (a: boolean[]) => boolean; src: string };
 /** QBF da valutare con l'albero (∃ = OR, ∀ = AND) */
 export const QBF: Qbf[] = [
@@ -8,7 +9,7 @@ export const QBF: Qbf[] = [
         q: ["∃", "∃"],
         v: ["p", "q"],
         ev: (a) => (a[0] || a[1]) && !a[0],
-        src: "appunti Lez. 9 §3",
+        src: "",
     },
     {
         f: "$\\forall p\\ \\forall q.\\ p \\lor q$",
@@ -22,7 +23,7 @@ export const QBF: Qbf[] = [
         q: ["∃", "∀"],
         v: ["p", "q"],
         ev: (a) => a[0] || a[1],
-        src: "appunti Lez. 9 §3",
+        src: "",
     },
     {
         f: "$\\forall p\\ \\exists q.\\ \\neg p \\lor q$",
@@ -43,14 +44,14 @@ export const QBF: Qbf[] = [
         q: ["∃", "∀", "∃"],
         v: ["p", "q", "r"],
         ev: (a) => a[0] && (a[1] || a[2]) && (!a[1] || !a[2]),
-        src: "appunti Lez. 9 §3",
+        src: "",
     },
     {
         f: "$\\forall p\\ \\exists q\\ \\forall r.\\ (p \\lor q \\lor r) \\land (\\neg p \\lor \\neg q \\lor r)$",
         q: ["∀", "∃", "∀"],
         v: ["p", "q", "r"],
         ev: (a) => (a[0] || a[1] || a[2]) && (!a[0] || !a[1] || a[2]),
-        src: "appunti Lez. 9 §3",
+        src: "",
     },
 ];
 export const QBF_DEFAULT = 2;

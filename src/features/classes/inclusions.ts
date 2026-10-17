@@ -121,7 +121,7 @@ export function closure(extra: [ClassId, ClassId, string][] = []): Closure {
                         "R",
                         `${classInline(x)} sta sia in RE sia in coRE, e $\\mathrm{R} = \\mathrm{RE} \\cap \\mathrm{coRE}$`,
                         "der",
-                        "Lez. 10 §7",
+                        "✱ $\\mathrm{R} = \\mathrm{RE} \\cap \\mathrm{coRE}$ non è nelle fonti",
                     ) || ch;
         }
         if (subset("NP", "coNP"))
@@ -158,7 +158,7 @@ export function closure(extra: [ClassId, ClassId, string][] = []): Closure {
                     "EXP",
                     `vale ${ptxt("NP", "P")}, cioè $\\mathrm{P} = \\mathrm{NP}$, e per il padding $\\mathrm{EXP} = \\mathrm{NEXP}$ (Teorema 20.1)`,
                     "der",
-                    "Lez. 10 §5",
+                    "dispensa cap. 21",
                 ) || ch;
         if (!ch) break;
     }
