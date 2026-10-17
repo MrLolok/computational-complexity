@@ -1174,7 +1174,7 @@
                     "text": "Supponiamo $\\mathrm{P} \\subset \\Sigma_3^{\\mathrm{P}}$. È vero che 2-SAT non è $\\Sigma_3^{\\mathrm{P}}$-completo?",
                     "answer": "SI",
                     "answerText": "SÌ",
-                    "explanation": "$2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL} \\subseteq \\mathrm{P}$. Se fosse $\\Sigma_3^{\\mathrm{P}}$-completo, ogni problema di $\\Sigma_3^{\\mathrm{P}}$ si ridurrebbe a un problema di P, quindi $\\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{P}$, contro l'ipotesi $\\mathrm{P} \\subsetneq \\Sigma_3^{\\mathrm{P}}$. Senza ipotesi la risposta sarebbe \"altro\" (solo se $\\mathrm{P} \\neq \\mathrm{NP}$)",
+                    "explanation": "$2\\text{-}\\mathrm{SAT} \\in \\mathrm{NL} \\subseteq \\mathrm{P}$. Se fosse $\\Sigma_3^{\\mathrm{P}}$-completo, ogni problema di $\\Sigma_3^{\\mathrm{P}}$ si ridurrebbe a un problema di P, quindi $\\Sigma_3^{\\mathrm{P}} \\subseteq \\mathrm{P}$, contro l'ipotesi $\\mathrm{P} \\subsetneq \\Sigma_3^{\\mathrm{P}}$.",
                     "confirmed": false,
                     "fileWrong": false,
                     "repeatOf": null,
@@ -1902,7 +1902,7 @@
                     "text": "Se scoprissimo che $\\mathrm{P} = \\mathrm{NP}$, sapremmo dire se esistono o meno funzioni one-way?",
                     "answer": "SI",
                     "answerText": "SÌ",
-                    "explanation": "non esisterebbero, perché $\\mathrm{P} \\subseteq \\mathrm{UP} \\subseteq \\mathrm{NP} = \\mathrm{P}$.",
+                    "explanation": "Le funzioni one-way esistono se e solo se $\\mathrm{P} \\neq \\mathrm{UP}$. Con $\\mathrm{P} = \\mathrm{NP}$ si ha $\\mathrm{P} \\subseteq \\mathrm{UP} \\subseteq \\mathrm{NP} = \\mathrm{P}$, quindi $\\mathrm{P} = \\mathrm{UP}$: sapremmo che non esistono.",
                     "confirmed": false,
                     "fileWrong": false,
                     "repeatOf": null,
@@ -2302,10 +2302,10 @@
                     "text": "Spazio $n^3$ $\\Rightarrow$ spazio $n^3 \\cdot 3 \\log n$?",
                     "answer": "SI",
                     "answerText": "SÌ",
-                    "explanation": "più spazio non toglie problemi, e per la gerarchia di spazio l'inclusione è anche stretta.",
+                    "explanation": "$n^3 = O(n^3 \\cdot 3 \\log n)$, quindi $\\mathrm{SPACE}(n^3) \\subseteq \\mathrm{SPACE}(n^3 \\cdot 3 \\log n)$: più spazio non toglie problemi. Anzi, l'inclusione è stretta per il teorema di gerarchia dello spazio, $\\mathrm{SPACE}(f) \\subsetneq \\mathrm{SPACE}(f \\log f)$ con $f = n^3$: $f \\log f = n^3 \\cdot \\log n^3 = n^3 \\cdot 3 \\log n$",
                     "confirmed": false,
                     "fileWrong": false,
-                    "repeatOf": "F07",
+                    "repeatOf": null,
                     "seeAlso": [
                         {
                             "code": "F07",
@@ -2651,7 +2651,7 @@
                     "explanation": "$2\\text{-}\\mathrm{COL} \\in \\mathrm{P} \\subseteq \\mathrm{PSPACE} = \\mathrm{NPSPACE}$ (Savitch).",
                     "confirmed": false,
                     "fileWrong": true,
-                    "repeatOf": "MA23",
+                    "repeatOf": null,
                     "seeAlso": [
                         {
                             "code": "MA23",
@@ -2818,7 +2818,7 @@
                     "explanation": "$n$ è la lunghezza dell'input. Con $m$ nodi la matrice di adiacenza ha $m^2$ celle, quindi $m \\le \\sqrt{n}$. Provare tutti gli ordini dei nodi costa al più $m! \\le m^m = 2^{m \\log m}$ tentativi, ognuno controllato in tempo polinomiale: in tutto $2^{\\sqrt{n} \\log \\sqrt{n}} \\cdot \\mathrm{poly}(n) = O(2^{n/2})$. Basta già un algoritmo classico, e un computer quantistico può eseguirlo ($\\mathrm{P} \\subseteq \\mathrm{BQP}$). Grover dà un vantaggio quadratico rispetto alla ricerca esaustiva; non garantisce $O(2^{n/2})$ per ogni problema di NP.",
                     "confirmed": false,
                     "fileWrong": true,
-                    "repeatOf": "L18",
+                    "repeatOf": null,
                     "seeAlso": [
                         {
                             "code": "L18",
