@@ -38,7 +38,7 @@ function Chain({ steps, start }: { steps: Edge[]; start: ClassId }) {
                         return (
                             <Fragment key={e.a + ">" + e.b}>
                                 <span
-                                    className={`px-0.5 ${hyp ? "text-open font-bold" : strict ? "text-proved font-bold" : "text-muted"}`}
+                                    className={`px-0.5 ${hyp ? "text-open font-medium" : strict ? "text-proved font-medium" : "text-muted"}`}
                                 >
                                     <Tex>
                                         {hyp
@@ -63,7 +63,7 @@ function WhyList({ steps }: { steps: Edge[] }) {
     if (!steps.length) return null;
     return (
         <details>
-            <summary className="font-ui text-accent cursor-pointer text-sm font-semibold">Perché ogni passo</summary>
+            <summary className="font-ui text-accent cursor-pointer text-sm font-medium">Perché ogni passo</summary>
             <ol className="mt-2 flex list-decimal flex-col gap-1 pl-5 text-sm">
                 {steps.map((e) => (
                     <li key={e.a + ">" + e.b}>
@@ -143,8 +143,8 @@ function AnswerCard({ q, r, a, b }: { q: string; r: Answer; a: ClassId; b: Class
     }
     return (
         <div className={ui.card}>
-            <MathHtml className="font-semibold" html={q} />
-            <div className={`font-ui text-base font-bold ${tone[r.ans]}`}>
+            <MathHtml className="font-medium" html={q} />
+            <div className={`font-ui text-base font-medium ${tone[r.ans]}`}>
                 <MathHtml html={answerLabel(r, a, b)} />
             </div>
             {body}
@@ -168,7 +168,7 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
     const th = "border-b border-line p-2 text-left align-top";
     return (
         <div className="mt-5 flex flex-col gap-4">
-            <div className="font-head flex flex-wrap items-center gap-2.5 text-2xl font-semibold">
+            <div className="font-head flex flex-wrap items-center gap-2.5 text-2xl font-medium">
                 <Tex>{`${TEX[l]} ${OP[op]} ${TEX[r]}`}</Tex>
                 <span className={pillOf[v.pill.tone]}>{v.pill.text}</span>
             </div>
@@ -197,14 +197,14 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
             )}
 
             <details>
-                <summary className="cursor-pointer font-semibold">Perché: le risposte da dare all&apos;esame</summary>
+                <summary className="cursor-pointer font-medium">Perché: le risposte da dare all&apos;esame</summary>
                 <div className="mt-3">
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
                         <AnswerCard q={`$${TEX[a]} \\subseteq ${TEX[b]}$?`} r={v.ab} a={a} b={b} />
                         <AnswerCard q={`$${TEX[b]} \\subseteq ${TEX[a]}$?`} r={v.ba} a={b} b={a} />
                         <div className={ui.card}>
-                            <MathHtml className="font-semibold" html={`$${TEX[a]} = ${TEX[b]}$?`} />
-                            <div className={`font-ui text-base font-bold ${tone[v.eq.ans]}`}>{v.eq.text}</div>
+                            <MathHtml className="font-medium" html={`$${TEX[a]} = ${TEX[b]}$?`} />
+                            <div className={`font-ui text-base font-medium ${tone[v.eq.ans]}`}>{v.eq.text}</div>
                             <p className={ui.hint}>{v.eq.why}.</p>
                         </div>
                     </div>
@@ -219,11 +219,11 @@ export default function CompareVerdict({ a, b }: { a: ClassId; b: ClassId }) {
             </details>
 
             <details>
-                <summary className="cursor-pointer font-semibold">Definizioni e problemi delle due classi</summary>
+                <summary className="cursor-pointer font-medium">Definizioni e problemi delle due classi</summary>
                 <div className="mt-3 overflow-x-auto">
                     <table className="w-full min-w-140 border-collapse text-base">
                         <thead>
-                            <tr className="font-ui text-muted text-xs font-semibold tracking-wide uppercase">
+                            <tr className="font-ui text-muted text-xs font-medium tracking-wide uppercase">
                                 <th className={th} scope="col">
                                     Aspetto
                                 </th>

@@ -9,11 +9,11 @@ const TAG = {
 export function CheckRow({ tag, ok, children }: { tag: keyof typeof TAG; ok: boolean; children: ReactNode }) {
     return (
         <>
-            <span className={`font-ui justify-self-start rounded-md px-2 py-0.5 text-xs font-semibold ${TAG[tag]}`}>
+            <span className={`font-ui justify-self-start rounded-md px-2 py-0.5 text-xs font-medium ${TAG[tag]}`}>
                 {tag}
             </span>
             <span>{children}</span>
-            <span className={`font-ui font-bold ${ok ? "text-ok" : "text-proved"}`}>{ok ? "sì" : "no"}</span>
+            <span className={`font-ui font-medium ${ok ? "text-ok" : "text-proved"}`}>{ok ? "sì" : "no"}</span>
         </>
     );
 }

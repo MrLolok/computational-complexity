@@ -69,7 +69,7 @@ export default function ProblemDetail({
     const related = (RELATED[p.id] || []).filter(([id]) => id !== p.cpl);
     const theorems = theoremsForProblem(p.id);
     const disclosure =
-        "rounded-lg border border-line px-4 py-3 text-sm [&>summary]:cursor-pointer [&>summary]:font-semibold";
+        "rounded-lg border border-line px-4 py-3 text-sm [&>summary]:cursor-pointer [&>summary]:font-medium";
     return (
         <div style={classColor(colorId(p))} className="flex min-w-0 flex-col gap-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -97,7 +97,7 @@ export default function ProblemDetail({
             </div>
             <header className="flex flex-col gap-3">
                 <h2
-                    className="font-head text-2xl leading-tight font-semibold sm:text-3xl"
+                    className="font-head text-2xl leading-tight font-medium sm:text-3xl"
                     dangerouslySetInnerHTML={{ __html: p.name }}
                 />
                 <RichHtml as="p" html={p.def} />

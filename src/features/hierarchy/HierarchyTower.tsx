@@ -17,7 +17,7 @@ import { edgeHot, mergeBox, nodeState, nodeWidth, towerAbove, towerBelow } from 
 import { towerInfo } from "./towerInfo";
 import { selectTower, useTowerSel } from "./towerSelection";
 
-const h4 = "font-ui text-xs uppercase tracking-widest text-muted font-semibold mb-1.5";
+const h4 = "font-ui text-xs uppercase tracking-widest text-muted font-medium mb-1.5";
 
 /** etichetta di un nodo: Σ₂ᴾ diventa Σ con pedice e apice veri */
 function NodeLabel({ lab }: { lab: string }) {
@@ -104,7 +104,7 @@ export default function HierarchyTower() {
                 <div className="px-1.5 pb-2">
                     {h.note ? (
                         <div className={ui.note}>
-                            <b className="font-ui font-semibold">Se fosse vero.</b>{" "}
+                            <b className="font-ui font-medium">Se fosse vero.</b>{" "}
                             <span dangerouslySetInnerHTML={{ __html: texHtml(h.note) }} />
                         </div>
                     ) : (
@@ -137,7 +137,7 @@ export default function HierarchyTower() {
                                 <text
                                     x={8}
                                     y={(a + b) / 2 + 4}
-                                    className="fill-muted text-xs font-semibold tracking-wide uppercase"
+                                    className="fill-muted text-xs font-medium tracking-wide uppercase"
                                 >
                                     piano {lv}
                                 </text>
@@ -153,7 +153,7 @@ export default function HierarchyTower() {
                                     rx={14}
                                     className="fill-accent-soft/60 stroke-accent stroke-1.5 [stroke-dasharray:6_4]"
                                 />
-                                <text x={box.lx} y={box.ly} className="fill-accent font-ui text-xs font-semibold">
+                                <text x={box.lx} y={box.ly} className="fill-accent font-ui text-xs font-medium">
                                     {h.tag}
                                 </text>
                             </g>
@@ -187,7 +187,7 @@ export default function HierarchyTower() {
                                 y={73}
                                 textAnchor="middle"
                                 dominantBaseline="central"
-                                className="fill-open text-xs font-bold"
+                                className="fill-open text-xs font-medium"
                             >
                                 ?
                             </text>
@@ -198,7 +198,7 @@ export default function HierarchyTower() {
                                     x={260}
                                     y={TOWER_NODES[`S${i}` as TowerId].y + 4}
                                     textAnchor="middle"
-                                    className="fill-open font-mono text-sm font-bold"
+                                    className="fill-open font-mono text-sm font-medium"
                                 >
                                     =?
                                 </text>
@@ -232,7 +232,7 @@ export default function HierarchyTower() {
                                         x={t.x}
                                         y={t.y - 3}
                                         textAnchor="middle"
-                                        className="fill-(--c) font-mono text-base font-semibold"
+                                        className="fill-(--c) font-mono text-base font-medium"
                                     >
                                         <NodeLabel lab={t.lab} />
                                     </text>
@@ -252,7 +252,7 @@ export default function HierarchyTower() {
                         inclusione dimostrata (dal basso verso l&apos;alto), non si sa se stretta
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className={`${ui.mono} text-open font-bold`}>=?</span>
+                        <span className={`${ui.mono} text-open font-medium`}>=?</span>
                         <span>
                             non si sa se <Tex>{String.raw`\Sigma_i^{\mathrm{P}} = \Pi_i^{\mathrm{P}}`}</Tex>
                         </span>
@@ -270,7 +270,7 @@ export default function HierarchyTower() {
                 <div className="flex flex-wrap items-start justify-between gap-3.5">
                     <div>
                         <div
-                            className="font-mono text-3xl leading-tight font-semibold text-(--c)"
+                            className="font-mono text-3xl leading-tight font-medium text-(--c)"
                             dangerouslySetInnerHTML={{ __html: texHtml(I.title) }}
                         />
                         <div
@@ -318,7 +318,7 @@ export default function HierarchyTower() {
                 </div>
                 {probs && (
                     <p className="mt-2.5 text-base leading-relaxed">
-                        <b className="font-ui font-semibold">Problemi:</b>{" "}
+                        <b className="font-ui font-medium">Problemi:</b>{" "}
                         {probs.map(([k, t], i) => (
                             <span key={k + i}>
                                 {i > 0 && " · "}
@@ -332,7 +332,7 @@ export default function HierarchyTower() {
                     </p>
                 )}
                 <p className="text-muted mt-4 text-sm">
-                    <b className="font-ui font-semibold">Fonti:</b> dispensa cap. 16–17; slide Lez. 9; appunti Lez. 9
+                    <b className="font-ui font-medium">Fonti:</b> dispensa cap. 16–17; slide Lez. 9; appunti Lez. 9
                     §2–§6.
                 </p>
             </aside>

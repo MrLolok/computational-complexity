@@ -32,7 +32,7 @@ export default function ClassSteps({ bodies }: { bodies: ReactNode[] }) {
                             aria-selected={on}
                             onClick={() => setStep(i)}
                             className={`font-ui -mb-px flex min-h-11 min-w-0 cursor-pointer items-center gap-2 border-b-2 px-3 py-2 text-left text-sm ${
-                                on ? "text-ink border-(--c) font-semibold" : "text-muted border-transparent font-medium"
+                                on ? "text-ink border-(--c) font-medium" : "text-muted border-transparent font-medium"
                             }`}
                         >
                             <span

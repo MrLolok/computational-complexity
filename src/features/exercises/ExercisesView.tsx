@@ -41,7 +41,7 @@ export default function ExercisesView() {
                             type="button"
                             aria-selected={sub === s}
                             onClick={() => show(s)}
-                            className={`font-ui min-h-11 flex-none cursor-pointer rounded-lg px-3 py-2 text-sm whitespace-nowrap ${sub === s ? "bg-surface text-ink ring-line font-semibold ring-1" : "text-muted font-medium"}`}
+                            className={`font-ui min-h-11 flex-none cursor-pointer rounded-lg px-3 py-2 text-sm whitespace-nowrap ${sub === s ? "bg-surface text-ink ring-line font-medium ring-1" : "text-muted font-medium"}`}
                         >
                             {label}
                         </button>

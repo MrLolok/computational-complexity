@@ -21,11 +21,11 @@ import N from "./ClassName";
 import ClassSteps from "./ClassSteps";
 import { relGroups } from "./inclusions";
 
-const h4 = "mb-1.5 font-ui text-xs font-semibold uppercase tracking-widest text-muted";
+const h4 = "mb-1.5 font-ui text-xs font-medium uppercase tracking-widest text-muted";
 const link = "text-accent underline underline-offset-2 decoration-1";
 const relList = "flex flex-wrap gap-1.5";
 const relItem = "inline-flex items-center gap-1";
-const mk = "font-mono text-sm font-bold";
+const mk = "font-mono text-sm font-medium";
 
 function QA({ t }: { t: ExamQuestion }) {
     return (
@@ -72,7 +72,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
         <div style={classColor(id)}>
             <div className="flex flex-wrap items-start justify-between gap-3.5">
                 <div>
-                    <Tex className="block text-3xl leading-tight font-semibold text-(--c)">{TEX[id]}</Tex>
+                    <Tex className="block text-3xl leading-tight font-medium text-(--c)">{TEX[id]}</Tex>
                     <MathHtml html={c.full} className="font-ui text-muted mt-1 block text-base font-medium" />
                     <div className="mt-2 flex flex-wrap gap-1.5">
                         {alias && <MathHtml className={ui.pillOk} html={alias} />}
@@ -101,7 +101,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
 
             {id === "DP" && (
                 <details className={ui.sec}>
-                    <summary className="text-accent cursor-pointer font-semibold">Prova i due controlli di DP</summary>
+                    <summary className="text-accent cursor-pointer font-medium">Prova i due controlli di DP</summary>
                     <div className="mt-3 flex flex-col gap-5">
                         <section>
                             <h3 className={`${ui.h3} mb-2`}>EXACT TSP: l&apos;ottimo è B?</h3>
@@ -120,7 +120,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
             )}
 
             <details className={ui.sec}>
-                <summary className="cursor-pointer font-semibold">Dove sta: inclusioni e questioni aperte</summary>
+                <summary className="cursor-pointer font-medium">Dove sta: inclusioni e questioni aperte</summary>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                     <div>
                         <h4 className={h4}>È contenuta in</h4>
@@ -187,13 +187,13 @@ export default function ClassPanel({ id }: { id: ClassId }) {
                 <RichHtml as="p" html={c.complete} />
                 {c.trap && (
                     <div className={ui.noteTrap}>
-                        <b className="font-ui font-semibold">Trappola.</b> <RichHtml as="span" html={c.trap} />
+                        <b className="font-ui font-medium">Trappola.</b> <RichHtml as="span" html={c.trap} />
                     </div>
                 )}
                 {c.extra && <RichHtml className="flex flex-col gap-2" html={c.extra} />}
                 {probs && (
                     <p className="mt-2.5 text-base leading-relaxed">
-                        <b className="font-ui font-semibold">Problemi:</b>{" "}
+                        <b className="font-ui font-medium">Problemi:</b>{" "}
                         {probs.map(([k, t], i) => (
                             <span key={k}>
                                 {i > 0 && " · "}
@@ -248,7 +248,7 @@ export default function ClassPanel({ id }: { id: ClassId }) {
             )}
 
             <p className="text-muted mt-4 text-sm">
-                <b className="font-ui font-semibold">Fonti:</b> <RichHtml as="span" html={c.src} />
+                <b className="font-ui font-medium">Fonti:</b> <RichHtml as="span" html={c.src} />
             </p>
         </div>
     );

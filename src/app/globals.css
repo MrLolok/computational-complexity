@@ -68,8 +68,20 @@ code,
 pre {
     font-family: inherit;
 }
+/* nessun testo oltre il medium, anche nell'HTML scritto nei dati e nel Markdown */
+@layer base {
+    b,
+    strong,
+    th {
+        font-weight: 500;
+    }
+}
 details {
     scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 5rem);
+}
+/* da chiuso il contenuto nascosto resta un elemento flex: senza questo il gap delle card lascia spazio sotto il summary */
+details:not([open]) {
+    gap: 0;
 }
 :focus-visible {
     outline: 2px solid var(--color-accent);

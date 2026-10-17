@@ -47,7 +47,7 @@ const EQQ: [ClassId, ClassId][] = [
     ["SIGMA2", "PI2"],
     ["SIGMAi", "PIi"],
 ];
-const badgeText = "font-bold [text-anchor:middle] [dominant-baseline:central]";
+const badgeText = "font-medium [text-anchor:middle] [dominant-baseline:central]";
 
 /** nome nel riquadro: pedice e apice come tspan */
 function NodeName({ id }: { id: ClassId }) {
@@ -144,7 +144,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
                                 y={(y1 + y2) / 2}
                                 transform={`rotate(-90 22 ${(y1 + y2) / 2})`}
                                 textAnchor="middle"
-                                className="fill-muted text-xs font-semibold tracking-wide uppercase"
+                                className="fill-muted text-xs font-medium tracking-wide uppercase"
                             >
                                 {t}
                             </text>
@@ -256,7 +256,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
                                             y={my}
                                             textAnchor="middle"
                                             transform={`rotate(-90 ${tx} ${my})`}
-                                            className="fill-proved stroke-surface stroke-5 font-mono text-xs font-semibold [paint-order:stroke]"
+                                            className="fill-proved stroke-surface stroke-5 font-mono text-xs font-medium [paint-order:stroke]"
                                         >
                                             {`${PLAIN[a]} ⊊ ${PLAIN[b]}`}
                                         </text>
@@ -309,7 +309,7 @@ export default function ClassMap({ sel }: { sel: ClassId | null }) {
                                         x={cx}
                                         y={cy - 3}
                                         textAnchor="middle"
-                                        className="fill-(--c) font-mono text-base font-semibold"
+                                        className="fill-(--c) font-mono text-base font-medium"
                                     >
                                         <NodeName id={id} />
                                     </text>

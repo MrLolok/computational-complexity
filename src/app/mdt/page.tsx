@@ -160,7 +160,7 @@ export default function Page() {
                     >
                         <summary className="flex min-h-11 cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 [&::-webkit-details-marker]:hidden">
                             <Arrow shape="chevron" className="text-muted transition-transform group-open:rotate-90" />
-                            <span className="min-w-0 flex-1 basis-52 font-semibold wrap-normal">{m.title}</span>
+                            <span className="min-w-0 flex-1 basis-52 font-medium wrap-normal">{m.title}</span>
                             <span className={ui.pill}>
                                 {tracesOf(m.id).length === 1 ? "1 traccia" : `${tracesOf(m.id).length} tracce`}
                             </span>

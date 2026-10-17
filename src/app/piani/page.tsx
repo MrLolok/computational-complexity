@@ -29,13 +29,11 @@ export default function Page() {
                 <h2 className={ui.h3}>2. Prova con i quantificatori</h2>
                 <p className={ui.hint}>Scegli un esercizio: prima costruisci il prefisso, poi valuta una formula.</p>
                 <details className={ui.card}>
-                    <summary className="cursor-pointer font-semibold">
-                        Costruisci un prefisso e trova il livello
-                    </summary>
+                    <summary className="cursor-pointer font-medium">Costruisci un prefisso e trova il livello</summary>
                     <PrefixBuilder />
                 </details>
                 <details className={ui.card}>
-                    <summary className="cursor-pointer font-semibold">
+                    <summary className="cursor-pointer font-medium">
                         Valuta una QBF: <Tex>{String.raw`\exists`}</Tex> è OR, <Tex>{String.raw`\forall`}</Tex> è AND
                     </summary>
                     <QbfEval />
@@ -44,7 +42,7 @@ export default function Page() {
             <section className="flex flex-col gap-3">
                 <h2 className={ui.h3}>3. Collega i livelli</h2>
                 <details className={ui.card}>
-                    <summary className="cursor-pointer font-semibold">
+                    <summary className="cursor-pointer font-medium">
                         Che cosa significa <Tex>{String.raw`\Delta`}</Tex>? E dove sta DP?
                     </summary>
                     <p>
@@ -108,7 +106,7 @@ export default function Page() {
                     <HierarchyTower />
                 </TowerDisclosure>
                 <details className={ui.card}>
-                    <summary className="cursor-pointer font-semibold">Come riconoscere un collasso</summary>
+                    <summary className="cursor-pointer font-medium">Come riconoscere un collasso</summary>
                     <p>
                         Se <Tex>{String.raw`\Sigma_i^{\mathrm{P}} = \Pi_i^{\mathrm{P}}`}</Tex> per un{" "}
                         <Tex>{String.raw`i \ge 1`}</Tex>, allora{" "}
@@ -144,7 +142,7 @@ export default function Page() {
                     </Link>
                 </details>
                 <details className={ui.card}>
-                    <summary className="cursor-pointer font-semibold">Riduzioni tra problemi dei livelli</summary>
+                    <summary className="cursor-pointer font-medium">Riduzioni tra problemi dei livelli</summary>
                     <Reductions />
                 </details>
             </section>

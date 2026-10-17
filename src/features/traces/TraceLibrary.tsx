@@ -189,7 +189,7 @@ function TraceCard({ t, p, mdt }: { t: TraceSummary; p: TraceProgress | undefine
     return (
         <Link href={`/tracce/${t.code}`} className={`${ui.card} group hover:border-accent h-full transition-colors`}>
             <div className="flex items-baseline justify-between gap-2">
-                <span className="text-accent font-mono text-sm font-semibold">{t.code}</span>
+                <span className="text-accent font-mono text-sm font-medium">{t.code}</span>
                 {st === "done" && p?.best ? (
                     <span className={ui.pillOk}>
                         {p.best.ok}/{p.best.tot}
@@ -202,7 +202,7 @@ function TraceCard({ t, p, mdt }: { t: TraceSummary; p: TraceProgress | undefine
                     <span className={ui.pill}>da fare</span>
                 )}
             </div>
-            <span className="font-head group-hover:text-accent text-lg leading-snug font-semibold text-balance">
+            <span className="font-head group-hover:text-accent text-lg leading-snug font-medium text-balance">
                 {t.dateLabel || t.title}
             </span>
             <span className="font-ui text-muted text-xs">

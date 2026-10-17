@@ -18,7 +18,7 @@ export default function SourcesView() {
             </header>
             <div className="flex max-w-prose flex-col gap-4">
                 <details open className={`${prose} border-line rounded-xl border p-4 sm:p-5`}>
-                    <summary className="cursor-pointer font-semibold">Fonti del corso</summary>
+                    <summary className="cursor-pointer font-medium">Fonti del corso</summary>
                     <p>
                         Dispensa <i>Computational Complexity</i> (M. Mignogna, 2025): cap. 1 (R, RE), 2.6 (L), 5–11
                         (classi, gerarchie, Savitch), 12–13 (NP-completezza), 14 (coNP), 15 (DP), 16 (oracoli), 17 (PH),
@@ -38,7 +38,7 @@ export default function SourcesView() {
                     </p>
                 </details>
                 <details className={`${prose} border-line rounded-xl border p-4 sm:p-5`}>
-                    <summary className="cursor-pointer font-semibold">Aggiunte esterne e conseguenze ricavate</summary>
+                    <summary className="cursor-pointer font-medium">Aggiunte esterne e conseguenze ricavate</summary>
                     <ul>
                         <li>
                             <span className={ui.pillExt}>esterno</span> Il significato della D di DP
@@ -79,7 +79,7 @@ export default function SourcesView() {
                     </ul>
                 </details>
                 <details className={`${prose} border-line rounded-xl border p-4 sm:p-5`}>
-                    <summary className="cursor-pointer font-semibold">Precisazioni sui materiali del corso</summary>
+                    <summary className="cursor-pointer font-medium">Precisazioni sui materiali del corso</summary>
                     <ul>
                         <li>
                             <b>Barre di complemento perse.</b> Nel riepilogo della dispensa (cap. 22) e nel cap. 17
@@ -94,7 +94,7 @@ export default function SourcesView() {
             </div>
 
             <details className={`${prose} border-line mt-4 max-w-none rounded-xl border p-4 sm:p-5`}>
-                <summary className="cursor-pointer font-semibold">Verifica della tabella dei problemi</summary>
+                <summary className="cursor-pointer font-medium">Verifica della tabella dei problemi</summary>
                 <p className={ui.hint}>
                     Ogni riga della tabella di partenza della mappa dei problemi, controllata su dispensa, slide delle
                     Lezioni 1–9 e pagine delle tracce risolte.
@@ -120,7 +120,7 @@ export default function SourcesView() {
                                         <MathHtml html={r} />
                                     </td>
                                     <td
-                                        className={`border-line border-b p-2 align-top font-mono text-sm font-semibold whitespace-nowrap ${v === "ok" ? "text-ok" : "text-open"}`}
+                                        className={`border-line border-b p-2 align-top font-mono text-sm font-medium whitespace-nowrap ${v === "ok" ? "text-ok" : "text-open"}`}
                                     >
                                         {v === "ok" ? "✔ confermata" : "◐ in parte"}
                                     </td>

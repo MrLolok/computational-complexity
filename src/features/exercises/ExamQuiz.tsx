@@ -19,7 +19,7 @@ const ALL = EXAM_QUESTIONS.map((q, i) => ({ q, i }));
 const FILTERS = IDS.filter((id) => EXAM_QUESTIONS.some((t) => t.c.includes(id)));
 
 const optBase =
-    "min-h-11 cursor-pointer rounded-lg border px-3 py-2 font-ui text-sm font-semibold disabled:cursor-default";
+    "min-h-11 cursor-pointer rounded-lg border px-3 py-2 font-ui text-sm font-medium disabled:cursor-default";
 const optIdle = "border-line-strong bg-transparent text-ink enabled:hover:border-accent";
 const optRight = "border-ok bg-ok-soft text-ok";
 const optWrong = "border-proved bg-proved-soft text-proved";
@@ -118,7 +118,7 @@ export default function ExamQuiz() {
                         {rec && (
                             <div className="border-line flex flex-col items-start gap-4 border-t pt-4">
                                 <RichHtml
-                                    className="bg-accent-soft/50 text-accent w-fit max-w-full rounded-lg px-3 py-2 text-sm font-semibold"
+                                    className="bg-accent-soft/50 text-accent w-fit max-w-full rounded-lg px-3 py-2 text-sm font-medium"
                                     html={`<span>Risposta:</span> ${cur.q.a}`}
                                 />
                                 <RichHtml as="p" className="max-w-prose leading-relaxed" html={cur.q.e} />

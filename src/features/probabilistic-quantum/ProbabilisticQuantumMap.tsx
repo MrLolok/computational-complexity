@@ -23,7 +23,7 @@ import { classColor, ui } from "@/lib/tokens";
 
 const W = 104,
     H = 44;
-const badgeText = "font-bold [text-anchor:middle] [dominant-baseline:central]";
+const badgeText = "font-medium [text-anchor:middle] [dominant-baseline:central]";
 /** a ⊆ b, chiusura transitiva delle inclusioni dimostrate */
 const below = (a: MapNode, b: MapNode): boolean => MAP_INC.some(([x, y]) => x === a && (y === b || below(y, b)));
 const width = (id: MapNode) => (id === "PSPACE" ? 116 : W);
@@ -118,7 +118,7 @@ export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode 
                                     x={(bx + nx) / 2}
                                     y={by - 11}
                                     textAnchor="middle"
-                                    className="fill-open text-[12px] font-semibold"
+                                    className="fill-open text-[12px] font-medium"
                                 >
                                     incomparabili?
                                 </text>
@@ -173,7 +173,7 @@ export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode 
                                             x={cx}
                                             y={cy + 6}
                                             textAnchor="middle"
-                                            className="fill-(--c) font-mono text-[18px] font-semibold"
+                                            className="fill-(--c) font-mono text-[18px] font-medium"
                                         >
                                             {MAP_NAME[id]}
                                         </text>
@@ -234,7 +234,7 @@ export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode 
                 style={classColor(sel)}
             >
                 <p className={ui.eyebrow}>Classe scelta sulla mappa</p>
-                <h3 className="font-mono text-2xl font-semibold text-(--c)">{MAP_NAME[sel]}</h3>
+                <h3 className="font-mono text-2xl font-medium text-(--c)">{MAP_NAME[sel]}</h3>
                 <MathHtml className="text-muted block text-sm" html={info.full} />
                 <MathHtml className="block leading-relaxed" html={info.idea} />
                 {info.accept && (
@@ -244,7 +244,7 @@ export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode 
                             <MathHtml html={info.accept} />
                         </dd>
                         <dt className="text-muted">Errore riducibile in tempo pol.?</dt>
-                        <dd className="font-semibold">{info.error}</dd>
+                        <dd className="font-medium">{info.error}</dd>
                     </dl>
                 )}
                 <div className="flex flex-col gap-1.5 text-sm">
