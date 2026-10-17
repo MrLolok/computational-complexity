@@ -65,7 +65,7 @@ export default function SolutionDiff({ program, m }: { program: Program | null; 
             </p>
             <p className="font-ui text-muted text-sm">
                 Nelle celle diverse, sopra <del className="text-proved">la tua</del> e sotto{" "}
-                <ins className="text-ok font-semibold no-underline">la soluzione</ins>.
+                <ins className="text-ok font-medium no-underline">la soluzione</ins>.
                 {diff.renamed.length > 0 &&
                     ` Stati con un altro nome: ${diff.renamed.map(([u, s]) => `${u} = ${s}`).join(", ")}.`}{" "}
                 Una riga diversa o in più non è per forza sbagliata: la prova vera sono i casi di prova.
@@ -113,7 +113,7 @@ export default function SolutionDiff({ program, m }: { program: Program | null; 
                             const want = r.kind === "extra" ? null : cellsOf(r.sol);
                             return (
                                 <tr key={n} className={`border-line divide-line divide-x border-t ${ROW[r.kind]}`}>
-                                    <td className="font-ui px-2 text-center text-xs font-semibold whitespace-nowrap">
+                                    <td className="font-ui px-2 text-center text-xs font-medium whitespace-nowrap">
                                         {KIND[r.kind]}
                                     </td>
                                     <td className="font-ui text-muted px-2 text-center text-xs">
@@ -143,7 +143,7 @@ export default function SolutionDiff({ program, m }: { program: Program | null; 
                                             <td key={i} className={`${TD} bg-open-soft`}>
                                                 <span className="flex flex-col leading-tight">
                                                     <del className="text-proved text-sm">{show(i, mine[i])}</del>
-                                                    <ins className="text-ok font-semibold no-underline">
+                                                    <ins className="text-ok font-medium no-underline">
                                                         {show(i, want[i])}
                                                     </ins>
                                                 </span>

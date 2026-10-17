@@ -54,7 +54,7 @@ export default function PrefixBuilder() {
                             <Tex>{`${P.merged}\\ R(\\ldots)`}</Tex>
                         </div>
                         <p className={ui.noteOk}>
-                            <b className="font-ui font-semibold">Blocchi uguali vicini si fondono.</b> «
+                            <b className="font-ui font-medium">Blocchi uguali vicini si fondono.</b> «
                             <Tex>{String.raw`\exists y\ \exists z`}</Tex>» vuol dire «esiste la coppia{" "}
                             <Tex>{"(y, z)"}</Tex>»: un solo certificato, ancora di lunghezza polinomiale. È il passo
                             chiave della prova del Teorema 17.9. Conta quindi il numero di <b>alternanze</b>, non di

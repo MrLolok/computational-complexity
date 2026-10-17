@@ -64,7 +64,7 @@ export default function PracticeLab({ id, code }: { id: string; code: string }) 
             )}
             {warnings.length > 0 && (
                 <div className={`${ui.note} text-sm`}>
-                    <p className="font-semibold">Da controllare</p>
+                    <p className="font-medium">Da controllare</p>
                     <ul className="mt-1 flex flex-col gap-1">
                         {warnings.map((w, i) => (
                             <li key={i}>
@@ -98,7 +98,7 @@ export default function PracticeLab({ id, code }: { id: string; code: string }) 
             {compare && <SolutionDiff program={program} m={m} />}
             {report && (
                 <div className={report.ok === report.tot ? ui.noteOk : ui.note} aria-live="polite">
-                    <p className="font-semibold">
+                    <p className="font-medium">
                         {report.ok === report.tot
                             ? `Tutti i ${report.tot} casi di prova superati.`
                             : `Casi di prova superati: ${report.ok} su ${report.tot}.`}

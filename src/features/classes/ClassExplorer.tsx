@@ -53,7 +53,7 @@ export default function ClassExplorer({
                             choose(next);
                             document.getElementById(`${id}-tab-${next}`)?.focus();
                         }}
-                        className={`min-h-11 cursor-pointer border-b-2 px-3 py-2 text-sm ${active === i ? "border-accent text-accent font-semibold" : "text-muted hover:text-ink border-transparent"}`}
+                        className={`min-h-11 cursor-pointer border-b-2 px-3 py-2 text-sm ${active === i ? "border-accent text-accent font-medium" : "text-muted hover:text-ink border-transparent"}`}
                     >
                         {label}
                     </button>

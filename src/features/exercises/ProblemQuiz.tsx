@@ -18,7 +18,7 @@ import { recordProblemQuiz, resetProblemQuiz } from "@/store/progressSlice";
 import { newQuestion, QUIZ_MODES } from "./quiz";
 
 const opt =
-    "min-h-11 cursor-pointer rounded-lg border px-3 py-2 text-left font-ui text-sm font-semibold disabled:cursor-default";
+    "min-h-11 cursor-pointer rounded-lg border px-3 py-2 text-left font-ui text-sm font-medium disabled:cursor-default";
 
 function QuestionText({ q }: { q: QuizQuestion }) {
     const p = PROBLEM_BY[q.pid];
@@ -31,12 +31,13 @@ function QuestionText({ q }: { q: QuizQuestion }) {
     if (q.type === "cpl")
         return (
             <>
-                Com&apos;è classificato il complemento di <MathHtml as="strong" className="font-bold" html={p.name} />?
+                Com&apos;è classificato il complemento di <MathHtml as="strong" className="font-medium" html={p.name} />
+                ?
             </>
         );
     return (
         <>
-            <MathHtml as="strong" className="font-bold" html={p.name} />: in quale classe sta, ed è completo?
+            <MathHtml as="strong" className="font-medium" html={p.name} />: in quale classe sta, ed è completo?
             <RichHtml as="span" className="font-body text-muted mt-1.5 block text-base font-normal" html={p.def} />
         </>
     );
@@ -107,7 +108,7 @@ export default function ProblemQuiz() {
                                 setMode(k);
                                 ask(k);
                             }}
-                            className={`font-ui text-ink inline-flex min-h-11 cursor-pointer items-center rounded-full border px-3 py-2 text-sm ${k === mode ? "border-accent bg-accent/14 font-semibold" : "border-line"}`}
+                            className={`font-ui text-ink inline-flex min-h-11 cursor-pointer items-center rounded-full border px-3 py-2 text-sm ${k === mode ? "border-accent bg-accent/14 font-medium" : "border-line"}`}
                         >
                             {t}
                         </button>
@@ -152,7 +153,7 @@ export default function ProblemQuiz() {
                         </div>
                         {pick !== null && (
                             <div className="flex flex-col gap-1.5 text-base">
-                                <span className={`font-ui font-bold ${ok ? "text-ok" : "text-proved"}`}>
+                                <span className={`font-ui font-medium ${ok ? "text-ok" : "text-proved"}`}>
                                     {ok ? "Giusto." : "Non è così."}
                                 </span>
                                 <Explanation q={q} />

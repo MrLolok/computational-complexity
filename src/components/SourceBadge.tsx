@@ -1,4 +1,4 @@
-const SB = "font-ui text-xs font-semibold uppercase tracking-wide px-1.5 py-px rounded-sm box-decoration-clone border";
+const SB = "font-ui text-xs font-medium uppercase tracking-wide px-1.5 py-px rounded-sm box-decoration-clone border";
 const sbClass = {
     d: `${SB} text-ok border-ok/50`,
     s: `${SB} text-c-NP border-c-NP/50`,

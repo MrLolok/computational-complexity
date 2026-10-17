@@ -105,7 +105,7 @@ export default function QbfEval() {
                                     x={nd.x}
                                     y={nd.y + 5}
                                     textAnchor="middle"
-                                    className="fill-ink font-mono text-sm font-bold"
+                                    className="fill-ink font-mono text-sm font-medium"
                                 >
                                     {nd.q + nd.v}
                                 </text>
@@ -122,7 +122,7 @@ export default function QbfEval() {
                     <>
                         {guess !== "x" && (
                             <p className={right ? ui.noteOk : ui.noteTrap}>
-                                <b className="font-ui font-semibold">{right ? "Giusto." : "Non proprio."}</b>
+                                <b className="font-ui font-medium">{right ? "Giusto." : "Non proprio."}</b>
                             </p>
                         )}
                         <div className={outcomeClass(T.val)}>La formula è {T.val ? "vera" : "falsa"}.</div>

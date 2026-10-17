@@ -11,7 +11,7 @@ import { ui } from "@/lib/tokens";
 import { reduces, shortName } from "./reductionRules";
 
 const byId = (id: string) => REDUCTION_PROBLEMS.find((r) => r.id === id) ?? REDUCTION_PROBLEMS[0];
-const label = "flex min-w-0 max-w-full flex-col gap-1 font-ui text-xs font-semibold text-muted";
+const label = "flex min-w-0 max-w-full flex-col gap-1 font-ui text-xs font-medium text-muted";
 
 /** riduzioni tra problemi completi dei piani: esiste A → B? */
 export default function Reductions() {
@@ -69,7 +69,7 @@ export default function Reductions() {
                 ))}
             </div>
             <div className="mt-3 flex flex-col gap-4" aria-live="polite">
-                <div className="font-head flex flex-wrap items-center gap-2.5 text-2xl font-semibold">
+                <div className="font-head flex flex-wrap items-center gap-2.5 text-2xl font-medium">
                     <span
                         dangerouslySetInnerHTML={{ __html: texHtml(`${shortName(A.label)} → ${shortName(B.label)}`) }}
                     />

@@ -76,7 +76,7 @@ export default function Walkthrough({
             }}
         >
             <div className="border-line flex items-baseline justify-between gap-3 border-b px-4 py-3">
-                <Title id={label} className="font-semibold">
+                <Title id={label} className="font-medium">
                     {title}
                 </Title>
                 <span aria-live="polite" className="text-muted text-xs whitespace-nowrap">
@@ -138,7 +138,7 @@ export default function Walkthrough({
                         <figcaption
                             className={`border-line flex flex-col gap-2 border-t p-4 ${side ? "lg:min-w-0 lg:flex-1 lg:justify-center lg:border-t-0 lg:border-r lg:p-6" : ""}`}
                         >
-                            <StepTitle className="font-semibold">
+                            <StepTitle className="font-medium">
                                 {i + 1}. <MathHtml html={slide.title} />
                             </StepTitle>
                             <MathHtml
@@ -190,7 +190,7 @@ export default function Walkthrough({
             </div>
             {step === lesson.slides.length - 1 && (lesson.outcome || lesson.note) && (
                 <div className="border-line bg-ok-soft/25 flex flex-col gap-2 border-t p-4">
-                    {lesson.outcome && <MathHtml as="p" className="text-ok font-semibold" html={lesson.outcome} />}
+                    {lesson.outcome && <MathHtml as="p" className="text-ok font-medium" html={lesson.outcome} />}
                     {lesson.note && (
                         <MathHtml as="p" className="text-muted text-xs leading-relaxed" html={lesson.note} />
                     )}

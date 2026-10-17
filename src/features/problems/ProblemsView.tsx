@@ -185,7 +185,7 @@ export default function ProblemsView({ traceRefs }: { traceRefs: Record<string, 
                                 {String(PROBLEMS.indexOf(p) + 1).padStart(2, "0")}
                             </span>
                             <span className="flex min-w-0 flex-1 flex-col gap-2">
-                                <span className="font-semibold" dangerouslySetInnerHTML={{ __html: p.name }} />
+                                <span className="font-medium" dangerouslySetInnerHTML={{ __html: p.name }} />
                                 <span className="flex flex-wrap items-center gap-1.5">
                                     <span
                                         className={ui.pill}

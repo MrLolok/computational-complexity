@@ -2,9 +2,9 @@
 export const ui = {
     eyebrow: "font-ui text-xs uppercase tracking-widest text-muted font-medium",
     label: "font-ui text-xs uppercase tracking-widest text-muted font-medium",
-    h1: "font-head text-4xl sm:text-5xl font-semibold leading-tight tracking-tight text-balance",
-    h2: "font-head text-2xl font-semibold leading-tight tracking-tight text-balance",
-    h3: "font-head text-xl font-semibold leading-tight tracking-tight text-balance",
+    h1: "font-head text-4xl sm:text-5xl font-medium leading-tight tracking-tight text-balance",
+    h2: "font-head text-2xl font-medium leading-tight text-balance",
+    h3: "font-head text-xl font-medium leading-tight text-balance",
     lede: "text-muted text-base leading-relaxed max-w-prose",
     hint: "text-muted text-base",
     card: "bg-surface border border-line rounded-xl p-4 sm:p-5 flex flex-col gap-3 min-w-0",
@@ -13,14 +13,14 @@ export const ui = {
     btnPrimary:
         "inline-flex items-center justify-center gap-1.5 min-h-11 font-ui text-sm rounded-lg px-3 py-2 bg-accent text-accent-ink border border-accent hover:opacity-90 disabled:opacity-35 cursor-pointer",
     linkBtn: "font-ui text-sm text-accent underline underline-offset-2 cursor-pointer",
-    pill: "inline-block font-ui text-xs font-semibold rounded-full px-2.5 py-0.5 bg-sunk text-ink whitespace-nowrap",
+    pill: "inline-block font-ui text-xs font-medium rounded-full px-2.5 py-0.5 bg-sunk text-ink whitespace-nowrap",
     pillProved:
-        "inline-block font-ui text-xs font-semibold rounded-full px-2.5 py-0.5 bg-proved-soft text-proved whitespace-nowrap",
+        "inline-block font-ui text-xs font-medium rounded-full px-2.5 py-0.5 bg-proved-soft text-proved whitespace-nowrap",
     pillOpen:
-        "inline-block font-ui text-xs font-semibold rounded-full px-2.5 py-0.5 bg-open-soft text-open whitespace-nowrap",
-    pillOk: "inline-block font-ui text-xs font-semibold rounded-full px-2.5 py-0.5 bg-ok-soft text-ok whitespace-nowrap",
+        "inline-block font-ui text-xs font-medium rounded-full px-2.5 py-0.5 bg-open-soft text-open whitespace-nowrap",
+    pillOk: "inline-block font-ui text-xs font-medium rounded-full px-2.5 py-0.5 bg-ok-soft text-ok whitespace-nowrap",
     pillExt:
-        "inline-block font-ui text-xs font-semibold rounded-full px-2.5 py-0.5 bg-accent-soft text-accent whitespace-nowrap",
+        "inline-block font-ui text-xs font-medium rounded-full px-2.5 py-0.5 bg-accent-soft text-accent whitespace-nowrap",
     note: "border-l-2 border-open bg-open-soft px-3 py-2 rounded-r-lg text-base",
     noteTrap: "border-l-2 border-proved bg-proved-soft px-3 py-2 rounded-r-lg text-base",
     noteOk: "border-l-2 border-ok bg-ok-soft px-3 py-2 rounded-r-lg text-base",
@@ -35,7 +35,7 @@ export const ui = {
     /** risposte SÌ / NO / altro */
     yn: { SI: "bg-ok-soft text-ok", NO: "bg-proved-soft text-proved", ALTRO: "bg-open-soft text-open" },
     /** gettone di una classe; il colore arriva dalla variabile --c */
-    chip: "font-mono font-semibold text-sm border border-(--c)/45 text-(--c) rounded-md px-1 whitespace-nowrap no-underline hover:bg-(--c)/12 cursor-pointer",
+    chip: "font-mono font-medium text-sm border border-(--c)/45 text-(--c) rounded-md px-1 whitespace-nowrap no-underline hover:bg-(--c)/12 cursor-pointer",
 } as const;
 
 /** rettangolo di un nodo nelle mappe (classi e torre), rispetto al nodo scelto; il colore arriva da --c */
@@ -70,4 +70,4 @@ export const formulaBtn =
     "min-h-11 font-mono text-sm border border-line rounded-lg px-3 py-2 text-ink cursor-pointer aria-pressed:border-c-DP aria-pressed:bg-c-DP/14 disabled:opacity-40 disabled:cursor-default";
 /** esito finale sì / no */
 export const outcomeClass = (yes: boolean) =>
-    `rounded-lg px-3 py-2 font-ui font-semibold ${yes ? "bg-ok-soft text-ok" : "bg-proved-soft text-proved"}`;
+    `rounded-lg px-3 py-2 font-ui font-medium ${yes ? "bg-ok-soft text-ok" : "bg-proved-soft text-proved"}`;

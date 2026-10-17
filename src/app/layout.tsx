@@ -24,11 +24,6 @@ const cereal = localFont({
             weight: "500",
             style: "normal",
         },
-        {
-            path: "../../public/fonts/AirbnbCereal_W_Bd.otf",
-            weight: "700",
-            style: "normal",
-        },
     ],
 });
 

@@ -36,7 +36,7 @@ export function LessonTopics({ groups }: { groups: LessonGroup[] }) {
                                     shape="chevron"
                                     className="text-muted transition-transform group-open:rotate-90"
                                 />
-                                <span className={`min-w-0 flex-1 font-semibold ${t.notAsked ? "text-muted" : ""}`}>
+                                <span className={`min-w-0 flex-1 font-medium ${t.notAsked ? "text-muted" : ""}`}>
                                     {t.title}
                                 </span>
                                 {t.notAsked && <span className={ui.pill}>non chiesto all&apos;esame</span>}
@@ -76,7 +76,7 @@ export function LessonQuestions({ only }: { only?: number[] }) {
         <dl className="grid gap-3 sm:grid-cols-2">
             {qs.map((q) => (
                 <div key={q.q} className="border-line flex flex-col gap-1.5 rounded-xl border p-4">
-                    <dt className="font-semibold">{q.q}</dt>
+                    <dt className="font-medium">{q.q}</dt>
                     <dd className="text-muted text-base">
                         <Markdown>{q.a}</Markdown>
                     </dd>
@@ -93,7 +93,7 @@ export function LessonExercises({ only }: { only: number[] }) {
                 .map((i) => LESSON.exercises[i])
                 .map((e) => (
                     <details key={e.q} name="lezione-6" className="group border-line rounded-xl border">
-                        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 px-4 py-3 font-semibold [&::-webkit-details-marker]:hidden">
+                        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 px-4 py-3 font-medium [&::-webkit-details-marker]:hidden">
                             <Arrow shape="chevron" className="text-muted transition-transform group-open:rotate-90" />
                             <Markdown className="min-w-0 flex-1">{e.q}</Markdown>
                         </summary>

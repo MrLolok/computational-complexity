@@ -43,7 +43,7 @@ const OPTS: [Key, string][] = [
     ["no", "Falso"],
     ["altro", "Non si sa"],
 ];
-const base = "min-h-11 cursor-pointer rounded-lg border px-3 py-2 font-ui text-sm font-semibold";
+const base = "min-h-11 cursor-pointer rounded-lg border px-3 py-2 font-ui text-sm font-medium";
 
 function Item({ t }: { t: [string, Key, string] }) {
     const [picked, setPicked] = useState<Key | null>(null);

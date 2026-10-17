@@ -6,7 +6,7 @@ import ClassMap from "./ClassMap";
 import ClassPanel from "./ClassPanel";
 import ClassPanelIntro from "./ClassPanelIntro";
 
-const badgeText = "text-xs font-bold [text-anchor:middle] [dominant-baseline:central]";
+const badgeText = "text-xs font-medium [text-anchor:middle] [dominant-baseline:central]";
 
 function Legend() {
     return (

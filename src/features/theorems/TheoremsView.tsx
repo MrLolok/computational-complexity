@@ -29,15 +29,15 @@ import {
 
 const PREFIX = "teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
-const h4 = "mb-0.5 font-ui text-xs font-semibold uppercase tracking-widest text-muted";
+const h4 = "mb-0.5 font-ui text-xs font-medium uppercase tracking-widest text-muted";
 /* evidenziazione del teorema aperto da un indirizzo: si accende e poi sfuma */
 const HL_ON = ["bg-accent-soft/70"];
 const HL_FADE = ["transition-colors", "duration-1500", "ease-out"];
 const box = "rounded-lg border border-line px-4 open:pb-4";
-const boxSummary = "flex min-h-11 cursor-pointer items-center font-ui text-sm font-semibold text-accent";
+const boxSummary = "flex min-h-11 cursor-pointer items-center font-ui text-sm font-medium text-accent";
 /* i titoli di sezione delle spiegazioni diventano h4, con lo stile delle altre voci della scheda (le formule restano minuscole) */
 const mdText =
-    "[&_p]:max-w-none! [&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-semibold [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted [&_h4_.katex]:normal-case [&_h4_.katex]:tracking-normal";
+    "[&_p]:max-w-none! [&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-medium [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted [&_h4_.katex]:normal-case [&_h4_.katex]:tracking-normal";
 
 /* spiegazione in Markdown senza il titolo (è già nella scheda); le risposte alle domande di controllo sono blocchi <details> scritti a mano */
 function Explanation({ md }: { md: string }) {
@@ -83,11 +83,11 @@ const TheoremRow = memo(function TheoremRow({
         <details id={`teorema-${t.id}`} className={`${ui.card} group open:border-line-strong mt-3 scroll-mt-20`}>
             <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
                 <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                    <span className="font-ui text-muted text-xs font-semibold tracking-widest uppercase">
+                    <span className="font-ui text-muted text-xs font-medium tracking-widest uppercase">
                         {t.tipo || "teorema"}
                     </span>
                     <h3
-                        className="font-head text-lg font-semibold"
+                        className="font-head text-lg font-medium"
                         dangerouslySetInnerHTML={{ __html: texHtml(t.nome) }}
                     />
                 </div>
@@ -202,7 +202,7 @@ const TheoremRow = memo(function TheoremRow({
                     </div>
                 )}
                 <p className="text-muted text-sm">
-                    <b className="font-ui font-semibold">Dove:</b> {whereText(t)}
+                    <b className="font-ui font-medium">Dove:</b> {whereText(t)}
                     {t.nota_fonte && <RichHtml as="span" html={`. ${t.nota_fonte}`} />}
                 </p>
             </div>
@@ -330,7 +330,7 @@ export default function TheoremsView({
                 {groups.length ? (
                     groups.map((g) => (
                         <section key={g.k} className="mt-6">
-                            <h2 className="border-line font-ui text-muted border-b pb-2 text-xs font-semibold tracking-widest uppercase">
+                            <h2 className="border-line font-ui text-muted border-b pb-2 text-xs font-medium tracking-widest uppercase">
                                 {byFreq ? PRIORITY[g.k as keyof typeof PRIORITY].label : chapterTitle(g.k)}
                                 {byFreq && (
                                     <span className="ml-2 font-normal tracking-normal normal-case">

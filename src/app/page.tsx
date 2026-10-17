@@ -35,7 +35,7 @@ export default function Page() {
         <>
             <section className="grid grid-cols-1 items-center gap-10 py-5 sm:py-10 lg:grid-cols-2">
                 <div className="flex flex-col items-start gap-5">
-                    <h1 className="font-head max-w-md text-4xl leading-tight font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                    <h1 className="font-head max-w-md text-4xl font-medium text-balance sm:text-5xl lg:text-6xl">
                         La complessità,
                         <br />
                         <span className="text-accent">un concetto alla volta.</span>
@@ -71,7 +71,7 @@ export default function Page() {
                                     href={`/classi/${id}`}
                                     className="border-line-strong hover:border-accent flex items-center gap-4 rounded-lg border px-4 py-3"
                                 >
-                                    <span className="text-accent min-w-16 font-mono font-semibold">{id}</span>
+                                    <span className="text-accent min-w-16 font-mono font-medium">{id}</span>
                                     <span className="text-muted text-sm">{text}</span>
                                 </Link>
                             </div>

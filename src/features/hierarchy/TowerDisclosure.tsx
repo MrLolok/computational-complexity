@@ -14,7 +14,7 @@ export default function TowerDisclosure({ children }: { children: ReactNode }) {
     return (
         <details open={open} className="border-line rounded-xl border p-4 sm:p-5">
             <summary
-                className="cursor-pointer font-semibold"
+                className="cursor-pointer font-medium"
                 onClick={(e) => {
                     e.preventDefault();
                     setOpened(!open);

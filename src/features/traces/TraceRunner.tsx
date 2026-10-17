@@ -111,7 +111,7 @@ export default function TraceRunner({
 
             {done && p && (
                 <div className="border-ok/40 bg-ok-soft flex flex-wrap items-center gap-4 rounded-xl border px-4 py-3">
-                    <p className="font-head text-2xl font-semibold">
+                    <p className="font-head text-2xl font-medium">
                         {ok} giuste su {questions.length}
                     </p>
                     <p className="font-ui text-muted text-sm">
@@ -131,7 +131,7 @@ export default function TraceRunner({
                     return (
                         <li key={q.n} id={`d${q.n}`} className={`${ui.card} scroll-mt-44 sm:scroll-mt-32`}>
                             <div className="flex items-baseline gap-3">
-                                <span className="font-head text-accent text-2xl font-semibold">{q.label ?? q.n}</span>
+                                <span className="font-head text-accent text-2xl font-medium">{q.label ?? q.n}</span>
                                 <div className="min-w-0 flex-1 text-lg">{q.text}</div>
                             </div>
                             <div
@@ -150,7 +150,7 @@ export default function TraceRunner({
                                             aria-pressed={picked}
                                             disabled={done || (mode === "now" && Boolean(a))}
                                             onClick={() => choose(q, c)}
-                                            className={`font-ui min-h-11 min-w-16 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors disabled:cursor-default ${
+                                            className={`font-ui min-h-11 min-w-16 rounded-lg border px-3 py-2 text-sm font-medium transition-colors disabled:cursor-default ${
                                                 right
                                                     ? "border-ok bg-ok-soft text-ok"
                                                     : wrong
@@ -177,7 +177,7 @@ export default function TraceRunner({
                             </div>
                             {reveal && (
                                 <div className="border-line flex flex-col gap-4 border-t pt-4 sm:pl-8">
-                                    <div className="bg-accent-soft/50 font-ui text-accent inline-flex w-fit max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg px-3 py-2 text-sm font-semibold">
+                                    <div className="bg-accent-soft/50 font-ui text-accent inline-flex w-fit max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg px-3 py-2 text-sm font-medium">
                                         <span>Risposta:</span>
                                         <div className="min-w-0 [&_p]:inline [&>div]:inline">{q.answerNode}</div>
                                     </div>
@@ -263,7 +263,7 @@ function Q8({ code, q8, num }: { code: string; q8: RunnerQ8; num: string }) {
     return (
         <section id="d8" className={`${ui.card} scroll-mt-44 sm:scroll-mt-32`}>
             <div className="flex items-baseline gap-3">
-                <span className="font-head text-accent text-2xl font-semibold">{num}</span>
+                <span className="font-head text-accent text-2xl font-medium">{num}</span>
                 <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                         <span className={ui.eyebrow}>Macchina di Turing</span>

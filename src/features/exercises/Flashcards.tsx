@@ -18,7 +18,7 @@ import { setFlashKnown } from "@/store/progressSlice";
 
 const DECKS = LADDER_BANDS.filter((b) => PROBLEMS.some((p) => p.b === b));
 const face = `${ui.card} absolute inset-0 overflow-auto border-t-2 border-t-(--c) backface-hidden transition-transform duration-500 ease-in-out motion-reduce:transition-none`;
-const big = "block font-head text-4xl font-semibold leading-tight text-(--c)";
+const big = "block font-head text-4xl font-medium leading-tight text-(--c)";
 
 /** classificazione del problema, nel colore della sua classe (variabile --c) */
 /** mazzo di flashcard: tutti i problemi o quelli di un gradino, eventualmente senza le carte sapute */
@@ -31,7 +31,7 @@ function deckIds(deck: string, onlyToReview: boolean, known: Record<string, true
 function LabPill({ html }: { html: string }) {
     return (
         <span
-            className="inline-block rounded-full border border-(--c)/40 bg-(--c)/13 px-2.5 py-0.5 font-mono text-sm font-semibold text-(--c)"
+            className="inline-block rounded-full border border-(--c)/40 bg-(--c)/13 px-2.5 py-0.5 font-mono text-sm font-medium text-(--c)"
             dangerouslySetInnerHTML={{ __html: texHtml(html) }}
         />
     );
@@ -168,12 +168,12 @@ export default function Flashcards() {
                             </span>
                             <MathHtml className="block" html={cur.brief} terms={false} />
                             <span className="block">
-                                <strong className="font-semibold">Complemento:</strong>{" "}
+                                <strong className="font-medium">Complemento:</strong>{" "}
                                 <MathHtml html={cp} terms={false} />
                             </span>
                             {trap && (
                                 <span className="block text-base">
-                                    <strong className="font-semibold">Trappola{trap.c ? ` (${trap.c})` : ""}:</strong>{" "}
+                                    <strong className="font-medium">Trappola{trap.c ? ` (${trap.c})` : ""}:</strong>{" "}
                                     {trap.q ? (
                                         <>
                                             <MathHtml html={trap.q} terms={false} />{" "}
