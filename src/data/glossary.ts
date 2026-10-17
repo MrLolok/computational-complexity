@@ -1,4 +1,4 @@
-/** Sintesi allineate alla Lezione 6 degli appunti (tabella delle conclusioni, §11) e alle domande delle tracce. */
+/** Sintesi allineate alle slide della Lez. 6 (conclusioni) e alle domande delle tracce. */
 export const RANDOM_CLASSES = [
     {
         id: "BPP",
@@ -66,7 +66,7 @@ export const SPECIAL_TERMS = [
             "esponenziazione modulare",
         ],
         definition:
-            "Facili da calcolare, difficili da invertire (Lezione 10). $\\mathrm{P} = \\mathrm{NP}$ ne escluderebbe l’esistenza; $\\mathrm{P} \\neq \\mathrm{NP}$ da solo non basta.",
+            "Facili da calcolare, difficili da invertire (dispensa cap. 20). $\\mathrm{P} = \\mathrm{NP}$ ne escluderebbe l’esistenza; $\\mathrm{P} \\neq \\mathrm{NP}$ da solo non basta.",
         href: "/tracce/F01#d3",
     },
     {

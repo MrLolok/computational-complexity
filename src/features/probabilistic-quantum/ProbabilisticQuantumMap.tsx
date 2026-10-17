@@ -28,7 +28,7 @@ const badgeText = "font-medium [text-anchor:middle] [dominant-baseline:central]"
 const below = (a: MapNode, b: MapNode): boolean => MAP_INC.some(([x, y]) => x === a && (y === b || below(y, b)));
 const width = (id: MapNode) => (id === "PSPACE" ? 116 : W);
 
-/** Mappa della Lezione 6: un clic su una classe mostra significato, condizione di accettazione e relazioni. */
+/** Mappa delle classi probabilistiche e quantistiche: un clic su una classe mostra significato, condizione di accettazione e relazioni. */
 export default function ProbabilisticQuantumMap({ initial }: { initial: MapNode }) {
     const [sel, setSel] = useState<MapNode>(initial);
     const [hover, setHover] = useState<MapNode | null>(null);

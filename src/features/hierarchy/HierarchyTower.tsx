@@ -332,8 +332,7 @@ export default function HierarchyTower() {
                     </p>
                 )}
                 <p className="text-muted mt-4 text-sm">
-                    <b className="font-ui font-medium">Fonti:</b> dispensa cap. 16–17; slide Lez. 9; appunti Lez. 9
-                    §2–§6.
+                    <b className="font-ui font-medium">Fonti:</b> dispensa cap. 16–17; slide Lez. 9.
                 </p>
             </aside>
         </div>

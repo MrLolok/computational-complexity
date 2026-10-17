@@ -1,4 +1,4 @@
-/* 56 domande delle tracce già verificate negli appunti, etichettate per classe (q, a e e in HTML). */
+/* 56 domande delle tracce già verificate, etichettate per classe (q, a e e in HTML). */
 import type { ClassId } from "./classes";
 
 export type ExamQuestion = { q: string; a: string; e: string; c: ClassId[] };
@@ -228,7 +228,7 @@ export const EXAM_QUESTIONS: ExamQuestion[] = [
     {
         q: "È vero che SCHÖNFINKEL-BERNAYS SAT non è NEXP-completo? (E26)",
         a: "<b>NO</b>",
-        e: "è NEXP-completo (Lezione 10)",
+        e: "è NEXP-completo (dispensa cap. 22)",
         c: ["NEXP"],
     },
     {

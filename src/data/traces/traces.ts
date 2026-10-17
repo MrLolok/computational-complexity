@@ -1,4 +1,4 @@
-/* Tracce d'esame risolte, esportate (in sola lettura) dalle pagine Notion "Tracce d'esame · domande risolte". Testi in Markdown con formule $…$. */
+/* Tracce d'esame risolte (sola lettura). Testi in Markdown con formule $…$; le soluzioni della domanda 8 stanno in data/turing. */
 import raw from "./traces.json";
 
 export type TraceAnswer = "SI" | "NO" | "ALTRO";
@@ -20,13 +20,12 @@ export type TraceQuestion = {
     repeatOf: string | null;
     seeAlso: TraceRef[];
 };
-export type TraceQ8 = { title: string; body: string; lessonRef: string | null; repeatOf: string | null };
+export type TraceQ8 = { title: string; repeatOf: string | null };
 export type Trace = {
     code: string;
     title: string;
     date: string | null;
     dateLabel: string | null;
-    notionUrl: string;
     intro: string;
     questions: TraceQuestion[];
     q8: TraceQ8 | null;

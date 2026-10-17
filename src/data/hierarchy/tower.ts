@@ -159,11 +159,11 @@ export const HYPOTHESES: Hypothesis[] = [
 export const QBF_BY_NODE: Partial<Record<TowerId, { f: string; w: string }>> = {
     S1: {
         f: "$\\exists p\\ \\exists q.\\ (p \\lor q) \\land \\neg p$",
-        w: "vera: con $p$ falsa e $q$ vera la formula vale vero (appunti Lez. 9 §3).",
+        w: "vera: con $p$ falsa e $q$ vera la formula vale vero.",
     },
     P1: {
         f: "$\\forall p\\ \\forall q.\\ \\neg p \\lor p \\lor q$",
-        w: "vera: $\\neg p \\lor p \\lor q$ è valida, cioè vera con ogni valore di $p$ e $q$ (slide Lez. 9, QBF).",
+        w: "vera: $\\neg p \\lor p \\lor q$ è valida, cioè vera con ogni valore di $p$ e $q$ (esempio delle slide).",
     },
     S2: {
         f: "$\\exists p\\ \\forall q.\\ p \\lor q$",
@@ -171,15 +171,15 @@ export const QBF_BY_NODE: Partial<Record<TowerId, { f: string; w: string }>> = {
     },
     P2: {
         f: "$\\forall p\\ \\exists q.\\ \\neg p \\lor q$",
-        w: "vera: qualunque sia $p$, basta prendere $q$ vera (slide Lez. 9).",
+        w: "vera: qualunque sia $p$, basta prendere $q$ vera (esempio delle slide).",
     },
     S3: {
         f: "$\\exists p\\ \\forall q\\ \\exists r.\\ p \\land (q \\lor r) \\land (\\neg q \\lor \\neg r)$",
-        w: "vera: si sceglie $p$ vera e, per ogni $q$, si prende $r$ opposta a $q$ (appunti Lez. 9 §3).",
+        w: "vera: si sceglie $p$ vera e, per ogni $q$, si prende $r$ opposta a $q$.",
     },
     P3: {
         f: "$\\forall p\\ \\exists q\\ \\forall r.\\ (p \\lor q \\lor r) \\land (\\neg p \\lor \\neg q \\lor r)$",
-        w: "vera: per ogni $p$ si sceglie $q$ opposta a $p$, e allora le due clausole sono vere per ogni $r$ (appunti Lez. 9 §3).",
+        w: "vera: per ogni $p$ si sceglie $q$ opposta a $p$, e allora le due clausole sono vere per ogni $r$.",
     },
     S4: {
         f: "$\\exists \\vec{p}_1\\ \\forall \\vec{p}_2\\ \\exists \\vec{p}_3\\ \\forall \\vec{p}_4.\\ \\varphi$",

@@ -1,4 +1,4 @@
-/* Mappa delle classi della Lezione 6 (appunti §8 e §11): solo inclusioni, congetture ed esempi riportati negli appunti. */
+/* Mappa delle classi probabilistiche e quantistiche: solo inclusioni, congetture ed esempi delle slide (Lez. 6). */
 export type MapNode = "P" | "BPP" | "NP" | "BQP" | "PP" | "PSPACE" | "EXP" | "EXP2";
 
 export const MAP_NODES: MapNode[] = ["EXP2", "EXP", "PSPACE", "PP", "BQP", "NP", "BPP", "P"];
@@ -40,7 +40,7 @@ export const MAP_CONJ: Record<string, string> = {
     "BPP>BQP": "BPP ⊆ BQP è dimostrata; si congettura BPP ≠ BQP (domanda aperta)",
     "PP>PSPACE": "PP ⊆ PSPACE è dimostrata; si congettura PP ⊊ PSPACE",
 };
-/** esempi accanto alla classe, come nella figura degli appunti (una riga per elemento) */
+/** esempi accanto alla classe, come nella «Mappa ricapitolativa» delle slide (una riga per elemento) */
 export const MAP_EXAMPLES: Partial<Record<MapNode, string[]>> = {
     EXP2: ["ontologie OWL2:", "2-EXP-difficile"],
     PSPACE: ["QSAT, GO:", "PSPACE-completi"],
@@ -53,7 +53,7 @@ export type NodeInfo = {
     full: string;
     /** il significato, in una riga */
     idea: string;
-    /** condizione di accettazione (tabella delle conclusioni, §11) */
+    /** condizione di accettazione */
     accept?: string;
     /** errore riducibile in tempo polinomiale? */
     error?: string;
@@ -135,7 +135,7 @@ export const MAP_INFO: Record<MapNode, NodeInfo> = {
     },
     EXP: {
         full: "Tempo esponenziale",
-        idea: "PSPACE sta in EXP, che sta strettamente dentro 2-EXP per il teorema di gerarchia del tempo (Lezione 5).",
+        idea: "PSPACE sta in EXP, che sta strettamente dentro 2-EXP per il teorema di gerarchia del tempo.",
         proved: ["$\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$", "$\\mathrm{EXP} \\subsetneq 2\\text{-}\\mathrm{EXP}$"],
         conjectured: [],
         more: { href: "/classi/EXP", label: "Scheda della classe EXP" },

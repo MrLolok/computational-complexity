@@ -53,7 +53,7 @@ export function towerInfo(id: TowerId): TowerInfo {
                 ],
                 [
                     "Esempio",
-                    `<div class="${F}">${ex.f}</div><p>È ${ex.w}</p>${id === "S2" ? `<p><b>Come la decide una macchina $\\mathrm{NP}^{\\mathrm{NP}}$.</b> Indovina $p$, poi chiede all'oracolo SAT: «esiste un $q$ che rende falsa la formula?», cioè «$\\neg(p \\lor q)$ è soddisfacibile?». Sul ramo con $p$ vera la risposta è no, e il ramo accetta. Sul ramo con $p$ falsa resta $\\neg q$, soddisfacibile, e il ramo rifiuta. Basta un ramo che accetta: la risposta è sì (appunti Lez. 9 §3).</p>` : ""}`,
+                    `<div class="${F}">${ex.f}</div><p>È ${ex.w}</p>${id === "S2" ? `<p><b>Come la decide una macchina $\\mathrm{NP}^{\\mathrm{NP}}$.</b> Indovina $p$, poi chiede all'oracolo SAT: «esiste un $q$ che rende falsa la formula?», cioè «$\\neg(p \\lor q)$ è soddisfacibile?». Sul ramo con $p$ vera la risposta è no, e il ramo accetta. Sul ramo con $p$ falsa resta $\\neg q$, soddisfacibile, e il ramo rifiuta. Basta un ramo che accetta: la risposta è sì.</p>` : ""}`,
                 ],
                 [
                     "Problemi completi",
@@ -88,7 +88,7 @@ export function towerInfo(id: TowerId): TowerInfo {
                 [
                     "Esempio",
                     lv === 2
-                        ? `<p>«Il giro ottimo costa un numero pari?» Si trova il costo ottimo per bisezione, chiedendo a TSP(D) «c'è un giro di costo $\\le B$?» con $B$ dimezzato a ogni passo; le domande sono logaritmiche nel costo massimo, quindi polinomiali. Poi si guarda se è pari (appunti Lez. 9 §2).</p><p>Anche DP sta qui: per SAT-UNSAT bastano due domande a SAT (dispensa cap. 16).</p>`
+                        ? `<p>«Il giro ottimo costa un numero pari?» Si trova il costo ottimo per bisezione, chiedendo a TSP(D) «c'è un giro di costo $\\le B$?» con $B$ dimezzato a ogni passo; le domande sono logaritmiche nel costo massimo, quindi polinomiali. Poi si guarda se è pari.</p><p>Anche DP sta qui: per SAT-UNSAT bastano due domande a SAT (dispensa cap. 16).</p>`
                         : `<p>Un algoritmo polinomiale che fa domande a ${inlineMath(qsat(lv - 1))}. Il corso non presenta problemi completi per ${inlineMath(deltaP(lv))}: all'esame serve sapere dove sta.</p>`,
                 ],
                 [
@@ -111,7 +111,7 @@ export function towerInfo(id: TowerId): TowerInfo {
                 ],
                 [
                     "Definizione",
-                    `<div class="${F}">$\\Delta_0^{\\mathrm{P}} = \\Sigma_0^{\\mathrm{P}} = \\Pi_0^{\\mathrm{P}} = \\mathrm{P}$</div><p>Come oracolo P è inutile: $\\mathrm{P}^{\\mathrm{P}} = \\mathrm{P}$ e $\\mathrm{NP}^{\\mathrm{P}} = \\mathrm{NP}$, perché ogni domanda si può risolvere sul posto in tempo polinomiale (slide Lez. 9, «Oracoli inutili»). Per questo il piano 1 ridà P, NP e coNP.</p>`,
+                    `<div class="${F}">$\\Delta_0^{\\mathrm{P}} = \\Sigma_0^{\\mathrm{P}} = \\Pi_0^{\\mathrm{P}} = \\mathrm{P}$</div><p>Come oracolo P è inutile: $\\mathrm{P}^{\\mathrm{P}} = \\mathrm{P}$ e $\\mathrm{NP}^{\\mathrm{P}} = \\mathrm{NP}$, perché ogni domanda si può risolvere sul posto in tempo polinomiale (slide, «Oracoli inutili»). Per questo il piano 1 ridà P, NP e coNP.</p>`,
                 ],
                 [
                     "All'esame",

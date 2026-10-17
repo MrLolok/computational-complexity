@@ -16,7 +16,7 @@ const PARTS = [
     ["formale", "Definizione e formule"],
 ] as const;
 
-/** Spiegazione semplificata degli appunti: un riquadro per concetto, con idea, esempio e versione formale. */
+/** Spiegazione semplificata: un riquadro per concetto, con idea, esempio e versione formale. */
 export function LessonTopics({ groups }: { groups: LessonGroup[] }) {
     return (
         <div className="flex min-w-0 flex-col gap-7 [&_p]:max-w-none!">
@@ -59,7 +59,7 @@ export function LessonTopics({ groups }: { groups: LessonGroup[] }) {
                                         </div>
                                     ) : null,
                                 )}
-                                <p className="text-muted text-xs">Negli appunti: {t.ref}</p>
+                                <p className="text-muted text-xs">Nelle slide: «{t.ref}»</p>
                             </div>
                         </details>
                     ))}
@@ -69,7 +69,7 @@ export function LessonTopics({ groups }: { groups: LessonGroup[] }) {
     );
 }
 
-/** Domande guida della lezione (parte A degli appunti). */
+/** Domande guida sugli argomenti delle slide. */
 export function LessonQuestions({ only }: { only?: number[] }) {
     const qs = LESSON.questions.filter((_, i) => !only || only.includes(i));
     return (
@@ -141,8 +141,8 @@ export function LessonExam({ bullets, test }: { bullets: number[]; test: RegExp 
 export function LessonSource() {
     return (
         <p className="text-muted text-xs">
-            Fonte: appunti della Lezione 6 · Algoritmi probabilistici e calcolo quantistico (slide lezione-6.pdf,
-            Bonatti; Papadimitriou cap. 11). La dispensa non ha un capitolo dedicato.
+            Fonte: slide Lez. 6 · Algoritmi probabilistici e calcolo quantistico (P. A. Bonatti). La dispensa non ha un
+            capitolo dedicato.
         </p>
     );
 }

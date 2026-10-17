@@ -58,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                             <GlossaryPopover>{children}</GlossaryPopover>
                         </main>
                         <footer className="border-line font-ui text-muted mt-6 flex flex-wrap gap-x-5 gap-y-1 border-t pt-4 text-sm">
-                            <span>Fonti: dispensa, slide e appunti del corso.</span>
+                            <span>Fonti: dispensa e slide del corso.</span>
                             <span>✱ = integrazione esterna al corso.</span>
                             <a href="/fonti" className="text-accent underline underline-offset-2">
                                 Fonti e verifiche

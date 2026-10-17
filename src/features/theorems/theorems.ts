@@ -80,16 +80,13 @@ export function groupByPriority(list: Theorem[]) {
 
 export const chapterTitle = (k: string) => (/^\d/.test(k) ? "Capitolo " + k : k);
 
-/** dove si trova: fonti, oppure capitolo e lezione */
+/** dove si trova: fonti, oppure capitolo e pagina della dispensa */
 export const whereText = (t: Theorem) =>
     (t.fonti || []).length
         ? t.fonti.join("; ")
-        : [
-              t.capitolo ? `dispensa cap. ${t.capitolo}${t.pagina ? `, p. ${t.pagina}` : ""}` : "",
-              t.lezione ? `Lezione ${t.lezione}` : "",
-          ]
-              .filter(Boolean)
-              .join(" · ");
+        : t.capitolo
+          ? `dispensa cap. ${t.capitolo}${t.pagina ? `, p. ${t.pagina}` : ""}`
+          : "";
 
 /* testo di ricerca di ogni teorema, calcolato una volta sola */
 const SEARCH = new Map(
