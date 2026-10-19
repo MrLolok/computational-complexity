@@ -88,6 +88,40 @@ export const whereText = (t: Theorem) =>
           ? `dispensa cap. ${t.capitolo}${t.pagina ? `, p. ${t.pagina}` : ""}`
           : "";
 
+/* teoremi che dicono che un problema specifico è completo o difficile per una classe (CLIQUE NP-completo, QSAT PSPACE-completo…);
+   restano fuori i risultati generali sulla completezza (un completo per due classi, il complemento di un NP-completo) */
+const COMPLETENESS = new Set([
+    "cook-levin",
+    "3sat",
+    "max2sat",
+    "independent-set",
+    "clique-nodecover",
+    "hamilton-path",
+    "tsp-d",
+    "3-coloring",
+    "tripartite-matching",
+    "set-problems",
+    "integer-programming",
+    "knapsack",
+    "validity-conp",
+    "exact-tsp-np-hard",
+    "sat-unsat-dp",
+    "altri-dp-completi",
+    "circ",
+    "t17-10",
+    "strategic-companies",
+    "qsat-pspace",
+    "co-hamilton-pi2",
+    "db-queries",
+    "geography",
+    "go",
+    "nexp-completi",
+    "2sat-p-completo",
+    "riepilogo-p",
+]);
+export const isCompleteness = (t: Theorem) => COMPLETENESS.has(t.id);
+export const COMPLETENESS_COUNT = THEOREMS.filter(isCompleteness).length;
+
 /* testo di ricerca di ogni teorema, calcolato una volta sola */
 const SEARCH = new Map(
     THEOREMS.map((t) => [
@@ -96,11 +130,12 @@ const SEARCH = new Map(
     ]),
 );
 
-export function filterTheorems(q: string, cls: string, provedOnly = false) {
+export function filterTheorems(q: string, cls: string, provedOnly = false, hideCompleteness = false) {
     const nq = searchKey(htmlToPlain(q));
     return THEOREMS.filter(
         (t) =>
             (!provedOnly || t.prova === "nel corso") &&
+            (!hideCompleteness || !isCompleteness(t)) &&
             (cls === "all" || (t.classi || []).includes(cls as ClassId)) &&
             (!nq || SEARCH.get(t)!.includes(nq)),
     );

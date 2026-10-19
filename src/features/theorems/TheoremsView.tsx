@@ -20,15 +20,18 @@ import { ui } from "@/lib/tokens";
 import { useHash } from "@/lib/useHash";
 import {
     chapterTitle,
+    COMPLETENESS_COUNT,
     filterTheorems,
     groupByChapter,
     groupByPriority,
+    isCompleteness,
     problemsInTheorem,
     whereText,
 } from "./theorems";
 
 const PREFIX = "teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
+const COMPLETENESS_HINT = "Dice che un problema specifico è completo o difficile per una classe";
 const h4 = "mb-0.5 font-ui text-xs font-medium uppercase tracking-widest text-muted";
 /* evidenziazione del teorema aperto da un indirizzo: si accende e poi sfuma */
 const HL_ON = ["bg-accent-soft/70"];
@@ -104,6 +107,11 @@ const TheoremRow = memo(function TheoremRow({
                     {pf?.priorita === "orale" && (
                         <span className={ui.pill} title={PRIORITY.orale.hint}>
                             per l&apos;orale
+                        </span>
+                    )}
+                    {isCompleteness(t) && (
+                        <span className={ui.pillOpen} title={COMPLETENESS_HINT}>
+                            completezza
                         </span>
                     )}
                     {t.prova === "nel corso" && <span className={ui.pill}>dimostrato nel corso</span>}
@@ -221,10 +229,11 @@ export default function TheoremsView({
     const [cls, setCls] = useState("all");
     const [provedOnly, setProvedOnly] = useState(true);
     const [byFreq, setByFreq] = useState(false);
+    const [hideCompleteness, setHideCompleteness] = useState(false);
     const hash = useHash();
     const target = hash.startsWith(PREFIX) ? hash.slice(PREFIX.length) : "";
 
-    const list = filterTheorems(q, cls, provedOnly);
+    const list = filterTheorems(q, cls, provedOnly, hideCompleteness);
     const groups = byFreq ? groupByPriority(list) : groupByChapter(list);
 
     /* #teorema-<id> nell'indirizzo: se i filtri lo nascondono si azzerano, poi lo si apre e ci si scorre */
@@ -236,6 +245,7 @@ export default function TheoremsView({
                 setQ("");
                 setCls("all");
                 setProvedOnly(false);
+                setHideCompleteness(false);
             });
             return () => cancelAnimationFrame(r);
         }
@@ -319,6 +329,18 @@ export default function TheoremsView({
                         onChange={(e) => setProvedOnly(e.target.checked)}
                     />
                     Solo dimostrati nel corso
+                </label>
+                <label
+                    className="text-muted flex min-h-11 cursor-pointer items-center gap-2 text-sm"
+                    title={COMPLETENESS_HINT}
+                >
+                    <input
+                        type="checkbox"
+                        className="accent-accent size-4"
+                        checked={hideCompleteness}
+                        onChange={(e) => setHideCompleteness(e.target.checked)}
+                    />
+                    Nascondi i teoremi di <span className={ui.pillOpen}>completezza</span> ({COMPLETENESS_COUNT})
                 </label>
                 <span role="status" className="font-ui text-muted text-sm">
                     {list.length === THEOREMS.length
