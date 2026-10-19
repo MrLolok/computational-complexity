@@ -87,7 +87,7 @@ export const EXAM_QUESTIONS: ExamQuestion[] = groups().map((g) => {
         id: key(first.ref),
         q: mdHtml(first.q.text),
         a: answerHtml(first.q.answerText),
-        e: mdHtml(first.q.explanation),
+        e: mdHtml(first.q.explanation, true),
         c: classesOf(first.q.text),
         refs: [first, ...g.filter((x) => x !== first)].map((x) => ({ ...x.ref, label: x.q.label })),
     };
