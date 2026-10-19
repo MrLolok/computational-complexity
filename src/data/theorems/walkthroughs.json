@@ -347,8 +347,8 @@
             },
             {
                 "title": "Conta i rami",
-                "caption": "Con $f(n)$ livelli le sequenze sono $d + d^2 + \\cdots + d^{f(n)} = O(d^{f(n)})$, perché l'ultimo termine vale almeno quanto tutti gli altri insieme. Ognuna costa $O(f(n))$ passi fra generazione e simulazione, e $f(n) \\cdot d^{f(n)} \\le (2d)^{f(n)}$: il tempo è $O(c^{f(n)})$ con $c = 2d \\gt d$, una costante che dipende da $N$ e non dall'input.",
-                "alt": "Conta i rami. Con $f(n)$ livelli le sequenze sono $d + d^2 + \\cdots + d^{f(n)} = O(d^{f(n)})$, perché l'ultimo termine vale almeno quanto tutti gli altri insieme. Ognuna costa $O(f(n))$ passi fra generazione e simulazione, e $f(n) \\cdot d^{f(n)} \\le (2d)^{f(n)}$: il tempo è $O(c^{f(n)})$ con $c = 2d \\gt d$, una costante che dipende da $N$ e non dall'input.",
+                "caption": "Con $f(n)$ livelli le sequenze sono $d + d^2 + \\cdots + d^{f(n)} = O(d^{f(n)})$, perché l'ultimo termine vale almeno quanto tutti gli altri insieme. Ognuna costa $O(f(n))$ passi fra generazione e simulazione, e siccome $f(n) \\le 2^{f(n)}$ vale $f(n) \\cdot d^{f(n)} \\le 2^{f(n)} \\cdot d^{f(n)} = (2d)^{f(n)}$: il tempo è $O(c^{f(n)})$ con $c = 2d \\gt d$, una costante che dipende da $N$ e non dall'input.",
+                "alt": "Conta i rami. Con $f(n)$ livelli le sequenze sono $d + d^2 + \\cdots + d^{f(n)} = O(d^{f(n)})$, perché l'ultimo termine vale almeno quanto tutti gli altri insieme. Ognuna costa $O(f(n))$ passi fra generazione e simulazione, e siccome $f(n) \\le 2^{f(n)}$ vale $f(n) \\cdot d^{f(n)} \\le 2^{f(n)} \\cdot d^{f(n)} = (2d)^{f(n)}$: il tempo è $O(c^{f(n)})$ con $c = 2d \\gt d$, una costante che dipende da $N$ e non dall'input.",
                 "src": "/illustrations/theorems/proofs-03-storyboard.webp",
                 "crop": {
                     "columns": 3,
@@ -396,8 +396,8 @@
             },
             {
                 "title": "Conta i bit",
-                "caption": "Il nastro di lavoro contiene tre numeri scritti in binario: il nodo corrente $u$, il prossimo nodo (questa $v$ è un nome di nodo, non il numero dei nodi) e il contatore $i$. Ognuno occupa $O(\\log v)$ bit, in tutto $O(\\log v)$: con un milione di nodi, circa 60 bit. Basta che un ramo trovi il cammino, quindi $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$.",
-                "alt": "Conta i bit. Il nastro di lavoro contiene tre numeri scritti in binario: il nodo corrente $u$, il prossimo nodo (questa $v$ è un nome di nodo, non il numero dei nodi) e il contatore $i$. Ognuno occupa $O(\\log v)$ bit, in tutto $O(\\log v)$: con un milione di nodi, circa 60 bit. Basta che un ramo trovi il cammino, quindi $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$.",
+                "caption": "Il nastro di lavoro contiene tre numeri scritti in binario: il nodo corrente $u$, il prossimo nodo (questa $v$ è un nome di nodo, non il numero dei nodi) e il contatore $i$. Ognuno occupa $O(\\log v)$ bit, in tutto $O(\\log v)$: con un milione di nodi ogni numero sta in 20 bit, perché $2^{20} \\approx 10^6$, e i tre insieme in circa 60 bit. Basta che un ramo trovi il cammino, quindi $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$.",
+                "alt": "Conta i bit. Il nastro di lavoro contiene tre numeri scritti in binario: il nodo corrente $u$, il prossimo nodo (questa $v$ è un nome di nodo, non il numero dei nodi) e il contatore $i$. Ognuno occupa $O(\\log v)$ bit, in tutto $O(\\log v)$: con un milione di nodi ogni numero sta in 20 bit, perché $2^{20} \\approx 10^6$, e i tre insieme in circa 60 bit. Basta che un ramo trovi il cammino, quindi $\\mathrm{REACHABILITY} \\in \\mathrm{NL}$.",
                 "src": "/illustrations/theorems/proofs-03-storyboard.webp",
                 "crop": {
                     "columns": 3,
@@ -510,8 +510,8 @@
         "slides": [
             {
                 "title": "Conta le configurazioni possibili",
-                "caption": "Una configurazione è una fotografia completa della macchina: lo stato $q$, il contenuto $a_1 \\ldots a_s$ del nastro di lavoro e le posizioni dei cursori. Con spazio $s = f(n)$ si scrive in $O(s)$ bit; l'ipotesi $s \\ge \\log n$ serve perché ci stia anche la posizione sul nastro di input, che ha $n + 1$ valori possibili. Le configurazioni diverse sono quindi al più $2^{O(s)}$.",
-                "alt": "Conta le configurazioni possibili. Una configurazione è una fotografia completa della macchina: lo stato $q$, il contenuto $a_1 \\ldots a_s$ del nastro di lavoro e le posizioni dei cursori. Con spazio $s = f(n)$ si scrive in $O(s)$ bit; l'ipotesi $s \\ge \\log n$ serve perché ci stia anche la posizione sul nastro di input, che ha $n + 1$ valori possibili. Le configurazioni diverse sono quindi al più $2^{O(s)}$.",
+                "caption": "Una configurazione è una fotografia completa della macchina: lo stato $q$, il contenuto $a_1 \\ldots a_s$ del nastro di lavoro e le posizioni dei cursori. Con spazio $s = f(n)$ le scelte sono: un numero costante di stati, $|\\Sigma|^s$ contenuti del nastro, $s$ posizioni del cursore di lavoro e $n + 1$ posizioni sul nastro di input. Ogni fattore è al più $2^{O(s)}$: $|\\Sigma|^s = 2^{s \\log |\\Sigma|}$, $s \\le 2^s$, e $n + 1 \\le 2^{O(s)}$ grazie all'ipotesi $s \\ge \\log n$. Il prodotto di questi fattori è ancora $2^{O(s)}$, perché gli esponenti si sommano.",
+                "alt": "Conta le configurazioni possibili. Una configurazione è una fotografia completa della macchina: lo stato $q$, il contenuto $a_1 \\ldots a_s$ del nastro di lavoro e le posizioni dei cursori. Con spazio $s = f(n)$ le scelte sono: un numero costante di stati, $|\\Sigma|^s$ contenuti del nastro, $s$ posizioni del cursore di lavoro e $n + 1$ posizioni sul nastro di input. Ogni fattore è al più $2^{O(s)}$: $|\\Sigma|^s = 2^{s \\log |\\Sigma|}$, $s \\le 2^s$, e $n + 1 \\le 2^{O(s)}$ grazie all'ipotesi $s \\ge \\log n$. Il prodotto di questi fattori è ancora $2^{O(s)}$, perché gli esponenti si sommano.",
                 "src": "/illustrations/theorems/proofs-04-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -543,8 +543,8 @@
             },
             {
                 "title": "Conserva il limite di spazio",
-                "caption": "Il numero $c$ è esponenziale in $s$ e in unario non ci starebbe, ma in binario occupa $O(s)$ bit. Per sapere fin dove contare, $M'$ si costruisce un metro lungo $f(n)$, e qui serve che $f$ sia propria. Metro, contatore e simulazione stanno in $O(s)$ celle: ogni ramo termina e la macchina accetta gli stessi input di prima.",
-                "alt": "Conserva il limite di spazio. Il numero $c$ è esponenziale in $s$ e in unario non ci starebbe, ma in binario occupa $O(s)$ bit. Per sapere fin dove contare, $M'$ si costruisce un metro lungo $f(n)$, e qui serve che $f$ sia propria. Metro, contatore e simulazione stanno in $O(s)$ celle: ogni ramo termina e la macchina accetta gli stessi input di prima.",
+                "caption": "Il numero $c$ è esponenziale in $s$ e in unario non ci starebbe, ma in binario un numero fino a $2^{a s}$ occupa $a s + 1$ bit, cioè $O(s)$. Per sapere fin dove contare, $M'$ si costruisce un metro lungo $f(n)$, e qui serve che $f$ sia propria. Metro, contatore e simulazione stanno in $O(s)$ celle: ogni ramo termina e la macchina accetta gli stessi input di prima.",
+                "alt": "Conserva il limite di spazio. Il numero $c$ è esponenziale in $s$ e in unario non ci starebbe, ma in binario un numero fino a $2^{a s}$ occupa $a s + 1$ bit, cioè $O(s)$. Per sapere fin dove contare, $M'$ si costruisce un metro lungo $f(n)$, e qui serve che $f$ sia propria. Metro, contatore e simulazione stanno in $O(s)$ celle: ogni ramo termina e la macchina accetta gli stessi input di prima.",
                 "src": "/illustrations/theorems/proofs-04-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -630,8 +630,8 @@
             },
             {
                 "title": "Calcola il costo universale",
-                "caption": "A ogni passo $U$ scorre i nastri codificati di $M$, lunghi $O(f(n))$, con un numero di passate che dipende da $M$: un fattore $\\ell_M \\cdot k_M^2$, con $k_M$ nastri e $\\ell_M$ bit per stato o simbolo. $U$ deve rispettare un solo limite per tutte le $M$, quindi il fattore si limita con $\\log^3 n = O(f(n))$ e un passo costa $O(f(n)^2)$. Per $f(n)$ passi, $O(f(n)^3)$.",
-                "alt": "Calcola il costo universale. A ogni passo $U$ scorre i nastri codificati di $M$, lunghi $O(f(n))$, con un numero di passate che dipende da $M$: un fattore $\\ell_M \\cdot k_M^2$, con $k_M$ nastri e $\\ell_M$ bit per stato o simbolo. $U$ deve rispettare un solo limite per tutte le $M$, quindi il fattore si limita con $\\log^3 n = O(f(n))$ e un passo costa $O(f(n)^2)$. Per $f(n)$ passi, $O(f(n)^3)$.",
+                "caption": "A ogni passo $U$ scorre due volte i nastri codificati di $M$, lunghi $O(f(n))$, e ogni passata costa un fattore $\\ell_M \\cdot k_M^2$, con $k_M$ nastri e $\\ell_M$ bit per stato o simbolo: un passo costa $O(\\ell_M k_M^2 f(n))$. $U$ deve rispettare un solo limite per tutte le $M$. La descrizione di $M$ sta dentro l'input lungo $n$, quindi $k_M$ e $\\ell_M$ sono al più $\\log n$, e $\\ell_M k_M^2 \\le \\log^3 n = O(n) = O(f(n))$. Un passo costa allora $O(f(n)) \\cdot O(f(n)) = O(f(n)^2)$, e $f(n)$ passi $O(f(n)^3)$.",
+                "alt": "Calcola il costo universale. A ogni passo $U$ scorre due volte i nastri codificati di $M$, lunghi $O(f(n))$, e ogni passata costa un fattore $\\ell_M \\cdot k_M^2$, con $k_M$ nastri e $\\ell_M$ bit per stato o simbolo: un passo costa $O(\\ell_M k_M^2 f(n))$. $U$ deve rispettare un solo limite per tutte le $M$. La descrizione di $M$ sta dentro l'input lungo $n$, quindi $k_M$ e $\\ell_M$ sono al più $\\log n$, e $\\ell_M k_M^2 \\le \\log^3 n = O(n) = O(f(n))$. Un passo costa allora $O(f(n)) \\cdot O(f(n)) = O(f(n)^2)$, e $f(n)$ passi $O(f(n)^3)$.",
                 "src": "/illustrations/theorems/proofs-05-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -755,8 +755,8 @@
             },
             {
                 "title": "Applica la gerarchia",
-                "caption": "Il riquadro è il teorema di gerarchia del tempo applicato a $f(n) = 2^n$, e ne esce un linguaggio $H$ con due proprietà. In alto, $H$ si decide in tempo $2^{cn}$ con $c$ costante (il conto preciso dà $2^{6n+3} \\le 2^{9n}$), e la freccia verde scende a $H \\in \\mathrm{EXP}$ perché $2^{cn} \\le 2^{n^2}$ per $n \\ge c$. In basso, in rosa, $H \\notin \\mathrm{TIME}(2^n)$.",
-                "alt": "Applica la gerarchia. Il riquadro è il teorema di gerarchia del tempo applicato a $f(n) = 2^n$, e ne esce un linguaggio $H$ con due proprietà. In alto, $H$ si decide in tempo $2^{cn}$ con $c$ costante (il conto preciso dà $2^{6n+3} \\le 2^{9n}$), e la freccia verde scende a $H \\in \\mathrm{EXP}$ perché $2^{cn} \\le 2^{n^2}$ per $n \\ge c$. In basso, in rosa, $H \\notin \\mathrm{TIME}(2^n)$.",
+                "caption": "Il riquadro è il teorema di gerarchia del tempo applicato a $f(n) = 2^n$, e ne esce un linguaggio $H$ con due proprietà. In alto, $H$ si decide in tempo $2^{cn}$ con $c$ costante (il conto preciso: $f(2n+1)^3 = (2^{2n+1})^3 = 2^{6n+3}$, e $6n + 3 \\le 9n$ per $n \\ge 1$), e la freccia verde scende a $H \\in \\mathrm{EXP}$ perché $2^{cn} \\le 2^{n^2}$ per $n \\ge c$. In basso, in rosa, $H \\notin \\mathrm{TIME}(2^n)$.",
+                "alt": "Applica la gerarchia. Il riquadro è il teorema di gerarchia del tempo applicato a $f(n) = 2^n$, e ne esce un linguaggio $H$ con due proprietà. In alto, $H$ si decide in tempo $2^{cn}$ con $c$ costante (il conto preciso: $f(2n+1)^3 = (2^{2n+1})^3 = 2^{6n+3}$, e $6n + 3 \\le 9n$ per $n \\ge 1$), e la freccia verde scende a $H \\in \\mathrm{EXP}$ perché $2^{cn} \\le 2^{n^2}$ per $n \\ge c$. In basso, in rosa, $H \\notin \\mathrm{TIME}(2^n)$.",
                 "src": "/illustrations/theorems/proofs-06-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -918,8 +918,8 @@
         "slides": [
             {
                 "title": "Descrivi una configurazione",
-                "caption": "Fra parentesi c'è una configurazione: lo stato $q$ e un nastro di lavoro con la sua testina (il triangolo); i puntini stanno per il resto, cioè gli altri nastri e la posizione sull'input. Con $f(n) \\ge \\log n$ anche quella posizione, circa $\\log n$ bit, rientra in $O(f(n))$. Stringhe di $O(f(n))$ bit sono al più $c^{f(n)}$, con $c$ che dipende solo dalla macchina.",
-                "alt": "Descrivi una configurazione. Fra parentesi c'è una configurazione: lo stato $q$ e un nastro di lavoro con la sua testina (il triangolo); i puntini stanno per il resto, cioè gli altri nastri e la posizione sull'input. Con $f(n) \\ge \\log n$ anche quella posizione, circa $\\log n$ bit, rientra in $O(f(n))$. Stringhe di $O(f(n))$ bit sono al più $c^{f(n)}$, con $c$ che dipende solo dalla macchina.",
+                "caption": "Fra parentesi c'è una configurazione: lo stato $q$ e un nastro di lavoro con la sua testina (il triangolo); i puntini stanno per il resto, cioè gli altri nastri e la posizione sull'input. Con $f(n) \\ge \\log n$ anche quella posizione, circa $\\log n$ bit, rientra in $O(f(n))$. Se una configurazione si scrive con al più $a \\cdot f(n)$ bit, le stringhe possibili sono al più $2^{a f(n)} = (2^a)^{f(n)}$: è $c^{f(n)}$ con $c = 2^a$, che dipende solo dalla macchina.",
+                "alt": "Descrivi una configurazione. Fra parentesi c'è una configurazione: lo stato $q$ e un nastro di lavoro con la sua testina (il triangolo); i puntini stanno per il resto, cioè gli altri nastri e la posizione sull'input. Con $f(n) \\ge \\log n$ anche quella posizione, circa $\\log n$ bit, rientra in $O(f(n))$. Se una configurazione si scrive con al più $a \\cdot f(n)$ bit, le stringhe possibili sono al più $2^{a f(n)} = (2^a)^{f(n)}$: è $c^{f(n)}$ con $c = 2^a$, che dipende solo dalla macchina.",
                 "src": "/illustrations/theorems/proofs-07-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -951,8 +951,8 @@
             },
             {
                 "title": "Sostituisci un polinomio",
-                "caption": "Con $f(n) = n^k$ il limite diventa $c^{n^k} = 2^{n^k \\log c}$. Per $n \\ge \\log c$ l'esponente è al più $n^{k+1}$, quindi ogni $\\mathrm{SPACE}(n^k)$ sta in $\\mathrm{TIME}(2^{n^{k+1}}) \\subseteq \\mathrm{EXP}$, e così la loro unione: $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$. Non si sa se l'inclusione è stretta.",
-                "alt": "Sostituisci un polinomio. Con $f(n) = n^k$ il limite diventa $c^{n^k} = 2^{n^k \\log c}$. Per $n \\ge \\log c$ l'esponente è al più $n^{k+1}$, quindi ogni $\\mathrm{SPACE}(n^k)$ sta in $\\mathrm{TIME}(2^{n^{k+1}}) \\subseteq \\mathrm{EXP}$, e così la loro unione: $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$. Non si sa se l'inclusione è stretta.",
+                "caption": "Con $f(n) = n^k$ il limite diventa $c^{n^k} = 2^{n^k \\log c}$. Per $n \\ge \\log c$ l'esponente è $n^k \\log c \\le n^k \\cdot n = n^{k+1}$, quindi ogni $\\mathrm{SPACE}(n^k)$ sta in $\\mathrm{TIME}(2^{n^{k+1}}) \\subseteq \\mathrm{EXP}$, e così la loro unione: $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$. Non si sa se l'inclusione è stretta.",
+                "alt": "Sostituisci un polinomio. Con $f(n) = n^k$ il limite diventa $c^{n^k} = 2^{n^k \\log c}$. Per $n \\ge \\log c$ l'esponente è $n^k \\log c \\le n^k \\cdot n = n^{k+1}$, quindi ogni $\\mathrm{SPACE}(n^k)$ sta in $\\mathrm{TIME}(2^{n^{k+1}}) \\subseteq \\mathrm{EXP}$, e così la loro unione: $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$. Non si sa se l'inclusione è stretta.",
                 "src": "/illustrations/theorems/proofs-07-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -1076,8 +1076,8 @@
             },
             {
                 "title": "Conta i nodi",
-                "caption": "Le configurazioni sono al più $2^{O(\\log n + f(n))}$, e la visita costa un polinomio nel loro numero. Con $f(n) = O(\\log n)$ l'esponente diventa $O(\\log n)$ e $2^{O(\\log n)} = n^{O(1)}$: con tre simboli, per esempio, un nastro lungo $\\log_2 n$ ha $3^{\\log_2 n} = n^{\\log_2 3}$ contenuti, circa $n^{1{,}58}$. I nodi sono polinomiali, e $\\mathrm{NL} \\subseteq \\mathrm{P}$.",
-                "alt": "Conta i nodi. Le configurazioni sono al più $2^{O(\\log n + f(n))}$, e la visita costa un polinomio nel loro numero. Con $f(n) = O(\\log n)$ l'esponente diventa $O(\\log n)$ e $2^{O(\\log n)} = n^{O(1)}$: con tre simboli, per esempio, un nastro lungo $\\log_2 n$ ha $3^{\\log_2 n} = n^{\\log_2 3}$ contenuti, circa $n^{1{,}58}$. I nodi sono polinomiali, e $\\mathrm{NL} \\subseteq \\mathrm{P}$.",
+                "caption": "Stringhe di al più $a(\\log n + f(n))$ bit sono al più $2^{a(\\log n + f(n))}$: questo è il numero massimo di configurazioni, e la visita costa un polinomio in esso. Con $f(n) \\le b \\log n$ l'esponente diventa al più $a(1 + b) \\log n$, e $2^{a(1+b)\\log_2 n} = (2^{\\log_2 n})^{a(1+b)} = n^{a(1+b)}$, un polinomio perché $a$ e $b$ sono costanti. I nodi sono polinomiali, e $\\mathrm{NL} \\subseteq \\mathrm{P}$.",
+                "alt": "Conta i nodi. Stringhe di al più $a(\\log n + f(n))$ bit sono al più $2^{a(\\log n + f(n))}$: questo è il numero massimo di configurazioni, e la visita costa un polinomio in esso. Con $f(n) \\le b \\log n$ l'esponente diventa al più $a(1 + b) \\log n$, e $2^{a(1+b)\\log_2 n} = (2^{\\log_2 n})^{a(1+b)} = n^{a(1+b)}$, un polinomio perché $a$ e $b$ sono costanti. I nodi sono polinomiali, e $\\mathrm{NL} \\subseteq \\mathrm{P}$.",
                 "src": "/illustrations/theorems/proofs-08-storyboard.webp",
                 "crop": {
                     "columns": 3,
@@ -1103,8 +1103,8 @@
             },
             {
                 "title": "Da NL a P",
-                "caption": "Il grafo delle configurazioni di una macchina in spazio $\\log n$ ha $|C| = \\mathrm{poly}(n)$ nodi, e decidere l'input vuol dire chiedersi se da $s$, la configurazione iniziale, si arriva a $t$, quella accettante. Il Teorema 7.4 (c) dà tempo $k^{2 \\log n} = n^{2 \\log k}$, un polinomio perché $k$ è una costante della macchina: con $k = 8$ viene $n^6$.",
-                "alt": "Da NL a P. Il grafo delle configurazioni di una macchina in spazio $\\log n$ ha $|C| = \\mathrm{poly}(n)$ nodi, e decidere l'input vuol dire chiedersi se da $s$, la configurazione iniziale, si arriva a $t$, quella accettante. Il Teorema 7.4 (c) dà tempo $k^{2 \\log n} = n^{2 \\log k}$, un polinomio perché $k$ è una costante della macchina: con $k = 8$ viene $n^6$.",
+                "caption": "Il grafo delle configurazioni di una macchina in spazio $\\log n$ ha $|C| = \\mathrm{poly}(n)$ nodi, e decidere l'input vuol dire chiedersi se da $s$, la configurazione iniziale, si arriva a $t$, quella accettante. Il Teorema 7.4 (c) dà tempo $k^{\\log n + f(n)}$, con $k$ costante della macchina, e con $f(n) = \\log n$ diventa $k^{2 \\log n}$. Scrivendo $k = 2^{\\log k}$: $k^{2 \\log n} = 2^{2 \\log k \\cdot \\log n} = (2^{\\log n})^{2 \\log k} = n^{2 \\log k}$, un polinomio perché $k$ è una costante: con $k = 8$ viene $n^6$.",
+                "alt": "Da NL a P. Il grafo delle configurazioni di una macchina in spazio $\\log n$ ha $|C| = \\mathrm{poly}(n)$ nodi, e decidere l'input vuol dire chiedersi se da $s$, la configurazione iniziale, si arriva a $t$, quella accettante. Il Teorema 7.4 (c) dà tempo $k^{\\log n + f(n)}$, con $k$ costante della macchina, e con $f(n) = \\log n$ diventa $k^{2 \\log n}$. Scrivendo $k = 2^{\\log k}$: $k^{2 \\log n} = 2^{2 \\log k \\cdot \\log n} = (2^{\\log n})^{2 \\log k} = n^{2 \\log k}$, un polinomio perché $k$ è una costante: con $k = 8$ viene $n^6$.",
                 "src": "/illustrations/theorems/proofs-09-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -1212,8 +1212,8 @@
         "slides": [
             {
                 "title": "Il grafo implicito delle configurazioni",
-                "caption": "La nuvola tratteggiata è il grafo delle configurazioni di $N$ su $x$. $s$ è la configurazione iniziale e $t$, il doppio cerchio, l'unica che accetta, perché si può supporre che $N$ prima di accettare cancelli i nastri e riporti le testine all'inizio. Con $f(n) \\ge \\log n$ i nodi sono al più $c^{\\log n + f(n)} \\le (c^2)^{f(n)}$, cioè $|V| \\le 2^{O(f(n))}$: troppi per scriverli tutti.",
-                "alt": "Il grafo implicito delle configurazioni. La nuvola tratteggiata è il grafo delle configurazioni di $N$ su $x$. $s$ è la configurazione iniziale e $t$, il doppio cerchio, l'unica che accetta, perché si può supporre che $N$ prima di accettare cancelli i nastri e riporti le testine all'inizio. Con $f(n) \\ge \\log n$ i nodi sono al più $c^{\\log n + f(n)} \\le (c^2)^{f(n)}$, cioè $|V| \\le 2^{O(f(n))}$: troppi per scriverli tutti.",
+                "caption": "La nuvola tratteggiata è il grafo delle configurazioni di $N$ su $x$. $s$ è la configurazione iniziale e $t$, il doppio cerchio, l'unica che accetta, perché si può supporre che $N$ prima di accettare cancelli i nastri e riporti le testine all'inizio. I nodi sono al più $c^{\\log n + f(n)}$, e con $f(n) \\ge \\log n$ l'esponente è al più $2 f(n)$, quindi $c^{\\log n + f(n)} \\le c^{2 f(n)} = (c^2)^{f(n)}$, cioè $|V| \\le 2^{O(f(n))}$: troppi per scriverli tutti.",
+                "alt": "Il grafo implicito delle configurazioni. La nuvola tratteggiata è il grafo delle configurazioni di $N$ su $x$. $s$ è la configurazione iniziale e $t$, il doppio cerchio, l'unica che accetta, perché si può supporre che $N$ prima di accettare cancelli i nastri e riporti le testine all'inizio. I nodi sono al più $c^{\\log n + f(n)}$, e con $f(n) \\ge \\log n$ l'esponente è al più $2 f(n)$, quindi $c^{\\log n + f(n)} \\le c^{2 f(n)} = (c^2)^{f(n)}$, cioè $|V| \\le 2^{O(f(n))}$: troppi per scriverli tutti.",
                 "src": "/illustrations/theorems/proofs-10-storyboard.webp",
                 "crop": {
                     "columns": 3,
@@ -1332,8 +1332,8 @@
             },
             {
                 "title": "Somma contatore e memorie",
-                "caption": "L'indice $i$ arriva al più a $|R(x)| \\le n^c$, quindi occupa $O(\\log n^c) = O(\\log n)$ bit. La memoria di $R$ è logaritmica in $|x| = n$. Quella di $S$ è logaritmica nella lunghezza del suo input $R(x)$, cioè $O(\\log n^c) = O(\\log n)$. La somma è $O(\\log n)$, e $S \\circ R$ è ancora una riduzione in spazio logaritmico; i ricalcoli allungano il tempo, che resta polinomiale.",
-                "alt": "Somma contatore e memorie. L'indice $i$ arriva al più a $|R(x)| \\le n^c$, quindi occupa $O(\\log n^c) = O(\\log n)$ bit. La memoria di $R$ è logaritmica in $|x| = n$. Quella di $S$ è logaritmica nella lunghezza del suo input $R(x)$, cioè $O(\\log n^c) = O(\\log n)$. La somma è $O(\\log n)$, e $S \\circ R$ è ancora una riduzione in spazio logaritmico; i ricalcoli allungano il tempo, che resta polinomiale.",
+                "caption": "L'indice $i$ arriva al più a $|R(x)| \\le n^c$, quindi occupa $O(\\log n^c)$ bit, e $\\log n^c = c \\log n = O(\\log n)$. La memoria di $R$ è logaritmica in $|x| = n$. Quella di $S$ è logaritmica nella lunghezza del suo input $R(x)$, cioè $O(\\log n^c) = O(\\log n)$. La somma è $O(\\log n)$, e $S \\circ R$ è ancora una riduzione in spazio logaritmico; i ricalcoli allungano il tempo, che resta polinomiale.",
+                "alt": "Somma contatore e memorie. L'indice $i$ arriva al più a $|R(x)| \\le n^c$, quindi occupa $O(\\log n^c)$ bit, e $\\log n^c = c \\log n = O(\\log n)$. La memoria di $R$ è logaritmica in $|x| = n$. Quella di $S$ è logaritmica nella lunghezza del suo input $R(x)$, cioè $O(\\log n^c) = O(\\log n)$. La somma è $O(\\log n)$, e $S \\circ R$ è ancora una riduzione in spazio logaritmico; i ricalcoli allungano il tempo, che resta polinomiale.",
                 "src": "/illustrations/theorems/proofs-10-storyboard.webp",
                 "crop": {
                     "columns": 3,
@@ -1359,8 +1359,8 @@
             },
             {
                 "title": "Assorbi il costo",
-                "caption": "La riduzione lavora in spazio logaritmico, quindi si ferma in tempo polinomiale $p(n)$ e produce $y = R(x)$ lungo al più $p(n)$. Se $\\mathrm{dec}_B$ impiega $q(m)$ su input lunghi $m$, su $y$ impiega $q(p(n))$, ancora un polinomio: $q(m) = m^2$ con $p(n) = n^3$ dà $n^6$. Lo stesso vale per $\\mathrm{NP}$, per lo spazio di $\\mathrm{PSPACE}$ e per $\\mathrm{EXP}$, dove $2^{p(n)^j}$ è ancora esponenziale in un polinomio.",
-                "alt": "Assorbi il costo. La riduzione lavora in spazio logaritmico, quindi si ferma in tempo polinomiale $p(n)$ e produce $y = R(x)$ lungo al più $p(n)$. Se $\\mathrm{dec}_B$ impiega $q(m)$ su input lunghi $m$, su $y$ impiega $q(p(n))$, ancora un polinomio: $q(m) = m^2$ con $p(n) = n^3$ dà $n^6$. Lo stesso vale per $\\mathrm{NP}$, per lo spazio di $\\mathrm{PSPACE}$ e per $\\mathrm{EXP}$, dove $2^{p(n)^j}$ è ancora esponenziale in un polinomio.",
+                "caption": "La riduzione lavora in spazio logaritmico, quindi ha un numero polinomiale di configurazioni e, siccome si ferma, non ne ripete nessuna: termina in tempo polinomiale $p(n)$ e produce $y = R(x)$ lungo al più $p(n)$. Se $\\mathrm{dec}_B$ impiega $q(m)$ su input lunghi $m$, su $y$ impiega $q(p(n))$, ancora un polinomio: $q(m) = m^2$ con $p(n) = n^3$ dà $n^6$. Lo stesso vale per $\\mathrm{NP}$, per lo spazio di $\\mathrm{PSPACE}$ e per $\\mathrm{EXP}$, dove $2^{p(n)^j}$ è ancora esponenziale in un polinomio.",
+                "alt": "Assorbi il costo. La riduzione lavora in spazio logaritmico, quindi ha un numero polinomiale di configurazioni e, siccome si ferma, non ne ripete nessuna: termina in tempo polinomiale $p(n)$ e produce $y = R(x)$ lungo al più $p(n)$. Se $\\mathrm{dec}_B$ impiega $q(m)$ su input lunghi $m$, su $y$ impiega $q(p(n))$, ancora un polinomio: $q(m) = m^2$ con $p(n) = n^3$ dà $n^6$. Lo stesso vale per $\\mathrm{NP}$, per lo spazio di $\\mathrm{PSPACE}$ e per $\\mathrm{EXP}$, dove $2^{p(n)^j}$ è ancora esponenziale in un polinomio.",
                 "src": "/illustrations/theorems/proofs-11-storyboard.webp",
                 "crop": {
                     "columns": 3,
@@ -1528,8 +1528,8 @@
             },
             {
                 "title": "Conta la trasformazione",
-                "caption": "Le variabili sono $O(T^2)$, perché la tabella ha $T^2$ caselle e simboli e stati sono in numero costante. Le clausole sono $O(T^3)$: le più numerose vietano due posizioni della testina nello stesso istante, una per coppia di celle a ogni tempo. La riduzione le scrive con pochi contatori di $O(\\log n)$ bit. Quindi ogni $L \\in \\mathrm{NP}$ si riduce a SAT, e poiché anche $\\mathrm{SAT} \\in \\mathrm{NP}$, SAT è NP-completo.",
-                "alt": "Conta la trasformazione. Le variabili sono $O(T^2)$, perché la tabella ha $T^2$ caselle e simboli e stati sono in numero costante. Le clausole sono $O(T^3)$: le più numerose vietano due posizioni della testina nello stesso istante, una per coppia di celle a ogni tempo. La riduzione le scrive con pochi contatori di $O(\\log n)$ bit. Quindi ogni $L \\in \\mathrm{NP}$ si riduce a SAT, e poiché anche $\\mathrm{SAT} \\in \\mathrm{NP}$, SAT è NP-completo.",
+                "caption": "Le variabili sono $O(T^2)$: la tabella ha $T \\cdot T = T^2$ caselle, e per ognuna ci sono tante variabili quanti simboli e stati, un numero costante. Le clausole sono $O(T^3)$: le più numerose vietano due posizioni della testina nello stesso istante, una clausola per ogni coppia di celle, cioè meno di $T^2$, per ognuno dei $T$ istanti, e $T^2 \\cdot T = T^3$. La riduzione le scrive con pochi contatori che arrivano a $T = p(n)$, ciascuno di $\\log p(n) = O(\\log n)$ bit. Quindi ogni $L \\in \\mathrm{NP}$ si riduce a SAT, e poiché anche $\\mathrm{SAT} \\in \\mathrm{NP}$, SAT è NP-completo.",
+                "alt": "Conta la trasformazione. Le variabili sono $O(T^2)$: la tabella ha $T \\cdot T = T^2$ caselle, e per ognuna ci sono tante variabili quanti simboli e stati, un numero costante. Le clausole sono $O(T^3)$: le più numerose vietano due posizioni della testina nello stesso istante, una clausola per ogni coppia di celle, cioè meno di $T^2$, per ognuno dei $T$ istanti, e $T^2 \\cdot T = T^3$. La riduzione le scrive con pochi contatori che arrivano a $T = p(n)$, ciascuno di $\\log p(n) = O(\\log n)$ bit. Quindi ogni $L \\in \\mathrm{NP}$ si riduce a SAT, e poiché anche $\\mathrm{SAT} \\in \\mathrm{NP}$, SAT è NP-completo.",
                 "src": "/illustrations/theorems/proofs-12-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -1577,8 +1577,8 @@
             },
             {
                 "title": "Estendi e concludi",
-                "caption": "Una clausola $(l_1 \\lor \\dots \\lor l_m)$ con $m \\ge 4$ diventa una catena di $m - 2$ clausole con $m - 3$ variabili nuove: ogni $z_h$ compare positiva in una clausola e negata nella successiva. Le clausole con meno di tre letterali si allungano ripetendo un letterale, quelle con tre restano uguali. La formula cresce in modo lineare, e 3-SAT sta in NP come SAT.",
-                "alt": "Estendi e concludi. Una clausola $(l_1 \\lor \\dots \\lor l_m)$ con $m \\ge 4$ diventa una catena di $m - 2$ clausole con $m - 3$ variabili nuove: ogni $z_h$ compare positiva in una clausola e negata nella successiva. Le clausole con meno di tre letterali si allungano ripetendo un letterale, quelle con tre restano uguali. La formula cresce in modo lineare, e 3-SAT sta in NP come SAT.",
+                "caption": "Una clausola $(l_1 \\lor \\dots \\lor l_m)$ con $m \\ge 4$ diventa una catena di $m - 2$ clausole con $m - 3$ variabili nuove: ogni $z_h$ compare positiva in una clausola e negata nella successiva. Le clausole con meno di tre letterali si allungano ripetendo un letterale, quelle con tre restano uguali. La formula cresce in modo lineare, perché una clausola di $m$ letterali diventa $m - 2$ clausole con $3(m - 2) < 3m$ letterali, e 3-SAT sta in NP come SAT.",
+                "alt": "Estendi e concludi. Una clausola $(l_1 \\lor \\dots \\lor l_m)$ con $m \\ge 4$ diventa una catena di $m - 2$ clausole con $m - 3$ variabili nuove: ogni $z_h$ compare positiva in una clausola e negata nella successiva. Le clausole con meno di tre letterali si allungano ripetendo un letterale, quelle con tre restano uguali. La formula cresce in modo lineare, perché una clausola di $m$ letterali diventa $m - 2$ clausole con $3(m - 2) < 3m$ letterali, e 3-SAT sta in NP come SAT.",
                 "src": "/illustrations/theorems/proofs-12-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -2214,8 +2214,8 @@
             },
             {
                 "title": "Forza l'uguaglianza",
-                "caption": "Con $w_i = v_i = a_i$ peso e valore sono la stessa somma, e le condizioni $\\le B$ e $\\ge B$ insieme chiedono $\\sum_{i \\in S} a_i = B$. Con $B$ fatto di sole cifre 1, la somma vale $B$ solo se ogni elemento è coperto una volta: la base $n + 1$ evita i riporti. Questi numeri hanno però valore esponenziale, e la prova non dice niente sulle istanze con numeri piccoli.",
-                "alt": "Forza l'uguaglianza. Con $w_i = v_i = a_i$ peso e valore sono la stessa somma, e le condizioni $\\le B$ e $\\ge B$ insieme chiedono $\\sum_{i \\in S} a_i = B$. Con $B$ fatto di sole cifre 1, la somma vale $B$ solo se ogni elemento è coperto una volta: la base $n + 1$ evita i riporti. Questi numeri hanno però valore esponenziale, e la prova non dice niente sulle istanze con numeri piccoli.",
+                "caption": "Con $w_i = v_i = a_i$ peso e valore sono la stessa somma, e le condizioni $\\le B$ e $\\ge B$ insieme chiedono $\\sum_{i \\in S} a_i = B$. Con $B$ fatto di sole cifre 1, la somma vale $B$ solo se ogni elemento è coperto una volta. La base $n + 1$, con $n$ il numero di insiemi, evita i riporti: in ogni posizione si sommano al più $n$ cifre uguali a 1, e il totale, al più $n$, resta sotto la base. Questi numeri hanno però valore esponenziale, e la prova non dice niente sulle istanze con numeri piccoli.",
+                "alt": "Forza l'uguaglianza. Con $w_i = v_i = a_i$ peso e valore sono la stessa somma, e le condizioni $\\le B$ e $\\ge B$ insieme chiedono $\\sum_{i \\in S} a_i = B$. Con $B$ fatto di sole cifre 1, la somma vale $B$ solo se ogni elemento è coperto una volta. La base $n + 1$, con $n$ il numero di insiemi, evita i riporti: in ogni posizione si sommano al più $n$ cifre uguali a 1, e il totale, al più $n$, resta sotto la base. Questi numeri hanno però valore esponenziale, e la prova non dice niente sulle istanze con numeri piccoli.",
                 "src": "/illustrations/theorems/proofs-17-storyboard.webp",
                 "crop": {
                     "columns": 3,
@@ -3449,8 +3449,8 @@
             },
             {
                 "title": "Concludi la completezza",
-                "caption": "Per ogni input $x$ la riduzione costruisce la QBF che dice \"da $C_0$ si arriva a $C_{\\mathrm{acc}}$ in al più $2^m$ passi\", con i quantificatori portati in testa come nella riga in basso; è vera se e solo se $M$ accetta $x$. Ogni livello aggiunge $O(m)$ simboli, quindi la formula resta polinomiale in $|x|$ e QSAT è PSPACE-completo. A differenza di $\\mathrm{QSAT}_i$, il numero $k$ di blocchi cresce con l'input.",
-                "alt": "Concludi la completezza. Per ogni input $x$ la riduzione costruisce la QBF che dice \"da $C_0$ si arriva a $C_{\\mathrm{acc}}$ in al più $2^m$ passi\", con i quantificatori portati in testa come nella riga in basso; è vera se e solo se $M$ accetta $x$. Ogni livello aggiunge $O(m)$ simboli, quindi la formula resta polinomiale in $|x|$ e QSAT è PSPACE-completo. A differenza di $\\mathrm{QSAT}_i$, il numero $k$ di blocchi cresce con l'input.",
+                "caption": "Per ogni input $x$ la riduzione costruisce la QBF che dice \"da $C_0$ si arriva a $C_{\\mathrm{acc}}$ in al più $2^m$ passi\", con i quantificatori portati in testa come nella riga in basso; è vera se e solo se $M$ accetta $x$. I livelli sono $m$, uno per ogni dimezzamento da $2^m$ a $2^0$ passi, e ognuno aggiunge $O(m)$ simboli per le configurazioni $C_m$, $u$ e $v$: in tutto $m \\cdot O(m) = O(m^2) = O(n^{2c})$ simboli, polinomiale in $|x|$, e QSAT è PSPACE-completo. A differenza di $\\mathrm{QSAT}_i$, il numero $k$ di blocchi cresce con l'input.",
+                "alt": "Concludi la completezza. Per ogni input $x$ la riduzione costruisce la QBF che dice \"da $C_0$ si arriva a $C_{\\mathrm{acc}}$ in al più $2^m$ passi\", con i quantificatori portati in testa come nella riga in basso; è vera se e solo se $M$ accetta $x$. I livelli sono $m$, uno per ogni dimezzamento da $2^m$ a $2^0$ passi, e ognuno aggiunge $O(m)$ simboli per le configurazioni $C_m$, $u$ e $v$: in tutto $m \\cdot O(m) = O(m^2) = O(n^{2c})$ simboli, polinomiale in $|x|$, e QSAT è PSPACE-completo. A differenza di $\\mathrm{QSAT}_i$, il numero $k$ di blocchi cresce con l'input.",
                 "src": "/illustrations/theorems/proofs-27-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -3596,8 +3596,8 @@
             },
             {
                 "title": "Visita senza salvare tutto l'albero",
-                "caption": "La valutazione segue l'albero in profondità, un ramo alla volta: in memoria c'è il cammino corrente, quello verde, con il prossimo successore da provare a ogni livello. I vertici usati, nel riquadro, sono proprio quelli del cammino. Finito un ramo, lo spazio si riusa per il successivo, e bastano $O(|V| \\log |V|)$ bit: GEOGRAPHY sta in PSPACE.",
-                "alt": "Visita senza salvare tutto l'albero. La valutazione segue l'albero in profondità, un ramo alla volta: in memoria c'è il cammino corrente, quello verde, con il prossimo successore da provare a ogni livello. I vertici usati, nel riquadro, sono proprio quelli del cammino. Finito un ramo, lo spazio si riusa per il successivo, e bastano $O(|V| \\log |V|)$ bit: GEOGRAPHY sta in PSPACE.",
+                "caption": "La valutazione segue l'albero in profondità, un ramo alla volta: in memoria c'è il cammino corrente, quello verde, con il prossimo successore da provare a ogni livello. I vertici usati, nel riquadro, sono proprio quelli del cammino. Finito un ramo, lo spazio si riusa per il successivo. Il cammino ha al più $|V|$ vertici e ognuno si scrive con $\\log |V|$ bit, quindi bastano $O(|V| \\log |V|)$ bit: GEOGRAPHY sta in PSPACE.",
+                "alt": "Visita senza salvare tutto l'albero. La valutazione segue l'albero in profondità, un ramo alla volta: in memoria c'è il cammino corrente, quello verde, con il prossimo successore da provare a ogni livello. I vertici usati, nel riquadro, sono proprio quelli del cammino. Finito un ramo, lo spazio si riusa per il successivo. Il cammino ha al più $|V|$ vertici e ognuno si scrive con $\\log |V|$ bit, quindi bastano $O(|V| \\log |V|)$ bit: GEOGRAPHY sta in PSPACE.",
                 "src": "/illustrations/theorems/proofs-28-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -4211,8 +4211,8 @@
             },
             {
                 "title": "Scegli l'errore desiderato",
-                "caption": "Da $e^{-2\\delta^2 k} \\le \\varepsilon$ viene $k \\ge \\ln(1/\\varepsilon)/(2\\delta^2)$, quindi $t = 2k + 1 = O(\\log(1/\\varepsilon))$ ripetizioni; con la soglia $3/4$ basta $k = \\lceil -8 \\ln \\varepsilon \\rceil$. Se $\\varepsilon$ è costante anche $t$ lo è e non dipende dalla lunghezza dell'input. Se $\\varepsilon = 2^{-\\mathrm{poly}(n)}$, $t$ è polinomiale, e in entrambi i casi il tempo totale resta polinomiale.",
-                "alt": "Scegli l'errore desiderato. Da $e^{-2\\delta^2 k} \\le \\varepsilon$ viene $k \\ge \\ln(1/\\varepsilon)/(2\\delta^2)$, quindi $t = 2k + 1 = O(\\log(1/\\varepsilon))$ ripetizioni; con la soglia $3/4$ basta $k = \\lceil -8 \\ln \\varepsilon \\rceil$. Se $\\varepsilon$ è costante anche $t$ lo è e non dipende dalla lunghezza dell'input. Se $\\varepsilon = 2^{-\\mathrm{poly}(n)}$, $t$ è polinomiale, e in entrambi i casi il tempo totale resta polinomiale.",
+                "caption": "Da $e^{-2\\delta^2 k} \\le \\varepsilon$ viene $k \\ge \\ln(1/\\varepsilon)/(2\\delta^2)$, quindi $t = 2k + 1 = O(\\log(1/\\varepsilon))$ ripetizioni; con la soglia $3/4$ si ha $\\delta = 1/4$, quindi $2\\delta^2 = 1/8$ e basta $k = \\lceil 8 \\ln(1/\\varepsilon) \\rceil$. Se $\\varepsilon$ è costante anche $t$ lo è e non dipende dalla lunghezza dell'input. Se $\\varepsilon = 2^{-\\mathrm{poly}(n)}$, $t$ è polinomiale, e in entrambi i casi il tempo totale resta polinomiale.",
+                "alt": "Scegli l'errore desiderato. Da $e^{-2\\delta^2 k} \\le \\varepsilon$ viene $k \\ge \\ln(1/\\varepsilon)/(2\\delta^2)$, quindi $t = 2k + 1 = O(\\log(1/\\varepsilon))$ ripetizioni; con la soglia $3/4$ si ha $\\delta = 1/4$, quindi $2\\delta^2 = 1/8$ e basta $k = \\lceil 8 \\ln(1/\\varepsilon) \\rceil$. Se $\\varepsilon$ è costante anche $t$ lo è e non dipende dalla lunghezza dell'input. Se $\\varepsilon = 2^{-\\mathrm{poly}(n)}$, $t$ è polinomiale, e in entrambi i casi il tempo totale resta polinomiale.",
                 "src": "/illustrations/theorems/proofs-33-storyboard-v3.webp",
                 "crop": {
                     "columns": 3,
@@ -4309,8 +4309,8 @@
             },
             {
                 "title": "Passa al tempo esponenziale",
-                "caption": "Una macchina deterministica che usa spazio $n^k$ ha al più $c^{n^k}$ configurazioni diverse. Il suo calcolo è la catena disegnata, $C_0, C_1, \\ldots, C_t$: se si ferma non passa due volte dalla stessa configurazione, altrimenti rifarebbe gli stessi passi all'infinito, quindi si ferma in meno di $c^{n^k}$ passi. Ne segue $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$ e, con il passo precedente, $\\mathrm{BQP} \\subseteq \\mathrm{EXP}$.",
-                "alt": "Passa al tempo esponenziale. Una macchina deterministica che usa spazio $n^k$ ha al più $c^{n^k}$ configurazioni diverse. Il suo calcolo è la catena disegnata, $C_0, C_1, \\ldots, C_t$: se si ferma non passa due volte dalla stessa configurazione, altrimenti rifarebbe gli stessi passi all'infinito, quindi si ferma in meno di $c^{n^k}$ passi. Ne segue $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$ e, con il passo precedente, $\\mathrm{BQP} \\subseteq \\mathrm{EXP}$.",
+                "caption": "Una macchina deterministica che usa spazio $n^k$ ha al più $c^{n^k}$ configurazioni diverse. Il suo calcolo è la catena disegnata, $C_0, C_1, \\ldots, C_t$: se si ferma non passa due volte dalla stessa configurazione, altrimenti rifarebbe gli stessi passi all'infinito, quindi si ferma in meno di $c^{n^k}$ passi. Siccome $c^{n^k} = 2^{n^k \\log c} \\le 2^{n^{k+1}}$ per $n \\ge \\log c$, ne segue $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$ e, con il passo precedente, $\\mathrm{BQP} \\subseteq \\mathrm{EXP}$.",
+                "alt": "Passa al tempo esponenziale. Una macchina deterministica che usa spazio $n^k$ ha al più $c^{n^k}$ configurazioni diverse. Il suo calcolo è la catena disegnata, $C_0, C_1, \\ldots, C_t$: se si ferma non passa due volte dalla stessa configurazione, altrimenti rifarebbe gli stessi passi all'infinito, quindi si ferma in meno di $c^{n^k}$ passi. Siccome $c^{n^k} = 2^{n^k \\log c} \\le 2^{n^{k+1}}$ per $n \\ge \\log c$, ne segue $\\mathrm{PSPACE} \\subseteq \\mathrm{EXP}$ e, con il passo precedente, $\\mathrm{BQP} \\subseteq \\mathrm{EXP}$.",
                 "src": "/illustrations/theorems/proofs-34-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
@@ -4320,8 +4320,8 @@
             },
             {
                 "title": "Applica la gerarchia del tempo",
-                "caption": "La catena a sinistra porta $\\mathrm{BQP}$ in $\\mathrm{EXP}$ ed $\\mathrm{EXP}$ in $2\\text{-}\\mathrm{EXP}$, e quest'ultima inclusione è stretta. Ogni problema di $\\mathrm{EXP}$ sta in $\\mathrm{TIME}(2^{2^n})$, e il teorema di gerarchia del tempo con $f(n) = 2^{2^n}$ dà un problema di $2\\text{-}\\mathrm{EXP}$ fuori da questa classe. È il punto rosa: sta fuori da $\\mathrm{EXP}$ e quindi anche da $\\mathrm{BQP}$, per cui $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$.",
-                "alt": "Applica la gerarchia del tempo. La catena a sinistra porta $\\mathrm{BQP}$ in $\\mathrm{EXP}$ ed $\\mathrm{EXP}$ in $2\\text{-}\\mathrm{EXP}$, e quest'ultima inclusione è stretta. Ogni problema di $\\mathrm{EXP}$ sta in $\\mathrm{TIME}(2^{2^n})$, e il teorema di gerarchia del tempo con $f(n) = 2^{2^n}$ dà un problema di $2\\text{-}\\mathrm{EXP}$ fuori da questa classe. È il punto rosa: sta fuori da $\\mathrm{EXP}$ e quindi anche da $\\mathrm{BQP}$, per cui $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$.",
+                "caption": "La catena a sinistra porta $\\mathrm{BQP}$ in $\\mathrm{EXP}$ ed $\\mathrm{EXP}$ in $2\\text{-}\\mathrm{EXP}$, e quest'ultima inclusione è stretta. Ogni problema di $\\mathrm{EXP}$ sta in $\\mathrm{TIME}(2^{2^n})$, perché da un certo $n$ in poi $n^k \\le 2^n$ e quindi $2^{n^k} \\le 2^{2^n}$, e il teorema di gerarchia del tempo con $f(n) = 2^{2^n}$ dà un problema di $2\\text{-}\\mathrm{EXP}$ fuori da questa classe. È il punto rosa: sta fuori da $\\mathrm{EXP}$ e quindi anche da $\\mathrm{BQP}$, per cui $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$.",
+                "alt": "Applica la gerarchia del tempo. La catena a sinistra porta $\\mathrm{BQP}$ in $\\mathrm{EXP}$ ed $\\mathrm{EXP}$ in $2\\text{-}\\mathrm{EXP}$, e quest'ultima inclusione è stretta. Ogni problema di $\\mathrm{EXP}$ sta in $\\mathrm{TIME}(2^{2^n})$, perché da un certo $n$ in poi $n^k \\le 2^n$ e quindi $2^{n^k} \\le 2^{2^n}$, e il teorema di gerarchia del tempo con $f(n) = 2^{2^n}$ dà un problema di $2\\text{-}\\mathrm{EXP}$ fuori da questa classe. È il punto rosa: sta fuori da $\\mathrm{EXP}$ e quindi anche da $\\mathrm{BQP}$, per cui $\\mathrm{BQP} \\subsetneq 2\\text{-}\\mathrm{EXP}$.",
                 "src": "/illustrations/theorems/proofs-34-storyboard-v2.webp",
                 "crop": {
                     "columns": 3,
