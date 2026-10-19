@@ -686,7 +686,7 @@
                 },
                 {
                     "n": 2,
-                    "text": "Esistono problemi risolubili nondeterministicamente in spazio $2 \\log n$ ma non deterministicamente in spazio $(2 \\log n)^2$?",
+                    "text": "Esistono problemi risolubili nondeterministicamente in spazio $2 \\log n$ ma non risolubili deterministicamente in spazio $(2 \\log n)^2$?",
                     "answer": "NO",
                     "answerText": "NO",
                     "explanation": "Savitch con $f = 2 \\log n$: $\\mathrm{NSPACE}(2 \\log n) \\subseteq \\mathrm{SPACE}((2 \\log n)^2)$.",
@@ -865,7 +865,7 @@
             "questions": [
                 {
                     "n": 1,
-                    "text": "Esistono problemi risolubili nondeterministicamente in spazio $n$ ma non deterministicamente in tempo $k^{2n}$?",
+                    "text": "Esistono problemi risolubili nondeterministicamente in spazio $n$ ma non risolubili deterministicamente in tempo $k^{2n}$?",
                     "answer": "NO",
                     "answerText": "NO",
                     "explanation": "Teorema 7.4(c) con $f = n$: $\\mathrm{NSPACE}(n) \\subseteq \\mathrm{TIME}(k^{\\log n + n}) \\subseteq \\mathrm{TIME}(k^{2n})$, perché $\\log n \\le n$.",
