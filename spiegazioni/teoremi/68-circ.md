@@ -16,11 +16,38 @@ Prova a rispondere a mente prima di andare avanti.
 
 Se la prima risposta non ti tornava, ripassa $\mathrm{QSAT}_2$: la difficoltà di CIRC SAT si dimostra riducendo proprio quel problema.
 
+## L'idea: regole con eccezioni
+
+Nel ragionamento di tutti i giorni usiamo regole che valgono "di solito". Gli uccelli volano, ma i pinguini sono uccelli e non volano. In logica proposizionale un'eccezione si scrive con un atomo che segnala un'anomalia, per esempio $\mathit{ab}$ (da _abnormal_):
+
+$$\mathit{bird} \land \neg\mathit{ab} \to \mathit{fly}$$
+
+Si legge: "se è un uccello e non c'è niente di anormale, vola". La logica classica però non sa che le anomalie sono rare. Se sappiamo solo che l'animale è un uccello, resta possibile un assegnamento con $\mathit{ab}$ vero e $\mathit{fly}$ falso, quindi la conclusione "vola" non segue.
+
+La circoscrizione aggiunge la regola di buon senso che manca: fra gli assegnamenti che rendono vera la base di conoscenza, si tengono solo quelli con meno anomalie possibile, e si ragiona soltanto su quelli. Le slide lo dicono così: CIRC SAT è SAT più una minimizzazione degli atomi anormali, e questa ottimizzazione fa salire la complessità di un livello, da NP a $\Sigma_2^{\mathrm{P}}$.
+
+Proviamo con l'esercizio delle slide. La base è
+
+$$\mathit{KB} = \{\mathit{bird} \land \neg\mathit{ab} \to \mathit{fly},\ \ \mathit{penguin} \to \mathit{bird},\ \ \mathit{penguin} \to \neg\mathit{fly}\}$$
+
+e l'unico atomo anormale è $\mathit{ab}$. Scriviamo $\models$ per la conseguenza classica (vera in tutti gli assegnamenti che soddisfano la base) e $\models_M$ per quella della circoscrizione (vera in tutti gli assegnamenti tenuti).
+
+| domanda                                                             | risposta | perché                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| $\mathit{KB} \cup \{\mathit{bird}\} \models \mathit{fly}$?          | no       | l'assegnamento con $\mathit{bird}$ e $\mathit{ab}$ veri, $\mathit{fly}$ e $\mathit{penguin}$ falsi soddisfa tutte le formule                                                                                                                              |
+| $\mathit{KB} \cup \{\mathit{penguin}\} \models \neg\mathit{fly}$?   | sì       | $\mathit{penguin} \to \neg\mathit{fly}$ con $\mathit{penguin}$ vero dà subito $\neg\mathit{fly}$                                                                                                                                                          |
+| $\mathit{KB} \cup \{\mathit{bird}\} \models_M \mathit{fly}$?        | sì       | esiste un assegnamento senza anomalie ($\mathit{bird}$ e $\mathit{fly}$ veri, $\mathit{ab}$ e $\mathit{penguin}$ falsi), quindi quelli con $\mathit{ab}$ vero si scartano; in quelli tenuti $\mathit{ab}$ è falso e la prima regola dà $\mathit{fly}$     |
+| $\mathit{KB} \cup \{\mathit{penguin}\} \models_M \neg\mathit{fly}$? | sì       | $\mathit{penguin}$ dà $\mathit{bird}$ e $\neg\mathit{fly}$; con $\mathit{bird}$ vero e $\mathit{fly}$ falso la prima regola è soddisfatta solo se $\mathit{ab}$ è vero, quindi ogni assegnamento ha l'anomalia, nessuno ne ha meno e vengono tenuti tutti |
+
+Confronta la terza riga con la quarta: con il solo $\mathit{bird}$ la circoscrizione conclude che l'animale vola, e aggiungendo $\mathit{penguin}$ quella conclusione cade, perché ora $\mathit{ab}$ è obbligato. Un'informazione in più ha tolto una conclusione: per questo la circoscrizione si chiama logica non monotona.
+
 ## Il problema: la circoscrizione
 
-Una base di conoscenza $\mathit{KB}$ è un insieme di formule proposizionali, e $M$ è l'insieme delle proposizioni "anormali", quelle che si vogliono false quando possibile. Fra due assegnamenti $T$ e $T'$, si scrive $T' \lt_M T$ ($T'$ strettamente più normale) se ogni $p \in M$ falsa in $T$ è falsa anche in $T'$ e almeno una $p \in M$ vera in $T$ è falsa in $T'$. In altre parole, gli atomi anormali veri in $T'$ formano un sottoinsieme proprio di quelli veri in $T$. Un modello di $\mathit{KB}$ è un $T$ che soddisfa $\mathit{KB}$ e per cui nessun $T'$ che soddisfa $\mathit{KB}$ è strettamente più normale.
+Ora le stesse cose in modo preciso. Una base di conoscenza $\mathit{KB}$ è un insieme di formule proposizionali, e $M$ è l'insieme delle proposizioni anormali, quelle da rendere false quando possibile. Fra due assegnamenti $T$ e $T'$, si scrive $T' \lt_M T$ ($T'$ strettamente più normale di $T$) se ogni $p \in M$ falsa in $T$ è falsa anche in $T'$ e almeno una $p \in M$ vera in $T$ è falsa in $T'$. In altre parole, gli atomi anormali veri in $T'$ formano un sottoinsieme proprio di quelli veri in $T$. Gli atomi fuori da $M$ non entrano nel confronto e possono cambiare liberamente.
 
-Con $\mathit{KB} = \{p \lor q\}$ e $M = \{p, q\}$, gli assegnamenti che soddisfano $\mathit{KB}$ rendono veri $\{p\}$, $\{q\}$ oppure $\{p, q\}$. I primi due sono modelli; il terzo no, perché $\{p\}$ è più normale. "$p$ vale in qualche modello?" ha risposta sì, grazie a $\{p\}$. "$p$ vale in tutti i modelli?" ha risposta no, per colpa di $\{q\}$.
+Un modello di $\mathit{KB}$, nel senso della circoscrizione, è un $T$ che soddisfa $\mathit{KB}$ e per cui nessun $T'$ che soddisfa $\mathit{KB}$ è strettamente più normale. Sono gli assegnamenti "tenuti" del paragrafo precedente.
+
+Un esempio ancora più piccolo: $\mathit{KB} = \{p \lor q\}$ e $M = \{p, q\}$. Gli assegnamenti che soddisfano $\mathit{KB}$ rendono veri $\{p\}$, $\{q\}$ oppure $\{p, q\}$. I primi due sono modelli; il terzo no, perché $\{p\}$ è più normale. "$p$ vale in qualche modello?" ha risposta sì, grazie a $\{p\}$. "$p$ vale in tutti i modelli?" ha risposta no, per colpa di $\{q\}$.
 
 Il teorema dice che la prima domanda (CIRC SAT: un modello di $\mathit{KB}$ soddisfa $\varphi$?) è $\Sigma_2^{\mathrm{P}}$-completa, e la seconda (CIRC VALIDITY: $\mathit{KB} \models_M \varphi$, cioè $\varphi$ vale in tutti i modelli?) è $\Pi_2^{\mathrm{P}}$-completa.
 
