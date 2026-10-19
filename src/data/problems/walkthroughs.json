@@ -701,8 +701,8 @@
         "slides": [
             {
                 "title": "Leggi conoscenza e query",
-                "caption": "La base di conoscenza è $\\mathit{KB} = p \\lor q$; minimizziamo $p$ e $q$ e chiediamo se $p$ è vera in almeno un modello minimale. I riquadri sono i quattro assegnamenti, con in verde gli atomi veri: $\\{p\\}$, $\\{q\\}$, $\\{p, q\\}$ e quello senza atomi veri, barrato perché non soddisfa $p \\lor q$.",
-                "alt": "Leggi conoscenza e query. La base di conoscenza è $\\mathit{KB} = p \\lor q$; minimizziamo $p$ e $q$ e chiediamo se $p$ è vera in almeno un modello minimale. I riquadri sono i quattro assegnamenti, con in verde gli atomi veri: $\\{p\\}$, $\\{q\\}$, $\\{p, q\\}$ e quello senza atomi veri, barrato perché non soddisfa $p \\lor q$.",
+                "caption": "La base di conoscenza è $\\mathit{KB} = p \\lor q$; i due atomi sono anormali, cioè da tenere falsi quando si può ($M = \\{p, q\\}$), e chiediamo se $p$ è vera in almeno un modello minimale. I riquadri sono i quattro assegnamenti, con in verde gli atomi veri: $\\{p\\}$, $\\{q\\}$, $\\{p, q\\}$ e quello senza atomi veri, barrato perché non soddisfa $p \\lor q$.",
+                "alt": "Leggi conoscenza e query. La base di conoscenza è $\\mathit{KB} = p \\lor q$; i due atomi sono anormali, cioè da tenere falsi quando si può ($M = \\{p, q\\}$), e chiediamo se $p$ è vera in almeno un modello minimale. I riquadri sono i quattro assegnamenti, con in verde gli atomi veri: $\\{p\\}$, $\\{q\\}$, $\\{p, q\\}$ e quello senza atomi veri, barrato perché non soddisfa $p \\lor q$.",
                 "src": "/illustrations/problems/circ-1.webp"
             },
             {
