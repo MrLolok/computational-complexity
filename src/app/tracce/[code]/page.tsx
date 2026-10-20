@@ -10,6 +10,7 @@ import { PROOF } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
 import { TRACE_BY, TRACES } from "@/data/traces/traces";
 import { goRightNote, MDT_BODY, TRACE_MACHINE, TRACE_NOTE } from "@/data/turing/solutions";
+import NotationLegend from "@/features/traces/NotationLegend";
 import TraceRunner from "@/features/traces/TraceRunner";
 import PracticeLab from "@/features/turing/PracticeLab";
 import SolutionLab from "@/features/turing/SolutionLab";
@@ -106,6 +107,7 @@ export default async function Page({ params }: PageProps<"/tracce/[code]">) {
                     Rispondi prima di leggere la spiegazione. I termini sottolineati offrono un aiuto rapido.
                 </p>
             </header>
+            <NotationLegend />
 
             <TraceRunner
                 code={t.code}

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import { TRACES } from "@/data/traces/traces";
 import { TRACE_MACHINE } from "@/data/turing/solutions";
+import NotationLegend from "@/features/traces/NotationLegend";
 import TraceLibrary from "@/features/traces/TraceLibrary";
 import { markdownToPlain } from "@/lib/plainText";
 import { ui } from "@/lib/tokens";
@@ -35,6 +36,7 @@ export default function Page() {
                     di Turing. Apri una traccia, rispondi e consegna: le risposte restano salvate in questo browser.
                 </p>
             </header>
+            <NotationLegend />
             <TraceLibrary traces={summaries} />
         </div>
     );
