@@ -3,6 +3,7 @@ import type { ClassId } from "@/data/classes/classes";
 import type { Theorem } from "@/data/theorems/theorems";
 
 import { PROBLEM_BY, PROBLEMS } from "@/data/problems/problems";
+import { isRequiredProof } from "@/data/theorems/premise";
 import { PRIORITY_ORDER, PROOF } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
 import { htmlToPlain, searchKey } from "@/lib/plainText";
@@ -130,11 +131,18 @@ const SEARCH = new Map(
     ]),
 );
 
-export function filterTheorems(q: string, cls: string, provedOnly = false, hideCompleteness = false) {
+export function filterTheorems(
+    q: string,
+    cls: string,
+    provedOnly = false,
+    hideCompleteness = false,
+    requiredOnly = false,
+) {
     const nq = searchKey(htmlToPlain(q));
     return THEOREMS.filter(
         (t) =>
             (!provedOnly || t.prova === "nel corso") &&
+            (!requiredOnly || isRequiredProof(t.id)) &&
             (!hideCompleteness || !isCompleteness(t)) &&
             (cls === "all" || (t.classi || []).includes(cls as ClassId)) &&
             (!nq || SEARCH.get(t)!.includes(nq)),

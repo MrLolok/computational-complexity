@@ -11,6 +11,13 @@ import RichHtml from "@/components/RichHtml";
 import Walkthrough from "@/components/Walkthrough";
 import { IDS, NAME, PLAIN } from "@/data/classes/classes";
 import { PROBLEM_BY } from "@/data/problems/problems";
+import {
+    isRequiredProof,
+    PREMISE_PROOFS,
+    PREMISE_RULES,
+    PREMISE_TRIVIAL,
+    REQUIRED_PROOF_COUNT,
+} from "@/data/theorems/premise";
 import { HIGH_PRIORITY_COUNT, PRIORITY, PROOF, PROOF_KIND } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
 import walkthroughs from "@/data/theorems/walkthroughs.json";
@@ -32,6 +39,9 @@ import {
 const PREFIX = "teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
 const COMPLETENESS_HINT = "Dice che un problema specifico è completo o difficile per una classe";
+const REQUIRED_HINT = "Il professore la mette tra le dimostrazioni da conoscere assolutamente";
+const NAME_BY_ID = Object.fromEntries(THEOREMS.map((t) => [t.id, t.nome]));
+const link = "text-accent underline decoration-1 underline-offset-2";
 const h4 = "mb-0.5 font-ui text-xs font-medium uppercase tracking-widest text-muted";
 /* evidenziazione del teorema aperto da un indirizzo: si accende e poi sfuma */
 const HL_ON = ["bg-accent-soft/70"];
@@ -66,6 +76,67 @@ function Explanation({ md }: { md: string }) {
     );
 }
 
+/* premessa del professore all'esame: le regole generali e l'elenco delle dimostrazioni, ognuna collegata alla sua scheda */
+function Premise() {
+    const th = (id: string) => (
+        <a href={`#${PREFIX}${id}`} className={link} dangerouslySetInnerHTML={{ __html: texHtml(NAME_BY_ID[id]) }} />
+    );
+    return (
+        <details open className={`${box} mb-4`}>
+            <summary className={boxSummary}>Premessa del professore: cosa bisogna sapere</summary>
+            <div className="flex flex-col gap-3">
+                {PREMISE_RULES.map((r) => (
+                    <p key={r} className="text-base leading-relaxed">
+                        {r}
+                    </p>
+                ))}
+                <div>
+                    <h4 className={h4}>Dimostrazioni da conoscere assolutamente</h4>
+                    <ol className="list-decimal pl-6 text-base leading-relaxed">
+                        {PREMISE_PROOFS.map((p) => (
+                            <li key={p.label}>
+                                {p.ids.length === 1 ? (
+                                    <a
+                                        href={`#${PREFIX}${p.ids[0]}`}
+                                        className={link}
+                                        dangerouslySetInnerHTML={{ __html: texHtml(p.label) }}
+                                    />
+                                ) : (
+                                    <>
+                                        <span dangerouslySetInnerHTML={{ __html: texHtml(p.label) }} />:{" "}
+                                        {p.ids.map((id, i) => (
+                                            <span key={id}>
+                                                {i > 0 && " · "}
+                                                {th(id)}
+                                            </span>
+                                        ))}
+                                    </>
+                                )}
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+                <p className="text-base leading-relaxed">
+                    <b className="font-medium">Dimostrazioni banali citate come esempio:</b>{" "}
+                    {PREMISE_TRIVIAL.map((id, i) => (
+                        <span key={id}>
+                            {i > 0 && " · "}
+                            {th(id)}
+                        </span>
+                    ))}
+                    .
+                </p>
+                <p className={ui.hint}>
+                    Le {REQUIRED_PROOF_COUNT} schede di queste dimostrazioni hanno il bollino{" "}
+                    <span className={ui.pillProved}>dimostrazione richiesta</span> e la spunta qui sotto mostra solo
+                    quelle. Il ★ invece conta quante domande delle tracce usano un teorema: i due elenchi hanno in
+                    comune solo due teoremi.
+                </p>
+            </div>
+        </details>
+    );
+}
+
 /* memo: a ogni tasto della ricerca si rifà solo l'elenco, non le schede già mostrate */
 const TheoremRow = memo(function TheoremRow({
     t,
@@ -95,6 +166,11 @@ const TheoremRow = memo(function TheoremRow({
                     />
                 </div>
                 <div className="flex flex-wrap items-center justify-start gap-1.5 sm:justify-end">
+                    {isRequiredProof(t.id) && (
+                        <span className={ui.pillProved} title={REQUIRED_HINT}>
+                            dimostrazione richiesta
+                        </span>
+                    )}
                     {pf && pf.frequenza > 0 && (
                         <span
                             className={pf.priorita === "alta" ? ui.pillOk : ui.pill}
@@ -230,10 +306,11 @@ export default function TheoremsView({
     const [provedOnly, setProvedOnly] = useState(true);
     const [byFreq, setByFreq] = useState(false);
     const [hideCompleteness, setHideCompleteness] = useState(false);
+    const [requiredOnly, setRequiredOnly] = useState(false);
     const hash = useHash();
     const target = hash.startsWith(PREFIX) ? hash.slice(PREFIX.length) : "";
 
-    const list = filterTheorems(q, cls, provedOnly, hideCompleteness);
+    const list = filterTheorems(q, cls, provedOnly, hideCompleteness, requiredOnly);
     const groups = byFreq ? groupByPriority(list) : groupByChapter(list);
 
     /* #teorema-<id> nell'indirizzo: se i filtri lo nascondono si azzerano, poi lo si apre e ci si scorre */
@@ -246,6 +323,7 @@ export default function TheoremsView({
                 setCls("all");
                 setProvedOnly(false);
                 setHideCompleteness(false);
+                setRequiredOnly(false);
             });
             return () => cancelAnimationFrame(r);
         }
@@ -278,6 +356,7 @@ export default function TheoremsView({
                 soli coprono circa due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per
                 vederli per primi.
             </p>
+            <Premise />
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 pb-1.5">
                 <label className={ui.search} htmlFor="thq">
                     <span aria-hidden="true">⌕</span>
@@ -341,6 +420,18 @@ export default function TheoremsView({
                         onChange={(e) => setHideCompleteness(e.target.checked)}
                     />
                     Nascondi i teoremi di <span className={ui.pillOpen}>completezza</span> ({COMPLETENESS_COUNT})
+                </label>
+                <label
+                    className="text-muted flex min-h-11 cursor-pointer items-center gap-2 text-sm"
+                    title={REQUIRED_HINT}
+                >
+                    <input
+                        type="checkbox"
+                        className="accent-accent size-4"
+                        checked={requiredOnly}
+                        onChange={(e) => setRequiredOnly(e.target.checked)}
+                    />
+                    Solo le <span className={ui.pillProved}>dimostrazioni richieste</span> ({REQUIRED_PROOF_COUNT})
                 </label>
                 <span role="status" className="font-ui text-muted text-sm">
                     {list.length === THEOREMS.length
