@@ -5,7 +5,9 @@ import Link from "next/link";
 
 import Arrow from "@/components/Arrow";
 import Markdown from "@/components/Markdown";
+import MathHtml from "@/components/MathHtml";
 import OpenOnHash from "@/components/OpenOnHash";
+import { EXERCISES } from "@/data/turing/exercises";
 import { MACHINES } from "@/data/turing/machines";
 import { goRightNote, MDT_BODY, MDT_METHOD, tracesOf } from "@/data/turing/solutions";
 import GuidedExample from "@/features/turing/GuidedExample";
@@ -102,8 +104,8 @@ export default function Page() {
                 <h1 className={ui.h1}>Impara a programmare una macchina di Turing</h1>
                 <p className={ui.lede}>
                     Qui trovi il metodo per scrivere la tabella delle transizioni, un esempio costruito un passo alla
-                    volta e le soluzioni di tutte le macchine uscite nelle tracce. La tua macchina la scrivi e la
-                    consegni nella domanda 8 di ogni{" "}
+                    volta, le soluzioni di tutte le macchine uscite nelle tracce e altri esercizi svolti dello stesso
+                    tipo. La tua macchina la scrivi e la consegni nella domanda 8 di ogni{" "}
                     <Link href="/tracce" className="text-accent underline underline-offset-4">
                         traccia
                     </Link>
@@ -115,6 +117,7 @@ export default function Page() {
                         ["esempio", "Esempio guidato"],
                         ["formato", "Sintassi"],
                         ["macchine", "Soluzioni delle tracce"],
+                        ["esercizi", "Altri esercizi svolti"],
                     ].map(([id, label]) => (
                         <a key={id} href={`#${id}`} className="text-accent underline underline-offset-4">
                             {label}
@@ -193,6 +196,42 @@ export default function Page() {
                             )}
                             <h3 className={ui.h3}>Prova la soluzione</h3>
                             <SolutionLab id={m.id} />
+                        </div>
+                    </details>
+                ))}
+            </section>
+
+            <section id="esercizi" className="border-line flex scroll-mt-16 flex-col gap-3 border-t pt-6">
+                <h2 className={ui.h2}>Altri esercizi svolti</h2>
+                <p className={ui.hint}>
+                    Esercizi nuovi, dello stesso tipo della domanda 8 ma non usciti nelle tracce. Ognuno ha il testo e
+                    la soluzione completa: l&apos;idea, la tabella delle transizioni e una simulazione su un input.
+                </p>
+                {EXERCISES.map((e) => (
+                    <details
+                        key={e.id}
+                        id={`es-${e.id}`}
+                        name="mdt-exercises"
+                        className="group border-line bg-surface open:border-line-strong scroll-mt-20 rounded-xl border"
+                    >
+                        <summary className="flex min-h-11 cursor-pointer list-none flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 [&::-webkit-details-marker]:hidden">
+                            <Arrow shape="chevron" className="text-muted transition-transform group-open:rotate-90" />
+                            <MathHtml
+                                html={e.title}
+                                terms={false}
+                                className="min-w-0 flex-1 basis-52 font-medium wrap-normal"
+                            />
+                            <span className={ui.pill}>
+                                {e.kind} · {e.tapes === 1 ? "1 nastro" : `${e.tapes} nastri`}
+                                {e.nondet ? " · nondeterministica" : ""}
+                                {e.oracle ? ` · oracolo ${e.oracle}` : ""}
+                            </span>
+                        </summary>
+                        <div className="border-line flex min-w-0 flex-col gap-4 border-t px-4 pt-4 pb-5">
+                            <div className={ui.noteInfo}>
+                                <Markdown>{`**Testo.** ${e.text}`}</Markdown>
+                            </div>
+                            <Markdown className={TABLE}>{e.body}</Markdown>
                         </div>
                     </details>
                 ))}
