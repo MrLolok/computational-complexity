@@ -18,7 +18,7 @@ import {
     PREMISE_TRIVIAL,
     REQUIRED_PROOF_COUNT,
 } from "@/data/theorems/premise";
-import { HIGH_PRIORITY_COUNT, PRIORITY, PROOF, PROOF_KIND } from "@/data/theorems/proofs";
+import { PRIORITY, PROOF, PROOF_KIND } from "@/data/theorems/proofs";
 import { THEOREMS } from "@/data/theorems/theorems";
 import walkthroughs from "@/data/theorems/walkthroughs.json";
 import { htmlToPlain } from "@/lib/plainText";
@@ -39,6 +39,7 @@ import {
 const PREFIX = "teorema-";
 const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).includes(id)));
 const COMPLETENESS_HINT = "Dice che un problema specifico è completo o difficile per una classe";
+const FREQ_HINT = "Domande delle tracce la cui risposta usa il teorema o si riferisce a lui";
 const REQUIRED_HINT = "Il professore la mette tra le dimostrazioni da conoscere assolutamente";
 const NAME_BY_ID = Object.fromEntries(THEOREMS.map((t) => [t.id, t.nome]));
 const link = "text-accent underline decoration-1 underline-offset-2";
@@ -82,7 +83,7 @@ function Premise() {
         <a href={`#${PREFIX}${id}`} className={link} dangerouslySetInnerHTML={{ __html: texHtml(NAME_BY_ID[id]) }} />
     );
     return (
-        <details open className={`${box} mb-4`}>
+        <details className={`${box} mb-4`}>
             <summary className={boxSummary}>Premessa del professore: cosa bisogna sapere</summary>
             <div className="flex flex-col gap-3">
                 {PREMISE_RULES.map((r) => (
@@ -129,8 +130,7 @@ function Premise() {
                 <p className={ui.hint}>
                     Le {REQUIRED_PROOF_COUNT} schede di queste dimostrazioni hanno il bollino{" "}
                     <span className={ui.pillProved}>dimostrazione richiesta</span> e la spunta qui sotto mostra solo
-                    quelle. Il ★ invece conta quante domande delle tracce usano un teorema: i due elenchi hanno in
-                    comune solo due teoremi.
+                    quelle.
                 </p>
             </div>
         </details>
@@ -172,17 +172,8 @@ const TheoremRow = memo(function TheoremRow({
                         </span>
                     )}
                     {pf && pf.frequenza > 0 && (
-                        <span
-                            className={pf.priorita === "alta" ? ui.pillOk : ui.pill}
-                            title={PRIORITY[pf.priorita].hint}
-                        >
-                            {pf.priorita === "alta" ? "★ " : ""}chiesto in {pf.frequenza}{" "}
-                            {pf.frequenza === 1 ? "domanda" : "domande"}
-                        </span>
-                    )}
-                    {pf?.priorita === "orale" && (
-                        <span className={ui.pill} title={PRIORITY.orale.hint}>
-                            per l&apos;orale
+                        <span className={ui.pill} title={FREQ_HINT}>
+                            chiesto in {pf.frequenza} {pf.frequenza === 1 ? "domanda" : "domande"}
                         </span>
                     )}
                     {isCompleteness(t) && (
@@ -350,11 +341,6 @@ export default function TheoremsView({
             <p className={`${ui.lede} mb-4`}>
                 Leggi l&apos;enunciato, poi apri la scheda: trovi l&apos;idea, i passaggi illustrati e la dimostrazione
                 in testo.
-            </p>
-            <p className={`${ui.noteOk} mb-4`}>
-                I {HIGH_PRIORITY_COUNT} teoremi segnati con ★ servono in almeno 8 domande delle tracce ciascuno e da
-                soli coprono circa due terzi delle citazioni: parti da quelli. Ordina per &laquo;Più chiesti&raquo; per
-                vederli per primi.
             </p>
             <Premise />
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 pb-1.5">
