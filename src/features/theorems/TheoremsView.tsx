@@ -53,10 +53,12 @@ const boxSummary = "flex min-h-11 cursor-pointer items-center font-ui text-sm fo
 const mdText =
     "[&_p]:max-w-none! [&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-medium [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted [&_h4_.katex]:normal-case [&_h4_.katex]:tracking-normal";
 
-/* spiegazione in Markdown senza il titolo (è già nella scheda); le risposte alle domande di controllo sono blocchi <details> scritti a mano */
+/* spiegazione in Markdown senza il titolo (è già nella scheda); le risposte alle domande di controllo sono blocchi <details> scritti a mano,
+   e la sezione finale «Dove si inciampa di solito» diventa un blocco chiuso allo stesso modo */
 function Explanation({ md }: { md: string }) {
     const parts = md
         .replace(/^# .*\n/, "")
+        .replace(/^## (Dove si inciampa di solito)\n([\s\S]*)$/m, "<details><summary>$1</summary>\n$2\n</details>")
         .replace(/^## /gm, "#### ")
         .split(/<details><summary>(.*?)<\/summary>|<\/details>/);
     return (
