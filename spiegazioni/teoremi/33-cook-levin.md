@@ -66,7 +66,7 @@ Se $x \in L$, si dà a ogni variabile il valore che descrive la computazione che
 
 Se $R(x)$ è soddisfacibile, le clausole "esattamente uno" fanno di ogni riga una configurazione $C_t$; la riga iniziale dice che $C_1$ è quella di partenza su $x$; celle lontane e mosse lecite dicono che ogni $C_{t+1}$ segue da $C_t$ con una mossa di $\Delta$; l'ultima clausola dice che lo stato finale è yes. Quindi $C_1, \dots, C_T$ è una computazione che accetta $x$.
 
-Le variabili sono $O(T^2)$. Le clausole sono $O(T^3)$: le più numerose sono quelle "non due posizioni", una per ogni coppia di celle a ogni tempo. Con $p(n) = n^2$ e $n = 10$ si ha $T = 100$ e un numero di clausole dell'ordine di $10^6$, grande ma polinomiale in $n$. La riduzione le stampa una alla volta con pochi contatori ($s$, $t$, indici di stati e simboli) che arrivano al più a $T = p(n)$, quindi ciascuno ha $O(\log p(n)) = O(\log n)$ bit.
+Le variabili sono $O(T^2)$. Le clausole sono $O(T^3)$: le più numerose sono quelle "non due posizioni", una per ogni coppia di celle a ogni tempo. La riduzione le stampa una alla volta con pochi contatori ($s$, $t$, indici di stati e simboli) che arrivano al più a $T = p(n)$, quindi ciascuno ha $O(\log p(n)) = O(\log n)$ bit.
 
 ## Dove si inciampa di solito
 

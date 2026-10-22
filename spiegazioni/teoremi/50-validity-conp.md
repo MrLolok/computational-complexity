@@ -16,7 +16,7 @@
 
 VALIDITY chiede se una formula booleana è vera per ogni assegnamento delle variabili, cioè se è una tautologia. Bisogna mostrare che sta in coNP e che ogni problema di coNP vi si riduce.
 
-Stare in coNP è la parte facile. Una formula non valida ha un testimone, un assegnamento che la rende falsa, e lo si controlla in tempo polinomiale: il complemento di VALIDITY sta in NP. Per una formula valida, invece, nessun singolo assegnamento basta come prova. Che la formula sia vera per uno non dice niente sugli altri: con $k$ variabili il controllo diretto deve guardarli tutti e $2^k$.
+Stare in coNP è la parte facile. Una formula non valida ha un testimone, un assegnamento che la rende falsa, e lo si controlla in tempo polinomiale: il complemento di VALIDITY sta in NP. Per una formula valida, invece, nessun singolo assegnamento basta come prova: con $k$ variabili il controllo diretto deve guardarli tutti e $2^k$.
 
 ## L'idea: negare la formula
 

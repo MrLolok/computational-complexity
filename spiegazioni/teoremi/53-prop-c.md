@@ -16,8 +16,6 @@ $\mathrm{co}C$ è la classe dei complementi dei linguaggi di $C$: $L \in \mathrm
 
 Se $C$ è chiusa rispetto alle riduzioni, lo è anche $\mathrm{co}C$. Il caso che si usa di più: NP è chiusa, quindi coNP è chiusa.
 
-Non è immediato, perché l'ipotesi parla dei linguaggi di $C$ e la tesi dei linguaggi di $\mathrm{co}C$, che sono i loro complementi. La prova passa ai complementi, usa lì la chiusura di $C$ e torna indietro.
-
 ## La prova
 
 Prendi $L \in \mathrm{co}C$ e una riduzione $R$ da $L'$ a $L$. Va mostrato che $L' \in \mathrm{co}C$.

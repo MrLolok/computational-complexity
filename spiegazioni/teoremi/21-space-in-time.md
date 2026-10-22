@@ -16,7 +16,7 @@ Se la seconda risposta non ti tornava, rileggila: la prova la combina con un con
 
 ## L'idea: contare le configurazioni
 
-Sia $M$ una MdT deterministica che decide $L$ usando al più $f(n)$ celle per nastro di lavoro, con $f(n) \ge \log n$. Le sue configurazioni sono fotografie di una memoria limitata, e si possono contare. Con un solo nastro di lavoro:
+Sia $M$ una MdT deterministica che decide $L$ usando al più $f(n)$ celle per nastro di lavoro, con $f(n) \ge \log n$. Le sue configurazioni si contano; con un solo nastro di lavoro:
 
 | componente                     | valori possibili              |
 | ------------------------------ | ----------------------------- |

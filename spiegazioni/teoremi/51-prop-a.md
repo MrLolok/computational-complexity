@@ -2,13 +2,9 @@
 
 ## Che cosa dice
 
-Una riduzione $R$ da $L$ a $L'$ è una funzione calcolabile in spazio logaritmico tale che, per ogni stringa $x$,
+Una riduzione $R$ da $L$ a $L'$ è una funzione calcolabile in spazio logaritmico tale che, per ogni stringa $x$, $x \in L \iff R(x) \in L'$. La proposizione dice che la stessa $R$, senza cambiarla, è anche una riduzione dal complemento $\overline{L}$ al complemento $\overline{L'}$.
 
-$$x \in L \iff R(x) \in L'.$$
-
-La proposizione dice che la stessa $R$, senza cambiarla, è anche una riduzione dal complemento $\overline{L}$ al complemento $\overline{L'}$.
-
-A prima vista sembra troppo comodo: le istanze SÌ di $\overline{L}$ sono le istanze NO di $L$, e ci si aspetterebbe di dover costruire una trasformazione nuova. Ma una riduzione rispetta la risposta in tutti e due i versi, perché manda le istanze SÌ in istanze SÌ e anche le istanze NO in istanze NO. Il complemento scambia SÌ e NO da entrambe le parti, e la corrispondenza resta.
+Le istanze SÌ di $\overline{L}$ sono le istanze NO di $L$, quindi sembrerebbe servire una trasformazione nuova. Invece basta $R$ perché una riduzione manda le istanze SÌ di $L$ in istanze SÌ di $L'$, e le istanze NO di $L$ in istanze NO di $L'$. Passando ai complementi, SÌ e NO si scambiano da entrambe le parti, e $R$ continua a mandare SÌ in SÌ e NO in NO.
 
 ## Perché è vera
 

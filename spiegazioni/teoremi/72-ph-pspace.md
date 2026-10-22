@@ -22,7 +22,7 @@ PH ha infiniti livelli, e ognuno aggiunge un blocco di quantificatori. Ci si pu�
 
 Sia $L \in \mathrm{PH}$, quindi $L \in \Sigma_i^{\mathrm{P}}$ per un certo $i$. Se $i = 0$, $L \in \mathrm{P} \subseteq \mathrm{PSPACE}$ e non c'è niente da fare. Altrimenti si usa la forma con i quantificatori.
 
-Una macchina deterministica non può indovinare $y_1$, ma può provarli tutti. Scrive $y_1 = 00\dots0$, valuta il resto della formula, poi incrementa $y_1$ come un contatore binario e ripete, fino a $11\dots1$. Su un $\exists$ risponde sì appena un valore funziona; su un $\forall$ risponde sì solo se funzionano tutti. Valutare il resto vuol dire fare lo stesso con $y_2$, poi con $y_3$, fino all'ultimo livello, dove si controlla $(x, y_1, \dots, y_i) \in R$.
+Una macchina deterministica prova tutti i valori di $y_1$: scrive $y_1 = 00\dots0$, valuta il resto della formula, poi incrementa $y_1$ come un contatore binario e ripete, fino a $11\dots1$. Su un $\exists$ risponde sì appena un valore funziona; su un $\forall$ risponde sì solo se funzionano tutti. Valutare il resto vuol dire fare lo stesso con $y_2$, poi con $y_3$, fino all'ultimo livello, dove si controlla $(x, y_1, \dots, y_i) \in R$.
 
 ## Un esempio
 
@@ -35,7 +35,7 @@ y1 = 10   y2 = 00, 01, 10 sì, 11 no        → 10 scartato
 y1 = 11   y2 = 00, 01, 10, 11 sì           → accetta
 ```
 
-La macchina fa 13 controlli di $R$, ma sul nastro tiene sempre e solo i 4 bit di $y_1$ e $y_2$, più lo spazio della verifica in corso. Con certificati di 100 bit i controlli possono arrivare a $2^{200}$, mentre la memoria resta di 200 bit più la verifica.
+La macchina fa 13 controlli di $R$, ma sul nastro tiene sempre e solo i 4 bit di $y_1$ e $y_2$, più lo spazio della verifica in corso.
 
 ## Il conto dello spazio
 

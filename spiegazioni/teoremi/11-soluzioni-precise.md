@@ -14,7 +14,7 @@ Se la definizione non ti torna, rileggila: tutta la costruzione si appoggia su $
 
 ## Il problema
 
-Una macchina che decide $L$ in tempo $f(n)$ si ferma entro $f(|x|)$ passi, ma su due input della stessa lunghezza può durare tempi diversi: 5 passi su uno, 8 sull'altro. Lo stesso vale per lo spazio. Una macchina è precisa quando la durata e la lunghezza finale dei nastri di lavoro dipendono solo da $|x|$: tutte le sue computazioni su input lunghi $n$ durano lo stesso numero di passi e finiscono con nastri di lavoro della stessa lunghezza.
+Una macchina che decide $L$ in tempo $f(n)$ si ferma entro $f(|x|)$ passi, ma su due input della stessa lunghezza può durare tempi diversi: 5 passi su uno, 8 sull'altro. Lo stesso vale per lo spazio. Una macchina è precisa quando tutte le sue computazioni su input lunghi $n$ durano lo stesso numero di passi e finiscono con nastri di lavoro della stessa lunghezza.
 
 Il teorema dice che, se $f$ è propria, ogni macchina con budget $f(n)$ si può rendere precisa restando in $O(f(n))$.
 
@@ -26,7 +26,7 @@ Prima esegue $M_f$ su $x$, su nastri suoi. Il risultato è un "metro": un nastro
 
 Poi simula $M$ e usa il metro in uno di due modi.
 
-Per il tempo, il metro fa da sveglia. Dopo ogni passo simulato di $M$, $M'$ sposta di una cella a destra il cursore sul metro. Se $M$ si ferma prima della fine del metro, $M'$ si segna la risposta nello stato e continua a scorrere il metro fino al primo $\sqcup$, cioè fino alla fine. $M$ si ferma sempre entro $f(|x|)$ passi, quindi la simulazione finisce sempre entro la fine del metro e la risposta è quella di $M$.
+Per il tempo, il metro fa da sveglia. Dopo ogni passo simulato di $M$, $M'$ sposta di una cella a destra il cursore sul metro. Se $M$ si ferma prima della fine del metro, $M'$ si segna la risposta nello stato e continua a scorrere il metro fino al primo $\sqcup$. $M$ si ferma sempre entro $f(|x|)$ passi, quindi la simulazione finisce sempre entro la fine del metro e la risposta è quella di $M$.
 
 Per lo spazio, il metro fa da recinto. $M'$ ne fa una copia per ogni nastro di lavoro di $M$ e simula $M$ scrivendo sopra i quasi-blank, che tratta come blank. $M$ usa al più $f(|x|)$ celle per nastro, quindi non esce dal metro. Le celle che $M$ non usa restano $\sqcap$, e un $\sqcap$ occupa la cella come qualunque altro simbolo: alla fine ogni nastro di lavoro è lungo esattamente $f(|x|)$. Per questo il metro è fatto di quasi-blank e non di blank veri: per $M$ si comportano come blank, ma contano nella lunghezza del nastro.
 
@@ -39,7 +39,7 @@ Sia $f(n) = n^2$ e siano $x$ e $x'$ due input lunghi 3. Il metro ha 9 quasi-blan
 | $x$   | 5                     | 4                       | 9                         |
 | $x'$  | 8                     | 1                       | 9                         |
 
-La prima fase dura lo stesso su $x$ e su $x'$, perché dipende solo dalla lunghezza. Quindi anche il totale è lo stesso.
+La prima fase dura lo stesso su $x$ e su $x'$, perché dipende solo dalla lunghezza, quindi anche il totale è lo stesso.
 
 ## Il conto
 

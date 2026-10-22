@@ -43,7 +43,7 @@ Confronta la terza riga con la quarta: con il solo $\mathit{bird}$ la circoscriz
 
 ## Il problema: la circoscrizione
 
-Ora le stesse cose in modo preciso. Una base di conoscenza $\mathit{KB}$ è un insieme di formule proposizionali, e $M$ è l'insieme delle proposizioni anormali, quelle da rendere false quando possibile. Fra due assegnamenti $T$ e $T'$, si scrive $T' \lt_M T$ ($T'$ strettamente più normale di $T$) se ogni $p \in M$ falsa in $T$ è falsa anche in $T'$ e almeno una $p \in M$ vera in $T$ è falsa in $T'$. In altre parole, gli atomi anormali veri in $T'$ formano un sottoinsieme proprio di quelli veri in $T$. Gli atomi fuori da $M$ non entrano nel confronto e possono cambiare liberamente.
+Una base di conoscenza $\mathit{KB}$ è un insieme di formule proposizionali, e $M$ è l'insieme delle proposizioni anormali, quelle da rendere false quando possibile. Fra due assegnamenti $T$ e $T'$, si scrive $T' \lt_M T$ ($T'$ strettamente più normale di $T$) se ogni $p \in M$ falsa in $T$ è falsa anche in $T'$ e almeno una $p \in M$ vera in $T$ è falsa in $T'$. In altre parole, gli atomi anormali veri in $T'$ formano un sottoinsieme proprio di quelli veri in $T$. Gli atomi fuori da $M$ non entrano nel confronto e possono cambiare liberamente.
 
 Un modello di $\mathit{KB}$, nel senso della circoscrizione, è un $T$ che soddisfa $\mathit{KB}$ e per cui nessun $T'$ che soddisfa $\mathit{KB}$ è strettamente più normale. Sono gli assegnamenti "tenuti" del paragrafo precedente.
 

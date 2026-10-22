@@ -68,7 +68,7 @@ Ogni livello aggiunge a $\psi_i$ i quantificatori su $Z$, $A$, $B$ e le uguaglia
 
 $$|\psi_m| = |\psi_0| + m \cdot O(m) = |\psi_0| + O(m^2),$$
 
-polinomiale perché $m = O(n^c)$. Con $m = 100$ la formula ingenua avrebbe $2^{100}$ copie di $\psi_0$; quella con il trucco ne ha una, più 100 livelli che aggiungono ciascuno 300 variabili ($Z$, $A$ e $B$) e 400 equivalenze (le quattro uguaglianze da 100 bit).
+polinomiale perché $m = O(n^c)$.
 
 ## Dove si inciampa di solito
 

@@ -22,11 +22,11 @@ Una macchina con un nastro e un cursore deve simularne una con $k$ nastri, ognun
 
 $M'$ scrive i $k$ nastri uno dopo l'altro sul suo unico nastro. Ogni nastro comincia con $\triangleright'$, una copia di $\triangleright$ che il cursore può scavalcare, e finisce con un separatore $\triangleleft$; un $\triangleleft$ doppio chiude tutto. Le posizioni dei cursori $M'$ le segna sul nastro stesso: la cella su cui sta il cursore $i$-esimo contiene una versione sottolineata del suo simbolo. L'alfabeto di $M'$ ha quindi, oltre ai simboli di $M$, le loro copie sottolineate e i due segni nuovi.
 
-Un passo di $M$ diventa due passate sul nastro di $M'$. Nella prima $M'$ scorre il nastro da sinistra a destra e raccoglie i $k$ simboli sottolineati, cioè quelli che i cursori di $M$ stanno leggendo. Li tiene nello stato: $M'$ ha uno stato per ogni stato di $M$ combinato con ogni sequenza di al più $k$ simboli, tanti ma in numero finito, perché $K$, $\Sigma$ e $k$ non dipendono dall'input. Dopo la prima passata $M'$ sa da $\delta$ che cosa farebbe $M$. Nella seconda scorre di nuovo il nastro e, a ogni simbolo sottolineato, scrive il simbolo nuovo e sposta la sottolineatura nella cella accanto, a sinistra o a destra come dice $\delta$.
+Un passo di $M$ diventa due passate sul nastro di $M'$. Nella prima $M'$ scorre il nastro da sinistra a destra e raccoglie i $k$ simboli sottolineati. Li tiene nello stato: $M'$ ha uno stato per ogni stato di $M$ combinato con ogni sequenza di $k$ simboli, tanti ma in numero finito, perché $K$, $\Sigma$ e $k$ non dipendono dall'input. Dopo la prima passata $M'$ sa da $\delta$ che cosa farebbe $M$. Nella seconda scorre di nuovo il nastro e, a ogni simbolo sottolineato, scrive il simbolo nuovo e sposta la sottolineatura.
 
 Se un cursore di $M$ va a destra oltre la fine del suo nastro, finirebbe sul $\triangleleft$. Serve una cella nuova: $M'$ sposta di una posizione a destra tutto ciò che segue e scrive un blank $\sqcup$ nella cella liberata.
 
-Quando $M$ si ferma, $M'$ cancella i nastri simulati tranne l'ultimo, che contiene l'output, e lo rimette nel formato normale. Quindi $M'(x) = M(x)$.
+Quando $M$ si ferma, $M'$ cancella i nastri simulati tranne l'ultimo, che contiene l'output. Quindi $M'(x) = M(x)$.
 
 ## Un esempio con due nastri
 
@@ -40,13 +40,9 @@ $$\triangleright' \, a \, a \, \underline{b} \triangleleft \triangleright' \, 1 
 
 ## Il conto del tempo
 
-Un nastro si allunga solo quando il cursore va oltre la sua fine, e in $f(|x|)$ passi un cursore che parte dall'inizio arriva al più alla cella $f(|x|)$. L'input sta dentro lo stesso limite, perché un budget di tempo è sempre almeno $n$. Quindi ogni nastro di $M$ resta lungo al più $f(|x|) + 1$ celle, e il nastro di $M'$ al più $k(f(|x|) + 1) + 1$: è $O(f(n))$, perché $k$ è una costante.
+Un nastro si allunga solo quando il cursore va oltre la sua fine, e in $f(|x|)$ passi un cursore che parte dall'inizio arriva al massimo alla posizione $f(|x|)$. L'input sta dentro lo stesso limite, perché un budget di tempo è sempre almeno $n$. Quindi ogni nastro di $M$ resta lungo al più $f(|x|) + 1$ celle, e il nastro di $M'$ al più $k(f(|x|) + 1) + 1$: è $O(f(n))$, perché $k$ è una costante.
 
-Simulare un passo costa una passata avanti e indietro per leggere, più una passata per ognuno dei $k$ nastri da modificare, spostamenti compresi: $O(k^2 \cdot f(|x|))$ passi. Per tutti gli $f(|x|)$ passi di $M$:
-
-$$f(n) \cdot O(k^2 \cdot f(n)) = O(f(n)^2).$$
-
-I due fattori $f(n)$ hanno origini diverse. Il primo conta i passi di $M$, il secondo è la lunghezza del nastro che $M'$ percorre per simularne uno. Il numero di nastri entra solo nella costante $k^2$. Se $M$ fa 1000 passi, $M'$ ne fa dell'ordine di $1000^2$, un milione, a meno di costanti.
+Ogni passata sul nastro di $M'$ costa $O(k \cdot f(|x|))$ passi. Simulare un passo di $M$ richiede una passata avanti e indietro per leggere, più una per ognuno dei $k$ nastri da modificare, spostamenti compresi: $O(k)$ passate da $O(k \cdot f(|x|))$ passi, in tutto $O(k^2 \cdot f(|x|))$. Per tutti gli $f(|x|)$ passi di $M$: $f(n) \cdot O(k^2 \cdot f(n)) = O(f(n)^2)$.
 
 ## Dove si inciampa di solito
 

@@ -16,7 +16,7 @@ Se la seconda risposta non ti tornava, rileggila: il teorema serve a togliere i 
 
 ## Il problema
 
-Un budget di tempo obbliga la macchina a fermarsi dopo $f(n)$ passi. Un budget di spazio limita solo le celle, e una macchina può andare avanti e indietro su tre celle all'infinito senza uscire dal limite. Una macchina deterministica che decide $L$ non lo fa, perché per definizione si ferma su ogni input. In una nondeterministica invece un ramo può accettare mentre un altro cicla, e la macchina decide comunque $L$.
+Un budget di tempo obbliga la macchina a fermarsi dopo $f(n)$ passi. Un budget di spazio limita solo le celle, e una macchina può andare avanti e indietro all'infinito. Una macchina deterministica che decide $L$ non lo fa, perché per definizione si ferma su ogni input. In una nondeterministica invece un ramo può accettare mentre un altro cicla, e la macchina decide comunque $L$.
 
 Il teorema dice che i rami infiniti si possono eliminare: esiste $M'$ che decide lo stesso $L$, in spazio $O(f(n))$, e in cui ogni computazione termina.
 
@@ -30,13 +30,13 @@ Con un nastro di lavoro lungo al più $f(n)$ le configurazioni diverse si contan
 | contenuto del nastro  | $\lvert \Sigma \rvert^{f(n)}$, un simbolo per cella |
 | posizione del cursore | $f(n)+1$                                            |
 
-In tutto sono al più $c = |K| \cdot |\Sigma|^{f(n)} \cdot (f(n)+1)$. Un ramo che fa più di $c$ passi attraversa più di $c$ configurazioni, quindi per il principio dei cassetti ne incontra una due volte.
+In tutto sono al più $c = |K| \cdot |\Sigma|^{f(n)} \cdot (f(n)+1)$. Un ramo che fa più di $c$ passi attraversa più di $c$ configurazioni, quindi ne incontra una due volte.
 
-Una ripetizione dentro un ramo che accetta si può tagliare. Dalla seconda occorrenza la macchina ha fatto certe mosse fino a "yes", e quelle mosse sono lecite anche dalla prima occorrenza, perché la configurazione è la stessa. Togliendo il tratto fra le due occorrenze resta un ramo più corto che accetta. Ripetendo il taglio finché ci sono ripetizioni si arriva a un ramo che accetta in al più $c$ passi.
+Una ripetizione dentro un ramo che accetta si può tagliare. Dalla seconda occorrenza la macchina ha fatto certe mosse fino a "yes", e quelle mosse sono lecite anche dalla prima occorrenza. Togliendo il tratto fra le due occorrenze resta un ramo più corto che accetta. Ripetendo il taglio finché ci sono ripetizioni, si arriva a un ramo che accetta in al più $c$ passi.
 
 $M'$ allora simula $M$ e conta i passi. Se il conto arriva a $c$ e il ramo non si è fermato, $M'$ lo chiude in "no". Il linguaggio non cambia: se $x \in L$, un ramo che accetta entro $c$ passi c'è comunque, e i rami chiusi in "no" non tolgono niente, perché a una macchina nondeterministica basta un ramo che accetta.
 
-Il conto vale per un solo nastro di lavoro e ignora il cursore di input. Ogni nastro in più aggiunge un fattore dello stesso tipo. Il cursore di input aggiunge un fattore $n+1$, e per contarlo servono circa $\log n$ celle: stanno in $O(f(n))$ se $f(n) \ge \log n$, l'ipotesi che si fa di solito per lo spazio.
+La tabella conta un solo nastro di lavoro e non considera il cursore sull'input. Ogni nastro di lavoro in più moltiplica $c$ per un altro fattore $|\Sigma|^{f(n)} \cdot (f(n)+1)$, e la posizione sul nastro di input lo moltiplica per $n+1$. Quest'ultimo fattore allunga il contatore di circa $\log n$ cifre, che stanno in $O(f(n))$ se $f(n) \ge \log n$, l'ipotesi che si fa di solito per lo spazio.
 
 ## Un esempio di taglio
 
@@ -51,13 +51,7 @@ Il tratto $C_1 \to C_2 \to C_3 \to C_1$ è un giro e si toglie. Il passo finale 
 
 ## Il conto dello spazio
 
-Il numero $c$ è esponenziale in $f(n)$, quindi il contatore non può scriverlo in unario. Funziona come un contachilometri con ruote di misure diverse: una cella con $|K|$ simboli possibili, $f(n)$ celle che formano un numero in base $|\Sigma|$, e $f(n)+1$ celle usate in unario. I valori che può assumere sono esattamente $|K| \cdot |\Sigma|^{f(n)} \cdot (f(n)+1) = c$, perché il contatore ha la stessa forma di una configurazione.
-
-Per sapere dove finiscono le $f(n)$ celle serve un metro lungo $f(n)$, e qui entra l'ipotesi che $f$ sia propria: la macchina $M_f$ costruisce il metro in spazio $O(f(n))$.
-
-Con $|K| = 3$, $|\Sigma| = 2$ e $f(n) = 20$ si ha $c = 3 \cdot 2^{20} \cdot 21 = 66.060.288$: circa 66 milioni di passi contati con $1 + 20 + 21 = 42$ celle.
-
-Metro e contatore occupano $O(f(n))$ celle, la simulazione di $M$ al più $f(n)$: in tutto $O(f(n))$.
+Il numero $c$ è esponenziale in $f(n)$, ma il contatore che arriva a $c$ occupa $O(f(n))$ celle: si scrive come una configurazione, con lo stato, il contenuto di $f(n)$ celle e la posizione del cursore. Per sapere dove finiscono quelle $f(n)$ celle serve un metro lungo $f(n)$, che si costruisce perché $f$ è propria. Metro e contatore occupano $O(f(n))$ celle, la simulazione di $M$ al più $f(n)$: in tutto $O(f(n))$.
 
 ## Dove si inciampa di solito
 

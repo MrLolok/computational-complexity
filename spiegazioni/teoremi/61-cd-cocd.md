@@ -25,7 +25,7 @@ Chiedere "$w \in A$?" e chiedere "$w \in \overline{A}$?" dà la stessa informazi
 | $w \in A$    | riceve $q_{\mathrm{YES}}$ e va nello stato $s_1$ | riceve $q_{\mathrm{NO}}$ e, per lo scambio, va in $s_1$  |
 | $w \notin A$ | riceve $q_{\mathrm{NO}}$ e va nello stato $s_2$  | riceve $q_{\mathrm{YES}}$ e, per lo scambio, va in $s_2$ |
 
-Così le due computazioni coincidono passo dopo passo, su ogni domanda. $M'$ ha lo stesso tipo di $M$ (deterministica o no) e usa gli stessi passi e le stesse celle, quindi rispetta il budget di $C$. Dunque $C^D \subseteq C^{\mathrm{co}D}$. Per l'altra inclusione si parte da un oracolo in $\mathrm{co}D$ e si ripete tutto, perché il complemento di un linguaggio di $\mathrm{co}D$ sta in $D$.
+Così le due computazioni coincidono passo dopo passo. $M'$ ha lo stesso tipo di $M$ (deterministica o no) e usa gli stessi passi e le stesse celle, quindi rispetta il budget di $C$. Dunque $C^D \subseteq C^{\mathrm{co}D}$. Per l'altra inclusione si parte da un oracolo in $\mathrm{co}D$ e si ripete tutto, perché il complemento di un linguaggio di $\mathrm{co}D$ sta in $D$.
 
 Lo scambio non costa niente perché l'oracolo è una scatola nera che risponde in un passo. Se la macchina dovesse calcolare da sé la risposta di un problema NP, passare al complemento vorrebbe dire decidere un problema coNP, e non si sa se una macchina NP possa farlo: è la domanda aperta NP contro coNP.
 

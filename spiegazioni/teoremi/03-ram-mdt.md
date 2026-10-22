@@ -32,7 +32,7 @@ La MdT tiene l'input sul primo nastro. Sul secondo scrive i registri usati, come
 
 L'istruzione corrente la MdT la ricorda nello stato, perché il programma è finito. Gli altri nastri tengono l'indirizzo del registro cercato e fanno da appoggio per somme, sottrazioni e dimezzamenti in binario, fatti cifra per cifra come su carta. Il 7 è il numero di nastri che serve a questa costruzione; conta che sia fissato e non dipenda dall'input.
 
-Per eseguire un'istruzione la MdT cerca sul secondo nastro la coppia con l'indirizzo giusto, legge il contenuto, fa l'operazione sui nastri di appoggio e riscrive il risultato. Le bastano un numero costante di passate sul nastro dei registri.
+Per eseguire un'istruzione la MdT cerca sul secondo nastro la coppia con l'indirizzo giusto, legge il contenuto, fa l'operazione sui nastri di appoggio e riscrive il risultato, con un numero costante di passate sul nastro dei registri.
 
 ## Il conto
 

@@ -45,7 +45,7 @@ Prendi $\varphi = (x \lor y) \land (\neg x \lor z) \land (\neg y \lor z) \land (
 
 C'è il cammino $x \to z \to \neg x$: se $x$ fosse vera, sarebbe vero anche $\neg x$, quindi $x$ deve essere falsa. Da $\neg x$ si raggiungono solo $y$, $z$ e di nuovo $\neg x$, mai $x$. La costruzione sceglie allora $\ell = \neg x$ e rende veri $\neg x$, $y$ e $z$. L'assegnazione con $x$ falsa e $y$, $z$ vere soddisfa le quattro clausole.
 
-Aggiungi ora la clausola $(x \lor \neg y)$, che porta gli archi $\neg x \to \neg y$ e $y \to x$. Adesso c'è anche il cammino $\neg x \to y \to x$, e con $x \to z \to \neg x$ la formula è insoddisfacibile. A parole: $x$ falsa obbliga $y$ vera per la prima clausola, e $y$ vera obbliga $x$ vera per l'ultima.
+Aggiungi ora la clausola $(x \lor \neg y)$, che porta gli archi $\neg x \to \neg y$ e $y \to x$. Adesso c'è anche il cammino $\neg x \to y \to x$, e con $x \to z \to \neg x$ la formula è insoddisfacibile.
 
 ## Il conto
 
@@ -57,4 +57,4 @@ Le due condizioni insieme dicono che $x$ e $\neg x$ stanno nella stessa componen
 
 Un solo cammino $x \leadsto \neg x$ non rende la formula insoddisfacibile: dice soltanto che $x$ deve essere falsa, come nell'esempio prima dell'ultima clausola.
 
-La stessa idea non funziona con tre letterali. Da $(a \lor b \lor c)$, sapere che $a$ è falso non obbliga niente: solo con $a$ e $b$ entrambi falsi la clausola obbliga $c$. Un'implicazione con due premesse non è un arco, quindi il grafo non la rappresenta e il metodo non si estende a 3-SAT.
+La stessa idea non funziona con tre letterali. Da $(a \lor b \lor c)$, sapere che $a$ è falso non obbliga niente: solo con $a$ e $b$ entrambi falsi la clausola obbliga $c$. Un'implicazione con due premesse non è un arco, quindi il metodo non si estende a 3-SAT.

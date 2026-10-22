@@ -49,8 +49,6 @@ Poniamo che simulare una certa $M$ costi $8 f(n)$ celle in tutto, cioè $C_M = 8
 - Con $f(n) = n$ basta allungare la descrizione di $M$ con zeri fino a più di 256 simboli.
 - Con $f(n) = \log_2 n$ serve $\log_2 n > 256$, cioè $n > 2^{256}$: un input astronomico, ma finito, e alla prova basta che esista.
 
-Per avere un'idea del gradino con $f(n) = \log_2 n$: a $n = 2^{16}$ il budget piccolo è di 16 celle, il recinto di $16 \cdot \log_2 16 = 64$.
-
 ## Dove si inciampa di solito
 
 Si pensa che $D$ debba dare la risposta opposta a quella di $M$ su tutti gli input. Basta un input su cui le due macchine differiscono, e la stringa allungata con gli zeri è quell'input.

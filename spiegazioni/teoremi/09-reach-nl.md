@@ -32,7 +32,7 @@ $N$ non scrive mai il cammino: controlla un arco alla volta e poi dimentica il n
 
 La macchina decide REACHABILITY. Se c'è un cammino $1, v_1, \ldots, v_k = n$, la computazione che sceglie proprio $v_1, v_2, \ldots$ trova sempre il bit 1 e arriva in "yes", e per accettare basta una computazione. Viceversa, una computazione che arriva in "yes" ha controllato ogni arco fra due nodi scelti di fila, quindi quei nodi formano un cammino da 1 a $n$. Se il cammino non c'è, nessuna computazione accetta.
 
-Alcune computazioni possono girare per sempre in un ciclo del grafo. La definizione di decisione nondeterministica lo permette. Volendo, si aggiunge un contatore che fa rifiutare dopo $n$ giri: un cammino senza nodi ripetuti ha meno di $n$ archi, perché se un nodo compare due volte si toglie il giro fra le due occorrenze.
+Alcune computazioni possono girare per sempre in un ciclo del grafo, e la definizione di decisione nondeterministica lo permette. Volendo, si aggiunge un contatore che fa rifiutare dopo $n$ giri: un cammino senza nodi ripetuti ha meno di $n$ archi, perché se un nodo compare due volte si toglie il giro fra le due occorrenze.
 
 ## Un esempio
 
@@ -48,7 +48,7 @@ Una computazione che al primo giro sceglie $j = 4$ trova il bit 0 e si ferma in 
 
 ## Il conto dello spazio
 
-Il secondo e il terzo nastro contengono sempre un numero fra 1 e $n$ in binario, circa $\log n$ celle ciascuno; il contatore, se c'è, ne aggiunge altrettante. In tutto $O(\log n)$. L'input è lungo circa $n^2$, ma $\log(n^2) = 2 \log n$, quindi lo spazio è logaritmico anche rispetto alla lunghezza dell'input. Con un milione di nodi la matrice ha $10^{12}$ caselle e i nastri di lavoro usano circa 60 bit, contatore compreso.
+Il secondo e il terzo nastro contengono sempre un numero fra 1 e $n$ in binario, circa $\log n$ celle ciascuno; il contatore, se c'è, ne aggiunge altrettante. In tutto $O(\log n)$. L'input è lungo circa $n^2$, ma $\log(n^2) = 2 \log n$, quindi lo spazio è logaritmico anche rispetto alla lunghezza dell'input.
 
 ## Dove si inciampa di solito
 

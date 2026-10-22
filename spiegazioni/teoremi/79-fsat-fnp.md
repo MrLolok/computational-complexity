@@ -32,7 +32,7 @@ Sia $F_L \in \mathrm{FNP}$, con certificati lunghi al più $p(|x|)$ e una macchi
 
 Data $x$, la funzione $R$ scrive la formula $\varphi_x$ di Cook-Levin per la computazione di $M$ sull'input $(x, y)$, con i simboli di $x$ fissati e quelli di $y$ lasciati come variabili libere $y_1, \dots, y_{p(|x|)}$. $\varphi_x$ è soddisfacibile se e solo se esiste un $y$ che $M$ accetta, cioè se $x$ ha una soluzione; quindi anche il "no" coincide. Come in Cook-Levin, la tabella è regolare e $\varphi_x$ si scrive in spazio logaritmico.
 
-Il ritorno è facile. Un'assegnazione $T$ che soddisfa $\varphi_x$ descrive una computazione accettante di $M$ su $(x, y)$ per un certo $y$. $S$ legge in $T$ i valori di $y_1, \dots, y_{p(|x|)}$ e li scrive in uscita; basta un contatore, quindi spazio logaritmico. Siccome $M$ accetta, $(x, S(T)) \in R_L$.
+Un'assegnazione $T$ che soddisfa $\varphi_x$ descrive una computazione accettante di $M$ su $(x, y)$ per un certo $y$. $S$ legge in $T$ i valori di $y_1, \dots, y_{p(|x|)}$ e li scrive in uscita; basta un contatore, quindi spazio logaritmico. Siccome $M$ accetta, $(x, S(T)) \in R_L$.
 
 |           | $F_L$                                  | FSAT                         |
 | --------- | -------------------------------------- | ---------------------------- |

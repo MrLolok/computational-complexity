@@ -40,7 +40,7 @@ $$\forall p\, \exists q\, (p \lor q) \land (\neg p \lor \neg q) \quad \longmapst
 
 I quantificatori scorrono su $\{0, 1\}$ e $T(p)$ è vero solo per $p = 1$, quindi la query è vera sul database se e solo se la QBF è vera. Il database resta sempre lo stesso: è difficile già l'expression complexity, e a maggior ragione la combined.
 
-La data complexity sta in L. Con la query fissa, il numero $k$ di variabili è una costante. I quantificatori diventano $k$ cicli annidati sugli elementi del database, cioè $k$ contatori di $O(\log n)$ bit, con $n$ la dimensione del database, e ogni atomo si controlla scorrendo l'input. Per la query "c'è un nodo collegato a tutti", $\exists x\, \forall y\, E(x, y)$, bastano due contatori. Lo schema dà il limite superiore. La completezza dipende dal tipo di riduzioni: con quelle in spazio logaritmico è L-completo ogni problema di L che abbia almeno un'istanza sì e una no, perché la riduzione può risolvere da sola il problema di partenza e scrivere un'istanza sì o un'istanza no fissata. Il dato che conta è quindi l'appartenenza a L.
+La data complexity sta in L. Con la query fissa, il numero $k$ di variabili è una costante. I quantificatori diventano $k$ cicli annidati sugli elementi del database, cioè $k$ contatori di $O(\log n)$ bit, con $n$ la dimensione del database, e ogni atomo si controlla scorrendo l'input. Lo schema dà il limite superiore. La completezza dipende dal tipo di riduzioni: con quelle in spazio logaritmico è L-completo ogni problema di L che abbia almeno un'istanza sì e una no, perché la riduzione può risolvere da sola il problema di partenza e scrivere un'istanza sì o un'istanza no fissata. Il dato che conta è quindi l'appartenenza a L.
 
 ## Query congiuntive
 

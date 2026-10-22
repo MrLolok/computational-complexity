@@ -28,7 +28,7 @@ $\mathrm{BQP} \subseteq \mathrm{PP} \subseteq \mathrm{PSPACE}$ viene dai teoremi
 
 $\mathrm{PSPACE} \subseteq \mathrm{EXP}$. Una macchina con spazio $n^k$ ha al più $c^{n^k}$ configurazioni diverse. Se si ferma, lo fa entro quel numero di passi, perché una macchina deterministica che ripassa per la stessa configurazione rifà gli stessi passi e gira per sempre. Il tempo è quindi al più esponenziale.
 
-$\mathrm{EXP} \subsetneq 2\text{-}\mathrm{EXP}$. Ogni problema di EXP sta in $\mathrm{TIME}(2^{n^k})$ per qualche $k$, e $n^k \le 2^n$ da un certo $n$ in poi: per $k = 3$ succede da $n = 10$, dove $10^3 = 1000 \le 2^{10} = 1024$. Quindi $\mathrm{EXP} \subseteq \mathrm{TIME}(2^{2^n})$. La gerarchia del tempo con $f(n) = 2^{2^n}$ dà
+$\mathrm{EXP} \subsetneq 2\text{-}\mathrm{EXP}$. Ogni problema di EXP sta in $\mathrm{TIME}(2^{n^k})$ per qualche $k$, e $n^k \le 2^n$ da un certo $n$ in poi. Quindi $\mathrm{EXP} \subseteq \mathrm{TIME}(2^{2^n})$. La gerarchia del tempo con $f(n) = 2^{2^n}$ dà
 
 $$\mathrm{TIME}(2^{2^n}) \subsetneq \mathrm{TIME}(f(2n+1)^3), \qquad f(2n+1)^3 = 2^{3 \cdot 2^{2n+1}},$$
 

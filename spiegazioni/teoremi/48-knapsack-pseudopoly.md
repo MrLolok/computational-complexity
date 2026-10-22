@@ -20,7 +20,7 @@ Per $0 \le i \le n$ e $0 \le w \le W$ sia
 
 > $V(w, i)$ il massimo valore che si ottiene scegliendo fra i primi $i$ oggetti con peso totale al più $w$.
 
-Con zero oggetti il valore è 0, qualunque sia il limite: $V(w, 0) = 0$ per ogni $w$.
+Con zero oggetti il valore è 0: $V(w, 0) = 0$ per ogni $w$.
 
 Per aggiungere l'oggetto $i+1$, di peso $w_{i+1}$ e valore $v_{i+1}$:
 
@@ -56,8 +56,6 @@ Per esempio $V(5, 2) = \max\{V(5, 1),\ 4 + V(2, 1)\} = \max\{3, 7\} = 7$: prende
 Le caselle sono $(n+1)(W+1)$ e ognuna costa una somma e un confronto fra numeri già calcolati: tempo $O(nW)$.
 
 L'input però è lungo circa $n \log W$, mentre la tabella ha $W + 1$ colonne, e $W = 2^{\log W}$. Il tempo è polinomiale nel valore di $W$ ed esponenziale nella sua lunghezza. Un algoritmo così si chiama pseudopolinomiale.
-
-Con 100 oggetti e $W = 10^{18}$, per esempio, il limite si scrive con 60 bit, ma la tabella ha circa $10^{20}$ caselle: a un miliardo di caselle al secondo servono più di tremila anni.
 
 Quindi l'algoritmo non dimostra $\mathrm{P} = \mathrm{NP}$. Diventa polinomiale solo sulle istanze in cui $W$ è piccolo, per esempio limitato da un polinomio nel numero di oggetti.
 

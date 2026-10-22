@@ -34,7 +34,7 @@ La prima uguaglianza viene dall'ipotesi letta sui complementi. Vale quindi $\mat
 
 ## Che cosa ne segue
 
-Letto al contrario, il corollario dice che una gerarchia con i livelli davvero distinti richiede $\mathrm{NP} \neq \mathrm{coNP}$, e di conseguenza anche $\mathrm{P} \neq \mathrm{NP}$. Dimostrare che PH è una vera gerarchia vorrebbe dire dimostrare anche queste due disuguaglianze, che sono aperte.
+Letto al contrario, il corollario dice che una gerarchia con i livelli davvero distinti richiede $\mathrm{NP} \neq \mathrm{coNP}$, e di conseguenza anche $\mathrm{P} \neq \mathrm{NP}$: dimostrare che PH è una vera gerarchia vorrebbe dire dimostrare queste due disuguaglianze, che sono aperte.
 
 ## Dove si inciampa di solito
 

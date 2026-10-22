@@ -28,7 +28,7 @@ Sono tutti DP-completi. UNIQUE SAT ("la formula ha esattamente un assegnamento c
 
 ## Appartenenza: due controlli sulla stessa istanza
 
-"L'ottimo di EXACT TSP vale esattamente $B$" equivale a due frasi. "Esiste un giro di costo $\le B$" sta in NP, con il giro come certificato. "Non esiste un giro di costo $\lt B$" sta in coNP, perché il suo complemento ha come certificato un giro più corto. Un giro da $B$ dice solo che l'ottimo è al più $B$: escludere i giri più economici è la parte coNP.
+"L'ottimo di EXACT TSP vale esattamente $B$" equivale a due frasi. "Esiste un giro di costo $\le B$" sta in NP, con il giro come certificato. "Non esiste un giro di costo $\lt B$" sta in coNP, perché il suo complemento ha come certificato un giro più corto.
 
 In CRITICAL SAT, "$\varphi$ è insoddisfacibile" sta in coNP. La seconda metà, "togliendo una qualsiasi clausola diventa soddisfacibile", contiene un "per ogni", eppure sta in NP, perché i casi da coprire sono pochi. Se $\varphi$ ha $m$ clausole, il certificato è una lista di $m$ assegnamenti, uno per ogni clausola tolta: è lunga un polinomio e si verifica controllando $m$ formule.
 

@@ -27,7 +27,7 @@ Sono due risultati citati senza dimostrazione e usati soprattutto negli esercizi
 
 ## PRIMES sta in P
 
-Provare tutti i divisori fino a $\sqrt{N}$ è polinomiale in $N$, e quindi esponenziale nella lunghezza dell'input. Con $N$ di 100 cifre decimali, cioè 333 bit, i divisori da provare sono circa $10^{50}$. Serve un algoritmo polinomiale in $\log N$, e lo hanno trovato Agrawal, Kayal e Saxena nel 2002 (AKS).
+Provare tutti i divisori fino a $\sqrt{N}$ è polinomiale in $N$, e quindi esponenziale nella lunghezza dell'input. Serve un algoritmo polinomiale in $\log N$, e lo hanno trovato Agrawal, Kayal e Saxena nel 2002 (AKS).
 
 Si parte da un'identità tra polinomi. Per $a$ primo con $N$:
 

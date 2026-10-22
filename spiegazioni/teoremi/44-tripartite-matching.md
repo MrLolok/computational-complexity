@@ -49,7 +49,7 @@ Se c'è un matching, da come è sistemato ogni gadget si legge il valore della v
 
 ## Dove si inciampa di solito
 
-Il valore vero si legge nelle case lasciate libere, e qui è facile confondersi. Quando $x$ è vera i ragazzi di $x$ occupano le case dispari, e le pari restano a disposizione delle clausole che contengono $x$.
+Il valore vero si legge nelle case lasciate libere. Quando $x$ è vera i ragazzi di $x$ occupano le case dispari, e le pari restano a disposizione delle clausole che contengono $x$.
 
 Ogni occorrenza ha le sue due case. Se due clausole che contengono $x$ puntassero alla stessa casa, se la contenderebbero anche con $x$ vera, e una delle due resterebbe senza.
 

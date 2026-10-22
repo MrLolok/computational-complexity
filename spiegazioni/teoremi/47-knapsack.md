@@ -61,7 +61,7 @@ In base 2 invece le cifre 2 e 3 riportano. In posizione 6 il 3 scrive 1 e riport
 
 Ogni numero ha $3m$ cifre in base $n + 1$ e ogni cifra occupa circa $\log(n+1)$ bit, quindi $O(m \log n)$ bit per numero. I numeri diversi sono $n + 1$ ($w_1, \dots, w_n$ e $K$; i valori $v_i$ e il limite $W$ ne sono copie), quindi l'output ha lunghezza polinomiale e la riduzione si calcola in tempo polinomiale, anzi in spazio logaritmico.
 
-Il valore dei numeri invece è esponenziale: $K$ è circa $(n+1)^{3m-1}$. Con $m = 10$ e $n = 99$, $K$ vale circa $10^{58}$ e si scrive con 193 bit.
+Il valore dei numeri invece è esponenziale: $K$ è circa $(n+1)^{3m-1}$.
 
 ## Dove si inciampa di solito
 

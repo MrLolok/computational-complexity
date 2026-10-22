@@ -45,8 +45,6 @@ Il fattore $\ell_M \cdot k_M^2$ dipende da $M$. Con $M$ fissata sarebbe una cost
 
 $$\ell_M \cdot k_M^2 \le \log^3 n = O(n) = O(f(n)).$$
 
-Con $n = 1024$, per esempio, una descrizione non può avere più di 10 nastri né simboli di più di 10 bit, e $\ell_M \cdot k_M^2 \le 1000 \le n$.
-
 I tre fattori di $f(n)^3$ vengono da tre cose diverse:
 
 | fattore | da dove viene                                                                    |

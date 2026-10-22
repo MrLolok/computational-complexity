@@ -38,8 +38,6 @@ Il lavoro di un run sta in $n^c$ celle perché il run fa al più $n^c$ passi e o
 
 I run sono gli 8 della sequenza di scelte $000, 001, \dots, 111$. Supponi che 5 dicano "yes" e 3 "no". Alla fine il contatore dei "yes" contiene $101$ e quello dei "no" $011$; $5 \gt 3$, quindi $M$ accetta. Il valore più grande che un contatore può raggiungere è 8, cioè $1000$: quattro cifre, $n^c + 1$.
 
-Su scala più grande, con $n^c = 100$ i run sono $2^{100}$, circa $1{,}27 \cdot 10^{30}$, e ogni contatore occupa 101 cifre.
-
 ## Dove si inciampa di solito
 
 Viene spontaneo voler conservare tutti i run, o almeno l'esito di ciascuno. Servono soltanto i due conteggi.
