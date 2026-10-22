@@ -24,7 +24,7 @@ import walkthroughs from "@/data/theorems/walkthroughs.json";
 import { htmlToPlain } from "@/lib/plainText";
 import { texHtml } from "@/lib/tex";
 import { ui } from "@/lib/tokens";
-import { useHash } from "@/lib/useHash";
+import { setSearch, useHash, useSearch } from "@/lib/useHash";
 import {
     chapterTitle,
     COMPLETENESS_COUNT,
@@ -41,6 +41,9 @@ const CLASS_OPTIONS = IDS.filter((id) => THEOREMS.some((t) => (t.classi || []).i
 const COMPLETENESS_HINT = "Dice che un problema specifico è completo o difficile per una classe";
 const FREQ_HINT = "Domande delle tracce la cui risposta usa il teorema o si riferisce a lui";
 const REQUIRED_HINT = "Il professore la mette tra le dimostrazioni da conoscere assolutamente";
+/* valori dei filtri quando mancano dall'indirizzo: nella ?query finisce solo ciò che se ne discosta */
+const FILTER_DEFAULTS = { q: "", classe: "all", ordine: "cap", dimostrati: "1", completezza: "1", richieste: "0" };
+type FilterKey = keyof typeof FILTER_DEFAULTS;
 const NAME_BY_ID = Object.fromEntries(THEOREMS.map((t) => [t.id, t.nome]));
 const link = "text-accent underline decoration-1 underline-offset-2";
 const h4 = "mb-0.5 font-ui text-xs font-medium uppercase tracking-widest text-muted";
@@ -294,12 +297,21 @@ export default function TheoremsView({
     explanations: Record<string, string>;
     traceTitles: Record<string, string>;
 }) {
-    const [q, setQ] = useState("");
-    const [cls, setCls] = useState("all");
-    const [provedOnly, setProvedOnly] = useState(true);
-    const [byFreq, setByFreq] = useState(false);
-    const [hideCompleteness, setHideCompleteness] = useState(false);
-    const [requiredOnly, setRequiredOnly] = useState(false);
+    /* i filtri vivono nella ?query: restano al refresh e si condividono col link */
+    const params = new URLSearchParams(useSearch());
+    const get = (k: FilterKey) => params.get(k) ?? FILTER_DEFAULTS[k];
+    const set = (k: FilterKey, v: string) => {
+        const p = new URLSearchParams(location.search);
+        if (v === FILTER_DEFAULTS[k]) p.delete(k);
+        else p.set(k, v);
+        setSearch(p);
+    };
+    const q = get("q");
+    const cls = get("classe");
+    const byFreq = get("ordine") === "freq";
+    const provedOnly = get("dimostrati") === "1";
+    const hideCompleteness = get("completezza") === "0";
+    const requiredOnly = get("richieste") === "1";
     const hash = useHash();
     const target = hash.startsWith(PREFIX) ? hash.slice(PREFIX.length) : "";
 
@@ -311,14 +323,12 @@ export default function TheoremsView({
     useEffect(() => {
         if (!target) return;
         if (hidden) {
-            const r = requestAnimationFrame(() => {
-                setQ("");
-                setCls("all");
-                setProvedOnly(false);
-                setHideCompleteness(false);
-                setRequiredOnly(false);
-            });
-            return () => cancelAnimationFrame(r);
+            /* resta solo l'ordinamento, che non nasconde nulla */
+            const p = new URLSearchParams(location.search);
+            for (const k of ["q", "classe", "completezza", "richieste"]) p.delete(k);
+            p.set("dimostrati", "0");
+            setSearch(p);
+            return;
         }
         const d = document.getElementById(`teorema-${target}`) as HTMLDetailsElement | null;
         if (!d) return;
@@ -356,7 +366,7 @@ export default function TheoremsView({
                         aria-label="Cerca un teorema"
                         autoComplete="off"
                         value={q}
-                        onChange={(e) => setQ(e.target.value)}
+                        onChange={(e) => set("q", e.target.value)}
                     />
                 </label>
                 <label
@@ -364,7 +374,12 @@ export default function TheoremsView({
                     className="font-ui text-muted inline-flex cursor-pointer items-center gap-2 text-sm"
                 >
                     Classe
-                    <select id="thcls" className={ui.select} value={cls} onChange={(e) => setCls(e.target.value)}>
+                    <select
+                        id="thcls"
+                        className={ui.select}
+                        value={cls}
+                        onChange={(e) => set("classe", e.target.value)}
+                    >
                         <option value="all">Tutte</option>
                         {CLASS_OPTIONS.map((id) => (
                             <option key={id} value={id}>
@@ -382,7 +397,7 @@ export default function TheoremsView({
                         id="thsort"
                         className={ui.select}
                         value={byFreq ? "freq" : "cap"}
-                        onChange={(e) => setByFreq(e.target.value === "freq")}
+                        onChange={(e) => set("ordine", e.target.value)}
                     >
                         <option value="cap">Per capitolo</option>
                         <option value="freq">Più chiesti</option>
@@ -393,7 +408,7 @@ export default function TheoremsView({
                         type="checkbox"
                         className="accent-accent size-4"
                         checked={provedOnly}
-                        onChange={(e) => setProvedOnly(e.target.checked)}
+                        onChange={(e) => set("dimostrati", e.target.checked ? "1" : "0")}
                     />
                     Solo dimostrati nel corso
                 </label>
@@ -405,7 +420,7 @@ export default function TheoremsView({
                         type="checkbox"
                         className="accent-accent size-4"
                         checked={hideCompleteness}
-                        onChange={(e) => setHideCompleteness(e.target.checked)}
+                        onChange={(e) => set("completezza", e.target.checked ? "0" : "1")}
                     />
                     Nascondi i teoremi di <span className={ui.pillOpen}>completezza</span> ({COMPLETENESS_COUNT})
                 </label>
@@ -417,7 +432,7 @@ export default function TheoremsView({
                         type="checkbox"
                         className="accent-accent size-4"
                         checked={requiredOnly}
-                        onChange={(e) => setRequiredOnly(e.target.checked)}
+                        onChange={(e) => set("richieste", e.target.checked ? "1" : "0")}
                     />
                     Solo le <span className={ui.pillProved}>dimostrazioni richieste</span> ({REQUIRED_PROOF_COUNT})
                 </label>

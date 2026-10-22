@@ -28,3 +28,19 @@ export function setHash(hash: string) {
     }
     window.dispatchEvent(new Event(EVT));
 }
+
+const getSearch = () => window.location.search;
+
+/** ?query attuale col ?; "" sul server, così il primo render combacia con l'HTML statico */
+export const useSearch = () => useSyncExternalStore(subscribe, getSearch, getServerHash);
+
+/** cambia la ?query (tenendo l'#hash) senza aggiungere voci alla cronologia */
+export function setSearch(params: URLSearchParams) {
+    const s = params.toString();
+    try {
+        history.replaceState(history.state, "", location.pathname + (s ? `?${s}` : "") + location.hash);
+    } catch {
+        /* niente */
+    }
+    window.dispatchEvent(new Event(EVT));
+}
