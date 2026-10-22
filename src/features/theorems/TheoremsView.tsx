@@ -2,7 +2,7 @@
 
 import type { Theorem } from "@/data/theorems/theorems";
 
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
 import ClassChip from "@/components/ClassChip";
@@ -44,6 +44,18 @@ const REQUIRED_HINT = "Il professore la mette tra le dimostrazioni da conoscere 
 /* valori dei filtri quando mancano dall'indirizzo: nella ?query finisce solo ciò che se ne discosta */
 const FILTER_DEFAULTS = { q: "", classe: "all", ordine: "cap", dimostrati: "1", completezza: "1", richieste: "0" };
 type FilterKey = keyof typeof FILTER_DEFAULTS;
+/* con dei filtri nell'indirizzo, barra ed elenco restano nascosti fino all'idratazione invece di mostrare tutti i teoremi e poi filtrarli;
+   lo <style> va in <head>, dove React tollera nodi aggiunti da fuori */
+const PENDING = "th-pending";
+/* true solo nell'HTML del server e durante l'idratazione: in una navigazione client lo <script> non serve e React lo segnalerebbe */
+const noSubscribe = () => () => {};
+const useFromServer = () =>
+    useSyncExternalStore(
+        noSubscribe,
+        () => false,
+        () => true,
+    );
+const HIDE_UNTIL_FILTERED = `if(location.search.length>1){var s=document.createElement("style");s.id="${PENDING}";s.textContent="#th-bar,#th-list{visibility:hidden}";document.head.appendChild(s)}`;
 const NAME_BY_ID = Object.fromEntries(THEOREMS.map((t) => [t.id, t.nome]));
 const link = "text-accent underline decoration-1 underline-offset-2";
 const h4 = "mb-0.5 font-ui text-xs font-medium uppercase tracking-widest text-muted";
@@ -158,8 +170,14 @@ const TheoremRow = memo(function TheoremRow({
     const lesson = walkthroughs[t.id as keyof typeof walkthroughs];
     /* le spiegazioni hanno migliaia di formule: si rendono solo quando la si apre */
     const [mdOpen, setMdOpen] = useState(false);
+    /* il corpo della scheda (3 MB di HTML su tutte) si rende alla prima apertura e poi resta, così non perde lo stato chiudendo */
+    const [seen, setSeen] = useState(false);
     return (
-        <details id={`teorema-${t.id}`} className={`${ui.card} group open:border-line-strong mt-3 scroll-mt-20`}>
+        <details
+            id={`teorema-${t.id}`}
+            className={`${ui.card} group open:border-line-strong mt-3 scroll-mt-20`}
+            onToggle={(e) => e.currentTarget.open && setSeen(true)}
+        >
             <summary className="grid cursor-pointer list-none grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-[minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
                 <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                     <span className="font-ui text-muted text-xs font-medium tracking-widest uppercase">
@@ -194,98 +212,100 @@ const TheoremRow = memo(function TheoremRow({
                     <span className="hidden group-open:inline">Chiudi approfondimento −</span>
                 </span>
             </summary>
-            <div className="flex flex-col gap-3 pb-4">
-                {t.intuizione && (
-                    <div>
-                        <h4 className={h4}>Intuizione</h4>
-                        <RichHtml as="p" html={t.intuizione} />
-                    </div>
-                )}
-                {t.uso_esame && (
-                    <div>
-                        <h4 className={h4}>All&apos;esame</h4>
-                        <RichHtml as="p" html={t.uso_esame} />
-                    </div>
-                )}
-                {pf?.frase_esame && (
-                    <div className={ui.noteOk}>
-                        <h4 className={h4}>Da scrivere all&apos;esame</h4>
-                        <RichHtml as="p" html={pf.frase_esame} />
-                    </div>
-                )}
-                {lesson && (
-                    <Walkthrough
-                        lesson={lesson}
-                        name={htmlToPlain(t.nome)}
-                        title={
-                            lesson.kind === "conditional"
-                                ? "Ragionamento illustrato"
-                                : lesson.kind === "outline"
-                                  ? "Schema illustrato"
-                                  : "Dimostrazione illustrata"
-                        }
-                        heading="h4"
-                        side
-                    />
-                )}
-                {pf && md && (
-                    <details className={box} onToggle={(e) => setMdOpen(e.currentTarget.open)}>
-                        <summary className={boxSummary}>{PROOF_KIND[pf.tipo_dimostrazione]}</summary>
-                        {mdOpen && <Explanation md={md} />}
-                    </details>
-                )}
-                {pf && pf.domande.length > 0 && (
-                    <div>
-                        <h4 className={h4}>Dove serve nelle tracce</h4>
-                        <p className="text-base leading-relaxed">
-                            {pf.domande.map((d, i) => (
-                                <span key={`${d.traccia}-${d.n}`}>
-                                    {i > 0 && " · "}
-                                    <Link
-                                        href={`/tracce/${d.traccia}#d${d.n}`}
-                                        title={traceTitles[d.traccia]}
-                                        className="text-accent whitespace-nowrap underline decoration-1 underline-offset-2"
-                                    >
-                                        {d.traccia} n. {d.n}
-                                    </Link>
-                                </span>
-                            ))}
-                        </p>
-                    </div>
-                )}
-                {cls.length > 0 && (
-                    <div>
-                        <h4 className={h4}>Classi</h4>
-                        <p className="flex flex-wrap gap-1.5">
-                            {cls.map((c) => (
-                                <ClassChip key={c} id={c} />
-                            ))}
-                        </p>
-                    </div>
-                )}
-                {pr.length > 0 && (
-                    <div>
-                        <h4 className={h4}>Problemi</h4>
-                        <p className="text-base leading-relaxed">
-                            {pr.map((id, i) => (
-                                <span key={id}>
-                                    {i > 0 && " · "}
-                                    <Link
-                                        href={`/problemi/${id}`}
-                                        data-term={`problem:${id}`}
-                                        className="text-accent whitespace-nowrap underline decoration-1 underline-offset-2"
-                                        dangerouslySetInnerHTML={{ __html: texHtml(PROBLEM_BY[id].name) }}
-                                    />
-                                </span>
-                            ))}
-                        </p>
-                    </div>
-                )}
-                <p className="text-muted text-sm">
-                    <b className="font-ui font-medium">Dove:</b> {whereText(t)}
-                    {t.nota_fonte && <RichHtml as="span" html={`. ${t.nota_fonte}`} />}
-                </p>
-            </div>
+            {seen && (
+                <div className="flex flex-col gap-3 pb-4">
+                    {t.intuizione && (
+                        <div>
+                            <h4 className={h4}>Intuizione</h4>
+                            <RichHtml as="p" html={t.intuizione} />
+                        </div>
+                    )}
+                    {t.uso_esame && (
+                        <div>
+                            <h4 className={h4}>All&apos;esame</h4>
+                            <RichHtml as="p" html={t.uso_esame} />
+                        </div>
+                    )}
+                    {pf?.frase_esame && (
+                        <div className={ui.noteOk}>
+                            <h4 className={h4}>Da scrivere all&apos;esame</h4>
+                            <RichHtml as="p" html={pf.frase_esame} />
+                        </div>
+                    )}
+                    {lesson && (
+                        <Walkthrough
+                            lesson={lesson}
+                            name={htmlToPlain(t.nome)}
+                            title={
+                                lesson.kind === "conditional"
+                                    ? "Ragionamento illustrato"
+                                    : lesson.kind === "outline"
+                                      ? "Schema illustrato"
+                                      : "Dimostrazione illustrata"
+                            }
+                            heading="h4"
+                            side
+                        />
+                    )}
+                    {pf && md && (
+                        <details className={box} onToggle={(e) => setMdOpen(e.currentTarget.open)}>
+                            <summary className={boxSummary}>{PROOF_KIND[pf.tipo_dimostrazione]}</summary>
+                            {mdOpen && <Explanation md={md} />}
+                        </details>
+                    )}
+                    {pf && pf.domande.length > 0 && (
+                        <div>
+                            <h4 className={h4}>Dove serve nelle tracce</h4>
+                            <p className="text-base leading-relaxed">
+                                {pf.domande.map((d, i) => (
+                                    <span key={`${d.traccia}-${d.n}`}>
+                                        {i > 0 && " · "}
+                                        <Link
+                                            href={`/tracce/${d.traccia}#d${d.n}`}
+                                            title={traceTitles[d.traccia]}
+                                            className="text-accent whitespace-nowrap underline decoration-1 underline-offset-2"
+                                        >
+                                            {d.traccia} n. {d.n}
+                                        </Link>
+                                    </span>
+                                ))}
+                            </p>
+                        </div>
+                    )}
+                    {cls.length > 0 && (
+                        <div>
+                            <h4 className={h4}>Classi</h4>
+                            <p className="flex flex-wrap gap-1.5">
+                                {cls.map((c) => (
+                                    <ClassChip key={c} id={c} />
+                                ))}
+                            </p>
+                        </div>
+                    )}
+                    {pr.length > 0 && (
+                        <div>
+                            <h4 className={h4}>Problemi</h4>
+                            <p className="text-base leading-relaxed">
+                                {pr.map((id, i) => (
+                                    <span key={id}>
+                                        {i > 0 && " · "}
+                                        <Link
+                                            href={`/problemi/${id}`}
+                                            data-term={`problem:${id}`}
+                                            className="text-accent whitespace-nowrap underline decoration-1 underline-offset-2"
+                                            dangerouslySetInnerHTML={{ __html: texHtml(PROBLEM_BY[id].name) }}
+                                        />
+                                    </span>
+                                ))}
+                            </p>
+                        </div>
+                    )}
+                    <p className="text-muted text-sm">
+                        <b className="font-ui font-medium">Dove:</b> {whereText(t)}
+                        {t.nota_fonte && <RichHtml as="span" html={`. ${t.nota_fonte}`} />}
+                    </p>
+                </div>
+            )}
         </details>
     );
 });
@@ -298,7 +318,9 @@ export default function TheoremsView({
     traceTitles: Record<string, string>;
 }) {
     /* i filtri vivono nella ?query: restano al refresh e si condividono col link */
-    const params = new URLSearchParams(useSearch());
+    const search = useSearch();
+    const fromServer = useFromServer();
+    const params = new URLSearchParams(search);
     const get = (k: FilterKey) => params.get(k) ?? FILTER_DEFAULTS[k];
     const set = (k: FilterKey, v: string) => {
         const p = new URLSearchParams(location.search);
@@ -317,6 +339,11 @@ export default function TheoremsView({
 
     const list = filterTheorems(q, cls, provedOnly, hideCompleteness, requiredOnly);
     const groups = byFreq ? groupByPriority(list) : groupByChapter(list);
+
+    /* l'HTML statico è senza filtri: lo si scopre appena il render usa la ?query vera */
+    useEffect(() => {
+        if (search === location.search) document.getElementById(PENDING)?.remove();
+    }, [search]);
 
     /* #teorema-<id> nell'indirizzo: se i filtri lo nascondono si azzerano, poi lo si apre e ci si scorre */
     const hidden = !!target && THEOREMS.some((t) => t.id === target) && !list.some((t) => t.id === target);
@@ -355,7 +382,8 @@ export default function TheoremsView({
                 in testo.
             </p>
             <Premise />
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 pb-1.5">
+            {fromServer && <script dangerouslySetInnerHTML={{ __html: HIDE_UNTIL_FILTERED }} />}
+            <div id="th-bar" className="flex flex-wrap items-center gap-x-4 gap-y-2.5 pb-1.5">
                 <label className={ui.search} htmlFor="thq">
                     <span aria-hidden="true">⌕</span>
                     <input
@@ -442,7 +470,7 @@ export default function TheoremsView({
                         : `${list.length} di ${THEOREMS.length}`}
                 </span>
             </div>
-            <div>
+            <div id="th-list">
                 {groups.length ? (
                     groups.map((g) => (
                         <section key={g.k} className="mt-6">
