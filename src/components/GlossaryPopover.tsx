@@ -128,10 +128,11 @@ export default function GlossaryPopover({ children }: { children: ReactNode }) {
                 }
                 const details = (e.target as HTMLElement).closest("summary")?.parentElement;
                 if (!(details instanceof HTMLDetailsElement) || details.open) return;
+                /* si scorre solo se il contenuto aperto esce dalla vista: "nearest" porta giù il fondo, o la cima se non ci sta tutto */
                 requestAnimationFrame(() => {
                     if (details.open)
                         details.scrollIntoView({
-                            block: "start",
+                            block: "nearest",
                             behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
                                 ? "instant"
                                 : "smooth",

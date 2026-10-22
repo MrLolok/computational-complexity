@@ -2,7 +2,7 @@
 
 import type { Theorem } from "@/data/theorems/theorems";
 
-import { memo, useEffect, useState, useSyncExternalStore } from "react";
+import { Fragment, memo, useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
 import ClassChip from "@/components/ClassChip";
@@ -57,6 +57,8 @@ const useFromServer = () =>
     );
 const HIDE_UNTIL_FILTERED = `if(location.search.length>1){var s=document.createElement("style");s.id="${PENDING}";s.textContent="#th-bar,#th-list{visibility:hidden}";document.head.appendChild(s)}`;
 const NAME_BY_ID = Object.fromEntries(THEOREMS.map((t) => [t.id, t.nome]));
+/* numero della dimostrazione, lo stesso del file spiegazioni/teoremi/NN-id.md (numerati nell'ordine di THEOREMS) */
+const PROOF_NUM = Object.fromEntries(THEOREMS.map((t, i) => [t.id, i + 1]));
 const link = "text-accent underline decoration-1 underline-offset-2";
 const h4 = "mb-0.5 font-ui text-xs font-medium uppercase tracking-widest text-muted";
 /* evidenziazione del teorema aperto da un indirizzo: si accende e poi sfuma */
@@ -68,30 +70,42 @@ const boxSummary = "flex min-h-11 cursor-pointer items-center font-ui text-sm fo
 const mdText =
     "[&_p]:max-w-none! [&_h4]:mt-2 [&_h4]:font-ui [&_h4]:text-xs [&_h4]:font-medium [&_h4]:uppercase [&_h4]:tracking-widest [&_h4]:text-muted [&_h4_.katex]:normal-case [&_h4_.katex]:tracking-normal";
 
-/* spiegazione in Markdown senza il titolo (è già nella scheda); le risposte alle domande di controllo sono blocchi <details> scritti a mano,
-   e la sezione finale «Dove si inciampa di solito» diventa un blocco chiuso allo stesso modo */
-function Explanation({ md }: { md: string }) {
-    const parts = md
-        .replace(/^# .*\n/, "")
-        .replace(/^## (Dove si inciampa di solito)\n([\s\S]*)$/m, "<details><summary>$1</summary>\n$2\n</details>")
-        .replace(/^## /gm, "#### ")
-        .split(/<details><summary>(.*?)<\/summary>|<\/details>/);
+/* sezioni chiuse dal codice (<fold …>) */
+const FOLD = /^<fold (.*)>$|^<\/fold>$/m;
+
+function Blocks({ md }: { md: string }) {
+    const parts = md.split(FOLD);
+    const body = (p: string) => <Markdown className={mdText}>{p}</Markdown>;
     return (
         <div className="flex flex-col gap-3">
             {parts.map((p, i) =>
                 i % 2 || !p.trim() ? null : parts[i - 1] ? (
                     <details key={i} className={box}>
-                        <summary className={boxSummary}>{parts[i - 1]}</summary>
-                        <Markdown className={mdText}>{p}</Markdown>
+                        <summary className={boxSummary}>
+                            <span dangerouslySetInnerHTML={{ __html: texHtml(parts[i - 1], false) }} />
+                        </summary>
+                        {body(p)}
                     </details>
                 ) : (
-                    <Markdown key={i} className={mdText}>
-                        {p}
-                    </Markdown>
+                    <Fragment key={i}>{body(p)}</Fragment>
                 ),
             )}
         </div>
     );
+}
+
+/* spiegazione in Markdown senza il titolo (è già nella scheda); «Prima di leggere», le sezioni d'esempio e quella finale
+   «Dove si inciampa di solito» diventano blocchi chiusi; le risposte alle domande di controllo, chiuse nei file con <details>,
+   restano aperte sotto un titolo. I fine riga si normalizzano prima: con CRLF il . delle regex si ferma sul \r */
+function Explanation({ md }: { md: string }) {
+    const folded = md
+        .replace(/\r\n?/g, "\n")
+        .replace(/^# .*\n/, "")
+        .replace(/^<details><summary>(.*)<\/summary>$|^<\/details>$/gm, (_, s) => (s ? `#### ${s}` : ""))
+        .replace(/^## ((?:Prima di leggere|Un esempio|Esempi)\b.*)\n([\s\S]*?)(?=^## )/gm, "<fold $1>\n$2\n</fold>\n")
+        .replace(/^## (Dove si inciampa di solito)\n([\s\S]*)$/m, "<fold $1>\n$2\n</fold>")
+        .replace(/^## /gm, "#### ");
+    return <Blocks md={folded} />;
 }
 
 /* premessa del professore all'esame: le regole generali e l'elenco delle dimostrazioni, ognuna collegata alla sua scheda */
@@ -249,7 +263,10 @@ const TheoremRow = memo(function TheoremRow({
                     )}
                     {pf && md && (
                         <details className={box} onToggle={(e) => setMdOpen(e.currentTarget.open)}>
-                            <summary className={boxSummary}>{PROOF_KIND[pf.tipo_dimostrazione]}</summary>
+                            <summary className={boxSummary}>
+                                {PROOF_KIND[pf.tipo_dimostrazione]}
+                                <span className="text-muted ml-2 font-normal tabular-nums">N. {PROOF_NUM[t.id]}</span>
+                            </summary>
                             {mdOpen && <Explanation md={md} />}
                         </details>
                     )}
