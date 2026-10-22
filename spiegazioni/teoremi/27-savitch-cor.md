@@ -20,13 +20,13 @@ Per ogni funzione propria $f(n) \ge \log n$: $\mathrm{NSPACE}(f(n)) \subseteq \m
 
 ## L'idea
 
-Sia $N$ una macchina nondeterministica che decide $L$ in spazio $f(n)$. $N$ accetta $x$ se e solo se nel grafo delle configurazioni $G(N, x)$ c'è un cammino dalla configurazione iniziale $C_0$ a una configurazione che accetta. Si può supporre che $N$, prima di accettare, cancelli i nastri e riporti le testine all'inizio: così la configurazione che accetta è una sola, $C_{\text{yes}}$. Decidere $x$ diventa un problema di REACHABILITY da $C_0$ a $C_{\text{yes}}$, e lo si risolve con Savitch.
+Sia $N$ una macchina nondeterministica che decide $L$ in spazio $f(n)$. $N$ accetta $x$ se e solo se nel grafo delle configurazioni $G(N, x)$ c'è un cammino dalla configurazione iniziale $C_0$ a una configurazione che accetta. Decidere $x$ diventa un problema di REACHABILITY da $C_0$ a $C_{\text{yes}}$, e lo si risolve con Savitch.
 
-$G(N, x)$ però ha un numero di nodi esponenziale in $f(n)$, e scriverlo costerebbe molto più di $f(n)^2$ celle. Savitch non ha bisogno di vederlo scritto: gli servono solo i candidati $z$ per il punto di mezzo e, nel caso base, sapere se c'è un arco. Entrambe le cose si calcolano al momento.
+$G(N, x)$ però ha un numero di nodi esponenziale in $f(n)$, e scriverlo costerebbe molto più di $f(n)^2$ celle. Savitch non ha bisogno di vederlo scritto: gli servono solo i candidati $z$ per il punto di mezzo e, nel caso base, sapere se c'è un arco.
 
 I candidati $z$ sono tutte le stringhe lunghe $O(f(n))$. Per scorrerle la macchina deve conoscere $f(n)$, e lo calcola in spazio $O(f(n))$ perché $f$ è propria.
 
-Per sapere se $(C, C')$ è un arco, invece di leggere una casella della matrice di adiacenza, la macchina controlla se $C'$ segue da $C$ con una mossa di $N$: legge il simbolo di $x$ sotto la testina indicata da $C$ e consulta $\Delta$, in spazio $O(f(n))$.
+Per sapere se $(C, C')$ è un arco, invece di leggere una casella della matrice di adiacenza, la macchina controlla se $C'$ segue da $C$ consultando $\Delta$, in spazio $O(f(n))$.
 
 |                       | Savitch su REACHABILITY    | il corollario                        |
 | --------------------- | -------------------------- | ------------------------------------ |
@@ -38,9 +38,9 @@ Per sapere se $(C, C')$ è un arco, invece di leggere una casella della matrice 
 
 ## Il conto
 
-Una configurazione contiene la posizione della testina sull'input, $\log n$ bit, e il contenuto dei nastri di lavoro, $O(f(n))$ simboli. Qui serve l'ipotesi $f(n) \ge \log n$: una configurazione si scrive in $O(\log n + f(n)) = O(f(n))$ simboli, e le configurazioni sono al più $c^{\log n + f(n)} \le c^{2 f(n)} = (c^2)^{f(n)}$.
+Una configurazione è lo stato, la posizione sull'input ($\log n$ bit) e i nastri di lavoro ($O(f(n))$ simboli). Con $f(n) \ge \log n$ si scrive in $O(f(n))$ simboli, e le configurazioni sono al più $c^{\log n + f(n)} \le (c^2)^{f(n)}$.
 
-La profondità della ricorsione è il logaritmo del numero di nodi: $\log (c^2)^{f(n)} = 2 f(n) \log c = O(f(n))$. La pila contiene quindi $O(f(n))$ triple, ognuna con due configurazioni e un intero, $O(f(n))$ simboli: in tutto $O(f(n)) \cdot O(f(n)) = O(f(n)^2)$. Le $O(f(n))$ celle per controllare un arco si aggiungono senza cambiare il totale.
+La profondità della ricorsione è il logaritmo del numero di nodi, quindi $O(f(n))$. La pila contiene $O(f(n))$ triple, ognuna con due configurazioni e un intero, $O(f(n))$ simboli: in tutto $O(f(n)^2)$. Le $O(f(n))$ celle per controllare un arco non cambiano il totale.
 
 ## Dove si inciampa di solito
 

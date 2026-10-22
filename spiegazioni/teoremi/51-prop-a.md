@@ -8,7 +8,7 @@ Le istanze SÌ di $\overline{L}$ sono le istanze NO di $L$, quindi sembrerebbe s
 
 ## Perché è vera
 
-Un "se e solo se" resta vero se si negano entrambi i lati. Da $x \in L \iff R(x) \in L'$ segue
+Da $x \in L \iff R(x) \in L'$ segue
 
 $$x \notin L \iff R(x) \notin L'.$$
 

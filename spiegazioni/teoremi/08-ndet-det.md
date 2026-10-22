@@ -44,11 +44,7 @@ La trova alla dodicesima sequenza, dopo $2 + 4 + 5 = 11$ tentativi andati a vuot
 
 ## Il conto del tempo
 
-Le sequenze lunghe al più $f(n)$ sono $d + d^2 + \cdots + d^{f(n)} = O(d^{f(n)})$. Per ognuna $M$ genera la sequenza, rimette l'input sul terzo nastro e simula al più $f(n)$ passi: $O(n + f(n)) = O(f(n))$, perché un budget di tempo è almeno $n$. In tutto
-
-$$O(f(n) \cdot d^{f(n)}) = O(c^{f(n)})$$
-
-con, per esempio, $c = 2d$: siccome $f(n) \le 2^{f(n)}$, vale $f(n) \cdot d^{f(n)} \le 2^{f(n)} \cdot d^{f(n)} = (2d)^{f(n)}$. La costante $c$ dipende da $d$, cioè da $N$, e non dall'input; per questo l'enunciato prende l'unione su tutti i $c \gt 1$:
+Le sequenze lunghe al più $f(n)$ sono $d + d^2 + \cdots + d^{f(n)} = O(d^{f(n)})$. Per ognuna $M$ genera la sequenza, rimette l'input sul terzo nastro e simula al più $f(n)$ passi. In tutto $O(f(n) \cdot d^{f(n)}) = O(c^{f(n)})$ con, per esempio, $c = 2d$: siccome $f(n) \le 2^{f(n)}$, vale $f(n) \cdot d^{f(n)} \le 2^{f(n)} \cdot d^{f(n)} = (2d)^{f(n)}$. La costante $c$ dipende da $d$, cioè da $N$, e non dall'input; per questo l'enunciato prende l'unione su tutti i $c \gt 1$:
 
 $$\mathrm{NTIME}(f(n)) \subseteq \bigcup_{c \gt 1} \mathrm{TIME}(c^{f(n)}).$$
 

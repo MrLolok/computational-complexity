@@ -34,9 +34,7 @@ In tutto sono al più $c = |K| \cdot |\Sigma|^{f(n)} \cdot (f(n)+1)$. Un ramo ch
 
 Una ripetizione dentro un ramo che accetta si può tagliare. Dalla seconda occorrenza la macchina ha fatto certe mosse fino a "yes", e quelle mosse sono lecite anche dalla prima occorrenza. Togliendo il tratto fra le due occorrenze resta un ramo più corto che accetta. Ripetendo il taglio finché ci sono ripetizioni, si arriva a un ramo che accetta in al più $c$ passi.
 
-$M'$ allora simula $M$ e conta i passi. Se il conto arriva a $c$ e il ramo non si è fermato, $M'$ lo chiude in "no". Il linguaggio non cambia: se $x \in L$, un ramo che accetta entro $c$ passi c'è comunque, e i rami chiusi in "no" non tolgono niente, perché a una macchina nondeterministica basta un ramo che accetta.
-
-La tabella conta un solo nastro di lavoro e non considera il cursore sull'input. Ogni nastro di lavoro in più moltiplica $c$ per un altro fattore $|\Sigma|^{f(n)} \cdot (f(n)+1)$, e la posizione sul nastro di input lo moltiplica per $n+1$. Quest'ultimo fattore allunga il contatore di circa $\log n$ cifre, che stanno in $O(f(n))$ se $f(n) \ge \log n$, l'ipotesi che si fa di solito per lo spazio.
+$M'$ allora simula $M$ e conta i passi. Se il conto arriva a $c$ e il ramo non si è fermato, $M'$ lo chiude in "no". Il linguaggio non cambia: se $x \in L$, un ramo che accetta entro $c$ passi c'è comunque, e i rami chiusi in "no" non tolgono niente.
 
 ## Un esempio di taglio
 
@@ -51,7 +49,11 @@ Il tratto $C_1 \to C_2 \to C_3 \to C_1$ è un giro e si toglie. Il passo finale 
 
 ## Il conto dello spazio
 
-Il numero $c$ è esponenziale in $f(n)$, ma il contatore che arriva a $c$ occupa $O(f(n))$ celle: si scrive come una configurazione, con lo stato, il contenuto di $f(n)$ celle e la posizione del cursore. Per sapere dove finiscono quelle $f(n)$ celle serve un metro lungo $f(n)$, che si costruisce perché $f$ è propria. Metro e contatore occupano $O(f(n))$ celle, la simulazione di $M$ al più $f(n)$: in tutto $O(f(n))$.
+Il teorema chiede che $M'$ stia in spazio $O(f(n))$: al più una costante per $f(n)$ celle. Rispetto a $M$, $M'$ tiene in più un contatore dei passi e deve sapere quanto vale $c$, per fermarsi lì.
+
+Il contatore arriva fino a $c$, che è esponenziale in $f(n)$, ma può essere espresso in binario con $O(f(n))$ cifre. Per calcolare $c$, però, $M'$ deve conoscere $f(n)$, e all'inizio ha solo l'input. Qui serve che $f$ sia propria: $M'$ esegue $M_f$, che scrive su un nastro a parte il metro con esattamente $f(n)$ quasi-blank $\sqcap$, in spazio $O(f(n))$. Scorrendolo, $M'$ calcola $c$ in binario: parte da $|K| \cdot (f(n)+1)$ e moltiplica per $|\Sigma|$ una volta per ogni $\sqcap$. Poi a ogni passo simulato aumenta il contatore di uno e lo confronta con $c$.
+
+In tutto $M'$ usa al più $f(n)$ celle per la simulazione di $M$, $f(n)$ per il metro e $O(f(n))$ ciascuno per $c$ e per il contatore. La somma è un numero fisso di volte $f(n)$, quindi $O(f(n))$.
 
 ## Dove si inciampa di solito
 

@@ -42,7 +42,13 @@ $$\triangleright' \, a \, a \, \underline{b} \triangleleft \triangleright' \, 1 
 
 Un nastro si allunga solo quando il cursore va oltre la sua fine, e in $f(|x|)$ passi un cursore che parte dall'inizio arriva al massimo alla posizione $f(|x|)$. L'input sta dentro lo stesso limite, perché un budget di tempo è sempre almeno $n$. Quindi ogni nastro di $M$ resta lungo al più $f(|x|) + 1$ celle, e il nastro di $M'$ al più $k(f(|x|) + 1) + 1$: è $O(f(n))$, perché $k$ è una costante.
 
-Ogni passata sul nastro di $M'$ costa $O(k \cdot f(|x|))$ passi. Simulare un passo di $M$ richiede una passata avanti e indietro per leggere, più una per ognuno dei $k$ nastri da modificare, spostamenti compresi: $O(k)$ passate da $O(k \cdot f(|x|))$ passi, in tutto $O(k^2 \cdot f(|x|))$. Per tutti gli $f(|x|)$ passi di $M$: $f(n) \cdot O(k^2 \cdot f(n)) = O(f(n)^2)$.
+Una passata è una scansione del nastro di $M'$ da un capo all'altro, quindi costa quanto è lungo: $O(k \cdot f(|x|))$ passi. Per simulare un passo di $M$ servono:
+
+- una passata per leggere i $k$ simboli sottolineati e una per tornare all'inizio;
+- una passata per scrivere i simboli nuovi e spostare le sottolineature;
+- nel caso peggiore, una passata in più per ognuno dei $k$ nastri: se il suo cursore esce dalla fine, $M'$ sposta di una cella a destra tutto quello che segue, e per farlo percorre il resto del nastro.
+
+In tutto sono al più $2 + 1 + k = k + 3$ passate, cioè $O(k)$, ognuna da $O(k \cdot f(|x|))$ passi, quindi $O(k^2 \cdot f(|x|))$ per ogni passo di $M$. Per tutti gli $f(|x|)$ passi di $M$: $f(n) \cdot O(k^2 \cdot f(n)) = O(f(n)^2)$, perché $k$ è una costante.
 
 ## Dove si inciampa di solito
 
