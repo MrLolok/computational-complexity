@@ -4,29 +4,19 @@
 
 P e NP riguardano problemi di decisione; FNP riguarda la ricerca di certificati, con risposta "no" se non esistono. FP contiene i problemi di ricerca risolvibili in tempo deterministico polinomiale.
 
-Il teorema afferma che **tutti i problemi di ricerca di FNP si risolvono in tempo polinomiale se e solo se $\mathrm{P} = \mathrm{NP}$**. Usiamo SAT e FSAT per passare dalla decisione alla ricerca e viceversa.
+Il teorema afferma che **tutti i problemi di FNP si risolvono in tempo polinomiale se e solo se $\mathrm{P} = \mathrm{NP}$**. Il collegamento passa da SAT e FSAT.
 
 ## Da $\mathrm{FP} = \mathrm{FNP}$ a $\mathrm{P} = \mathrm{NP}$
 
-Supponiamo che $\mathrm{FP} = \mathrm{FNP}$. FSAT appartiene a FNP, quindi per ipotesi possiamo risolverlo in tempo polinomiale.
+Supponiamo che $\mathrm{FP} = \mathrm{FNP}$. Poiché FSAT appartiene a FNP, possiamo risolverlo in tempo polinomiale. Possiamo allora decidere SAT: eseguiamo FSAT e rispondiamo "sì" se restituisce un'assegnazione, "no" altrimenti. Dunque $\mathrm{SAT} \in \mathrm{P}$.
 
-Questo ci permette anche di decidere SAT in tempo polinomiale: eseguiamo FSAT e rispondiamo "sì" se restituisce un'assegnazione, "no" altrimenti. Dunque $\mathrm{SAT} \in \mathrm{P}$.
-
-Ma SAT è NP-completo: per ogni $L \in \mathrm{NP}$ possiamo trasformare un input $x$ in una formula $R(x)$ tale che
-
-$$
-x \in L \iff R(x) \in \mathrm{SAT}.
-$$
-
-La trasformazione è polinomiale e ora anche decidere SAT lo è. Possiamo quindi decidere ogni $L \in \mathrm{NP}$ in tempo polinomiale. Otteniamo $\mathrm{NP} \subseteq \mathrm{P}$ e, poiché l'inclusione opposta vale sempre, $\mathrm{P} = \mathrm{NP}$.
+Ma SAT è NP-completo: per ogni $L \in \mathrm{NP}$, $x \in L \iff R(x) \in \mathrm{SAT}$. Trasformare l'input e decidere SAT richiedono tempo polinomiale, quindi ogni $L \in \mathrm{NP}$ appartiene a P. Poiché $\mathrm{P} \subseteq \mathrm{NP}$ vale sempre, otteniamo $\mathrm{P} = \mathrm{NP}$.
 
 ## Da $\mathrm{P} = \mathrm{NP}$ a $\mathrm{FP} = \mathrm{FNP}$
 
-Supponiamo ora che $\mathrm{P} = \mathrm{NP}$. Poiché SAT appartiene a NP, possiamo deciderlo in tempo polinomiale. Per la proposizione su FSAT e SAT, possiamo anche trovare un'assegnazione in tempo polinomiale, fissando una variabile alla volta. Dunque $\mathrm{FSAT} \in \mathrm{FP}$.
+Supponiamo ora che $\mathrm{P} = \mathrm{NP}$. SAT è quindi polinomiale e, per la proposizione su FSAT e SAT, possiamo trovare un'assegnazione fissando una variabile alla volta in tempo polinomiale. Dunque $\mathrm{FSAT} \in \mathrm{FP}$.
 
-Resta da passare da FSAT a tutti i problemi di FNP. Qui usiamo il fatto che **FSAT è FNP-completo**: ogni problema $F_L \in \mathrm{FNP}$ si riduce a FSAT con una coppia di funzioni $(R,S)$. La funzione $R$ trasforma l'input $x$ in una formula; la funzione $S$ trasforma un'assegnazione soddisfacente di quella formula in un certificato valido per $x$.
-
-Per risolvere $F_L$, calcoliamo quindi $R(x)$ ed eseguiamo FSAT. Se la formula è insoddisfacibile, per la riduzione non esiste un certificato per $x$ e rispondiamo "no". Se FSAT restituisce un'assegnazione $T$, restituiamo $S(T)$. Il percorso è
+Poiché **FSAT è FNP-completo**, ogni problema $F_L \in \mathrm{FNP}$ si riduce a FSAT con una coppia $(R,S)$: $R$ trasforma l'input $x$ in una formula e $S$ traduce un'assegnazione soddisfacente in un certificato valido per $x$.
 
 $$
 x \xrightarrow{R} R(x) \xrightarrow{\mathrm{FSAT}} T \xrightarrow{S} S(T).
@@ -34,7 +24,7 @@ $$
 
 ## Perché il tempo resta polinomiale
 
-Le funzioni $R$ e $S$ sono calcolabili in spazio logaritmico, quindi in tempo polinomiale. La formula $R(x)$ e l'assegnazione $T$ hanno lunghezza polinomiale in $|x|$, e anche FSAT è polinomiale per quanto appena dimostrato. Tutto il procedimento richiede quindi tempo polinomiale in $|x|$.
+Le funzioni $R$ e $S$ sono calcolabili in tempo polinomiale. Anche $R(x)$ e $T$ hanno lunghezza polinomiale in $|x|$: insieme all'algoritmo polinomiale per FSAT, questo rende polinomiale l'intera procedura.
 
 Ogni problema di FNP appartiene così a FP. Otteniamo $\mathrm{FNP} \subseteq \mathrm{FP}$ e, insieme a $\mathrm{FP} \subseteq \mathrm{FNP}$, concludiamo $\mathrm{FP} = \mathrm{FNP}$.
 

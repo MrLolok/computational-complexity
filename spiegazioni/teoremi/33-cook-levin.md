@@ -18,8 +18,6 @@ Una computazione di $M$ è una sequenza di configurazioni. Scriviamola come una 
 
 Se $M$ lavora entro $T = p(|x|)$ passi, bastano $T+1$ righe e un numero polinomiale di colonne, perché la testina visita al più una nuova cella a ogni passo. Possiamo scegliere $p(n) \ge n$, così anche le celle dell'input rientrano in $O(T)$ colonne. Se la macchina accetta prima del tempo $T$, la facciamo restare nello stato "yes" senza cambiare il nastro fino all'ultima riga.
 
-**La formula deve essere vera esattamente quando la tabella descrive una computazione lecita che accetta**. Non dobbiamo trovare prima quella computazione: scriviamo le condizioni che una tabella deve rispettare, lasciando all'assegnazione delle variabili la scelta di come riempirla.
-
 ## Dalla tabella alla formula
 
 Introduciamo variabili booleane per descrivere le caselle: $P^i_{s,t}$ significa «al tempo $t$ la cella $s$ contiene il simbolo $\sigma_i$», $Q^i_t$ significa «lo stato è $q_i$» e $S_{s,t}$ significa «la testina è sulla cella $s$».
