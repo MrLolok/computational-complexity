@@ -30,4 +30,4 @@ Per esempio, prendiamo $\varphi = (x_1 \lor x_2) \land \neg x_1$. SAT ci dice ch
 
 ## Perché il tempo resta polinomiale
 
-Il tempo resta polinomiale: facciamo una chiamata iniziale a SAT e una per ciascuna delle $n$ variabili, quindi $n+1$ chiamate. Le formule ottenute sostituendo le variabili con vero o falso non crescono e si costruiscono in tempo polinomiale. Poiché $n \le |\varphi|$ e ogni chiamata costa tempo polinomiale nella lunghezza della formula, anche il tempo totale è polinomiale. L'argomento presuppone un algoritmo polinomiale per SAT, non dimostra che tale algoritmo esista.
+Facciamo quindi $n+1$ chiamate a SAT. Le formule ottenute sostituendo le variabili con vero o falso non crescono e si costruiscono in tempo polinomiale. Poiché $n \le |\varphi|$ e ogni chiamata costa tempo polinomiale nella lunghezza della formula, anche il tempo totale è polinomiale.

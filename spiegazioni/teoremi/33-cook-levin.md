@@ -22,6 +22,17 @@ Se $M$ lavora entro $T = p(|x|)$ passi, bastano $T+1$ righe e un numero polinomi
 
 Introduciamo variabili booleane per descrivere le caselle: $P^i_{s,t}$ significa «al tempo $t$ la cella $s$ contiene il simbolo $\sigma_i$», $Q^i_t$ significa «lo stato è $q_i$» e $S_{s,t}$ significa «la testina è sulla cella $s$».
 
+Prendiamo $x = 01$ e una macchina che scorre l'input verso destra e accetta appena legge un 1. Con $T = 3$ la tabella è questa, con in grassetto la cella sotto la testina:
+
+| $t$ | cella 0              | cella 1 | cella 2 | cella 3  | stato |
+| --- | -------------------- | ------- | ------- | -------- | ----- |
+| 0   | **$\triangleright$** | 0       | 1       | $\sqcup$ | $q_0$ |
+| 1   | $\triangleright$     | **0**   | 1       | $\sqcup$ | $q_0$ |
+| 2   | $\triangleright$     | 0       | **1**   | $\sqcup$ | $q_0$ |
+| 3   | $\triangleright$     | 0       | **1**   | $\sqcup$ | "yes" |
+
+Alla riga $t = 1$ sono vere $S_{1,1}$, $Q^0_1$ e, per ogni cella $s$, la $P^i_{s,1}$ del simbolo che contiene, come $P^i_{1,1}$ con $\sigma_i = 0$. Tutte le altre variabili della riga sono false. Ogni tabella corrisponde così a un'assegnazione delle variabili.
+
 Un primo gruppo di clausole impone che ogni riga descriva una configurazione: esattamente un simbolo per cella, uno stato e una posizione della testina. Imporre "esattamente uno" significa chiedere che almeno una delle variabili corrispondenti sia vera e vietare che due siano vere insieme.
 
 Altre clausole fissano la prima riga alla configurazione iniziale su $x$ e impongono lo stato "yes" nell'ultima. Restano da collegare le righe: le celle non visitate dalla testina devono mantenere il loro simbolo, mentre lo stato, la cella visitata e la posizione della testina devono cambiare secondo una mossa consentita da $M$. Imponiamo anche che la testina si sposti al più di una cella, senza uscire dal nastro rappresentato.
