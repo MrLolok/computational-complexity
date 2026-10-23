@@ -95,12 +95,14 @@ function Blocks({ md }: { md: string }) {
 }
 
 /* spiegazione in Markdown senza il titolo (è già nella scheda); «Prima di leggere», le sezioni d'esempio e quella finale
-   «Dove si inciampa di solito» diventano blocchi chiusi; le risposte alle domande di controllo, chiuse nei file con <details>,
-   restano aperte sotto un titolo. I fine riga si normalizzano prima: con CRLF il . delle regex si ferma sul \r */
+   «Dove si inciampa di solito» diventano blocchi chiusi, come ogni altro <details> del file (es. un esempio dentro la
+   dimostrazione); le risposte alle domande di controllo, chiuse nei file con <details>, restano aperte sotto un titolo.
+   I fine riga si normalizzano prima: con CRLF il . delle regex si ferma sul \r */
 function Explanation({ md }: { md: string }) {
     const folded = md
         .replace(/\r\n?/g, "\n")
         .replace(/^# .*\n/, "")
+        .replace(/^<details><summary>(?!Rispost)(.*)<\/summary>\n([\s\S]*?)^<\/details>$/gm, "<fold $1>\n$2\n</fold>")
         .replace(/^<details><summary>(.*)<\/summary>$|^<\/details>$/gm, (_, s) => (s ? `#### ${s}` : ""))
         .replace(/^## ((?:Prima di leggere|Un esempio|Esempi)\b.*)\n([\s\S]*?)(?=^## )/gm, "<fold $1>\n$2\n</fold>\n")
         .replace(/^## (Dove si inciampa di solito)\n([\s\S]*)$/m, "<fold $1>\n$2\n</fold>")

@@ -71,7 +71,8 @@ const keys = new Map(aliases);
 const escaped = [...keys.keys()]
     .sort((a, b) => b.length - a.length)
     .map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-const terms = new RegExp(`(?<![\\p{L}\\p{N}_])(${escaped.join("|")})(?![\\p{L}\\p{N}_])`, "gu");
+// l'apostrofo esclude le elisioni: la "L" di "L'idea" non è la classe L
+const terms = new RegExp(`(?<![\\p{L}\\p{N}_])(${escaped.join("|")})(?![\\p{L}\\p{N}_'’])`, "gu");
 export const termKey = (text: string) => keys.get(text);
 export function glossaryParts(text: string) {
     const parts: { text: string; key?: string }[] = [];
