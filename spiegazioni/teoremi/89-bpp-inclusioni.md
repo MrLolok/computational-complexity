@@ -24,9 +24,9 @@ Una macchina che rispetta una riga rispetta anche quella sotto, perché $1 \ge 3
 
 ## $\mathrm{P} \subseteq \mathrm{BPP}$
 
-Sia $M$ una MdT deterministica che decide $L$ in tempo polinomiale. La definizione di BPP chiede una macchina standardizzata, in cui ogni run fa lo stesso numero $p(n)$ di scelte binarie. $M$ diventa una macchina così facendo le $p(n)$ scelte e ignorandole: i $2^{p(n)}$ run eseguono tutti lo stesso calcolo e danno la stessa risposta.
+Sia $M$ una MdT deterministica che decide $L$ in tempo polinomiale. La definizione di BPP chiede una macchina standardizzata, in cui ogni run fa lo stesso numero $p(n)$ di scelte binarie. $M$ diventa una macchina standardizzata in modo banale: facendo le $p(n)$ scelte e ignorandole perché i $2^{p(n)}$ run eseguono tutti lo stesso calcolo e danno la stessa risposta.
 
-Se $x \in L$ accettano tutti i run, cioè una frazione 1, che è almeno $3/4$. Se $x \notin L$ rifiutano tutti, e accetta una frazione 0, che è al più $1/4$. Il tempo è quello di $M$ più le $p(n)$ scelte, ancora polinomiale, quindi $L \in \mathrm{BPP}$.
+Se $x \in L$ accettano tutti i run il 100% delle volte, che è almeno $3/4$. Se $x \notin L$ rifiutano tutti, 0% delle volte, che è al più $1/4$. Il tempo è quello di $M$ più le $p(n)$ scelte, ancora polinomiale, quindi $L \in \mathrm{BPP}$.
 
 ## $\mathrm{BPP} \subseteq \mathrm{PP}$
 
