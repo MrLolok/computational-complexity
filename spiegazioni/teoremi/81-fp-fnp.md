@@ -1,44 +1,47 @@
 # Teorema $\mathrm{FP} = \mathrm{FNP} \iff \mathrm{P} = \mathrm{NP}$
 
-## Prima di leggere
+## Che cosa afferma
 
-1. Che cosa sono FP e FNP, e perché $\mathrm{FP} \subseteq \mathrm{FNP}$?
-2. Che cosa dicono le due proposizioni su FSAT?
+P e NP riguardano problemi di decisione; FNP riguarda la ricerca di certificati, con risposta "no" se non esistono. FP contiene i problemi di ricerca risolvibili in tempo deterministico polinomiale.
 
-<details><summary>Risposte</summary>
-
-1. FNP contiene i function problems associati a un $L \in \mathrm{NP}$: dato $x$, trovare un certificato $y$ oppure rispondere "no". FP contiene quelli che si risolvono in tempo polinomiale deterministico. Un problema di FP è un problema di FNP che si sa anche risolvere velocemente, quindi $\mathrm{FP} \subseteq \mathrm{FNP}$ vale sempre.
-2. FSAT è FNP-completo, rispetto a riduzioni $(R, S)$ calcolabili in spazio logaritmico. E FSAT si risolve in tempo polinomiale se e solo se SAT si risolve in tempo polinomiale.
-
-</details>
-
-Se la seconda risposta non ti tornava, rileggi quelle due proposizioni: questo teorema le mette insieme.
-
-## L'idea: FSAT fa da ponte
-
-```
-FP = FNP  ⇒  FSAT ∈ FP  ⇒  SAT ∈ P  ⇒  P = NP
-P = NP    ⇒  SAT ∈ P    ⇒  FSAT ∈ FP  ⇒  FNP ⊆ FP
-```
+Il teorema afferma che **tutti i problemi di ricerca di FNP si risolvono in tempo polinomiale se e solo se $\mathrm{P} = \mathrm{NP}$**. Usiamo SAT e FSAT per passare dalla decisione alla ricerca e viceversa.
 
 ## Da $\mathrm{FP} = \mathrm{FNP}$ a $\mathrm{P} = \mathrm{NP}$
 
-FSAT sta in FNP, quindi per ipotesi sta in FP. Per la proposizione su FSAT e SAT, allora SAT sta in P: si esegue l'algoritmo per FSAT, si ignora l'assegnazione trovata e si risponde "sì".
+Supponiamo che $\mathrm{FP} = \mathrm{FNP}$. FSAT appartiene a FNP, quindi per ipotesi possiamo risolverlo in tempo polinomiale.
 
-Sia ora $L$ un linguaggio qualsiasi di NP. SAT è NP-completo, quindi c'è una riduzione $R$ da $L$ a SAT, calcolabile in spazio logaritmico e quindi in tempo polinomiale. Per decidere $x$ si calcola $R(x)$ e si decide SAT su $R(x)$. $R(x)$ è lunga un polinomio in $|x|$, e un polinomio applicato a un polinomio è ancora un polinomio, quindi $L \in \mathrm{P}$. Questo dà $\mathrm{NP} \subseteq \mathrm{P}$, e con $\mathrm{P} \subseteq \mathrm{NP}$, che vale sempre, $\mathrm{P} = \mathrm{NP}$.
+Questo ci permette anche di decidere SAT in tempo polinomiale: eseguiamo FSAT e rispondiamo "sì" se restituisce un'assegnazione, "no" altrimenti. Dunque $\mathrm{SAT} \in \mathrm{P}$.
+
+Ma SAT è NP-completo: per ogni $L \in \mathrm{NP}$ possiamo trasformare un input $x$ in una formula $R(x)$ tale che
+
+$$
+x \in L \iff R(x) \in \mathrm{SAT}.
+$$
+
+La trasformazione è polinomiale e ora anche decidere SAT lo è. Possiamo quindi decidere ogni $L \in \mathrm{NP}$ in tempo polinomiale. Otteniamo $\mathrm{NP} \subseteq \mathrm{P}$ e, poiché l'inclusione opposta vale sempre, $\mathrm{P} = \mathrm{NP}$.
 
 ## Da $\mathrm{P} = \mathrm{NP}$ a $\mathrm{FP} = \mathrm{FNP}$
 
-SAT sta in NP, quindi per ipotesi in P, e per la stessa proposizione FSAT si risolve in tempo polinomiale.
+Supponiamo ora che $\mathrm{P} = \mathrm{NP}$. Poiché SAT appartiene a NP, possiamo deciderlo in tempo polinomiale. Per la proposizione su FSAT e SAT, possiamo anche trovare un'assegnazione in tempo polinomiale, fissando una variabile alla volta. Dunque $\mathrm{FSAT} \in \mathrm{FP}$.
 
-Sia $F_L$ un problema qualsiasi di FNP. Siccome FSAT è FNP-completo, c'è una riduzione $(R, S)$ da $F_L$ a FSAT. Su input $x$, l'algoritmo per $F_L$:
+Resta da passare da FSAT a tutti i problemi di FNP. Qui usiamo il fatto che **FSAT è FNP-completo**: ogni problema $F_L \in \mathrm{FNP}$ si riduce a FSAT con una coppia di funzioni $(R,S)$. La funzione $R$ trasforma l'input $x$ in una formula; la funzione $S$ trasforma un'assegnazione soddisfacente di quella formula in un certificato valido per $x$.
 
-1. calcola la formula $R(x)$;
-2. risolve FSAT su $R(x)$;
-3. se la risposta è "no" risponde "no", se è un'assegnazione $T$ restituisce $S(T)$.
+Per risolvere $F_L$, calcoliamo quindi $R(x)$ ed eseguiamo FSAT. Se la formula è insoddisfacibile, per la riduzione non esiste un certificato per $x$ e rispondiamo "no". Se FSAT restituisce un'assegnazione $T$, restituiamo $S(T)$. Il percorso è
 
-$R$ e $S$ lavorano in spazio logaritmico, quindi in tempo polinomiale. $R(x)$ è lunga un polinomio in $|x|$, e così il tempo per risolvere FSAT su $R(x)$ e la lunghezza di $T$. Tutti e tre i passi sono quindi polinomiali in $|x|$, e $F_L \in \mathrm{FP}$. Questo dà $\mathrm{FNP} \subseteq \mathrm{FP}$, e con $\mathrm{FP} \subseteq \mathrm{FNP}$, che vale sempre, $\mathrm{FP} = \mathrm{FNP}$.
+$$
+x \xrightarrow{R} R(x) \xrightarrow{\mathrm{FSAT}} T \xrightarrow{S} S(T).
+$$
 
-## Dove si inciampa di solito
+## Perché il tempo resta polinomiale
 
-Le due direzioni usano FSAT in modi diversi, e capita di confonderli. Nella prima basta che FSAT stia in FNP: da lui si arriva a SAT, e da SAT, che è NP-completo, a tutta NP. Nella seconda serve che FSAT sia FNP-completo, perché è la coppia $(R, S)$ a trasferire l'algoritmo da FSAT a ogni altro problema di FNP. Senza $S$ non si saprebbe tradurre l'assegnazione trovata in una soluzione del problema di partenza.
+Le funzioni $R$ e $S$ sono calcolabili in spazio logaritmico, quindi in tempo polinomiale. La formula $R(x)$ e l'assegnazione $T$ hanno lunghezza polinomiale in $|x|$, e anche FSAT è polinomiale per quanto appena dimostrato. Tutto il procedimento richiede quindi tempo polinomiale in $|x|$.
+
+Ogni problema di FNP appartiene così a FP. Otteniamo $\mathrm{FNP} \subseteq \mathrm{FP}$ e, insieme a $\mathrm{FP} \subseteq \mathrm{FNP}$, concludiamo $\mathrm{FP} = \mathrm{FNP}$.
+
+<details><summary>Esempio: dall'esistenza di una clique ai suoi nodi</summary>
+
+Trovare una clique di $K$ nodi è un problema di FNP: ricevuti i nodi, possiamo controllare in tempo polinomiale che siano $K$ e tutti collegati fra loro.
+
+La funzione $R$ costruisce una formula che descrive le scelte valide dei nodi. Se $\mathrm{P} = \mathrm{NP}$, FSAT trova un'assegnazione $T$ che la soddisfa e $S(T)$ restituisce i nodi della clique. Se la formula è insoddisfacibile, la clique non esiste.
+
+</details>

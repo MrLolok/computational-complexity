@@ -1,39 +1,39 @@
 # Proposizioni $\mathrm{P} \subseteq \mathrm{BPP}$ e $\mathrm{BPP} \subseteq \mathrm{PP}$
 
-## Prima di leggere, una domanda di controllo
+## Che cosa affermano
 
-Che cosa chiedono BPP e PP quando $x \in L$, e che cosa quando $x \notin L$?
+Le due proposizioni affermano che
 
-<details><summary>Risposta</summary>
+$$
+\mathrm{P} \subseteq \mathrm{BPP} \subseteq \mathrm{PP}.
+$$
 
-Tutte e due usano una MdT nondeterministica polinomiale standardizzata, con i run equiprobabili. BPP chiede che, se $x \in L$, almeno $3/4$ dei run accettino, e se $x \notin L$ almeno $3/4$ dei run rifiutino: un run scelto a caso sbaglia con probabilità al più $1/4$. PP chiede solo che $x \in L$ sse più della metà dei run accetta.
+P contiene i linguaggi decidibili in tempo deterministico polinomiale. BPP e PP usano macchine polinomiali standardizzate, con tutti i rami di computazione equiprobabili. Chiamiamo $a_N(x)$ la frazione dei rami della macchina $N$ che accettano l'input $x$.
+
+BPP richiede una risposta corretta con probabilità almeno $3/4$: se $x \in L$, allora $a_N(x) \ge 3/4$; se $x \notin L$, allora $a_N(x) \le 1/4$. PP chiede soltanto che **più della metà dei rami accetti esattamente quando $x \in L$**.
+
+## Da P a BPP: possiamo ignorare le scelte casuali
+
+Prendiamo un linguaggio $L \in \mathrm{P}$ e un algoritmo deterministico polinomiale $M$ che lo decide. Per ottenere una macchina standardizzata $N$ possiamo aggiungere lo stesso numero polinomiale di scelte binarie su ogni ramo e ignorarne l'esito: ogni ramo esegue lo stesso algoritmo $M$.
+
+Se $x \in L$, tutti i rami accettano, quindi $a_N(x) = 1 \ge 3/4$. Se $x \notin L$, tutti rifiutano, quindi $a_N(x) = 0 \le 1/4$. La risposta è sempre corretta e rispetta quindi anche il margine di errore ammesso da BPP. Le scelte aggiunte costano tempo polinomiale: dunque $L \in \mathrm{BPP}$.
+
+## Da BPP a PP: tre quarti sono già una maggioranza
+
+Prendiamo ora un linguaggio $L \in \mathrm{BPP}$ e la sua macchina $N$. Possiamo usare la stessa macchina per PP, senza modificare i rami o il tempo di esecuzione.
+
+Se $x \in L$, almeno $3/4$ dei rami accettano e $3/4 > 1/2$: la maggioranza richiesta da PP c'è. Se $x \notin L$, accetta al più $1/4$ dei rami e $1/4 < 1/2$: la maggioranza non c'è. Quindi
+
+$$
+x \in L \iff a_N(x) > \frac{1}{2},
+$$
+
+che è proprio la condizione di PP. Abbiamo così dimostrato $\mathrm{BPP} \subseteq \mathrm{PP}$.
+
+<details><summary>Esempio: contiamo i rami che accettano</summary>
+
+Immaginiamo una macchina di BPP con quattro rami equiprobabili. Su un input che appartiene a $L$, devono accettare almeno tre rami: sono anche più della metà, come richiede PP. Su un input che non appartiene a $L$, può accettare al massimo un ramo: la maggioranza manca.
+
+Il ragionamento non funziona al contrario: una macchina con 16 rami, di cui 9 accettanti, supera la metà e soddisfa la soglia di PP per un input in $L$, ma non raggiunge i 12 rami richiesti dalla soglia di BPP. Perciò usare la stessa macchina non dimostra l'inclusione inversa.
 
 </details>
-
-## L'idea: la stessa macchina, soglie più larghe
-
-In entrambe le inclusioni non si costruisce niente: si prende la macchina della classe più piccola e si controlla che rispetti già le soglie della classe più grande.
-
-| classe | frazione di run "yes" se $x \in L$ | frazione di run "yes" se $x \notin L$ |
-| ------ | ---------------------------------- | ------------------------------------- |
-| P      | 1                                  | 0                                     |
-| BPP    | almeno $3/4$                       | al più $1/4$                          |
-| PP     | più di $1/2$                       | al più $1/2$                          |
-
-Una macchina che rispetta una riga rispetta anche quella sotto, perché $1 \ge 3/4 \gt 1/2$ e $0 \le 1/4 \le 1/2$.
-
-## $\mathrm{P} \subseteq \mathrm{BPP}$
-
-Sia $M$ una MdT deterministica che decide $L$ in tempo polinomiale. La definizione di BPP chiede una macchina standardizzata, in cui ogni run fa lo stesso numero $p(n)$ di scelte binarie. $M$ diventa una macchina standardizzata in modo banale: facendo le $p(n)$ scelte e ignorandole perché i $2^{p(n)}$ run eseguono tutti lo stesso calcolo e danno la stessa risposta.
-
-Se $x \in L$ accettano tutti i run il 100% delle volte, che è almeno $3/4$. Se $x \notin L$ rifiutano tutti, 0% delle volte, che è al più $1/4$. Il tempo è quello di $M$ più le $p(n)$ scelte, ancora polinomiale, quindi $L \in \mathrm{BPP}$.
-
-## $\mathrm{BPP} \subseteq \mathrm{PP}$
-
-Sia $N$ la macchina di BPP per $L$. Se $x \in L$, accettano almeno $3/4$ dei run, e $3/4 \gt 1/2$: c'è la maggioranza. Se $x \notin L$, rifiutano almeno $3/4$ dei run, quindi ne accetta al più $1/4$, e la maggioranza non c'è. Dunque $x \in L$ sse più della metà dei run di $N$ accetta, che è la condizione di PP, e il tempo non cambia: $L \in \mathrm{PP}$.
-
-## Dove si inciampa di solito
-
-Lo stesso argomento non dà $\mathrm{PP} \subseteq \mathrm{BPP}$. In PP la maggioranza può essere di un solo run sopra la metà, lontanissima da $3/4$.
-
-In altri testi BPP è definito con $2/3$ e $1/3$ invece di $3/4$ e $1/4$. Il ragionamento è identico, perché $2/3 \gt 1/2$ e $1/3 \lt 1/2$.
