@@ -86,6 +86,19 @@ export const SPECIAL_TERMS = [
         href: "/problemi",
     },
     {
+        id: "standardized",
+        name: "Macchina standardizzata",
+        aliases: [
+            "macchina standardizzata",
+            "macchine standardizzate",
+            "MdT nondeterministica standardizzata",
+            "MdT nondeterministica polinomiale standardizzata",
+        ],
+        definition:
+            "Una MdT nondeterministica con due mosse possibili a ogni passo e run tutti della stessa durata $f(n)$. I run sono $2^{f(n)}$ e, con monete eque, ognuno ha probabilità $2^{-f(n)}$: le probabilità si calcolano contando i run.",
+        href: "/classi#standardizzate",
+    },
+    {
         id: "amplification",
         name: "Amplificazione dell’affidabilità",
         aliases: ["probabilità di errore", "errore limitato", "voto di maggioranza"],
