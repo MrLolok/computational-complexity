@@ -22,7 +22,12 @@ Sia $M$ una macchina deterministica che risolve FSAT in tempo polinomiale. La ma
 
 Sia $A$ un algoritmo deterministico polinomiale per SAT, e sia $\varphi(x_1, \dots, x_n)$ l'input. L'algoritmo $A'$ chiede ad $A$ se $\varphi$ è soddisfacibile; se no risponde "no". Altrimenti, per $i = 1, \dots, n$, chiede ad $A$ se $\varphi(T[1], \dots, T[i-1], \text{vero}, x_{i+1}, \dots, x_n)$ è soddisfacibile. Se sì pone $T[i] = \text{vero}$, altrimenti $T[i] = \text{falso}$. Alla fine restituisce $T$.
 
-Perché si può mettere falso senza chiedere: l'algoritmo mantiene la proprietà "dopo il passo $i$, la formula con $x_1, \dots, x_i$ fissati è ancora soddisfacibile". All'inizio vale, perché $A$ ha detto sì. Al passo $i$, se con $x_i$ vera la formula resta soddisfacibile, la proprietà vale. Se no, ogni assegnazione che soddisfa la formula del passo prima ha $x_i$ falsa, e una almeno esiste, quindi con $x_i$ falsa la formula resta soddisfacibile. Dopo il passo $n$ non restano variabili, e una formula senza variabili soddisfacibile è semplicemente vera: $T$ soddisfa $\varphi$.
+Quando $A$ risponde no, $A'$ mette $x_i$ falsa senza chiedere di nuovo. Lo può fare perché dopo ogni passo vale questa proprietà: con $x_1, \dots, x_i$ fissati ai valori di $T$, la formula è ancora soddisfacibile.
+
+- Prima del passo 1 vale, perché $A$ ha detto che $\varphi$ è soddisfacibile.
+- Supponi che valga dopo il passo $i - 1$. Se con $x_i$ vera la formula resta soddisfacibile, $A'$ sceglie vero e la proprietà vale. Se no, nessuna assegnazione con $x_i$ vera soddisfa la formula del passo prima, ma almeno un'assegnazione la soddisfa: quella ha $x_i$ falsa. Quindi con $x_i$ falsa la formula resta soddisfacibile, e la proprietà vale anche così.
+
+Dopo il passo $n$ tutte le variabili sono fissate, e una formula senza variabili è soddisfacibile solo se è vera: $T$ soddisfa $\varphi$.
 
 ## Un esempio
 
@@ -33,16 +38,16 @@ $\varphi = (x_1 \lor x_2) \land (\neg x_1 \lor x_3) \land (\neg x_2 \lor \neg x_
 | 0        | $\varphi$                                        | sì                           |                       |
 | 1        | $x_1$ vera: $x_3 \land (\neg x_2 \lor \neg x_3)$ | sì ($x_2$ falsa, $x_3$ vera) | $T[1] = \text{vero}$  |
 | 2        | anche $x_2$ vera: $x_3 \land \neg x_3$           | no                           | $T[2] = \text{falso}$ |
-| 3        | $x_2$ falsa, $x_3$ vera: nessuna clausola falsa  | sì                           | $T[3] = \text{vero}$  |
+| 3        | $x_2$ falsa e $x_3$ vera: tutte le clausole vere | sì                           | $T[3] = \text{vero}$  |
 
 Il risultato è $T = (\text{vero}, \text{falso}, \text{vero})$, e infatti le tre clausole sono vere.
 
 ## Il conto del tempo
 
-$A'$ chiama $A$ $n + 1$ volte. Ogni volta la formula non è più lunga di $\varphi$, perché sostituire una variabile con una costante non allunga la formula, e $n \le |\varphi|$. Un numero polinomiale di chiamate polinomiali dà tempo polinomiale.
+$A'$ chiama $A$ $n + 1$ volte, e $n \le |\varphi|$. Sostituire una variabile con una costante non allunga la formula, quindi ogni chiamata riceve una formula lunga al più $|\varphi|$ e costa al più $q(|\varphi|)$, se $q$ è il polinomio che limita il tempo di $A$. In tutto $(|\varphi| + 1) \cdot q(|\varphi|)$ passi, più il lavoro polinomiale per scrivere ogni formula: tempo polinomiale.
 
 ## Dove si inciampa di solito
 
 Viene da fare due domande per variabile, una con vero e una con falso. Ne basta una, come alla chiamata 2 dell'esempio: se vero non va, falso va di sicuro, per la proprietà mantenuta.
 
-L'algoritmo non dice che FSAT sia facile. È un'implicazione: funziona solo se esiste un algoritmo polinomiale $A$ per SAT, e non si sa se esista.
+La proposizione dice solo che FSAT è facile se SAT lo è. L'algoritmo $A'$ ha bisogno di un algoritmo polinomiale $A$ per SAT, e non si sa se esista.

@@ -10,11 +10,9 @@ Tutte e due usano una MdT nondeterministica polinomiale standardizzata, con i ru
 
 </details>
 
-Se non ricordavi le soglie, la tabella qui sotto le mette in fila.
-
 ## L'idea: la stessa macchina, soglie più larghe
 
-In entrambe le inclusioni la macchina resta la stessa, e si controlla solo che soddisfi la definizione della classe più grande.
+In entrambe le inclusioni non si costruisce niente: si prende la macchina della classe più piccola e si controlla che rispetti già le soglie della classe più grande.
 
 | classe | frazione di run "yes" se $x \in L$ | frazione di run "yes" se $x \notin L$ |
 | ------ | ---------------------------------- | ------------------------------------- |
@@ -22,18 +20,20 @@ In entrambe le inclusioni la macchina resta la stessa, e si controlla solo che s
 | BPP    | almeno $3/4$                       | al più $1/4$                          |
 | PP     | più di $1/2$                       | al più $1/2$                          |
 
-Ogni riga soddisfa la condizione della riga sotto.
+Una macchina che rispetta una riga rispetta anche quella sotto, perché $1 \ge 3/4 \gt 1/2$ e $0 \le 1/4 \le 1/2$.
 
 ## $\mathrm{P} \subseteq \mathrm{BPP}$
 
-Una MdT deterministica polinomiale $M$ è un caso particolare di MdT nondeterministica, con un solo run. Se $x \in L$ quel run accetta, quindi accetta il 100% dei run, che è almeno $3/4$. Se $x \notin L$ il run rifiuta, e rifiuta il 100%. $M$ rispetta quindi la definizione di BPP. (Se si vuole che ogni run faccia $p(n)$ scelte, $M$ le fa e le ignora: i $2^{p(n)}$ run danno tutti la stessa risposta.)
+Sia $M$ una MdT deterministica che decide $L$ in tempo polinomiale. La definizione di BPP chiede una macchina standardizzata, in cui ogni run fa lo stesso numero $p(n)$ di scelte binarie. $M$ diventa una macchina così facendo le $p(n)$ scelte e ignorandole: i $2^{p(n)}$ run eseguono tutti lo stesso calcolo e danno la stessa risposta.
+
+Se $x \in L$ accettano tutti i run, cioè una frazione 1, che è almeno $3/4$. Se $x \notin L$ rifiutano tutti, e accetta una frazione 0, che è al più $1/4$. Il tempo è quello di $M$ più le $p(n)$ scelte, ancora polinomiale, quindi $L \in \mathrm{BPP}$.
 
 ## $\mathrm{BPP} \subseteq \mathrm{PP}$
 
-Sia $N$ la macchina di BPP per $L$. Se $x \in L$, almeno $3/4$ dei run accettano, e $3/4 \gt 1/2$: c'è la maggioranza. Se $x \notin L$, almeno $3/4$ dei run rifiutano, quindi accettano al più $1/4$ dei run, meno della metà, e la maggioranza non c'è. Dunque $x \in L$ sse $N$ accetta $x$ a maggioranza, nello stesso tempo polinomiale, e $L \in \mathrm{PP}$.
+Sia $N$ la macchina di BPP per $L$. Se $x \in L$, accettano almeno $3/4$ dei run, e $3/4 \gt 1/2$: c'è la maggioranza. Se $x \notin L$, rifiutano almeno $3/4$ dei run, quindi ne accetta al più $1/4$, e la maggioranza non c'è. Dunque $x \in L$ sse più della metà dei run di $N$ accetta, che è la condizione di PP, e il tempo non cambia: $L \in \mathrm{PP}$.
 
 ## Dove si inciampa di solito
 
-Il contrario non segue. In PP la maggioranza può essere di un solo run sopra la metà, lontanissima da $3/4$.
+Lo stesso argomento non dà $\mathrm{PP} \subseteq \mathrm{BPP}$. In PP la maggioranza può essere di un solo run sopra la metà, lontanissima da $3/4$.
 
 In altri testi BPP è definito con $2/3$ e $1/3$ invece di $3/4$ e $1/4$. Il ragionamento è identico, perché $2/3 \gt 1/2$ e $1/3 \lt 1/2$.

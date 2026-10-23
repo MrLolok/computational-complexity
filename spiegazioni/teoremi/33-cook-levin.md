@@ -42,7 +42,7 @@ Le variabili descrivono le caselle:
 
 La clausola delle celle lontane è l'implicazione $(\neg S_{s,t} \land P^i_{s,t}) \Rightarrow P^i_{s,t+1}$ scritta come nella seconda domanda di controllo.
 
-Le mosse lecite si ottengono vietando quelle illecite. Per ogni combinazione $(q_i, \sigma_j, q_k, \sigma_m, \leftarrow)$ che non sta in $\Delta$, e per ogni $s$ e $t$, una clausola dice che non può succedere. Scrivere "almeno una delle mosse di $\Delta$" darebbe un "or" di "and", che non è in CNF; il "non" di un "and" invece è già una clausola. Lo stesso si fa per i movimenti $\rightarrow$ (con $S_{s+1,t+1}$) e $-$ (con $S_{s,t+1}$). Serve anche $(\neg S_{s,t} \lor S_{s-1,t+1} \lor S_{s,t+1} \lor S_{s+1,t+1})$: le clausole vietate guardano solo le celle $s-1$, $s$, $s+1$, e senza questa la testina potrebbe saltare di cinque celle senza violarne nessuna.
+Le mosse lecite si ottengono vietando quelle illecite. Per ogni combinazione $(q_i, \sigma_j, q_k, \sigma_m, \leftarrow)$ che non sta in $\Delta$, e per ogni $s$ e $t$, una clausola dice che non può succedere. Quella in tabella si legge: non è possibile che al tempo $t$ lo stato sia $q_i$ e la testina legga $\sigma_j$ nella cella $s$, e che al tempo $t+1$ lo stato sia $q_k$, la cella $s$ contenga $\sigma_m$ e la testina sia in $s-1$. Scrivere "almeno una delle mosse di $\Delta$" darebbe un "or" di "and", che non è in CNF; il "non" di un "and" invece è già una clausola. Lo stesso si fa per i movimenti $\rightarrow$ (con $S_{s+1,t+1}$) e $-$ (con $S_{s,t+1}$). Serve anche $(\neg S_{s,t} \lor S_{s-1,t+1} \lor S_{s,t+1} \lor S_{s+1,t+1})$: le clausole vietate guardano solo le celle $s-1$, $s$, $s+1$, e senza questa la testina potrebbe saltare di cinque celle senza violarne nessuna.
 
 Il nondeterminismo passa all'assegnamento: la formula permette, a ogni passo, qualunque mossa di $\Delta$, e un assegnamento che la soddisfa sceglie un ramo.
 
@@ -64,7 +64,14 @@ La cella 3 al tempo 1 non ha la testina, e la clausola $(S_{3,1} \lor \neg P^{\s
 
 Se $x \in L$, si dà a ogni variabile il valore che descrive la computazione che accetta, prolungata fino a $T$ restando in yes: ogni clausola è vera per costruzione.
 
-Se $R(x)$ è soddisfacibile, le clausole "esattamente uno" fanno di ogni riga una configurazione $C_t$; la riga iniziale dice che $C_1$ è quella di partenza su $x$; celle lontane e mosse lecite dicono che ogni $C_{t+1}$ segue da $C_t$ con una mossa di $\Delta$; l'ultima clausola dice che lo stato finale è yes. Quindi $C_1, \dots, C_T$ è una computazione che accetta $x$.
+Se $R(x)$ è soddisfacibile, si prende un assegnamento che la soddisfa e si legge la tabella che descrive:
+
+- per le clausole "esattamente uno", ogni riga $t$ ha un solo stato, una sola posizione della testina e un simbolo per cella, quindi è una configurazione $C_t$;
+- per le clausole della riga iniziale, $C_1$ è la configurazione di partenza su $x$;
+- per le celle lontane e le mosse lecite, ogni $C_{t+1}$ segue da $C_t$ con una mossa di $\Delta$;
+- per l'ultima clausola, lo stato di $C_T$ è yes.
+
+Quindi $C_1, \dots, C_T$ è una computazione di $M$ che accetta $x$, e $x \in L$.
 
 Le variabili sono $O(T^2)$. Le clausole sono $O(T^3)$: le più numerose sono quelle "non due posizioni", una per ogni coppia di celle a ogni tempo. La riduzione le stampa una alla volta con pochi contatori ($s$, $t$, indici di stati e simboli) che arrivano al più a $T = p(n)$, quindi ciascuno ha $O(\log p(n)) = O(\log n)$ bit.
 
