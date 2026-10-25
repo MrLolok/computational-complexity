@@ -28,6 +28,8 @@ I candidati $z$ sono tutte le stringhe lunghe $O(f(n))$. Per scorrerle la macchi
 
 Per sapere se $(C, C')$ è un arco, invece di leggere una casella della matrice di adiacenza, la macchina controlla se $C'$ segue da $C$ consultando $\Delta$, in spazio $O(f(n))$.
 
+<details><summary>Confronto tra Savitch e il corollario</summary>
+
 |                       | Savitch su REACHABILITY    | il corollario                        |
 | --------------------- | -------------------------- | ------------------------------------ |
 | nodi                  | $n$                        | al più $(c^2)^{f(n)}$ configurazioni |
@@ -36,11 +38,11 @@ Per sapere se $(C, C')$ è un arco, invece di leggere una casella della matrice 
 | "c'è l'arco?"         | una casella della matrice  | simulare una mossa di $N$            |
 | spazio                | $O(\log^2 n)$              | $O(f(n)^2)$                          |
 
+</details>
+
 ## Il conto
 
-Una configurazione è lo stato, la posizione sull'input ($\log n$ bit) e i nastri di lavoro ($O(f(n))$ simboli). Con $f(n) \ge \log n$ si scrive in $O(f(n))$ simboli, e le configurazioni sono al più $c^{\log n + f(n)} \le (c^2)^{f(n)}$.
-
-La profondità della ricorsione è il logaritmo del numero di nodi, quindi $O(f(n))$. La pila contiene $O(f(n))$ triple, ognuna con due configurazioni e un intero, $O(f(n))$ simboli: in tutto $O(f(n)^2)$. Le $O(f(n))$ celle per controllare un arco non cambiano il totale.
+Poiché ogni configurazione occupa spazio $O(f(n))$ e le configurazioni sono un numero esponenziale su $f(n)$, la ricorsione di Savitch ha profondità $O(f(n))$ e ogni chiamata occupa spazio $O(f(n))$; quindi lo spazio totale è $O(f(n)^2)$, da cui $\operatorname{NSPACE}(f(n))\subseteq\operatorname{SPACE}(f(n)^2)$.
 
 ## Dove si inciampa di solito
 
