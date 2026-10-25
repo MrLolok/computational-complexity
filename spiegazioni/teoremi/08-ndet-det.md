@@ -28,7 +28,7 @@ La macchina deterministica $M$ ha tre nastri: l'input, la sequenza corrente, la 
 
 ## Quando rifiutare
 
-$M$ non conosce $f(n)$, quindi non può fermarsi dopo aver provato le sequenze lunghe $f(n)$. Rifiuta se per una certa lunghezza $t$ tutte le sequenze vengono scartate o portano a computazioni già ferme (in "no" o in $h$), nessuna computazione di $N$ dura più di $t$ (con $t = f(n)$) passi, e nessuna ha accettato, altrimenti $M$ si sarebbe già fermata.
+$M$ non conosce $f(n)$, quindi esplora tutte le possibili sequenze di scelte di lunghezza crescente $t$. Se trova un ramo accettante, accetta; altrimenti rifiuta quando tutte le sequenze vengono scartate o portano a computazioni terminate senza accettare. Poiché $N$ decide in tempo $f(n)$, tutti i rami terminano entro tale limite, quindi anche $M$ termina.
 
 ## Un esempio
 
